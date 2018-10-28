@@ -7,12 +7,11 @@
 - Fiona Guerin
 - Maximilian Kuschewski
 
-## Technologien
-
-| Technologie | Wahl     |
+## Technologies
+| Technologies | Selection     |
 | ----------- | -------- |
-Sprache (Backend) | Kotlin
-Sprache (Frontend) | React
+Language (Backend) | Kotlin
+Language (Frontend) | React
 IDE | IntelliJ IDEA
 Build Tool | Gradle
 ORM | https://github.com/JetBrains/Exposed (falls zu instabil oder nicht complete: http://hibernate.org/) |
@@ -22,11 +21,14 @@ Mocking | https://mockk.io/
 | Issue Tracking | Github
 | Code Style / Linter | https://github.com/shyiko/ktlint
 
-## Vorgehen
-
-- Erstellen von Issues für Alles
-- Erstellen von Feature Branches
-- Vor `merge` in master: 2 Personen reviewen den code
+## Contributing
+- Create issues for everything
+- Create branches for issues
+- Name branches for issues: `[issue-nr]-[short-description]`
+- Before merging any branches into `master`: Two people have to review
+  the code.
+- Create code, code documentation and issues in English
+- Reference the respective issue when creating a pull request
 
 ## Ressourcen
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
