@@ -12,11 +12,12 @@
 | ----------- | -------- |
 Language (Backend) | Kotlin
 Language (Frontend) | React
-IDE | IntelliJ IDEA
+Web Framework | Spring Boot
 Build Tool | Gradle
 ORM | https://github.com/JetBrains/Exposed (falls zu instabil oder nicht complete: http://hibernate.org/) |
 Unit Testing | https://github.com/kotlintest/kotlintest,  (Potentiell auch: http://joel-costigliola.github.io/assertj/)
 Mocking | https://mockk.io/
+IDE | IntelliJ IDEA
 | UI Prototyping | moqups.com |
 | Issue Tracking | Github
 | Code Style / Linter | https://github.com/shyiko/ktlint
@@ -25,6 +26,7 @@ Mocking | https://mockk.io/
 - Create issues for everything
 - Create branches for issues
 - Name branches for issues: `[issue-nr]-[short-description]`
+- Rebase and squash before merging
 - Before merging any branches into `master`: Two people have to review
   the code.
 - Create code, code documentation and issues in English
