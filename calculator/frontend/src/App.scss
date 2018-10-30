@@ -18,7 +18,6 @@ $accent: #eee;
 .App-Header {
     @extend .flex-centering;
     height: 10vh;
-    border-bottom: 1px solid $accent;
 }
 
 .Calculator-Wrapper {
