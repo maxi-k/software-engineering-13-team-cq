@@ -1,4 +1,4 @@
-import { mockEvaluate as remoteEval } from '../services/calculator-service'
+import { evaluate as remoteEval } from '../services/calculator-service'
 
 const CALC_CLEAR      = 'calc/clear'
 const CALC_OPERAND    = 'calc/operand'
