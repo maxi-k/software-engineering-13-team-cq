@@ -1,0 +1,55 @@
+$background: #202124;
+$font-color: #fff;
+$accent: #eee;
+
+.flex-centering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.App {
+    text-align: center;
+    font-size: 2rem;
+    background-color: $background;
+    color: $font-color;
+}
+
+.App-Header {
+    @extend .flex-centering;
+    height: 10vh;
+}
+
+.Calculator-Wrapper {
+    min-height: 90vh;
+    display: grid;
+    grid-template-areas:
+        "calcarea calcarea calcarea calcres"
+            "btn1  btn2  btn3  btnclear"
+            "btn4  btn5  btn6  btnplus"
+            "btn7  btn8  btn9  btntimes"
+            ".  btn0 . btneq";
+
+}
+
+.Calculator-Button {
+    @extend .flex-centering;
+    &:hover {
+        background-color: lighten($background, 5%);
+    }
+
+    &:active {
+        background-color: lighten($background, 10%);
+    }
+}
+
+.Calc-Area {
+    @extend .flex-centering;
+    background-color: darken($background, 5%);
+    grid-area: calcarea;
+}
+
+.Calc-Result {
+    @extend .Calc-Area;
+    grid-area: calcres;
+}
