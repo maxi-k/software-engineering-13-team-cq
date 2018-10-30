@@ -28,6 +28,7 @@ sourceSets{
 repositories {
     jcenter()
     google()
+    mavenCentral()
 }
 
 configurations {
@@ -39,12 +40,13 @@ test {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.jetbrains.exposed:exposed:0.11.2'
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile ('io.kotlintest:kotlintest-runner-junit5:3.1.7')
-    testImplementation "io.mockk:mockk:{version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jetbrains.exposed:exposed:0.11.2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation ('io.kotlintest:kotlintest-runner-junit5:3.1.7')
+    testImplementation "io.mockk:mockk:1.8.9"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
     ktlint "com.github.shyiko:ktlint:0.29.0"
 }
 
@@ -68,5 +70,5 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 
 
 springBoot {
-    mainClass = "de.unia.se.teamcq.calculator.ApplicationKt"
+    mainClass = "de.unia.se.teamcq.ApplicationKt"
 }
