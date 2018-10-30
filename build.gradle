@@ -16,8 +16,21 @@ apply plugin: "kotlin-spring" // See https://kotlinlang.org/docs/reference/compi
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-rest-service'
+    baseName = 'se13-teamcq'
     version = '0.1.0'
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class': 'de.unia.se.teamcq.calculator.ApplicationKt'
+    }
+}
+
+sourceSets{
+    main.java.srcDirs += 'src/main/kotlin/'
+    test.java.srcDirs += 'src/test/kotlin/'
 }
 
 repositories {
@@ -28,4 +41,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
     compile 'org.springframework.boot:spring-boot-starter-web'
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+springBoot {
+  mainClass = "de.unia.se.teamcq.calculator.ApplicationKt"
 }
