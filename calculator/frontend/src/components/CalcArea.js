@@ -7,14 +7,14 @@ const CalcArea = ({ calculator }) => {
     return (
         <>
           <div className="Calc-Area">
-            { calc.operands && calc.operands[0] }
-            {' '}
-            { calc.operator }
-            {' '}
-            { calc.operands && calc.operands.length >= 2 && calc.operands[1] }
+              { calc.operands && calc.operands[0] }
+              {' '}
+              { calc.operator }
+              {' '}
+              { calc.operands && calc.operands.length >= 2 && calc.operands[1] }
           </div>
           <div className="Calc-Result">
-            { calc.result }
+              { calc.result }
           </div>
         </>
     )

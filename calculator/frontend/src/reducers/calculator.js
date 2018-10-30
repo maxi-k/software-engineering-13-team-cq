@@ -15,10 +15,11 @@ const initialState = {
     error: false,
 }
 
-const trimZeroes = (numStr) =>
-      numStr.length === 1
-      ? numStr
-      : numStr.replace(/^0/, '')
+const trimZeroes = (numStr) => (
+    numStr.length === 1
+        ? numStr
+        : numStr.replace(/^0/, '')
+)
 
 const addOperandLetter = (idx, newOperand, operands) => {
     if (operands.length > idx) {
@@ -100,9 +101,11 @@ const operator = (string) => ({
     operator: string
 })
 
-const evaluate = () => (dispatch, getState) =>
-      Promise.resolve(dispatch({ type: CALC_EVALUATE }))
-      .then(() => maybeEval(getState(), dispatch))
+const evaluate = () => (dispatch, getState) => (
+    Promise
+        .resolve(dispatch({ type: CALC_EVALUATE }))
+        .then(() => maybeEval(getState(), dispatch))
+)
 
 const evalError = (error) => ({
     type: CALC_EVAL_ERROR,
