@@ -2,8 +2,6 @@ matrix:
   include:
   - language: java
     jdk: oraclejdk8
-    before_script:
-    - cd backend
     script:
     - ./gradlew check
     - ./gradlew bootRun
