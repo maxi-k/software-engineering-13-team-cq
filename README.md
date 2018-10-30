@@ -34,3 +34,7 @@ IDE | IntelliJ IDEA
 
 ## Ressourcen
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
+
+## How to run the application
+* Unix: ```./gradlew bootRun``` 
+* Windows: use *gradlew.bat*
