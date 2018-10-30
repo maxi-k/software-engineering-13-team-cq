@@ -2,9 +2,6 @@ matrix:
   include:
   - language: java
     jdk: oraclejdk8
-    script:
-    - ./gradlew check
-    - ./gradlew bootRun
 
   - language: node_js
     node_js:
