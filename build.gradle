@@ -18,14 +18,6 @@ apply plugin: 'org.springframework.boot'
 jar {
     baseName = 'se13-teamcq'
     version = '0.1.0'
-    from {
-        (configurations.runtime).collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
-    manifest {
-        attributes 'Main-Class': 'de.unia.se.teamcq.calculator.ApplicationKt'
-    }
 }
 
 sourceSets{
