@@ -32,30 +32,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/result"
-        '400':
-          description: Bad expression
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/error"
 
 components:
   schemas:
     result:
       required:
         - expression
-        - value
+        - type
       properties:
         expression:
+          type: string
+        type:
           type: string
         value:
           type: string
-    error:
-      required:
-        - expression
-        - message
-      properties:
-        expression:
-          type: string
-        error:
+        message:
           type: string
