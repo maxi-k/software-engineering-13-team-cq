@@ -1,4 +1,4 @@
-const backendUrl = 'https://unia-se-st-project.herokuapp.com/eval'
+const backendUrl = 'https://st-calculator-backend.herokuapp.com/eval'
 
 const evaluate = (operator, op1, op2) => {
     return fetch(backendUrl + '?e=' + encodeURIComponent(op1 + operator + op2), {
