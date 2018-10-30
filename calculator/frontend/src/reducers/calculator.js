@@ -84,7 +84,7 @@ const maybeEval = (state, dispatch) => {
         && c.operands.length === 2) {
         console.log('sending string to remote for evaluation');
         return remoteEval(c.operator, c.operands[0], c.operands[1])
-            .then(result => dispatch(evalResult(result)))
+            .then(result => result.json().then((j) => dispatch(evalResult(j))))
             .catch(error => dispatch(evalError(error)))
     }
 }
@@ -111,7 +111,7 @@ const evalError = (error) => ({
 
 const evalResult = (data) => ({
     type: CALC_RESULT,
-    result: data.result
+    result: data.value
 })
 
 const clearCalc = () => ({
