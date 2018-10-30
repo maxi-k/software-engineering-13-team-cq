@@ -16,9 +16,9 @@ const initialState = {
 }
 
 const trimZeroes = (numStr) =>
-      numStr.split('').every(e => e === '0')
+      numStr.length === 1
       ? numStr
-      : numStr.replace(/^0+/, '')
+      : numStr.replace(/^0/, '')
 
 const addOperandLetter = (idx, newOperand, operands) => {
     if (operands.length > idx) {
