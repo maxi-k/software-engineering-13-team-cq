@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class EvalController {
+class EvaluationController {
 
     @CrossOrigin(origins = arrayOf("*"))
     @GetMapping("/eval")
-    fun eval(@RequestParam(value = "e") expression: String): EvalResult {
+    fun eval(@RequestParam(value = "e") expression: String): EvaluationResult {
         return try {
             val result = Evaluator.parseAndEvaluate(expression)
-            EvalResult("success", expression, result.toString(), null)
+            EvaluationResult("success", expression, result.toString(), null)
         } catch (exception: IllegalArgumentException) {
             exception.printStackTrace()
-            EvalResult("error", expression, null, "Invalid expression!")
+            EvaluationResult("error", expression, null, "Invalid expression!")
         }
     }
 }
