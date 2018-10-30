@@ -12,10 +12,10 @@ class EvalController {
     @GetMapping("/eval")
     fun eval(@RequestParam(value = "e") expression: String): EvalResult {
         return try {
-            val result = Evaluator.parseAndEval(expression)
+            val result = Evaluator.parseAndEvaluate(expression)
             EvalResult("success", expression, result.toString(), null)
-        } catch (err: IllegalArgumentException) {
-            err.printStackTrace()
+        } catch (exception: IllegalArgumentException) {
+            exception.printStackTrace()
             EvalResult("error", expression, null, "Invalid expression!")
         }
     }

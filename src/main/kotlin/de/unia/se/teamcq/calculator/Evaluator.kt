@@ -11,8 +11,8 @@ class BinaryOperation(val leftSide: Expression, val operator: Operator, val righ
 class Evaluator {
 
     companion object {
-        fun parseAndEval(expression: String): Int =
-            eval(parse(expression))
+        fun parseAndEvaluate(expression: String): Int =
+            evaluate(parse(expression))
 
         private fun parse(expression: String): Expression {
             val regex = "\\s*(0|[1-9][0-9]*)\\s*(\\+|\\*)\\s*(0|[1-9][0-9]*)\\s*".toRegex()
@@ -30,12 +30,12 @@ class Evaluator {
             return BinaryOperation(Number(leftNumber.toInt()), operator, Number(rightNumber.toInt()))
         }
 
-        private fun eval(expression: Expression): Int =
+        private fun evaluate(expression: Expression): Int =
             when (expression) {
                 is Number -> expression.value
                 is BinaryOperation -> {
-                    val leftNumber = eval(expression.leftSide)
-                    val rightNumber = eval(expression.rightSide)
+                    val leftNumber = evaluate(expression.leftSide)
+                    val rightNumber = evaluate(expression.rightSide)
                     when (expression.operator) {
                         Operator.Add -> leftNumber + rightNumber
                         Operator.Mul -> leftNumber * rightNumber
