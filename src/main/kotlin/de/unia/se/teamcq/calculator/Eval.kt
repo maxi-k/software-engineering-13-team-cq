@@ -2,38 +2,46 @@ package de.unia.se.teamcq.calculator
 
 data class EvalResult(val type: String, val expression: String, val value: String?, val message: String?)
 
-enum class Op { Add, Mul }
+enum class Operator { Add, Mul }
 
 interface Expression
-class Num(val value: Int) : Expression
-class BinOp(val lhs: Expression, val op: Op, val rhs: Expression) : Expression
+class Number(val value: Int) : Expression
+class BinaryOperation(val leftSide: Expression, val operator: Operator, val rightSide: Expression) : Expression
 
-fun parse(text: String): Expression {
-    val r = "\\s*(0|[1-9][0-9]*)\\s*(\\+|\\*)\\s*(0|[1-9][0-9]*)\\s*"
-    val groups = r.toRegex().matchEntire(text)
-    if (groups == null) {
-        throw IllegalArgumentException("")
-    }
-    val op = when (groups.groupValues[2]) {
-        "+" -> Op.Add
-        "*" -> Op.Mul
-        else -> throw IllegalArgumentException("")
-    }
-    val lhs = groups.groupValues[1]
-    val rhs = groups.groupValues[3]
-    return BinOp(Num(lhs.toInt()), op, Num(rhs.toInt()))
-}
+class Evaluator {
 
-fun eval(e: Expression): Int =
-        when (e) {
-            is Num -> e.value
-            is BinOp -> {
-                val val_lhs = eval(e.lhs)
-                val val_rhs = eval(e.rhs)
-                when (e.op) {
-                    Op.Add -> val_lhs + val_rhs
-                    Op.Mul -> val_lhs * val_rhs
-                }
+    companion object {
+        fun parseAndEval(expression: String): Int =
+            eval(parse(expression))
+
+        private fun parse(expression: String): Expression {
+            val regex = "\\s*(0|[1-9][0-9]*)\\s*(\\+|\\*)\\s*(0|[1-9][0-9]*)\\s*".toRegex()
+            val groups = regex.matchEntire(expression) ?: throw IllegalArgumentException("")
+
+            val operator = when (groups.groupValues[2]) {
+                "+" -> Operator.Add
+                "*" -> Operator.Mul
+                else -> throw IllegalArgumentException("Unknown Operator!")
             }
-            else -> throw IllegalArgumentException("")
+
+            val leftNumber = groups.groupValues[1]
+            val rightNumber = groups.groupValues[3]
+
+            return BinaryOperation(Number(leftNumber.toInt()), operator, Number(rightNumber.toInt()))
         }
+
+        private fun eval(expression: Expression): Int =
+            when (expression) {
+                is Number -> expression.value
+                is BinaryOperation -> {
+                    val leftNumber = eval(expression.leftSide)
+                    val rightNumber = eval(expression.rightSide)
+                    when (expression.operator) {
+                        Operator.Add -> leftNumber + rightNumber
+                        Operator.Mul -> leftNumber * rightNumber
+                    }
+                }
+                else -> throw IllegalArgumentException("Unknown Operator!")
+            }
+    }
+}

@@ -68,5 +68,5 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 
 
 springBoot {
-    mainClass = "de.unia.se.teamcq.calculator.ApplicationKt"
+    mainClass = "de.unia.se.teamcq.ApplicationKt"
 }

@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.calculator
+package de.unia.se.teamcq
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
