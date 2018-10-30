@@ -1,7 +1,9 @@
-# SE Master - Softwaretechnik Projekt (1. Semester)
+# SE Master - Software Engineering Project - Team CQ
+
+[![Build Status](https://travis-ci.com/maxi-k/se-master-sem1-st.svg?token=vJCFyC8fzGGkCLryVRQA&branch=master)](https://travis-ci.com/maxi-k/se-master-sem1-st)
 
 ## Team "CQ"
-- Stefan Grafberger (*Teamleiter*)
+- Stefan Grafberger (*Team leader*)
 - Swantje Kastrup
 - Bernhard Pöttinger
 - Fiona Guerin
@@ -36,5 +38,17 @@ IDE | IntelliJ IDEA
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
 
 ## How to run the application
-* Unix: ```./gradlew bootRun``` 
+
+### How to run the backend
+* Unix: ```./gradlew bootRun```
 * Windows: use *gradlew.bat*
+
+### How to run the frontend
+Starting a development environment for the frontend with auto
+reloading and more can be done using:
+```sh
+cd calculator/frontend
+npm install
+npm start
+```
+Using `yarn` instead of `npm` is recommended.
