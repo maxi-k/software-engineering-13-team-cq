@@ -3,17 +3,22 @@ buildscript {
     ext.spring_boot_version = '1.5.4.RELEASE'
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+        classpath "gradle.plugin.com.palantir:jacoco-coverage:0.4.0"
     }
 }
 
 apply plugin: 'kotlin' // Required for Kotlin integration
 apply plugin: "kotlin-spring" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
 apply plugin: 'org.springframework.boot'
+apply plugin: "com.palantir.jacoco-coverage"
 
 jar {
     baseName = 'se13-teamcq'
@@ -55,10 +60,12 @@ task ktlint(type: JavaExec, group: "verification") {
     classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
     args "src/**/*.kt"
-    // to generate report in checkstyle format prepend following args:
+    // To generate report in checkstyle format prepend following args:
     // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
     // see https://github.com/shyiko/ktlint#usage for more
 }
+
+// To run ktlint during the build (and fail when appropriate)
 check.dependsOn ktlint
 
 task ktlintFormat(type: JavaExec, group: "formatting") {
@@ -68,6 +75,18 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     args "-F", "src/**/*.kt"
 }
 
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.3 // FIXME: Increase this threshold as soon as possible!
+            }
+        }
+    }
+}
+
+// To run coverage verification during the build (and fail when appropriate)
+check.dependsOn jacocoTestCoverageVerification
 
 springBoot {
     mainClass = "de.unia.se.teamcq.ApplicationKt"
