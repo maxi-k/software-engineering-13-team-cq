@@ -37,4 +37,4 @@ IDE | IntelliJ IDEA
 
 ## How to run the application
 * Unix: ```./gradlew bootRun``` 
-* Windows: use *gradle.bat*
+* Windows: use *gradlew.bat*
