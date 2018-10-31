@@ -41,7 +41,7 @@ const calcReducer = (state = initialState, action) => {
             operands: addOperandLetter(idx, action.operand, [...state.operands])
         }
     case CALC_OPERATOR:
-        if (state.result) {
+        if (state.result && state.operands.length == 0) {
             return {
                 ...state,
                 operator: action.operator,
