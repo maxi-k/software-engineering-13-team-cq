@@ -41,7 +41,7 @@
 * Logging? -> Wichtig. Aber keine genauen Anforderungen. Wann wurde was versendet. -> Logging Service? -> Nein, wird gerade erst konzipiert
 * Organisatorisch? 3 Teams, gleiche Lösung, am Ende wird ein Sieger ausgewählt. Technische Rahmenbedingungen? Alle Use Cases abgedeckt? Benutzfreundlich? Passt von Look and feel zum Bestehendem? Gibt es zusätzliche Features?
 * Styleguides bekommen wir
-* Prometheus monitoring, OAuth Authentication oÄ wurde gesagt? Stimmt das? Hab den einen Punkt nicht ganz verstanden -> Ja wurde gesagt. Prometheus und OAuth+JWT
+* OAuth Authentication oÄ wurde gesagt? -> Ja wurde gesagt OAuth+JWT
 * 15.11. ist Termin, 7.12. Architektur-Workshop, nächster dann nach Weihnachten
 
 ## Questions
