@@ -2,6 +2,15 @@
 
 [![Build Status](https://travis-ci.com/maxi-k/se-master-sem1-st.svg?token=vJCFyC8fzGGkCLryVRQA&branch=master)](https://travis-ci.com/maxi-k/se-master-sem1-st)
 
+## The App
+The App is divided into a frontend and a backend. They are deployed to
+Heroku automatically if the CI is done and all tests pass.
+* Frontend: https://st-calculator-frontend.herokuapp.com/
+* Backend: https://st-calculator-backend.herokuapp.com/
+* Example Backend Service: https://st-calculator-backend.herokuapp.com/eval?e=42%2B314
+When first accessing those services, there might be a short delay, as
+Heroku has to spin them up first.
+
 ## Team "CQ"
 - Stefan Grafberger (*Team leader*)
 - Swantje Kastrup
@@ -34,7 +43,7 @@ IDE | IntelliJ IDEA
 - Create code, code documentation and issues in English
 - Reference the respective issue when creating a pull request
 
-## Ressourcen
+## Resources
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
 
 ## How to run the application
