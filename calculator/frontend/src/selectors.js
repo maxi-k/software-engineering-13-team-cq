@@ -1,7 +1,7 @@
 // import { createSelector } from 'reselect'
 
-const calcSelector = (state) => state.calculator
+const calculatorSelector = (state) => state.calculator
 
 export {
-    calcSelector
+    calculatorSelector
 }
