@@ -19,6 +19,7 @@ apply plugin: 'kotlin' // Required for Kotlin integration
 apply plugin: "kotlin-spring" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
 apply plugin: 'org.springframework.boot'
 apply plugin: "com.palantir.jacoco-coverage"
+apply plugin: 'application'
 
 jar {
     baseName = 'se13-teamcq'
@@ -47,7 +48,7 @@ test {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
     compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
-    // compile "org.springframework.boot:spring-boot-starter-data-jpa:$spring_boot_version"
+    compile 'org.jetbrains.exposed:exposed:0.11.2'
     testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
     testCompile 'io.kotlintest:kotlintest-runner-junit5:3.1.7'
     testCompile "io.mockk:mockk:1.8.9"
@@ -88,3 +89,5 @@ jacocoTestCoverageVerification {
 
 // To run coverage verification during the build (and fail when appropriate)
 check.dependsOn jacocoTestCoverageVerification
+
+mainClassName = 'de.unia.se.teamcq.ApplicationKt'
