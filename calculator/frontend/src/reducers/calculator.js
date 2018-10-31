@@ -35,13 +35,13 @@ const calcReducer = (state = initialState, action) => {
     case CALC_CLEAR:
         return { ...initialState };
     case CALC_OPERAND:
-        let idx = state.operator == null ? 0 : 1;
+        let idx = state.operator === null ? 0 : 1;
         return {
             ...state,
             operands: addOperandLetter(idx, action.operand, [...state.operands])
         }
     case CALC_OPERATOR:
-        if (state.result && state.operands.length == 0) {
+        if (state.result && state.operands.length === 0) {
             return {
                 ...state,
                 operator: action.operator,
