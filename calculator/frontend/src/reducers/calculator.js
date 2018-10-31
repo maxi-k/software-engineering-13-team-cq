@@ -1,4 +1,4 @@
-import { evaluate as remoteEval } from '../services/calculator-service'
+import { evaluate as remoteEvaluate } from '../services/calculator-service'
 
 const CALC_CLEAR      = 'calc/clear'
 const CALC_OPERAND    = 'calc/operand'
@@ -21,27 +21,27 @@ const trimZeroes = (numStr) => (
         : numStr.replace(/^0/, '')
 )
 
-const addOperandLetter = (idx, newOperand, operands) => {
-    if (operands.length > idx) {
-        operands[idx] = trimZeroes(operands[idx] + '' + newOperand);
+const addOperandLetter = (index, newOperand, operands) => {
+    if (operands.length > index) {
+        operands[index] = trimZeroes(operands[index] + '' + newOperand);
     } else {
         operands.push(newOperand);
     }
     return operands;
 }
 
-const calcReducer = (state = initialState, action) => {
+const calculatorReducer = (state = initialState, action) => {
     switch(action.type) {
     case CALC_CLEAR:
         return { ...initialState };
     case CALC_OPERAND:
-        let idx = state.operator == null ? 0 : 1;
+        let idx = state.operator === null ? 0 : 1;
         return {
             ...state,
             operands: addOperandLetter(idx, action.operand, [...state.operands])
         }
     case CALC_OPERATOR:
-        if (state.result) {
+        if (state.result && state.operands.length === 0) {
             return {
                 ...state,
                 operator: action.operator,
@@ -78,14 +78,17 @@ const calcReducer = (state = initialState, action) => {
     }
 }
 
-const maybeEval = (state, dispatch) => {
-    let c = state.calculator
-    if (c.operator
-        && c.operands
-        && c.operands.length === 2) {
-        console.log('sending string to remote for evaluation');
-        return remoteEval(c.operator, c.operands[0], c.operands[1])
-            .then(result => result.json().then((j) => dispatch(evalResult(j))))
+const maybeEvaluate = (state, dispatch) => {
+    let { operator, operands } = state.calculator
+    if (operator
+        && operands
+        && operands.length === 2) {
+        return remoteEvaluate(operator, operands[0], operands[1])
+            .then(result => (
+                result
+                    .json()
+                    .then((json) => dispatch(evalResult(json)))
+            ))
             .catch(error => dispatch(evalError(error)))
     }
 }
@@ -104,7 +107,7 @@ const operator = (string) => ({
 const evaluate = () => (dispatch, getState) => (
     Promise
         .resolve(dispatch({ type: CALC_EVALUATE }))
-        .then(() => maybeEval(getState(), dispatch))
+        .then(() => maybeEvaluate(getState(), dispatch))
 )
 
 const evalError = (error) => ({
@@ -121,7 +124,7 @@ const clearCalc = () => ({
     type: CALC_CLEAR
 })
 
-export default calcReducer
+export default calculatorReducer
 export {
     CALC_CLEAR,
     CALC_OPERAND,
