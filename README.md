@@ -8,6 +8,7 @@ Heroku automatically if the CI is done and all tests pass.
 * Frontend: https://st-calculator-frontend.herokuapp.com/
 * Backend: https://st-calculator-backend.herokuapp.com/
 * Example Backend Service: https://st-calculator-backend.herokuapp.com/eval?e=42%2B314
+
 When first accessing those services, there might be a short delay, as
 Heroku has to spin them up first.
 
