@@ -25,7 +25,7 @@ Attribute:
 ### Detaillierung
 
 #### Anna
-![Anna](images/anna.jpg) {
+![Anna](images/anna.jpg){
     width: 200px;
     float: right;
 }
