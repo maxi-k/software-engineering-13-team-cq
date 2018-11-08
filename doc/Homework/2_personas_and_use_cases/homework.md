@@ -15,6 +15,7 @@ Attribute:
 | Funktion    | Administratorin (Flotte) | Managerin (Flotte) | externer Nachrichtenempfänger
 | Position    | Mittleres Management der IT | Assistenz der lokalen Geschäftsführung | Buchhaltung
 | Geschlecht  | W              | W           | M    
+| Ausbildung  | Fachinformatikerin | BWL-Studium | Kaufmännische Ausbildung
 | Hobbies     | Marathon       | Yoga        | Fußball & Bier
 | Motto       | Wer Rastet der Rostet | Der frühe Vogel fängt den Wurm, aber der späte Wurm verpasst den Vogel! | Prost! 
 | Familie     | Verheirtatet | Geschieden | Ledig
