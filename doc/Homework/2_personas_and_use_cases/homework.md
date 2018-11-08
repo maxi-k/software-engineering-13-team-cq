@@ -25,10 +25,7 @@ Attribute:
 ### Detaillierung
 
 #### Anna
-![Anna](images/anna.jpg){
-    width: 200px;
-    float: right;
-}
+<img src="images/anna.jpg" width="200">
 * *Motivation das System zu benutzen:*
 Anna ist für ganz Deutschland die technisch Verantwortliche für die Flotte des Unternehmens, und ist damit stark belastet. Sie hat auch ohne micro-management der lokalen Flottenmanager genug zu tun, und möchte, dass diese eine möglichst gute IT haben, um die meisten Probleme selbst schnell, effektiv und gut lösen zu können.
 * Erwartungen an das System:
