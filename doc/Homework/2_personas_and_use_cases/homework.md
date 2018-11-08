@@ -26,6 +26,7 @@ Attribute:
 
 #### Anna
 <img src="images/anna.jpg" width="500">
+
 * *Motivation das System zu benutzen:*
 Anna ist für ganz Deutschland die technisch Verantwortliche für die Flotte des Unternehmens, und ist damit stark belastet. Sie hat auch ohne micro-management der lokalen Flottenmanager genug zu tun, und möchte, dass diese eine möglichst gute IT haben, um die meisten Probleme selbst schnell, effektiv und gut lösen zu können.
 * Erwartungen an das System:
@@ -33,6 +34,7 @@ Anna erhofft sich, durch eine bessere IT der lokalen Flottenmanager eine Entlast
 
 #### Marlene
 <img src="images/marlene.jpg" width="500">
+
 * *Motivation das System zu benutzen:*
 Marlene ist Verantwortlich für das Management der Flotte einer lokalen Zweigstelle des Unternehmens. Sie ist im operativen Geschäft tätig und führt damit oft Tätigkeiten im Interface des Systems aus. Marlene bekommt als Verantwortliche Ärger, wenn etwas nicht funktioniert oder nicht rechtzeitig erledigt wird, und ist deshalb sehr an einer nachrichtenbasierten Erweiterung des Systems interessiert, um derartigen Problemen aus dem Weg zu gehen.
 * *Erwartungen an das System:*
@@ -40,6 +42,7 @@ Marlene möchte über dringende Vorfälle und anstehende Termine informiert werd
 
 #### Bob
 <img src="images/bob.jpg" width="500">
+
 * *Motivation das System zu benutzen:*
 Bob hat wenig Kontakt mit dem System, da er nicht im Flottenmanagement, sondern in der Buchhaltung tätig ist. Er kann nicht auf das Webinterface zugreifen. Allerings gab es in der Vergangenheit einige Vorfälle, bei denen Abrechnungen im Rahmen des Flottenmagements nicht korrekt durchgeführt wurden. Deshalb soll dieser Teil der Informationsübertragung automatisiert werden.
 * *Erwartungen an das System:*
