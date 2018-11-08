@@ -74,7 +74,7 @@ of the meeting, which was held in german).
   initiales, aber welches geändert werden kann
 * Sollen Nachrichten nur an bestimmte Personen oder auch zB an Fahrer
   gesendet werden? - Nicht an Fahrer, dieser ist unbekannt
-* 2. Addressat Bsp Use Case: Mit Kollegen zusammen Arbeit teilen,
+* Zweiter Addressat Bsp Use Case: Mit Kollegen zusammen Arbeit teilen,
   Urlaubsvertretung usw -> Es gibt Flottenadministrator (super-admin)
   und Flottenmanager (für einzelne Flotten). D.h unterschiedliche
   Nachrichtentypen auf Regeln festlegen können, wer jeweils
@@ -105,8 +105,8 @@ of the meeting, which was held in german).
 * Alle Daten kommen übers Backend nur: Service-Termin fällig wird erst
   aktualisiert wenn der Service im Backend angekommen ist, momentan
   nur über Notizen
-- SMS Service Provider -> Twilio? -> Nein, durch BMW Internen
-      Service (E-mail und SMS)
+* SMS Service Provider -> Twilio? -> Nein, durch BMW Internen Service
+  (E-mail und SMS)
 
 ## Interface
 * Regel-Editor von Outlook als Bsp anschauen; Vorschläge als optionaler
