@@ -73,30 +73,30 @@ Die Erstellung des UI-Prototyp ist nicht Aufgabe des Use-Case Verantwortlichen, 
 
 | Use-Case Name | Zugewiesene Person    | UI-Prototyp (Potentiell)
 |---------------|-----------------------|------
-| Administratoren: CRUD | Maxi |
-| Manager: CRUD | Swantje | X 
-| Zuweisen von Administratoren zu Fuhrparks | Fiona |
-| Zuweisen von Manager zu Flotten |  Stefan |
-| Regeln für Nachrichten: CRUD | Bernhard | X |
-| Einteilung von Nachrichten in Kategorien (Verwaltung) | Stefan |
-| Testen von Regeln anhand von vergangenen Daten ("sie hätten folgende Nachrichten mit dieser Regel vergangene Woche erhalten") | Maxi | X
-| Kommunikationskanäle: CRUD | Swantje |
-| Regeln für Flotte und Kommunikationskanal zuweisen | Fiona |
-| Übersicht über die versendeten Nachrichten (mit jeweils verknüpften Regeln, Ereignissen, Kommunikationskanälen) | Stefan |
-| Definition von "Virtuellen Flotten", die flottenübergreifend nach beliebigen Kriterien Fahrzeuge gruppiert werden, um Nachrichten zu dispatchen | Bernhard |
-| Pushen eines Datenupdates an den Service (Datenupdate => Neue Ereignisse pushen) (je nach Push/Pull Modell, muss mit Kunden abgeklärt werden) | Maxi |
+| Regeln für Nachrichten: Create, Update | Stefan | X |
+| Regeln für Nachrichten: Read | Maxi | X |
+| Regeln für Nachrichten: Delete | Maxi | X |
+| Regelkategorien: CRUD | Fiona | X |
+| Übersicht über die versendeten Nachrichten (mit jeweils verknüpften Regeln, Ereignissen) ("Log") | Bernhard | X |
+| Log der Ereignisse (mit Filtern, Suche, Möglichkeit der Regelerstellung hieraus etc.) | Swantje |
 
+
+### Erstellung UI Prototypen
+
+
+<!-- | Testen von Regeln anhand von vergangenen Daten ("sie hätten folgende Nachrichten mit dieser Regel vergangene Woche erhalten") | Maxi | X bei Create, Update -->
 
 ### Use-Case Grobbeschreibungen
 Template (nach Übungsblatt):
-| Name                 | Inhalt
+
+| Name                 | Inhalt           
 |----------------------|------------------|
-| Name                 |
-| Trigger              |
-| Primärer Akteur      |
-| Haupterfolgszenario  |
-| Alternative Abläufe  |
-| Vorbedingung         |
-| Nachbedingung        |
+| Name                 | ...
+| Trigger              | ...
+| Primärer Akteur      | ...
+| Haupterfolgszenario  | ...
+| Alternative Abläufe  | ...
+| Vorbedingung         | ...
+| Nachbedingung        | ...
 
 ## Aufgabe 3 - UI-Prototypen
