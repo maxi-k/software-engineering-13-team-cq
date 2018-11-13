@@ -74,8 +74,8 @@ Die Erstellung des UI-Prototyp ist nicht Aufgabe des Use-Case Verantwortlichen, 
 | Use-Case Name | Zugewiesene Person    | UI-Prototyp (Potentiell)
 |---------------|-----------------------|------
 | Regeln für Nachrichten: Create, Update | Stefan | X |
-| Regeln für Nachrichten: Read | Maxi | X |
-| Regeln für Nachrichten: Delete | Maxi | X |
+| Regeln für Nachrichten: Read | Maxi | |
+| Regeln für Nachrichten: Delete | Maxi | |
 | Regelkategorien: CRUD | Fiona | X |
 | Allgemeine Einstellungen: RU (Overall Template etc.) | Swantje |  |
 | Übersicht über die versendeten Nachrichten (mit jeweils verknüpften Regeln, Ereignissen) ("Log") | Bernhard | X |
