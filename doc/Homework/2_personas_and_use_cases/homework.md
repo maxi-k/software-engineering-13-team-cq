@@ -77,8 +77,8 @@ Die Erstellung des UI-Prototyp ist nicht Aufgabe des Use-Case Verantwortlichen, 
 | Regeln für Nachrichten: Read | Maxi | X |
 | Regeln für Nachrichten: Delete | Maxi | X |
 | Regelkategorien: CRUD | Fiona | X |
+| Allgemeine Einstellungen: RU (Overall Template etc.) | Swantje |  |
 | Übersicht über die versendeten Nachrichten (mit jeweils verknüpften Regeln, Ereignissen) ("Log") | Bernhard | X |
-| Log der Ereignisse (mit Filtern, Suche, Möglichkeit der Regelerstellung hieraus etc.) | Swantje |
 
 
 ### Erstellung UI Prototypen
