@@ -99,4 +99,14 @@ Template (nach Übungsblatt):
 | Vorbedingung         | ...
 | Nachbedingung        | ...
 
+| Name | Inhalt |
+| ---- | ------ |
+| Name | Übersicht über die versendeten Nachrichten |
+| Trigger | Der Manager möchte die versendeten Nachrichten kontrollieren, z.B. beim Debugging seiner Regeln oder der dem Nachvollziehen von Geschehnissen anhand der Events. |
+| Primärer Akteur | Manager |
+| Haupterfolgsszenario | Der Manager besucht das Nachrichten-Log-Interface. (\*) Das System stellt Zusammenfassungen der, für den Manager bestimmten, protokollierten Nachrichten dar. Der Manager analyisiert diese. Optional kann der Manager zu den Zusammenfassungen Detaildarstellungen anfordern. Das System stellt diese dar. In den Detaildarstellungen informiert sich der Manger, zusätzlich zu den Informationen der Zusammenfassung, über die die Nachricht generierende Regel mitsamt der erfüllenden Belegung der Regel, sowie dem ausführlichen Text der Nachricht. Der Manager schließt die Detaildarstellungen anschließend wieder. Hierdurch kehrt er wieder zu den Zusammenfassungen der Nachrichten zurück (siehe Punkt (\*)). Der Manager beendet die Betrachtung. |
+| Alternative Abläufe | Der Manager beendet die Betrachtung zu einem beliebigen Zeitpunkt. |
+| Vorbedingungen | Manager ist authentifiziert. |
+| Nachbedingung | Zustand des Systems ist identisch zu Vorbedingungen, d.h. keine Änderungen am System wurden ausgeführt. |
+
 ## Aufgabe 3 - UI-Prototypen
