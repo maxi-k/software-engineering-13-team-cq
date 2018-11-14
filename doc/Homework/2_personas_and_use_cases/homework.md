@@ -186,4 +186,4 @@ Template (nach Übungsblatt):
 
 ## Aufgabe 3 - UI-Mockups
 Die UI Prototypen sind unter
-https://www.figma.com/file/ab3V6oY85VAM9xv1TD7GRzdm/Messaging-Application?node-id=0%3A1 einsehbar
+https://www.figma.com/file/ab3V6oY85VAM9xv1TD7GRzdm/Messaging-Application?node-id=26%3A160 einsehbar
