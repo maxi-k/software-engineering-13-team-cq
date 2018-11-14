@@ -109,4 +109,23 @@ Template (nach Übungsblatt):
 | Vorbedingungen | Manager ist authentifiziert. |
 | Nachbedingung | Zustand des Systems ist identisch zu Vorbedingungen, d.h. keine Änderungen am System wurden ausgeführt. |
 
+| Name | Lesen allgemeiner Einstellungen
+|----------------------| -----------------------|
+| Trigger | Flottenmanager möchte einen Überblick über seine bestehenden Einstellungen bekommen
+| Primärer Akteur | Flottenmanager (FM)
+| Haupterfolgsszenario | 1. FM loggt sich in System ein<br> 2. Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt <br> 3. FM ist mit allg. Einstellungen zufrieden und verlässt System
+| Alternative Abläufe  | * FM verlässt System: Einstellungen bleiben unverändert <br> 2a. FM möchte detailliertere Informationen zu den bestehenden Regeln und lässt sich zu diesen weiterleiten  <br> 3a. FM ist mit den Einstellungen nicht zufrieden und möchte diese ändern -> Übergang zu <b>Verändern allg. Einstellungen</b>
+| Vorbedingung | FM ist am System angemeldet
+| Nachbedingung | Einstellungen wurden nicht verändert
+<br>
+
+| Name | Verändern allgemeiner Einstellungen
+|----------------------| -----------------------|
+| Trigger | Flottenmanager möchte bestehende Einstellungen anpassen
+| Primärer Akteur | Flottenmanager (FM)
+| Haupterfolgsszenario | 1. FM loggt sich in Sytem ein <br> 2. Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt <br> 3. FM passt eine Einstellung an <br> 4. FM speichert Einstellung <br> 5. Die neue Einstellung ist aktiv <br> 6. FM verlässt System
+| Alternative Abläufe  | 1a-4a FM verlässt System: Einstellungen behalten alten Zustand bei <br> 6a. FM möchte weitere Einstellungen ändern: Weiter mit 3.
+| Vorbedingung | FM ist am Sytem angemeldet
+| Nachbedingung | Einstellungen sind aktualisiert, aktiv und gespeichert
+
 ## Aufgabe 3 - UI-Prototypen
