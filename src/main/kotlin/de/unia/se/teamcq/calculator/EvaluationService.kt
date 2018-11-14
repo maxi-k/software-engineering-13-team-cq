@@ -1,5 +1,7 @@
 package de.unia.se.teamcq.calculator
 
+import org.springframework.stereotype.Service
+
 data class EvaluationResult(val type: String, val expression: String, val value: String?, val message: String?)
 
 enum class Operator { Addition, Multiplication }
@@ -8,10 +10,12 @@ interface Expression
 class Number(val value: Int) : Expression
 class BinaryOperation(val leftSide: Expression, val operator: Operator, val rightSide: Expression) : Expression
 
-class Evaluator {
+@Service
+class EvaluationService {
+
+    fun parseAndEvaluate(expression: String): Int = evaluate(parse(expression))
 
     companion object {
-        fun parseAndEvaluate(expression: String): Int = evaluate(parse(expression))
 
         private fun parse(expression: String): Expression {
             val regex = "\\s*(0|[1-9][0-9]*)\\s*(\\+|\\*)\\s*(0|[1-9][0-9]*)\\s*".toRegex()
