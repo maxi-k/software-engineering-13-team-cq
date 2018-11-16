@@ -31,7 +31,7 @@ Attribute:
 * *Motivation das System zu benutzen:*
 Anna ist für ganz Deutschland die technisch Verantwortliche für die Flotte des Unternehmens, und ist damit stark belastet. Sie hat auch ohne micro-management der lokalen Flottenmanager genug zu tun, und möchte, dass diese eine möglichst gute IT haben, um die meisten Probleme selbst schnell, effektiv und gut lösen zu können.
 * Erwartungen an das System:
-Anna erhofft sich, durch eine bessere IT der lokalen Flottenmanager eine Entlastung im day-to-day Management.  Sie ist viel unterwegs, und möchte auch von unterwegs ihre Aufgaben im System erledigen können. Bis auf einige grobe Auswertungen möchte Sie mit dem System keinen domänenspezifischen Kontakt haben, wobei sie dennoch das Berechtigungsmanagement übernimmt.
+Anna erhofft sich, durch eine bessere IT der lokalen Flottenmanager eine Entlastung im day-to-day Management.  Sie ist viel unterwegs, und möchte auch von unterwegs ihre Aufgaben im System erledigen können. Sie möchte vom System ausschließlich grobe Auswertungen erhalten, ohne sich tief in das System einarbeiten zu müssen.
 
 #### Marlene
 <img src="images/marlene.jpg" width="500">
