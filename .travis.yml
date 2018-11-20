@@ -16,9 +16,3 @@ matrix:
 
 notifications:
   slack: s-e-13:HvejBsdv4uwO1HjExPJKnSKd
-  email:
-  - stefangrafberger@gmail.com
-  - S.Kastrup@campus.lmu.de
-  - Bpoettinger@gmx.de
-  - fiona.guerin@gmx.de
-  - maxi.kuschewski@gmail.com
