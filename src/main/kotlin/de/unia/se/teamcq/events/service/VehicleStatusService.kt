@@ -18,12 +18,8 @@ class VehicleStatusService(val vehicleStatusRepository: VehicleStatusRepository)
     @CacheEvict(value = ["vehicle-status"], allEntries = true)
 
     @Caching(
-            evict = arrayOf(
-                    CacheEvict(value = ["vehicle-status"], allEntries = true)
-            ),
-            put = arrayOf(
-                    CachePut(value = ["vehicle-status-single"], key = "#result.id")
-            )
+            evict = [(CacheEvict(value = ["vehicle-status"], allEntries = true))],
+            put = [(CachePut(value = ["vehicle-status-single"], key = "#result.id"))]
     )
     fun createNewVehicleStatus(vehicleStatus: VehicleStatus): VehicleStatus =
             vehicleStatusRepository.save(vehicleStatus)
