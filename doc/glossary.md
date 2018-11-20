@@ -18,9 +18,9 @@ Event-Typ, der Infomationen über Vertragslaufzeit und andere Vereinbarungen bü
 Event-Typ, der den Ladezustand der Batterie betrifft.
 
 ### Regel
-Beschreibt über welche Prädikate unter welchen Bedingungen informiert werden soll.
+Beschreibt über welche Prädikate informiert werden soll.
 
-#### Aggregatortypen
+### Aggregator
 Beeinflusst, unter welchen Bedingungen (sofort, zu best. Zeitpunkt, nach Anzahl, nur einmalig bei längerem Bestehen) Regeln aktiv werden.
 
 ### Regelkategorie
