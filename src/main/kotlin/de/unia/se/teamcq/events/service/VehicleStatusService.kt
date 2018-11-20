@@ -31,11 +31,11 @@ class VehicleStatusService(val vehicleStatusRepository: VehicleStatusRepository)
     // @CachePut(value = ["vehicle-status-single"], key = "#article.id")
     fun updateArticle(
         vehicleStatus: VehicleStatus,
-        newArticle: VehicleStatus
+        newVehicleStatus: VehicleStatus
     ): VehicleStatus {
 
         val updatedVehicleStatus: VehicleStatus = vehicleStatus
-                .copy(title = newArticle.title, content = newArticle.content)
+            .copy(kilometers = newVehicleStatus.kilometers, batteryCharge = newVehicleStatus.batteryCharge)
         return vehicleStatusRepository.save(updatedVehicleStatus)
     }
 
