@@ -2,15 +2,24 @@ version: '3.0'
 
 services:
   db:
+    container_name: sample_db
     image: postgres
     restart: always
+    volumes:
+    - sample_db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: example
+    - POSTGRES_PASSWORD=sample
+    - POSTGRES_USER=sample
+    - POSTGRES_DB=sample
+    - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - 5432:5432
+    - 5432:5432
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+    - 8080:8080
+
+volumes:
+  sample_db: {}
