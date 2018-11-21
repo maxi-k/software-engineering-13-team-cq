@@ -44,6 +44,9 @@ IDE | IntelliJ IDEA
 - Create code, code documentation and issues in English
 - Reference the respective issue when creating a pull request
 
+## Links
+- Mockup: https://www.figma.com/file/eoajJpSOmiDUlgJLYVdil0/Notification-Service-Mockup?node-id=29%3A211
+
 ## Resources
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
 
