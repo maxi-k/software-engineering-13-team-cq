@@ -1,22 +1,16 @@
-package de.unia.se.teamcq.mock.vehicle.status;
+package de.unia.se.teamcq.mock.vehicle.status
 
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
-import org.springframework.http.converter.StringHttpMessageConverter
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.postForObject
 import java.util.UUID
-import java.lang.Math
 import kotlin.random.Random
 import org.springframework.http.HttpEntity
-import org.apache.catalina.manager.StatusTransformer.setContentType
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
-
 
 @Service
 class VehicleStatusMockService {
@@ -31,7 +25,6 @@ class VehicleStatusMockService {
                 .toList()
     }
 
-
     val restTemplate by lazy {
         val template = RestTemplate()
         template
@@ -45,33 +38,31 @@ class VehicleStatusMockService {
     }
 
     data class VehicleStatus(
-       val vehicleId: String,
-       val kilometers: Int,
-       val batteryCharge: Float
-    );
+        val vehicleId: String,
+        val kilometers: Int,
+        val batteryCharge: Float
+    )
     val gsonConverter = Gson()
 
-    private fun <T: Any> wrapRequestObject(obj: T): HttpEntity<String> {
-        return HttpEntity(gsonConverter.toJson(obj), requestHeaders);
+    private fun <T : Any> wrapRequestObject(obj: T): HttpEntity<String> {
+        return HttpEntity(gsonConverter.toJson(obj), requestHeaders)
     }
 
     @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
     fun sendMockedStatusAtInterval() {
-        if (environment == null) return;
 
         val serverPort = environment.getProperty("server.port")
                 ?: environment.getProperty("local.server.port")
                 ?: 8080
         val mockedEndpoint = "http://0.0.0.0:$serverPort/events/vehicle-status"
 
-        val vehicleUUID = knownVehicles[Random.nextInt(knownVehicles.size)];
+        val vehicleUUID = knownVehicles[Random.nextInt(knownVehicles.size)]
         val vehicleStatus = VehicleStatus(vehicleUUID.toString(), Random.nextInt(50000), Random.nextFloat())
 
         try {
             restTemplate.postForEntity(mockedEndpoint, wrapRequestObject(vehicleStatus), String::class.java)
         } catch (e: Exception) {
-
+            // TODO
         }
-
     }
 }

@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.events.model
 
-import javax.validation.constraints.NotEmpty
+import javax.validation.constraints.NotNull
 import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -10,9 +10,9 @@ data class VehicleStatus(
     @Id
     val vehicleId: String,
 
-    @get: NotEmpty
+    @get: NotNull
     val kilometers: Int,
 
-    @get: NotEmpty
+    @get: NotNull
     val batteryCharge: Float
 ) : Serializable
