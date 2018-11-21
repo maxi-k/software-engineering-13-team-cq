@@ -23,8 +23,10 @@ class VehicleStatusController(private val vehicleStatusService: VehicleStatusSer
             vehicleStatusService.getAllVehicleStatus()
 
     @PostMapping("/vehicle-status")
-    fun createNewVehicleStatus(@Valid @RequestBody vehicleStatus: VehicleStatus): VehicleStatus =
-            vehicleStatusService.createNewVehicleStatus(vehicleStatus)
+    fun createNewVehicleStatus(@Valid @RequestBody vehicleStatus: VehicleStatus): VehicleStatus {
+        println("Got Vehicle Status: " + vehicleStatus.toString())
+        return vehicleStatusService.createNewVehicleStatus(vehicleStatus)
+    }
 
     @GetMapping("/vehicle-status/{id}")
     fun getVehicleStatusById(@PathVariable(value = "id") vehicleStatusId: Long): ResponseEntity<VehicleStatus> {

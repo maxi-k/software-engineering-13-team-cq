@@ -8,7 +8,7 @@ import javax.persistence.Id
 @Entity
 data class VehicleStatus(
     @Id
-    val id: String,
+    val vehicleId: String,
 
     @get: NotEmpty
     val kilometers: Int,
