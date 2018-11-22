@@ -24,7 +24,6 @@ class VehicleStatusController(private val vehicleStatusService: VehicleStatusSer
 
     @PostMapping("/vehicle-status")
     fun createNewVehicleStatus(@Valid @RequestBody vehicleStatus: VehicleStatus): VehicleStatus {
-        println("Got Vehicle Status: " + vehicleStatus.toString())
         return vehicleStatusService.createNewVehicleStatus(vehicleStatus)
     }
 

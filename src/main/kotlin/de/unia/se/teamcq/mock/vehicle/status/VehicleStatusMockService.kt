@@ -3,7 +3,6 @@ package de.unia.se.teamcq.mock.vehicle.status
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
-import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import java.util.UUID
@@ -11,6 +10,7 @@ import kotlin.random.Random
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.scheduling.annotation.Scheduled
 
 @Service
 class VehicleStatusMockService {
@@ -48,7 +48,7 @@ class VehicleStatusMockService {
         return HttpEntity(gsonConverter.toJson(obj), requestHeaders)
     }
 
-    // @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
+    @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
     fun sendMockedStatusAtInterval() {
 
         val serverPort = environment.getProperty("server.port")
