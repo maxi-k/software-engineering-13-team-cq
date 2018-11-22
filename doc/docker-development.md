@@ -48,4 +48,30 @@ terminal). The following things will happen:
   administration tool adminer, which can be accessed in the browser
   under http://localhost:8080.
 
+## Delete the Database
+The docker store defines the name of the volume where the data of the
+database container is stored as `sample_db`. If there was some
+breaking change to the database schema during development that can't
+be fixed with a migration with a reasonable amount of effort, you can
+delete the data stored in the docker volume. A description of how to
+do that follows:
+1. Stop the database container:
+```sh
+docker ps
+# Select the container-id of the database container
+docker stop [container-id]
+```
+2. Delete the database container:
+Because the database container has the data volume as a dependency, it
+needs to be deleted before the volume can be deleted.
+```sh
+docker rm [container-id]
+```
+3. Delete the volume
+```sh
+docker volume ls
+# Select th volume-id of volume used by the container, probably sample_db
+docker volume rm [volume-id]
+```
+
 That is all for now.
