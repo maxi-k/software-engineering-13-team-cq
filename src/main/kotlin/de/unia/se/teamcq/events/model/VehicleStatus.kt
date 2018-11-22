@@ -4,10 +4,15 @@ import javax.validation.constraints.NotNull
 import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 
 @Entity
 data class VehicleStatus(
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    val eventId: Long = 0,
+
+    @get: NotNull
     val vehicleId: String,
 
     @get: NotNull

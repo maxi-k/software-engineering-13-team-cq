@@ -25,8 +25,8 @@ class VehicleStatusService(val vehicleStatusRepository: VehicleStatusRepository)
             vehicleStatusRepository.save(vehicleStatus)
 
     // @Cacheable(value = ["vehicle-status-single"], key = "#articleId")
-    fun getVehicleStatusById(articleId: Long): Optional<VehicleStatus> =
-            vehicleStatusRepository.findById(articleId)
+    fun getVehicleStatusById(eventId: Long): Optional<VehicleStatus> =
+            vehicleStatusRepository.findById(eventId)
 
     // @CachePut(value = ["vehicle-status-single"], key = "#article.id")
     fun updateArticle(
@@ -34,8 +34,11 @@ class VehicleStatusService(val vehicleStatusRepository: VehicleStatusRepository)
         newVehicleStatus: VehicleStatus
     ): VehicleStatus {
 
-        val updatedVehicleStatus: VehicleStatus = vehicleStatus
-            .copy(kilometers = newVehicleStatus.kilometers, batteryCharge = newVehicleStatus.batteryCharge)
+        val updatedVehicleStatus: VehicleStatus =
+                vehicleStatus.copy(
+                        vehicleId = newVehicleStatus.vehicleId,
+                        kilometers = newVehicleStatus.kilometers,
+                        batteryCharge = newVehicleStatus.batteryCharge)
         return vehicleStatusRepository.save(updatedVehicleStatus)
     }
 

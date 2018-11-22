@@ -48,7 +48,7 @@ class VehicleStatusMockService {
         return HttpEntity(gsonConverter.toJson(obj), requestHeaders)
     }
 
-    @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
+    // @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
     fun sendMockedStatusAtInterval() {
 
         val serverPort = environment.getProperty("server.port")
