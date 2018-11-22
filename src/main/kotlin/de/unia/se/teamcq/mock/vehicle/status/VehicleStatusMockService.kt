@@ -2,6 +2,7 @@ package de.unia.se.teamcq.mock.vehicle.status
 
 import com.google.gson.Gson
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.env.Environment
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
@@ -17,6 +18,9 @@ class VehicleStatusMockService {
 
     @Autowired
     lateinit var environment: Environment
+
+    @Value("\${de.unia.se.teamcq.mock.status.enable}")
+    var enableMockService: Boolean = false
 
     val maxVehiclesMocked = 100
     val knownVehicles by lazy {
@@ -50,6 +54,7 @@ class VehicleStatusMockService {
 
     @Scheduled(fixedDelayString = "\${de.unia.se.teamcq.mock.status.interval}")
     fun sendMockedStatusAtInterval() {
+        if (!enableMockService) return
 
         val serverPort = environment.getProperty("server.port")
                 ?: environment.getProperty("local.server.port")
