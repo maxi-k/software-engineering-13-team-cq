@@ -67,7 +67,9 @@ class VehicleStatusMockService {
         try {
             restTemplate.postForEntity(mockedEndpoint, wrapRequestObject(vehicleStatus), String::class.java)
         } catch (e: Exception) {
-            // TODO
+            // TODO: Think about logging solution for mocked services,
+            // possibly integrated with tests, notifications, etc.
+            e.printStackTrace()
         }
     }
 }
