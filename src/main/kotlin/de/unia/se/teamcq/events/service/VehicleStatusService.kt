@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CachePut
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.cache.annotation.Caching */
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.Optional
 
 @Service
@@ -20,11 +21,11 @@ class VehicleStatusService(val vehicleStatusRepository: VehicleStatusRepository)
     fun getVehicleStatusById(vehicleStatusId: Long): Optional<VehicleStatus> =
             vehicleStatusRepository.findById(vehicleStatusId)
 
-    fun updateArticle(
+    @Transactional
+    fun updateVehicleStatus(
         vehicleStatus: VehicleStatus,
         newVehicleStatus: VehicleStatus
     ): VehicleStatus {
-
         val updatedVehicleStatus: VehicleStatus =
                 vehicleStatus.copy(
                         vehicleId = newVehicleStatus.vehicleId,

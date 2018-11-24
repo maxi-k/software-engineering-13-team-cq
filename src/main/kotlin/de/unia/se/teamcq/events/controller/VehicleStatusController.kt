@@ -38,7 +38,7 @@ class VehicleStatusController(private val vehicleStatusService: VehicleStatusSer
         @Valid @RequestBody newArticle: VehicleStatus
     ): ResponseEntity<VehicleStatus> =
             vehicleStatusService.getVehicleStatusById(vehicleStatusId).map { vehicleStatus ->
-                ResponseEntity.ok().body(vehicleStatusService.updateArticle(vehicleStatus, newArticle))
+                ResponseEntity.ok().body(vehicleStatusService.updateVehicleStatus(vehicleStatus, newArticle))
             }.orElse(ResponseEntity.notFound().build())
 
     @DeleteMapping("/vehicle-status/{id}")
