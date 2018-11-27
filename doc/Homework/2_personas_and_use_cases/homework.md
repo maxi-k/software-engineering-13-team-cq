@@ -184,6 +184,16 @@ Template (nach Übungsblatt):
 | Vorbedingung | FM ist am Sytem angemeldet
 | Nachbedingung | Einstellungen sind aktualisiert, aktiv und gespeichert
 
+#### Use-Case: Versand aggregierter Nachrichten
+| Name | Inhalt |
+| ---- | ------ |
+| Name | Versand aggregierter Nachrichten |
+| Trigger | Der Manager möchte die versendeten Nachrichten kontrollieren, z.B. beim Debugging seiner Regeln oder der dem Nachvollziehen von Geschehnissen anhand der Events. |
+| Primärer Akteur | System |
+| Haupterfolgsszenario | <ol><li>Das System fragt Informationen über die spezifizierten Fahrzeugzustände ab. </li><li>Das System bereitet die Daten in einem Bericht auf: Es greift auf ein definiertes Nachrichten-Muster zurück und pflegt die Daten in diese Vorlage ein.</li><li> Das System konkretisiert den Nachrichtenversand. Es erfragt den registrierten Empfänger der Nachricht sowie die Entscheidung, ob die Nachricht per SMS oder E-Mail versendet werden soll. </li><li> Das System erstellt eine entsprechende Nachricht. </li><li> Das System versendet die Nachricht. </li> |
+| Vorbedingungen | Eine Regel definiert regelmäßige Zeitpunkte, zu denen das System aggregierte Informationen über spezifische Fahrzeugzustände versendet. Vorgegeben sind dabei der oder die Nachrichtenempfänger, ein zu verwendender Kommunikationskanal sowie eine Vorlage zum Verfassen der Nachricht. |
+| Nachbedingung | Das System hat die spezifizierte Nachricht an den Flottenmanager versendet. Der Zustand des Systems ist identisch zu Vorbedingungen. |
+
 ## Aufgabe 3 - UI-Mockups
 Die UI Prototypen sind unter
 https://www.figma.com/file/ab3V6oY85VAM9xv1TD7GRzdm/Messaging-Application?node-id=26%3A160 einsehbar
