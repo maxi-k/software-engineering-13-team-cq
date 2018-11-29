@@ -1,48 +1,38 @@
 # Glossar
 
-### Event 
-Ein vom Fahrzeug übermittelter Datenpunkt.
+## Domänenmodell
 
-### Event-Variablen
-Eine vom Event definierte Eigenschaft
+### Notification-Rule
 
-### Event-Typ
+Regeln die der Flottenmanager anlegt, um bestimmte Ereignisse, die aus den Fahrzeugdaten hervorgehen, zu überwachen.
 
-#### Servicestatus
-Event-Typ, der Anzeigt, wann für ein Fahrzeug versch. Services fällig werden.
+### Condition
 
-#### Vertragsbedingung
-Event-Typ, der Infomationen über Vertragslaufzeit und andere Vereinbarungen bündelt.
+Die Menge der Bedingungen die die Notification-Rule überwachen soll. Eine Bedingung kann entweder ein bestimmtes Ereignis sein (z.B. Service fällig) oder die logische Verknüfung (und, oder, nicht) solcher Ereignisse.
+<!-- Composite Pattern -->
 
-#### Batteriestatus
-Event-Typ, der den Ladezustand der Batterie betrifft.
+### Auslösung
 
-### Regel
-Beschreibt über welche Prädikate informiert werden soll.
+Passt das Muster der Conditions einer Notification-Rule zu den eingehenden Fahrzeugdaten, so kommt es zur Auslösung.
+Durch dieses Ereignis wird eine Notification an den Empfänger generiert.
+
+### Notification
+
+Konktete Nachricht an einen oder mehrere Empfänger, die über eine Auslösung informiert. Diese wird dann durch den BMW-Messagingservice an die entsprechenden Empfänger versentet.
 
 ### Aggregator
-Beeinflusst, unter welchen Bedingungen (sofort, zu best. Zeitpunkt, nach Anzahl, nur einmalig bei längerem Bestehen) Regeln aktiv werden.
 
-### Regelkategorie
-Bündelt eine Menge von Regeln zu einer Obergruppe.
+Sammelt alle Notifications einer Notification-Rule. Der Aggregator wird nach denen in ihme definierten Zeitpunkten geleert.
 
-### Prädikat
-Eine Aussage über eine Menge von Event-Variablen.
+### Notificaiton-text-template
 
-### Prädikatsverknüpfung
-Boolsche Verknüpfungen (und, oder, nicht) von Prädikaten.
+Ein Vorschlag für den Text der Notification.
 
-### Flotte
-Eine Menge von Fahrzeugen.
+- Fasst für jede Regel bestimmte Informationen zusammen.
+- Bildet das Grundgerüst (Header, Footer) für eine Notification.
 
-### Fuhrpark
-Eine Menge von Flotten.
+Das Template ist ggf. vom Flottenmanager anpassbar.
 
-### Fahrzeug
-Ein konkretes Fahrzeug, welches Datenpunkte bereitstellt.
+### Fahrzeugdatentyp
 
-### Empfänger
-Empfänger einer Nachricht über das Auslösen einer Regel. Kann eine im System bekannte Person sein oder eine bel. Mail-Adresse. 
-
-### Datenpunkt
-Tagesaktueller Fahrzeug-Service-Status, der über die Vehicle-State-Services-Schnittstelle erhalten werden kann.
+Die eingehenden Fahrzeugdaten werden bestimmten Gruppen (Status, Vertrag, Batterie) zugeordnet, je nachdem welche Information die Fahrzeugdaten übermitteln.
