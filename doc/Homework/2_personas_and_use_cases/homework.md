@@ -31,7 +31,7 @@ Attribute:
 * *Motivation das System zu benutzen:*
 Anna ist für ganz Deutschland die technisch Verantwortliche für die Flotte des Unternehmens, und ist damit stark belastet. Sie hat auch ohne micro-management der lokalen Flottenmanager genug zu tun, und möchte, dass diese eine möglichst gute IT haben, um die meisten Probleme selbst schnell, effektiv und gut lösen zu können.
 * Erwartungen an das System:
-Anna erhofft sich, durch eine bessere IT der lokalen Flottenmanager eine Entlastung im day-to-day Management.  Sie ist viel unterwegs, und möchte auch von unterwegs ihre Aufgaben im System erledigen können. Bis auf einige grobe Auswertungen möchte Sie mit dem System keinen domänenspezifischen Kontakt haben, wobei sie dennoch das Berechtigungsmanagement übernimmt.
+Anna erhofft sich, durch eine bessere IT der lokalen Flottenmanager eine Entlastung im day-to-day Management.  Sie ist viel unterwegs, und möchte auch von unterwegs ihre Aufgaben im System erledigen können. Sie möchte vom System ausschließlich grobe Auswertungen erhalten, ohne sich tief in das System einarbeiten zu müssen.
 
 #### Marlene
 <img src="images/marlene.jpg" width="500">
@@ -108,7 +108,7 @@ Template (nach Übungsblatt):
 | Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der Kategorien aus</li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht eine Detailansicht der Regel</li><li>Der Manager bearbeitet Informationen wie den Trigger der Regel und/oder den Nachrichtentext der erzeugten Nachricht</li><li>Der Manager speichert den neuen Stand sobald der zulässiger Zustand den er haben wollte erreicht wurde</li><li>Der Manager verlässt das System</li></ol>
 | Alternative Abläufe  | <ul><li>(4.a) Der Manager legt eine neue Regel an.</li></ul>
 | Vorbedingung         | Es existiert mindestens eine Kategorie im System, Der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Daten der Regeln sind kohärent und vollständig, z.B. ein Name muss vorhanden sein
+| Nachbedingung        | Die Daten der Regeln sind kohärent und vollständig
 
 #### Use-Case: Regeln für Nachrichten: Read
 | Name                 | Inhalt           
@@ -170,18 +170,18 @@ Template (nach Übungsblatt):
 |----------------------| -----------------------|
 | Trigger | Flottenmanager möchte einen Überblick über seine bestehenden Einstellungen bekommen
 | Primärer Akteur | Flottenmanager (FM)
-| Haupterfolgsszenario | <ol><li>FM loggt sich in System ein</li><li> Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt </li><li>FM ist mit allg. Einstellungen zufrieden und verlässt System.</li></ol>
+| Haupterfolgsszenario | <ol><li> Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt </li><li>FM ist mit allg. Einstellungen zufrieden und verlässt System.</li></ol>
 | Alternative Abläufe  | <ul><li>(*) FM verlässt System: Einstellungen bleiben unverändert <li>(2a.)FM möchte detailliertere Informationen zu den bestehenden Regeln und lässt sich zu diesen weiterleiten </li><li>(3a.) FM ist mit den Einstellungen nicht zufrieden und möchte diese ändern -> Übergang zu *Verändern allg. Einstellungen*</li></ul>
-| Vorbedingung | FM ist am System angemeldet
+| Vorbedingung | FM ist am System authentifiziert
 | Nachbedingung | Einstellungen wurden nicht verändert
 
 | Name | Verändern allgemeiner Einstellungen
 |----------------------| -----------------------|
 | Trigger | Flottenmanager möchte bestehende Einstellungen anpassen
 | Primärer Akteur | Flottenmanager (FM)
-| Haupterfolgsszenario | <ol><li>FM loggt sich in Sytem ein </li><li>Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt </li><li>FM passt eine Einstellung an </li><li>FM speichert Einstellung </li><li>Die neue Einstellung ist aktiv </li><li>FM verlässt System</li></ol>
+| Haupterfolgsszenario | <ol><li>Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt </li><li>FM passt eine Einstellung an </li><li>FM speichert Einstellung </li><li>Die neue Einstellung ist aktiv </li><li>FM verlässt System</li></ol>
 | Alternative Abläufe | <ul><li>(1a-4a)FM verlässt System: Einstellungen behalten alten Zustand bei</li><li>(6a.) FM möchte weitere Einstellungen ändern: *Weiter mit 3.*</li></ul>
-| Vorbedingung | FM ist am Sytem angemeldet
+| Vorbedingung | FM ist am Sytem authentifiziert
 | Nachbedingung | Einstellungen sind aktualisiert, aktiv und gespeichert
 
 #### Use-Case: Versand aggregierter Nachrichten
