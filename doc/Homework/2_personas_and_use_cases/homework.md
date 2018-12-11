@@ -2,7 +2,7 @@
 
 ## Aufgabe 1 - Personas
 <!--
-Attribute: 
+Attribute:
 * Allgemein: Name, Alter, Geschlecht, Vita, Hobbies, Motto, Familenstand, Kinder
 * Technisch: Computeraffinität, Computerkenntnisse
 * Domain: Ziel des Geschäftsvorgangs
@@ -11,17 +11,17 @@ Attribute:
 
 | Name        | Anna      | Marlene    | Bob
 | ------------|-----------|------------|----------
-| Alter       | 32        | 42                   | 55 
+| Alter       | 32        | 42                   | 55
 | Funktion    | Administratorin (Flotte) | Managerin (Flotte) | externer Nachrichtenempfänger
 | Position    | Mittleres Management der IT | Assistenz der lokalen Geschäftsführung | Buchhaltung
-| Geschlecht  | W              | W           | M    
+| Geschlecht  | W              | W           | M
 | Ausbildung  | Fachinformatikerin | BWL-Studium | Kaufmännische Ausbildung
 | Hobbies     | Marathon       | Yoga        | Fußball & Bier
-| Motto       | Wer Rastet der Rostet | Der frühe Vogel fängt den Wurm, aber der späte Wurm verpasst den Vogel! | Prost! 
+| Motto       | Wer Rastet der Rostet | Der frühe Vogel fängt den Wurm, aber der späte Wurm verpasst den Vogel! | Prost!
 | Familie     | Verheirtatet | Geschieden | Ledig
 | Kinder      | 2            | 4                | 0
 | Computeraffinität | Mittel    | Hoch        | Gering
-| Computerkenntnisse | Sehr Gut | Gering      | Mittel 
+| Computerkenntnisse | Sehr Gut | Gering      | Mittel
 
 ### Detaillierung
 
@@ -68,7 +68,7 @@ Bob möchte monatliche Zusammenfassungen mit den aktuellen abrechnungsrelevanten
 * *Empfänger*: Ein Benutzer des Systems, der eine Nachricht empfängt (erste Annäherung: Manager oder Administrator)
 
 ### Use-Case Liste
-Use-Cases mit Zuweisung des Verantwortlichen / der Verantwortlichen für die Erstellung. 
+Use-Cases mit Zuweisung des Verantwortlichen / der Verantwortlichen für die Erstellung.
 Die Erstellung des UI-Prototyp ist nicht Aufgabe des Use-Case Verantwortlichen, und wird extra geregelt.
 
 | Use-Case Name | Zugewiesene Person    | UI-Prototyp (Potentiell)
@@ -89,7 +89,7 @@ Die Erstellung des UI-Prototyp ist nicht Aufgabe des Use-Case Verantwortlichen, 
 ### Use-Case Grobbeschreibungen
 Template (nach Übungsblatt):
 
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | ...
 | Trigger              | ...
@@ -100,7 +100,7 @@ Template (nach Übungsblatt):
 | Nachbedingung        | ...
 
 #### Use-Case: Regeln für Nachrichten: Create, Update
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | Regeln für Nachrichten: Create/Update
 | Trigger              | Der Manager möchte eine neue Regel anlegen oder eine bestehende bearbeiten
@@ -108,20 +108,20 @@ Template (nach Übungsblatt):
 | Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der Kategorien aus</li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht eine Detailansicht der Regel</li><li>Der Manager bearbeitet Informationen wie den Trigger der Regel und/oder den Nachrichtentext der erzeugten Nachricht</li><li>Der Manager speichert den neuen Stand sobald der zulässiger Zustand den er haben wollte erreicht wurde</li><li>Der Manager verlässt das System</li></ol>
 | Alternative Abläufe  | <ul><li>(4.a) Der Manager legt eine neue Regel an.</li></ul>
 | Vorbedingung         | Es existiert mindestens eine Kategorie im System, Der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Daten der Regeln sind kohärent und vollständig
+| Nachbedingung        | Der Regel wurden die vom User ausgewählte Aggregationsstrategie, Regel-Bedingungen, Event-Quellen und Text-Template ggf. erstellt und zugewiesen. Die Regel ist im System aktiv, falls nicht vom User explizit abgewählt.
 
 #### Use-Case: Regeln für Nachrichten: Read
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | Regeln für Nachrichten: Read
 | Trigger              | Der Manager möchte eine bestimme Regel ansehen
 | Primärer Akteur      | Flottenmanager
 | Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht die Detailinformationen ein</li><li>Der Manager verlässt das System</li></ol>
 | Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Daten der Regeln sind kohärent
+| Nachbedingung        | Die Regel wurde nicht verändert.
 
 #### Use-Case: Regeln für Nachrichten: Delete
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | Regeln für Nachrichten: Delete
 | Trigger              | Der Manager möchte eine bestimme Regel löschen
@@ -129,10 +129,10 @@ Template (nach Übungsblatt):
 | Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager löscht die ausgewählte Regel.</li><li>Das System fragt nach, ob die Regel wirklich gelöscht werden soll.</li><li>Der Manager verlässt das System</li></ol>
 | Alternative Abläufe  | <ul><li>(4-5a) Der Manager deaktiviert die ausgewählte Regel lediglich.</li></ul>
 | Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Regel ist gelöscht oder deaktiviert
+| Nachbedingung        | <ul><li>Die Regel wurde gelöscht und ist im System nicht mehr aktiv.</li> Die zugeordnete Aggregationsstrategie, Regel-Bedingung, Event-Quelle und Text-Template wurden gelöscht.</li></ul>
 
 #### Use-Case: Regelkategorien CRUD
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | Regelkategorien: CRUD
 | Trigger              | Der Manager möchte eine Regelkategorie anlegen, bearbeiten, aktualisieren oder löschen
@@ -140,7 +140,7 @@ Template (nach Übungsblatt):
 | Haupterfolgszenario  | <ol><li>Der Manager öffnet die Kategorienübersicht im System </li><li> Der Manager wählt eine der angezeigten Kategorien aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Kategorie an.</li><li>Der Manager bearbeitet die ausgewählte Kategorie.</li><li>Der Manager speichert die bearbeiteten Informationen</li><li>Das System gibt eine Erfolgsmeldung aus</li></ol>
 | Alternative Abläufe  | <ul><li>(2.a) <ol><li>Der Manager signalisiert dem System, dass er eine neue Kategorie anlegen möchte</li><li>Das System bietet die Möglichkeit, eine neue Kategorie anzulegen</li><li>Der Manager gibt die Informationen zur Kategorie ein</li><li>Der Manager speichert die Kategorie</li><li>Das System gibt eine Erfolgsmeldung aus.</li></ol></li><li>(4.a)<ol><li>Der Manager betrachtet lediglich die Detailinformationen der Kategorie, ohne sie zu bearbeiten</li></ol></li><li>(4.b)<ol><li>Der Manager löscht die gewählte Kategorie</li><li>Das System fragt nach, ob die Kategorie wirklich gelöscht werden soll und weißt auf ggf. vorhandene Regeln innerhalb dieser Kategorie hin</li><li>Das System löscht die Kategorie falls vom Benutzer nicht abggebrochen wird.</li><li>Das System gibt eine Erfolgsmeldung aus.</li></ol></li></ul>
 | Vorbedingung         | Der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Daten befinden sich in einem konsistenten Zustand
+| Nachbedingung        | <ul><li>Alle Regeln sind genau einer Regelkategorie zugewiesen.</li> <li>Regelkategorie.name und Regelkategorie.description sind gesetzt und nicht leer.</li></ul>
 
 #### Use-Case: Übersicht über die versendeten Nachrichten
 | Name | Inhalt |
@@ -155,7 +155,7 @@ Template (nach Übungsblatt):
 
 #### Use-Case: Allgemeine Einstellungen
 <!--
-| Name                 | Inhalt           
+| Name                 | Inhalt
 |----------------------|------------------|
 | Name                 | Allgemeine Einstellungen
 | Trigger              | Der Manager möchste die allgemeinen Nachrichteneinstellungen einsehen oder bearbeiten
@@ -163,7 +163,7 @@ Template (nach Übungsblatt):
 | Haupterfolgszenario  | <ol><li>Der Manager wählt "Einstellungen"</li><li>Das System zeigt die Einstellungen des Nachrichtensystems an.</li><li>Der Manager sieht die Einstellungen ein.</li></ol>
 | Alternative Abläufe  |<ul><li>(3.a)<ol><li></li>Der Manager bearbeit eine Einstellung</li><li>Der Manager speichert die Einstellungen</li></ol><ul><li>(3.a.1)<ol><li>Der Manager bearbeitet eine weitere Einstellung</li></ol></li></ul></li></ul>
 | Vorbedingung         | Der Flottenmanager ist authentifiziert
-| Nachbedingung        | Alle Einstellungen sind kohärent 
+| Nachbedingung        | Alle Einstellungen sind kohärent
 -->
 
 | Name | Lesen allgemeiner Einstellungen
@@ -182,7 +182,7 @@ Template (nach Übungsblatt):
 | Haupterfolgsszenario | <ol><li>Dem FM werden seine groben Einstellungen und Verweise auf feingranularere Informationen angezeigt </li><li>FM passt eine Einstellung an </li><li>FM speichert Einstellung </li><li>Die neue Einstellung ist aktiv </li><li>FM verlässt System</li></ol>
 | Alternative Abläufe | <ul><li>(1a-4a)FM verlässt System: Einstellungen behalten alten Zustand bei</li><li>(6a.) FM möchte weitere Einstellungen ändern: *Weiter mit 3.*</li></ul>
 | Vorbedingung | FM ist am Sytem authentifiziert
-| Nachbedingung | Einstellungen sind aktualisiert, aktiv und gespeichert
+| Nachbedingung | Einstellungen sind aktualisiert, aktiv und gespeichert.
 
 #### Use-Case: Versand aggregierter Nachrichten
 | Name | Inhalt |
