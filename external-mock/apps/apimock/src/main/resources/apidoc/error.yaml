@@ -1,0 +1,38 @@
+openapi: "3.0.1"
+components:
+  responses:
+    Error:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: 'error.yaml#/components/schemas/Error'
+  schemas:
+    Error:
+      required:
+        - statusCode
+        - logErrorId
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        requestUrl:
+          type: string
+        requestTimestamp:
+          type: integer
+          format: int64
+        logTransactionId:
+          type: string
+        logErrorId:
+          type: string
+        logMessage:
+          type: string
+        parameterErrors:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              message:
+                type: string
