@@ -193,18 +193,19 @@ class App extends React.Component<
                                 }}
                                 multiple={false}
                                 displayEmpty={true}
+                                value='ALL_FLEETS'
                               >
                                 <StyledMenuItem value={'ALL_FLEETS'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
                                 </StyledMenuItem>
-                                <StyledMenuItem value={'ALL_FLEETS'}>
+                                <StyledMenuItem value={'ALL_FLEETS1'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
                                 </StyledMenuItem>
-                                <StyledMenuItem value={'ALL_FLEETS'}>
+                                <StyledMenuItem value={'ALL_FLEETS2'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
@@ -227,18 +228,19 @@ class App extends React.Component<
                                 }}
                                 multiple={false}
                                 displayEmpty={true}
+                                value='ALL_FLEETS'
                               >
                                 <StyledMenuItem value={'ALL_FLEETS'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
                                 </StyledMenuItem>
-                                <StyledMenuItem value={'ALL_FLEETS'}>
+                                <StyledMenuItem value={'ALL_FLEETS1'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
                                 </StyledMenuItem>
-                                <StyledMenuItem value={'ALL_FLEETS'}>
+                                <StyledMenuItem value={'ALL_FLEETS2'}>
                                   <ListItemText>
                                     <FormattedMessage id="vehicle.serviceView.fleetSelection.all" />
                                   </ListItemText>
