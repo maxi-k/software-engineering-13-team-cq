@@ -17,7 +17,7 @@ export default () => (
         </p>
         <p>
             Please select a component from the sidebar on the left. Note that the components listed 
-            under <strong>Fleetdata - *</strong> <br/> are part of the package provided by MbW, and are not created or modified by 
+            under <strong>Fleetdata</strong> <br/> are part of the package provided by MbW, and are not created or modified by 
             the CNS team.
         </p>
     </StyledSection>

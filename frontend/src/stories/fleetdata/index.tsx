@@ -7,10 +7,10 @@ import { BMWButton as Button } from '@fleetdata/shared/components/button'
 import Lock from '@fleetdata/shared/components/icons/lock.icon'
 import FleetdataWrapper from './FleetdataWrapper';
 
-storiesOf('Fleetdata - App', module)
+storiesOf('Fleetdata / App', module)
   .add('Provided App', () =>  <App />)
 
-storiesOf('Fleetdata - Components', module)
+storiesOf('Fleetdata / Components', module)
   .addDecorator(FleetdataWrapper)
   .add('Primary Button', () => 
   <Button 
