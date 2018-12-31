@@ -1,1 +1,1 @@
-frontend=https://github.com/mars/create-react-app-buildpack
+frontend=https://github.com/gabrielgilini/heroku-buildpack-storybook
