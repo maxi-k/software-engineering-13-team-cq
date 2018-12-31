@@ -1,4 +1,16 @@
-# Project README
+# Frontend Project README
+
+## Quick Development Guide
+- After cloning, execute `yarn install` to fetch all available packages.
+  - If you don't have yarn installed yet, execute `npm install -g yarn`. 
+  - If you don't have `npm` or `node` installed yet, look up how to do it on your system.
+- Execute `yarn start` to start a local development server with hot reloading. Edit some files.
+- Execute `yarn test` to execute the tests for the frontend .
+- Execute `yarn storybook` to start storybook in a similar modus operandi as `yarn start`, with hot reloading etc. Edit or add stories in `src/stories` to showcase them in the storybook. This is used to develop the design for components independently of their role in the application and any logic.
+- Execute `yarn build` to create a production-ready bundle of the frontend. This is usually not done manually, but instead by travis or heroku.
+
+Have a look in `package.json` under the `scripts` section for more common commands.
+If you find yourself executing something else commonly, consider adding it as a `script`.
 
 ## Used Packages
 This frontend for the BMW CNS frontend uses
@@ -6,6 +18,7 @@ This frontend for the BMW CNS frontend uses
 - React
 - Redux
 - Storybook for component visualization
+Have a look at `package.json` for a complete list
 
 ## Used Patterns / Conventions
 - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
@@ -15,7 +28,7 @@ This frontend for the BMW CNS frontend uses
 - React + Redux + Typescript: https://github.com/piotrwitek/react-redux-typescript-guide
 
 
-# create-react-app README
+# Standard create-react-app README
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
