@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.notification.rule.management.model
 
+import de.unia.se.teamcq.user.management.User
 import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.Entity
@@ -18,7 +19,7 @@ data class NotificationRule(
     @get: NotNull
     val recipients: MutableList<String>,
 
-    val description: String
+    val description: String,
 
     // @get: NotNull
     // val fleets: MutableList<Fleet>,
@@ -29,7 +30,7 @@ data class NotificationRule(
     // @get: NotNull
     // val aggregator: Aggregator,
 
-    // @get: NotNull
-    // val user: User
+    @get: NotNull
+    val user: User
 
 ) : Serializable

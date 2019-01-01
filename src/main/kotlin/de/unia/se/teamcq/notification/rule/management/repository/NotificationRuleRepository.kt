@@ -12,10 +12,10 @@ interface NotificationRuleRepository : JpaRepository<NotificationRule, Long> {
 
     fun getNotificationRule(id: Long): NotificationRule
 
-    // fun createNotificationRule(name: String, receivers: List<String>, description: String, fleets: List<Fleet>, formula: Formula, aggregator: Aggregator): NotificationRule
+    // fun createNotificationRule(name: String, receivers: List<String>, description: String, fleets: List<Fleet>, formula: Formula, aggregator: Aggregator, user: User): NotificationRule
 
     // @Transactional
-    // fun updateNotificationRule(id: Long, name: String, receivers: List<String>, description: String, fleets: List<Fleet>, formula: Formula, aggregator: Aggregator): NotificationRule
+    // fun updateNotificationRule(id: Long, name: String, receivers: List<String>, description: String, fleets: List<Fleet>, formula: Formula, aggregator: Aggregator, user: User): NotificationRule
 
     fun deleteNotificationRule(id: Long): NotificationRule
 }
