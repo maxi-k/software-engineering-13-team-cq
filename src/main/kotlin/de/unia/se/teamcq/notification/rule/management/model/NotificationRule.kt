@@ -1,10 +1,7 @@
 package de.unia.se.teamcq.notification.rule.management.model
 
 import java.io.Serializable
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -32,4 +29,4 @@ data class NotificationRule(
     // @get: NotNull
     // val user: User
 
-) : Serializable
+): Serializable
