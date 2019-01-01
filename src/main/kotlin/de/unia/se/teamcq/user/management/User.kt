@@ -4,8 +4,8 @@ import java.io.Serializable
 
 data class User(
 
-    val mailAddress: String?,
-    val cellPhoneNumber: String?,
-    val userSettings: UserSettings
+    var mailAddress: String?,
+    var cellPhoneNumber: String?,
+    var userSettings: UserSettings
 
 ) : Serializable

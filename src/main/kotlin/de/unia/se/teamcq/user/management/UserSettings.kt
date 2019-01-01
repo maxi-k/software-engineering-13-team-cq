@@ -1,3 +1,3 @@
 package de.unia.se.teamcq.user.management
 
-data class UserSettings( val userNotificationType: UserNotificationType )
+data class UserSettings( var userNotificationType: UserNotificationType )

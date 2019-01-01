@@ -16,25 +16,25 @@ data class NotificationRule(
     val id: Long = 0,
 
     @get: NotNull
-    val name: String,
+    var name: String,
 
     @get: NotNull
-    val recipients: MutableList<String>,
+    var recipients: MutableList<String>,
 
-    val description: String,
+    var description: String,
 
     // @get: NotNull
-    // val fleets: MutableList<Fleet>,
+    // var fleets: MutableList<Fleet>,
 
     // @get: NotNull
-    // val formula: Formula,
+    // var formula: Formula,
 
-    val notificationData: NotificationData?,
-
-    @get: NotNull
-    val aggregator: Aggregator,
+    var notificationData: NotificationData?,
 
     @get: NotNull
-    val user: User
+    var aggregator: Aggregator,
+
+    @get: NotNull
+    var user: User
 
 ) : Serializable
