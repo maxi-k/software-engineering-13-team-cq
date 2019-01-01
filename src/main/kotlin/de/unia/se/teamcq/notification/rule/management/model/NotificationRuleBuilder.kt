@@ -19,7 +19,7 @@ class NotificationRuleBuilder {
     // var aggregator: Aggregator = Aggregator ()
         // private set
 
-    var user: User = User (null, null, UserSettings(UserNotificationType.EMAIL))
+    var user: User = User(null, null, UserSettings(UserNotificationType.EMAIL))
         private set
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }
