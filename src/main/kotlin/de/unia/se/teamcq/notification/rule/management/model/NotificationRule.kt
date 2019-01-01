@@ -1,7 +1,6 @@
-package de.unia.se.teamcq.notification.rule.management
+package de.unia.se.teamcq.notification.rule.management.model
 
 import java.io.Serializable
-import java.util.concurrent.locks.Condition
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -19,7 +18,7 @@ data class NotificationRule (
         @get: NotNull
         val recipients: MutableList<String>,
 
-        val description: String,
+        val description: String
 
         //@get: NotNull
         //val fleets: MutableList<Fleet>,
