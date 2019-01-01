@@ -29,4 +29,4 @@ data class NotificationRule(
     // @get: NotNull
     // val user: User
 
-): Serializable
+) : Serializable

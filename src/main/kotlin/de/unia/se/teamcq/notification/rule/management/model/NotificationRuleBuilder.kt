@@ -14,7 +14,7 @@ class NotificationRuleBuilder {
         // private set
     // var aggregator: Aggregator = Aggregator ()
         // private set
-    //var user: User = User ()
+    // var user: User = User ()
         // private set
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }

@@ -17,8 +17,10 @@ interface NotificationRuleController {
     fun createNotificationRule(@Valid @RequestBody notificationRule: NotificationRule): NotificationRule
 
     @PutMapping("/notification-rule/{id}")
-    fun updateNotificationRule(@PathVariable(value = "id") id: Long,
-                               @Valid @RequestBody notificationRule: NotificationRule): NotificationRule
+    fun updateNotificationRule(
+        @PathVariable(value = "id") id: Long,
+        @Valid @RequestBody notificationRule: NotificationRule
+    ): NotificationRule
 
     @DeleteMapping("/notification-rule/{id}")
     fun deleteNotificationRule(@PathVariable(value = "id") id: Long): NotificationRule
