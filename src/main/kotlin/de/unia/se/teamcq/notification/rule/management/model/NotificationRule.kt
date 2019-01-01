@@ -20,7 +20,7 @@ data class NotificationRule(
 
     val description: String
 
-    //@get: NotNull
+    // @get: NotNull
     // val fleets: MutableList<Fleet>,
 
     // @get: NotNull
