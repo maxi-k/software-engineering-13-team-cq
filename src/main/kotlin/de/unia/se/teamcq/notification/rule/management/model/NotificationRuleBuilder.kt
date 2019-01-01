@@ -1,6 +1,8 @@
 package de.unia.se.teamcq.notification.rule.management.model
 
 import de.unia.se.teamcq.user.management.User
+import de.unia.se.teamcq.user.management.UserNotificationType
+import de.unia.se.teamcq.user.management.UserSettings
 
 class NotificationRuleBuilder {
 
@@ -17,7 +19,7 @@ class NotificationRuleBuilder {
     // var aggregator: Aggregator = Aggregator ()
         // private set
 
-    var user: User = User (null, null)
+    var user: User = User (null, null, UserSettings(UserNotificationType.EMAIL))
         private set
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }
