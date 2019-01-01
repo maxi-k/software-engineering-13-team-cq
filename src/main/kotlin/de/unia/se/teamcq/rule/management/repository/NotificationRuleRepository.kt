@@ -1,6 +1,6 @@
-package de.unia.se.teamcq.notification.rule.management.repository
+package de.unia.se.teamcq.rule.management.repository
 
-import de.unia.se.teamcq.notification.rule.management.model.NotificationRule
+import de.unia.se.teamcq.rule.management.model.NotificationRule
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 // import javax.transaction.Transactional

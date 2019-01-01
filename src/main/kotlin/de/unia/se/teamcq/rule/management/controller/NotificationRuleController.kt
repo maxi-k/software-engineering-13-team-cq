@@ -1,6 +1,6 @@
-package de.unia.se.teamcq.notification.rule.management.controller
+package de.unia.se.teamcq.rule.management.controller
 
-import de.unia.se.teamcq.notification.rule.management.model.NotificationRule
+import de.unia.se.teamcq.rule.management.model.NotificationRule
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.GetMapping

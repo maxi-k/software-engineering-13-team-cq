@@ -1,6 +1,6 @@
-package de.unia.se.teamcq.notification.rule.management.service
+package de.unia.se.teamcq.rule.management.service
 
-import de.unia.se.teamcq.notification.rule.management.model.NotificationRule
+import de.unia.se.teamcq.rule.management.model.NotificationRule
 import org.springframework.stereotype.Service
 // import javax.transaction.Transactional
 

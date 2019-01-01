@@ -1,5 +1,7 @@
-package de.unia.se.teamcq.notification.rule.management.model
+package de.unia.se.teamcq.rule.management.model
 
+import de.unia.se.teamcq.notification.management.Aggregator
+import de.unia.se.teamcq.notification.management.ImmediateAggregator
 import de.unia.se.teamcq.user.management.User
 import de.unia.se.teamcq.user.management.UserNotificationType
 import de.unia.se.teamcq.user.management.UserSettings
@@ -16,8 +18,8 @@ class NotificationRuleBuilder {
         // private set
     // var formula: Formula = Formula ()
         // private set
-    // var aggregator: Aggregator = Aggregator ()
-        // private set
+    var aggregator: Aggregator = ImmediateAggregator()
+        private set
 
     var user: User = User(null, null, UserSettings(UserNotificationType.EMAIL))
         private set
@@ -32,9 +34,9 @@ class NotificationRuleBuilder {
 
     // fun withFormula(formula: Formula): NotificationRuleBuilder = apply { this.formula = formula }
 
-    // fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
+    fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
 
     fun withUser(user: User): NotificationRuleBuilder = apply { this.user = user }
 
-    fun build(): NotificationRule = NotificationRule(0, name, recipients, description, user) // , fleets, formula, aggregator, user)
+    fun build(): NotificationRule = NotificationRule(0, name, recipients, description, null, aggregator, user) // , fleets, formula, aggregator, user)
 }

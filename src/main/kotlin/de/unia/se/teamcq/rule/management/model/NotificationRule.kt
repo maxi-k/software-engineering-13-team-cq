@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.notification.rule.management.model
+package de.unia.se.teamcq.rule.management.model
 
 import de.unia.se.teamcq.user.management.User
 import java.io.Serializable
@@ -7,6 +7,8 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.GenerationType
 import javax.validation.constraints.NotNull
+import de.unia.se.teamcq.notification.management.Aggregator
+import de.unia.se.teamcq.notification.management.NotificationData
 
 @Entity
 data class NotificationRule(
@@ -27,8 +29,10 @@ data class NotificationRule(
     // @get: NotNull
     // val formula: Formula,
 
-    // @get: NotNull
-    // val aggregator: Aggregator,
+    val notificationData: NotificationData?,
+
+    @get: NotNull
+    val aggregator: Aggregator,
 
     @get: NotNull
     val user: User
