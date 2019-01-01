@@ -1,12 +1,11 @@
-package de.unia.se.teamcq.notification.rule.management.repository
+package de.unia.se.teamcq.notification.rule.management.service
 
 import de.unia.se.teamcq.notification.rule.management.model.NotificationRule
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
+import de.unia.se.teamcq.notification.rule.management.repository.NotificationRuleRepository
+import org.springframework.stereotype.Service
 
-@Repository
-interface NotificationRuleRepository: JpaRepository<NotificationRule, Long> {
-
+@Service
+interface NotificationRuleService {
     fun getNotificationRules(): List<NotificationRule>
 
     fun getNotificationRule(id: Long): NotificationRule
