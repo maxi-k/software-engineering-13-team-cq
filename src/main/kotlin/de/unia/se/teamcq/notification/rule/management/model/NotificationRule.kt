@@ -1,7 +1,10 @@
 package de.unia.se.teamcq.notification.rule.management.model
 
 import java.io.Serializable
-import javax.persistence.*
+import javax.persistence.GeneratedValue
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.GenerationType
 import javax.validation.constraints.NotNull
 
 @Entity
