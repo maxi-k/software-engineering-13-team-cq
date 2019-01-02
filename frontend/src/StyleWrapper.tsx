@@ -14,7 +14,7 @@ const jss = create(jssPreset());
 const theme = createMuiTheme(defaultTheme);
 const generateClassName = createGenerateClassName();
 
-const StyleWrapper: React.SFC<Props> = ({ children }) => (
+const StyleWrapper: React.SFC<JSX.IntrinsicAttributes> = ({ children }) => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
     <MuiThemeProvider theme={theme}>
       {children}

@@ -3,8 +3,7 @@ import styled from 'styled-components'
 
 import { VehicleDataType } from '@/model/Rule'
 
-interface RuleIconProps
-  extends React.HTMLAttributes<Props> {
+interface RuleIconProps {
   type: VehicleDataType
 }
 

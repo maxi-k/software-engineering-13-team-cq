@@ -5,7 +5,6 @@ import '@/fleetdata/shared/styles/stylesheet.scss'
 import App from '@/fleetdata/App'
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
 import Lock from '@fleetdata/shared/components/icons/lock.icon'
-import StoryWrapper from '../StoryWrapper'
 import FleetdataWrapper from '../SingleComponentWrapper';
 
 storiesOf('Fleetdata / App', module)

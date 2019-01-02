@@ -1,2 +1,3 @@
 
-require('./rule-overview')
+import './general-components'
+import './rule-overview'

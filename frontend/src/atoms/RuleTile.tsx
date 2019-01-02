@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 
 import { NotificationRule_Overview, VehicleDataType } from '@/model/Rule'
-import RuleTileBase from './RuleTileBase'
+import RuleTileBase, { RuleTileProps as TileBaseProps } from './RuleTileBase'
 import RuleIcon from '@/icons/RuleIcon'
-import { mediumgray } from '@fleetdata/shared/styles/variables';
 
-interface RuleTileProps
-  extends React.ButtonHTMLAttributes<Props> {
+export interface RuleTileProps
+  extends TileBaseProps {
   rule: NotificationRule_Overview
 }
 
@@ -34,7 +33,7 @@ const RuleTileIcons: React.SFC<RuleTileIconsProps> = ({ dataSources }) => (
   </>
 )
 
-const RuleTile: React.SFC<RuleTileProps> = ({ rule, ...props }) => (
+const RuleTile: React.SFC<RuleTileProps & React.HTMLProps<any>> = ({ rule, ...props }) => (
   <StyledRuleTile {...props}>
     <Typography variant="h6">{rule.name}</Typography>
     <RuleTileSeparator />

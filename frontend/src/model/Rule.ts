@@ -8,7 +8,7 @@ export enum VehicleDataType {
 }
 
 export interface NotificationRule_Overview {
-  id: int,
+  id: number,
   name: string,
   description: string,
   dataSources: VehicleDataType[],
