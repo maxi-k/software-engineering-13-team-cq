@@ -2,7 +2,7 @@
 
 ## Quick Development Guide
 - After cloning, execute `yarn install` to fetch all available packages.
-  - If you don't have yarn installed yet, execute `npm install -g yarn`. 
+  - If you don't have yarn installed yet, execute `npm install -g yarn`.
   - If you don't have `npm` or `node` installed yet, look up how to do it on your system.
 - Execute `yarn start` to start a local development server with hot reloading. Edit some files.
 - Execute `yarn test` to execute the tests for the frontend .
@@ -26,6 +26,9 @@ Have a look at `package.json` for a complete list
 
 ## Guides
 - React + Redux + Typescript: https://github.com/piotrwitek/react-redux-typescript-guide
+- Typescript with React:
+  - https://www.typescriptlang.org/docs/handbook/jsx.html
+  - https://medium.com/innovation-and-technology/deciphering-typescripts-react-errors-8704cc9ef402
 
 
 # Standard create-react-app README
