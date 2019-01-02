@@ -1,0 +1,682 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Fleetdata / App Provided App 1`] = `
+Array [
+  <div
+    className="sc-kgoBCf cFaVGf"
+    id="content-wrapper"
+  >
+    <div
+      className="sc-cHGsZl lmHbbS"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="sc-hmzhuo cFjKCa"
+      >
+        <div
+          className="sc-TOsTZ eqvloj"
+        >
+          <div
+            className="sc-kgAjT kmzIQb"
+          >
+            <img
+              alt="BMW Group"
+              className="sc-cJSrbW cMLsDY"
+              height="35"
+              src="/assets/svg/bmw-group.svg"
+            />
+            <img
+              alt="BMW Logo"
+              className="sc-cJSrbW cMLsDY"
+              height="35"
+              src="/assets/img/bmw_group_logos.png"
+            />
+          </div>
+          <div
+            className="sc-frDJqD fufUhH"
+          >
+            <div>
+              <button
+                className="active sc-eNQAEJ kUjIoI"
+                onClick={[Function]}
+              >
+                EN
+              </button>
+              <button
+                className="sc-eNQAEJ kUjIoI"
+                onClick={[Function]}
+              >
+                DE
+              </button>
+            </div>
+            <button
+              className="MuiButtonBase-root-7 MuiIconButton-root-1 sc-gisBJw HOOIA sc-fMiknA iFBZZh"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label-6"
+              >
+                <svg
+                  height="100%"
+                  id="default"
+                  style={
+                    Object {
+                      "fill": "#92a2bd",
+                      "height": "24px",
+                      "marginTop": undefined,
+                      "minWidth": "24px",
+                      "width": "24px",
+                    }
+                  }
+                  version="1.1"
+                  viewBox="0 6 96 96"
+                  width="100%"
+                >
+                  <path
+                    d="M48,42h.093A11.9981,11.9981,0,0,0,60,29.907,12.0548,12.0548,0,0,0,47.907,18,12,12,0,0,0,48,42ZM42.085,24.176A8.2476,8.2476,0,0,1,47.9214,21.7,8.3714,8.3714,0,0,1,56.3,29.9358,8.2984,8.2984,0,0,1,48.093,38.3H48a8.301,8.301,0,0,1-5.915-14.124Z"
+                  />
+                  <path
+                    d="M66,50.1735a59.3969,59.3969,0,0,0-36-.1292c-1.3569.4271-2.6866.9142-4,1.4343V78h4V54.267a55.225,55.225,0,0,1,36,.1292V78h4V51.629C68.6882,51.0989,67.356,50.61,66,50.1735Z"
+                  />
+                   
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <ul
+          className="sc-hMqMXs geyain"
+        >
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU cSoGzu"
+              color="#000000"
+              href="/login"
+              onClick={[Function]}
+            >
+              <span>
+                BMW Fleet Data
+              </span>
+            </a>
+          </li>
+          )}
+        </ul>
+      </div>
+      <div
+        className="sc-ksYbfQ lCPkU"
+      />
+    </div>
+    <div
+      className="sc-kGXeez ezsGtn"
+    >
+      <main
+        className="sc-cSHVUG btqosa"
+      >
+        <div
+          className="MuiGrid-container-14 MuiGrid-spacing-xs-40-40"
+        >
+          <div
+            className="MuiGrid-item-15 MuiGrid-grid-xs-12-54 MuiGrid-grid-md-3-73 MuiGrid-grid-lg-2-86"
+          >
+            <div
+              className="sc-kpOJdX eMVMNs"
+            >
+              Your content goes here...
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <button
+                autoFocus={true}
+                className="primary sc-jzJRlG brGhCA"
+                icon={
+                  <img
+                    src="/assets/svg/chevron-right.svg"
+                  />
+                }
+                label="Open Dialog"
+                onClick={[Function]}
+                primary="true"
+                width="auto"
+              >
+                <span>
+                  Open Dialog
+                </span>
+                <img
+                  src="/assets/svg/chevron-right.svg"
+                />
+              </button>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="sc-dNLxif PGUIr"
+              >
+                <div
+                  className="MuiPaper-root-111 MuiPaper-elevation0-113 sc-hqyNC dOAmVs"
+                >
+                  <div
+                    className="sc-jbKcbu bdomrr"
+                  >
+                    <div
+                      className="nav-label"
+                    >
+                      Nav Button
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <button
+                className="MuiButtonBase-root-7 MuiButton-root-138 MuiButton-text-140 MuiButton-outlined-146 sc-htpNat cujHkP"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-139 label"
+                >
+                  <svg
+                    height="100%"
+                    id="default"
+                    style={
+                      Object {
+                        "fill": "#92a2bd",
+                        "height": "40px",
+                        "marginTop": undefined,
+                        "minWidth": "40px",
+                        "width": "40px",
+                      }
+                    }
+                    version="1.1"
+                    viewBox="0 0 83.2 83.2"
+                    width="100%"
+                  >
+                    <polygon
+                      points="43.6,39.6 43.6,10.6 39.6,10.6 39.6,39.6 10.6,39.6 10.6,43.6 39.6,43.6 39.6,72.6 43.6,72.6  43.6,43.6 72.6,43.6 72.6,39.6"
+                    />
+                  </svg>
+                  <span>
+                    Add Manually
+                  </span>
+                </span>
+              </button>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="MuiFormControl-root-176 sc-cvbbAY hwPHSZ"
+              >
+                <div
+                  className="MuiInputBase-root-200 MuiInput-root-187 MuiInputBase-formControl-201 MuiInput-formControl-188 sc-gipzik hrrmOw"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiSelect-root-180 root"
+                  >
+                    <div
+                      aria-haspopup="true"
+                      aria-owns={null}
+                      aria-pressed="false"
+                      className="MuiSelect-select-181 select MuiSelect-selectMenu-184 MuiInputBase-input-210 MuiInput-input-195"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="MuiListItemText-root-217"
+                      >
+                        <span
+                          className="MuiTypography-root-223 MuiTypography-subtitle1-241 MuiListItemText-primary-220"
+                        >
+                          All fleet vehicles
+                        </span>
+                      </div>
+                    </div>
+                    <input
+                      id="fleet-select"
+                      name="fleet-select"
+                      type="hidden"
+                      value="ALL_FLEETS"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-258 MuiSelect-icon-186 icon"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="MuiFormControl-root-176 sc-cvbbAY hwPHSZ"
+              >
+                <div
+                  className="MuiInputBase-root-200 MuiInput-root-187 MuiInputBase-formControl-201 MuiInput-formControl-188 sc-fBuWsC kQnnxH sc-gipzik hrrmOw"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiSelect-root-180 root"
+                  >
+                    <div
+                      aria-haspopup="true"
+                      aria-owns={null}
+                      aria-pressed="false"
+                      className="MuiSelect-select-181 select MuiSelect-selectMenu-184 MuiInputBase-input-210 MuiInput-input-195"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="MuiListItemText-root-217"
+                      >
+                        <span
+                          className="MuiTypography-root-223 MuiTypography-subtitle1-241 MuiListItemText-primary-220"
+                        >
+                          All fleet vehicles
+                        </span>
+                      </div>
+                    </div>
+                    <input
+                      id="fleet-select"
+                      name="fleet-select"
+                      type="hidden"
+                      value="ALL_FLEETS"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-258 MuiSelect-icon-186 icon"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>,
+  <footer
+    className="sc-jKJlTe eyMvcP"
+  >
+    <div
+      className="sc-dxgOiQ cSKmXI sc-kGXeez ezsGtn"
+    >
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/imprint"
+          onClick={[Function]}
+        >
+          Imprint
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/privacy"
+          onClick={[Function]}
+        >
+          Data Protection
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/cookies"
+          onClick={[Function]}
+        >
+          Cookies
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/t-and-c"
+          onClick={[Function]}
+        >
+          T&C
+        </a>
+      </div>
+      <div
+        style={
+          Object {
+            "marginLeft": "auto",
+          }
+        }
+      >
+        © Copyright 2018 BMW Group
+      </div>
+    </div>
+  </footer>,
+]
+`;
+
+exports[`Storyshots Fleetdata / Components Left Icon Button 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    iconleft={
+      <_default
+        color="white"
+      />
+    }
+    label="LeftIcon Button"
+    primary="true"
+  >
+    <svg
+      height="100%"
+      id="default"
+      style={
+        Object {
+          "fill": "white",
+          "height": "96px",
+          "marginTop": undefined,
+          "minWidth": "undefinedpx",
+          "width": "96px",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 62 84"
+      width="100%"
+    >
+      <g>
+        <path
+          d="M71,33H68V27a21,21,0,0,0-42,0v6H16V90H78V33ZM30,27a17,17,0,0,1,34,0v6H30ZM74,86H20V37H74Z"
+          transform="translate(-16 -6)"
+        />
+        <path
+          d="M53,56.16a6,6,0,1,0-7.86,5.74L41.72,75H52.28L48.83,61.9A6,6,0,0,0,53,56.16Z"
+          transform="translate(-16 -6)"
+        />
+      </g>
+    </svg>
+    <span>
+      LeftIcon Button
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Primary Button 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    label="Prop: 'label'"
+    primary="true"
+  >
+    <span>
+      Prop: 'label'
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Right Icon Button 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    icon={
+      <img
+        src="/assets/svg/chevron-right.svg"
+      />
+    }
+    label="RightIcon Button"
+    primary="true"
+  >
+    <span>
+      RightIcon Button
+    </span>
+    <img
+      src="/assets/svg/chevron-right.svg"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <button
+    className="sc-jzJRlG lbarbb"
+    label="Secondary Button"
+  >
+    <span>
+      Secondary Button
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots General Components Large Loading Indicator 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiCircularProgress-root-10 MuiCircularProgress-colorPrimary-13 MuiCircularProgress-indeterminate-12"
+    role="progressbar"
+    style={
+      Object {
+        "height": 80,
+        "width": 80,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-15"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-16 MuiCircularProgress-circleIndeterminate-18"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots General Components Small Loading Indicator 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-3"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-6"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview Add Rule Tile 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiPaper-root-19 MuiPaper-elevation0-21 sc-jnlKLf hPuHyq sc-hqyNC dOAmVs"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-bbmXgH bQRYLZ sc-jbKcbu bdomrr"
+    >
+      <div
+        className="nav-label sc-gGBfsJ kSsIGw"
+      >
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "#92a2bd",
+              "height": "96px",
+              "marginTop": undefined,
+              "minWidth": "undefinedpx",
+              "width": "96px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 83.2 83.2"
+          width="100%"
+        >
+          <polygon
+            points="43.6,39.6 43.6,10.6 39.6,10.6 39.6,39.6 10.6,39.6 10.6,43.6 39.6,43.6 39.6,72.6 43.6,72.6  43.6,43.6 72.6,43.6 72.6,39.6"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview Rule Tile 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiPaper-root-46 MuiPaper-elevation0-48 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+  >
+    <div
+      className="sc-bbmXgH bQRYLZ sc-jbKcbu bdomrr"
+    >
+      <div
+        className="nav-label sc-gGBfsJ kSsIGw"
+      >
+        <h6
+          className="MuiTypography-root-73 MuiTypography-h6-90"
+        >
+          Rule Name
+        </h6>
+        <hr
+          className="sc-hEsumM bmuQJW"
+        />
+        <h6
+          className="MuiTypography-root-73 MuiTypography-subtitle1-91"
+        >
+          Sent every Tuesday, 9:00 AM
+        </h6>
+        <hr
+          className="sc-hEsumM bmuQJW"
+        />
+        <div
+          className="sc-fYxtnH ehdZzj"
+        >
+          Engine
+        </div>
+        <div
+          className="sc-fYxtnH ehdZzj"
+        >
+          Battery
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Welcome to this Storybook 1`] = `
+<section
+  className="sc-bdVaJa ktFUja"
+>
+  <h2>
+    Welcome to the BMW CNS Storybook!
+  </h2>
+  <p>
+    This view is used to showcase some of the components, separated from their surroundings and any logic.
+  </p>
+  <p>
+    The goal is to conciously design every possible state (active, inactive, loading, error, etc.), 
+    <br />
+    while at the same time separating logic from looks.
+  </p>
+  <p>
+    Please select a component from the sidebar on the left. Note that the components listed under 
+    <strong>
+      Fleetdata
+    </strong>
+     
+    <br />
+     are part of the package provided by MbW, and are not created or modified by the CNS team.
+  </p>
+</section>
+`;
