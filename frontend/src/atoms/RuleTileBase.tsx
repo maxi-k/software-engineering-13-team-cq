@@ -7,9 +7,13 @@ import {
 } from '@fleetdata/shared/styled-components/navigation.style';
 
 export interface RuleTileParameters {
-
+  padTile?: number
 }
 export type RuleTileProps = RuleTileParameters & React.HTMLAttributes<HTMLDivElement>
+
+const RuleTileWrapper = styled("div") <RuleTileProps>`
+  padding: ${props => props.padTile ? rem(props.padTile) : 0};
+`
 
 const RuleTileContainer = styled(InnerContainer)`
   height: ${rem(160)};
@@ -17,18 +21,20 @@ const RuleTileContainer = styled(InnerContainer)`
 `
 
 const RuleTileContent = styled.div`
-    text-align: center;
+  text-align: center;
 `
 
 /* React.[S]tateless[F]unctional[C]omponent */
-const RuleTileBase: React.SFC<RuleTileProps> = ({ children, ...props }) => (
-  <Container elevation={0} {...props}>
-    <RuleTileContainer>
-      <RuleTileContent className="nav-label">
-        {children}
-      </RuleTileContent>
-    </RuleTileContainer>
-  </Container>
+const RuleTileBase: React.SFC<RuleTileProps> = ({ children, onClick, ...props }) => (
+  <RuleTileWrapper {...props}>
+    <Container elevation={0} {...props} onClick={onClick}>
+      <RuleTileContainer>
+        <RuleTileContent className="nav-label">
+          {children}
+        </RuleTileContent>
+      </RuleTileContainer>
+    </Container>
+  </RuleTileWrapper>
 )
 
 export default RuleTileBase

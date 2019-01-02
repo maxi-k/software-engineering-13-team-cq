@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FormattedMessage } from 'react-intl'
 
 import AddRuleTile from '@/atoms/AddRuleTile'
 import RuleTile from '@/atoms/RuleTile'
+import LoadingIndicator from '@/atoms/LoadingIndicator'
+import ErrorMessage from '@/atoms/ErrorMessage'
 import {
   NotificationRule_Overview as NotificationRule,
   FetchingAttributes, BasicHTMLProps
@@ -13,11 +16,16 @@ export interface RuleOverviewAttributes {
   addRule(event: React.SyntheticEvent<any, any>): void,
   selectRule(event: React.SyntheticEvent<any, any>, rule: NotificationRule): void
 }
-type RuleOverviewProps = RuleOverviewAttributes & FetchingAttributes & BasicHTMLProps
+export type RuleOverviewProps = RuleOverviewAttributes & FetchingAttributes & BasicHTMLProps
 
 const StyledOverview = styled.div`
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 1rem;
 `
+
 
 const RuleOverview: React.SFC<RuleOverviewProps> = ({
   rules,
@@ -25,15 +33,31 @@ const RuleOverview: React.SFC<RuleOverviewProps> = ({
   isFetching, hasFetchError,
   ...props }) => {
 
+  if (hasFetchError) {
+    return (
+      <StyledOverview {...props}>
+        <ErrorMessage message={
+          <FormattedMessage id="cns.message.fetch.error" />
+        } />
+      </StyledOverview>
+    )
+  }
   if (isFetching) {
-
+    return <LoadingIndicator isCentral={true} />
   }
 
+  let tileOptions = {
+    padTile: 7
+  }
   return (
     <StyledOverview {...props}>
-      <AddRuleTile onClick={addRule} />
+      <AddRuleTile onClick={addRule} {...tileOptions} />
       {rules.map((rule: NotificationRule) => (
-        <RuleTile rule={rule} onClick={(e: React.SyntheticEvent<any, any>) => selectRule(e, rule)} />
+        <RuleTile
+          key={rule.id}
+          {...tileOptions}
+          rule={rule}
+          onClick={(e: React.SyntheticEvent<any, any>) => selectRule(e, rule)} />
       ))}
     </StyledOverview>
   )

@@ -1,7 +1,10 @@
-const messages_de = require('./messages/de.json');
-const messages_en = require('./messages/en.json');
+const bmw_messages_de = require('./fleetdata-messages/de.json');
+const bmw_messages_en = require('./fleetdata-messages/en.json');
+
+const cns_messages_de = require('./cns-messages/de.json');
+const cns_messages_en = require('./cns-messages/en.json');
 
 export const messages = {
-  de: messages_de,
-  en: messages_en,
+  de: {...bmw_messages_de, ...cns_messages_de},
+  en: {...bmw_messages_en, ...cns_messages_en},
 };
