@@ -24,6 +24,9 @@ Have a look at `package.json` for a complete list
 - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
 - The [Redux Duck Pattern](https://github.com/erikras/ducks-modular-redux)
 
+For a more high-level documentation on the code, explanations about used
+practices and more, please go to [The Frontend Documentation](../doc/technische-dokumentation/frontend-development.md)
+
 ## Guides
 - React + Redux + Typescript: https://github.com/piotrwitek/react-redux-typescript-guide
 - Typescript with React:
