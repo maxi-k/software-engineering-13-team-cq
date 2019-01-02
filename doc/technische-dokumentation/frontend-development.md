@@ -50,11 +50,11 @@ Here, the special props `color` and `size` are passed to
 ### Typescript and Prop Types
 
 Looking at the above code in the context of TypeScript, we have to
-immediately ask: What even is the signature of the Function
+immediately ask: What even is the signature of the function
 `MyComponent`, or in other words, what is its type?
 
 Because it's a React component, the React library itself provides a
-bunch of Types which can be used to describe the signature of the
+bunch of types which can be used to describe the signature of the
 function and its props. In this case, they are
 - `React.SFC<T>` for the function signature, where `SFC` stands for
   *Stateless Functional Component*, and the generic parameter `<T>` is
@@ -86,7 +86,7 @@ Using this interface works just fine, the code compiles.
 However, by doing this, we have forever mixed the definition of the
 interface for the properties `color` and `size` with the rest of the
 HTML attributes; even worse, they are mixed with the specific HTML
-attributes for a `div` element.
+attributes for a `div` element by using `HTMLDivElement`.
 
 For this reason, we have decided to use the following pattern do
 describe components which can take "normal" HTML props, plus some other
@@ -113,7 +113,7 @@ type MyComponentProps = MyComponentAttributes & HTMLAttributes<HTMLDivElement>
 const MyComponent: React.SFC<MyComponentProps> = ({
     color, type, ...other}
     ) => (
-    <div {...other} />
+    <div {...other}>
         <LoadingIndicator type={'c-' + color + '-s-' + size} />
     </div>
 )
@@ -124,4 +124,4 @@ shown above, such as mixing in properties for asynchronous or error
 states etc.
 
 **TL;DR: Use the pattern from the last code snippet to define the
-Types of Component Props**
+types of component props**
