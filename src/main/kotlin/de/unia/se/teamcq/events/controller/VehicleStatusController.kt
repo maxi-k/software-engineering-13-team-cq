@@ -4,6 +4,7 @@ import de.unia.se.teamcq.events.model.VehicleStatus
 import de.unia.se.teamcq.events.service.VehicleStatusService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -19,8 +20,11 @@ import javax.validation.Valid
 class VehicleStatusController(private val vehicleStatusService: VehicleStatusService) {
 
     @GetMapping("/vehicle-status")
-    fun getAllVehicleStatus(): List<VehicleStatus> =
-            vehicleStatusService.getAllVehicleStatus()
+    fun getAllVehicleStatus(): List<VehicleStatus> {
+        val name = SecurityContextHolder.getContext().authentication.name
+        print(name)
+        return vehicleStatusService.getAllVehicleStatus()
+    }
 
     @PostMapping("/vehicle-status")
     fun createNewVehicleStatus(@Valid @RequestBody vehicleStatus: VehicleStatus): VehicleStatus =

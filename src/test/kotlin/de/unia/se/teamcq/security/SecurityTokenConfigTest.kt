@@ -29,12 +29,12 @@ class SecurityTokenConfigTest : StringSpec() {
 
             val publicBytes = Base64Utils.decodeFromString(signingKey)
 
-            val bobPubKeySpec = X509EncodedKeySpec(publicBytes)
+            val publicKeySpec = X509EncodedKeySpec(publicBytes)
             val keyFactory = KeyFactory.getInstance("RSA")
-            val bobPubKey = keyFactory.generatePublic(bobPubKeySpec)
+            val publicKey = keyFactory.generatePublic(publicKeySpec)
 
             // Clock from Expiration Date - 1 ms
-            val body = Jwts.parser().setSigningKey(bobPubKey).setClock { Date(154654069) }.parseClaimsJws(token).body
+            val body = Jwts.parser().setSigningKey(publicKey).setClock { Date(154654069) }.parseClaimsJws(token).body
             assertEquals(body["user_name"], "aaaaaaaa-0000-aaaa-0000-000000000001")
         }
     }

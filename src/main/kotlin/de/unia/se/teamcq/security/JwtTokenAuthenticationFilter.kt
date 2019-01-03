@@ -4,8 +4,11 @@ import io.jsonwebtoken.Jwts
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.util.Base64Utils
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
+import java.security.KeyFactory
+import java.security.spec.X509EncodedKeySpec
 import javax.servlet.FilterChain
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
@@ -36,13 +39,19 @@ class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRe
 
         try { // exceptions might be thrown in creating the claims if for example the token is expired
 
+            val publicBytes = Base64Utils.decodeFromString(jwtConfig.publicKey)
+
+            val publicKeySpec = X509EncodedKeySpec(publicBytes)
+            val keyFactory = KeyFactory.getInstance("RSA")
+            val publicKey = keyFactory.generatePublic(publicKeySpec)
+
             // 4. Validate the token
             val claims = Jwts.parser()
-                    .setSigningKey(jwtConfig.secret)
+                    .setSigningKey(publicKey)
                     .parseClaimsJws(token)
                     .body
 
-            val username = claims.subject
+            val username = claims["user_name"]
             if (username != null) {
                 val authorities = claims["authorities"] as List<*>
 
