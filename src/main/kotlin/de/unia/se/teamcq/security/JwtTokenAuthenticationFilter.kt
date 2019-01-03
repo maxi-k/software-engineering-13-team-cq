@@ -38,7 +38,7 @@ class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRe
 
             // 4. Validate the token
             val claims = Jwts.parser()
-                    .setSigningKey(jwtConfig.secret.toByteArray())
+                    .setSigningKey(jwtConfig.secret)
                     .parseClaimsJws(token)
                     .body
 

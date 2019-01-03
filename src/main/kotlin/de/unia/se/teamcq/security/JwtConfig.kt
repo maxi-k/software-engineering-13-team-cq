@@ -17,6 +17,6 @@ data class JwtConfig(
     @Value("\${security.jwt.expiration:#{24*60*60}}")
     val expiration: Int,
 
-    @Value("\${security.jwt.secret:JwtSecretKey}")
+    @Value("\${security.jwt.secret:yPWeYz4xsniPLDGNJtVPhs8o7DbR3svbeJUFqHWn8LpRXRGKM9sh4mDGBooEnNCE}")
     val secret: String
 )
