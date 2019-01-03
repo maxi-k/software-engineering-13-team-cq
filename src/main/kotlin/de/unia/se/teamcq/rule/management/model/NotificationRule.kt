@@ -1,27 +1,16 @@
 package de.unia.se.teamcq.rule.management.model
 
-import de.unia.se.teamcq.user.management.User
-import java.io.Serializable
-import javax.persistence.GeneratedValue
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.GenerationType
-import javax.validation.constraints.NotNull
-import de.unia.se.teamcq.notification.management.Aggregator
-import de.unia.se.teamcq.notification.management.NotificationData
+// import de.unia.se.teamcq.notification.management.Aggregator
 
-@Entity
 data class NotificationRule(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long = 0,
+    var id: Long? = 0,
 
-    @get: NotNull
-    var name: String,
+    var name: String?,
 
-    @get: NotNull
-    var recipients: MutableList<String>,
+    // @get: NotNull
+    // var recipients: List<String>,
 
-    var description: String,
+    var description: String?
 
     // @get: NotNull
     // var fleets: MutableList<Fleet>,
@@ -29,12 +18,13 @@ data class NotificationRule(
     // @get: NotNull
     // var formula: Formula,
 
-    var notificationData: NotificationData?,
+    // @get: NotNull
+    // var aggregator: Aggregator,
 
-    @get: NotNull
-    var aggregator: Aggregator,
+    // @get: NotNull
+    // var creator: User
 
-    @get: NotNull
-    var user: User
-
-) : Serializable
+) {
+    // Necessary for MapStruct
+    constructor() : this(null, null, null)
+}

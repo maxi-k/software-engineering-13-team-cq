@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.calculator
 
+import de.unia.se.teamcq.rule.management.mapping.NotificationRuleMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
@@ -11,6 +12,9 @@ class EvaluationController {
 
     @Autowired
     lateinit var evaluationService: EvaluationService
+
+    @Autowired
+    lateinit var notificationRuleMapper: NotificationRuleMapper
 
     @CrossOrigin(origins = arrayOf("*"))
     @GetMapping("/eval")

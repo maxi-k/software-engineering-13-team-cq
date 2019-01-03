@@ -38,5 +38,5 @@ class NotificationRuleBuilder {
 
     fun withUser(user: User): NotificationRuleBuilder = apply { this.user = user }
 
-    fun build(): NotificationRule = NotificationRule(0, name, recipients, description, null, aggregator, user) // , fleets, formula, aggregator, user)
+    fun build(): NotificationRule = NotificationRule(0, name, description) // , fleets, formula, aggregator, user)
 }
