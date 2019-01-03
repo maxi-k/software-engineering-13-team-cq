@@ -1,16 +1,13 @@
 package de.unia.se.teamcq.security
 
-import io.jsonwebtoken.Clock
 import io.jsonwebtoken.Jwts
 import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.util.Base64Utils
-import java.security.Key
 import java.security.KeyFactory
-import java.security.PublicKey
 import java.security.spec.X509EncodedKeySpec
-import java.util.*
+import java.util.Date
 import kotlin.test.assertEquals
 
 @ContextConfiguration(classes = [(TestConfiguration::class)])
@@ -35,7 +32,6 @@ class SecurityTokenConfigTest : StringSpec() {
             val bobPubKeySpec = X509EncodedKeySpec(publicBytes)
             val keyFactory = KeyFactory.getInstance("RSA")
             val bobPubKey = keyFactory.generatePublic(bobPubKeySpec)
-
 
             // Clock from Expiration Date - 1 ms
             val body = Jwts.parser().setSigningKey(bobPubKey).setClock { Date(154654069) }.parseClaimsJws(token).body
