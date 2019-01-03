@@ -1,0 +1,127 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Account
+  description: BMW Account Management API
+servers:
+  - url: /api
+paths:
+  /customers:
+    get:
+      description: |
+        Returns all customers from the system that the user has access to.
+      tags:
+        - customers
+      operationId: getAllCustomers
+      responses:
+        '200':
+          description: customer response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    $ref: '#/components/schemas/Customer'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    post:
+      description: Creates an customer.
+      tags:
+        - customers
+      operationId: createCustomer
+      requestBody:
+        description: Customer to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /customers/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of customer
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      description: Returns a customer based on a single ID
+      tags:
+        - customers
+      operationId: getCustomerById
+      responses:
+        '200':
+          description: customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    put:
+      description: Updates a customer based on a single ID
+      tags:
+      - customers
+      operationId: updateCustomer
+      requestBody:
+        description: Customer to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: customer response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    Customer:
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        carPark:
+          type: string
+          format: uuid
+        contactPerson:
+          type: string
+        billingStreet:
+          type: string
+        billingHouseNumber:
+          type: string
+        billingPostalCode:
+          type: string
+        billingCity:
+          type: string
+        billingCountry:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        numAccounts:
+          type: integer
+          format: int32

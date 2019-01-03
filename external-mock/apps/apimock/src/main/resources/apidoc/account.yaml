@@ -1,0 +1,235 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Account
+  description: BMW Account Management API
+servers:
+  - url: /api
+paths:
+  /accounts:
+    get:
+      description: |
+        Returns all accounts from the system that the user has access to.
+      tags:
+        - accounts
+      operationId: getAllAccounts
+      parameters:
+      - name: customer
+        in: query
+        description: customer to filter for
+        required: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: account response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    $ref: '#/components/schemas/Account'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    post:
+      description: Creates an account.
+      tags:
+        - accounts
+      operationId: createAccount
+      requestBody:
+        description: Account to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateData'
+      responses:
+        '201':
+          description: account response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /accounts/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      description: Returns an account based on a single ID
+      tags:
+        - accounts
+      operationId: getAccountById
+      responses:
+        '200':
+          description: account response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    put:
+      description: Updates an account based on a single ID
+      tags:
+        - accounts
+      operationId: updateAccount
+      requestBody:
+        description: Account to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          description: account response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /accounts/{id}/change-password/execute:
+    parameters:
+    - name: id
+      in: path
+      description: ID of account
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: old
+      in: query
+      description: the old password in plaintext
+      required: true
+      schema:
+        type: string
+    - name: new
+      in: query
+      description: the new password in plaintext
+      required: true
+      schema:
+        type: string
+    post:
+      description: Deactivates an account based on a single ID
+      tags:
+      - accounts
+      operationId: deactivateAccount
+      responses:
+        '200':
+          description: success
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /accounts/{id}/deactivate/execute:
+    parameters:
+    - name: id
+      in: path
+      description: ID of account
+      required: true
+      schema:
+        type: string
+        format: uuid
+    post:
+      description: Deactivates an account based on a single ID
+      tags:
+      - accounts
+      operationId: deactivateAccount
+      responses:
+        '200':
+          description: success
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /accounts/{id}/reactivate/execute:
+    parameters:
+    - name: id
+      in: path
+      description: ID of account
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: newPassword
+      in: query
+      description: the new password in plaintext
+      required: true
+      schema:
+        type: string
+    post:
+      description: Deactivates an account based on a single ID
+      tags:
+      - accounts
+      operationId: deactivateAccount
+      responses:
+        '200':
+          description: success
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    Account:
+      required:
+        - login
+        - firstName
+        - lastName
+      properties:
+        id:
+          type: string
+          format: uuid
+        login:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        active:
+          type: boolean
+    UserCreateData:
+      required:
+      - customer
+      - login
+      - password
+      - firstName
+      - lastName
+      properties:
+        customer:
+          type: string
+          format: uuid
+        login:
+          type: string
+        password:
+          type: string
+        title:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string

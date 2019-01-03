@@ -1,0 +1,163 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Car Park
+  description: BMW FleetData Car Park Management API
+servers:
+  - url: /api
+paths:
+  /car-parks:
+    get:
+      description: |
+        Returns all car parks from the system that the user has access to.
+      tags:
+        - car-parks
+      operationId: getAllCarParks
+      parameters:
+        - name: expand
+          in: query
+          description: list of car park sub resources to expand
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [fleets, vehicles]
+        - name: customer
+          in: query
+          description: ID of customer to filter on
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    $ref: '#/components/schemas/CarPark'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    post:
+      description: Creates a car park.
+      tags:
+        - car-parks
+      operationId: createCarPark
+      requestBody:
+        description: Car park to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarPark'
+      responses:
+        '201':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarPark'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /car-parks/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of car park to fetch
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      description: Returns a car park based on a single ID
+      tags:
+        - car-parks
+      operationId: getCarParkById
+      responses:
+        '200':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarPark'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    put:
+      description: Updates a car park based on a single ID
+      tags:
+        - car-parks
+      operationId: updateCarPark
+      requestBody:
+        description: Car park to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarPark'
+      responses:
+        '200':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarPark'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    delete:
+      description: deletes a single car park based on the ID supplied
+      tags:
+        - car-parks
+      operationId: deleteCarPark
+      responses:
+        '200':
+          description: car park deleted
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    CarPark:
+      required:
+        - name
+        - customer
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        customer:
+          type: string
+        admins:
+          type: array
+          items:
+            type: string
+        fleets:
+          type: array
+          description: 'Is only returned if called with ?expand=fleets'
+          items:
+            $ref: fleet.yaml#/components/schemas/Fleet
+        vehicles:
+          type: array
+          description: 'Is only returned if called with ?expand=vehicles'
+          items:
+            $ref: car-park-vehicles.yaml#/components/schemas/Vehicle
+        unassignedVehicles:
+          type: array
+          description: 'Is only returned if called with ?expand=unassignedVehicles'
+          items:
+            $ref: car-park-vehicles.yaml#/components/schemas/Vehicle
+        numVehicles:
+          type: integer
+          format: int32
+        numUnassignedVehicles:
+          type: integer
+          format: int32
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time

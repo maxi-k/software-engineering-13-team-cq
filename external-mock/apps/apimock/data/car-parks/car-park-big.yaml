@@ -1,0 +1,7 @@
+id: cccccccc-0000-cccc-0000-000000000099
+name: Big Park
+admins:
+  - aaaaaaaa-0000-aaaa-0000-000000000099
+customer: aaaaaaaa-0000-cccc-0000-000000000099
+numVehicles: 5000
+numUnassignedVehicles: 0

@@ -1,0 +1,84 @@
+vin: WBA7J0102HGJ36060
+carPark: cccccccc-0000-cccc-0000-000000000001
+fleet: cccccccc-0000-ffff-0000-000000000001
+brand: BMW
+model: 740Le iPerformance
+series: '7'
+licensePlate: B-MW 174
+note: "Termin Reifenwechsel gebucht und an Fahrer kommuniziert"
+image: /img/vehicles/cccccccc-0000-eeee-0000-000000000001
+contract:
+  endDate: '2020-08-24'
+  startDate: '2018-09-27'
+  endMileage: 20000
+  startMileage: 9999
+  reachedRuntimePercentage: 16
+variant:
+  color: BLACK SAPPHIRE METALLIC
+  doors: 4
+  steering: LL
+  extraEquipment:
+  - saCode: '0534'
+  - saCode: '0609'
+  - saCode: 06AE
+  - saCode: 06AC
+  - saCode: 06AK
+  - saCode: 06AM
+  - saCode: 06AN
+  - saCode: 06AP
+  - saCode: 06WD
+engine:
+  power: 250
+  capacity: 2998
+  fuelType: DDE
+battery:
+  level: 3.1
+  voltage: 14.84
+  chargingStatus: NOCHARGING
+  remainingChargingHours: 3
+  remainingRange: 30
+fuel:
+  level: 63.2
+  currentLiters: 43
+  tankCapacity: 68
+  remainingRange: 500
+mileage:
+  current: 13215
+  averagePerWeek: 620
+  forecastEndContract: 20345
+  expectedExceedance: 345
+serviceStatus:
+  vin: WBA7J0102HGJ36060
+  status: OK
+  dueDate: 2019-04
+  remainingDays: 180
+  remainingMileage: 11000
+  frontBrake:
+    id: '00002'
+    status: OK
+  rearBrake:
+    id: '00006'
+    status: OK
+  brakeFluid:
+    id: '00003'
+    status: OK
+    dueDate: 2019-04
+  statutoryVehicleInspection:
+    id: '00032'
+    status: OK
+    dueDate: 2019-04
+  exhaustGasInspection:
+    id: '00033'
+  vehicleCheck:
+    id: '00100'
+    status: OK
+    dueDate: 2019-09
+    remainingMileage: 47000
+  engineOil:
+    id: '00001'
+    status: OK
+    dueDate: 2019-09
+    remainingMileage: 11000
+lastDataTransfer: '2018-10-03T04:49:43.810334Z'
+useresWithReadPermissions:
+  - aaaaaaaa-0000-aaaa-0000-000000000001

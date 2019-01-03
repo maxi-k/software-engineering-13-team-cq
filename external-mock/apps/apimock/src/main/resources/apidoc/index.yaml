@@ -1,0 +1,56 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD (FleetData)
+  description: BMW FleetData API
+servers:
+  - url: /api
+paths:
+  /login:
+    $ref: 'login.yaml#/paths/~1login'
+  /accounts:
+    $ref: 'account.yaml#/paths/~1accounts'
+  /accounts/{id}:
+    $ref: 'account.yaml#/paths/~1accounts~1{id}'
+  /accounts/{id}/change-password/execute:
+    $ref: 'account.yaml#/paths/~1accounts~1{id}~1change-password~1execute'
+  /accounts/{id}/deactivate/execute:
+    $ref: 'account.yaml#/paths/~1accounts~1{id}~1deactivate~1execute'
+  /accounts/{id}/reactivate/execute:
+    $ref: 'account.yaml#/paths/~1accounts~1{id}~1reactivate~1execute'
+  /customers:
+    $ref: 'customer.yaml#/paths/~1customers'
+  /customers/{id}:
+    $ref: 'customer.yaml#/paths/~1customers~1{id}'
+  /car-parks:
+    $ref: 'car-park.yaml#/paths/~1car-parks'
+  /car-parks/{id}:
+    $ref: 'car-park.yaml#/paths/~1car-parks~1{id}'
+  /car-parks/{carParkId}/fleets:
+    $ref: 'fleet.yaml#/paths/~1car-parks~1{carParkId}~1fleets'
+  /car-parks/{carParkId}/fleets/{fleetId}:
+    $ref: 'fleet.yaml#/paths/~1car-parks~1{carParkId}~1fleets~1{fleetId}'
+  /car-parks/{carParkId}/vehicles:
+    $ref: 'car-park-vehicles.yaml#/paths/~1car-parks~1{carParkId}~1vehicles'
+  /car-parks/{carParkId}/vehicles/{vin}:
+    $ref: 'car-park-vehicles.yaml#/paths/~1car-parks~1{carParkId}~1vehicles~1{vin}'
+  /car-parks/{carParkId}/vehicles/template:
+    $ref: 'car-park-vehicles.yaml#/paths/~1car-parks~1{carParkId}~1vehicles~1template'
+  /vehicles:
+    $ref: 'vehicle.yaml#/paths/~1vehicles'
+  /vehicles/{vin}:
+    $ref: 'vehicle.yaml#/paths/~1vehicles~1{vin}'
+  /reports/summary:
+    $ref: 'report.yaml#/paths/~1reports~1summary'
+  /reports/service:
+    $ref: 'report.yaml#/paths/~1reports~1service'
+components:
+  securitySchemes:
+    oAuthNoScopes:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: /oauth/token
+          scopes: {}
+security:
+- oAuthNoScopes: []
