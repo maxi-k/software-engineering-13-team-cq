@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: 'apimock'
+  cloud:
+    refresh:
+      refreshable: 'none'
+  jackson:
+    default-property-inclusion: non_null
+  jpa:
+    hibernate:
+      ddl-auto: 'validate'
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: 'UTC'
+          lob:
+            non_contextual_creation: true
+
+server:
+  port: 4042
+
+logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - info
+        - health
+        - metrics
+        - prometheus
+        - threaddump
+        - loggers

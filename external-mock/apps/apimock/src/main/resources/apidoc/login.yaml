@@ -1,0 +1,48 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Login
+  description: BMW Login API
+servers:
+  - url: /api
+paths:
+  /login:
+    post:
+      description: Retrieve an access token and refresh token (as cookie).
+      tags:
+        - login
+      operationId: login
+      consumes: 
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: username
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: password
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: login response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    Login:
+      required:
+        - accessToken
+      properties:
+        accessToken:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string

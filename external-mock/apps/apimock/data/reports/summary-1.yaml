@@ -1,0 +1,19 @@
+type: summary
+carPark: cccccccc-0000-cccc-0000-000000000001
+fleets:
+- cccccccc-0000-ffff-0000-000000000001
+service:
+  numOk: 0
+  numWarning: 0
+  numCritical: 3
+  numUnknown: 0
+mileage:
+  numOk: 0
+  numWarning: 0
+  numCritical: 2
+  numUnknown: 0
+checkControlMessages:
+  numOk: 0
+  numWarning: 0
+  numCritical: 1
+  numUnknown: 0

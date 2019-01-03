@@ -1,0 +1,142 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Car Park - Fleets
+  description: BMW FleetData Car Park Fleet Management API
+servers:
+  - url: /api
+paths:
+  /car-parks/{carParkId}/fleets:
+    parameters:
+      - name: carParkId
+        in: path
+        description: ID of car park
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      description: |
+        Returns all fleets for a given car park
+      tags:
+        - fleets
+      operationId: getAllFleets
+      responses:
+        '200':
+          description: fleet response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    $ref: '#/components/schemas/Fleet'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    post:
+      description: Creates a new fleet in a car park
+      tags:
+        - fleets
+      operationId: createFleet
+      requestBody:
+        description: Fleet to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Fleet'
+      responses:
+        '201':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fleet'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /car-parks/{carParkId}/fleets/{fleetId}:
+    parameters:
+      - name: carParkId
+        in: path
+        description: ID of car park
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: fleetId
+        in: path
+        description: ID of fleet
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      description: Returns a fleet based on a single ID
+      tags:
+        - fleets
+      operationId: getFleetById
+      responses:
+        '200':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fleet'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    put:
+      description: Updates a fleet based on a single ID
+      tags:
+        - fleets
+      operationId: updateFleet
+      requestBody:
+        description: Fleet to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Fleet'
+      responses:
+        '200':
+          description: fleet response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fleet'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    delete:
+      description: deletes a single fleet based on the ID supplied
+      tags:
+        - fleets
+      operationId: deleteFleet
+      responses:
+        '200':
+          description: fleet deleted
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    Fleet:
+      required:
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        managers:
+          type: array
+          items:
+            type: string
+        fixedContract:
+          $ref: car-park-vehicles.yaml#/components/schemas/Contract
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        numVehicles:
+          type: integer
+          format: int32
