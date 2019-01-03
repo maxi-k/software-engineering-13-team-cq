@@ -23,6 +23,7 @@ class VehicleStatusController(private val vehicleStatusService: VehicleStatusSer
     fun getAllVehicleStatus(): List<VehicleStatus> {
         val name = SecurityContextHolder.getContext().authentication.name
         print(name)
+        print(name)
         return vehicleStatusService.getAllVehicleStatus()
     }
 
