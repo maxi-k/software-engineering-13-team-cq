@@ -11,10 +11,11 @@ import {
   FetchingAttributes, BasicHTMLProps
 } from '@/model'
 
+export type SelectRuleType = (event: React.SyntheticEvent<any, any>, rule: NotificationRule) => void
 export interface RuleOverviewAttributes {
   rules: NotificationRule[],
   addRule(event: React.SyntheticEvent<any, any>): void,
-  selectRule(event: React.SyntheticEvent<any, any>, rule: NotificationRule): void
+  selectRule: SelectRuleType
 }
 export type RuleOverviewProps = RuleOverviewAttributes & FetchingAttributes & BasicHTMLProps
 
@@ -30,7 +31,7 @@ const defaultTileOptions = {
   padTile: 7
 }
 
-const ruleSelector = (rule: NotificationRule) =>
+const ruleSelector = (selectRule: SelectRuleType, rule: NotificationRule) =>
   (e: React.SyntheticEvent<any, any>): void =>
     selectRule(e, rule)
 
@@ -55,13 +56,13 @@ const RuleOverview: React.SFC<RuleOverviewProps> = ({
 
   return (
     <StyledOverview {...props}>
-      <AddRuleTile onClick={addRule} {...tileOptions} />
+      <AddRuleTile onClick={addRule} {...defaultTileOptions} />
       {rules.map((rule: NotificationRule) => (
         <RuleTile
           key={rule.id}
           {...defaultTileOptions}
           rule={rule}
-          onClick={ruleSelector(rule)} />
+          onClick={ruleSelector(selectRule, rule)} />
       ))}
     </StyledOverview>
   )
