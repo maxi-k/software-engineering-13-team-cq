@@ -1,3 +1,6 @@
 {
-    "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal."
+    "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
+    "cns.rule.creation.step.general.title": "Allgemein",
+    "cns.rule.creation.step.general.fleets": "Betroffene Flotten",
+    "cns.rule.creation.step.general.condition": "Regel Bedingung"
 }

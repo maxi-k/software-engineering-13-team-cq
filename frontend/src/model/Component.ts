@@ -7,3 +7,9 @@ export interface FetchingAttributes {
 
 export type BasicHTMLProps = HTMLAttributes<HTMLDivElement>
 export type HTMLProps<T> = HTMLAttributes<T>
+
+
+export interface SelectValue {
+  label: string,
+  value: any
+}

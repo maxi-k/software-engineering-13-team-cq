@@ -1,3 +1,6 @@
 {
-    "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later."
+    "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
+    "cns.rule.creation.step.general.title": "General",
+    "cns.rule.creation.step.general.fleets": "Fleets",
+    "cns.rule.creation.step.general.condition": "Condition"
 }

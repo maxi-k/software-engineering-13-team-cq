@@ -23,10 +23,10 @@ const jestAliases = Object.keys(aliases).reduce(
                 ...obj,
                 [`^${alias}/(.*)$`]: `<rootDir>/${aliases[alias]}/$1`
             }
-            : {
-                ...obj,
-                [`^${alias}(.*)$`]: `<rootDir>/${aliases[alias]}$1`
-            }),
+        : {
+            ...obj,
+            [`^${alias}(.*)$`]: `<rootDir>/${aliases[alias]}$1`
+        }),
     {}
 )
 
