@@ -12,10 +12,11 @@ import {
 } from '@/model'
 
 export type SelectRuleType = (event: React.SyntheticEvent<any, any>, rule: NotificationRule) => void
+export type AddRuleType = (event: React.SyntheticEvent<any, any>) => void
 export interface RuleOverviewAttributes {
   rules: NotificationRule[],
-  addRule(event: React.SyntheticEvent<any, any>): void,
-  selectRule: SelectRuleType
+  selectRule: SelectRuleType,
+  addRule: AddRuleType
 }
 export type RuleOverviewProps = RuleOverviewAttributes & FetchingAttributes & BasicHTMLProps
 
