@@ -822,6 +822,409 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiStep-root-446"
+  >
+    <button
+      className="MuiButtonBase-root-455 MuiStepButton-root-451"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiStepLabel-root-458 MuiStepLabel-horizontal-459"
+      >
+        <span
+          className="MuiStepLabel-labelContainer-468"
+        >
+          <span
+            className="MuiTypography-root-469 MuiTypography-body2-477 MuiStepLabel-label-461 MuiStepLabel-active-462"
+          >
+            General
+          </span>
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="MuiPaper-root-508 MuiPaper-elevation0-510 MuiStepper-root-504 MuiStepper-horizontal-505"
+    style={
+      Object {
+        "width": "90%",
+      }
+    }
+  >
+    <div
+      className="MuiStep-root-535 MuiStep-horizontal-536"
+    >
+      <button
+        className="MuiButtonBase-root-544 MuiStepButton-root-540 MuiStepButton-horizontal-541"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-547 MuiStepLabel-horizontal-548"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-555"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-563 MuiStepIcon-root-558"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-559"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                1
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-557"
+          >
+            <span
+              className="MuiTypography-root-572 MuiTypography-body2-580 MuiStepLabel-label-550"
+            >
+              General
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-607 MuiStepConnector-horizontal-608 MuiStepConnector-active-611"
+    >
+      <span
+        className="MuiStepConnector-line-614 MuiStepConnector-lineHorizontal-615"
+      />
+    </div>
+    <div
+      className="MuiStep-root-535 MuiStep-horizontal-536"
+    >
+      <button
+        className="MuiButtonBase-root-544 MuiStepButton-root-540 MuiStepButton-horizontal-541"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-547 MuiStepLabel-horizontal-548"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-555"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-563 MuiStepIcon-root-558 MuiStepIcon-active-560"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-559"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                2
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-557"
+          >
+            <span
+              className="MuiTypography-root-572 MuiTypography-body2-580 MuiStepLabel-label-550 MuiStepLabel-active-551"
+            >
+              Fleets
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-607 MuiStepConnector-horizontal-608 MuiStepConnector-disabled-613"
+    >
+      <span
+        className="MuiStepConnector-line-614 MuiStepConnector-lineHorizontal-615"
+      />
+    </div>
+    <div
+      className="MuiStep-root-535 MuiStep-horizontal-536"
+    >
+      <button
+        className="MuiButtonBase-root-544 MuiButtonBase-disabled-545 MuiStepButton-root-540 MuiStepButton-horizontal-541"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-547 MuiStepLabel-horizontal-548 MuiStepLabel-disabled-554"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-555"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-563 MuiStepIcon-root-558"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-559"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                3
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-557"
+          >
+            <span
+              className="MuiTypography-root-572 MuiTypography-body2-580 MuiStepLabel-label-550"
+            >
+              Condition
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <div
+    className="css-10nd86i"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="css-1ykgphr"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className="css-1hwfws3"
+      >
+        <div
+          className="css-xwjg1b"
+        >
+          <div
+            className="css-rf4tka"
+          >
+            BMW
+          </div>
+          <div
+            className="css-1alnv5e"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="css-19bqh2r"
+              focusable="false"
+              height={14}
+              viewBox="0 0 20 20"
+              width={14}
+            >
+              <path
+                d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          className="css-1k1ozsg"
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="none"
+              autoComplete="off"
+              autoCorrect="off"
+              disabled={false}
+              id="react-select-2-input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              spellCheck="false"
+              style={
+                Object {
+                  "background": 0,
+                  "border": 0,
+                  "boxSizing": "content-box",
+                  "color": "inherit",
+                  "fontSize": "inherit",
+                  "opacity": 1,
+                  "outline": 0,
+                  "padding": 0,
+                  "width": "1px",
+                }
+              }
+              tabIndex="0"
+              type="text"
+              value=""
+            />
+            <div
+              style={
+                Object {
+                  "height": 0,
+                  "left": 0,
+                  "overflow": "scroll",
+                  "position": "absolute",
+                  "top": 0,
+                  "visibility": "hidden",
+                  "whiteSpace": "pre",
+                }
+              }
+            >
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-1wy0on6"
+      >
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-19bqh2r"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+            />
+          </svg>
+        </div>
+        <span
+          className="css-d8oujb"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-19bqh2r"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
 <div
   className="sc-bbmXgH dnZDci"
