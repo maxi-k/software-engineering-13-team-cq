@@ -8,17 +8,15 @@ import { StylesConfig, mergeStyles } from 'react-select/lib/styles'
 
 import { SelectValue } from '@/model'
 
-interface OnChangeType {
-  (value: ValueType<SelectValue>, action: ActionMeta | InputActionMeta): void
-}
+type OnChangeType = (value: ValueType<SelectValue>, action: ActionMeta | InputActionMeta) => void
 export interface FleetSelectorAttributes {
   value: SelectValue,
   options: SelectValue[],
   placeholder?: string,
   components?: Partial<SelectComponents<any>>,
+  theme: WithTheme,
   onChange: OnChangeType,
   styles?(theme: WithTheme): StylesConfig,
-  theme: WithTheme
 }
 export type FleetSelectorProps = FleetSelectorAttributes & Partial<SelectProps<SelectValue>>
 
@@ -62,7 +60,7 @@ const FleetSelector: React.SFC<FleetSelectorProps> = ({
   // Guess how long it took to find that bug... 😩
   // TODO: Create issue in type repo @types/react-select
   // @ts-ignore
-  let mergedStyles: StylesConfig = mergeStyles(defaultStyles(theme), styles(theme))
+  const mergedStyles: StylesConfig = mergeStyles(defaultStyles(theme), styles(theme))
   return (<Select
     {...otherProps}
     styles={mergedStyles}
@@ -73,5 +71,5 @@ const FleetSelector: React.SFC<FleetSelectorProps> = ({
   )
 }
 
-//@ts-ignore
+// @ts-ignore
 export default withTheme()(FleetSelector)

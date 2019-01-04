@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography'
 
-import { NotificationRule_Overview, VehicleDataType } from '@/model/Rule'
+import { NotificationRuleOverview, VehicleDataType } from '@/model/Rule'
 import RuleTileBase, { RuleTileProps as TileBaseProps } from './RuleTileBase'
 import RuleIcon from '@/icons/RuleIcon'
 
 export interface RuleTileProps
   extends TileBaseProps {
-  rule: NotificationRule_Overview
+  rule: NotificationRuleOverview
 }
 
 interface RuleTileIconsProps {

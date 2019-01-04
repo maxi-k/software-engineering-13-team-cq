@@ -7,7 +7,7 @@ import RuleTile from '@/atoms/RuleTile'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import ErrorMessage from '@/atoms/ErrorMessage'
 import {
-  NotificationRule_Overview as NotificationRule,
+  NotificationRuleOverview as NotificationRule,
   FetchingAttributes, BasicHTMLProps
 } from '@/model'
 
@@ -26,6 +26,13 @@ const StyledOverview = styled.div`
     padding: 1rem;
 `
 
+const defaultTileOptions = {
+  padTile: 7
+}
+
+const ruleSelector = (rule: NotificationRule) =>
+  (e: React.SyntheticEvent<any, any>): void =>
+    selectRule(e, rule)
 
 const RuleOverview: React.SFC<RuleOverviewProps> = ({
   rules,
@@ -46,18 +53,15 @@ const RuleOverview: React.SFC<RuleOverviewProps> = ({
     return <LoadingIndicator isCentral={true} />
   }
 
-  let tileOptions = {
-    padTile: 7
-  }
   return (
     <StyledOverview {...props}>
       <AddRuleTile onClick={addRule} {...tileOptions} />
       {rules.map((rule: NotificationRule) => (
         <RuleTile
           key={rule.id}
-          {...tileOptions}
+          {...defaultTileOptions}
           rule={rule}
-          onClick={(e: React.SyntheticEvent<any, any>) => selectRule(e, rule)} />
+          onClick={ruleSelector(rule)} />
       ))}
     </StyledOverview>
   )

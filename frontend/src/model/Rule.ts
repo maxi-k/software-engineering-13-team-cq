@@ -7,7 +7,18 @@ export enum VehicleDataType {
   Service
 }
 
-export interface NotificationRule_Overview {
+export enum NotificationRecipientType {
+  Email,
+  PhoneNumber,
+  User
+}
+
+export interface NotificationRecipient {
+  type: NotificationRecipientType,
+  value: string
+}
+
+export interface NotificationRuleOverview {
   id: number,
   name: string,
   description: string,
@@ -15,7 +26,7 @@ export interface NotificationRule_Overview {
   aggregatorDescription: string
 }
 
-export interface NotificationRule_Detail
-extends NotificationRule_Overview {
-
+export interface NotificationRuleDetail
+extends NotificationRuleOverview {
+  recipients: NotificationRecipient[]
 }

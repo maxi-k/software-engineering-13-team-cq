@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 
 import SingleComponentWrapper from '../SingleComponentWrapper'
 
-/** ~~ General Components ~~ **/
+/* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
   from '@/atoms/RuleCreationStep'
 import RuleCreationStepper, { RuleCreationStepperProps }
@@ -44,7 +44,7 @@ storiesOf('Rule Creation / General Components', module)
   .add('Stepper', () => <RuleCreationStepper {...creationStepperProps} style={{ width: '90%' }} />)
 
 
-/** ~~ Second-Step Components ~~ **/
+/* ~~ Second-Step Components ~~ */
 import FleetSelector, { FleetSelectorProps } from '@/atoms/FleetSelector'
 
 const fleetSelectorProps: Partial<FleetSelectorProps> = {

@@ -60,8 +60,8 @@ export type SpecifiedMessageProps = SpecifiedMessageAttributes & React.HTMLAttri
 
 interface GenericMessageAttributes extends SpecifiedMessageAttributes, WithTheme {
   className?: string,
-  onClose?(event: React.MouseEvent<HTMLElement, MouseEvent>): void,
   variant: 'success' | 'warning' | 'error' | 'info',
+  onClose?(event: React.MouseEvent<HTMLElement, MouseEvent>): void
 };
 type GenericMessageProps = GenericMessageAttributes & React.HTMLAttributes<HTMLDivElement>
 
