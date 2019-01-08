@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.security
 
 import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
@@ -8,7 +9,9 @@ import org.springframework.util.Base64Utils
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
 import java.security.KeyFactory
+import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.X509EncodedKeySpec
+import java.util.Date
 import javax.servlet.FilterChain
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
@@ -73,5 +76,21 @@ class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRe
 
         // go to the next filter in the filter chain
         chain.doFilter(request, response)
+    }
+
+    fun createToken(username: String): String {
+
+        val secretBytes = Base64Utils.decodeFromString(jwtConfig.secretKey)
+
+        val secretKeySpec = PKCS8EncodedKeySpec(secretBytes)
+        val keyFactory = KeyFactory.getInstance("RSA")
+        val secretKey = keyFactory.generatePrivate(secretKeySpec)
+
+        return Jwts.builder()
+                .setSubject(username)
+                .setExpiration(Date(System.currentTimeMillis() + jwtConfig.expiration))
+                .signWith(SignatureAlgorithm.RS256, secretKey)
+                .setClaims(mapOf("user_name" to username))
+                .compact()
     }
 }
