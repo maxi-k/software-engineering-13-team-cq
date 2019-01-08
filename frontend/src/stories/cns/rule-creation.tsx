@@ -9,6 +9,7 @@ import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStanda
   from '@/atoms/RuleCreationStep'
 import RuleCreationStepper, { RuleCreationStepperProps }
   from '@/molecules/RuleCreationStepper'
+import ClosingButton from '@/atoms/ClosingButton'
 
 const creationStepProps: RuleCreationStepEmbeddedProps = {
   titleKey: "cns.rule.creation.step.general.title",
@@ -42,6 +43,11 @@ storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
   .add('Single Step', () => <RuleCreationStep {...creationStepStandaloneProps} />)
   .add('Stepper', () => <RuleCreationStepper {...creationStepperProps} style={{ width: '90%' }} />)
+
+storiesOf('Rule Creation / General Components', module)
+  .addDecorator(SingleComponentWrapper)
+  .add('Close Procedure', () => <ClosingButton onClick={action('Closed procedure')} />)
+  .add('Rule Tile', () => <RuleTile {...ruleTileProps} />)
 
 
 /* ~~ Second-Step Components ~~ */
