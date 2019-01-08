@@ -28,8 +28,9 @@ const StyledOverview = styled.div`
     padding: 1rem;
 `
 
+export const defaultTilePadding = 7
 const defaultTileOptions = {
-  padTile: 7
+  padTile: defaultTilePadding
 }
 
 const ruleSelector = (selectRule: SelectRuleType, rule: NotificationRule) =>
@@ -37,9 +38,10 @@ const ruleSelector = (selectRule: SelectRuleType, rule: NotificationRule) =>
     selectRule(e, rule)
 
 const RuleOverview: React.SFC<RuleOverviewProps> = ({
-  rules,
   addRule, selectRule,
-  isFetching, hasFetchError,
+  rules = [],
+  isFetching = false,
+  hasFetchError = false,
   ...props }) => {
 
   if (hasFetchError) {

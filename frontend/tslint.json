@@ -15,6 +15,7 @@
     "object-literal-sort-keys": false,
     "jsx-boolean-value": ["never"],
     "interface-name": [true, "never-prefix"],
+    "no-empty-interface": false,
     "ordered-imports": ["any"]
   }
 }

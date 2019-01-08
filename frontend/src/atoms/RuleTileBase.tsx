@@ -25,8 +25,8 @@ const RuleTileContent = styled.div`
 `
 
 /* React.[S]tateless[F]unctional[C]omponent */
-const RuleTileBase: React.SFC<RuleTileProps> = ({ children, onClick, ...props }) => (
-  <RuleTileWrapper {...props}>
+const RuleTileBase: React.SFC<RuleTileProps> = ({ children, onClick, padTile, ...props }) => (
+  <RuleTileWrapper {...props} padTile={padTile}>
     <Container elevation={0} {...props} onClick={onClick}>
       <RuleTileContainer>
         <RuleTileContent className="nav-label">

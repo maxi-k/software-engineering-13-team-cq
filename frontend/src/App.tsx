@@ -1,24 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import {
+  ContentDiv,
+  MainDiv,
+  PageContainer
+} from '@fleetdata/shared/styled-components/page.style';
+
+import IntlWrapper from '@/IntlWrapper'
+import StoreWrapper from '@/StoreWrapper'
+import StyleWrapper from '@/StyleWrapper'
+
+import Pages from '@/pages'
+import Header from '@/organisms/Header'
+
+const AppWrapper: React.SFC<JSX.IntrinsicAttributes> = ({ children }) => (
+  <StyleWrapper>
+    <StoreWrapper>
+      <IntlWrapper>
+        {children}
+      </IntlWrapper>
+    </StoreWrapper>
+  </StyleWrapper>
+)
+
 class App extends Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <AppWrapper>
+        <MainDiv>
+          <Header />
+          <ContentDiv>
+            <PageContainer>
+              <Pages />
+            </PageContainer>
+          </ContentDiv>
+        </MainDiv>
+      </AppWrapper>
     );
   }
 }
