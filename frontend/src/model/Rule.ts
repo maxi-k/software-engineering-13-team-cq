@@ -1,10 +1,10 @@
 export enum VehicleDataType {
-  Battery,
-  Engine,
-  Contract,
-  Mileage,
-  Fuel,
-  Service
+  Battery = 'battery',
+  Engine = 'engine',
+  Contract = 'contract',
+  Mileage = 'mileage',
+  Fuel = 'fuel',
+  Service = 'service'
 }
 
 export enum NotificationRecipientType {

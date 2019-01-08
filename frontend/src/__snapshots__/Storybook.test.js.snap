@@ -1333,12 +1333,28 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Engine
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Battery
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -1377,12 +1393,28 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Engine
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Battery
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -1571,12 +1603,28 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Engine
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
           <div
             className="sc-hEsumM kGBJIZ"
           >
-            Battery
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
