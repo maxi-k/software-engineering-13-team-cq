@@ -47,7 +47,6 @@ storiesOf('Rule Creation / General Components', module)
 storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
   .add('Close Procedure', () => <ClosingButton onClick={action('Closed procedure')} />)
-  .add('Rule Tile', () => <RuleTile {...ruleTileProps} />)
 
 
 /* ~~ Second-Step Components ~~ */
