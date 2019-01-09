@@ -56,7 +56,7 @@ class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRe
 
             val username = claims["user_name"]
             if (username != null) {
-                val authorities = claims["authorities"] as List<*>
+                val authorities = listOf(claims["authorities"])
 
                 // 5. Create auth object
                 // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
@@ -80,7 +80,7 @@ class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRe
 
     fun createToken(username: String): String {
 
-        val secretBytes = Base64Utils.decodeFromString(jwtConfig.secretKey)
+        val secretBytes = Base64Utils.decodeFromString(jwtConfig.privateKey)
 
         val secretKeySpec = PKCS8EncodedKeySpec(secretBytes)
         val keyFactory = KeyFactory.getInstance("RSA")

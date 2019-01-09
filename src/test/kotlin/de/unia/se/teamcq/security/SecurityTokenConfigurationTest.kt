@@ -13,11 +13,14 @@ import java.util.Date
 import kotlin.test.assertEquals
 
 @ContextConfiguration(classes = [TestConfiguration::class])
-@Import(JwtConfig::class)
+@Import(JwtConfig::class, JwtTokenAuthenticationFilter::class)
 class SecurityTokenConfigurationTest : StringSpec() {
 
     @Autowired
     lateinit var jwtConfig: JwtConfig
+
+    @Autowired
+    lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
 
     init {
 
@@ -46,7 +49,7 @@ class SecurityTokenConfigurationTest : StringSpec() {
 
         "Create valid tokens" {
 
-            val token = JwtTokenAuthenticationFilter(jwtConfig).createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
+            val token = jwtTokenAuthenticationFilter.createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
 
             val publicBytes = Base64Utils.decodeFromString(jwtConfig.publicKey)
 
