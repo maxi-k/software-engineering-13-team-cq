@@ -4,7 +4,9 @@ matrix:
     jdk: oraclejdk8
     services: postgresql
     before_script:
-      - psql -c 'create database travis_ci_test;' -U postgres
+      - psql -c 'create database postgrestravisci;' -U postgres
+      - psql -c "CREATE USER postgres WITH PASSWORD 'password';" -U postgres
+      - rm src/main/resources/application-dev.properties
       - cp src/main/resources/application-dev.properties.travis src/main/resources/application-dev.properties
   - language: node_js
     node_js:
