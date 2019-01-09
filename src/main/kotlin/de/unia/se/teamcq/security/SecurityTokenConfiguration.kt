@@ -21,6 +21,8 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
 
+
+    // See https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http

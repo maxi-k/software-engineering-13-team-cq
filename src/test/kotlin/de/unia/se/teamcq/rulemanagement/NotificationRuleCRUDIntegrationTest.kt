@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.rulemanagement
 
 import com.google.gson.Gson
+import de.unia.se.teamcq.TestUtils.buildMockMvc
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
@@ -35,14 +36,10 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
         "Fail without Authorization" {
 
-            val mockMvc = MockMvcBuilders
-                    .webAppContextSetup(webApplicationContext)
-                    .apply<DefaultMockMvcBuilder>(springSecurity())
-                    .build()
+            val mockMvc = buildMockMvc(webApplicationContext)
 
             val notificationRuleToCreate = NotificationRuleDto(0, "name", "description")
 
-            // Perform a POST request to /events/vehicle-status
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -52,14 +49,10 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
         "Fail for invalid Authentication Token" {
 
-            val mockMvc = MockMvcBuilders
-                    .webAppContextSetup(webApplicationContext)
-                    .apply<DefaultMockMvcBuilder>(springSecurity())
-                    .build()
+            val mockMvc = buildMockMvc(webApplicationContext)
 
             val notificationRuleToCreate = NotificationRuleDto(0, "name", "description")
 
-            // Perform a POST request to /events/vehicle-status
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .header(HttpHeaders.AUTHORIZATION, "Bearer faketoken")
@@ -70,10 +63,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
         "Create and delete NotificationRules with valid token" {
 
-            val mockMvc = MockMvcBuilders
-                    .webAppContextSetup(webApplicationContext)
-                    .apply<DefaultMockMvcBuilder>(springSecurity())
-                    .build()
+            val mockMvc = buildMockMvc(webApplicationContext)
 
             val accessToken = jwtTokenAuthenticationFilter.createToken("username")
 
@@ -81,7 +71,6 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             var returnedNotificationRule: NotificationRuleDto? = null
 
-            // Perform a POST request to /events/vehicle-status
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .header(HttpHeaders.AUTHORIZATION, "Bearer $accessToken")
@@ -103,7 +92,6 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/notification-rule-management/notification-rule/$ruleId")
                     .header("Authorization", "Bearer $accessToken")
-                    .header("Authorization", "Bearer test")
                     .contentType(MediaType.APPLICATION_JSON_UTF8))
                     .andExpect(status().isOk)
                     .andExpect { result ->

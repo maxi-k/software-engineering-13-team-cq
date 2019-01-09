@@ -1,3 +1,5 @@
 package de.unia.se.teamcq.notificationmanagement
 
-interface NotificationData { val trigger: String }
+interface INotificationData {
+    fun getNoficationName(): String
+}

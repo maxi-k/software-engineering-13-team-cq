@@ -25,6 +25,7 @@ class JwtTokenAuthenticationFilter : OncePerRequestFilter() {
     @Autowired
     lateinit var jwtConfig: JwtConfig
 
+    // See https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
 

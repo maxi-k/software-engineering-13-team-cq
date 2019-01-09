@@ -2,5 +2,5 @@ package de.unia.se.teamcq.notificationmanagement
 
 interface Aggregator {
 
-    fun processNotification(notificationData: NotificationData)
+    fun processNotification(notificationData: INotificationData)
 }

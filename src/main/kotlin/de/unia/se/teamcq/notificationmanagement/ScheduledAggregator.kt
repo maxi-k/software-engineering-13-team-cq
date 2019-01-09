@@ -1,8 +1,10 @@
 package de.unia.se.teamcq.notificationmanagement
 
-class ScheduledAggregator(var interval: Int) : Aggregator {
+import org.springframework.scheduling.support.CronTrigger
 
-    override fun processNotification(notificationCountThreshold: NotificationData) {
+class ScheduledAggregator(val notificationCronTrigger: CronTrigger) : Aggregator {
+
+    override fun processNotification(notificationData: INotificationData) {
         TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }
