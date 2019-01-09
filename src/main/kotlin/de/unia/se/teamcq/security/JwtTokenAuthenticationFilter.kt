@@ -2,9 +2,11 @@ package de.unia.se.teamcq.security
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.stereotype.Service
 import org.springframework.util.Base64Utils
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
@@ -17,7 +19,11 @@ import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-class JwtTokenAuthenticationFilter(private val jwtConfig: JwtConfig) : OncePerRequestFilter() {
+@Service
+class JwtTokenAuthenticationFilter : OncePerRequestFilter() {
+
+    @Autowired
+    lateinit var jwtConfig: JwtConfig
 
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {

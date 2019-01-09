@@ -8,30 +8,25 @@ import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
-import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.Import
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity
-import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
-@RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Import(JwtTokenAuthenticationFilter::class)
 class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
     @Autowired
-    private lateinit var webApplicationContext: WebApplicationContext
+    lateinit var webApplicationContext: WebApplicationContext
 
     @Autowired
-    private lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
+    lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
 
     private val gson = Gson()
 

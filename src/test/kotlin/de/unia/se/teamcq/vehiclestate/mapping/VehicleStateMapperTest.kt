@@ -12,7 +12,7 @@ import kotlin.test.assertEquals
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class VehicleStateMapperTest : StringSpec() {
 
-    private var vehicleStateMapper: VehicleStateMapper = Mappers.getMapper(VehicleStateMapper::class.java)
+    private var vehicleStateMapper: IVehicleStateMapper = Mappers.getMapper(IVehicleStateMapper::class.java)
 
     init {
 

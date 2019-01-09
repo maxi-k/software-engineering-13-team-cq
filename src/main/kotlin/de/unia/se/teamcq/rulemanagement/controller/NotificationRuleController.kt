@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
-import de.unia.se.teamcq.rulemanagement.mapping.NotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -18,10 +18,13 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/notification-rule-management")
-class NotificationRuleController(private val notificationRuleService: INotificationRuleService) {
+class NotificationRuleController {
 
     @Autowired
-    lateinit var notificationRuleMapper: NotificationRuleMapper
+    lateinit var notificationRuleService: INotificationRuleService
+
+    @Autowired
+    lateinit var notificationRuleMapper: INotificationRuleMapper
 
     @GetMapping("/notification-rule")
     fun getNotificationRules(): List<NotificationRuleDto> {
@@ -38,9 +41,9 @@ class NotificationRuleController(private val notificationRuleService: INotificat
         val username = SecurityContextHolder.getContext().authentication.name
         val notificationRuleIfPresent = notificationRuleService.getNotificationRule(ruleId)
 
-        return notificationRuleIfPresent.map { notificationRule ->
+        return notificationRuleIfPresent?.let { notificationRule ->
             ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
-        }.orElse(ResponseEntity.notFound().build())
+        } ?: (ResponseEntity.notFound().build())
     }
 
     @PostMapping("/notification-rule")
@@ -49,9 +52,9 @@ class NotificationRuleController(private val notificationRuleService: INotificat
         val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
         val notificationRuleIfCreated = notificationRuleService.createNotificationRule(username, notificationRuleToCreate)
 
-        return notificationRuleIfCreated.map { notificationRule ->
+        return notificationRuleIfCreated?.let { notificationRule ->
             ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
-        }.orElse(ResponseEntity.notFound().build())
+        } ?: (ResponseEntity.notFound().build())
     }
 
     @PutMapping("/notification-rule/{ruleId}")
@@ -62,11 +65,11 @@ class NotificationRuleController(private val notificationRuleService: INotificat
 
         val username = SecurityContextHolder.getContext().authentication.name
         val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
-        val notificationRuleIfUpdated = notificationRuleService.updateNotificationRule(ruleId, notificationRuleToCreate)
+        val notificationRuleIfUpdated = notificationRuleService.updateNotificationRule(notificationRuleToCreate)
 
-        return notificationRuleIfUpdated.map { notificationRule ->
+        return notificationRuleIfUpdated?.let { notificationRule ->
             ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
-        }.orElse(ResponseEntity.notFound().build())
+        } ?: (ResponseEntity.notFound().build())
     }
 
     @DeleteMapping("/notification-rule/{ruleId}")

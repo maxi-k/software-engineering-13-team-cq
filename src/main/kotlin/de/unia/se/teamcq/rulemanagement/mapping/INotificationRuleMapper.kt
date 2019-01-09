@@ -6,7 +6,7 @@ import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
-interface NotificationRuleMapper {
+interface INotificationRuleMapper {
 
     fun modelToEntity(notificationRule: NotificationRule): NotificationRuleEntity
 

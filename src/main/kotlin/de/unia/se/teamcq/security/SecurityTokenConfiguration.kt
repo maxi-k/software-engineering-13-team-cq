@@ -18,6 +18,9 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit var jwtConfig: JwtConfig
 
+    @Autowired
+    lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
+
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http
@@ -29,7 +32,7 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
                 .exceptionHandling().authenticationEntryPoint { _, rsp, _ -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED) }
                 .and()
                 // Add a filter to validate the tokens with every request
-                .addFilterAfter(JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter::class.java)
+                .addFilterAfter(jwtTokenAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service

@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.rulemanagement.service
 
-import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntityRepository
-import de.unia.se.teamcq.rulemanagement.mapping.NotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.entity.INotificationRuleRepository
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -14,10 +13,7 @@ import org.springframework.test.context.ContextConfiguration
 class NotificationRuleServiceTest : StringSpec() {
 
     @MockK
-    private lateinit var notificationRuleEntityRepository: NotificationRuleEntityRepository
-
-    @MockK
-    private lateinit var notificationRuleMapper: NotificationRuleMapper
+    private lateinit var notificationRuleRepository: INotificationRuleRepository
 
     @InjectMockKs
     private lateinit var notificationRuleService: NotificationRuleService
@@ -26,7 +22,7 @@ class NotificationRuleServiceTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "get all should work" {
-            every { notificationRuleEntityRepository.findAll() } returns emptyList()
+            every { notificationRuleRepository.getAllNotificationRulesForUser(any()) } returns emptyList()
 
             notificationRuleService.getNotificationRulesForUser("test")
         }

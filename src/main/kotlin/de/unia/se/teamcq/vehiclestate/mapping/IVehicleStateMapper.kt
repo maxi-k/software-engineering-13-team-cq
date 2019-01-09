@@ -5,7 +5,7 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
-interface VehicleStateMapper {
+interface IVehicleStateMapper {
 
     fun modelToEntity(vehicleState: VehicleState): VehicleStateEntity
 

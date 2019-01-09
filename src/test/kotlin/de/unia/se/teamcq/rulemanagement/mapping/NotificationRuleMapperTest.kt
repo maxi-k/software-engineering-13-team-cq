@@ -13,7 +13,7 @@ import kotlin.test.assertEquals
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class NotificationRuleMapperTest : StringSpec() {
 
-    private var notificationRuleMapper: NotificationRuleMapper = Mappers.getMapper(NotificationRuleMapper::class.java)
+    private var notificationRuleMapper: INotificationRuleMapper = Mappers.getMapper(INotificationRuleMapper::class.java)
 
     init {
 

@@ -2,9 +2,9 @@ package de.unia.se.teamcq.rulemanagement.controller
 
 import com.google.gson.Gson
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
-import de.unia.se.teamcq.rulemanagement.mapping.NotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.rulemanagement.service.NotificationRuleService
+import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -24,16 +24,15 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import java.util.Optional
 
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class NotificationRuleControllerTest : StringSpec() {
 
     @MockK
-    private lateinit var mockNotificationRuleMapper: NotificationRuleMapper
+    private lateinit var mockNotificationRuleMapper: INotificationRuleMapper
 
     @MockK
-    private lateinit var notificationRuleService: NotificationRuleService
+    private lateinit var notificationRuleService: INotificationRuleService
 
     @InjectMockKs
     private lateinit var notificationRuleController: NotificationRuleController
@@ -55,10 +54,10 @@ class NotificationRuleControllerTest : StringSpec() {
 
         // Define what the mocked service should return
         // - 'create' should return just the passed object
-        every { notificationRuleService.createNotificationRule(any(), any()) } returns Optional.of(mockedNotificationRule.copy(2))
+        every { notificationRuleService.createNotificationRule(any(), any()) } returns mockedNotificationRule.copy(2)
         // - 'get' should return the only status we know, `mockedVehicleStatus`
-        every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns Optional.of(mockedNotificationRule)
-        every { notificationRuleService.getNotificationRule(not(mockedNotificationRule.id!!)) } returns Optional.empty()
+        every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns mockedNotificationRule
+        every { notificationRuleService.getNotificationRule(not(mockedNotificationRule.id!!)) } returns null
 
         every { mockNotificationRuleMapper.dtoToModel(any()) } returns mockedNotificationRule
         every { mockNotificationRuleMapper.modelToDto(any()) } returns mockedNotificationRuleDto.copy(id = 2)
