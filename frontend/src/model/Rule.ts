@@ -1,16 +1,29 @@
 export enum VehicleDataType {
-  Battery,
-  Engine,
-  Contract,
-  Mileage,
-  Fuel,
-  Service
+  Battery = 'Battery',
+  Engine = 'Engine',
+  Contract = 'Contract',
+  Mileage = 'Mileage',
+  Fuel = 'Fuel',
+  Service = 'Service'
+}
+
+export enum ComparisonType {
+  Above = 'Above',
+  Below = 'Below',
+  Equal = 'Equal to',
+  NonEqual = 'Unequal to'
 }
 
 export enum NotificationRecipientType {
   Email,
   PhoneNumber,
   User
+}
+
+export enum PredicateCounterValue {
+  All = "All",
+  Any = "Any",
+  None = "None"
 }
 
 export interface NotificationRecipient {
