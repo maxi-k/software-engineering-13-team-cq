@@ -74,11 +74,10 @@ storiesOf('Rule Creation / Second Step', module)
   .add('Fleet Selector', () => <FleetSelector {...fleetSelectorProps} />)
 
 
-/* ~~ Third-Step Components ~~ 
+/* ~~ Third-Step Components ~~ */
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 
 const predicateCounterProps: Partial<PredicateCounterProps> = {
-  value: { label: 'All', value: 'All' },
   options: [
     { label: 'All', value: 'All' },
     { label: 'Any', value: 'Any' },
@@ -88,7 +87,7 @@ const predicateCounterProps: Partial<PredicateCounterProps> = {
   styles: (_) => ({
     input: (base) => ({
       ...base,
-      //width: '500px'
+      width: '40px'
     })
   })
 }
@@ -96,6 +95,6 @@ const predicateCounterProps: Partial<PredicateCounterProps> = {
 
 storiesOf('Rule Creation / Third Step', module)
   .addDecorator(SingleComponentWrapper)
-  .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />) */
+  .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />)
 
 
