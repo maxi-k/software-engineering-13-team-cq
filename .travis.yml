@@ -2,7 +2,12 @@ matrix:
   include:
   - language: java
     jdk: oraclejdk8
-
+    services: postgresql
+    before_script:
+      - psql -c 'create database cns;' -U postgres
+      - psql -c "CREATE USER students WITH PASSWORD 'students';" -U postgres
+      - rm src/main/resources/application-dev.properties
+      - cp src/main/resources/application-dev.properties.travis src/main/resources/application-dev.properties
   - language: node_js
     node_js:
     - "10"
@@ -13,6 +18,7 @@ matrix:
     - npm test
     after_success:
     - npm run coverage
+
 
 notifications:
   slack: s-e-13:HvejBsdv4uwO1HjExPJKnSKd

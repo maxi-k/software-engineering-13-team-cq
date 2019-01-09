@@ -2,6 +2,7 @@ FROM node as builder
 
 # Resolve Dependencies
 COPY package.json /src/
+COPY package.lock /src/
 WORKDIR /src/
 RUN npm install
 
