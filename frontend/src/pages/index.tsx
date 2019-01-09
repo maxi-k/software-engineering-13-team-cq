@@ -1,38 +1,26 @@
-import React, { lazy } from 'react'
-import { Route } from 'react-router'
+import React from 'react'
+import { Route, Switch, withRouter } from 'react-router'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
+import { pageDefinitions, LazyComponent } from './page-definitions'
+import Fallback from '@/pages/Fallback'
 
-type LazyComponent = React.LazyExoticComponent<any>
+const LazyPage = (Page: LazyComponent) => withRouter((props: any) => (
+  <React.Suspense fallback={<LoadingIndicator isCentral={true} />}>
+    <Page {...props} />
+  </React.Suspense>
+))
 
-interface PageDefinition {
-  title: string,
-  path: string,
-  component: LazyComponent
-}
-
-const pageDefinitions: { [key: string]: PageDefinition } = {
-  ruleOverview: {
-    title: "cns.page.ruleOverview.title",
-    path: '/',
-    component: lazy(() => import('@/pages/RuleOverview'))
-  }
-}
-
-const WrapPage: React.SFC<{ Page: LazyComponent, path: string }> = ({ path, Page }) => (
-  <Route path={path}>
-    <React.Suspense fallback={<LoadingIndicator isCentral={true} />}>
-      <Page />
-    </React.Suspense>
-  </Route>
-)
-
-const Pages: React.SFC<JSX.IntrinsicAttributes> = () => (
-  <>
+const Pages = () => (
+  <Switch>
     {Object.keys(pageDefinitions).map((def) => {
-      const page = pageDefinitions[def]
-      return <WrapPage key={def} path={page.path} Page={page.component} />
+       const page = pageDefinitions[def]
+       return <Route key={def}
+                     path={page.path}
+                     exact={page.exact}
+                     component={LazyPage(page.component)} />
     })}
-  </>
+    <Route path="*" component={Fallback} />
+  </Switch>
 )
 
 export default Pages

@@ -1,4 +1,7 @@
 import React from 'react'
+import { withRouter, RouteComponentProps } from 'react-router'
+import { push } from 'connected-react-router'
+import { interpolatePagePath } from '@/pages/page-definitions'
 import { connect, StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleOverviewStateSelector } from '@/state/selectors'
 import { viewRule, loadRuleOverview, RuleOverviewState } from '@/state/rule'
@@ -13,27 +16,29 @@ export interface RuleOverviewDispatchProps {
   fetchRules(): void,
   addRule(): void
 }
-export interface RuleOverviewStateProps extends RuleOverviewState { }
+export interface RuleOverviewStateProps extends RuleOverviewState {
+}
 
 // export interface RuleOverviewPageAttributes {
 // }
 export type RuleOverviewPageProps =
   RuleOverviewStateProps // RuleOverviewPageAttributes &
   & RuleOverviewDispatchProps
+  & RouteComponentProps
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledOverviewPage = styled.div`
 
 `
 
-class RuleOverviewPage extends React.PureComponent<RuleOverviewPageProps> {
+class RuleOverviewPage extends React.Component<RuleOverviewPageProps> {
 
-  componentDidMount = () => {
+  public componentDidMount = () => {
     const { fetchRules } = this.props
     fetchRules()
   }
 
-  render = () => {
+  public render = () => {
     const { rules, ...overviewProps } = this.props
     const ruleList = Object.values(rules)
     return (
@@ -45,17 +50,25 @@ class RuleOverviewPage extends React.PureComponent<RuleOverviewPageProps> {
   }
 }
 
-const mapStateToProps: StateMapper<{}, RuleOverviewStateProps> = (state, ownProps) => ({
+const mapStateToProps: StateMapper<RouteComponentProps, RuleOverviewStateProps> = (state, ownProps) => ({
   ...ruleOverviewStateSelector(state)
 })
 
-const mapDispatchToProps: DispatchMapper<{}, RuleOverviewDispatchProps> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<RouteComponentProps, RuleOverviewDispatchProps> = (dispatch, props) => ({
   fetchRules: () => dispatch(loadRuleOverview.request()),
-  selectRule: (event, rule) => dispatch(viewRule(rule.id)),
+  selectRule: (event, rule) => {
+    dispatch(viewRule(rule.id))
+    dispatch(push(interpolatePagePath('ruleDetail', '1')))
+  },
   addRule: () => alert('add rule')
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RuleOverviewPage)
+export default
+withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    { pure: false }
+  )(RuleOverviewPage)
+)

@@ -2,17 +2,21 @@ import { combineReducers, Store } from 'redux';
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { persistStore, persistReducer } from 'redux-persist'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import storage from 'redux-persist/lib/storage'
+import { createBrowserHistory } from 'history'
 import { StateType } from 'typesafe-actions';
 
 import ruleReducer, { sagas as ruleSagas } from './rule'
 import languageReducer from './language'
 import authReducer, { sagas as authSagas } from './auth'
 
-const enhancers = []
+export const history = createBrowserHistory()
+
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [
-  sagaMiddleware
+  sagaMiddleware,
+  routerMiddleware(history)
 ]
 
 const allReducers = {
@@ -22,28 +26,27 @@ const allReducers = {
 }
 
 const allSagas = [
-   ...ruleSagas,
+  ...ruleSagas,
   ...authSagas
 ]
 
-if (process.env.REACT_APP_IS_DEVELOPMENT) {
-  // needs to be ignored, because typescript will give an error
-  // for tye dynamic addition of the field on 'Window'
+const composeEnhancers =
+  typeof window === 'object' &&
   // @ts-ignore
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
-  if (devToolsExtension !== null && typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension())
-  }
-}
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+  // @ts-ignore
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+  }) : compose;
 
 const rootReducer = combineReducers({
+  router: connectRouter(history),
   ...allReducers
 });
 export type RootState = StateType<typeof rootReducer>;
 
-const middleware = compose(
-  applyMiddleware(...middlewares),
-  ...enhancers
+const middleware = composeEnhancers(
+  applyMiddleware(...middlewares)
 )
 
 const persistedReducer = persistReducer({

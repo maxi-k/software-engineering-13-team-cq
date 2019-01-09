@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
 import {
@@ -8,38 +8,59 @@ import {
   StyledTopPaddingContainer
 } from '@fleetdata/shared/styled-components/page.style';
 
-import IntlWrapper from '@/IntlWrapper'
 import StoreWrapper from '@/StoreWrapper'
 import StyleWrapper from '@/StyleWrapper'
 
 import Pages from '@/pages'
 import Header from '@/organisms/Header'
 
-const AppWrapper: React.SFC<JSX.IntrinsicAttributes> = ({ children }) => (
-  <StyleWrapper>
-    <StoreWrapper>
-      <IntlWrapper>
-        {children}
-      </IntlWrapper>
-    </StoreWrapper>
-  </StyleWrapper>
-)
+import { addLocaleData, IntlProvider } from 'react-intl';
+import de from 'react-intl/locale-data/de';
+import en from 'react-intl/locale-data/en';
+import { messages } from '@/i18n';
 
-class App extends Component {
+addLocaleData([...en, ...de]);
+
+type LanguageType = 'en' | 'de'
+interface AppState {
+  language: LanguageType
+}
+
+class App extends React.Component<object, AppState> {
+
+  constructor(props: object) {
+    super(props)
+    this.state = { language: 'en' }
+    this.switchLanguage = this.switchLanguage.bind(this)
+  }
+
+  public switchLanguage(lang: LanguageType) {
+    this.setState({ language: lang })
+  }
+
   public render() {
     return (
-      <AppWrapper>
-        <MainDiv>
-          <Header />
-          <ContentDiv>
-            <StyledTopPaddingContainer />
-            <PageContainer>
-              <Pages />
-            </PageContainer>
-          </ContentDiv>
-        </MainDiv>
-      </AppWrapper>
-    );
+      <StyleWrapper>
+        <IntlProvider
+          locale={this.state.language}
+          textComponent={React.Fragment}
+          messages={messages[this.state.language]} >
+          <StoreWrapper>
+            <MainDiv>
+              <Header
+                language={this.state.language}
+                switchLanguage={this.switchLanguage} />
+              <ContentDiv>
+                <StyledTopPaddingContainer />
+                <PageContainer>
+                  <Pages />
+                </PageContainer>
+              </ContentDiv>
+            </MainDiv>
+          </StoreWrapper>
+        </IntlProvider>
+      </StyleWrapper>
+    )
   }
 }
 
