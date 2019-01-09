@@ -7,6 +7,13 @@ export enum VehicleDataType {
   Service = 'service'
 }
 
+export enum ComparisonType {
+  Above = 'Above',
+  Below = 'Below',
+  Equal = 'Equal to',
+  NonEqual = 'Unequal to'
+}
+
 export enum NotificationRecipientType {
   Email,
   PhoneNumber,

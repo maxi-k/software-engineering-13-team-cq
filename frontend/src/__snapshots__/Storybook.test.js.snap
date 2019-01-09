@@ -1270,6 +1270,76 @@ exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
+<div
+  className="sc-uJMKN jXdnYa"
+>
+  <p>
+    The
+    <select>
+      <option>
+         
+        battery
+         
+      </option>
+      <option>
+         
+        contract
+         
+      </option>
+      <option>
+         
+        engine
+         
+      </option>
+      <option>
+         
+        service
+         
+      </option>
+      <option>
+         
+        fuel
+         
+      </option>
+      <option>
+         
+        mileage
+         
+      </option>
+    </select>
+    is
+    <select>
+      <option>
+         
+        Above
+         
+      </option>
+      <option>
+         
+        Below
+         
+      </option>
+      <option>
+         
+        Equal to
+         
+      </option>
+      <option>
+         
+        Unequal to
+         
+      </option>
+    </select>
+    <input
+      name="value"
+      type="text"
+    />
+    %.
+  </p>
+</div>
+`;
+
 exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 <div
   className="sc-uJMKN jXdnYa"

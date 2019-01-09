@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import SingleComponentWrapper from '../SingleComponentWrapper'
-import { PredicateCounterValue } from '@/model/Rule'
+import { PredicateCounterValue, ComparisonType, VehicleDataType } from '@/model/Rule'
 
 /* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
@@ -77,14 +77,20 @@ storiesOf('Rule Creation / Second Step', module)
 
 /* ~~ Third-Step Components ~~ */
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
+import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 
 const predicateCounterProps: PredicateCounterProps = {
   options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ]
 }
 
+const conditionSelectorProps: ConditionSelectorProps = {
+  dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Service, VehicleDataType.Fuel, VehicleDataType.Mileage],
+  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.Equal, ComparisonType.NonEqual],
+}
 
 storiesOf('Rule Creation / Third Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />)
+  .add('Condition Selector', () => <ConditionSelector {...conditionSelectorProps} />)
 
 
