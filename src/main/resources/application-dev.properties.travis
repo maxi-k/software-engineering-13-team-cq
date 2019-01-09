@@ -1,4 +1,4 @@
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgrestravisci
-spring.datasource.username = postgrestravis
-spring.datasource.password = password
+spring.datasource.url=jdbc:postgresql://localhost:5432/cns
+spring.datasource.username = students
+spring.datasource.password = students
