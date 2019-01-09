@@ -78,6 +78,7 @@ storiesOf('Rule Creation / Second Step', module)
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 
 const predicateCounterProps: Partial<PredicateCounterProps> = {
+  value: { label: 'Any', value: 'Any' },
   options: [
     { label: 'All', value: 'All' },
     { label: 'Any', value: 'Any' },

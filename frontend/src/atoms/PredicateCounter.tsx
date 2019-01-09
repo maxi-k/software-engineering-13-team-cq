@@ -9,6 +9,7 @@ import { SelectValue } from '@/model'
 
 type OnChangeType = (value: ValueType<SelectValue>, action: ActionMeta | InputActionMeta) => void
 export interface PredicateCounterAttributes {
+  value: SelectValue,
   options: SelectValue[],
   onChange: OnChangeType,
   styles?(theme: WithTheme): StylesConfig,
