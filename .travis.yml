@@ -10,7 +10,7 @@ matrix:
     node_js:
     - "10"
     before_script:
-    - cd calculator/frontend
+    - cd frontend 
     script:
     - npm install
     - npm test

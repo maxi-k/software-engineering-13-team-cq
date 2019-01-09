@@ -1,0 +1,163 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Report
+  description: BMW FleetData Report API
+servers:
+  - url: /api
+paths:
+  /reports/summary:
+    get:
+      description: |
+        Returns a report containing the number of critical vehicles, vehicles with warnings and ok vehicles
+        for service, mileage and check control messages.
+      tags:
+        - reports
+      parameters:
+        - name: car_park
+          in: query
+          description: car_park
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: fleets
+          in: query
+          description: fleets
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+      operationId: getSummary
+      responses:
+        '200':
+          description: summary response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Summary'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /reports/service:
+    get:
+      description: |
+        Returns a report of the service forsight for all vehicles for a given fleet(s)
+      tags:
+        - reports
+      parameters:
+        - name: car_park
+          in: query
+          description: car_park
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: fleets
+          in: query
+          description: fleets
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+      operationId: getServiceReport
+      responses:
+        '200':
+          description: service report response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceReport'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    SummarySection:
+      required:
+        - numOk
+        - numWarning
+        - numCritical
+        - numUnknown
+      properties:
+        numOk:
+          type: integer
+          format: int32
+          minimum: 0
+        numWarning:
+          type: integer
+          format: int32
+          minimum: 0
+        numCritical:
+          type: integer
+          format: int32
+          minimum: 0
+        numUnknown:
+          type: integer
+          format: int32
+          minimum: 0
+    Summary:
+      required:
+        - service
+        - mileage
+        - checkControlMessages
+      properties:
+        service:
+          $ref: '#/components/schemas/SummarySection'
+        mileage:
+          $ref: '#/components/schemas/SummarySection'
+        checkControlMessages:
+          $ref: '#/components/schemas/SummarySection'
+    ServiceReport:
+      properties:
+        currentCalendarWeek:
+          type: integer
+          format: int32
+        overdueVins:
+          type: array
+          items:
+            type: string
+        vehiclesDuePerWeek:
+          type: array
+          items:
+            type: object
+            properties:
+              calendarWeek:
+                type: integer
+                format: int32
+              vins:
+                type: array
+                items:
+                  type: string
+    CCMessage:
+      properties:
+        vehicleImage:
+          type: string
+        vin:
+          type: string
+        licensePlate:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        ccmId:
+          type: string
+        ccmDescription:
+          type: string
+        ccmCritical:
+          type: boolean
+        ccmMileage:
+          type: integer
+          format: int32
+        ccmDate:
+          type: string
+          format: date-time
+        currentMileage:
+          type: integer
+          format: int32
+        lastDataTransfer:
+          type: string
+          format: date-time

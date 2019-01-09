@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'my-monitor'
+
+# this is where I have simple alert rules
+rule_files:
+  - ./alertmanager/alert.rules
+
+scrape_configs:
+    - job_name: 'prometheus'
+      static_configs: 
+        - targets: ['localhost:9090']
+
+    - job_name: 'node-exporter'
+      static_configs:
+      - targets: ['node-exporter:9100']
+
+    - job_name: 'fleetdata'
+      metrics_path: /actuator/prometheus
+      static_configs:
+        - targets: ['fleetdata:4042']
+    
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets: ['some-ip:9093']
