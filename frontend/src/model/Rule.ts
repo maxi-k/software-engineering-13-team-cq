@@ -1,10 +1,10 @@
 export enum VehicleDataType {
-  Battery = 'battery',
-  Engine = 'engine',
-  Contract = 'contract',
-  Mileage = 'mileage',
-  Fuel = 'fuel',
-  Service = 'service'
+  Battery = 'Battery',
+  Engine = 'Engine',
+  Contract = 'Contract',
+  Mileage = 'Mileage',
+  Fuel = 'Fuel',
+  Service = 'Service'
 }
 
 export enum ComparisonType {

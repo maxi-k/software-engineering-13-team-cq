@@ -1279,32 +1279,32 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     <select>
       <option>
          
-        battery
+        Battery
          
       </option>
       <option>
          
-        contract
+        Contract
          
       </option>
       <option>
          
-        engine
+        Engine
          
       </option>
       <option>
          
-        service
+        Service
          
       </option>
       <option>
          
-        fuel
+        Fuel
          
       </option>
       <option>
          
-        mileage
+        Mileage
          
       </option>
     </select>
@@ -1477,7 +1477,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/engine.png"
+              src="/assets/img/Engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1490,7 +1490,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/battery.png"
+              src="/assets/img/Battery.png"
               style={
                 Object {
                   "height": "20px",
@@ -1537,7 +1537,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/engine.png"
+              src="/assets/img/Engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1550,7 +1550,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/battery.png"
+              src="/assets/img/Battery.png"
               style={
                 Object {
                   "height": "20px",
@@ -1747,7 +1747,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/engine.png"
+              src="/assets/img/Engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1760,7 +1760,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-hEsumM kGBJIZ"
           >
             <img
-              src="/assets/img/battery.png"
+              src="/assets/img/Battery.png"
               style={
                 Object {
                   "height": "20px",
