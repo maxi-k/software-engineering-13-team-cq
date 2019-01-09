@@ -44,11 +44,11 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({
   // TODO: Create issue in type repo @types/react-select
   // @ts-ignore
   const mergedStyles: StylesConfig = mergeStyles(defaultStyles(theme), styles(theme))
-  return (<Select
+  return (<div> If <Select
     {...otherProps}
     styles={mergedStyles}
     closeMenuOnSelect={true}
-  />
+  />of the following conditions are met:</div>
   )
 }
 
