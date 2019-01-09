@@ -4,7 +4,8 @@ import './App.css';
 import {
   ContentDiv,
   MainDiv,
-  PageContainer
+  PageContainer,
+  StyledTopPaddingContainer
 } from '@fleetdata/shared/styled-components/page.style';
 
 import IntlWrapper from '@/IntlWrapper'
@@ -31,6 +32,7 @@ class App extends Component {
         <MainDiv>
           <Header />
           <ContentDiv>
+            <StyledTopPaddingContainer />
             <PageContainer>
               <Pages />
             </PageContainer>

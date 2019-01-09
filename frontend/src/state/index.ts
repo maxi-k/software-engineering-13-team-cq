@@ -1,17 +1,18 @@
 import { combineReducers, Store } from 'redux';
 import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { StateType } from 'typesafe-actions';
 
-import ruleReducer from './rule'
+import ruleReducer, { sagas as ruleSagas } from './rule'
 import languageReducer from './language'
-import authReducer from './auth'
+import authReducer, { sagas as authSagas } from './auth'
 
 const enhancers = []
+const sagaMiddleware = createSagaMiddleware()
 const middlewares = [
-  thunk
+  sagaMiddleware
 ]
 
 const allReducers = {
@@ -19,6 +20,11 @@ const allReducers = {
   language: languageReducer,
   auth: authReducer
 }
+
+const allSagas = [
+   ...ruleSagas,
+  ...authSagas
+]
 
 if (process.env.REACT_APP_IS_DEVELOPMENT) {
   // needs to be ignored, because typescript will give an error
@@ -47,6 +53,8 @@ const persistedReducer = persistReducer({
 
 const store: Store<RootState> = createStore(persistedReducer, middleware)
 const persistor = persistStore(store);
+
+allSagas.forEach((saga) => sagaMiddleware.run(saga))
 
 export { store, persistor, rootReducer, persistedReducer };
 export default { store, persistor }

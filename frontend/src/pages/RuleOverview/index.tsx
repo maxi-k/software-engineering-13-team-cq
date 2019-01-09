@@ -1,65 +1,61 @@
 import React from 'react'
 import { connect, StateMapper, DispatchMapper } from '@/state/connector'
-import { viewRule } from '@/state/rule'
-import { VehicleDataType } from '@/model'
+import { ruleOverviewStateSelector } from '@/state/selectors'
+import { viewRule, loadRuleOverview, RuleOverviewState } from '@/state/rule'
 
-import { RuleTileProps } from '@/atoms/RuleTile'
-import RuleOverview, { RuleOverviewProps, SelectRuleType } from '@/molecules/RuleOverview'
+import RuleOverview, { SelectRuleType } from '@/molecules/RuleOverview'
 import RuleOverviewHeader from '@/organisms/RuleOverviewHeader'
 
 import styled from 'styled-components'
 
 export interface RuleOverviewDispatchProps {
-  selectRule: SelectRuleType
+  selectRule: SelectRuleType,
+  fetchRules(): void,
+  addRule(): void
 }
+export interface RuleOverviewStateProps extends RuleOverviewState { }
 
 // export interface RuleOverviewPageAttributes {
 // }
-export type RuleOverviewPageProps = RuleOverviewProps // RuleOverviewPageAttributes &
+export type RuleOverviewPageProps =
+  RuleOverviewStateProps // RuleOverviewPageAttributes &
+  & RuleOverviewDispatchProps
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledOverviewPage = styled.div`
 
 `
 
-const RuleOverviewPage: React.SFC<RuleOverviewPageProps> =
-  ({ ...props }) => (
-    <StyledOverviewPage>
-      <RuleOverviewHeader />
-      <RuleOverview {...props} />
-    </StyledOverviewPage>
-  )
+class RuleOverviewPage extends React.PureComponent<RuleOverviewPageProps> {
 
-// TODO: FIXME: Fix with actual props
-const mockRuleTileProps: RuleTileProps = {
-  rule: {
-    id: 1,
-    name: 'Rule Name',
-    description: 'Rule Description for an examplary Rule',
-    aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
-    dataSources: [
-      VehicleDataType.Engine,
-      VehicleDataType.Battery
-    ]
+  componentDidMount = () => {
+    const { fetchRules } = this.props
+    fetchRules()
+  }
+
+  render = () => {
+    const { rules, ...overviewProps } = this.props
+    const ruleList = Object.values(rules)
+    return (
+      <StyledOverviewPage >
+        <RuleOverviewHeader />
+        <RuleOverview {...overviewProps} rules={ruleList} />
+      </StyledOverviewPage >
+    )
   }
 }
 
-const mockRuleOverviewProps: RuleOverviewProps = {
-  rules: [mockRuleTileProps.rule, { ...mockRuleTileProps.rule, id: 2, name: 'Rule Name 2' }],
-  addRule: () => alert('add rule'),
-  selectRule: (_, rule) => alert('select rule: ' + rule.id),
-  isFetching: false,
-  hasFetchError: false
-}
-
-
-const mapStateToProps: StateMapper<{}, {}> = () => ({
-  ...mockRuleOverviewProps
+const mapStateToProps: StateMapper<{}, RuleOverviewStateProps> = (state, ownProps) => ({
+  ...ruleOverviewStateSelector(state)
 })
 
 const mapDispatchToProps: DispatchMapper<{}, RuleOverviewDispatchProps> = (dispatch, props) => ({
-  selectRule: (event, rule) => dispatch(viewRule(rule.id))
+  fetchRules: () => dispatch(loadRuleOverview.request()),
+  selectRule: (event, rule) => dispatch(viewRule(rule.id)),
+  addRule: () => alert('add rule')
 })
 
-// TODO: FIXME: Fetch on component mount
-export default connect(mapStateToProps, mapDispatchToProps)(RuleOverviewPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RuleOverviewPage)

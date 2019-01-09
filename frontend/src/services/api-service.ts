@@ -5,7 +5,7 @@ const apiUrl = process.env.REACT_APP_IS_DEVELOPMENT
 const defaultOptions = {
   headers: {
     'Content-Type': 'application/json'
-    }
+  }
 }
 
 const apiRequest = (path: string, options: object = {}) => {
@@ -16,7 +16,28 @@ const apiRequest = (path: string, options: object = {}) => {
   )
 }
 
+const doMock = process.env.REACT_APP_IS_DEVELOPMENT
+const delayResponse = (min: number, max: number) => (
+  new Promise(resolve => {
+    setTimeout(resolve, Math.random() * (max - min) + min)
+  })
+)
+
+const mockRequest = (path: string, response: object, fetchOptions: object = {}) => {
+  const fetchMock = require('fetch-mock')
+  fetchMock.mock(`end:${path}`, delayResponse(500, 2000).then(() => response))
+  // We want a console print here, as there will be no information in
+  // the network tab, and this is development only.
+  // tslint:disable-next-line:no-console
+  console.log('Mocking API Request to: ' + path);
+  const promise = apiRequest(path, fetchOptions)
+  fetchMock.restore()
+  return promise
+}
+
 export {
   apiUrl,
-  apiRequest
+  apiRequest,
+  doMock,
+  mockRequest,
 }

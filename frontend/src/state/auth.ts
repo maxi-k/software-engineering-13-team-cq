@@ -36,4 +36,7 @@ export const reducer: Reducer<AuthState> = (state = initialState, action) => {
 export const login = createAction(AuthActionType.AUTH_LOGIN)
 export const logout = createAction(AuthActionType.AUTH_LOGOUT)
 
+export const sagas = [
+
+]
 export default reducer
