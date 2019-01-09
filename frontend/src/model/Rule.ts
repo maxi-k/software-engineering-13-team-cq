@@ -13,6 +13,12 @@ export enum NotificationRecipientType {
   User
 }
 
+export enum PredicateCounterValue {
+  All = "All",
+  Any = "Any",
+  None = "None"
+}
+
 export interface NotificationRecipient {
   type: NotificationRecipientType,
   value: string

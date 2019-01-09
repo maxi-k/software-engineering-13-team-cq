@@ -1,8 +1,8 @@
 import React from 'react'
-import { withTheme, WithTheme } from '@material-ui/core/styles'
+import { PredicateCounterValue } from '@/model/Rule'
 
 export interface PredicateCounterProps {
-  options: string[]
+  options: PredicateCounterValue[]
 }
 
 const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options}) => { 
@@ -10,7 +10,7 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options}) => {
     <p>
       If   
       <select>
-        {options.map((opt: string) => (
+        {options.map((opt: PredicateCounterValue) => (
           <option> {opt} </option>
         ))}
       </select>
@@ -20,4 +20,4 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options}) => {
 }
 
 // @ts-ignore
-export default withTheme()(PredicateCounter)
+export default PredicateCounter

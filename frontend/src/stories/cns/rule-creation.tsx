@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import SingleComponentWrapper from '../SingleComponentWrapper'
+import { PredicateCounterValue } from '@/model/Rule'
 
 /* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
@@ -78,7 +79,7 @@ storiesOf('Rule Creation / Second Step', module)
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 
 const predicateCounterProps: PredicateCounterProps = {
-  options: [ 'All', 'Any', 'None' ]
+  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ]
 }
 
 
