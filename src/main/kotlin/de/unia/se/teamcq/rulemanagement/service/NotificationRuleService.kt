@@ -20,17 +20,14 @@ class NotificationRuleService : INotificationRuleService {
         return notificationRuleRepository.getNotificationRule(ruleId)
     }
 
-    @Transactional
     override fun createNotificationRule(username: String, notificationRule: NotificationRule): NotificationRule? {
         return notificationRuleRepository.createNotificationRule(notificationRule)
     }
 
-    @Transactional
     override fun updateNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         return notificationRuleRepository.updateNotificationRule(notificationRule)
     }
 
-    @Transactional
     override fun deleteNotificationRule(ruleId: Long) {
         notificationRuleRepository.deleteNotificationRule(ruleId)
     }
