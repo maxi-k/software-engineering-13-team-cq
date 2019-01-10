@@ -4,6 +4,7 @@ import StoryWrapper from '../StoryWrapper'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import ErrorMessage from '@/atoms/ErrorMessage'
 import NextButton from '@/atoms/NextButton'
+import BackButton from '@/atoms/BackButton'
 import { action } from '@storybook/addon-actions'
 
 storiesOf('General Components', module)
@@ -17,6 +18,7 @@ storiesOf('General Components', module)
   .add('Large Loading Indicator', () => <LoadingIndicator size={80} />)
   .add('Central Loading Indicator', () => <LoadingIndicator isCentral={true} />)
   .add('Next Button', () => <NextButton onClick={action('Next!')} />)
+  .add('Back Button', () => <BackButton onClick={action('Back!')} />)
   .add('Simple Error Message', () =>
     <ErrorMessage message="This is an error message with a string message" />)
   .add('Complex Error Message', () =>

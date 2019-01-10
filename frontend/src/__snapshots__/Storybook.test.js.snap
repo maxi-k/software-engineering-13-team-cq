@@ -535,6 +535,27 @@ exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots General Components Back Button 1`] = `
+<button
+  className="primary sc-jzJRlG lbarbb"
+  icon={
+    <img
+      src="/assets/svg/chevron-right.svg"
+    />
+  }
+  label="Back"
+  onClick={[Function]}
+  primary="true"
+>
+  <span>
+    Back
+  </span>
+  <img
+    src="/assets/svg/chevron-right.svg"
+  />
+</button>
+`;
+
 exports[`Storyshots General Components Central Loading Indicator 1`] = `
 <div
   className="sc-uJMKN eVXOtU"

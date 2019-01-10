@@ -7,7 +7,7 @@ interface NextButtonAttributes {
 
 export type NextButtonProps = NextButtonAttributes & React.HTMLAttributes<HTMLDivElement>
 
-const NextButton: React.SFC<NextButtonProps> =  ({ onClick}) => (
+const NextButton: React.SFC<NextButtonProps> =  ({ onClick }) => (
   <Button
     onClick={onClick}
     label="Next"
