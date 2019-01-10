@@ -26,7 +26,7 @@ class VehicleStateRepository : IVehicleStateRepository {
     }
 
     override fun getVehicleState(vehicleStateId: Long): VehicleState? {
-        val vehicleStateEntity = vehicleStateEntityRepository.findById(vehicleStateId).get()
+        val vehicleStateEntity = vehicleStateEntityRepository.getOne(vehicleStateId)
 
         return vehicleStateMapper.entityToModel(vehicleStateEntity)
     }
