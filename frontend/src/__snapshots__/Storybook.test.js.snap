@@ -540,7 +540,13 @@ exports[`Storyshots General Components Back Button 1`] = `
   className="primary sc-jzJRlG lbarbb"
   icon={
     <img
-      src="/assets/svg/chevron-right.svg"
+      src="/assets/svg/chevron-left.svg"
+      style={
+        Object {
+          "height": "20px",
+          "width": "20px",
+        }
+      }
     />
   }
   label="Back"
@@ -551,7 +557,13 @@ exports[`Storyshots General Components Back Button 1`] = `
     Back
   </span>
   <img
-    src="/assets/svg/chevron-right.svg"
+    src="/assets/svg/chevron-left.svg"
+    style={
+      Object {
+        "height": "20px",
+        "width": "20px",
+      }
+    }
   />
 </button>
 `;
@@ -592,7 +604,7 @@ exports[`Storyshots General Components Central Loading Indicator 1`] = `
 exports[`Storyshots General Components Complex Error Message 1`] = `
 <div
   aria-describedby="client-snackbar"
-  className="MuiTypography-root-204 MuiTypography-body2-212 MuiPaper-root-177 MuiPaper-elevation6-185 MuiSnackbarContent-root-174"
+  className="MuiTypography-root-213 MuiTypography-body2-221 MuiPaper-root-186 MuiPaper-elevation6-194 MuiSnackbarContent-root-183"
   role="alertdialog"
   style={
     Object {
@@ -601,7 +613,7 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
   }
 >
   <div
-    className="MuiSnackbarContent-message-175"
+    className="MuiSnackbarContent-message-184"
   >
     <span
       id="client-snackbar"
@@ -614,7 +626,7 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-239"
+        className="MuiSvgIcon-root-248"
         focusable="false"
         role="presentation"
         style={
@@ -642,7 +654,7 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
          as message!  
       </span>
       <div
-        className="MuiCircularProgress-root-165 MuiCircularProgress-indeterminate-167"
+        className="MuiCircularProgress-root-174 MuiCircularProgress-indeterminate-176"
         role="progressbar"
         style={
           Object {
@@ -652,11 +664,11 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
         }
       >
         <svg
-          className="MuiCircularProgress-svg-170"
+          className="MuiCircularProgress-svg-179"
           viewBox="22 22 44 44"
         >
           <circle
-            className="MuiCircularProgress-circle-171 MuiCircularProgress-circleIndeterminate-173"
+            className="MuiCircularProgress-circle-180 MuiCircularProgress-circleIndeterminate-182"
             cx={44}
             cy={44}
             fill="none"
@@ -672,11 +684,11 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
     </span>
   </div>
   <div
-    className="MuiSnackbarContent-action-176"
+    className="MuiSnackbarContent-action-185"
   >
     <button
       aria-label="Close"
-      className="MuiButtonBase-root-254 MuiIconButton-root-248 MuiIconButton-colorInherit-249"
+      className="MuiButtonBase-root-263 MuiIconButton-root-257 MuiIconButton-colorInherit-258"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -692,11 +704,11 @@ exports[`Storyshots General Components Complex Error Message 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-253"
+        className="MuiIconButton-label-262"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-239"
+          className="MuiSvgIcon-root-248"
           focusable="false"
           role="presentation"
           style={
@@ -772,7 +784,7 @@ exports[`Storyshots General Components Next Button 1`] = `
 exports[`Storyshots General Components Simple Error Message 1`] = `
 <div
   aria-describedby="client-snackbar"
-  className="MuiTypography-root-112 MuiTypography-body2-120 MuiPaper-root-85 MuiPaper-elevation6-93 MuiSnackbarContent-root-82"
+  className="MuiTypography-root-121 MuiTypography-body2-129 MuiPaper-root-94 MuiPaper-elevation6-102 MuiSnackbarContent-root-91"
   role="alertdialog"
   style={
     Object {
@@ -781,7 +793,7 @@ exports[`Storyshots General Components Simple Error Message 1`] = `
   }
 >
   <div
-    className="MuiSnackbarContent-message-83"
+    className="MuiSnackbarContent-message-92"
   >
     <span
       id="client-snackbar"
@@ -794,7 +806,7 @@ exports[`Storyshots General Components Simple Error Message 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-147"
+        className="MuiSvgIcon-root-156"
         focusable="false"
         role="presentation"
         style={
@@ -818,11 +830,11 @@ exports[`Storyshots General Components Simple Error Message 1`] = `
     </span>
   </div>
   <div
-    className="MuiSnackbarContent-action-84"
+    className="MuiSnackbarContent-action-93"
   >
     <button
       aria-label="Close"
-      className="MuiButtonBase-root-162 MuiIconButton-root-156 MuiIconButton-colorInherit-157"
+      className="MuiButtonBase-root-171 MuiIconButton-root-165 MuiIconButton-colorInherit-166"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -838,11 +850,11 @@ exports[`Storyshots General Components Simple Error Message 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-161"
+        className="MuiIconButton-label-170"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-147"
+          className="MuiSvgIcon-root-156"
           focusable="false"
           role="presentation"
           style={
@@ -902,7 +914,7 @@ exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
     className="sc-feJyhm kDPYsH sc-gGBfsJ gKsVSL"
   >
     <div
-      className="MuiPaper-root-734 MuiPaper-elevation0-736 sc-feJyhm kDPYsH sc-hqyNC dOAmVs"
+      className="MuiPaper-root-743 MuiPaper-elevation0-745 sc-feJyhm kDPYsH sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -944,10 +956,10 @@ exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div
-    className="MuiStep-root-545"
+    className="MuiStep-root-554"
   >
     <button
-      className="MuiButtonBase-root-554 MuiStepButton-root-550"
+      className="MuiButtonBase-root-563 MuiStepButton-root-559"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -964,13 +976,13 @@ exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
       type="button"
     >
       <span
-        className="MuiStepLabel-root-557 MuiStepLabel-horizontal-558"
+        className="MuiStepLabel-root-566 MuiStepLabel-horizontal-567"
       >
         <span
-          className="MuiStepLabel-labelContainer-567"
+          className="MuiStepLabel-labelContainer-576"
         >
           <span
-            className="MuiTypography-root-568 MuiTypography-body2-576 MuiStepLabel-label-560 MuiStepLabel-active-561"
+            className="MuiTypography-root-577 MuiTypography-body2-585 MuiStepLabel-label-569 MuiStepLabel-active-570"
           >
             General
           </span>
@@ -986,7 +998,7 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div
-    className="MuiPaper-root-616 MuiPaper-elevation0-618 MuiStepper-root-612 MuiStepper-horizontal-613"
+    className="MuiPaper-root-625 MuiPaper-elevation0-627 MuiStepper-root-621 MuiStepper-horizontal-622"
     style={
       Object {
         "width": "90%",
@@ -994,10 +1006,10 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
     }
   >
     <div
-      className="MuiStep-root-643 MuiStep-horizontal-644"
+      className="MuiStep-root-652 MuiStep-horizontal-653"
     >
       <button
-        className="MuiButtonBase-root-652 MuiStepButton-root-648 MuiStepButton-horizontal-649"
+        className="MuiButtonBase-root-661 MuiStepButton-root-657 MuiStepButton-horizontal-658"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1014,14 +1026,14 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-655 MuiStepLabel-horizontal-656"
+          className="MuiStepLabel-root-664 MuiStepLabel-horizontal-665"
         >
           <span
-            className="MuiStepLabel-iconContainer-663"
+            className="MuiStepLabel-iconContainer-672"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-671 MuiStepIcon-root-666"
+              className="MuiSvgIcon-root-680 MuiStepIcon-root-675"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -1032,7 +1044,7 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-667"
+                className="MuiStepIcon-text-676"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -1042,10 +1054,10 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-665"
+            className="MuiStepLabel-labelContainer-674"
           >
             <span
-              className="MuiTypography-root-680 MuiTypography-body2-688 MuiStepLabel-label-658"
+              className="MuiTypography-root-689 MuiTypography-body2-697 MuiStepLabel-label-667"
             >
               General
             </span>
@@ -1054,17 +1066,17 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-715 MuiStepConnector-horizontal-716 MuiStepConnector-active-719"
+      className="MuiStepConnector-root-724 MuiStepConnector-horizontal-725 MuiStepConnector-active-728"
     >
       <span
-        className="MuiStepConnector-line-722 MuiStepConnector-lineHorizontal-723"
+        className="MuiStepConnector-line-731 MuiStepConnector-lineHorizontal-732"
       />
     </div>
     <div
-      className="MuiStep-root-643 MuiStep-horizontal-644"
+      className="MuiStep-root-652 MuiStep-horizontal-653"
     >
       <button
-        className="MuiButtonBase-root-652 MuiStepButton-root-648 MuiStepButton-horizontal-649"
+        className="MuiButtonBase-root-661 MuiStepButton-root-657 MuiStepButton-horizontal-658"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1081,14 +1093,14 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-655 MuiStepLabel-horizontal-656"
+          className="MuiStepLabel-root-664 MuiStepLabel-horizontal-665"
         >
           <span
-            className="MuiStepLabel-iconContainer-663"
+            className="MuiStepLabel-iconContainer-672"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-671 MuiStepIcon-root-666 MuiStepIcon-active-668"
+              className="MuiSvgIcon-root-680 MuiStepIcon-root-675 MuiStepIcon-active-677"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -1099,7 +1111,7 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-667"
+                className="MuiStepIcon-text-676"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -1109,10 +1121,10 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-665"
+            className="MuiStepLabel-labelContainer-674"
           >
             <span
-              className="MuiTypography-root-680 MuiTypography-body2-688 MuiStepLabel-label-658 MuiStepLabel-active-659"
+              className="MuiTypography-root-689 MuiTypography-body2-697 MuiStepLabel-label-667 MuiStepLabel-active-668"
             >
               Fleets
             </span>
@@ -1121,17 +1133,17 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-715 MuiStepConnector-horizontal-716 MuiStepConnector-disabled-721"
+      className="MuiStepConnector-root-724 MuiStepConnector-horizontal-725 MuiStepConnector-disabled-730"
     >
       <span
-        className="MuiStepConnector-line-722 MuiStepConnector-lineHorizontal-723"
+        className="MuiStepConnector-line-731 MuiStepConnector-lineHorizontal-732"
       />
     </div>
     <div
-      className="MuiStep-root-643 MuiStep-horizontal-644"
+      className="MuiStep-root-652 MuiStep-horizontal-653"
     >
       <button
-        className="MuiButtonBase-root-652 MuiButtonBase-disabled-653 MuiStepButton-root-648 MuiStepButton-horizontal-649"
+        className="MuiButtonBase-root-661 MuiButtonBase-disabled-662 MuiStepButton-root-657 MuiStepButton-horizontal-658"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1148,14 +1160,14 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-655 MuiStepLabel-horizontal-656 MuiStepLabel-disabled-662"
+          className="MuiStepLabel-root-664 MuiStepLabel-horizontal-665 MuiStepLabel-disabled-671"
         >
           <span
-            className="MuiStepLabel-iconContainer-663"
+            className="MuiStepLabel-iconContainer-672"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-671 MuiStepIcon-root-666"
+              className="MuiSvgIcon-root-680 MuiStepIcon-root-675"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -1166,7 +1178,7 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-667"
+                className="MuiStepIcon-text-676"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -1176,10 +1188,10 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-665"
+            className="MuiStepLabel-labelContainer-674"
           >
             <span
-              className="MuiTypography-root-680 MuiTypography-body2-688 MuiStepLabel-label-658"
+              className="MuiTypography-root-689 MuiTypography-body2-697 MuiStepLabel-label-667"
             >
               Condition
             </span>
@@ -1446,7 +1458,7 @@ exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
   size="80"
 >
   <div
-    className="MuiCircularProgress-root-435 MuiCircularProgress-colorPrimary-438 MuiCircularProgress-indeterminate-437"
+    className="MuiCircularProgress-root-444 MuiCircularProgress-colorPrimary-447 MuiCircularProgress-indeterminate-446"
     role="progressbar"
     style={
       Object {
@@ -1456,11 +1468,11 @@ exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
     }
   >
     <svg
-      className="MuiCircularProgress-svg-440"
+      className="MuiCircularProgress-svg-449"
       viewBox="22 22 44 44"
     >
       <circle
-        className="MuiCircularProgress-circle-441 MuiCircularProgress-circleIndeterminate-443"
+        className="MuiCircularProgress-circle-450 MuiCircularProgress-circleIndeterminate-452"
         cx={44}
         cy={44}
         fill="none"
@@ -1481,7 +1493,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
     className="sc-tilXH bJLPWy sc-gGBfsJ kPSuHc"
   >
     <div
-      className="MuiPaper-root-373 MuiPaper-elevation0-375 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-382 MuiPaper-elevation0-384 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -1518,7 +1530,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
     className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
   >
     <div
-      className="MuiPaper-root-373 MuiPaper-elevation0-375 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-382 MuiPaper-elevation0-384 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -1528,7 +1540,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           className="nav-label sc-fYxtnH dwaVQg"
         >
           <h6
-            className="MuiTypography-root-400 MuiTypography-h6-417"
+            className="MuiTypography-root-409 MuiTypography-h6-426"
           >
             Rule Name
           </h6>
@@ -1536,7 +1548,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <h6
-            className="MuiTypography-root-400 MuiTypography-subtitle1-418"
+            className="MuiTypography-root-409 MuiTypography-subtitle1-427"
           >
             Sent every Tuesday, 9:00 AM
           </h6>
@@ -1577,7 +1589,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
     className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
   >
     <div
-      className="MuiPaper-root-373 MuiPaper-elevation0-375 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-382 MuiPaper-elevation0-384 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -1587,7 +1599,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           className="nav-label sc-fYxtnH dwaVQg"
         >
           <h6
-            className="MuiTypography-root-400 MuiTypography-h6-417"
+            className="MuiTypography-root-409 MuiTypography-h6-426"
           >
             Rule Name 2
           </h6>
@@ -1595,7 +1607,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <h6
-            className="MuiTypography-root-400 MuiTypography-subtitle1-418"
+            className="MuiTypography-root-409 MuiTypography-subtitle1-427"
           >
             Sent every Tuesday, 9:00 AM
           </h6>
@@ -1641,7 +1653,7 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
 >
   <div
     aria-describedby="client-snackbar"
-    className="MuiTypography-root-483 MuiTypography-body2-491 MuiPaper-root-456 MuiPaper-elevation6-464 MuiSnackbarContent-root-453"
+    className="MuiTypography-root-492 MuiTypography-body2-500 MuiPaper-root-465 MuiPaper-elevation6-473 MuiSnackbarContent-root-462"
     role="alertdialog"
     style={
       Object {
@@ -1650,7 +1662,7 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
     }
   >
     <div
-      className="MuiSnackbarContent-message-454"
+      className="MuiSnackbarContent-message-463"
     >
       <span
         id="client-snackbar"
@@ -1663,7 +1675,7 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-518"
+          className="MuiSvgIcon-root-527"
           focusable="false"
           role="presentation"
           style={
@@ -1687,11 +1699,11 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
       </span>
     </div>
     <div
-      className="MuiSnackbarContent-action-455"
+      className="MuiSnackbarContent-action-464"
     >
       <button
         aria-label="Close"
-        className="MuiButtonBase-root-533 MuiIconButton-root-527 MuiIconButton-colorInherit-528"
+        className="MuiButtonBase-root-542 MuiIconButton-root-536 MuiIconButton-colorInherit-537"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -1707,11 +1719,11 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
         type="button"
       >
         <span
-          className="MuiIconButton-label-532"
+          className="MuiIconButton-label-541"
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-518"
+            className="MuiSvgIcon-root-527"
             focusable="false"
             role="presentation"
             style={
@@ -1744,7 +1756,7 @@ exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
     className="sc-tilXH bJLPWy sc-gGBfsJ gKsVSL"
   >
     <div
-      className="MuiPaper-root-266 MuiPaper-elevation0-268 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-275 MuiPaper-elevation0-277 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -1788,7 +1800,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
     className="sc-ktHwxA bEXIEy sc-gGBfsJ gKsVSL"
   >
     <div
-      className="MuiPaper-root-302 MuiPaper-elevation0-304 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-311 MuiPaper-elevation0-313 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
     >
       <div
         className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
@@ -1797,7 +1809,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
           className="nav-label sc-fYxtnH dwaVQg"
         >
           <h6
-            className="MuiTypography-root-329 MuiTypography-h6-346"
+            className="MuiTypography-root-338 MuiTypography-h6-355"
           >
             Rule Name
           </h6>
@@ -1805,7 +1817,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <h6
-            className="MuiTypography-root-329 MuiTypography-subtitle1-347"
+            className="MuiTypography-root-338 MuiTypography-subtitle1-356"
           >
             Sent every Tuesday, 9:00 AM
           </h6>

@@ -2,8 +2,8 @@ import React from 'react'
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
 
 interface BackButtonAttributes {
-  onClick(event: React.SyntheticEvent<any, any>): void,
-  size?: number 
+  size?: number,
+  onClick(event: React.SyntheticEvent<any, any>): void
 }
 
 export type BackButtonProps = BackButtonAttributes & React.HTMLAttributes<HTMLDivElement>;
@@ -18,5 +18,3 @@ const BackButton: React.SFC<BackButtonProps> = ({ onClick, size = 20 }) => (
 )
 
 export default BackButton
-
-
