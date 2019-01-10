@@ -1,6 +1,5 @@
 import React from 'react'
 import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
-// import { Button } from '@/fleetdata/shared/components/actions/actions.styles';
 
 interface ClosingButtonAttributes {
   onClick(event: React.SyntheticEvent<any, any>): void

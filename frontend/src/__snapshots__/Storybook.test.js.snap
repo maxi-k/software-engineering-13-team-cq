@@ -912,6 +912,11 @@ exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 >
   <div
     onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
   >
     <svg
       height="100%"
