@@ -15,17 +15,19 @@ import RuleIcon from '@/icons/RuleIcon'
 import NextButton from '@/atoms/NextButton'
 import BackButton from '@/atoms/BackButton'
 
-interface RuleDetailAttributes {
+export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
+
+export interface RuleDetailAttributes {
   rule: NotificationRuleDetail
+  finishGeneral: FinishGeneralType
 }
 
-type RuleDetailProps = FetchingAttributes
+export type RuleDetailProps = FetchingAttributes
   & RuleDetailAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledRuleDetail = styled.div`
 `
-
 const StyledRuleInformation = styled.div`
     display: flex;
     flex-direction: row;
@@ -40,9 +42,12 @@ const StyledInfoBlock = styled.div`
 const StyledFieldSeparator = styled.div`
     padding: 1rem;
 `
+const generalFinisher = (finishGeneral: FinishGeneralType) =>
+    (e: React.SyntheticEvent<any, any>): void =>
+      finishGeneral(e)
 
 const RuleDetail: React.SFC<RuleDetailProps> = ({
-  isFetching, hasFetchError, rule, ...props
+  isFetching, hasFetchError, rule, finishGeneral, ...props
 }) => {
 
   if (hasFetchError) {
@@ -100,7 +105,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
       </StyledRuleInformation>
       <StyledFieldSeparator />
       <div style={{ paddingLeft: '76rem' }}>
-     <NextButton onClick={action('Next!')}/> 
+     <NextButton onClick={generalFinisher(finishGeneral)}/> 
       </div>
       <div style={{ paddingLeft: '1rem' }}>
       <BackButton onClick={action('Back!')} />
