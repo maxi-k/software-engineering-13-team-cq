@@ -3,11 +3,11 @@ package de.unia.se.teamcq.rulemanagement.controller
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
+import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
-import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
-import de.unia.se.teamcq.user.entity.IUserRepository
 import de.unia.se.teamcq.user.model.User
+import de.unia.se.teamcq.user.service.IUserService
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -38,7 +38,7 @@ class NotificationRuleControllerTest : StringSpec() {
     private lateinit var notificationRuleService: INotificationRuleService
 
     @MockK
-    private lateinit var userRepository: IUserRepository
+    private lateinit var userService: IUserService
 
     @InjectMockKs
     private lateinit var notificationRuleController: NotificationRuleController
@@ -54,14 +54,11 @@ class NotificationRuleControllerTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        // Define a vehicle status we are working with
         val mockedNotificationRule = getTestNotificationRuleModel()
         val mockedNotificationRuleDto = getTestNotificationRuleDto()
 
-        // Define what the mocked service should return
-        // - 'create' should return just the passed object
         every { notificationRuleService.createNotificationRule(any(), any()) } returns mockedNotificationRule.copy(56)
-        // - 'get' should return the only status we know, `mockedVehicleStatus`
+
         every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns mockedNotificationRule.copy(56)
         every { notificationRuleService.getNotificationRule(not(mockedNotificationRule.id!!)) } returns null
 
@@ -70,7 +67,7 @@ class NotificationRuleControllerTest : StringSpec() {
 
         every { securityContext.authentication } returns authentication
         every { authentication.name } returns "Max Mustermann"
-        every { userRepository.getOrCreateUser(any()) } returns User("Max Mustermann", null, null, null)
+        every { userService.getOrCreateUser(any()) } returns User("Max Mustermann", null, null, null)
 
         val mockMvc = MockMvcBuilders
                 .standaloneSetup(notificationRuleController)
@@ -82,7 +79,7 @@ class NotificationRuleControllerTest : StringSpec() {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext)
 
-        "returns stored vehicle status" {
+        "returns stored notification rules" {
 
             SecurityContextHolder.setContext(securityContext)
 
@@ -93,11 +90,11 @@ class NotificationRuleControllerTest : StringSpec() {
                     .contentType(MediaType.APPLICATION_JSON_UTF8))
                     .andExpect(status().isOk)
                     .andExpect { result ->
-                        val returnedNotificationRule = gson.fromJson(
+                        val returnedNotificationRuleDto = gson.fromJson(
                                 result.response.contentAsString,
-                                NotificationRule::class.java)
+                                NotificationRuleDto::class.java)
 
-                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 56)
+                        returnedNotificationRuleDto shouldBe mockedNotificationRuleDto.copy(id = 56)
                     }
 
             verify(exactly = 1) {
@@ -105,7 +102,7 @@ class NotificationRuleControllerTest : StringSpec() {
             }
         }
 
-        "returns a 404 error if there is no such status" {
+        "returns a 404 error if there is no such notification rules" {
 
             SecurityContextHolder.setContext(securityContext)
 
@@ -115,25 +112,23 @@ class NotificationRuleControllerTest : StringSpec() {
                     .andExpect(status().isNotFound)
         }
 
-        "inserts vehicle status successfully" {
+        "inserts notification rules successfully" {
 
             SecurityContextHolder.setContext(securityContext)
 
-            // Perform a POST request to /events/vehicle-status
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(mockedNotificationRule)))
                     .andExpect(status().isOk)
                     .andExpect { result ->
-                        val returnedNotificationRule = gson.fromJson(
+                        val returnedNotificationRuleDto = gson.fromJson(
                                 result.response.contentAsString,
-                                NotificationRule::class.java)
+                                NotificationRuleDto::class.java)
 
-                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 56)
+                        returnedNotificationRuleDto shouldBe mockedNotificationRuleDto.copy(id = 56)
                     }
 
-            // Verify that the mocked service was called exactly once
             verify(exactly = 1) {
                 notificationRuleService.createNotificationRule("Max Mustermann", any())
             }

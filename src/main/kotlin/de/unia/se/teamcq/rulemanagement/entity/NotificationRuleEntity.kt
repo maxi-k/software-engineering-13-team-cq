@@ -21,7 +21,7 @@ data class NotificationRuleEntity(
     @get: NotNull
     var name: String?,
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_owner")
     var owner: UserEntity?,
 

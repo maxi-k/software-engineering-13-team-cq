@@ -3,7 +3,7 @@ package de.unia.se.teamcq.rulemanagement.controller
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
-import de.unia.se.teamcq.user.entity.IUserRepository
+import de.unia.se.teamcq.user.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
@@ -28,7 +28,7 @@ class NotificationRuleController {
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
     @Autowired
-    lateinit var userRepository: IUserRepository
+    lateinit var userService: IUserService
 
     @GetMapping("/notification-rule")
     fun getNotificationRules(): List<NotificationRuleDto> {
@@ -59,7 +59,7 @@ class NotificationRuleController {
     @PostMapping("/notification-rule")
     fun createNotificationRule(@Valid @RequestBody notificationRuleDto: NotificationRuleDto): ResponseEntity<NotificationRuleDto> {
         val username = SecurityContextHolder.getContext().authentication.name
-        val user = userRepository.getOrCreateUser(username)
+        val user = userService.getOrCreateUser(username)
 
         val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto).copy(owner = user)
         val notificationRuleIfCreated = notificationRuleService.createNotificationRule(username, notificationRuleToCreate)

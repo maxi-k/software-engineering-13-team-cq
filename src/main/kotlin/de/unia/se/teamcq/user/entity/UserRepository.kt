@@ -25,7 +25,7 @@ class UserRepository : IUserRepository {
 
         val userEntityToSave = userMapper.modelToEntity(user)
 
-        // User doesn't have the ownedNotificationRules attribute, so we don't want to overwrite it
+        // User doesn't have the ownedNotificationRules attribute, so we don't want to override it
         val ownedNotificationRules = userEntityRepository.findById(user.name!!).orElse(null)?.notificationRules
         userEntityToSave.notificationRules = ownedNotificationRules
 

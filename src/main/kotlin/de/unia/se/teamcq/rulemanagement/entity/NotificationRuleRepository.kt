@@ -3,7 +3,7 @@ package de.unia.se.teamcq.rulemanagement.entity
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
-import de.unia.se.teamcq.user.entity.IUserRepository
+import org.hibernate.Hibernate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
@@ -25,8 +25,11 @@ class NotificationRuleRepository : INotificationRuleRepository {
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
-        val notificationRuleEntities = userEntityRepository.findById(username).orElse(null)
-                ?.notificationRules.orEmpty()
+        val userEntity = userEntityRepository.getOne(username)
+
+        Hibernate.initialize(userEntity.notificationRules)
+
+        val notificationRuleEntities = userEntity.notificationRules.orEmpty()
 
         return notificationRuleEntities.map { notificationRuleEntity ->
             notificationRuleMapper.entityToModel(notificationRuleEntity)

@@ -11,6 +11,8 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -28,29 +30,73 @@ object TestUtils {
 
     fun getTestNotificationRuleModel(): NotificationRule {
         return NotificationRuleBuilder()
-                .withId(42)
+                .withId(1)
                 .withName("rule_name")
-                .withOwner(User(name = "Max Mustermann", mailAddress = "test@example.de", cellPhoneNumber = "1",
-                        userSettings = UserSettings(UserNotificationType.EMAIL)))
+                .withOwner(getTestUserModel())
                 .withDescription("description")
                 .build()
     }
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
         return NotificationRuleDto(
-                id = 42,
+                id = 1,
                 name = "rule_name",
-                owner = UserDto(name = "Max Mustermann", mailAddress = "test@example.de", cellPhoneNumber = "1", userSettings = UserSettingsDto(UserNotificationType.EMAIL)),
+                owner = getTestUserDto(),
                 description = "description"
         )
     }
 
     fun getTestNotificationRuleEntity(): NotificationRuleEntity {
         return NotificationRuleEntity(
-                id = 42,
+                id = 1,
                 name = "rule_name",
-                owner = UserEntity(name = "Max Mustermann", mailAddress = "test@example.de", cellPhoneNumber = "1", userSettings = UserSettingsEntity(0, UserNotificationType.EMAIL), notificationRules = null),
+                owner = getTestUserEntity(),
                 description = "description"
+        )
+    }
+
+    fun getTestUserModel(): User {
+        return User(
+                name = "Max Mustermann",
+                mailAddress = "test@example.de",
+                cellPhoneNumber = "1",
+                userSettings = UserSettings(UserNotificationType.EMAIL)
+        )
+    }
+
+    fun getTestUserDto(): UserDto {
+        return UserDto(
+                name = "Max Mustermann",
+                mailAddress = "test@example.de",
+                cellPhoneNumber = "1",
+                userSettings = UserSettingsDto(UserNotificationType.EMAIL)
+        )
+    }
+
+    fun getTestUserEntity(): UserEntity {
+        return UserEntity(
+                name = "Max Mustermann",
+                mailAddress = "test@example.de",
+                cellPhoneNumber = "1",
+                userSettings = UserSettingsEntity(0, UserNotificationType.EMAIL),
+                notificationRules = emptySet())
+    }
+
+    fun getTestVehicleStateModel(): VehicleState {
+        return VehicleState(
+                1,
+                "name",
+                10,
+                0.2
+        )
+    }
+
+    fun getTestVehicleStateEnity(): VehicleStateEntity {
+        return VehicleStateEntity(
+                1,
+                "name",
+                10,
+                0.2
         )
     }
 }

@@ -4,6 +4,7 @@ import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import java.io.Serializable
 import javax.persistence.Id
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.OneToMany
 
 @Entity
@@ -18,7 +19,9 @@ class UserEntity(
 
     var userSettings: UserSettingsEntity?,
 
-    @OneToMany(mappedBy = "owner")
+    // Eager should to be changed to lazy if the amount of entities we were told to expect
+    // per user is actually bigger
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     var notificationRules: Set<NotificationRuleEntity>?
 
 ) : Serializable {

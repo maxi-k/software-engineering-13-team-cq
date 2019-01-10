@@ -20,8 +20,8 @@ class VehicleStateRepository : IVehicleStateRepository {
     lateinit var vehicleStateMapper: IVehicleStateMapper
 
     override fun getAllVehicleStates(): List<VehicleState> {
-        return vehicleStateEntityRepository.findAll().map { notificationRuleEntity ->
-            vehicleStateMapper.entityToModel(notificationRuleEntity)
+        return vehicleStateEntityRepository.findAll().map { vehicleStateEntity ->
+            vehicleStateMapper.entityToModel(vehicleStateEntity)
         }
     }
 
