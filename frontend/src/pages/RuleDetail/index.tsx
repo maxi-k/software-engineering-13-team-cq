@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
-
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
@@ -66,7 +65,7 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
 }
 
 const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
-  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
+  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleDetailCondition'))),
   abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
