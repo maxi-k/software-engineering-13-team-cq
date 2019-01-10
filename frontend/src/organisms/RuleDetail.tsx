@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
-import { action } from '@storybook/addon-actions'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -16,10 +15,12 @@ import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 
 export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
+export type AbortGeneralType = (event: React.SyntheticEvent<any, any>) => void
 
 export interface RuleDetailAttributes {
   rule: NotificationRuleDetail
   finishGeneral: FinishGeneralType
+  abortGeneral: AbortGeneralType
 }
 
 export type RuleDetailProps = FetchingAttributes
@@ -46,8 +47,12 @@ const generalFinisher = (finishGeneral: FinishGeneralType) =>
     (e: React.SyntheticEvent<any, any>): void =>
       finishGeneral(e)
 
+const generalAborter = (abortGeneral: AbortGeneralType) =>
+    (e: React.SyntheticEvent<any, any>): void =>
+      abortGeneral(e)
+
 const RuleDetail: React.SFC<RuleDetailProps> = ({
-  isFetching, hasFetchError, rule, finishGeneral, ...props
+  isFetching, hasFetchError, rule, finishGeneral, abortGeneral, ...props
 }) => {
 
   if (hasFetchError) {
@@ -68,7 +73,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
         "{rule.name}"
       </Typography>
       <div style={{ paddingLeft: '76rem' }}>
-      <ClosingButton onClick={action('Back!')} />
+      <ClosingButton onClick={generalAborter(abortGeneral)} />
       </div>
       <StyledFieldSeparator />
       <StyledRuleInformation>

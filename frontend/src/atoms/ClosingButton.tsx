@@ -1,16 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
-import BaseTile, { RuleTileProps } from './RuleTileBase'
 import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
 
-const StyledCloseRuleTile = styled(BaseTile)`
-  cursor: pointer;
-`
+interface ClosingButtonAttributes {
+  onClick(event: React.SyntheticEvent<any, any>): void
+}
 
-const ClosingButton: React.SFC<RuleTileProps> = (props) => (
-  <StyledCloseRuleTile {...props}>
-    <CloseIcon />
-  </StyledCloseRuleTile>
+export type ClosingButtonProps = ClosingButtonAttributes & React.HTMLAttributes<HTMLDivElement>
+
+const ClosingButton: React.SFC<ClosingButtonProps> = ({ onClick }) => (
+    <div onClick = { onClick }>
+      <CloseIcon/>
+    </div>
 )
 
 export default ClosingButton
