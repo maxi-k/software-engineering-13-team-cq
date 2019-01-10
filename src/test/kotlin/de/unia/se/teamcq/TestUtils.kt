@@ -30,7 +30,7 @@ object TestUtils {
 
     fun getTestNotificationRuleModel(): NotificationRule {
         return NotificationRuleBuilder()
-                .withId(1)
+                .withId(0)
                 .withName("rule_name")
                 .withOwner(getTestUserModel())
                 .withDescription("description")
@@ -39,7 +39,7 @@ object TestUtils {
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
         return NotificationRuleDto(
-                id = 1,
+                id = 0,
                 name = "rule_name",
                 owner = getTestUserDto(),
                 description = "description"
@@ -48,7 +48,7 @@ object TestUtils {
 
     fun getTestNotificationRuleEntity(): NotificationRuleEntity {
         return NotificationRuleEntity(
-                id = 1,
+                id = 0,
                 name = "rule_name",
                 owner = getTestUserEntity(),
                 description = "description"
@@ -84,7 +84,7 @@ object TestUtils {
 
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
-                1,
+                0,
                 "name",
                 10,
                 0.2
@@ -93,7 +93,7 @@ object TestUtils {
 
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
-                1,
+                0,
                 "name",
                 10,
                 0.2

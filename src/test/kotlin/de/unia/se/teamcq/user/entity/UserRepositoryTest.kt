@@ -1,6 +1,5 @@
 package de.unia.se.teamcq.user.entity
 
-import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import io.kotlintest.shouldBe
