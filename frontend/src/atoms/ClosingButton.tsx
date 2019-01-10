@@ -1,5 +1,6 @@
 import React from 'react'
 import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
+// import { Button } from '@/fleetdata/shared/components/actions/actions.styles';
 
 interface ClosingButtonAttributes {
   onClick(event: React.SyntheticEvent<any, any>): void
@@ -8,9 +9,9 @@ interface ClosingButtonAttributes {
 export type ClosingButtonProps = ClosingButtonAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const ClosingButton: React.SFC<ClosingButtonProps> = ({ onClick }) => (
-    <div onClick = { onClick }>
-      <CloseIcon/>
-    </div>
+  <div onClick = {onClick} style={{ cursor: 'pointer'}}>
+  <CloseIcon/>
+</div>
 )
 
 export default ClosingButton
