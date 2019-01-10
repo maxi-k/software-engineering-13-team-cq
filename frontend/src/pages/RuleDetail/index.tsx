@@ -8,13 +8,14 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetail from '@/organisms/RuleDetail'
+import RuleDetail, { FinishGeneralType } from '@/organisms/RuleDetail'
 
 export interface RuleDetailPageAttributes {
   // Needs to be string because it comes
   // from the router props
   parameters: {
     ruleId: string
+    finishGeneral: FinishGeneralType
   }
 }
 
