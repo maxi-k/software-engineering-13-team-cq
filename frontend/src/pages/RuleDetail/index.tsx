@@ -15,7 +15,6 @@ export interface RuleDetailPageAttributes {
   // from the router props
   parameters: {
     ruleId: string
-    finishGeneral: FinishGeneralType
   }
 }
 
@@ -24,6 +23,7 @@ export interface StateAttributes extends FetchingAttributes {
 }
 
 export interface DispatchAttributes {
+  finishGeneral: FinishGeneralType,
   fetchRule(): void,
   editRule(): void,
   deleteRule(): void
@@ -65,6 +65,7 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
 }
 
 const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },
