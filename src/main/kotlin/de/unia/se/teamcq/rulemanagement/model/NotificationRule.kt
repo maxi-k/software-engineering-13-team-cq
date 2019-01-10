@@ -23,9 +23,6 @@ data class NotificationRule(
     // @get: NotNull
     // var aggregator: Aggregator,
 
-    // @get: NotNull
-    // var creator: User
-
 ) {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)

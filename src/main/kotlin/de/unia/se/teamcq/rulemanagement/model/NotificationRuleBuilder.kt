@@ -24,11 +24,10 @@ class NotificationRuleBuilder private constructor() {
 
     fun withDescription(description: String): NotificationRuleBuilder = apply { this.description = description }
 
-    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description) // , fleets, formula, aggregator, user)
+    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description)
 
     companion object {
         operator fun invoke(): NotificationRuleBuilder {
-            // do stuff
 
             return NotificationRuleBuilder()
         }

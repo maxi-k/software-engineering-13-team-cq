@@ -57,7 +57,6 @@ class NotificationRuleRepository : INotificationRuleRepository {
     override fun updateNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
-        // FIXME: Check if this overwrites user
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)
