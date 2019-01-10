@@ -2,6 +2,7 @@ package de.unia.se.teamcq.rulemanagement
 
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.buildMockMvc
+import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
@@ -35,7 +36,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
-            val notificationRuleToCreate = NotificationRuleDto(0, "name", "description")
+            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 0)
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
@@ -48,7 +49,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
-            val notificationRuleToCreate = NotificationRuleDto(0, "name", "description")
+            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 0)
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
@@ -62,9 +63,9 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
-            val accessToken = jwtTokenAuthenticationFilter.createToken("username")
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
 
-            val notificationRuleToCreate = NotificationRuleDto(0, "name", "description")
+            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 2)
 
             var returnedNotificationRule: NotificationRuleDto? = null
 
@@ -80,7 +81,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                                 NotificationRuleDto::class.java)
 
                         returnedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
-                        returnedNotificationRule!!.name shouldBe "name"
+                        returnedNotificationRule!!.name shouldBe "rule_name"
                         returnedNotificationRule!!.description shouldBe "description"
                     }
 
@@ -97,7 +98,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                                 NotificationRule::class.java)
 
                         retrievedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
-                        retrievedNotificationRule.name shouldBe "name"
+                        retrievedNotificationRule.name shouldBe "rule_name"
                         retrievedNotificationRule.description shouldBe "description"
                     }
         }

@@ -1,17 +1,14 @@
 package de.unia.se.teamcq.rulemanagement.dto
 
+import de.unia.se.teamcq.user.dto.UserDto
 import java.io.Serializable
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.validation.constraints.NotNull
 
 data class NotificationRuleDto(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,
 
-    @get: NotNull
     var name: String?,
+
+    var owner: UserDto?,
 
     // @get: NotNull
     // var recipients: List<String>,
@@ -34,5 +31,5 @@ data class NotificationRuleDto(
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 }

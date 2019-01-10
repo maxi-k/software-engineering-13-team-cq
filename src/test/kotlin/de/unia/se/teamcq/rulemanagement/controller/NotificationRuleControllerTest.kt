@@ -1,10 +1,13 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import com.google.gson.Gson
-import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
+import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
+import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
+import de.unia.se.teamcq.user.entity.IUserRepository
+import de.unia.se.teamcq.user.model.User
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -34,6 +37,9 @@ class NotificationRuleControllerTest : StringSpec() {
     @MockK
     private lateinit var notificationRuleService: INotificationRuleService
 
+    @MockK
+    private lateinit var userRepository: IUserRepository
+
     @InjectMockKs
     private lateinit var notificationRuleController: NotificationRuleController
 
@@ -49,21 +55,22 @@ class NotificationRuleControllerTest : StringSpec() {
         MockKAnnotations.init(this)
 
         // Define a vehicle status we are working with
-        val mockedNotificationRule = NotificationRule(id = 42, name = "test", description = "test")
-        val mockedNotificationRuleDto = NotificationRuleDto(id = 42, name = "test", description = "test")
+        val mockedNotificationRule = getTestNotificationRuleModel()
+        val mockedNotificationRuleDto = getTestNotificationRuleDto()
 
         // Define what the mocked service should return
         // - 'create' should return just the passed object
-        every { notificationRuleService.createNotificationRule(any(), any()) } returns mockedNotificationRule.copy(2)
+        every { notificationRuleService.createNotificationRule(any(), any()) } returns mockedNotificationRule.copy(56)
         // - 'get' should return the only status we know, `mockedVehicleStatus`
-        every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns mockedNotificationRule
+        every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns mockedNotificationRule.copy(56)
         every { notificationRuleService.getNotificationRule(not(mockedNotificationRule.id!!)) } returns null
 
-        every { mockNotificationRuleMapper.dtoToModel(any()) } returns mockedNotificationRule
-        every { mockNotificationRuleMapper.modelToDto(any()) } returns mockedNotificationRuleDto.copy(id = 2)
+        every { mockNotificationRuleMapper.dtoToModel(any()) } returns mockedNotificationRule.copy(56)
+        every { mockNotificationRuleMapper.modelToDto(any()) } returns mockedNotificationRuleDto.copy(id = 56)
 
         every { securityContext.authentication } returns authentication
-        every { authentication.name } returns "username"
+        every { authentication.name } returns "Max Mustermann"
+        every { userRepository.getOrCreateUser(any()) } returns User("Max Mustermann", null, null, null)
 
         val mockMvc = MockMvcBuilders
                 .standaloneSetup(notificationRuleController)
@@ -90,7 +97,7 @@ class NotificationRuleControllerTest : StringSpec() {
                                 result.response.contentAsString,
                                 NotificationRule::class.java)
 
-                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 2)
+                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 56)
                     }
 
             verify(exactly = 1) {
@@ -103,7 +110,7 @@ class NotificationRuleControllerTest : StringSpec() {
             SecurityContextHolder.setContext(securityContext)
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/1029")
+                    .get("/notification-rule-management/notification-rule/1045")
                     .contentType(MediaType.APPLICATION_JSON_UTF8))
                     .andExpect(status().isNotFound)
         }
@@ -128,7 +135,7 @@ class NotificationRuleControllerTest : StringSpec() {
 
             // Verify that the mocked service was called exactly once
             verify(exactly = 1) {
-                notificationRuleService.createNotificationRule("username", any())
+                notificationRuleService.createNotificationRule("Max Mustermann", any())
             }
         }
     }

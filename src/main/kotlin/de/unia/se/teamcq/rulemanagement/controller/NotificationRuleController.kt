@@ -3,17 +3,11 @@ package de.unia.se.teamcq.rulemanagement.controller
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
+import de.unia.se.teamcq.user.entity.IUserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -26,9 +20,13 @@ class NotificationRuleController {
     @Autowired
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
+    @Autowired
+    lateinit var userRepository: IUserRepository
+
     @GetMapping("/notification-rule")
     fun getNotificationRules(): List<NotificationRuleDto> {
         val username = SecurityContextHolder.getContext().authentication.name
+
         val notificationRules = notificationRuleService.getNotificationRulesForUser(username)
 
         return notificationRules
@@ -37,9 +35,12 @@ class NotificationRuleController {
 
     @GetMapping("/notification-rule/{ruleId}")
     fun getNotificationRule(@PathVariable(value = "ruleId") ruleId: Long): ResponseEntity<NotificationRuleDto> {
-        // Fixme: Access Control
         val username = SecurityContextHolder.getContext().authentication.name
         val notificationRuleIfPresent = notificationRuleService.getNotificationRule(ruleId)
+
+        if (notificationRuleIfPresent?.owner?.name != username) {
+            return ResponseEntity.badRequest().build()
+        }
 
         return notificationRuleIfPresent?.let { notificationRule ->
             ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
@@ -49,8 +50,11 @@ class NotificationRuleController {
     @PostMapping("/notification-rule")
     fun createNotificationRule(@Valid @RequestBody notificationRuleDto: NotificationRuleDto): ResponseEntity<NotificationRuleDto> {
         val username = SecurityContextHolder.getContext().authentication.name
-        val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
+        val user = userRepository.getOrCreateUser(username)
+
+        val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto).copy(owner = user)
         val notificationRuleIfCreated = notificationRuleService.createNotificationRule(username, notificationRuleToCreate)
+
 
         return notificationRuleIfCreated?.let { notificationRule ->
             ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
@@ -64,6 +68,12 @@ class NotificationRuleController {
     ): ResponseEntity<NotificationRuleDto> {
 
         val username = SecurityContextHolder.getContext().authentication.name
+        val notificationRuleIfPresent = notificationRuleService.getNotificationRule(ruleId)
+
+        if (notificationRuleIfPresent?.owner?.name != username) {
+            return ResponseEntity.badRequest().build()
+        }
+
         val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
         val notificationRuleIfUpdated = notificationRuleService.updateNotificationRule(notificationRuleToCreate)
 
@@ -73,8 +83,16 @@ class NotificationRuleController {
     }
 
     @DeleteMapping("/notification-rule/{ruleId}")
-    fun deleteNotificationRule(@PathVariable(value = "ruleId") ruleId: Long): Boolean {
+    fun deleteNotificationRule(@PathVariable(value = "ruleId") ruleId: Long): ResponseEntity<Any> {
         val username = SecurityContextHolder.getContext().authentication.name
-        return true
+        val notificationRuleIfPresent = notificationRuleService.getNotificationRule(ruleId)
+
+        return if (notificationRuleIfPresent?.owner?.name != username) {
+            ResponseEntity.badRequest().build()
+        } else {
+            notificationRuleService.deleteNotificationRule(ruleId)
+            ResponseEntity.ok().build()
+        }
+
     }
 }

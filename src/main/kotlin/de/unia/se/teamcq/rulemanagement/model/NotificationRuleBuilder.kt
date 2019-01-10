@@ -1,42 +1,36 @@
 package de.unia.se.teamcq.rulemanagement.model
 
-import de.unia.se.teamcq.notificationmanagement.Aggregator
-import de.unia.se.teamcq.notificationmanagement.ImmediateAggregator
-import de.unia.se.teamcq.user.User
-import de.unia.se.teamcq.user.UserNotificationType
-import de.unia.se.teamcq.user.UserSettings
+import de.unia.se.teamcq.user.model.User
 
-class NotificationRuleBuilder {
+class NotificationRuleBuilder private constructor() {
 
-    var name: String = ""
-        private set
-    var recipients: MutableList<String> = mutableListOf()
-        private set
-    var description: String = ""
-        private set
-    // var fleets: MutableList<Fleet> = mutableListOf()
-        // private set
-    // var formula: Formula = Formula ()
-        // private set
-    var aggregator: Aggregator = ImmediateAggregator()
+    var ruleId: Long? = 0
         private set
 
-    var user: User = User(null, null, UserSettings(UserNotificationType.EMAIL))
+    var name: String? = ""
         private set
+
+    var owner: User? = null
+        private set
+
+    var description: String? = null
+        private set
+
+    fun withId(ruleId: Long): NotificationRuleBuilder = apply { this.ruleId = ruleId }
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }
 
-    fun withRecipients(recipients: MutableList<String>): NotificationRuleBuilder = apply { this.recipients = recipients }
+    fun withOwner(user: User): NotificationRuleBuilder = apply { this.owner = user }
 
     fun withDescription(description: String): NotificationRuleBuilder = apply { this.description = description }
 
-    // fun withFleets(fleets: MutableList<Fleet>): NotificationRuleBuilder = apply { this.fleets = fleets }
+    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description) // , fleets, formula, aggregator, user)
 
-    // fun withFormula(formula: Formula): NotificationRuleBuilder = apply { this.formula = formula }
+    companion object {
+        operator fun invoke(): NotificationRuleBuilder {
+            // do stuff
 
-    fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
-
-    fun withUser(user: User): NotificationRuleBuilder = apply { this.user = user }
-
-    fun build(): NotificationRule = NotificationRule(0, name, description) // , fleets, formula, aggregator, user)
+            return NotificationRuleBuilder()
+        }
+    }
 }

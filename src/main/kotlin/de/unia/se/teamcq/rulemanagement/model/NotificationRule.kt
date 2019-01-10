@@ -1,11 +1,13 @@
 package de.unia.se.teamcq.rulemanagement.model
 
-// import de.unia.se.teamcq.notification.management.Aggregator
+import de.unia.se.teamcq.user.model.User
 
 data class NotificationRule(
     var id: Long? = 0,
 
     var name: String?,
+
+    var owner: User?,
 
     // @get: NotNull
     // var recipients: List<String>,
@@ -26,5 +28,5 @@ data class NotificationRule(
 
 ) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 }
