@@ -14,7 +14,6 @@ import FieldDescriptor from '@/molecules/FieldDescriptor'
 import RuleIcon from '@/icons/RuleIcon'
 import NextButton from '@/atoms/NextButton'
 import BackButton from '@/atoms/BackButton'
-import { Footer } from '@/fleetdata/shared/components/footer';
 
 interface RuleDetailAttributes {
   rule: NotificationRuleDetail
@@ -100,13 +99,12 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
         </StyledInfoBlock>
       </StyledRuleInformation>
       <StyledFieldSeparator />
-      <Typography variant="h5" style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '76rem' }}>
      <NextButton onClick={action('Next!')}/> 
-      </Typography>
-      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
+      </div>
+      <div style={{ paddingLeft: '1rem' }}>
       <BackButton onClick={action('Back!')} />
-      </Typography>
-      <Footer>NextButton onClick={action('Next!')}/></Footer>
+      </div>
     </StyledRuleDetail>
   )
 }
