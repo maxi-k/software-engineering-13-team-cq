@@ -23,23 +23,20 @@ class UserRepositoryTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        val userEntity = getTestUserEntity()
-        val userModel = getTestUserModel()
-
         "createOrSaveUser should work" {
 
-            val savedUser = userRepository.createOrSaveUser(userModel)
+            val savedUser = userRepository.createOrSaveUser(getTestUserModel())
 
-            savedUser shouldBe userModel
+            savedUser shouldBe getTestUserModel()
         }
 
         "getOrCreateUser should work" {
 
-            userEnityRepository.save(userEntity)
+            userEnityRepository.save(getTestUserEntity())
 
-            val actualUser = userRepository.getOrCreateUser(userEntity.name!!)
+            val actualUser = userRepository.getOrCreateUser(getTestUserEntity().name!!)
 
-            actualUser shouldBe TestUtils.getTestUserModel()
+            actualUser shouldBe getTestUserModel()
         }
     }
 }

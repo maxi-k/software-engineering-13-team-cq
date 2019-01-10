@@ -1,6 +1,8 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
 import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -14,52 +16,50 @@ import org.springframework.transaction.annotation.Transactional
 class VehicleStateRepositoryTest : StringSpec() {
 
     @Autowired
-    lateinit var vehicleStateRepository: VehicleStateRepository
+    lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
-    lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
+    lateinit var vehicleStateRepository: VehicleStateRepository
 
     init {
         MockKAnnotations.init(this)
 
-        val vehicleStateModel = TestUtils.getTestVehicleStateModel()
-        val vehicleStateEntity = TestUtils.getTestVehicleStateEnity()
-
         "getAllVehicleStates should work" {
 
-            val vehicleStateEntityB = vehicleStateEntity.copy(eventId = 2, kilometers = 2)
+            val vehicleStateEntityA = getTestVehicleStateEnity().copy(eventId = 1, kilometers = 2)
+            val vehicleStateEntityB = getTestVehicleStateEnity().copy(eventId = 2, kilometers = 5)
 
-            vehicleStateEntityRepository.save(vehicleStateEntity)
+            vehicleStateEntityRepository.save(vehicleStateEntityA)
             vehicleStateEntityRepository.save(vehicleStateEntityB)
 
             val allVehicleStates = vehicleStateRepository.getAllVehicleStates()
 
             allVehicleStates.size shouldBeGreaterThanOrEqual 2
 
-            allVehicleStates.contains(vehicleStateModel) shouldBe true
+            allVehicleStates.contains(getTestVehicleStateModel().copy(kilometers = 2)) shouldBe true
         }
 
         "getVehicleState should work" {
 
-            vehicleStateEntityRepository.save(vehicleStateEntity)
+            vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 
             val actualVehicleState = vehicleStateRepository.getVehicleState(1)
 
-            actualVehicleState shouldBe vehicleStateModel
+            actualVehicleState shouldBe getTestVehicleStateModel()
         }
 
         "createVehicleState should work" {
 
-            val savedVehicleState = vehicleStateRepository.createVehicleState(vehicleStateModel)
+            val savedVehicleState = vehicleStateRepository.createVehicleState(getTestVehicleStateModel())
 
-            savedVehicleState shouldBe vehicleStateModel
+            savedVehicleState shouldBe getTestVehicleStateModel()
         }
 
         "updateVehicleState should work" {
 
-            vehicleStateEntityRepository.save(vehicleStateEntity)
+            vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 
-            val newVehicleState = vehicleStateModel.copy(kilometers = 3)
+            val newVehicleState = getTestVehicleStateModel().copy(kilometers = 3)
 
             val actualVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
 
@@ -68,7 +68,7 @@ class VehicleStateRepositoryTest : StringSpec() {
 
         "deleteVehicleState should work" {
 
-            vehicleStateEntityRepository.save(vehicleStateEntity)
+            vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 
             vehicleStateRepository.deleteVehicleState(1)
 
