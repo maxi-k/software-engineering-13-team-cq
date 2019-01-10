@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
+import { action } from '@storybook/addon-actions'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -11,6 +12,8 @@ import LoadingIndicator from '@/atoms/LoadingIndicator'
 import RuleRecipientTag from '@/atoms/RuleRecipientTag'
 import FieldDescriptor from '@/molecules/FieldDescriptor'
 import RuleIcon from '@/icons/RuleIcon'
+import NextButton from '@/atoms/NextButton'
+import BackButton from '@/atoms/BackButton'
 
 interface RuleDetailAttributes {
   rule: NotificationRuleDetail
@@ -95,6 +98,11 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
             } />
         </StyledInfoBlock>
       </StyledRuleInformation>
+      <StyledFieldSeparator />
+      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
+      <BackButton onClick={action('Back!')} />
+      <NextButton onClick={action('Next!')} />
+      </Typography>
     </StyledRuleDetail>
   )
 }

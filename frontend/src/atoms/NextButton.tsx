@@ -12,7 +12,7 @@ const NextButton: React.SFC<NextButtonProps> =  ({ onClick }) => (
     onClick={onClick}
     label="Next"
     primary="true"
-    icon={<img src="/assets/svg/chevron-right.svg" />}/>
+    icon={<img src="/assets/svg/chevron-right.svg" />}/> 
 )
 
 export default NextButton

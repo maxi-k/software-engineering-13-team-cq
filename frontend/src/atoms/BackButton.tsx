@@ -13,8 +13,7 @@ const BackButton: React.SFC<BackButtonProps> = ({ onClick, size = 20 }) => (
     onClick = {onClick}
     label = "Back"
     primary = "true"
-    icon={<img style={{ width: `${size}px`, height: `${size}px` }} src="/assets/svg/chevron-left.svg" />}
-    />
+    icon={<img style={{ width: `${size}px`, height: `${size}px` }} src="/assets/svg/chevron-left.svg" />}/>
 )
 
 export default BackButton
