@@ -1,7 +1,29 @@
 {
+    "cns.user.settings.label": "Notification Settings",
+
     "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
+
+    "cns.rule.label": "Notification Rule",
+
+    "cns.rule.field.name.label": "Rule Name",
+    "cns.rule.field.description.label": "Description",
+    "cns.rule.field.dataSources.label": "Data Sources",
+    "cns.rule.field.recipients.label": "Recipients",
+
     "cns.rule.creation.step.general.title": "General",
     "cns.rule.creation.step.general.fleets": "Fleets",
-    "cns.rule.creation.step.general.condition": "Condition"
+    "cns.rule.creation.step.general.condition": "Condition",
+
+
+    "cns.vehicle.status.engine.label": "Engine",
+    "cns.vehicle.status.battery.label": "Battery",
+    "cns.vehicle.status.contract.label": "Contract",
+    "cns.vehicle.status.mileage.label": "Mileage",
+    "cns.vehicle.status.fuel.label": "Fuel",
+    "cns.vehicle.status.service.label": "Service",
+
+    "cns.rule.recipient.email.label": "Mail",
+    "cns.rule.recipient.phonenumber.label": "SMS",
+    "cns.rule.recipient.user.label": "User"
 }

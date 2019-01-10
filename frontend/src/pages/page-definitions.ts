@@ -5,7 +5,7 @@ export interface PageDefinition {
   title: string,
   path: string,
   component: LazyComponent,
-  exact: boolean
+  exact: boolean,
   interpolatePath(...values: string[]): string
 }
 
@@ -16,6 +16,13 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     interpolatePath: () => '/',
     exact: true,
     component: lazy(() => import('@/pages/RuleOverview'))
+  },
+  ruleEdit: {
+    title: "cns.page.ruleEdit.title",
+    path: '/rule/:ruleId/edit',
+    interpolatePath: (ruleId: string) => `/rule/${ruleId}/edit`,
+    exact: true,
+    component: lazy(() => import('@/pages/RuleEdit'))
   },
   ruleDetail: {
     title: "cns.page.ruleDetail.title",
@@ -28,7 +35,7 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
 export type PageDefinitions = typeof pageDefinitions
 
 export const interpolatePagePath = (page: keyof PageDefinitions, ...args: string[]): string => {
-    return pageDefinitions[page].interpolatePath(...args)
+  return pageDefinitions[page].interpolatePath(...args)
 }
 
 export default pageDefinitions

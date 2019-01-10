@@ -106,13 +106,43 @@ Array [
           >
             <a
               aria-current={null}
-              className="sc-kkGfuU cSoGzu"
-              color="#000000"
-              href="/login"
+              className="sc-kkGfuU jOfwbr"
+              color="#92a2bd"
+              href="/dashboard"
               onClick={[Function]}
             >
               <span>
-                BMW Fleet Data
+                Dashboard
+              </span>
+            </a>
+          </li>
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU hVPECh"
+              color="#ff9100"
+              href="/service-view"
+              onClick={[Function]}
+            >
+              <span>
+                Fleet monitoring
+              </span>
+            </a>
+          </li>
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU ZkczR"
+              color="#a2ad00"
+              href="/car-park"
+              onClick={[Function]}
+            >
+              <span>
+                Car Park Management
               </span>
             </a>
           </li>
@@ -824,13 +854,13 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 
 exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 <div
-  className="sc-uJMKN jXdnYa"
+  className="sc-bbmXgH dVcTmh"
 >
   <div
     className="sc-feJyhm kDPYsH sc-gGBfsJ gKsVSL"
   >
     <div
-      className="MuiPaper-root-617 MuiPaper-elevation0-619 sc-feJyhm kDPYsH sc-hqyNC dOAmVs"
+      className="MuiPaper-root-725 MuiPaper-elevation0-727 sc-feJyhm kDPYsH sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
@@ -1272,7 +1302,7 @@ exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
 
 exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
 <div
-  className="sc-uJMKN jXdnYa"
+  className="sc-bbmXgH dVcTmh"
 >
   <p>
     The
@@ -1342,7 +1372,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
 
 exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 <div
-  className="sc-uJMKN jXdnYa"
+  className="sc-bbmXgH dVcTmh"
 >
   <p>
     If
@@ -1472,7 +1502,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Engine.png"
@@ -1485,7 +1515,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Battery.png"
@@ -1531,7 +1561,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Engine.png"
@@ -1544,7 +1574,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Battery.png"
@@ -1741,7 +1771,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-cIShpX gcJlWc"
           />
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Engine.png"
@@ -1754,7 +1784,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM kGBJIZ"
+            className="sc-hEsumM dpAakk"
           >
             <img
               src="/assets/img/Battery.png"

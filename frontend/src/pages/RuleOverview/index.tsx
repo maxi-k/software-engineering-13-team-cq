@@ -1,10 +1,9 @@
 import React from 'react'
-import { withRouter, RouteComponentProps } from 'react-router'
 import { push } from 'connected-react-router'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { connect, StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleOverviewStateSelector } from '@/state/selectors'
-import { viewRule, loadRuleOverview, RuleOverviewState } from '@/state/rule'
+import { loadRuleOverview, RuleOverviewState } from '@/state/rule'
 
 import RuleOverview, { SelectRuleType } from '@/molecules/RuleOverview'
 import RuleOverviewHeader from '@/organisms/RuleOverviewHeader'
@@ -24,7 +23,6 @@ export interface RuleOverviewStateProps extends RuleOverviewState {
 export type RuleOverviewPageProps =
   RuleOverviewStateProps // RuleOverviewPageAttributes &
   & RuleOverviewDispatchProps
-  & RouteComponentProps
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledOverviewPage = styled.div`
@@ -50,25 +48,18 @@ class RuleOverviewPage extends React.Component<RuleOverviewPageProps> {
   }
 }
 
-const mapStateToProps: StateMapper<RouteComponentProps, RuleOverviewStateProps> = (state, ownProps) => ({
+const mapStateToProps: StateMapper<{}, RuleOverviewStateProps> = (state, ownProps) => ({
   ...ruleOverviewStateSelector(state)
 })
 
-const mapDispatchToProps: DispatchMapper<RouteComponentProps, RuleOverviewDispatchProps> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<{}, RuleOverviewDispatchProps> = (dispatch, props) => ({
   fetchRules: () => dispatch(loadRuleOverview.request()),
-  selectRule: (event, rule) => {
-    dispatch(viewRule(rule.id))
-    dispatch(push(interpolatePagePath('ruleDetail', '1')))
-  },
+  selectRule: (event, rule) => dispatch(push(interpolatePagePath('ruleDetail', `${rule.id}`))),
   addRule: () => alert('add rule')
 })
 
 export default
-withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
-    null,
-    { pure: false }
+    mapDispatchToProps
   )(RuleOverviewPage)
-)

@@ -25,7 +25,7 @@ const delayResponse = (min: number, max: number) => (
 
 const mockRequest = (path: string, response: object, fetchOptions: object = {}) => {
   const fetchMock = require('fetch-mock')
-  fetchMock.mock(`end:${path}`, delayResponse(500, 2000).then(() => response))
+  fetchMock.mock(`end:${path}`, delayResponse(50, 200).then(() => response))
   // We want a console print here, as there will be no information in
   // the network tab, and this is development only.
   // tslint:disable-next-line:no-console

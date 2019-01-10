@@ -51,7 +51,8 @@ const middleware = composeEnhancers(
 
 const persistedReducer = persistReducer({
   key: 'bmw-cns-store',
-  storage
+  storage,
+  whitelist: ['auth'] // whitelist nothing, so as to not interfere while in development
 }, rootReducer)
 
 const store: Store<RootState> = createStore(persistedReducer, middleware)

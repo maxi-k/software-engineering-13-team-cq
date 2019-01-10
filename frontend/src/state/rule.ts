@@ -3,12 +3,10 @@ import { createAction, createAsyncAction } from 'typesafe-actions'
 import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleOverview, NotificationRuleDetail } from '@/model/Rule'
-import { fetchRuleOverview } from '@/services/rule-service'
+import { fetchRuleOverview, fetchRuleDetail } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
 export enum RuleActionType {
-  RULE_VIEW = '@rule/VIEW',
-
   RULE_CREATE = '@rule/CREATE',
   RULE_CREATE_FINISH = '@rule/CREATE_FINISH',
   RULE_CREATE_SUCCESS = '@rule/CREATE_SUCCESS',
@@ -20,20 +18,32 @@ export enum RuleActionType {
 
   RULE_OVERVIEW_FETCH = '@rule/overview/FETCH',
   RULE_OVERVIEW_FETCH_FAILURE = '@rule/overview/FETCH_FAILURE',
-  RULE_OVERVIEW_FETCH_SUCCESS = '@rule/overview/FETCH_SUCCESS'
+  RULE_OVERVIEW_FETCH_SUCCESS = '@rule/overview/FETCH_SUCCESS',
+
+
+  RULE_DETAIL_FETCH = '@rule/detail/FETCH',
+  RULE_DETAIL_FETCH_FAILURE = '@rule/detail/FETCH_FAILURE',
+  RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS'
 }
 export type RuleAction = Action<RuleActionType>
 
 export type RuleOverviewState = FetchingData & {
-  rules: {[key: number]: NotificationRuleOverview}
+  rules: { [key: number]: NotificationRuleOverview }
+}
+export type RuleDetailState = FetchingData & {
+  rules: { [key: number]: NotificationRuleDetail }
 }
 export interface RuleState {
   readonly currentRule?: number,
-  readonly ruleDetailData: {[key: number]: NotificationRuleDetail},
+  readonly ruleDetail: RuleDetailState,
   readonly ruleOverview: RuleOverviewState
 }
 const initialState: RuleState = {
-  ruleDetailData: {},
+  ruleDetail: {
+    isFetching: false,
+    hasFetchError: false,
+    rules: {}
+  },
   ruleOverview: {
     isFetching: false,
     hasFetchError: false,
@@ -42,35 +52,75 @@ const initialState: RuleState = {
 }
 
 const reducer: Reducer<RuleState> = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case RuleActionType.RULE_OVERVIEW_FETCH:
-      return update(state, {ruleOverview: {$merge: {
-        isFetching: true,
-        hasFetchError: false
-      }}})
+      return update(state, {
+        ruleOverview: {
+          $merge: {
+            isFetching: true,
+            hasFetchError: false
+          }
+        }
+      })
+    case RuleActionType.RULE_DETAIL_FETCH:
+      return update(state, {
+        ruleDetail: {
+          $merge: {
+            isFetching: true,
+            hasFetchError: false
+          }
+        }
+      })
     case RuleActionType.RULE_OVERVIEW_FETCH_FAILURE:
-      return update(state, {ruleOverview: {$merge: {
-        isFetching: false,
-        hasFetchError: action.payload || true
-      }}})
+      return update(state, {
+        ruleOverview: {
+          $merge: {
+            isFetching: false,
+            hasFetchError: action.payload || true
+          }
+        }
+      })
+    case RuleActionType.RULE_DETAIL_FETCH_FAILURE:
+      return update(state, {
+        ruleDetail: {
+          $merge: {
+            isFetching: false,
+            hasFetchError: action.payload || true
+          }
+        }
+      })
     case RuleActionType.RULE_OVERVIEW_FETCH_SUCCESS:
-      return update(state, {ruleOverview: {$merge: {
-        isFetching: false,
-        hasFetchError: false,
-        rules: action.payload.reduce(
-          (obj: RuleOverviewState['rules'], rule: NotificationRuleOverview) =>
-            ({...obj, [rule.id]: rule}),
-          {})
-      }}})
+      return update(state, {
+        ruleOverview: {
+          $merge: {
+            isFetching: false,
+            hasFetchError: false,
+            rules: action.payload.reduce(
+              (obj: RuleOverviewState['rules'], rule: NotificationRuleOverview) =>
+                ({ ...obj, [rule.id]: rule }),
+              {})
+          }
+        }
+      })
+    case RuleActionType.RULE_DETAIL_FETCH_SUCCESS:
+      return update(state, {
+        ruleDetail: {
+          $merge: {
+            isFetching: false,
+            hasFetchError: false,
+            rules: {
+              ...state.ruleDetail.rules,
+              [action.payload.id]: action.payload
+            }
+          }
+        }
+      })
     default:
       return state
   }
 }
 
 export const createRule = createAction(RuleActionType.RULE_CREATE)
-export const viewRule = createAction(RuleActionType.RULE_VIEW, resolve =>
-  (ruleId: number) => resolve(ruleId)
-)
 export const finishRuleCreation = createAsyncAction(
   RuleActionType.RULE_CREATE_FINISH,
   RuleActionType.RULE_CREATE_SUCCESS,
@@ -83,6 +133,12 @@ export const loadRuleOverview = createAsyncAction(
   RuleActionType.RULE_OVERVIEW_FETCH_FAILURE
 )<void, NotificationRuleOverview[], Error>()
 
+export const loadRuleDetail = createAsyncAction(
+  RuleActionType.RULE_DETAIL_FETCH,
+  RuleActionType.RULE_DETAIL_FETCH_SUCCESS,
+  RuleActionType.RULE_DETAIL_FETCH_FAILURE
+)<number, NotificationRuleDetail, Error>()
+
 function* fetchRuleOverviewGenerator() {
   try {
     const response = yield call(fetchRuleOverview)
@@ -93,13 +149,23 @@ function* fetchRuleOverviewGenerator() {
   }
 }
 
-function* ruleOverviewFetchSaga() {
-  yield takeLatest(RuleActionType.RULE_OVERVIEW_FETCH, fetchRuleOverviewGenerator);
+function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.request>) {
+  try {
+    const response = yield call(fetchRuleDetail, action.payload)
+    const rules = yield response.json() as NotificationRuleDetail
+    yield put(loadRuleDetail.success(rules))
+  } catch (error) {
+    yield put(loadRuleDetail.failure(error))
+  }
+}
 
+function* ruleFetchSaga() {
+  yield takeLatest(RuleActionType.RULE_OVERVIEW_FETCH, fetchRuleOverviewGenerator);
+  yield takeLatest(RuleActionType.RULE_DETAIL_FETCH, fetchRuleDetailGenerator);
 }
 
 export const sagas = [
-  ruleOverviewFetchSaga
+  ruleFetchSaga
 ]
 
 export default reducer

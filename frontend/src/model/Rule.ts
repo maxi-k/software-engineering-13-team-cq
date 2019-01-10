@@ -15,9 +15,9 @@ export enum ComparisonType {
 }
 
 export enum NotificationRecipientType {
-  Email,
-  PhoneNumber,
-  User
+  Email = 'email',
+  PhoneNumber = 'phoneNumber',
+  User = 'user'
 }
 
 export enum PredicateCounterValue {

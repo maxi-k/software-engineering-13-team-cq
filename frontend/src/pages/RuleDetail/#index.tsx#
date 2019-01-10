@@ -25,7 +25,7 @@ export interface StateAttributes extends FetchingAttributes {
 export interface DispatchAttributes {
   fetchRule(): void,
   editRule(): void,
-  deleteRule(): void
+ props deleteRule(): void
 }
 
 export type RuleDetailPageProps = RuleDetailPageAttributes
@@ -34,7 +34,7 @@ export type RuleDetailPageProps = RuleDetailPageAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledPageWrapper = styled.div`
-    flex-grow: 1;
+
 `
 
 class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
@@ -57,7 +57,7 @@ class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
 const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = (state, props) => {
   const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
   return ({
-    rule: rules[parseInt(props.parameters.ruleId, 10)],
+    rule: rules[parseInt(props.parameters.ruleId)],
     isFetching,
     hasFetchError
   })
@@ -65,7 +65,8 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
 
 const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
   fetchRule: () => {
-    dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
+    console.log(props)
+    dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId)))
   },
   editRule: () => dispatch(push(interpolatePagePath('ruleEdit', props.parameters.ruleId))),
   deleteRule: () => alert('deleting rule')
