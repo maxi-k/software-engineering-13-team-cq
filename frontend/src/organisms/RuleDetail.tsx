@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
-import { action } from '@storybook/addon-actions'
+//import { action } from '@storybook/addon-actions'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -13,7 +13,6 @@ import RuleRecipientTag from '@/atoms/RuleRecipientTag'
 import FieldDescriptor from '@/molecules/FieldDescriptor'
 import RuleIcon from '@/icons/RuleIcon'
 import NextButton from '@/atoms/NextButton'
-import BackButton from '@/atoms/BackButton'
 
 export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
 
@@ -106,9 +105,6 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
       <StyledFieldSeparator />
       <div style={{ paddingLeft: '76rem' }}>
      <NextButton onClick={generalFinisher(finishGeneral)}/> 
-      </div>
-      <div style={{ paddingLeft: '1rem' }}>
-      <BackButton onClick={action('Back!')} />
       </div>
     </StyledRuleDetail>
   )
