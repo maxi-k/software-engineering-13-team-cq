@@ -130,7 +130,7 @@ class NotificationRuleControllerTest : StringSpec() {
                                 result.response.contentAsString,
                                 NotificationRule::class.java)
 
-                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 2)
+                        returnedNotificationRule shouldBe mockedNotificationRule.copy(id = 56)
                     }
 
             // Verify that the mocked service was called exactly once

@@ -9,7 +9,6 @@ import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
 import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
-import io.mockk.MockKAnnotations
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpHeaders
@@ -30,8 +29,6 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
     private val gson = Gson()
 
     init {
-        MockKAnnotations.init(this)
-
         "Fail without Authorization" {
 
             val mockMvc = buildMockMvc(webApplicationContext)

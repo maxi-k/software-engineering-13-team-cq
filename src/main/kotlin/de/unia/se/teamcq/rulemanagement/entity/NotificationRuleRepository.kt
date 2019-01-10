@@ -19,16 +19,13 @@ class NotificationRuleRepository : INotificationRuleRepository {
     lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
 
     @Autowired
-    lateinit var userRepository: IUserRepository
-
-    @Autowired
     lateinit var userEntityRepository: IUserEntityRepository
 
     @Autowired
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
-        val notificationRuleEntities = userEntityRepository.findById(username).orElseGet(null)
+        val notificationRuleEntities = userEntityRepository.findById(username).orElse(null)
                 ?.notificationRules.orEmpty()
 
         return notificationRuleEntities.map { notificationRuleEntity ->
@@ -45,15 +42,11 @@ class NotificationRuleRepository : INotificationRuleRepository {
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
-        // FIXME: Clean up Entity Update Code and Locations next. We maybe want to rely on notificationRuleModel to be
-        // FIXME: the one saved last and that all model attributes are present
-
-        // Create User if necessary
-        userRepository.getOrCreateUser(notificationRule.owner!!.name!!)
+        // Create notificationRuleEntity first so it already has an ID
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
-        savedNotificationRuleEntity.owner!!.addNotificationRuleEntity(savedNotificationRuleEntity)
-        // Save User again with updated bidirectional mapping
-        userRepository.createOrSaveUser(notificationRule.owner!!)
+        // Add NotificationRuleEntity to UserEntity because the mapping is bidirectional
+        userEntityRepository.getOne(notificationRule.owner!!.name!!)
+                .addNotificationRuleEntity(savedNotificationRuleEntity)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)
     }
@@ -61,6 +54,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     override fun updateNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
+        // FIXME: Check if this overwrites user
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)

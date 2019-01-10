@@ -7,7 +7,7 @@ import javax.persistence.Entity
 import javax.persistence.OneToMany
 
 @Entity
-data class UserEntity(
+class UserEntity(
 
     @Id
     var name: String?,
