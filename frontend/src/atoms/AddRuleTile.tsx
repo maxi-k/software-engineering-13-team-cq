@@ -13,5 +13,4 @@ const AddRuleTile: React.SFC<RuleTileProps> = (props) => (
   </StyledAddRuleTile>
 )
 
-
 export default AddRuleTile

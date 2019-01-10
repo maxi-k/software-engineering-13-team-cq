@@ -6,10 +6,10 @@ export interface ConditionSelectorProps {
   comparisonTypes: ComparisonType[]
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, comparisonTypes }) => { 
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, comparisonTypes }) => {
   return (
     <p>
-      The   
+      The
       <select>
         {dataTypes.map((dataType: VehicleDataType) => (
           <option> {dataType} </option>
@@ -27,5 +27,4 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, compa
   )
 }
 
-// @ts-ignore
 export default ConditionSelector

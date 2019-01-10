@@ -32,6 +32,4 @@ const FieldDescriptor: React.SFC<FieldDescriptorProps> = ({ label, content, ...p
   </StyledDescriptor>
 )
 
-
-
 export default FieldDescriptor

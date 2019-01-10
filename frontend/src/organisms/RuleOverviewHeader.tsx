@@ -27,5 +27,4 @@ const RuleOverviewHeader: React.SFC<Props> = (props) => (
   </StyledHeader>
 )
 
-
 export default RuleOverviewHeader

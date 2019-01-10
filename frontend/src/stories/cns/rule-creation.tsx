@@ -49,7 +49,6 @@ storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
   .add('Close Procedure', () => <ClosingButton onClick={action('Closed procedure')} />)
 
-
 /* ~~ Second-Step Components ~~ */
 import FleetSelector, { FleetSelectorProps } from '@/atoms/FleetSelector'
 
@@ -69,11 +68,9 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
-
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Fleet Selector', () => <FleetSelector {...fleetSelectorProps} />)
-
 
 /* ~~ Third-Step Components ~~ */
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
@@ -92,5 +89,3 @@ storiesOf('Rule Creation / Third Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />)
   .add('Condition Selector', () => <ConditionSelector {...conditionSelectorProps} />)
-
-

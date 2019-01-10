@@ -9,12 +9,12 @@ import { languageSelector } from '@/state/selectors'
 import { messages } from '@/i18n';
 
 /*
-   This does not work when connected to redux
-*/
+ * This module does not work with react router,
+ * and is only here for react-storybook integration
+ */
 
 addLocaleData([...en, ...de]);
 
-// TODO: FIXME: TEMPORARY CONSTANT LANGUAGE
 export interface IntlWrapperAttributes { }
 export interface StateAttributes {
   language: LanguageType

@@ -20,7 +20,6 @@ export enum RuleActionType {
   RULE_OVERVIEW_FETCH_FAILURE = '@rule/overview/FETCH_FAILURE',
   RULE_OVERVIEW_FETCH_SUCCESS = '@rule/overview/FETCH_SUCCESS',
 
-
   RULE_DETAIL_FETCH = '@rule/detail/FETCH',
   RULE_DETAIL_FETCH_FAILURE = '@rule/detail/FETCH_FAILURE',
   RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS'

@@ -19,7 +19,6 @@ export const fetchRuleDetail = (ruleId: number) => (
   : mockRequest(ruleDetailUrl(ruleId), mockedRuleDetail(ruleId))
 )
 
-
 const mockedRule: OverviewRule = {
   id: 1,
   name: 'Rule Name',

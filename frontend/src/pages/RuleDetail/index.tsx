@@ -71,5 +71,4 @@ const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttri
   deleteRule: () => alert('deleting rule')
 })
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailPage)

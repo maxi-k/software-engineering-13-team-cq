@@ -16,6 +16,8 @@
     "jsx-boolean-value": ["never"],
     "interface-name": [true, "never-prefix"],
     "no-empty-interface": false,
-    "ordered-imports": ["any"]
+    "ordered-imports": ["any"],
+    "eofline": true,
+    "no-consecutive-blank-lines": true
   }
 }

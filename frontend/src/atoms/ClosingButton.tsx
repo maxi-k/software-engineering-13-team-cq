@@ -13,5 +13,4 @@ const ClosingButton: React.SFC<RuleTileProps> = (props) => (
   </StyledCloseRuleTile>
 )
 
-
 export default ClosingButton
