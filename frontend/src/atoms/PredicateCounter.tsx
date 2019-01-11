@@ -10,8 +10,8 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options}) => {
     <p>
       If   
       <select>
-        {options.map((option: PredicateCounterValue) => (
-          <option> {option} </option>
+        {options.map((predicateCounterOption: PredicateCounterValue) => (
+          <option> {predicateCounterOption} </option> // e.g. All, One, None
         ))}
       </select>
       of the following conditions are met:
