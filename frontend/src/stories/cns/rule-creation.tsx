@@ -83,12 +83,8 @@ const predicateCounterProps: PredicateCounterProps = {
 }
 
 const conditionSelectorProps: ConditionSelectorProps = {
-  dataTypes: [{ label: VehicleDataType.Battery, value: `cns.vehicle.status.${VehicleDataType.Battery}.label` },
-  { label: VehicleDataType.Contract, value: 'cns.vehicle.status.${size}.label' },
-  { label: VehicleDataType.Engine, value: 'cns.vehicle.status.'+VehicleDataType.Engine+'.label' },
-  { label: VehicleDataType.Fuel, value: 'cns.vehicle.status.'+VehicleDataType.Fuel+'.label' },
-  { label: VehicleDataType.Mileage, value: 'cns.vehicle.status.'+VehicleDataType.Mileage+'.label' },
-  { label: VehicleDataType.Service, value: 'cns.vehicle.status.'+VehicleDataType.Service+'.label' }],
+  
+  dataTypes: ["cns.vehicle.status.battery.label", "cns.vehicle.status.contract.label", "cns.vehicle.status.engine.label", "cns.vehicle.status.fuel.label", "cns.vehicle.status.service.label", "cns.vehicle.status.mileage.label"],
   comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
 }
 

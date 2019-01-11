@@ -6,7 +6,7 @@ import Select from 'react-select'
 import { FormattedMessage } from 'react-intl'
 
 export interface ConditionSelectorProps {
-  dataTypes: SelectValue[]
+  dataTypes: string[]
   comparisonTypes: ComparisonType[]
 }
 
@@ -15,9 +15,8 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, compa
     <p>
       The
       <Select
-        //value={selectedOption}
-        //onChange={this.handleChange}
-        options={dataTypes}
+        value={<FormattedMessage id={dataTypes[0]} />}
+        options={dataTypes.map((dataType) => <FormattedMessage id={dataType} />)}
       />
       is
       <select>
