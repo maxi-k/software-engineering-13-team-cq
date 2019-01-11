@@ -77,7 +77,9 @@ import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounte
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 
 const predicateCounterProps: PredicateCounterProps = {
-  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ]
+  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ],
+  beforeText: "cns.predicate.counter.beforetext",
+  afterText: "cns.predicate.counter.aftertext"
 }
 
 const conditionSelectorProps: ConditionSelectorProps = {

@@ -25,5 +25,9 @@
 
     "cns.rule.recipient.email.label": "Email",
     "cns.rule.recipient.phonenumber.label": "SMS",
-    "cns.rule.recipient.user.label": "Benutzer"
+    "cns.rule.recipient.user.label": "Benutzer",
+
+    "cns.predicate.counter.beforetext": "Wenn ",
+    "cns.predicate.counter.aftertext": " der folgenden Bedingungen erfüllt sind: "
 }
+

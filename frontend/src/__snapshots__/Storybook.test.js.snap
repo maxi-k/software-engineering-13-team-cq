@@ -1375,7 +1375,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <p>
-    If
+    If 
     <select>
       <option>
          
@@ -1393,7 +1393,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
          
       </option>
     </select>
-    of the following conditions are met:
+     of the following conditions are met: 
   </p>
 </div>
 `;
