@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import SingleComponentWrapper from '../SingleComponentWrapper'
-import { PredicateCounterValue, ComparisonType, VehicleDataType } from '@/model/Rule'
+import { PredicateCounterValue, ComparisonType } from '@/model/Rule'
 
 /* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
@@ -77,7 +77,7 @@ import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounte
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 
 const predicateCounterProps: PredicateCounterProps = {
-  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ],
+  options: [PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
 }

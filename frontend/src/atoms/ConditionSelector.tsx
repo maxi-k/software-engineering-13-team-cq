@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComparisonType } from '@/model/Rule'
-import { SelectValue } from '@/model'
 
 import Select from 'react-select'
 import { FormattedMessage } from 'react-intl'
@@ -15,12 +14,12 @@ export interface ConditionSelectorProps {
 const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypes, comparisonTypes }) => {
   return (
     <p>
-      <FormattedMessage id={beforeText}/>
+      <FormattedMessage id={beforeText} />
       <Select
         value={<FormattedMessage id={dataTypes[0]} />}
-        options={dataTypes.map((dataType, i) => <FormattedMessage key={i} id={dataType}/>)}
+        options={dataTypes.map((dataType, i) => <FormattedMessage key={i} id={dataType} />)}
       />
-      <FormattedMessage id={afterText}/>
+      <FormattedMessage id={afterText} />
       <select>
         {comparisonTypes.map((comparisonType: ComparisonType) => (
           <option> {comparisonType} </option>
