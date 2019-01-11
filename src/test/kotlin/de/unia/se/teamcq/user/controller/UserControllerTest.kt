@@ -76,7 +76,6 @@ class UserControllerTest : StringSpec() {
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/user-notification-settings/")
                     .session(session)
-                    .header("Authorization", "Bearer test")
                     .contentType(MediaType.APPLICATION_JSON_UTF8))
                     .andExpect(MockMvcResultMatchers.status().isOk)
                     .andExpect { result ->

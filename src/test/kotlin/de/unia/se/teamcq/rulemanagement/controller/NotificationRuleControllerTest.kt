@@ -1,14 +1,12 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import com.google.gson.Gson
-import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
-import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.service.IUserService
 import io.kotlintest.shouldBe
@@ -20,9 +18,7 @@ import io.mockk.verify
 import io.mockk.Runs
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.context.annotation.Import
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.mock.web.MockHttpSession
