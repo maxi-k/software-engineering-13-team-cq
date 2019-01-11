@@ -1,8 +1,9 @@
 import React from 'react'
-import { VehicleDataType, ComparisonType } from '@/model/Rule'
+import { ComparisonType } from '@/model/Rule'
+import { SelectValue } from '@/model'
 
 export interface ConditionSelectorProps {
-  dataTypes: VehicleDataType[],
+  dataTypes: SelectValue[]
   comparisonTypes: ComparisonType[]
 }
 
@@ -11,8 +12,8 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, compa
     <p>
       The
       <select>
-        {dataTypes.map((dataType: VehicleDataType) => (
-          <option> {dataType} </option>
+        {dataTypes.map((dataType: SelectValue) => (
+          <option> {dataType.value} </option>
         ))}
       </select>
       is
