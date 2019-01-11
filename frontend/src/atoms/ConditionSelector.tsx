@@ -6,19 +6,21 @@ import Select from 'react-select'
 import { FormattedMessage } from 'react-intl'
 
 export interface ConditionSelectorProps {
+  beforeText: string
+  afterText: string
   dataTypes: string[]
   comparisonTypes: ComparisonType[]
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, comparisonTypes }) => {
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypes, comparisonTypes }) => {
   return (
     <p>
-      The
+      <FormattedMessage id={beforeText}/>
       <Select
         value={<FormattedMessage id={dataTypes[0]} />}
-        options={dataTypes.map((dataType) => <FormattedMessage id={dataType} key={dataType}/>)}
+        options={comparisonTypes.map((dataType) => <FormattedMessage id={dataType}/>)}
       />
-      is
+      <FormattedMessage id={afterText}/>
       <select>
         {comparisonTypes.map((comparisonType: ComparisonType) => (
           <option> {comparisonType} </option>
