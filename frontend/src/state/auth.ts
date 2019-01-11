@@ -1,4 +1,4 @@
-// TODO: FIXME: Implement with server communication
+// FIXME: Implement with server communication
 import { Reducer } from 'redux'
 import { createAction } from 'typesafe-actions'
 
