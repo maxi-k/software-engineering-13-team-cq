@@ -16,7 +16,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ dataTypes, compa
       The
       <Select
         value={<FormattedMessage id={dataTypes[0]} />}
-        options={dataTypes.map((dataType) => <FormattedMessage id={dataType} />)}
+        options={dataTypes.map((dataType) => <FormattedMessage id={dataType} key={dataType}/>)}
       />
       is
       <select>
