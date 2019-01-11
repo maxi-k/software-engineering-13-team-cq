@@ -21,12 +21,24 @@ export const fetchRuleDetail = (ruleId: number) => (
 
 const mockedRule: OverviewRule = {
   id: 1,
-  name: 'Rule Name',
-  description: 'Rule Description for an examplary Rule',
+  name: 'Status Reports',
+  description: 'Rule Description for an examplary Notification Rule',
   aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
   dataSources: [
     VehicleDataType.Engine,
     VehicleDataType.Battery
+  ]
+}
+
+const mockedRule2: OverviewRule = {
+  ...mockedRule,
+  id: 2,
+  name: 'Engine and Fuel Alerts',
+  aggregatorDescription: 'Sent Immediately',
+  dataSources: [
+    VehicleDataType.Fuel,
+    VehicleDataType.Engine,
+    VehicleDataType.Service
   ]
 }
 
@@ -37,4 +49,4 @@ const mockedRuleDetail = (ruleId: number): DetailRule => ({
                { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
 })
 
-const mockedRuleOverview: OverviewRule[] = [mockedRule, { ...mockedRule, id: 2, name: 'Rule Name 2' }]
+const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
