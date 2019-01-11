@@ -18,10 +18,8 @@ export interface RuleOverviewDispatchProps {
 export interface RuleOverviewStateProps extends RuleOverviewState {
 }
 
-// export interface RuleOverviewPageAttributes {
-// }
 export type RuleOverviewPageProps =
-  RuleOverviewStateProps // RuleOverviewPageAttributes &
+  RuleOverviewStateProps
   & RuleOverviewDispatchProps
   & React.HTMLAttributes<HTMLDivElement>
 
