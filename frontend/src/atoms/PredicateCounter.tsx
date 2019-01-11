@@ -19,5 +19,4 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options}) => {
   )
 }
 
-// @ts-ignore
 export default PredicateCounter
