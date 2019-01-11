@@ -1,17 +1,17 @@
 export enum VehicleDataType {
-  Battery = 'Battery',
-  Engine = 'Engine',
-  Contract = 'Contract',
-  Mileage = 'Mileage',
-  Fuel = 'Fuel',
-  Service = 'Service'
+  Battery = 'battery',
+  Engine = 'engine',
+  Contract = 'contract',
+  Mileage = 'mileage',
+  Fuel = 'fuel',
+  Service = 'service'
 }
 
 export enum ComparisonType {
-  Above = 'Above',
-  Below = 'Below',
-  Equal = 'Equal to',
-  NonEqual = 'Unequal to'
+  Above = 'above',
+  Below = 'below',
+  EqualTo = 'equalTo',
+  UnequalTo = 'unequalTo'
 }
 
 export enum NotificationRecipientType {

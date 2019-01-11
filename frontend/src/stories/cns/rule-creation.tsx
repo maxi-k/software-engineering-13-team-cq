@@ -82,7 +82,7 @@ const predicateCounterProps: PredicateCounterProps = {
 
 const conditionSelectorProps: ConditionSelectorProps = {
   dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Service, VehicleDataType.Fuel, VehicleDataType.Mileage],
-  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.Equal, ComparisonType.NonEqual],
+  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
 }
 
 storiesOf('Rule Creation / Third Step', module)

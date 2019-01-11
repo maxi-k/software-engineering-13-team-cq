@@ -1309,32 +1309,32 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     <select>
       <option>
          
-        Battery
+        battery
          
       </option>
       <option>
          
-        Contract
+        contract
          
       </option>
       <option>
          
-        Engine
+        engine
          
       </option>
       <option>
          
-        Service
+        service
          
       </option>
       <option>
          
-        Fuel
+        fuel
          
       </option>
       <option>
          
-        Mileage
+        mileage
          
       </option>
     </select>
@@ -1342,22 +1342,22 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     <select>
       <option>
          
-        Above
+        above
          
       </option>
       <option>
          
-        Below
+        below
          
       </option>
       <option>
          
-        Equal to
+        equalTo
          
       </option>
       <option>
          
-        Unequal to
+        unequalTo
          
       </option>
     </select>
@@ -1505,7 +1505,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Engine.png"
+              src="/assets/img/engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1518,7 +1518,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Battery.png"
+              src="/assets/img/battery.png"
               style={
                 Object {
                   "height": "20px",
@@ -1564,7 +1564,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Engine.png"
+              src="/assets/img/engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1577,7 +1577,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Battery.png"
+              src="/assets/img/battery.png"
               style={
                 Object {
                   "height": "20px",
@@ -1774,7 +1774,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Engine.png"
+              src="/assets/img/engine.png"
               style={
                 Object {
                   "height": "20px",
@@ -1787,7 +1787,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             className="sc-hEsumM dpAakk"
           >
             <img
-              src="/assets/img/Battery.png"
+              src="/assets/img/battery.png"
               style={
                 Object {
                   "height": "20px",
