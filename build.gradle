@@ -122,7 +122,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.7 // FIXME: Increase this threshold as soon as possible!
+                minimum = 0.7 // FIXME: We should get this up to at least 0.9 as soon as possible
             }
         }
     }

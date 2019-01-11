@@ -1,12 +1,14 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import com.google.gson.Gson
+import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
+import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.service.IUserService
 import io.kotlintest.shouldBe
@@ -18,7 +20,9 @@ import io.mockk.verify
 import io.mockk.Runs
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.context.annotation.Import
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.mock.web.MockHttpSession
@@ -59,14 +63,14 @@ class NotificationRuleControllerTest : StringSpec() {
 
         every { notificationRuleService.createNotificationRule(any(), any()) } returns getTestNotificationRuleModel().copy(56)
 
-        every { notificationRuleService.getNotificationRule(getTestNotificationRuleModel().id!!) } returns getTestNotificationRuleModel().copy(56)
-        every { notificationRuleService.getNotificationRule(not(getTestNotificationRuleModel().id!!)) } returns null
+        every { notificationRuleService.getNotificationRule(getTestNotificationRuleModel().ruleId!!) } returns getTestNotificationRuleModel().copy(56)
+        every { notificationRuleService.getNotificationRule(not(getTestNotificationRuleModel().ruleId!!)) } returns null
 
         every { notificationRuleService.updateNotificationRule(any()) } answers { firstArg() }
         every { notificationRuleService.deleteNotificationRule(any()) } just Runs
 
         every { mockNotificationRuleMapper.dtoToModel(any()) } returns getTestNotificationRuleModel().copy(56)
-        every { mockNotificationRuleMapper.modelToDto(any()) } returns getTestNotificationRuleDto().copy(id = 56)
+        every { mockNotificationRuleMapper.modelToDto(any()) } returns getTestNotificationRuleDto().copy(ruleId = 56)
 
         val mockMvc = MockMvcBuilders
                 .standaloneSetup(notificationRuleController)
@@ -84,16 +88,15 @@ class NotificationRuleControllerTest : StringSpec() {
             setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
-                    .session(session)
-                    .header("Authorization", "Bearer test"))
+                    .get("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                    .session(session))
                     .andExpect(status().isOk)
                     .andExpect { result ->
                         val returnedNotificationRuleDto = gson.fromJson(
                                 result.response.contentAsString,
                                 NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
                     }
 
             verify(exactly = 1) {
@@ -126,7 +129,7 @@ class NotificationRuleControllerTest : StringSpec() {
                                 result.response.contentAsString,
                                 NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
                     }
 
             verify(exactly = 1) {
@@ -140,7 +143,7 @@ class NotificationRuleControllerTest : StringSpec() {
             setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(getTestNotificationRuleDto())))
                     .andExpect(status().isOk)
@@ -149,7 +152,7 @@ class NotificationRuleControllerTest : StringSpec() {
                                 result.response.contentAsString,
                                 NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
                     }
 
             verify(exactly = 1) {
@@ -165,7 +168,7 @@ class NotificationRuleControllerTest : StringSpec() {
             val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(notificationRuleUpate)))
                     .andExpect(status().isBadRequest)
@@ -179,7 +182,7 @@ class NotificationRuleControllerTest : StringSpec() {
             val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(notificationRuleUpate)))
                     .andExpect(status().isBadRequest)
@@ -191,7 +194,7 @@ class NotificationRuleControllerTest : StringSpec() {
             setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}"))
+                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
                     .andExpect(status().isOk)
 
             verify(exactly = 1) {
@@ -205,7 +208,7 @@ class NotificationRuleControllerTest : StringSpec() {
             setCurrentUserToOtherValue()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}"))
+                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
                     .andExpect(status().isBadRequest)
         }
     }

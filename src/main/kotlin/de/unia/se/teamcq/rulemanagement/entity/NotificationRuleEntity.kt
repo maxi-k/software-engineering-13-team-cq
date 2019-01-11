@@ -16,7 +16,7 @@ data class NotificationRuleEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = 0,
+    var ruleId: Long? = 0,
 
     @get: NotNull
     var name: String?,

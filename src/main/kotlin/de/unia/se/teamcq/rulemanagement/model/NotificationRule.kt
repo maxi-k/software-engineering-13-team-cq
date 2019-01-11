@@ -3,7 +3,7 @@ package de.unia.se.teamcq.rulemanagement.model
 import de.unia.se.teamcq.user.model.User
 
 data class NotificationRule(
-    var id: Long? = 0,
+    var ruleId: Long? = 0,
 
     var name: String?,
 

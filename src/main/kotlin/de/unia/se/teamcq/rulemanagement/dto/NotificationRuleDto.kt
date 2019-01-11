@@ -4,7 +4,8 @@ import de.unia.se.teamcq.user.dto.UserDto
 import java.io.Serializable
 
 data class NotificationRuleDto(
-    var id: Long? = 0,
+
+    var ruleId: Long? = 0,
 
     var name: String?,
 

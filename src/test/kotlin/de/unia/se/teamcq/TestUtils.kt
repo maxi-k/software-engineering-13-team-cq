@@ -4,6 +4,7 @@ import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.rulemanagement.model.NotificationRuleBuilder
+import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.dto.UserSettingsDto
 import de.unia.se.teamcq.user.entity.UserEntity
@@ -13,10 +14,12 @@ import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.util.MultiValueMap
 import org.springframework.web.context.WebApplicationContext
 
 object TestUtils {
@@ -39,7 +42,7 @@ object TestUtils {
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
         return NotificationRuleDto(
-                id = 0,
+                ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserDto(),
                 description = "description"
@@ -48,7 +51,7 @@ object TestUtils {
 
     fun getTestNotificationRuleEntity(): NotificationRuleEntity {
         return NotificationRuleEntity(
-                id = 0,
+                ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserEntity(),
                 description = "description"
@@ -98,5 +101,11 @@ object TestUtils {
                 10,
                 0.2
         )
+    }
+
+    fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
+        val httpHeader = HttpHeaders()
+        httpHeader.add(jwtConfig.header, jwtConfig.prefix + accessToken)
+        return httpHeader
     }
 }

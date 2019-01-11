@@ -32,8 +32,8 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val userEntityA = getTestUserEntity().apply { name = "test1" }
             val userEntityB = getTestUserEntity().apply { name = "test2" }
-            val notificationRuleEntityA = getTestNotificationRuleEntity().copy(id = 1, owner = userEntityA)
-            val notificationRuleEntityB = getTestNotificationRuleEntity().copy(id = 2, owner = userEntityB)
+            val notificationRuleEntityA = getTestNotificationRuleEntity().copy(ruleId = 1, owner = userEntityA)
+            val notificationRuleEntityB = getTestNotificationRuleEntity().copy(ruleId = 2, owner = userEntityB)
 
             userEnityRepository.save(userEntityA)
             userEnityRepository.save(userEntityB)
@@ -47,7 +47,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val expextedNotificationRule = getTestNotificationRuleModel().apply {
                 owner!!.name = "test1"
-                id = savedNotificationRuleEntity.id
+                ruleId = savedNotificationRuleEntity.ruleId
             }
             notificationRulesForUser.first() shouldBe expextedNotificationRule
         }
@@ -58,9 +58,9 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val savedNotificationRule = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
 
-            val actualNotificationRule = notificationRuleRepository.getNotificationRule(savedNotificationRule.id!!)
+            val actualNotificationRule = notificationRuleRepository.getNotificationRule(savedNotificationRule.ruleId!!)
 
-            actualNotificationRule shouldBe getTestNotificationRuleModel().copy(id = savedNotificationRule.id!!)
+            actualNotificationRule shouldBe getTestNotificationRuleModel().copy(ruleId = savedNotificationRule.ruleId!!)
         }
 
         "getNotificationRule should return null if value is not present" {
@@ -76,7 +76,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val savedNotificationRule = notificationRuleRepository.createNotificationRule(getTestNotificationRuleModel())
 
-            savedNotificationRule shouldBe getTestNotificationRuleModel().copy(id = savedNotificationRule!!.id!!)
+            savedNotificationRule shouldBe getTestNotificationRuleModel().copy(ruleId = savedNotificationRule!!.ruleId!!)
         }
 
         "updateNotificationRule should work and not overwrite user" {
@@ -92,7 +92,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val newNotificationRuleWithNewUser = getTestNotificationRuleModel().apply {
                 description = "new"
                 owner = newUser
-                id = savedNotificationRuleEntity.id
+                ruleId = savedNotificationRuleEntity.ruleId
             }
 
             val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
@@ -107,9 +107,9 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val savedUserEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
 
-            notificationRuleRepository.deleteNotificationRule(savedUserEntity.id!!)
+            notificationRuleRepository.deleteNotificationRule(savedUserEntity.ruleId!!)
 
-            notificationRuleEntityRepository.existsById(savedUserEntity.id!!) shouldBe false
+            notificationRuleEntityRepository.existsById(savedUserEntity.ruleId!!) shouldBe false
         }
     }
 }

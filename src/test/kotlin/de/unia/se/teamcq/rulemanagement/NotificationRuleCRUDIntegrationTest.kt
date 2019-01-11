@@ -3,6 +3,7 @@ package de.unia.se.teamcq.rulemanagement
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.buildMockMvc
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
+import de.unia.se.teamcq.TestUtils.prepareAccessTokenHeader
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
@@ -56,7 +57,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
-                    .header(jwtConfig.header, jwtConfig.prefix + " faketoken")
+                    .headers(prepareAccessTokenHeader(jwtConfig, "faketoken"))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(notificationRuleToCreate)))
                     .andExpect(status().isUnauthorized)
@@ -68,15 +69,15 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
 
-            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 2)
+            val notificationRuleToCreate = getTestNotificationRuleDto().copy(ruleId = 2)
 
             val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
 
-            val ruleId = createdNotificationRule.id!!
+            val ruleId = createdNotificationRule.ruleId!!
 
             val retrievedNotificationRule = getNotificationRule(mockMvc, accessToken, ruleId)
 
-            retrievedNotificationRule.id!!.shouldBeGreaterThanOrEqual(1)
+            retrievedNotificationRule.ruleId!!.shouldBeGreaterThanOrEqual(1)
             retrievedNotificationRule.name shouldBe "rule_name"
             retrievedNotificationRule.description shouldBe "description"
         }
@@ -99,7 +100,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val resultJsonString = mockMvc.perform(MockMvcRequestBuilders
                     .get("/notification-rule-management/notification-rule/")
-                    .header(jwtConfig.header, jwtConfig.prefix + accessTokenA))
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessTokenA)))
                     .andExpect(status().isOk)
                     .andExpect(jsonPath("$", hasSize<Any>(2)))
                     .andReturn()
@@ -120,16 +121,16 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
 
-            val ruleId = createdNotificationRule.id!!
+            val ruleId = createdNotificationRule.ruleId!!
 
             mockMvc.perform(MockMvcRequestBuilders
                     .delete("/notification-rule-management/notification-rule/$ruleId")
-                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken)))
                     .andExpect(status().isOk)
 
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/notification-rule-management/notification-rule/$ruleId")
-                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken)))
                     .andExpect(status().isNotFound)
         }
 
@@ -143,20 +144,20 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
 
-            val ruleId = createdNotificationRule.id!!
+            val ruleId = createdNotificationRule.ruleId!!
 
             val notificationRuleUpdate = createdNotificationRule.copy(name = "updated name")
 
             mockMvc.perform(MockMvcRequestBuilders
                     .put("/notification-rule-management/notification-rule/$ruleId")
-                    .header(jwtConfig.header, jwtConfig.prefix + accessToken)
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(notificationRuleUpdate)))
                     .andExpect(status().isOk)
 
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/notification-rule-management/notification-rule/$ruleId")
-                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken)))
                     .andExpect(status().isOk)
                     .andExpect { result ->
                         val returnedNotificationRule = gson.fromJson(
@@ -178,7 +179,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/notification-rule-management/notification-rule")
-                .header(jwtConfig.header, jwtConfig.prefix + accessToken)
+                .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(gson.toJson(notificationRuleToCreate)))
                 .andExpect(status().isOk)
@@ -187,7 +188,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                             result.response.contentAsString,
                             NotificationRuleDto::class.java)
 
-                    returnedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
+                    returnedNotificationRule!!.ruleId!!.shouldBeGreaterThanOrEqual(1)
                     returnedNotificationRule!!.name shouldBe notificationRuleToCreate.name
                     returnedNotificationRule!!.description shouldBe notificationRuleToCreate.description
                 }
@@ -203,7 +204,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
         val result = mockMvc.perform(MockMvcRequestBuilders
                 .get("/notification-rule-management/notification-rule/$ruleId")
-                .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                .headers(prepareAccessTokenHeader(jwtConfig, accessToken)))
                 .andExpect(status().isOk)
                 .andReturn()
 
