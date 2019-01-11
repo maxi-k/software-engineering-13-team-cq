@@ -13,6 +13,13 @@ import java.security.KeyFactory
 import java.security.spec.X509EncodedKeySpec
 import java.util.Date
 
+// The authentication currently receives the token from the frontend that got created by other micro services.
+// However, we still need to verify that the token is valid and decrypt it using a public key to extract the username.
+// Later, we will probably have a MbW service that can validate these tokens for us. Right now the MbW docker container
+// doesn't contain a service like that so we need to use the public key to validate the token ourselves. For
+// testing purposes, we also have a method that creates valid tokens for us using a private key.
+// Both private and public key are the ones provided by MbW and can also be set in the application settings.
+
 @ContextConfiguration(classes = [TestConfiguration::class])
 @Import(JwtConfig::class, JwtTokenAuthenticationFilter::class)
 class SecurityTokenConfigurationTest : StringSpec() {
