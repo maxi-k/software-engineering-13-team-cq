@@ -4,16 +4,19 @@ import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.buildMockMvc
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
-import de.unia.se.teamcq.rulemanagement.model.NotificationRule
+import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
 import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
+import io.kotlintest.matchers.string.shouldContain
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
+import org.hamcrest.Matchers.hasSize
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
 
@@ -26,6 +29,9 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
     @Autowired
     lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
 
+    @Autowired
+    lateinit var jwtConfig: JwtConfig
+
     private val gson = Gson()
 
     init {
@@ -33,7 +39,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
-            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 0)
+            val notificationRuleToCreate = getTestNotificationRuleDto()
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
@@ -46,17 +52,17 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
-            val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 0)
+            val notificationRuleToCreate = getTestNotificationRuleDto()
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
-                    .header(HttpHeaders.AUTHORIZATION, "Bearer faketoken")
+                    .header(jwtConfig.header, jwtConfig.prefix + " faketoken")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
                     .content(gson.toJson(notificationRuleToCreate)))
                     .andExpect(status().isUnauthorized)
         }
 
-        "Create and delete NotificationRules with valid token" {
+        "Create and get a NotificationRule using a valid token" {
 
             val mockMvc = buildMockMvc(webApplicationContext)
 
@@ -64,40 +70,147 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val notificationRuleToCreate = getTestNotificationRuleDto().copy(id = 2)
 
-            var returnedNotificationRule: NotificationRuleDto? = null
+            val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
+
+            val ruleId = createdNotificationRule.id!!
+
+            val retrievedNotificationRule = getNotificationRule(mockMvc, accessToken, ruleId)
+
+            retrievedNotificationRule.id!!.shouldBeGreaterThanOrEqual(1)
+            retrievedNotificationRule.name shouldBe "rule_name"
+            retrievedNotificationRule.description shouldBe "description"
+        }
+
+        "Create and get all NotificationRules for a user using a valid tokens" {
+
+            val mockMvc = buildMockMvc(webApplicationContext)
+
+            val accessTokenA = jwtTokenAuthenticationFilter.createToken("UserA")
+
+            val accessTokenB = jwtTokenAuthenticationFilter.createToken("UserB")
+
+            val notificationRuleToCreateA = getTestNotificationRuleDto().copy(name = "NotificationRuleA")
+            val notificationRuleToCreateB = getTestNotificationRuleDto().copy(name = "NotificationRuleB")
+            val notificationRuleToCreateC = getTestNotificationRuleDto().copy(name = "NotificationRuleC")
+
+            postNotificationRule(mockMvc, notificationRuleToCreateA, accessTokenA)
+            postNotificationRule(mockMvc, notificationRuleToCreateB, accessTokenB)
+            postNotificationRule(mockMvc, notificationRuleToCreateC, accessTokenA)
+
+            val resultJsonString = mockMvc.perform(MockMvcRequestBuilders
+                    .get("/notification-rule-management/notification-rule/")
+                    .header(jwtConfig.header, jwtConfig.prefix + accessTokenA))
+                    .andExpect(status().isOk)
+                    .andExpect(jsonPath("$", hasSize<Any>(2)))
+                    .andReturn()
+                    .response
+                    .contentAsString
+
+            resultJsonString.shouldContain(notificationRuleToCreateA.name!!)
+            resultJsonString.shouldContain(notificationRuleToCreateC.name!!)
+        }
+
+        "Create and delete a NotificationRule using a valid token" {
+
+            val mockMvc = buildMockMvc(webApplicationContext)
+
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
+
+            val notificationRuleToCreate = getTestNotificationRuleDto()
+
+            val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
+
+            val ruleId = createdNotificationRule.id!!
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .post("/notification-rule-management/notification-rule")
-                    .header(HttpHeaders.AUTHORIZATION, "Bearer $accessToken")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleToCreate)))
+                    .delete("/notification-rule-management/notification-rule/$ruleId")
+                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
                     .andExpect(status().isOk)
-                    .andExpect { result ->
-                        returnedNotificationRule = gson.fromJson(
-                                result.response.contentAsString,
-                                NotificationRuleDto::class.java)
-
-                        returnedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
-                        returnedNotificationRule!!.name shouldBe "rule_name"
-                        returnedNotificationRule!!.description shouldBe "description"
-                    }
-
-            val ruleId = returnedNotificationRule!!.id
 
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/notification-rule-management/notification-rule/$ruleId")
-                    .header("Authorization", "Bearer $accessToken")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8))
+                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                    .andExpect(status().isNotFound)
+        }
+
+        "Create and update a NotificationRule using a valid token" {
+
+            val mockMvc = buildMockMvc(webApplicationContext)
+
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
+
+            val notificationRuleToCreate = getTestNotificationRuleDto()
+
+            val createdNotificationRule = postNotificationRule(mockMvc, notificationRuleToCreate, accessToken)
+
+            val ruleId = createdNotificationRule.id!!
+
+            val notificationRuleUpdate = createdNotificationRule.copy(name = "updated name")
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/notification-rule-management/notification-rule/$ruleId")
+                    .header(jwtConfig.header, jwtConfig.prefix + accessToken)
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(gson.toJson(notificationRuleUpdate)))
+                    .andExpect(status().isOk)
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .get("/notification-rule-management/notification-rule/$ruleId")
+                    .header(jwtConfig.header, jwtConfig.prefix + accessToken))
                     .andExpect(status().isOk)
                     .andExpect { result ->
-                        val retrievedNotificationRule = gson.fromJson(
+                        val returnedNotificationRule = gson.fromJson(
                                 result.response.contentAsString,
-                                NotificationRule::class.java)
+                                NotificationRuleDto::class.java)
 
-                        retrievedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
-                        retrievedNotificationRule.name shouldBe "rule_name"
-                        retrievedNotificationRule.description shouldBe "description"
+                        returnedNotificationRule!! shouldBe notificationRuleUpdate
                     }
         }
+    }
+
+    fun postNotificationRule(
+        mockMvc: MockMvc,
+        notificationRuleToCreate: NotificationRuleDto,
+        accessToken: String
+    ): NotificationRuleDto {
+
+        var returnedNotificationRule: NotificationRuleDto? = null
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/notification-rule-management/notification-rule")
+                .header(jwtConfig.header, jwtConfig.prefix + accessToken)
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(gson.toJson(notificationRuleToCreate)))
+                .andExpect(status().isOk)
+                .andExpect { result ->
+                    returnedNotificationRule = gson.fromJson(
+                            result.response.contentAsString,
+                            NotificationRuleDto::class.java)
+
+                    returnedNotificationRule!!.id!!.shouldBeGreaterThanOrEqual(1)
+                    returnedNotificationRule!!.name shouldBe notificationRuleToCreate.name
+                    returnedNotificationRule!!.description shouldBe notificationRuleToCreate.description
+                }
+
+        return returnedNotificationRule!!
+    }
+
+    fun getNotificationRule(
+        mockMvc: MockMvc,
+        accessToken: String,
+        ruleId: Long
+    ): NotificationRuleDto {
+
+        val result = mockMvc.perform(MockMvcRequestBuilders
+                .get("/notification-rule-management/notification-rule/$ruleId")
+                .header(jwtConfig.header, jwtConfig.prefix + accessToken))
+                .andExpect(status().isOk)
+                .andReturn()
+
+        val retrievedNotificationRule = gson.fromJson(
+                result.response.contentAsString,
+                NotificationRuleDto::class.java)
+
+        return retrievedNotificationRule!!
     }
 }

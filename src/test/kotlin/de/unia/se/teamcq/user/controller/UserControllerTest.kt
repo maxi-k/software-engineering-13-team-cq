@@ -1,7 +1,8 @@
 package de.unia.se.teamcq.user.controller
 
 import com.google.gson.Gson
-import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.TestUtils.getTestUserDto
+import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import de.unia.se.teamcq.user.service.IUserService
@@ -48,15 +49,12 @@ class UserControllerTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        val mockedUser = TestUtils.getTestUserModel()
-        val mockedUserDto = TestUtils.getTestUserDto()
+        every { userService.getOrCreateUser(any()) } returns getTestUserModel()
 
-        every { userService.getOrCreateUser(any()) } returns mockedUser
+        every { userService.createOrSaveUser(any()) } returns getTestUserModel()
 
-        every { userService.createOrSaveUser(any()) } returns mockedUser
-
-        every { mockUserMapper.dtoToModel(any()) } returns mockedUser
-        every { mockUserMapper.modelToDto(any()) } returns mockedUserDto
+        every { mockUserMapper.dtoToModel(any()) } returns getTestUserModel()
+        every { mockUserMapper.modelToDto(any()) } returns getTestUserDto()
 
         every { securityContext.authentication } returns authentication
         every { authentication.name } returns "Max Mustermann"
@@ -86,7 +84,7 @@ class UserControllerTest : StringSpec() {
                                 result.response.contentAsString,
                                 UserDto::class.java)
 
-                        returnedUserDto shouldBe mockedUserDto
+                        returnedUserDto shouldBe getTestUserDto()
                     }
 
             verify(exactly = 1) {
@@ -101,14 +99,14 @@ class UserControllerTest : StringSpec() {
             mockMvc.perform(MockMvcRequestBuilders
                     .put("/user-notification-settings/")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(mockedUserDto)))
+                    .content(gson.toJson(getTestUserDto())))
                     .andExpect(MockMvcResultMatchers.status().isOk)
                     .andExpect { result ->
-                        val returnedNotificationRule = gson.fromJson(
+                        val returnedUser = gson.fromJson(
                                 result.response.contentAsString,
                                 UserDto::class.java)
 
-                        returnedNotificationRule shouldBe mockedUserDto
+                        returnedUser shouldBe getTestUserDto()
                     }
 
             verify(exactly = 1) {

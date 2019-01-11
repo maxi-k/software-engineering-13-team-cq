@@ -78,6 +78,10 @@ class NotificationRuleController {
         val username = SecurityContextHolder.getContext().authentication.name
         val notificationRuleIfPresent = notificationRuleService.getNotificationRule(ruleId)
 
+        if (notificationRuleIfPresent?.owner?.name != notificationRuleDto.owner?.name) {
+            return ResponseEntity.badRequest().build()
+        }
+
         if (notificationRuleIfPresent?.owner?.name != username) {
             return ResponseEntity.badRequest().build()
         }

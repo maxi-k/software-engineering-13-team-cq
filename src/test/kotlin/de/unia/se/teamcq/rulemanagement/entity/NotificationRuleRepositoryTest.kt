@@ -52,7 +52,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             notificationRulesForUser.first() shouldBe expextedNotificationRule
         }
 
-        "getNotificationRule should work" {
+        "getNotificationRule should return NotificationRule if value is present" {
 
             userEnityRepository.save(getTestUserEntity())
 
@@ -61,6 +61,13 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val actualNotificationRule = notificationRuleRepository.getNotificationRule(savedNotificationRule.id!!)
 
             actualNotificationRule shouldBe getTestNotificationRuleModel().copy(id = savedNotificationRule.id!!)
+        }
+
+        "getNotificationRule should return null if value is not present" {
+
+            val actualNotificationRule = notificationRuleRepository.getNotificationRule(1059)
+
+            actualNotificationRule shouldBe null
         }
 
         "createNotificationRule should work" {

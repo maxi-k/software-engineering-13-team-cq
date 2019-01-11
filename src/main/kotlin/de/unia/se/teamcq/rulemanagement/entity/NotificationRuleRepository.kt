@@ -34,9 +34,10 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun getNotificationRule(ruleId: Long): NotificationRule? {
-        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).get()
+        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
 
-        return notificationRuleMapper.entityToModel(notificationRuleEntity)
+        return notificationRuleEntity?.let { existingNotificationRuleEntity ->
+            notificationRuleMapper.entityToModel(existingNotificationRuleEntity) }
     }
 
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {

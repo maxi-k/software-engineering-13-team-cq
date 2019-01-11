@@ -3,6 +3,7 @@ package de.unia.se.teamcq.rulemanagement.controller
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
+import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
@@ -12,9 +13,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
+import io.mockk.just
+import io.mockk.verify
+import io.mockk.Runs
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import io.mockk.verify
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
@@ -54,20 +57,16 @@ class NotificationRuleControllerTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        val mockedNotificationRule = getTestNotificationRuleModel()
-        val mockedNotificationRuleDto = getTestNotificationRuleDto()
+        every { notificationRuleService.createNotificationRule(any(), any()) } returns getTestNotificationRuleModel().copy(56)
 
-        every { notificationRuleService.createNotificationRule(any(), any()) } returns mockedNotificationRule.copy(56)
+        every { notificationRuleService.getNotificationRule(getTestNotificationRuleModel().id!!) } returns getTestNotificationRuleModel().copy(56)
+        every { notificationRuleService.getNotificationRule(not(getTestNotificationRuleModel().id!!)) } returns null
 
-        every { notificationRuleService.getNotificationRule(mockedNotificationRule.id!!) } returns mockedNotificationRule.copy(56)
-        every { notificationRuleService.getNotificationRule(not(mockedNotificationRule.id!!)) } returns null
+        every { notificationRuleService.updateNotificationRule(any()) } answers { firstArg() }
+        every { notificationRuleService.deleteNotificationRule(any()) } just Runs
 
-        every { mockNotificationRuleMapper.dtoToModel(any()) } returns mockedNotificationRule.copy(56)
-        every { mockNotificationRuleMapper.modelToDto(any()) } returns mockedNotificationRuleDto.copy(id = 56)
-
-        every { securityContext.authentication } returns authentication
-        every { authentication.name } returns "Max Mustermann"
-        every { userService.getOrCreateUser(any()) } returns User("Max Mustermann", null, null, null)
+        every { mockNotificationRuleMapper.dtoToModel(any()) } returns getTestNotificationRuleModel().copy(56)
+        every { mockNotificationRuleMapper.modelToDto(any()) } returns getTestNotificationRuleDto().copy(id = 56)
 
         val mockMvc = MockMvcBuilders
                 .standaloneSetup(notificationRuleController)
@@ -79,22 +78,22 @@ class NotificationRuleControllerTest : StringSpec() {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext)
 
-        "returns stored notification rules" {
+        "Returns stored NotificationRules" {
 
             SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/${mockedNotificationRule.id}")
+                    .get("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
                     .session(session)
-                    .header("Authorization", "Bearer test")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8))
+                    .header("Authorization", "Bearer test"))
                     .andExpect(status().isOk)
                     .andExpect { result ->
                         val returnedNotificationRuleDto = gson.fromJson(
                                 result.response.contentAsString,
                                 NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe mockedNotificationRuleDto.copy(id = 56)
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
                     }
 
             verify(exactly = 1) {
@@ -102,36 +101,124 @@ class NotificationRuleControllerTest : StringSpec() {
             }
         }
 
-        "returns a 404 error if there is no such notification rules" {
+        "Returns a 404 error if there is no such NotificationRule" {
 
             SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/1045")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8))
+                    .get("/notification-rule-management/notification-rule/1045"))
                     .andExpect(status().isNotFound)
         }
 
-        "inserts notification rules successfully" {
+        "Insert NotificationRules successfully" {
 
             SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(mockedNotificationRule)))
+                    .content(gson.toJson(getTestNotificationRuleDto())))
                     .andExpect(status().isOk)
                     .andExpect { result ->
                         val returnedNotificationRuleDto = gson.fromJson(
                                 result.response.contentAsString,
                                 NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe mockedNotificationRuleDto.copy(id = 56)
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
                     }
 
             verify(exactly = 1) {
                 notificationRuleService.createNotificationRule("Max Mustermann", any())
             }
         }
+
+        "Update NotificationRules successfully if current user is the owner" {
+
+            SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(gson.toJson(getTestNotificationRuleDto())))
+                    .andExpect(status().isOk)
+                    .andExpect { result ->
+                        val returnedNotificationRuleDto = gson.fromJson(
+                                result.response.contentAsString,
+                                NotificationRuleDto::class.java)
+
+                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(id = 56)
+                    }
+
+            verify(exactly = 1) {
+                notificationRuleService.updateNotificationRule(any())
+            }
+        }
+
+        "Not update NotificationRules if current user isn't the owner" {
+
+            SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToOtherValue()
+
+            val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(gson.toJson(notificationRuleUpate)))
+                    .andExpect(status().isBadRequest)
+        }
+
+        "Not update NotificationRules if the user that was set isn't the current user" {
+
+            SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
+
+            val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}")
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(gson.toJson(notificationRuleUpate)))
+                    .andExpect(status().isBadRequest)
+        }
+
+        "Delete NotificationRules successfully if current user is the owner" {
+
+            SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToDefault()
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}"))
+                    .andExpect(status().isOk)
+
+            verify(exactly = 1) {
+                notificationRuleService.deleteNotificationRule(any())
+            }
+        }
+
+        "Not delete NotificationRules if current user isn't the owner" {
+
+            SecurityContextHolder.setContext(securityContext)
+            setCurrentUserToOtherValue()
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().id}"))
+                    .andExpect(status().isBadRequest)
+        }
+    }
+
+    private fun setCurrentUserToDefault() {
+        every { securityContext.authentication } returns authentication
+        every { authentication.name } returns "Max Mustermann"
+        every { userService.getOrCreateUser(any()) } returns User("Max Mustermann", null, null, null)
+    }
+
+    private fun setCurrentUserToOtherValue() {
+        every { securityContext.authentication } returns authentication
+        every { authentication.name } returns "other user"
+        every { userService.getOrCreateUser(any()) } returns User("other user", null, null, null)
     }
 }
