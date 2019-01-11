@@ -1,4 +1,4 @@
-import { lazy,  } from 'react'
+import { lazy } from 'react'
 
 export type LazyComponent = React.LazyExoticComponent<any>
 export interface PageDefinition {
