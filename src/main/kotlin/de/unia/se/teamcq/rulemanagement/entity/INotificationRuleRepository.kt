@@ -2,10 +2,8 @@ package de.unia.se.teamcq.rulemanagement.entity
 
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.springframework.stereotype.Repository
-import org.springframework.transaction.annotation.Transactional
 
 @Repository
-@Transactional
 interface INotificationRuleRepository {
 
     fun getAllNotificationRulesForUser(username: String): List<NotificationRule>
