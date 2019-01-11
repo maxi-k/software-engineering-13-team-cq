@@ -18,7 +18,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afte
       <FormattedMessage id={beforeText}/>
       <Select
         value={<FormattedMessage id={dataTypes[0]} />}
-        options={comparisonTypes.map((dataType) => <FormattedMessage id={dataType}/>)}
+        options={comparisonTypes.map((dataType, i) => <FormattedMessage key={i} id={dataType}/>)}
       />
       <FormattedMessage id={afterText}/>
       <select>

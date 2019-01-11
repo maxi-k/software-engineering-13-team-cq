@@ -1305,7 +1305,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <p>
-    The
+    The 
     <div
       className="css-10nd86i"
       onKeyDown={[Function]}
@@ -1406,7 +1406,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
         </div>
       </div>
     </div>
-    is
+     is 
     <select>
       <option>
          
