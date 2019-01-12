@@ -1,2 +1,5 @@
-export type StatusObject = { status: number, [key: string]: any }
+export interface StatusObject {
+  status: number,
+  [key: string]: any
+}
 export type FetchError = boolean | Error | string | StatusObject

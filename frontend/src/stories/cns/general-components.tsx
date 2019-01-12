@@ -22,7 +22,8 @@ storiesOf('General Components', module)
   .add('Requests Error Messages', () =>
     <>
       {([400, 401, 404]).map((code) =>
-        <ErrorMessage message={<FormattedMessage id={messageFromError({ status: code })} />}
+        <ErrorMessage key={code}
+          message={<FormattedMessage id={messageFromError({ status: code })} />}
           style={{ marginBottom: '1rem' }} />
       )}
     </>

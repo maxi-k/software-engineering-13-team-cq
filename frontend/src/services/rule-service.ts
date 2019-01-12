@@ -49,7 +49,7 @@ const mockedRule2: OverviewRule = {
 const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
 
 const mockedRuleDetail = (ruleId: number): DetailRule => ({
-  ruleId: ruleId,
+  ruleId,
   ...mockedRuleOverview[ruleId % mockedRuleOverview.length],
   recipients: [{ type: RecipientType.Email, value: 'maxi.kuschewski@gmail.com'},
                { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],

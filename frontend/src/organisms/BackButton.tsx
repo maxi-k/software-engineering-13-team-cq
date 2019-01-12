@@ -8,9 +8,8 @@ import { StateMapper, DispatchMapper, connect } from '@/state/connector'
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
 import BackIcon from '@fleetdata/shared/components/icons/chevron-left.icon'
 
-
 interface DispatchAttributes {
-  goBack(event: React.SyntheticEvent<any, any>): void
+  onClick(event: React.SyntheticEvent<any, any>): void
 }
 type BackButtonProps = DispatchAttributes & React.HTMLAttributes<HTMLButtonElement>
 
@@ -22,10 +21,9 @@ const StyledBackIcon = styled(BackIcon)`
   padding-right: 1rem;
 `
 
-const BackButton: React.SFC<BackButtonProps> = ({ goBack, ...props }) => (
+const BackButton: React.SFC<BackButtonProps> = (props) => (
   <StyledBackButton
     {...props}
-    onClick={goBack}
     primary="false"
     iconleft={<StyledBackIcon fill={"#fff"} />}>
     <FormattedMessage id="cns.navigation.back.label" />
@@ -34,8 +32,7 @@ const BackButton: React.SFC<BackButtonProps> = ({ goBack, ...props }) => (
 
 const mapStateToProps: StateMapper<{}, {}> = (state, ownProps) => ({})
 const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, ownProps) => ({
-  goBack: () => dispatch(goBack())
+  onClick: () => dispatch(goBack())
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(BackButton)
