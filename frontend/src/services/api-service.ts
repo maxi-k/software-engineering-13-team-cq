@@ -23,6 +23,8 @@ const delayResponse = (min: number, max: number) => (
   })
 )
 
+// response object:
+// see http://www.wheresrhys.co.uk/fetch-mock/#api-mockingmock_response
 const mockRequest = (path: string, response: object, fetchOptions: object = {}) => {
   const fetchMock = require('fetch-mock')
   fetchMock.mock(`end:${path}`, delayResponse(50, 200).then(() => response))

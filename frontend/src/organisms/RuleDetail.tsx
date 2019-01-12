@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
+import { messageFromError } from '@/services/response-service'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -53,7 +54,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
   if (hasFetchError) {
     return (
       <ErrorMessage message={
-        <FormattedMessage id="cns.message.fetch.error" />
+        <FormattedMessage id={messageFromError(hasFetchError)} />
       } />
     )
   }

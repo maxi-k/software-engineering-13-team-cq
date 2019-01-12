@@ -2,7 +2,8 @@
     "cns.user.settings.label": "Benachrichtigungseinstellungen",
     "cns.navigation.back.label": "Zurück",
 
-    "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
+    "cns.message.fetch.error.default": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
+    "cns.message.fetch.error.notFound": "Die von Ihnen angeforderte Ressource konnte nicht gefunden werden.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
 
     "cns.rule.label": "Benachrichtigungsregel",

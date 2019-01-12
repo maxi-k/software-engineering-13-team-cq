@@ -3,6 +3,7 @@ import { createAction, createAsyncAction } from 'typesafe-actions'
 import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleOverview, NotificationRuleDetail } from '@/model/Rule'
+import { ensureResponseStatus } from '@/services/response-service'
 import { fetchRuleOverview, fetchRuleDetail } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
@@ -151,6 +152,7 @@ function* fetchRuleOverviewGenerator() {
 function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.request>) {
   try {
     const response = yield call(fetchRuleDetail, action.payload)
+    ensureResponseStatus(response);
     const rules = yield response.json() as NotificationRuleDetail
     yield put(loadRuleDetail.success(rules))
   } catch (error) {

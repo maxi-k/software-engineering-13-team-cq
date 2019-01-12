@@ -2,7 +2,9 @@
     "cns.user.settings.label": "Notification Settings",
     "cns.navigation.back.label": "Back",
 
-    "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
+    "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
+
+    "cns.message.fetch.error.notFound": "The requested resource could not be found.",
     "cns.page.ruleOverview.title": "Notification Rules",
 
     "cns.rule.label": "Notification Rule",

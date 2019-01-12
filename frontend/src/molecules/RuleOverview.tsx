@@ -10,6 +10,7 @@ import {
   NotificationRuleOverview as NotificationRule,
   FetchingAttributes, BasicHTMLProps
 } from '@/model'
+import { messageFromError } from '@/services/response-service'
 
 export type SelectRuleType = (event: React.SyntheticEvent<any, any>, rule: NotificationRule) => void
 export type AddRuleType = (event: React.SyntheticEvent<any, any>) => void
@@ -48,7 +49,7 @@ const RuleOverview: React.SFC<RuleOverviewProps> = ({
     return (
       <StyledOverview {...props}>
         <ErrorMessage message={
-          <FormattedMessage id="cns.message.fetch.error" />
+          <FormattedMessage id={messageFromError(hasFetchError)} />
         } />
       </StyledOverview>
     )

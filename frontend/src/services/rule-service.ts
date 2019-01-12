@@ -16,11 +16,15 @@ const ruleDetailUrl = (ruleId: number) => `/notification-rule-management/notific
 export const fetchRuleDetail = (ruleId: number) => (
   doMock
   ? apiRequest(ruleDetailUrl(ruleId))
-  : mockRequest(ruleDetailUrl(ruleId), mockedRuleDetail(ruleId))
+  : (
+    ruleId >= mockedRuleOverview.length
+    ? mockRequest(ruleDetailUrl(ruleId), { status: 404 })
+    : mockRequest(ruleDetailUrl(ruleId), mockedRuleDetail(ruleId))
+  )
 )
 
 const mockedRule: OverviewRule = {
-  id: 1,
+  id: 0,
   name: 'Status Reports',
   description: 'Rule Description for an examplary Notification Rule',
   aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
@@ -32,7 +36,7 @@ const mockedRule: OverviewRule = {
 
 const mockedRule2: OverviewRule = {
   ...mockedRule,
-  id: 2,
+  id: 1,
   name: 'Engine and Fuel Alerts',
   aggregatorDescription: 'Sent Immediately',
   dataSources: [
