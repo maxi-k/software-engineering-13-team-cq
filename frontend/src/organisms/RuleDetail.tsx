@@ -28,6 +28,7 @@ const StyledRuleHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 1rem;
 `
 
 const StyledRuleInformation = styled.div`
@@ -63,7 +64,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
   return (
     <StyledRuleDetail {...props}>
       <StyledRuleHeader>
-        <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
+        <Typography variant="h5">
           <span>
             <FormattedMessage id="cns.rule.label" />{' '}
             "{rule.name}"
