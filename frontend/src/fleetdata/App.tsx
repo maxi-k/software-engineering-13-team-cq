@@ -12,8 +12,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { DialogContent, Grid, ListItemText } from '@material-ui/core';
 import { rem } from 'polished';
-import * as de from 'react-intl/locale-data/de';
-import * as en from 'react-intl/locale-data/en';
+import de from 'react-intl/locale-data/de';
+import en from 'react-intl/locale-data/en';
 import styled from 'styled-components';
 import { messages } from '@/i18n';
 import { AddButton } from './shared/components/actions/actions.styles';
@@ -53,13 +53,13 @@ addLocaleData([...en, ...de]);
 const generateClassName = createGenerateClassName();
 
 const StyledDivider = styled.div`
-  min-height: ${rem(36)};
+    min-height: ${rem(36)};
 `;
 
 class App extends React.Component<
   object,
   { open: boolean; language: 'en' | 'de' }
-> {
+  > {
   public state: { language: 'en' | 'de'; open: boolean };
   private jss = create(jssPreset());
   private theme = createMuiTheme(defaultTheme);
@@ -74,7 +74,9 @@ class App extends React.Component<
   }
 
   public componentDidMount() {
-    window.scrollTo({ top: 0 });
+    // breaks jest test because it's not implemented
+    // in jsdom
+    // window.scrollTo({ top: 0 });
   }
 
   public switchLanguage = (language: 'en' | 'de') => {

@@ -2,7 +2,7 @@
 
 ## Quick Development Guide
 - After cloning, execute `yarn install` to fetch all available packages.
-  - If you don't have yarn installed yet, execute `npm install -g yarn`. 
+  - If you don't have yarn installed yet, execute `npm install -g yarn`.
   - If you don't have `npm` or `node` installed yet, look up how to do it on your system.
 - Execute `yarn start` to start a local development server with hot reloading. Edit some files.
 - Execute `yarn test` to execute the tests for the frontend .
@@ -24,8 +24,14 @@ Have a look at `package.json` for a complete list
 - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
 - The [Redux Duck Pattern](https://github.com/erikras/ducks-modular-redux)
 
+For a more high-level documentation on the code, explanations about used
+practices and more, please go to [The Frontend Documentation](../doc/technische-dokumentation/frontend-development.md)
+
 ## Guides
 - React + Redux + Typescript: https://github.com/piotrwitek/react-redux-typescript-guide
+- Typescript with React:
+  - https://www.typescriptlang.org/docs/handbook/jsx.html
+  - https://medium.com/innovation-and-technology/deciphering-typescripts-react-errors-8704cc9ef402
 
 
 # Standard create-react-app README

@@ -1,27 +1,66 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
+import {
+  ContentDiv,
+  MainDiv,
+  PageContainer,
+  StyledTopPaddingContainer
+} from '@fleetdata/shared/styled-components/page.style';
+
+import StoreWrapper from '@/StoreWrapper'
+import StyleWrapper from '@/StyleWrapper'
+
+import Pages from '@/pages'
+import Header from '@/organisms/Header'
+
+import { addLocaleData, IntlProvider } from 'react-intl';
+import de from 'react-intl/locale-data/de';
+import en from 'react-intl/locale-data/en';
+import { messages } from '@/i18n';
+
+addLocaleData([...en, ...de]);
+
+type LanguageType = 'en' | 'de'
+interface AppState {
+  language: LanguageType
+}
+
+class App extends React.Component<object, AppState> {
+
+  constructor(props: object) {
+    super(props)
+    this.state = { language: 'en' }
+    this.switchLanguage = this.switchLanguage.bind(this)
+  }
+
+  public switchLanguage(lang: LanguageType) {
+    this.setState({ language: lang })
+  }
+
+  public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <StyleWrapper>
+        <IntlProvider
+          locale={this.state.language}
+          textComponent={React.Fragment}
+          messages={messages[this.state.language]} >
+          <StoreWrapper>
+            <MainDiv>
+              <Header
+                language={this.state.language}
+                switchLanguage={this.switchLanguage} />
+              <ContentDiv>
+                <StyledTopPaddingContainer />
+                <PageContainer>
+                  <Pages />
+                </PageContainer>
+              </ContentDiv>
+            </MainDiv>
+          </StoreWrapper>
+        </IntlProvider>
+      </StyleWrapper>
+    )
   }
 }
 

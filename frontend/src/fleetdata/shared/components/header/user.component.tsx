@@ -2,6 +2,7 @@ import { ListItem, Menu } from '@material-ui/core';
 import update from 'immutability-helper';
 import * as React from 'react';
 import { FormattedMessage, InjectedIntlProps, injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom'
 import { StyledMenuItem } from '@/fleetdata/shared/styled-components/form/form-elements.style';
 import { StyledIconButton } from '@/fleetdata/shared/styled-components/icon-button.style';
 import { mediumgray, white } from '@/fleetdata/shared/styles/variables';
@@ -23,10 +24,10 @@ const StyledUserListItem = styled(ListItem)`
 `;
 
 const StyledSeparator = styled.hr`
-  margin: 0;
-  border-color: ${white};
-  border-style: solid;
-  border-width: 3px;
+    margin: 0;
+    border-color: ${white};
+    border-style: solid;
+    border-width: 3px;
 `;
 
 const StyledUserMenuIconButton = styled(StyledIconButton)`
@@ -34,7 +35,7 @@ const StyledUserMenuIconButton = styled(StyledIconButton)`
 `;
 
 const StyledUserName = styled.div`
-  color: ${mediumgray};
+    color: ${mediumgray};
 `;
 
 interface IState {
@@ -51,7 +52,7 @@ interface IProps {
 class UserComponent extends React.Component<
   IProps & InjectedIntlProps,
   IState
-> {
+  > {
   // Set default props
   public static defaultProps = {
     userName: 'Erika Musterfrau',
@@ -82,19 +83,18 @@ class UserComponent extends React.Component<
 
   public handleMenuClick = (e: React.MouseEvent<HTMLElement>) => {
     switch (
-      ((e.target as unknown) as {
-        getAttribute: (x: string) => string;
-      }).getAttribute('value')
+    ((e.target as unknown) as {
+      getAttribute: (x: string) => string;
+    }).getAttribute('value')
     ) {
       case 'changePassword':
-        this.closeMenu();
         // this.props.openChangePasswordDialog();
         break;
       case 'logout':
-        this.closeMenu();
         // this.props.logout();
         break;
     }
+    this.closeMenu();
   };
 
   public render() {
@@ -118,6 +118,11 @@ class UserComponent extends React.Component<
             <StyledUserName>{this.props.userName}</StyledUserName>
           </StyledUserListItem>
           <StyledSeparator />
+          <StyledUserMenuItem value="cns">
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <FormattedMessage id="cns.user.settings.label" />
+            </Link>
+          </StyledUserMenuItem>
           <StyledUserMenuItem value="changePassword">
             <FormattedMessage id="userMenu.changePassword" />
           </StyledUserMenuItem>

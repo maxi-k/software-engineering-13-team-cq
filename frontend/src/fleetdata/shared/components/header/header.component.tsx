@@ -84,7 +84,7 @@ interface IProps {
 class HeaderComponent extends React.Component<
   React.Props<HTMLElement> & IProps & RouteComponentProps<any>,
   IState
-> {
+  > {
   public scrollEvent$: Observable<Event> | undefined;
   public scrollSubscription = new Subscription();
 
@@ -164,7 +164,7 @@ class HeaderComponent extends React.Component<
               <User />
             </StyledActionsContainer>
           </HeaderFirstLineContainer>
-          <WithRouterAndStateMainNavigation collapsed={this.state.collapsed} />
+          <WithRouterAndStateMainNavigation isLoggedIn={this.props.isLoggedIn} collapsed={this.state.collapsed} />
         </StyledHeaderInnerContainer>
         <StyledBorderBottom />
       </StyledHeaderContainer>
