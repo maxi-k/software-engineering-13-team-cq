@@ -1,5 +1,6 @@
 {
     "cns.user.settings.label": "Benachrichtigungseinstellungen",
+    "cns.navigation.back.label": "Zurück",
 
     "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
@@ -10,7 +11,6 @@
     "cns.rule.field.description.label": "Beschreibung",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.recipients.label": "Empfänger",
-
 
     "cns.rule.creation.step.general.title": "Allgemein",
     "cns.rule.creation.step.general.fleets": "Betroffene Flotten",
@@ -40,4 +40,3 @@
     "cns.condition.selector.below": "kleiner als",
     "cns.condition.selector.above": "größer als"
 }
-

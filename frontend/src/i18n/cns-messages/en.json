@@ -1,5 +1,6 @@
 {
     "cns.user.settings.label": "Notification Settings",
+    "cns.navigation.back.label": "Back",
 
     "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",

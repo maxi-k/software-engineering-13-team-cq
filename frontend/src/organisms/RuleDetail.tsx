@@ -10,6 +10,7 @@ import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import RuleRecipientTag from '@/atoms/RuleRecipientTag'
 import FieldDescriptor from '@/molecules/FieldDescriptor'
+import BackButton from '@/organisms/BackButton'
 import RuleIcon from '@/icons/RuleIcon'
 
 interface RuleDetailAttributes {
@@ -23,19 +24,25 @@ type RuleDetailProps = FetchingAttributes
 const StyledRuleDetail = styled.div`
 `
 
+const StyledRuleHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const StyledRuleInformation = styled.div`
-    display: flex;
-    flex-direction: row;
+ display: flex;
+ flex-direction: row;
 `
 
 const StyledInfoBlock = styled.div`
-    flex-basis: 50%;
-    flex-shrink: 1;
-    padding: 1rem;
+  flex-basis: 50%;
+  flex-shrink: 1;
+  padding: 1rem;
 `
 
 const StyledFieldSeparator = styled.div`
-    padding: 1rem;
+  padding: 1rem;
 `
 
 const RuleDetail: React.SFC<RuleDetailProps> = ({
@@ -55,10 +62,15 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
 
   return (
     <StyledRuleDetail {...props}>
-      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
-        <FormattedMessage id="cns.rule.label" />{' '}
-        "{rule.name}"
-      </Typography>
+      <StyledRuleHeader>
+        <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
+          <span>
+            <FormattedMessage id="cns.rule.label" />{' '}
+            "{rule.name}"
+          </span>
+        </Typography>
+        <BackButton />
+      </StyledRuleHeader>
       <StyledFieldSeparator />
       <StyledRuleInformation>
         <StyledInfoBlock>
@@ -88,6 +100,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
             content={<>
               {rule.dataSources.map((dataSource) => (
                 <RuleIcon
+                  key={dataSource}
                   type={dataSource}
                   label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
               )}
