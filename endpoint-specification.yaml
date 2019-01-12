@@ -24,6 +24,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RuleOverview'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
     post:
       description: |
         Creates a new notification rule with the given parameters.
@@ -44,6 +46,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   '/notification-rule-management/notification-rule/{ruleId}':
     parameters:
       - name: ruleId
@@ -66,12 +72,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '404':
-          description: The notification rule with the given id was not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceNotFound'
+          $ref: '#/components/responses/NotFound'
     put:
       description: |
         Updates the notification rule given by {ruleId} with the given
@@ -93,12 +99,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '404':
-          description: The notification rule with the given id was not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceNotFound'
+          $ref: '#/components/responses/NotFound'
     delete:
       description: |
         Deletes the notification rule given by the {ruleId} parameter
@@ -112,14 +118,33 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '404':
-          description: The notification rule with the given id was not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceNotFound'
+          $ref: '#/components/responses/NotFound'
 
 components:
+  responses:
+    NotFound:
+      description: The requested resource could not be found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
+    BadRequest:
+      description: There was something wrong with your request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
   schemas:
     GenericSuccess:
       required:
@@ -127,7 +152,7 @@ components:
       properties:
         success:
           type: boolean
-    ResourceNotFound:
+    ErrorResponse::
       required:
           - error
       properties:
@@ -144,13 +169,13 @@ components:
           type: string
     RuleOverview:
       required:
-        - id
+        - ruleId
         - name
         - description
-        - dataSources
-        - aggregatorCronExpression
+        - vehicleDataSources
+        - aggregator
       properties:
-          id:
+          ruleId:
             type: integer
             format: int64
           name:
@@ -161,8 +186,17 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/VehicleDataSource'
-          aggregatorCronExpression:
-            type: string
+          aggregator:
+              $ref: '#/components/schemas/RuleAggregator'
+    RuleAggregator:
+      required:
+        - type
+        - value
+      properties:
+        aggregatorType:
+          $ref: '#/components/schemas/RuleAggregatorType'
+        value:
+          type: string
     RuleDetail: # TODO: Complete
       allOf:
         - $ref: '#/components/schemas/RuleOverview'
@@ -191,6 +225,12 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/NotificationRecipientType'
+    RuleAggregatorType:
+      type: string
+      enum:
+        - IMMEDIATE
+        - SCHEDULED
+        - COUNTING
     NotificationRecipientType:
       type: string
       enum:
