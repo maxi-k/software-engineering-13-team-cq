@@ -5,6 +5,8 @@
     "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
 
     "cns.message.fetch.error.notFound": "The requested resource could not be found.",
+    "cns.message.fetch.error.badRequest": "There was a problem with your request. Please try it again.",
+    "cns.message.fetch.error.unauthorized": "You are unauthorized to view this resource. Please try to reload the page and log in.",
     "cns.page.ruleOverview.title": "Notification Rules",
 
     "cns.rule.label": "Notification Rule",

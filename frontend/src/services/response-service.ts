@@ -12,6 +12,10 @@ export const messageFromError = (error: FetchError): string => {
     case 'object':
       if ('status' in error) {
         switch(error.status) {
+          case 400:
+            return prefix + 'badRequest'
+          case 401:
+            return prefix + 'unauthorized'
           case 404:
             return prefix + 'notFound'
         }
