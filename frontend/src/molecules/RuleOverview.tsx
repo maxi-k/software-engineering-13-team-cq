@@ -63,7 +63,7 @@ const RuleOverview: React.SFC<RuleOverviewProps> = ({
       <AddRuleTile onClick={addRule} {...defaultTileOptions} />
       {rules.map((rule: NotificationRule) => (
         <RuleTile
-          key={rule.id}
+          key={rule.ruleId}
           {...defaultTileOptions}
           rule={rule}
           onClick={ruleSelector(selectRule, rule)} />

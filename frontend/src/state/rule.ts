@@ -97,7 +97,7 @@ const reducer: Reducer<RuleState> = (state = initialState, action) => {
             hasFetchError: false,
             rules: action.payload.reduce(
               (obj: RuleOverviewState['rules'], rule: NotificationRuleOverview) =>
-                ({ ...obj, [rule.id]: rule }),
+                ({ ...obj, [rule.ruleId]: rule }),
               {})
           }
         }
@@ -110,7 +110,7 @@ const reducer: Reducer<RuleState> = (state = initialState, action) => {
             hasFetchError: false,
             rules: {
               ...state.ruleDetail.rules,
-              [action.payload.id]: action.payload
+              [action.payload.ruleId]: action.payload
             }
           }
         }

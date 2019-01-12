@@ -32,7 +32,7 @@ export interface NotificationRecipient {
 }
 
 export interface NotificationRuleOverview {
-  id: number,
+  ruleId: number,
   name: string,
   description: string,
   dataSources: VehicleDataType[],
