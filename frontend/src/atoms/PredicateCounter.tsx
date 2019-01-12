@@ -16,7 +16,7 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options, beforeTex
       <FormattedMessage id={beforeText} />
       <select>
         {options.map((predicateCounterOption: PredicateCounterValue) => (
-          <option> {predicateCounterOption} </option> // e.g. All, One, None
+          <option key={predicateCounterOption}> {predicateCounterOption} </option> // e.g. All, One, None
         ))}
       </select>
       <FormattedMessage id={afterText} />

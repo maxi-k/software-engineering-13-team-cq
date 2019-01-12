@@ -22,7 +22,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afte
       <FormattedMessage id={afterText} />
       <select>
         {comparisonTypes.map((comparisonType: ComparisonType) => (
-          <option> {comparisonType} </option>
+          <option key={comparisonType}> {comparisonType} </option>
         ))}
       </select>
       <input type="text" name="value" />
