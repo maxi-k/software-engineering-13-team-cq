@@ -6,7 +6,7 @@
 
 #### Operation
 
-createNewRule(name, recievers, condition, aggregator, ...)
+createNewRule(name, recievers, condition, aggregator)
 
 #### Beschreibung
 
@@ -18,7 +18,7 @@ Der Flottenmanager ist am System authentifiziert.
 
 #### Nachbedingung
 
-Eine neue Regel ist aktiv im System.
+Die erstellte Regel wurde dem System hinzugefügt.
 
 #### Ausnahmen
 
@@ -41,7 +41,7 @@ Notification-text-template
 
 #### Operation
 
-updateRule(name, recievers, condition, aggregator, ...)
+updateRule(name, recievers, condition, aggregator)
 
 #### Beschreibung
 
@@ -53,7 +53,7 @@ Es existieren Regeln, die modifiziert werden können.
 
 #### Nachbedingung
 
-Die Regel ist in ihrer neuen Definition aktiv, die alte Definition ist inaktiv.
+Die Regel wurde entsprechend der Änderungen gespreichert. Die veralteten Einstellungen wurden verworfen.
 
 #### Ausnahme
 
@@ -88,7 +88,7 @@ Der Flottenmanager ist am System authentifiziert.
 
 #### Nachbedingung
 
-Die Regel kein Teil der noch existierenden Regeln.
+Die Regelmenge wurde um die gelöschten reduziert.
 
 #### Ausnahmen
 
@@ -118,7 +118,7 @@ Der Flottenmanager ist im System authentifiziert.
 
 #### Nachbedingung
 
-Der Systemzustand hat sich nicht verändert.
+Der Systemzustand wurde nicht verändert.
 
 #### Ausnahme
 
