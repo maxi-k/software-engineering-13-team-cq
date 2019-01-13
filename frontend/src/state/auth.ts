@@ -78,7 +78,7 @@ function* initialLoginSaga() {
 
 }
 
-export const sagas = [
-  initialLoginSaga
-]
+export const sagas = process.env.REACT_APP_IS_DEVELOPMENT
+                   ? [initialLoginSaga]
+                   : []
 export default reducer
