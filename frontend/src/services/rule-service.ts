@@ -1,4 +1,4 @@
-import { apiRequest, mockRequest, doMock } from '@/services/api-service'
+import { authApiRequest, mockRequest, doMock } from '@/services/api-service'
 import { NotificationRuleOverview as OverviewRule,
          NotificationRuleDetail as DetailRule,
          NotificationRecipientType as RecipientType,
@@ -6,16 +6,16 @@ import { NotificationRuleOverview as OverviewRule,
 } from '@/model'
 
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
-export const fetchRuleOverview = () => (
+export const fetchRuleOverview = (accessToken: string) => (
   doMock
-  ? apiRequest(ruleOverviewUrl)
+  ? authApiRequest(ruleOverviewUrl, accessToken)
   : mockRequest(ruleOverviewUrl, mockedRuleOverview)
 )
 
 const ruleDetailUrl = (ruleId: number) => `/notification-rule-management/notification-rule/${ruleId}`
-export const fetchRuleDetail = (ruleId: number) => (
+export const fetchRuleDetail = (accessToken: string, ruleId: number) => (
   doMock
-  ? apiRequest(ruleDetailUrl(ruleId))
+  ? authApiRequest(ruleDetailUrl(ruleId), accessToken)
   : (
     ruleId >= mockedRuleOverview.length
     ? mockRequest(ruleDetailUrl(ruleId), { status: 404 })

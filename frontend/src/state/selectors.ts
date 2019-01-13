@@ -1,7 +1,7 @@
 import { createSelector, Selector as StateSelector } from 'reselect'
 import { RootState } from './index'
 import { LanguageType, LanguageState } from './language'
-import { AuthState } from './auth'
+import { AuthState, AuthData } from './auth'
 import { RuleState, RuleOverviewState, RuleDetailState } from './rule'
 
 import { RouterState } from 'connected-react-router'
@@ -16,9 +16,13 @@ export const languageSelector: Selector<LanguageType> = createSelector(
 )
 
 export const authStateSelector: Selector<AuthState> = state => state.auth
-export const isAuthenticatedSelector: Selector<boolean> = createSelector(
+export const authDataSelector: Selector<AuthData | null> = createSelector(
   [authStateSelector],
-  authState => typeof authState.authData === 'undefined' || authState.authData === null
+  authState => authState.authData
+)
+export const isAuthenticatedSelector: Selector<boolean> = createSelector(
+  [authDataSelector],
+  authData => typeof authData !== 'undefined' && authData !== null
 )
 
 export const ruleStateSelector: Selector<RuleState> = state => state.rule

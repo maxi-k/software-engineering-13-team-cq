@@ -7,6 +7,8 @@ import { ensureResponseStatus } from '@/services/response-service'
 import { fetchRuleOverview, fetchRuleDetail } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
+import { waitForLogin } from './auth'
+
 export enum RuleActionType {
   RULE_CREATE = '@rule/CREATE',
   RULE_CREATE_FINISH = '@rule/CREATE_FINISH',
@@ -141,7 +143,10 @@ export const loadRuleDetail = createAsyncAction(
 
 function* fetchRuleOverviewGenerator() {
   try {
-    const response = yield call(fetchRuleOverview)
+    const authData = yield call(waitForLogin)
+    console.log(authData)
+    const response = yield call(fetchRuleOverview, authData.accessToken)
+    ensureResponseStatus(response);
     const rules = yield response.json() as NotificationRuleOverview[]
     yield put(loadRuleOverview.success(rules))
   } catch (error) {
@@ -151,7 +156,11 @@ function* fetchRuleOverviewGenerator() {
 
 function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.request>) {
   try {
-    const response = yield call(fetchRuleDetail, action.payload)
+    // If the authData is null, wait for the login
+    // to succeed and then start fetching.
+    const authData = yield call(waitForLogin)
+    console.log(authData)
+    const response = yield call(fetchRuleDetail, authData.accessToken, action.payload)
     ensureResponseStatus(response);
     const rules = yield response.json() as NotificationRuleDetail
     yield put(loadRuleDetail.success(rules))

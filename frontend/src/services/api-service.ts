@@ -1,4 +1,5 @@
-const apiUrl = process.env.REACT_APP_IS_DEVELOPMENT
+import { isDevelopment, isTest } from './environment-service'
+const apiUrl = isDevelopment
              ? 'http://localhost:3000'
              : 'st-calculator-backend.herokuapp.com'
 
@@ -16,7 +17,18 @@ const apiRequest = (path: string, options: object = {}) => {
   )
 }
 
-const doMock = process.env.REACT_APP_IS_DEVELOPMENT
+const authApiRequest = (path: string, authToken: string, options: object = {}) => {
+  const authOptions = {
+    headers: {
+      ...defaultOptions.headers,
+     'Authorization': 'Bearer ' + authToken
+    }
+  }
+  return apiRequest(path, authOptions)
+}
+
+// TODO: Only mock in test environment
+const doMock = isDevelopment || isTest
 const delayResponse = (min: number, max: number) => (
   new Promise(resolve => {
     setTimeout(resolve, Math.random() * (max - min) + min)
@@ -40,6 +52,7 @@ const mockRequest = (path: string, response: object, fetchOptions: object = {}) 
 export {
   apiUrl,
   apiRequest,
+  authApiRequest,
   doMock,
   mockRequest,
 }

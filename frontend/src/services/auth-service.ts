@@ -1,5 +1,7 @@
-const authServiceUrl = process.env.REACT_APP_IS_DEVELOPMENT
-                     ? 'http://localhost:3000' // Started with docker-container (BMW Mock)
+import { isDevelopment } from './environment-service'
+
+const authServiceUrl = isDevelopment
+                     ? '' // On Development, it's local (see proxy paths from /setupProxy.js)
                      : '' // TODO: Insert production url for auth service
 
 const authenticationUrl = authServiceUrl + '/api/login'

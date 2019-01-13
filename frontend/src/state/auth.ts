@@ -1,11 +1,14 @@
 import { Reducer } from 'redux'
 import { createAction, createAsyncAction } from 'typesafe-actions'
 import update from 'immutability-helper'
-import { call, put } from 'redux-saga/effects'
+import { call, put, take, select } from 'redux-saga/effects'
 
 import { FetchingData } from '@/model'
+import { isDevelopment } from '@/services/environment-service'
 import { fetchAuthenticationToken } from '@/services/auth-service'
 import { ensureResponseStatus } from '@/services/response-service'
+
+import { authDataSelector } from './selectors'
 
 export enum AuthActionType {
   AUTH_LOGIN = '@auth/LOGIN',
@@ -20,7 +23,7 @@ export interface AuthData {
   lastName: string
 }
 export interface AuthState extends FetchingData {
-  readonly authData?: AuthData | null
+  readonly authData: AuthData | null
 }
 
 const initialState: AuthState = {
@@ -65,6 +68,17 @@ export const login = createAsyncAction(
 )<void, AuthData, Error>()
 export const logout = createAction(AuthActionType.AUTH_LOGOUT)
 
+export function* waitForLogin() {
+  // If the authData is null, wait for the login
+  // to succeed and then return
+  let authData = yield select(authDataSelector)
+  if (authData === null) {
+    yield take(AuthActionType.AUTH_LOGIN_SUCCESS)
+    authData = yield select(authDataSelector)
+  }
+  return authData
+}
+
 function* initialLoginSaga() {
   console.info('Fetching a token with standard credentials.')
   try {
@@ -78,7 +92,7 @@ function* initialLoginSaga() {
 
 }
 
-export const sagas = process.env.REACT_APP_IS_DEVELOPMENT
+export const sagas = isDevelopment
                    ? [initialLoginSaga]
                    : []
 export default reducer
