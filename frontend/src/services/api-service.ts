@@ -43,7 +43,7 @@ const mockRequest = (path: string, response: object, fetchOptions: object = {}) 
   // We want a console print here, as there will be no information in
   // the network tab, and this is development only.
   // tslint:disable-next-line:no-console
-  console.log('Mocking API Request to: ' + path);
+  console.info('Mocking API Request to: ' + path);
   const promise = apiRequest(path, fetchOptions)
   fetchMock.restore()
   return promise

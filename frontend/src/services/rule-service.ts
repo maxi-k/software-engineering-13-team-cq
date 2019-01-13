@@ -8,19 +8,19 @@ import { NotificationRuleOverview as OverviewRule,
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
 export const fetchRuleOverview = (accessToken: string) => (
   doMock
-  ? authApiRequest(ruleOverviewUrl, accessToken)
-  : mockRequest(ruleOverviewUrl, mockedRuleOverview)
+  ? mockRequest(ruleOverviewUrl, mockedRuleOverview)
+  : authApiRequest(ruleOverviewUrl, accessToken)
 )
 
 const ruleDetailUrl = (ruleId: number) => `/notification-rule-management/notification-rule/${ruleId}`
 export const fetchRuleDetail = (accessToken: string, ruleId: number) => (
   doMock
-  ? authApiRequest(ruleDetailUrl(ruleId), accessToken)
-  : (
+  ? (
     ruleId >= mockedRuleOverview.length
     ? mockRequest(ruleDetailUrl(ruleId), { status: 404 })
     : mockRequest(ruleDetailUrl(ruleId), mockedRuleDetail(ruleId))
   )
+  : authApiRequest(ruleDetailUrl(ruleId), accessToken)
 )
 
 const mockedRule: OverviewRule = {
