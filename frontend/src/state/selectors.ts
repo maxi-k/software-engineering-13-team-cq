@@ -18,7 +18,7 @@ export const languageSelector: Selector<LanguageType> = createSelector(
 export const authStateSelector: Selector<AuthState> = state => state.auth
 export const isAuthenticatedSelector: Selector<boolean> = createSelector(
   [authStateSelector],
-  authState => authState.isAuthenticated
+  authState => typeof authState.authData === 'undefined' || authState.authData === null
 )
 
 export const ruleStateSelector: Selector<RuleState> = state => state.rule
