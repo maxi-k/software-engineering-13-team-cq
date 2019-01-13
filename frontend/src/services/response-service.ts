@@ -1,9 +1,10 @@
 import { FetchError } from '@/model'
 
-const handledStatus: {[key: number]: string} = {
+export const handledStatus: {[key: number]: string} = {
   404: 'notFound',
   401: 'unauthorized',
-  400: 'badRequest'
+  400: 'badRequest',
+  500: 'serverError'
 }
 
 export const ensureResponseStatus = (response: Response): void => {
