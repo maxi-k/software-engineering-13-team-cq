@@ -7,14 +7,20 @@ import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
-import io.mockk.just
-import io.mockk.Runs
 import io.mockk.every
-import io.mockk.mockkClass
-import io.mockk.verify
 import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.OverrideMockKs
+import io.mockk.mockkClass
+import io.mockk.mockkStatic
+import io.mockk.verify
+import io.mockk.clearMocks
+import io.mockk.unmockkAll
+import io.mockk.just
+import io.mockk.Runs
 import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContext
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.util.Base64Utils
 import java.security.KeyFactory
@@ -46,20 +52,22 @@ class SecurityTokenConfigurationTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "Underlying mechanisms should accept valid tokens" { // TODO: Decide if we want to remove this test and replace it with actual method test
+        every { userService.getOrCreateUser(any()) } returns null
 
-            every { jwtConfig.publicKey } returns JwtTestConfig.publicKey
+        every { jwtConfig.publicKey } returns JwtTestConfig.publicKey
+        every { jwtConfig.privateKey } returns JwtTestConfig.privateKey
+        every { jwtConfig.header } returns JwtTestConfig.header
+        every { jwtConfig.prefix } returns JwtTestConfig.prefix
+        every { jwtConfig.expiration } returns JwtTestConfig.expiration
+
+        "Tokens that used to work should continue to work using our mechanism if expiration is ignored" {
 
             val token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDY1NDAzNzAsInVzZXJfbmFtZSI6ImFhYWFhYWFhLTAwMDAtYWFhYS0wMDAwLTAwMDAwMDAwMDAwMSIsImF1dGhvcml0aWVzIjpbIlJPTEVfRkRfQUxMIl0sImp0aSI6IjI0YzFkYWI2LTM1NjctNDUzYy05Mjc5LTZmYTc2ZTMzZWVlNSIsImNsaWVudF9pZCI6ImRhZDFkOWQzLTVjNTQtNGExNS1hYWEwLWFmYWYyZGY1YmM5NSIsInNjb3BlIjpbImFsbCJdfQ.CHBYsk_F4Mc5-NCTzXqT7oZM_-Vo2n5kCy90omFT04uty3vxrX-GEelIa5n5XL--6RjZP3S7QAlsBNkrntt4vflSVvbsUVg4h6nW0gs5AmkK9JQvDvZ3wK4B-xLjQ7p68P2k6SIflmf3LYC2tUq9Mi5M59YgPJ5g6icaUxv8A9OPg143y9fWCs-AEboDNF7HvZwUGc2JHPorUygitaLZBa1-pfsp7gpTWNT6dU_voxBptmuS6uOQWB4wQgzUTMJx0bLtoqcoKrRxufyA3-TXzXVoN52yEjxsDb47mVWS6ZK_kOPtBo_Uuy-9RVT0pYc1TkVSy3CzL7NSu72rCIhtAw"
             val body = decodeAndGetClaimBody(token)
             body!!["user_name"] shouldBe "aaaaaaaa-0000-aaaa-0000-000000000001"
         }
 
-        "Create valid tokens" {
-
-            every { jwtConfig.publicKey } returns JwtTestConfig.publicKey
-            every { jwtConfig.privateKey } returns JwtTestConfig.privateKey
-            every { jwtConfig.expiration } returns JwtTestConfig.expiration
+        "CreateToken should create valid tokens" {
 
             val token = jwtTokenAuthenticationFilter.createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
 
@@ -69,21 +77,65 @@ class SecurityTokenConfigurationTest : StringSpec() {
 
         "DoFilterInternal" should {
 
-            "work" {
-            }
+            "Not accept invalid tokens" {
 
-            "Create user in DB if he doesn't exist already" {
-                every { jwtConfig.publicKey } returns JwtTestConfig.publicKey
-                every { jwtConfig.privateKey } returns JwtTestConfig.privateKey
-                every { jwtConfig.header } returns JwtTestConfig.header
-                every { jwtConfig.prefix } returns JwtTestConfig.prefix
+                mockkStatic("org.springframework.security.core.context.SecurityContextHolder")
+
+                val mockedSecurityContext = mockkClass(SecurityContext::class)
+                every { SecurityContextHolder.getContext() } returns mockedSecurityContext
 
                 val httpServletRequest = mockkClass(HttpServletRequest::class)
                 val httpServletResponse = mockkClass(HttpServletResponse::class)
                 val filterChain = mockkClass(FilterChain::class)
 
                 every { filterChain.doFilter(any(), any()) } just Runs
-                val header = "Bearer " + jwtTokenAuthenticationFilter.createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
+                val header = JwtTestConfig.prefix + "faketoken"
+                every { httpServletRequest.getHeader("Authorization") } returns header
+
+                invokeDoFilterInternal(jwtTokenAuthenticationFilter, httpServletRequest, httpServletResponse, filterChain)
+
+                verify(exactly = 1) {
+                    SecurityContextHolder.clearContext()
+                }
+                unmockkAll() // To clear the static mock
+            }
+
+            "Set the username in the securityContext and accept correct tokens" {
+
+                mockkStatic("org.springframework.security.core.context.SecurityContextHolder")
+
+                val mockedSecurityContext = mockkClass(SecurityContext::class)
+                every { SecurityContextHolder.getContext() } returns mockedSecurityContext
+
+                val httpServletRequest = mockkClass(HttpServletRequest::class)
+                val httpServletResponse = mockkClass(HttpServletResponse::class)
+                val filterChain = mockkClass(FilterChain::class)
+
+                every { filterChain.doFilter(any(), any()) } just Runs
+                val header = JwtTestConfig.prefix + jwtTokenAuthenticationFilter.createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
+                every { httpServletRequest.getHeader("Authorization") } returns header
+
+                invokeDoFilterInternal(jwtTokenAuthenticationFilter, httpServletRequest, httpServletResponse, filterChain)
+
+                val expectedAuthentication = UsernamePasswordAuthenticationToken(
+                        "aaaaaaaa-0000-aaaa-0000-000000000001", null, emptyList())
+
+                verify(exactly = 1) {
+                    mockedSecurityContext.authentication = expectedAuthentication
+                }
+                unmockkAll() // To clear the static mock
+            }
+
+            "Create user in DB if he doesn't exist already" {
+
+                clearMocks(userService) // To reset the verify count
+
+                val httpServletRequest = mockkClass(HttpServletRequest::class)
+                val httpServletResponse = mockkClass(HttpServletResponse::class)
+                val filterChain = mockkClass(FilterChain::class)
+
+                every { filterChain.doFilter(any(), any()) } just Runs
+                val header = JwtTestConfig.prefix + jwtTokenAuthenticationFilter.createToken("aaaaaaaa-0000-aaaa-0000-000000000001")
                 every { httpServletRequest.getHeader("Authorization") } returns header
 
                 invokeDoFilterInternal(jwtTokenAuthenticationFilter, httpServletRequest, httpServletResponse, filterChain)
@@ -91,6 +143,7 @@ class SecurityTokenConfigurationTest : StringSpec() {
                 verify(exactly = 1) {
                     userService.getOrCreateUser("aaaaaaaa-0000-aaaa-0000-000000000001")
                 }
+                unmockkAll() // To clear the static mock
             }
         }
     }

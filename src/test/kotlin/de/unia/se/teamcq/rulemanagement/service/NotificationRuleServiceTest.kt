@@ -28,7 +28,7 @@ class NotificationRuleServiceTest : StringSpec() {
 
         val mockedNotificationRule = getTestNotificationRuleModel()
 
-        "getNotificationRulesForUser should work" {
+        "GetNotificationRulesForUser should work" {
             every { notificationRuleRepository.getAllNotificationRulesForUser(any()) } returns listOf(mockedNotificationRule)
 
             val notificationRules = notificationRuleService.getNotificationRulesForUser("test")
@@ -39,7 +39,7 @@ class NotificationRuleServiceTest : StringSpec() {
             }
         }
 
-        "getNotificationRule should work" {
+        "GetNotificationRule should work" {
             every { notificationRuleRepository.getNotificationRule(any()) } returns mockedNotificationRule
 
             val notificationRules = notificationRuleService.getNotificationRule(1)
@@ -50,7 +50,7 @@ class NotificationRuleServiceTest : StringSpec() {
             }
         }
 
-        "createNotificationRule should work" {
+        "CreateNotificationRule should work" {
             every { notificationRuleRepository.createNotificationRule(any()) } returns mockedNotificationRule
 
             val notificationRules = notificationRuleService.createNotificationRule("test", mockedNotificationRule)
@@ -61,7 +61,7 @@ class NotificationRuleServiceTest : StringSpec() {
             }
         }
 
-        "updateNotificationRule should work" {
+        "UpdateNotificationRule should work" {
             every { notificationRuleRepository.updateNotificationRule(any()) } returns mockedNotificationRule
 
             val notificationRules = notificationRuleService.updateNotificationRule(mockedNotificationRule)
@@ -72,7 +72,7 @@ class NotificationRuleServiceTest : StringSpec() {
             }
         }
 
-        "deleteNotificationRule should work" {
+        "DeleteNotificationRule should work" {
             every { notificationRuleRepository.deleteNotificationRule(any()) } just Runs
 
             notificationRuleService.deleteNotificationRule(1)
