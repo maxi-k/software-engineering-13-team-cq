@@ -144,7 +144,6 @@ export const loadRuleDetail = createAsyncAction(
 function* fetchRuleOverviewGenerator() {
   try {
     const authData = yield call(waitForLogin)
-    console.log(authData)
     const response = yield call(fetchRuleOverview, authData.accessToken)
     ensureResponseStatus(response);
     const rules = yield response.json() as NotificationRuleOverview[]
@@ -159,7 +158,6 @@ function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.requ
     // If the authData is null, wait for the login
     // to succeed and then start fetching.
     const authData = yield call(waitForLogin)
-    console.log(authData)
     const response = yield call(fetchRuleDetail, authData.accessToken, action.payload)
     ensureResponseStatus(response);
     const rules = yield response.json() as NotificationRuleDetail

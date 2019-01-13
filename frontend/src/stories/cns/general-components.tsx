@@ -23,7 +23,7 @@ storiesOf('General Components', module)
     <>
       {Object.keys(handledStatus).map((code) =>
         <ErrorMessage key={code}
-          message={<> <FormattedMessage id={messageFromError({ status: code })} /> ({code}) </>}
+          message={<> <FormattedMessage id={messageFromError({ status: parseInt(code) })} /> ({code}) </>}
           style={{ marginBottom: '1rem' }} />
       )}
     </>

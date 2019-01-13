@@ -60,7 +60,6 @@ export const reducer: Reducer<AuthState> = (state = initialState, action) => {
   }
 }
 
-
 export const login = createAsyncAction(
   AuthActionType.AUTH_LOGIN,
   AuthActionType.AUTH_LOGIN_SUCCESS,
@@ -80,6 +79,9 @@ export function* waitForLogin() {
 }
 
 function* initialLoginSaga() {
+  // We want a console print here, as this is development only
+  // and quite important
+  // tslint:disable-next-line:no-console
   console.info('Fetching a token with standard credentials.')
   try {
     const response = yield call(fetchAuthenticationToken)
@@ -95,4 +97,5 @@ function* initialLoginSaga() {
 export const sagas = isDevelopment
                    ? [initialLoginSaga]
                    : []
+
 export default reducer
