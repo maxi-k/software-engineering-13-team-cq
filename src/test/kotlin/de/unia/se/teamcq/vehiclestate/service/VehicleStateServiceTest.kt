@@ -22,8 +22,8 @@ class VehicleStateServiceTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "ImportNewVehicleData" should {
-            "work" {
-                vehicleStateService.importNewVehicleData()
+            "Import new Vehicles correctly" {
+                vehicleStateService.importNewVehicleData() // TODO
             }
         }
     }
