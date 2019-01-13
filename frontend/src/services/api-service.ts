@@ -28,7 +28,7 @@ const authApiRequest = (path: string, authToken: string, options: object = {}) =
 }
 
 // TODO: Only mock in test environment
-const doMock = isDevelopment || isTest
+const doMock = isTest || isDevelopment
 const delayResponse = (min: number, max: number) => (
   new Promise(resolve => {
     setTimeout(resolve, Math.random() * (max - min) + min)
