@@ -22,7 +22,7 @@ class VehicleStateServiceTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "ImportNewVehicleData" should {
-            "Import new Vehicles correctly" {
+            "Import new VehicleStates correctly" {
                 vehicleStateService.importNewVehicleData() // TODO
             }
         }
