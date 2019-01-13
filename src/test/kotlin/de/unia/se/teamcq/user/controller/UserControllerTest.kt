@@ -1,6 +1,5 @@
 package de.unia.se.teamcq.user.controller
 
-import com.google.common.collect.ImmutableList
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserModel
