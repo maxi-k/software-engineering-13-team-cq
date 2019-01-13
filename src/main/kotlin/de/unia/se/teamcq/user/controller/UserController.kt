@@ -23,17 +23,17 @@ class UserController {
     @Autowired
     lateinit var userService: IUserService
 
-    @GetMapping("/")
+    @GetMapping
     fun getUserSettings(): ResponseEntity<UserDto> {
         val username = SecurityContextHolder.getContext().authentication.name
+        println("Get user settings for $username")
         val user = userService.getOrCreateUser(username)
-
         return user?.let { existingUser ->
             ResponseEntity.ok(userMapper.modelToDto(existingUser))
         } ?: ResponseEntity.notFound().build()
     }
 
-    @PutMapping("/")
+    @PutMapping
     fun setUserSettings(@Valid @RequestBody userDto: UserDto): ResponseEntity<UserDto> {
 
         val username = SecurityContextHolder.getContext().authentication.name

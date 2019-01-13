@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.user.controller
 
+import com.google.common.collect.ImmutableList
 import com.google.gson.Gson
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserModel
@@ -73,19 +74,26 @@ class UserControllerTest : StringSpec() {
 
             SecurityContextHolder.setContext(securityContext)
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .get("/user-notification-settings/")
-                    .session(session))
-                    .andExpect(MockMvcResultMatchers.status().isOk)
-                    .andExpect { result ->
-                        val returnedUserDto = gson.fromJson(
-                                result.response.contentAsString,
-                                UserDto::class.java)
+            val possiblePaths = listOf(
+                    "/user-notification-settings",
+                    "/user-notification-settings/"
+            )
 
-                        returnedUserDto shouldBe getTestUserDto()
-                    }
+            possiblePaths.map {path ->
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get(path)
+                        .session(session))
+                        .andExpect(MockMvcResultMatchers.status().isOk)
+                        .andExpect { result ->
+                            val returnedUserDto = gson.fromJson(
+                                    result.response.contentAsString,
+                                    UserDto::class.java)
 
-            verify(exactly = 1) {
+                            returnedUserDto shouldBe getTestUserDto()
+                        }
+            }
+
+            verify(exactly = possiblePaths.size) {
                 userService.getOrCreateUser(any())
             }
         }
@@ -94,20 +102,27 @@ class UserControllerTest : StringSpec() {
 
             SecurityContextHolder.setContext(securityContext)
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .put("/user-notification-settings/")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(getTestUserDto())))
-                    .andExpect(MockMvcResultMatchers.status().isOk)
-                    .andExpect { result ->
-                        val returnedUser = gson.fromJson(
-                                result.response.contentAsString,
-                                UserDto::class.java)
+            val possiblePaths = listOf(
+                    "/user-notification-settings",
+                    "/user-notification-settings/"
+            )
 
-                        returnedUser shouldBe getTestUserDto()
-                    }
+            possiblePaths.map { path ->
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put(path)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(gson.toJson(getTestUserDto())))
+                        .andExpect(MockMvcResultMatchers.status().isOk)
+                        .andExpect { result ->
+                            val returnedUser = gson.fromJson(
+                                    result.response.contentAsString,
+                                    UserDto::class.java)
 
-            verify(exactly = 1) {
+                            returnedUser shouldBe getTestUserDto()
+                        }
+            }
+
+            verify(exactly = possiblePaths.size) {
                 userService.createOrSaveUser(any())
             }
         }
