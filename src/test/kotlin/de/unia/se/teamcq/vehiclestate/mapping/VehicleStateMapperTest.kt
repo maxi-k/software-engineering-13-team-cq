@@ -16,7 +16,7 @@ class VehicleStateMapperTest : StringSpec() {
 
     init {
 
-        "convert model to entity" {
+        "Convert model to entity" {
 
             val vehicleState = getTestVehicleStateModel()
 
@@ -29,7 +29,7 @@ class VehicleStateMapperTest : StringSpec() {
             vehicleStateEntity.batteryCharge shouldBe vehicleState.batteryCharge
         }
 
-        "convert entity to model" {
+        "Convert entity to model" {
 
             val vehicleStateEntity = getTestVehicleStateEnity()
 

@@ -25,7 +25,7 @@ class NotificationRuleMapperTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "convert model to entity" {
+        "Convert model to entity" {
 
             val notificationRule = getTestNotificationRuleModel()
 
@@ -36,7 +36,7 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleEntity.description shouldBe notificationRule.description
         }
 
-        "convert entity to model" {
+        "Convert entity to model" {
 
             val notificationRuleEntity = getTestNotificationRuleEntity()
 
@@ -47,7 +47,7 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleEntity.description shouldBe notificationRule.description
         }
 
-        "convert model to dto" {
+        "Convert model to dto" {
 
             val notificationRule = getTestNotificationRuleModel()
 
@@ -58,7 +58,7 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleDto.description shouldBe notificationRule.description
         }
 
-        "convert dto to model" {
+        "Convert dto to model" {
 
             val notificationRuleDto = getTestNotificationRuleDto()
 

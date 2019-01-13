@@ -69,14 +69,13 @@ class UserControllerTest : StringSpec() {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext)
 
-        "returns stored user" {
+        "Returns stored user" {
 
             SecurityContextHolder.setContext(securityContext)
 
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/user-notification-settings/")
-                    .session(session)
-                    .contentType(MediaType.APPLICATION_JSON_UTF8))
+                    .session(session))
                     .andExpect(MockMvcResultMatchers.status().isOk)
                     .andExpect { result ->
                         val returnedUserDto = gson.fromJson(
@@ -91,7 +90,7 @@ class UserControllerTest : StringSpec() {
             }
         }
 
-        "set user successfully" {
+        "Set user successfully" {
 
             SecurityContextHolder.setContext(securityContext)
 

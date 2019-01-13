@@ -28,7 +28,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "getAllNotificationRulesForUser should work" {
+        "GetAllNotificationRulesForUser should work" {
 
             val userEntityA = getTestUserEntity().apply { name = "test1" }
             val userEntityB = getTestUserEntity().apply { name = "test2" }
@@ -52,7 +52,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             notificationRulesForUser.first() shouldBe expextedNotificationRule
         }
 
-        "getNotificationRule should return NotificationRule if value is present" {
+        "GetNotificationRule should return NotificationRule if value is present" {
 
             userEnityRepository.save(getTestUserEntity())
 
@@ -63,14 +63,14 @@ class NotificationRuleRepositoryTest : StringSpec() {
             actualNotificationRule shouldBe getTestNotificationRuleModel().copy(ruleId = savedNotificationRule.ruleId!!)
         }
 
-        "getNotificationRule should return null if value is not present" {
+        "GetNotificationRule should return null if value is not present" {
 
             val actualNotificationRule = notificationRuleRepository.getNotificationRule(1059)
 
             actualNotificationRule shouldBe null
         }
 
-        "createNotificationRule should work" {
+        "CreateNotificationRule should work" {
 
             userEnityRepository.save(getTestUserEntity())
 
@@ -79,7 +79,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             savedNotificationRule shouldBe getTestNotificationRuleModel().copy(ruleId = savedNotificationRule!!.ruleId!!)
         }
 
-        "updateNotificationRule should work and not overwrite user" {
+        "UpdateNotificationRule should work and not overwrite user" {
 
             val oldUserEntity = getTestUserEntity().apply { mailAddress = "test1" }
             val oldUserModel = getTestUserModel().apply { mailAddress = "test1" }
@@ -101,7 +101,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             updatedNotificationRule.owner shouldBe oldUserModel
         }
 
-        "deleteNotificationRule should work" {
+        "DeleteNotificationRule should work" {
 
             userEnityRepository.save(getTestUserEntity())
 
