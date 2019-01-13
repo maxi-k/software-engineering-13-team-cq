@@ -26,7 +26,6 @@ class UserController {
     @GetMapping
     fun getUserSettings(): ResponseEntity<UserDto> {
         val username = SecurityContextHolder.getContext().authentication.name
-        println("Get user settings for $username")
         val user = userService.getOrCreateUser(username)
         return user?.let { existingUser ->
             ResponseEntity.ok(userMapper.modelToDto(existingUser))

@@ -74,14 +74,14 @@ class UserControllerTest : StringSpec() {
 
             SecurityContextHolder.setContext(securityContext)
 
-            val possiblePaths = listOf(
+            val possibleRequestPaths = listOf(
                     "/user-notification-settings",
                     "/user-notification-settings/"
             )
 
-            possiblePaths.map {path ->
+            possibleRequestPaths.map { requestPath ->
                 mockMvc.perform(MockMvcRequestBuilders
-                        .get(path)
+                        .get(requestPath)
                         .session(session))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
@@ -93,7 +93,7 @@ class UserControllerTest : StringSpec() {
                         }
             }
 
-            verify(exactly = possiblePaths.size) {
+            verify(exactly = possibleRequestPaths.size) {
                 userService.getOrCreateUser(any())
             }
         }
@@ -102,14 +102,14 @@ class UserControllerTest : StringSpec() {
 
             SecurityContextHolder.setContext(securityContext)
 
-            val possiblePaths = listOf(
+            val possibleRequestPaths = listOf(
                     "/user-notification-settings",
                     "/user-notification-settings/"
             )
 
-            possiblePaths.map { path ->
+            possibleRequestPaths.map { requestPath ->
                 mockMvc.perform(MockMvcRequestBuilders
-                        .put(path)
+                        .put(requestPath)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content(gson.toJson(getTestUserDto())))
                         .andExpect(MockMvcResultMatchers.status().isOk)
@@ -122,7 +122,7 @@ class UserControllerTest : StringSpec() {
                         }
             }
 
-            verify(exactly = possiblePaths.size) {
+            verify(exactly = possibleRequestPaths.size) {
                 userService.createOrSaveUser(any())
             }
         }
