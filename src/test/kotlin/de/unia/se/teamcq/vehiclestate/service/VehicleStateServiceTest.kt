@@ -1,7 +1,8 @@
 package de.unia.se.teamcq.vehiclestate.service
 
-import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
+import de.unia.se.teamcq.vehiclestate.model.IVehicleStateDataType
 import io.kotlintest.should
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs
@@ -13,10 +14,10 @@ import org.springframework.test.context.ContextConfiguration
 class VehicleStateServiceTest : StringSpec() {
 
     @MockK
-    private lateinit var vehicleStateRepository: IVehicleStateRepository
+    lateinit var mockedVehicleStateDataTypes: Set<IVehicleStateDataType>
 
     @InjectMockKs
-    private lateinit var vehicleStateService: VehicleStateService
+    lateinit var vehicleStateService: VehicleStateService
 
     init {
         MockKAnnotations.init(this)
@@ -25,6 +26,12 @@ class VehicleStateServiceTest : StringSpec() {
             "Import new VehicleStates correctly" {
                 vehicleStateService.importNewVehicleData() // TODO
             }
+        }
+
+        "GetVehicleStateDataTypes should return all expected VehicleStateDataTypes" {
+
+            val vehicleStateDataTypes = vehicleStateService.getVehicleStateDataTypes()
+            vehicleStateDataTypes shouldBe mockedVehicleStateDataTypes
         }
     }
 }

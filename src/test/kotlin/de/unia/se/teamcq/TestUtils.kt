@@ -12,8 +12,11 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.vehiclestate.dto.VehicleStateDataTypeDto
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.model.IVehicleStateDataType
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
@@ -100,6 +103,14 @@ object TestUtils {
                 10,
                 0.2
         )
+    }
+
+    fun getTestVehicleStateDataType(): IVehicleStateDataType {
+        return VehicleStateDataTypeBattery()
+    }
+
+    fun getTestVehicleStateDataTypeDto(): VehicleStateDataTypeDto {
+        return VehicleStateDataTypeDto("Battery")
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {

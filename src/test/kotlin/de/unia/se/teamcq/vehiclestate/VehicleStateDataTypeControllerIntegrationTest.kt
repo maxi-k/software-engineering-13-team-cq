@@ -1,0 +1,68 @@
+package de.unia.se.teamcq.vehiclestate.controller
+
+import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.security.JwtConfig
+import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
+import io.kotlintest.specs.StringSpec
+import org.hamcrest.Matchers.hasSize
+import org.hamcrest.Matchers.hasItems
+import org.hamcrest.Matchers.greaterThanOrEqualTo
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.web.context.WebApplicationContext
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class VehicleStateDataTypeControllerIntegrationTest : StringSpec() {
+
+    @Autowired
+    lateinit var webApplicationContext: WebApplicationContext
+
+    @Autowired
+    lateinit var jwtTokenAuthenticationFilter: JwtTokenAuthenticationFilter
+
+    @Autowired
+    lateinit var jwtConfig: JwtConfig
+
+    val possibleRequestPaths = listOf(
+            "/vehicle-state-data-types",
+            "/vehicle-state-data-types/"
+    )
+
+    init {
+        "Fail without Authorization" {
+
+            val mockMvc = TestUtils.buildMockMvc(webApplicationContext)
+
+            possibleRequestPaths.map { requestPath ->
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get(requestPath)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8))
+                        .andExpect(status().isUnauthorized)
+            }
+        }
+
+        "GetVehicleStateDataTypes should work" {
+
+            val mockMvc = TestUtils.buildMockMvc(webApplicationContext)
+
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
+
+            val expectingAtLeastDataTypes = arrayOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
+
+            possibleRequestPaths.map { requestPath ->
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get(requestPath)
+                        .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
+                        .andExpect(status().isOk)
+                        .andExpect(jsonPath("$", hasSize<Int>(greaterThanOrEqualTo(6))))
+                        .andExpect(jsonPath("$[*].name", hasItems(*expectingAtLeastDataTypes)))
+            }
+        }
+    }
+}
