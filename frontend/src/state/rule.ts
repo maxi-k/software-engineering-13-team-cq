@@ -146,7 +146,10 @@ function* fetchRuleOverviewGenerator() {
     const authData = yield call(waitForLogin)
     const response = yield call(fetchRuleOverview, authData.accessToken)
     ensureResponseStatus(response);
-    const rules = yield response.json().then((rules: APIRule[]) => rules.map(mergeMockedRuleData)) as NotificationRuleOverview[]
+    const rules = yield response.json()
+      .then((ruleList: APIRule[]) =>
+        ruleList.map(mergeMockedRuleData)
+      ) as NotificationRuleOverview[]
     yield put(loadRuleOverview.success(rules))
   } catch (error) {
     yield put(loadRuleOverview.failure(error))

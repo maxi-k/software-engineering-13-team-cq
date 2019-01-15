@@ -1,7 +1,8 @@
 import { isDevelopment, isTest } from './environment-service'
+
 const apiUrl = isDevelopment
-             ? 'http://localhost:3000'
-             : 'st-calculator-backend.herokuapp.com'
+  ? 'http://localhost:3000'
+  : 'st-calculator-backend.herokuapp.com'
 
 const defaultOptions = {
   headers: {
@@ -11,9 +12,9 @@ const defaultOptions = {
 
 const apiRequest = (path: string, options: object = {}) => {
   return fetch(path.startsWith('/')
-             ? apiUrl + path
-             : apiUrl + '/' + path
-             , {...defaultOptions, ...options}
+    ? apiUrl + path
+    : apiUrl + '/' + path
+    , { ...defaultOptions, ...options }
   )
 }
 
@@ -21,14 +22,14 @@ const authApiRequest = (path: string, authToken: string, options: object = {}) =
   const authOptions = {
     headers: {
       ...defaultOptions.headers,
-     'Authorization': 'Bearer ' + authToken
+      'Authorization': 'Bearer ' + authToken
     }
   }
   return apiRequest(path, authOptions)
 }
 
 // TODO: Only mock in test environment
-const doMock = isTest || isDevelopment
+const doMock = isTest // || isDevelopment
 const delayResponse = (min: number, max: number) => (
   new Promise(resolve => {
     setTimeout(resolve, Math.random() * (max - min) + min)

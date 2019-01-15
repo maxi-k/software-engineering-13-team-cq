@@ -1,3 +1,3 @@
-export const capitalizeString = (string: string): string => (
-  string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
+export const capitalizeString = (toCapitalize: string): string => (
+  toCapitalize.charAt(0).toUpperCase() + toCapitalize.slice(1).toLowerCase()
 )
