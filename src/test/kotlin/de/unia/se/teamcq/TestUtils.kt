@@ -15,14 +15,20 @@ import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import java.util.Date
 
 object TestUtils {
 
@@ -87,17 +93,54 @@ object TestUtils {
                 notificationRules = emptySet())
     }
 
+    fun getTestVehicleStateDataTypeBatteryModel(): VehicleStateDataTypeBattery {
+        return VehicleStateDataTypeBattery(0.5, 0.7, "Healthy", 10)
+    }
+
+    fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
+        return VehicleStateDataTypeContract(
+                10,
+                listOf("1002A", "1008B"),
+                9,
+                11
+        )
+    }
+
+    fun getTestVehicleStateDataTypeEngineModel(): VehicleStateDataTypeEngine {
+        return VehicleStateDataTypeEngine(120, 120, "Gas", 12)
+    }
+
+    fun getTestVehicleStateDataTypeFuelModel(): VehicleStateDataTypeFuel {
+        return VehicleStateDataTypeFuel(0.4, 50, 1000, 13)
+    }
+
+    fun getTestVehicleStateDataTypeMileageModel(): VehicleStateDataTypeMileage {
+        return VehicleStateDataTypeMileage(10000, 5000, 1000, 14)
+    }
+
+    fun getTestVehicleStateDataTypeServiceModel(): VehicleStateDataTypeService {
+        return VehicleStateDataTypeService(Date(1547650098), "Fine", "Healthy", 15)
+    }
+
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
-                "name"
+                "predicateFieldProviderName",
+                setOf(
+                    getTestVehicleStateDataTypeBatteryModel(),
+                    getTestVehicleStateDataTypeContractModel(),
+                    getTestVehicleStateDataTypeEngineModel(),
+                    getTestVehicleStateDataTypeFuelModel(),
+                    getTestVehicleStateDataTypeMileageModel(),
+                    getTestVehicleStateDataTypeServiceModel()
+                )
         )
     }
 
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                "name"
+                "predicateFieldProviderName"
         )
     }
 

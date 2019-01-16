@@ -10,12 +10,14 @@ class VehicleStateDataTypeContract(
 
     var vins: List<String>?,
 
-    var calendarWeek: Int?
+    var calendarWeek: Int?,
 
-) : IPredicateFieldProvider {
+    dataTypeId: Long?
+
+) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 
-    override val name: String = "Contract"
+    override val predicateFieldProviderName: String = "Contract"
 }

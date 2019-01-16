@@ -2,5 +2,5 @@ package de.unia.se.teamcq.ruleevaluation.model
 
 interface IPredicateFieldProvider {
 
-    val name: String
+    val predicateFieldProviderName: String
 }

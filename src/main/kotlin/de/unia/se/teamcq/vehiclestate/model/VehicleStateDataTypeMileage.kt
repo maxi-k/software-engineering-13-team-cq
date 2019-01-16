@@ -10,12 +10,14 @@ class VehicleStateDataTypeMileage(
 
     var remaining: Int?,
 
-    var reached: Int?
+    var reached: Int?,
 
-) : IPredicateFieldProvider {
+    dataTypeId: Long?
+
+) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 
-    override val name: String = "Mileage"
+    override val predicateFieldProviderName: String = "Mileage"
 }

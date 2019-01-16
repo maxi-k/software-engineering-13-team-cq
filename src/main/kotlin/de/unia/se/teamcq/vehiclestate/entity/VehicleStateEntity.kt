@@ -16,6 +16,8 @@ data class VehicleStateEntity(
     @get: NotNull
     var vehicleId: String?
 
+    // TODO: Add VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
+
 ) : Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null)

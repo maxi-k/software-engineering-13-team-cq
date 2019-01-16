@@ -10,12 +10,14 @@ class VehicleStateDataTypeEngine(
 
     var capacity: Int?,
 
-    var fuelType: String?
+    var fuelType: String?,
 
-) : IPredicateFieldProvider {
+    dataTypeId: Long?
+
+) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 
-    override val name: String = "Engine"
+    override val predicateFieldProviderName: String = "Engine"
 }

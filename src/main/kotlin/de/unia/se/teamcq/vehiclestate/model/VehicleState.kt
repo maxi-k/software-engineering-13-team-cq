@@ -8,9 +8,12 @@ data class VehicleState(
     var stateId: Long? = 0,
 
     @get: NotNull
-    var vehicleId: String?
+    var vehicleId: String?,
+
+    @get: NotNull
+    var vehicleStateDataTypes: Set<VehicleStateDataType>?
 
 ) {
     // Necessary for MapStruct
-    constructor() : this(null, null)
+    constructor() : this(null, null, null)
 }
