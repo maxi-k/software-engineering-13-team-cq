@@ -12,8 +12,8 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afte
   return (
     <p>
       <select>
-        {comparisonTypes.map((comparisonType: ComparisonType) => (
-          <option> {comparisonType} </option>
+        {dataTypes.map((dataType: VehicleDataType) => (
+          <option> {dataType} </option>
         ))}
       </select>
       <select>
