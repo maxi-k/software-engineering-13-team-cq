@@ -2358,5 +2358,10 @@ exports[`Storyshots Welcome to this Storybook 1`] = `
     <br />
      are part of the package provided by MbW, and are not created or modified by the CNS team.
   </p>
+  <p>
+    This app is running in 
+    test
+     mode.
+  </p>
 </section>
 `;
