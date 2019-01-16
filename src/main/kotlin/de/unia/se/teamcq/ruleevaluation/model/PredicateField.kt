@@ -10,7 +10,7 @@ enum class ComparisonType {
 }
 
 object EvaluationStrategies {
-    val STANDARD = listOf(ComparisonType.EQUAL_TO,
+    val NUMERIC = listOf(ComparisonType.EQUAL_TO,
         ComparisonType.NOT_EQUAL_TO,
         ComparisonType.GREATER_THAN,
         ComparisonType.LESSER_THAN,

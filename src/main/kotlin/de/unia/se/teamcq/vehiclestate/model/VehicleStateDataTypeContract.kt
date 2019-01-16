@@ -25,8 +25,8 @@ class VehicleStateDataTypeContract(
     override val predicateFieldProviderName: String = "Contract"
 
     override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
+            PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
             PredicateField("vins", FieldDataType.STRING_LIST, EvaluationStrategies.LIST),
-            PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.STANDARD)
+            PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.NUMERIC)
     )
 }

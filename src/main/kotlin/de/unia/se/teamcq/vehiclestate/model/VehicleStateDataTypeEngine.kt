@@ -25,8 +25,8 @@ class VehicleStateDataTypeEngine(
     override val predicateFieldProviderName: String = "Engine"
 
     override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("power", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
-            PredicateField("capacity", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
+            PredicateField("power", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            PredicateField("capacity", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
             PredicateField("fuelType", FieldDataType.TEXT, EvaluationStrategies.TEXT)
     )
 }
