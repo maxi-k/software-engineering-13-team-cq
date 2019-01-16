@@ -1354,22 +1354,32 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     <select>
       <option>
          
-        above
+        battery
          
       </option>
       <option>
          
-        below
+        contract
          
       </option>
       <option>
          
-        equalTo
+        engine
          
       </option>
       <option>
          
-        unequalTo
+        fuel
+         
+      </option>
+      <option>
+         
+        mileage
+         
+      </option>
+      <option>
+         
+        service
          
       </option>
     </select>
