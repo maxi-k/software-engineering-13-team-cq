@@ -21,11 +21,11 @@ class RuleConditionComposite(
 
     logicalConnective: LogicalConnectiveType?,
 
-    var subConditions: RuleCondition?
+    var subConditions: List<RuleCondition>
 
 ) : RuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleCondition>())
 }
 
 class RuleConditionLeaf(
@@ -34,9 +34,9 @@ class RuleConditionLeaf(
 
     logicalConnective: LogicalConnectiveType?,
 
-    var conditionPredicate: RuleConditionPredicate?
+    var conditionPredicates: List<RuleConditionPredicate>
 
 ) : RuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleConditionPredicate>())
 }

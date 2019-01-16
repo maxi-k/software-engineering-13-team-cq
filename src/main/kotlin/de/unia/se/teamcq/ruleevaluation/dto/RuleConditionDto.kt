@@ -14,28 +14,28 @@ abstract class RuleConditionDto(
     constructor() : this(null, null)
 }
 
-class RuleConditionCompositeEntity(
+class RuleConditionCompositeDto(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var subConditions: RuleConditionDto?
+    var subConditions: List<RuleConditionDto>
 
 ) : RuleConditionDto(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleConditionDto>())
 }
 
-class RuleConditionLeafEntity(
+class RuleConditionLeafDto(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var conditionPredicate: RuleConditionPredicateDto?
+    var conditionPredicates: List<RuleConditionPredicateDto>
 
 ) : RuleConditionDto(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleConditionPredicateDto>())
 }

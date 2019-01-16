@@ -2,14 +2,11 @@ package de.unia.se.teamcq
 
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionLeafDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionLeafEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
-import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
-import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
-import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
-import de.unia.se.teamcq.ruleevaluation.model.PredicateField
+import de.unia.se.teamcq.ruleevaluation.model.*
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
@@ -23,20 +20,14 @@ import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
-import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.vehiclestate.model.*
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
-import java.util.Date
+import java.util.*
 
 object TestUtils {
 
@@ -182,6 +173,39 @@ object TestUtils {
 
     fun getTestRuleConditionPredicateEntity(): RuleConditionPredicateEntity {
         return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+    }
+
+    fun getTestRuleConditionLeafModel(): RuleConditionLeaf {
+        return RuleConditionLeaf(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        RuleConditionPredicate(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
+                        RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                )
+        )
+    }
+
+    fun getTestRuleConditionLeafDto(): RuleConditionLeafDto {
+        return RuleConditionLeafDto(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        RuleConditionPredicateDto(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
+                        RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                )
+        )
+    }
+
+    fun getTestRuleConditionLeafEntity(): RuleConditionLeafEntity {
+        return RuleConditionLeafEntity(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        RuleConditionPredicateEntity(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
+                        RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                )
+        )
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {

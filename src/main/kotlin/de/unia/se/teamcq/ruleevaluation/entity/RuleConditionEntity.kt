@@ -20,11 +20,11 @@ class RuleConditionCompositeEntity(
 
     logicalConnective: LogicalConnectiveType?,
 
-    var subConditions: RuleConditionEntity?
+    var subConditions: List<RuleConditionEntity>
 
 ) : RuleConditionEntity(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleConditionEntity>())
 }
 
 class RuleConditionLeafEntity(
@@ -33,9 +33,9 @@ class RuleConditionLeafEntity(
 
     logicalConnective: LogicalConnectiveType?,
 
-    var conditionPredicate: RuleConditionPredicateEntity?
+    var conditionPredicates: List<RuleConditionPredicateEntity>
 
 ) : RuleConditionEntity(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, mutableListOf<RuleConditionPredicateEntity>())
 }
