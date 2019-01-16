@@ -19,14 +19,14 @@ const apiRequest = (path: string, options: object = {}) => {
 }
 
 const authApiRequest = (path: string, authToken: string, options: object = {}) => {
-  const authOptions = {
+  const optionsWithAuthHeaders = {
     headers: {
       ...defaultOptions.headers,
       'Authorization': 'Bearer ' + authToken
     },
     ...options
   }
-  return apiRequest(path, authOptions)
+  return apiRequest(path, optionsWithAuthHeaders)
 }
 
 const doMock = isTest
