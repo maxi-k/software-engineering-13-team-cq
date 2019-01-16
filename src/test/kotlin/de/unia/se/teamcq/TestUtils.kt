@@ -90,18 +90,14 @@ object TestUtils {
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
-                "name",
-                10,
-                0.2
+                "name"
         )
     }
 
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                "name",
-                10,
-                0.2
+                "name"
         )
     }
 
