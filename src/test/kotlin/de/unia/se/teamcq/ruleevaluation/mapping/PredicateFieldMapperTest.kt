@@ -26,7 +26,8 @@ class PredicateFieldMapperTest : StringSpec() {
             predicateFieldDto shouldNotBe null
             predicateFieldDto.fieldName shouldBe expectedPredicateFieldDto.fieldName
             predicateFieldDto.dataType shouldBe expectedPredicateFieldDto.dataType
-            predicateFieldDto.possibleEvaluationStrategies shouldBe expectedPredicateFieldDto.possibleEvaluationStrategies
+            predicateFieldDto.possibleEvaluationStrategies shouldBe
+                    expectedPredicateFieldDto.possibleEvaluationStrategies
         }
     }
 }

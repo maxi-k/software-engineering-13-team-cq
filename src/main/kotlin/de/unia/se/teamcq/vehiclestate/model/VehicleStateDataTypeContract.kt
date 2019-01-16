@@ -20,7 +20,7 @@ class VehicleStateDataTypeContract(
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, mutableListOf<String>(), null, null)
 
     override val predicateFieldProviderName: String = "Contract"
 

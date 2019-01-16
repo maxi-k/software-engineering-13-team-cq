@@ -53,10 +53,12 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
 
             val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
 
-            val expectingAtLeastPredicateFieldProviders = listOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
-            val expectingAtLeastPossibleDataTypes = arrayOf("TEXT", "STRING_LIST", "WEEK", "INTEGER", "TEXT", "DECIMAL")
-            val expectingAtLeastPossibleEvaluationStrategies = arrayOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESSER_THAN",
-                    "GREATER_THAN_OR_EQUAL_TO", "LESSER_THAN_OR_EQUAL_TO")
+            val expectingAtLeastPredicateFieldProviders = listOf("Battery", "Contract", "Engine",
+                    "Fuel", "Mileage", "Service")
+            val expectingAtLeastPossibleDataTypes = arrayOf("TEXT", "STRING_LIST", "WEEK", "INTEGER",
+                    "TEXT", "DECIMAL")
+            val expectingAtLeastPossibleEvaluationStrategies = arrayOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN",
+                    "LESSER_THAN", "GREATER_THAN_OR_EQUAL_TO", "LESSER_THAN_OR_EQUAL_TO")
 
             possibleRequestPaths.map { requestPath ->
 
@@ -66,8 +68,10 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
                         .andExpect(status().isOk)
                         .andExpect(jsonPath("$", hasSize<Int>(greaterThanOrEqualTo(6))))
                         .andExpect(jsonPath("$[*].name", equalTo(expectingAtLeastPredicateFieldProviders)))
-                        .andExpect(jsonPath("$[*].predicateFields[*].dataType", hasItems(*expectingAtLeastPossibleDataTypes)))
-                        .andExpect(jsonPath("$[*].predicateFields[*].possibleEvaluationStrategies[*]", hasItems(*expectingAtLeastPossibleEvaluationStrategies)))
+                        .andExpect(jsonPath("$[*].predicateFields[*].dataType",
+                                hasItems(*expectingAtLeastPossibleDataTypes)))
+                        .andExpect(jsonPath("$[*].predicateFields[*].possibleEvaluationStrategies[*]",
+                                hasItems(*expectingAtLeastPossibleEvaluationStrategies)))
             }
         }
     }

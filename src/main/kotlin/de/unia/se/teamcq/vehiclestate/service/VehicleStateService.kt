@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 class VehicleStateService : IVehicleStateService {
 
     @Autowired
-    private lateinit var vehicleStateRepository: IVehicleStateRepository
+    lateinit var vehicleStateRepository: IVehicleStateRepository
 
     override fun importNewVehicleData() {
     }
