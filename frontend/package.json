@@ -45,6 +45,7 @@
     "build-app": "craco build",
     "build": "cross-env NODE_ENV=production build-storybook -s public -o build",
     "test": "craco test",
+    "check": "craco test --bail --ci --forceExit",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
@@ -82,7 +83,7 @@
   "husky": {
     "hooks": {
         "pre-commit": "yarn lint",
-        "pre-push": "yarn lint && yarn test"
+        "pre-push": "yarn lint && yarn check"
       }
     }
 }
