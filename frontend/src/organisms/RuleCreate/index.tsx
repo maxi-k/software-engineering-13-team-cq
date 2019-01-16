@@ -53,7 +53,7 @@ const stepperProps = (activeStep: number, selectStep: SelectStepType, completedS
   }))
 })
 
-const stepComponents: React.LazyExoticComponent<RuleCreationStepView>[] = [
+const stepComponents: Array<React.LazyExoticComponent<RuleCreationStepView>> = [
   lazy(() => import('./RuleCreationGeneral'))
 ]
 

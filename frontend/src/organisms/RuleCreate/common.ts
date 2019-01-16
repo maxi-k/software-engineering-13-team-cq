@@ -25,7 +25,6 @@ export const createInputFieldUpdater = (updater: FieldUpdater, name: string): ((
   ))
 )
 
-
 export const StyledRuleCreationWrapper = styled.div`
     padding: 0rem 5rem;
 `

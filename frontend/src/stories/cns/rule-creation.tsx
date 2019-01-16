@@ -70,10 +70,11 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
 }
 
 import RuleCreationGeneral from '@/organisms/RuleCreate/RuleCreationGeneral'
+const updateFieldAction = (name: string) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
   .add('Screen', () => <RuleCreationGeneral
-    updateField={(name: string) => action(`Update field ${name}`)}
+    updateField={updateFieldAction}
     inProgressRule={{}} />)
 
 storiesOf('Rule Creation / Second Step', module)

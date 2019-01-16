@@ -1253,48 +1253,110 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / First Step Screen 1`] = `
+<div>
+  <div
+    className="MuiFormControl-root-835 MuiFormControl-marginNormal-836 MuiFormControl-fullWidth-838"
+  >
+    <label
+      className="MuiFormLabel-root-846 MuiInputLabel-root-839 MuiInputLabel-formControl-840 MuiInputLabel-animated-843 MuiInputLabel-filled-844"
+      data-shrink={false}
+    >
+      Rule Name
+    </label>
+    <div
+      className="MuiInputBase-root-866 MuiFilledInput-root-853 MuiFilledInput-underline-854 MuiInputBase-fullWidth-875 MuiInputBase-formControl-867"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input-876 MuiFilledInput-input-861"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="MuiFormControl-root-835 MuiFormControl-marginNormal-836 MuiFormControl-fullWidth-838"
+  >
+    <label
+      className="MuiFormLabel-root-846 MuiInputLabel-root-839 MuiInputLabel-formControl-840 MuiInputLabel-animated-843 MuiInputLabel-filled-844"
+      data-shrink={false}
+    >
+      Description
+    </label>
+    <div
+      className="MuiInputBase-root-866 MuiFilledInput-root-853 MuiFilledInput-underline-854 MuiInputBase-fullWidth-875 MuiInputBase-formControl-867 MuiInputBase-multiline-874 MuiFilledInput-multiline-860"
+      onClick={[Function]}
+    >
+      <textarea
+        aria-invalid={false}
+        className="MuiInputBase-input-876 MuiFilledInput-input-861 MuiInputBase-inputMultiline-878 MuiFilledInput-inputMultiline-863"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        rows={3}
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"
 >
-  <div
-    className="sc-feJyhm kDPYsH sc-gGBfsJ gKsVSL"
+  <button
+    className="MuiButtonBase-root-823 MuiIconButton-root-817"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
   >
-    <div
-      className="MuiPaper-root-817 MuiPaper-elevation0-819 sc-feJyhm kDPYsH sc-hqyNC dOAmVs"
-      onClick={[Function]}
+    <span
+      className="MuiIconButton-label-822"
     >
-      <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      <svg
+        height="100%"
+        id="default"
+        style={
+          Object {
+            "fill": "#92a2bd",
+            "height": "96px",
+            "marginTop": undefined,
+            "minWidth": "undefinedpx",
+            "width": "96px",
+          }
+        }
+        version="1.1"
+        viewBox="0 0 49 49"
+        width="100%"
       >
-        <div
-          className="nav-label sc-fYxtnH dwaVQg"
-        >
-          <svg
-            height="100%"
-            id="default"
-            style={
-              Object {
-                "fill": "#92a2bd",
-                "height": "96px",
-                "marginTop": undefined,
-                "minWidth": "undefinedpx",
-                "width": "96px",
-              }
-            }
-            version="1.1"
-            viewBox="0 0 49 49"
-            width="100%"
-          >
-            <polygon
-              points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
+        <polygon
+          points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
 37.787,40 40,37.787 26.713,24.5 "
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
+        />
+      </svg>
+    </span>
+  </button>
 </div>
 `;
 
