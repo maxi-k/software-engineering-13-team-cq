@@ -71,7 +71,6 @@ export const loadRuleDetail = createAsyncAction(
   RuleDetailActionType.RULE_DETAIL_FETCH_FAILURE
 )<number, NotificationRuleDetail, Error>()
 
-
 function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.request>) {
   try {
     // If the authData is null, wait for the login

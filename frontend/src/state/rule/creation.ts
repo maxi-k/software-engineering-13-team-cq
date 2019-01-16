@@ -71,7 +71,6 @@ const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
   }
 }
 
-
 export const createRuleAbort = createAction(RuleCreationActionType.RULE_CREATE_ABORT)
 export const createRuleNextStep = createAction(RuleCreationActionType.RULE_CREATE_NEXT_STEP)
 export const createRulePreviousStep = createAction(RuleCreationActionType.RULE_CREATE_PREVIOUS_STEP)
@@ -91,7 +90,6 @@ export const finishRuleCreation = createAsyncAction(
   RuleCreationActionType.RULE_CREATE_SUCCESS,
   RuleCreationActionType.RULE_CREATE_ERROR
 )<void, NotificationRuleDetail, Error>()
-
 
 function* abortRuleCreationGenerator() {
   yield put(push('/'))

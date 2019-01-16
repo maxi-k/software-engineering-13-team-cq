@@ -55,7 +55,6 @@ export const carParkFleetsSelector: Selector<{ [key: string]: Fleet }> = createS
   ), {})
 )
 
-
 export const routerSelector: Selector<RouterState> = state => state.router
 export const locationSelector: Selector<Location> = createSelector(
   [routerSelector],

@@ -64,7 +64,6 @@ const RuleCreationFleetSelector: React.SFC<RuleCreationFleetSelectorProps> = (
 
 const ConnectedRuleCreationFleetSelector = connect(mapStateToProps)(RuleCreationFleetSelector)
 
-
 const RuleCreationFleets: RuleCreationStepView = (
   { inProgressRule, updateField }
 ) => (
@@ -83,7 +82,5 @@ const RuleCreationFleets: RuleCreationStepView = (
       }
     </div>
   )
-
-
 
 export default RuleCreationFleets
