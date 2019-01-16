@@ -69,46 +69,59 @@ class UserControllerTest : StringSpec() {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext)
 
-        "returns stored user" {
+        "Returns stored user" {
 
             SecurityContextHolder.setContext(securityContext)
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .get("/user-notification-settings/")
-                    .session(session)
-                    .contentType(MediaType.APPLICATION_JSON_UTF8))
-                    .andExpect(MockMvcResultMatchers.status().isOk)
-                    .andExpect { result ->
-                        val returnedUserDto = gson.fromJson(
-                                result.response.contentAsString,
-                                UserDto::class.java)
+            val possibleRequestPaths = listOf(
+                    "/user-notification-settings",
+                    "/user-notification-settings/"
+            )
 
-                        returnedUserDto shouldBe getTestUserDto()
-                    }
+            possibleRequestPaths.map { requestPath ->
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get(requestPath)
+                        .session(session))
+                        .andExpect(MockMvcResultMatchers.status().isOk)
+                        .andExpect { result ->
+                            val returnedUserDto = gson.fromJson(
+                                    result.response.contentAsString,
+                                    UserDto::class.java)
 
-            verify(exactly = 1) {
+                            returnedUserDto shouldBe getTestUserDto()
+                        }
+            }
+
+            verify(exactly = possibleRequestPaths.size) {
                 userService.getOrCreateUser(any())
             }
         }
 
-        "set user successfully" {
+        "Set user successfully" {
 
             SecurityContextHolder.setContext(securityContext)
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .put("/user-notification-settings/")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(getTestUserDto())))
-                    .andExpect(MockMvcResultMatchers.status().isOk)
-                    .andExpect { result ->
-                        val returnedUser = gson.fromJson(
-                                result.response.contentAsString,
-                                UserDto::class.java)
+            val possibleRequestPaths = listOf(
+                    "/user-notification-settings",
+                    "/user-notification-settings/"
+            )
 
-                        returnedUser shouldBe getTestUserDto()
-                    }
+            possibleRequestPaths.map { requestPath ->
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put(requestPath)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(gson.toJson(getTestUserDto())))
+                        .andExpect(MockMvcResultMatchers.status().isOk)
+                        .andExpect { result ->
+                            val returnedUser = gson.fromJson(
+                                    result.response.contentAsString,
+                                    UserDto::class.java)
 
-            verify(exactly = 1) {
+                            returnedUser shouldBe getTestUserDto()
+                        }
+            }
+
+            verify(exactly = possibleRequestPaths.size) {
                 userService.createOrSaveUser(any())
             }
         }

@@ -2,7 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl';
 import { storiesOf } from '@storybook/react'
 
-import { messageFromError } from '@/services/response-service'
+import { handledStatus, messageFromError } from '@/services/response-service'
 import StoryWrapper from '../StoryWrapper'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import ErrorMessage from '@/atoms/ErrorMessage'
@@ -21,9 +21,9 @@ storiesOf('General Components', module)
     <ErrorMessage message="This is an error message with a string message" />)
   .add('Requests Error Messages', () =>
     <>
-      {([400, 401, 404]).map((code) =>
+      {Object.keys(handledStatus).map((code) =>
         <ErrorMessage key={code}
-          message={<FormattedMessage id={messageFromError({ status: code })} />}
+          message={<> <FormattedMessage id={messageFromError({ status: parseInt(code, 10) })} /> ({code}) </>}
           style={{ marginBottom: '1rem' }} />
       )}
     </>

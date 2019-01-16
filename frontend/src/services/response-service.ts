@@ -1,8 +1,15 @@
 import { FetchError } from '@/model'
 
+export const handledStatus: {[key: number]: string} = {
+  404: 'notFound',
+  401: 'unauthorized',
+  400: 'badRequest',
+  500: 'serverError'
+}
+
 export const ensureResponseStatus = (response: Response): void => {
-  if (response.status === 404) {
-    throw { status: 404 }
+  if (response.status in handledStatus) {
+    throw { status: response.status }
   }
 }
 
@@ -11,13 +18,8 @@ export const messageFromError = (error: FetchError): string => {
   switch (typeof error) {
     case 'object':
       if ('status' in error) {
-        switch(error.status) {
-          case 400:
-            return prefix + 'badRequest'
-          case 401:
-            return prefix + 'unauthorized'
-          case 404:
-            return prefix + 'notFound'
+        if (error.status in handledStatus) {
+          return prefix + handledStatus[error.status]
         }
       }
   }

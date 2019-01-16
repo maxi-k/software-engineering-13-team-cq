@@ -4,8 +4,10 @@ import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleOverview, NotificationRuleDetail } from '@/model/Rule'
 import { ensureResponseStatus } from '@/services/response-service'
-import { fetchRuleOverview, fetchRuleDetail } from '@/services/rule-service'
+import { fetchRuleOverview, fetchRuleDetail, mergeMockedRuleData, APIRule } from '@/services/rule-service'
 import { FetchingData } from '@/model'
+
+import { waitForLogin } from './auth'
 
 export enum RuleActionType {
   RULE_CREATE = '@rule/CREATE',
@@ -141,8 +143,13 @@ export const loadRuleDetail = createAsyncAction(
 
 function* fetchRuleOverviewGenerator() {
   try {
-    const response = yield call(fetchRuleOverview)
-    const rules = yield response.json() as NotificationRuleOverview[]
+    const authData = yield call(waitForLogin)
+    const response = yield call(fetchRuleOverview, authData.accessToken)
+    ensureResponseStatus(response);
+    const rules = yield response.json()
+      .then((ruleList: APIRule[]) =>
+        ruleList.map(mergeMockedRuleData)
+      ) as NotificationRuleOverview[]
     yield put(loadRuleOverview.success(rules))
   } catch (error) {
     yield put(loadRuleOverview.failure(error))
@@ -151,9 +158,12 @@ function* fetchRuleOverviewGenerator() {
 
 function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.request>) {
   try {
-    const response = yield call(fetchRuleDetail, action.payload)
+    // If the authData is null, wait for the login
+    // to succeed and then start fetching.
+    const authData = yield call(waitForLogin)
+    const response = yield call(fetchRuleDetail, authData.accessToken, action.payload)
     ensureResponseStatus(response);
-    const rules = yield response.json() as NotificationRuleDetail
+    const rules = yield response.json().then((result: APIRule) => mergeMockedRuleData(result)) as NotificationRuleDetail
     yield put(loadRuleDetail.success(rules))
   } catch (error) {
     yield put(loadRuleDetail.failure(error))

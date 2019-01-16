@@ -22,14 +22,14 @@ class UserRepositoryTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "createOrSaveUser should work" {
+        "CreateOrSaveUser should work" {
 
             val savedUser = userRepository.createOrSaveUser(getTestUserModel())
 
             savedUser shouldBe getTestUserModel()
         }
 
-        "getOrCreateUser should work" {
+        "GetOrCreateUser should work" {
 
             userEnityRepository.save(getTestUserEntity())
 

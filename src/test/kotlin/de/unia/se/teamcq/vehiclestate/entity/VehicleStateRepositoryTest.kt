@@ -23,7 +23,7 @@ class VehicleStateRepositoryTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "getAllVehicleStates should work" {
+        "GetAllVehicleStates should work" {
 
             val vehicleStateEntityA = getTestVehicleStateEnity().copy(eventId = 1, kilometers = 2)
             val vehicleStateEntityB = getTestVehicleStateEnity().copy(eventId = 2, kilometers = 5)
@@ -41,7 +41,7 @@ class VehicleStateRepositoryTest : StringSpec() {
             allVehicleStates.contains(expectedVehicleStateModel) shouldBe true
         }
 
-        "getVehicleState should work" {
+        "GetVehicleState should work" {
 
             val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 
@@ -50,14 +50,14 @@ class VehicleStateRepositoryTest : StringSpec() {
             actualVehicleState shouldBe getTestVehicleStateModel().copy(eventId = savedVehicleStateEntity.eventId)
         }
 
-        "createVehicleState should work" {
+        "CreateVehicleState should work" {
 
             val savedVehicleState = vehicleStateRepository.createVehicleState(getTestVehicleStateModel())
 
             savedVehicleState shouldBe getTestVehicleStateModel().copy(savedVehicleState!!.eventId)
         }
 
-        "updateVehicleState should work" {
+        "UpdateVehicleState should work" {
 
             val oldVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 
@@ -68,7 +68,7 @@ class VehicleStateRepositoryTest : StringSpec() {
             actualVehicleState shouldBe newVehicleState
         }
 
-        "deleteVehicleState should work" {
+        "DeleteVehicleState should work" {
 
             val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
 

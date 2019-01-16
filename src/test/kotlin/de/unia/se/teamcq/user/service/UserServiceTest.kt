@@ -26,7 +26,7 @@ class UserServiceTest : StringSpec() {
 
         val mockedUser = getTestUserModel()
 
-        "getOrCreateUser should work" {
+        "GetOrCreateUser should work" {
             every { userRepository.getOrCreateUser(any()) } returns mockedUser
 
             val user = userService.getOrCreateUser("test")
@@ -37,7 +37,7 @@ class UserServiceTest : StringSpec() {
             }
         }
 
-        "createOrSaveUser should work" {
+        "CreateOrSaveUser should work" {
             every { userRepository.createOrSaveUser(any()) } returns mockedUser
 
             val user = userService.createOrSaveUser(mockedUser)

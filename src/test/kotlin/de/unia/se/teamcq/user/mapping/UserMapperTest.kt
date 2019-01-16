@@ -16,7 +16,7 @@ class UserMapperTest : StringSpec() {
 
     init {
 
-        "convert model to entity" {
+        "Convert model to entity" {
 
             val user = getTestUserModel()
 
@@ -29,7 +29,7 @@ class UserMapperTest : StringSpec() {
             userEntity.userSettings!!.userNotificationType shouldBe user.userSettings!!.userNotificationType
         }
 
-        "convert entity to model" {
+        "Convert entity to model" {
 
             val userEntity = getTestUserEntity()
 

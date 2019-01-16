@@ -9,6 +9,7 @@ import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.service.IUserService
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -18,6 +19,7 @@ import io.mockk.verify
 import io.mockk.Runs
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import org.hamcrest.Matchers.hasSize
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
@@ -28,6 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 
@@ -78,39 +81,61 @@ class NotificationRuleControllerTest : StringSpec() {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext)
 
-        "Returns stored NotificationRules" {
+        "GetNotificationRules should work" {
+
+            every { notificationRuleService.getNotificationRulesForUser(any()) } returns
+                    listOf(getTestNotificationRuleModel().copy(name = "ruleA"), getTestNotificationRuleModel().copy(name = "ruleB"))
 
             SecurityContextHolder.setContext(securityContext)
             setCurrentUserToDefault()
 
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                    .get("/notification-rule-management/notification-rule")
                     .session(session))
                     .andExpect(status().isOk)
-                    .andExpect { result ->
-                        val returnedNotificationRuleDto = gson.fromJson(
-                                result.response.contentAsString,
-                                NotificationRuleDto::class.java)
-
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
-                    }
+                    .andExpect(jsonPath("$", hasSize<Int>(2)))
 
             verify(exactly = 1) {
-                notificationRuleService.getNotificationRule(any())
+                notificationRuleService.getNotificationRulesForUser(any())
             }
         }
 
-        "Returns a 404 error if there is no such NotificationRule" {
+        "GetNotificationRule" should {
 
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToDefault()
+            "Return stored NotificationRules" {
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .get("/notification-rule-management/notification-rule/1045"))
-                    .andExpect(status().isNotFound)
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                        .session(session))
+                        .andExpect(status().isOk)
+                        .andExpect { result ->
+                            val returnedNotificationRuleDto = gson.fromJson(
+                                    result.response.contentAsString,
+                                    NotificationRuleDto::class.java)
+
+                            returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
+                        }
+
+                verify(exactly = 1) {
+                    notificationRuleService.getNotificationRule(any())
+                }
+            }
+
+            "Returns a 404 error if there is no such NotificationRule" {
+
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .get("/notification-rule-management/notification-rule/1045"))
+                        .andExpect(status().isNotFound)
+            }
         }
 
-        "Insert NotificationRules successfully" {
+        "CreateNotificationRule NotificationRules should work" {
 
             SecurityContextHolder.setContext(securityContext)
             setCurrentUserToDefault()
@@ -133,79 +158,82 @@ class NotificationRuleControllerTest : StringSpec() {
             }
         }
 
-        "Update NotificationRules successfully if current user is the owner" {
+        "Update NotificationRules" should {
+            "Update if current user is the owner" {
 
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToDefault()
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(getTestNotificationRuleDto())))
-                    .andExpect(status().isOk)
-                    .andExpect { result ->
-                        val returnedNotificationRuleDto = gson.fromJson(
-                                result.response.contentAsString,
-                                NotificationRuleDto::class.java)
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(gson.toJson(getTestNotificationRuleDto())))
+                        .andExpect(status().isOk)
+                        .andExpect { result ->
+                            val returnedNotificationRuleDto = gson.fromJson(
+                                    result.response.contentAsString,
+                                    NotificationRuleDto::class.java)
 
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
-                    }
+                            returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
+                        }
 
-            verify(exactly = 1) {
-                notificationRuleService.updateNotificationRule(any())
+                verify(exactly = 1) {
+                    notificationRuleService.updateNotificationRule(any())
+                }
+            }
+
+            "Not update if current user isn't the owner" {
+
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToOtherValue()
+
+                val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(gson.toJson(notificationRuleUpate)))
+                        .andExpect(status().isBadRequest)
+            }
+            "Not update if the user that was set isn't the current user" {
+
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
+
+                val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(gson.toJson(notificationRuleUpate)))
+                        .andExpect(status().isBadRequest)
             }
         }
 
-        "Not update NotificationRules if current user isn't the owner" {
+        "Delete NotificationRules" should {
+            "Delete if current user is the owner" {
 
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToOtherValue()
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
 
-            val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+                mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
+                        .andExpect(status().isOk)
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleUpate)))
-                    .andExpect(status().isBadRequest)
-        }
-
-        "Not update NotificationRules if the user that was set isn't the current user" {
-
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToDefault()
-
-            val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
-
-            mockMvc.perform(MockMvcRequestBuilders
-                    .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleUpate)))
-                    .andExpect(status().isBadRequest)
-        }
-
-        "Delete NotificationRules successfully if current user is the owner" {
-
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToDefault()
-
-            mockMvc.perform(MockMvcRequestBuilders
-                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
-                    .andExpect(status().isOk)
-
-            verify(exactly = 1) {
-                notificationRuleService.deleteNotificationRule(any())
+                verify(exactly = 1) {
+                    notificationRuleService.deleteNotificationRule(any())
+                }
             }
-        }
 
-        "Not delete NotificationRules if current user isn't the owner" {
+            "Not delete if current user isn't the owner" {
 
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToOtherValue()
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToOtherValue()
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
-                    .andExpect(status().isBadRequest)
+                mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}"))
+                        .andExpect(status().isBadRequest)
+            }
         }
     }
 
