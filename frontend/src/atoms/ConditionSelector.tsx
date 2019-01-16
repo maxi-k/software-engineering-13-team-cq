@@ -14,15 +14,14 @@ export interface ConditionSelectorProps {
   comparisonTypeValue: SelectFormattedValue
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue }) => {
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue}) => { 
   return (
     <p>
-      <FormattedMessage id = {beforeText}/>
+      <FormattedMessage id={beforeText} />
       <Select value = {dataTypeValue} options = {dataTypeOptions} />
-      <FormattedMessage id = {afterText}/>
-      <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} /> 
-      <input type="text" name="value" />
-      %.
+      <FormattedMessage id={afterText} />
+      <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} />
+      <input type = "text" /> %.
     </p>
   )
 }

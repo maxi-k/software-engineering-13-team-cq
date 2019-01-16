@@ -18,12 +18,12 @@
     "cns.rule.creation.step.general.condition": "Condition",
 
 
-    "cns.vehicle.status.engine.label": "Engine",
-    "cns.vehicle.status.battery.label": "Battery",
-    "cns.vehicle.status.contract.label": "Contract",
-    "cns.vehicle.status.mileage.label": "Mileage",
-    "cns.vehicle.status.fuel.label": "Fuel",
-    "cns.vehicle.status.service.label": "Service",
+    "cns.vehicle.status.engine.label": "engine",
+    "cns.vehicle.status.battery.label": "battery",
+    "cns.vehicle.status.contract.label": "contract",
+    "cns.vehicle.status.mileage.label": "mileage",
+    "cns.vehicle.status.fuel.label": "fuel",
+    "cns.vehicle.status.service.label": "service",
 
     "cns.rule.recipient.email.label": "Mail",
     "cns.rule.recipient.phonenumber.label": "SMS",
