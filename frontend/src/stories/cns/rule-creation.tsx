@@ -85,7 +85,7 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypes: ["cns.vehicle.status.battery.label", "cns.vehicle.status.contract.label", "cns.vehicle.status.engine.label", "cns.vehicle.status.fuel.label", "cns.vehicle.status.service.label", "cns.vehicle.status.mileage.label"],
+  dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Fuel, VehicleDataType.Mileage, VehicleDataType.Service],
   comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
 }
 

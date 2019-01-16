@@ -65,7 +65,7 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
 }
 
 const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
-  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleDetailCondition'))),
+  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleEdit'))),
   abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
