@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select';
-import { SelectFormattedValue } from '@/model';
-import { FormattedMessage } from 'react-intl';
+import { SelectFormattedValue } from '@/model'
+import { FormattedMessage } from 'react-intl'
 
 export interface ConditionSelectorProps {
   beforeText: string

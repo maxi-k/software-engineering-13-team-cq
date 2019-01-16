@@ -1,22 +1,20 @@
 import React from 'react'
-import { PredicateCounterValue } from '@/model/Rule'
+import Select from 'react-select';
 import { FormattedMessage } from 'react-intl'
+import { SelectFormattedValue } from '@/model';
 
 export interface PredicateCounterProps {
-  options: PredicateCounterValue[]
+  value: SelectFormattedValue
+  options: SelectFormattedValue[]
   beforeText: string
   afterText: string
 }
 
-const PredicateCounter: React.SFC<PredicateCounterProps> = ({ options, beforeText, afterText}) => { 
+const PredicateCounter: React.SFC<PredicateCounterProps> = ({ value, options, beforeText, afterText}) => { 
   return (
     <p>
       <FormattedMessage id={beforeText} />
-      <select>
-        {options.map((predicateCounterOption: PredicateCounterValue) => (
-          <option> {predicateCounterOption} </option> // e.g. All, One, None
-        ))}
-      </select>
+      <Select value = {value} options = {options} />
       <FormattedMessage id={afterText} />
     </p>
   )

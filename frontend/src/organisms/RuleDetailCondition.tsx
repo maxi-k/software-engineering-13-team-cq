@@ -12,7 +12,6 @@ import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
-import { PredicateCounterValue } from '@/model/Rule'
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -31,7 +30,12 @@ const StyledRuleDetailCondition = styled.div`
 `
 
 const predicateCounterProps: PredicateCounterProps = {
-  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ],
+  value: {label: <FormattedMessage id = "cns.predicate.counter.all" />, value: "all" },
+  options: [ 
+    {label: <FormattedMessage id = "cns.predicate.counter.all" />, value: "all" },
+    {label: <FormattedMessage id = "cns.predicate.counter.any" />, value: "any" },
+    {label: <FormattedMessage id = "cns.predicate.counter.none" />, value: "none" } 
+  ],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
 }
