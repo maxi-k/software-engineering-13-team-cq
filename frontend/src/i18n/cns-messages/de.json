@@ -8,6 +8,8 @@
     "cns.message.fetch.error.unauthorized": "Sie sind nicht authorisiert, diese Ressource abzufragen. Versuchen Sie, die Webseite neu zu laden und sich anzumelden.",
     "cns.message.fetch.error.serverError": "Es gab ein Problem während der Anfrage, bitte versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
+    "cns.page.ruleCreate.title": "Regel erstellen",
+    "cns.page.ruleEdit.title": "Regel bearbeiten",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
@@ -16,9 +18,18 @@
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.recipients.label": "Empfänger",
 
+    "cns.rule.creation.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
+    "cns.rule.creation.step.label": "Schritt",
+
+    "cns.rule.creation.action.complete": "Fertigstellen",
+    "cns.rule.creation.action.step.next": "Weiter",
+    "cns.rule.creation.action.step.previous": "Zurück",
+
     "cns.rule.creation.step.general.title": "Allgemein",
-    "cns.rule.creation.step.general.fleets": "Betroffene Flotten",
-    "cns.rule.creation.step.general.condition": "Regel Bedingung",
+    "cns.rule.creation.step.fleets.title": "Flotten",
+    "cns.rule.creation.step.condition.title": "Bedingung",
+    "cns.rule.creation.step.timing.title": "Timing",
+    "cns.rule.creation.step.summary.title": "Vorschau",
 
     "cns.vehicle.status.engine.label": "Motor",
     "cns.vehicle.status.battery.label": "Batterie",

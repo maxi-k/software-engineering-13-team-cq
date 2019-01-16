@@ -2,7 +2,7 @@ import { createSelector, Selector as StateSelector } from 'reselect'
 import { RootState } from './index'
 import { LanguageType, LanguageState } from './language'
 import { AuthState, AuthData } from './auth'
-import { RuleState, RuleOverviewState, RuleDetailState } from './rule'
+import { RuleState, RuleOverviewState, RuleDetailState, RuleCreationState } from './rule'
 
 import { RouterState } from 'connected-react-router'
 import { Location } from 'history'
@@ -33,6 +33,10 @@ export const ruleOverviewStateSelector: Selector<RuleOverviewState> = createSele
 export const ruleDetailStateSelector: Selector<RuleDetailState> = createSelector(
   [ruleStateSelector],
   ruleState => ruleState.ruleDetail
+)
+export const ruleCreationStateSelector: Selector<RuleCreationState> = createSelector(
+  [ruleStateSelector],
+  ruleState => ruleState.ruleCreation
 )
 
 export const routerSelector: Selector<RouterState> = state => state.router

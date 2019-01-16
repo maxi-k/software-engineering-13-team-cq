@@ -5,11 +5,10 @@ import { messageFromError } from '@/services/response-service'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
-import Typography from '@material-ui/core/Typography'
-
 import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import RuleRecipientTag from '@/atoms/RuleRecipientTag'
+import ViewHeader from '@/molecules/ViewHeader'
 import FieldDescriptor from '@/molecules/FieldDescriptor'
 import BackButton from '@/organisms/BackButton'
 import RuleIcon from '@/icons/RuleIcon'
@@ -23,13 +22,6 @@ type RuleDetailProps = FetchingAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledRuleDetail = styled.div`
-`
-
-const StyledRuleHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
 `
 
 const StyledRuleInformation = styled.div`
@@ -64,15 +56,12 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
 
   return (
     <StyledRuleDetail {...props}>
-      <StyledRuleHeader>
-        <Typography variant="h5">
-          <span>
-            <FormattedMessage id="cns.rule.label" />{' '}
-            "{rule.name}"
-          </span>
-        </Typography>
+      <ViewHeader
+        style={{ padding: '1rem' }}
+        title="cns.page.ruleEdit.title"
+        titleSuffix={` '${rule.name}'`} >
         <BackButton />
-      </StyledRuleHeader>
+      </ViewHeader>
       <StyledFieldSeparator />
       <StyledRuleInformation>
         <StyledInfoBlock>
@@ -110,7 +99,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
             } />
         </StyledInfoBlock>
       </StyledRuleInformation>
-    </StyledRuleDetail>
+    </StyledRuleDetail >
   )
 }
 

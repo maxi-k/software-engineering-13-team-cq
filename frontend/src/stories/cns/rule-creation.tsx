@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
+import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
 import { PredicateCounterValue, ComparisonType } from '@/model/Rule'
 
@@ -30,11 +31,11 @@ const creationStepperProps: RuleCreationStepperProps = {
     creationStepProps,
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.general.fleets"
+      titleKey: "cns.rule.creation.step.fleets.title"
     },
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.general.condition"
+      titleKey: "cns.rule.creation.step.condition.title"
     },
 
   ]
@@ -67,6 +68,13 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
     })
   })
 }
+
+import RuleCreationGeneral from '@/organisms/RuleCreate/RuleCreationGeneral'
+storiesOf('Rule Creation / First Step', module)
+  .addDecorator(StoryWrapper)
+  .add('Screen', () => <RuleCreationGeneral
+    updateField={(name: string) => action(`Update field ${name}`)}
+    inProgressRule={{}} />)
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)

@@ -30,6 +30,13 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     interpolatePath: (ruleId: string) => `/rule/${ruleId}`,
     exact: true,
     component: lazy(() => import('@/pages/RuleDetail'))
+  },
+  ruleCreate: {
+    title: "cns.page.ruleCreate.title",
+    path: '/create',
+    interpolatePath: () => '/create',
+    exact: true,
+    component: lazy(() => import('@/pages/RuleCreate'))
   }
 }
 export type PageDefinitions = typeof pageDefinitions

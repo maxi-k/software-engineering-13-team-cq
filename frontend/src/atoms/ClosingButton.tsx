@@ -1,16 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
-import BaseTile, { RuleTileProps } from './RuleTileBase'
+import { IconProps } from '@fleetdata/shared/components/icons//icon.render.component';
 import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
+import IconButton, { IconButtonProps } from '@material-ui/core/IconButton'
 
-const StyledCloseRuleTile = styled(BaseTile)`
-  cursor: pointer;
-`
+export type ClosingButtonProps = IconProps & IconButtonProps
 
-const ClosingButton: React.SFC<RuleTileProps> = (props) => (
-  <StyledCloseRuleTile {...props}>
-    <CloseIcon />
-  </StyledCloseRuleTile>
-)
+const ClosingButton: React.SFC<ClosingButtonProps> = (
+  { color, height, width, viewbox, fill, marginTop, ...props }) => (
+    <IconButton color={color} {...props}>
+      <CloseIcon
+        color={color}
+        height={height}
+        width={width}
+        viewbox={viewbox}
+        fill={fill}
+        marginTop={marginTop} />
+    </IconButton>
+  )
 
 export default ClosingButton

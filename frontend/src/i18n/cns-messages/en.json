@@ -9,6 +9,8 @@
     "cns.message.fetch.error.unauthorized": "You are unauthorized to view this resource. Please try to reload the page and log in.",
     "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
+    "cns.page.ruleCreate.title": "Create Rule",
+    "cns.page.ruleEdit.title": "Edit Rule",
 
     "cns.rule.label": "Notification Rule",
 
@@ -17,7 +19,23 @@
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.recipients.label": "Recipients",
 
+
+    "cns.rule.creation.error.default": "There was an error displaying this component.",
+    "cns.rule.creation.step.label": "Step",
+
+    "cns.rule.creation.action.complete": "Complete",
+    "cns.rule.creation.action.step.next": "Next",
+    "cns.rule.creation.action.step.previous": "Back",
+
+    "cns.rule.creation.step.general.fleets": "Fleets",
+    "cns.rule.creation.step.general.condition": "Condition",
+
     "cns.rule.creation.step.general.title": "General",
+    "cns.rule.creation.step.fleets.title": "Fleets",
+    "cns.rule.creation.step.condition.title": "Condition",
+    "cns.rule.creation.step.timing.title": "Timing",
+    "cns.rule.creation.step.summary.title": "Preview",
+
     "cns.rule.creation.step.general.fleets": "Fleets",
     "cns.rule.creation.step.general.condition": "Condition",
 
