@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.notificationmanagement
+package de.unia.se.teamcq.notificationmanagement.model
 
 import org.springframework.scheduling.support.CronTrigger
 

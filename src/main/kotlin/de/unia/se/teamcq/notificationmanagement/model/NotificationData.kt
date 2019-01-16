@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.notificationmanagement
+package de.unia.se.teamcq.notificationmanagement.model
 
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 

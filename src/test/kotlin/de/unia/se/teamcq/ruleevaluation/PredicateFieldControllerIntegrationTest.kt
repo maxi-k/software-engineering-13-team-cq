@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.vehiclestate.controller
+package de.unia.se.teamcq.ruleevaluation.controller
 
 import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.security.JwtConfig
@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class VehicleStateDataTypeControllerIntegrationTest : StringSpec() {
+class PredicateFieldControllerIntegrationTest : StringSpec() {
 
     @Autowired
     lateinit var webApplicationContext: WebApplicationContext
@@ -28,8 +28,8 @@ class VehicleStateDataTypeControllerIntegrationTest : StringSpec() {
     lateinit var jwtConfig: JwtConfig
 
     val possibleRequestPaths = listOf(
-            "/vehicle-state-data-types",
-            "/vehicle-state-data-types/"
+            "/predicate-fields",
+            "/predicate-fields/"
     )
 
     init {
@@ -46,13 +46,13 @@ class VehicleStateDataTypeControllerIntegrationTest : StringSpec() {
             }
         }
 
-        "GetVehicleStateDataTypes should work" {
+        "GetPredicateFieldProviders should work" {
 
             val mockMvc = TestUtils.buildMockMvc(webApplicationContext)
 
             val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
 
-            val expectingAtLeastDataTypes = arrayOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
+            val expectingAtLeastPredicateFieldProviders = arrayOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
 
             possibleRequestPaths.map { requestPath ->
 
@@ -61,7 +61,7 @@ class VehicleStateDataTypeControllerIntegrationTest : StringSpec() {
                         .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
                         .andExpect(status().isOk)
                         .andExpect(jsonPath("$", hasSize<Int>(greaterThanOrEqualTo(6))))
-                        .andExpect(jsonPath("$[*].name", hasItems(*expectingAtLeastDataTypes)))
+                        .andExpect(jsonPath("$[*].name", hasItems(*expectingAtLeastPredicateFieldProviders)))
             }
         }
     }

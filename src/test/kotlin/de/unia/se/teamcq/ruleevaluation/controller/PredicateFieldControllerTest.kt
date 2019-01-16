@@ -1,9 +1,9 @@
-package de.unia.se.teamcq.vehiclestate.controller
+package de.unia.se.teamcq.ruleevaluation.controller
 
-import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeDto
-import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateDataTypeMapper
+import de.unia.se.teamcq.TestUtils.getTestPredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.service.IPredicateFieldContainer
+import de.unia.se.teamcq.ruleevaluation.mapping.IPredicateFieldMapper
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
-import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -20,34 +20,34 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 
 @ContextConfiguration(classes = [(TestConfiguration::class)])
-class VehicleStateDataTypeControllerTest : StringSpec() {
+class PredicateFieldControllerTest : StringSpec() {
 
     @MockK
-    private lateinit var vehicleStateDataTypeMapper: IVehicleStateDataTypeMapper
+    private lateinit var predicateFieldMapper: IPredicateFieldMapper
 
     @MockK
-    private lateinit var vehicleStateService: IVehicleStateService
+    private lateinit var predicateFieldContainer: IPredicateFieldContainer
 
     @InjectMockKs
-    private lateinit var vehicleStateDataTypeController: VehicleStateDataTypeController
+    private lateinit var predicateFieldController: PredicateFieldController
 
     init {
         MockKAnnotations.init(this)
 
-        every { vehicleStateService.getVehicleStateDataTypes() } returns setOf(VehicleStateDataTypeBattery())
+        every { predicateFieldContainer.getPredicateFieldProviders() } returns setOf(VehicleStateDataTypeBattery())
 
-        every { vehicleStateDataTypeMapper.modelToDto(any()) } returns getTestVehicleStateDataTypeDto()
+        every { predicateFieldMapper.modelToDto(any()) } returns getTestPredicateFieldProviderDto()
 
         val mockMvc = MockMvcBuilders
-                .standaloneSetup(vehicleStateDataTypeController)
+                .standaloneSetup(predicateFieldController)
                 .setMessageConverters(MappingJackson2HttpMessageConverter())
                 .build()
 
-        "GetVehicleStateDataTypes should work" {
+        "GetPredicateFieldProviders should work" {
 
             val possibleRequestPaths = listOf(
-                    "/vehicle-state-data-types",
-                    "/vehicle-state-data-types/"
+                    "/predicate-fields",
+                    "/predicate-fields/"
             )
 
             possibleRequestPaths.map { requestPath ->

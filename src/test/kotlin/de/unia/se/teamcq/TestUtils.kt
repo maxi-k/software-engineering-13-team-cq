@@ -12,9 +12,9 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
-import de.unia.se.teamcq.vehiclestate.dto.VehicleStateDataTypeDto
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
-import de.unia.se.teamcq.vehiclestate.model.IVehicleStateDataType
+import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import org.springframework.http.HttpHeaders
@@ -101,12 +101,12 @@ object TestUtils {
         )
     }
 
-    fun getTestVehicleStateDataType(): IVehicleStateDataType {
+    fun getTestPredicateFieldProviderModel(): IPredicateFieldProvider {
         return VehicleStateDataTypeBattery()
     }
 
-    fun getTestVehicleStateDataTypeDto(): VehicleStateDataTypeDto {
-        return VehicleStateDataTypeDto("Battery")
+    fun getTestPredicateFieldProviderDto(): PredicateFieldProviderDto {
+        return PredicateFieldProviderDto("Battery")
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {

@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.notificationmanagement
+package de.unia.se.teamcq.notificationmanagement.model
 
 class CountingAggregator(var notificationCountThreshold: Int) : Aggregator {
 

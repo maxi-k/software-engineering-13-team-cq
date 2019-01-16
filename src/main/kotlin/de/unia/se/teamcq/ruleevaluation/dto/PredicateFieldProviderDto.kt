@@ -1,8 +1,8 @@
-package de.unia.se.teamcq.vehiclestate.dto
+package de.unia.se.teamcq.ruleevaluation.dto
 
 import java.io.Serializable
 
-data class VehicleStateDataTypeDto(
+data class PredicateFieldProviderDto(
 
     var name: String?
 
