@@ -2,9 +2,9 @@ package de.unia.se.teamcq
 
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionLeafDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
-import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionLeafEntity
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
 import de.unia.se.teamcq.ruleevaluation.model.*
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
@@ -175,35 +175,32 @@ object TestUtils {
         return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
     }
 
-    fun getTestRuleConditionLeafModel(): RuleConditionLeaf {
-        return RuleConditionLeaf(
+    fun getTestRuleConditionCompositeModel(): RuleConditionComposite {
+        return RuleConditionComposite(
                 0,
                 LogicalConnectiveType.ALL,
                 listOf(
-                        RuleConditionPredicate(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
-                        RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                        getTestRuleConditionPredicateModel()
                 )
         )
     }
 
-    fun getTestRuleConditionLeafDto(): RuleConditionLeafDto {
-        return RuleConditionLeafDto(
+    fun getTestRuleConditionCompositeDto(): RuleConditionCompositeDto {
+        return RuleConditionCompositeDto(
                 0,
                 LogicalConnectiveType.ALL,
                 listOf(
-                        RuleConditionPredicateDto(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
-                        RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                        getTestRuleConditionPredicateDto()
                 )
         )
     }
 
-    fun getTestRuleConditionLeafEntity(): RuleConditionLeafEntity {
-        return RuleConditionLeafEntity(
+    fun getTestRuleConditionCompositeEntity(): RuleConditionCompositeEntity {
+        return RuleConditionCompositeEntity(
                 0,
                 LogicalConnectiveType.ALL,
                 listOf(
-                        RuleConditionPredicateEntity(0, "Battery", "status", ComparisonType.NOT_EQUAL_TO, "HEALTHY"),
-                        RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+                        getTestRuleConditionPredicateEntity()
                 )
         )
     }

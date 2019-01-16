@@ -3,9 +3,9 @@ package de.unia.se.teamcq.ruleevaluation.dto
 import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
 import java.io.Serializable
 
-data class RuleConditionPredicateDto(
+class RuleConditionPredicateDto(
 
-    var predicateId: Long? = 0,
+    conditionId: Long? = 0,
 
     var providerName: String?,
 
@@ -15,7 +15,7 @@ data class RuleConditionPredicateDto(
 
     var comparisonValue: String?
 
-) : Serializable {
+) : Serializable, RuleConditionDto(conditionId) {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null)
 }
