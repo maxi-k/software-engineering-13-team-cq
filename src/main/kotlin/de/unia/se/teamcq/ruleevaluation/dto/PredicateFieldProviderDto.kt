@@ -6,7 +6,7 @@ data class PredicateFieldProviderDto(
 
     var providerName: String?,
 
-    val predicateFields: List<PredicateFieldDto>
+    var predicateFields: List<PredicateFieldDto>
 
 ) : Serializable {
     // Necessary for MapStruct

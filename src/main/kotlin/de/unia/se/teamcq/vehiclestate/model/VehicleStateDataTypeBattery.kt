@@ -25,8 +25,8 @@ class VehicleStateDataTypeBattery(
     override val predicateFieldProviderName: String = "Battery"
 
     override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
-            PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+            PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+            PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
             PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
     )
 }

@@ -149,18 +149,18 @@ object TestUtils {
 
     fun getTestPredicateFieldProviderDto(): PredicateFieldProviderDto {
         return PredicateFieldProviderDto("Battery", listOf(
-                PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
-                PredicateFieldDto("voltage", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+                PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+                PredicateFieldDto("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
                 PredicateFieldDto("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
         ))
     }
 
     fun getTestPredicateFieldModel(): PredicateField {
-        return PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD)
+        return PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC)
     }
 
     fun getTestPredicateFieldDto(): PredicateFieldDto {
-        return PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD)
+        return PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC)
     }
 
     fun getTestRuleConditionPredicateModel(): RuleConditionPredicate {

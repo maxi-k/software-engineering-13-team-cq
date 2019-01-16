@@ -25,8 +25,8 @@ class VehicleStateDataTypeFuel(
     override val predicateFieldProviderName: String = "Fuel"
 
     override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("level", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
-            PredicateField("liters", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
-            PredicateField("range", FieldDataType.INTEGER, EvaluationStrategies.STANDARD)
+            PredicateField("level", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+            PredicateField("liters", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            PredicateField("range", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)
     )
 }

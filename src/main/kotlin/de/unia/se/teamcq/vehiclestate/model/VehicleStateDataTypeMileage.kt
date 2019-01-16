@@ -25,8 +25,8 @@ class VehicleStateDataTypeMileage(
     override val predicateFieldProviderName: String = "Mileage"
 
     override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("current", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
-            PredicateField("remaining", FieldDataType.INTEGER, EvaluationStrategies.STANDARD),
-            PredicateField("reached", FieldDataType.INTEGER, EvaluationStrategies.STANDARD)
+            PredicateField("current", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            PredicateField("remaining", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            PredicateField("reached", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)
     )
 }
