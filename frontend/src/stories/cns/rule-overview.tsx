@@ -12,7 +12,7 @@ import { VehicleDataType } from '@/model'
 
 const ruleTileProps: RuleTileProps = {
   rule: {
-    id: 1,
+    ruleId: 1,
     name: 'Rule Name',
     description: 'Rule Description for an examplary Rule',
     aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
@@ -24,7 +24,7 @@ const ruleTileProps: RuleTileProps = {
 }
 
 const ruleOverviewProps: RuleOverviewProps = {
-  rules: [ruleTileProps.rule, { ...ruleTileProps.rule, id: 2, name: 'Rule Name 2' }],
+  rules: [ruleTileProps.rule, { ...ruleTileProps.rule, ruleId: 2, name: 'Rule Name 2' }],
   addRule: action('add rule'),
   selectRule: action('select rule'),
   isFetching: false,

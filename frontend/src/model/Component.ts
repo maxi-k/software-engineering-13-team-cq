@@ -1,8 +1,9 @@
 import { HTMLAttributes } from 'react'
+import { FetchError } from './Status'
 
 export interface FetchingAttributes {
   isFetching: boolean,
-  hasFetchError: boolean | Error | string
+  hasFetchError: FetchError
 }
 export type FetchingData = Readonly<FetchingAttributes>
 

@@ -1,0 +1,239 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Fleetdata Central Notification System
+  description: A microservice that enables sending various notifications to fleet managers and third parties.
+  license:
+    name: UNLICENSED
+servers:
+  - url: endpoint-specification.yaml
+#  - url: https://st-calculator-frontend.herokuapp.com
+paths:
+  '/notification-rule-management/notification-rule':
+    get:
+      description: |
+        Returns a list of rules with their most important information,
+        so they can be displayed in an overview.
+      operationId: ruleOverview
+      responses:
+        '200':
+          description: A list of rules was returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RuleOverview'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      description: |
+        Creates a new notification rule with the given parameters.
+      operationId: ruleCreation
+      requestBody:
+        description: |
+          The Notification Rule Data to be used to create the new
+          notification rule
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleDetail'
+      responses:
+        '200':
+          description: The Notification Rule was created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  '/notification-rule-management/notification-rule/{ruleId}':
+    parameters:
+      - name: ruleId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+    get:
+      description: |
+        Returns detailed information for the notification rule with
+        the given {ruleId}
+      operationId: ruleDetail
+      responses:
+        '200':
+          description: The rule detail was returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      description: |
+        Updates the notification rule given by {ruleId} with the given
+        parameters
+      operationId: ruleDetail
+      requestBody:
+        description: The Notification Rule Data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleDetail'
+      responses:
+        '200':
+          description: The rule was successfully updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RuleDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      description: |
+        Deletes the notification rule given by the {ruleId} parameter
+      operationId: ruleDetail
+      responses:
+        '200':
+          description: The rule was successfully deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  responses:
+    NotFound:
+      description: The requested resource could not be found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
+    BadRequest:
+      description: There was something wrong with your request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schema/ErrorResponse'
+  schemas:
+    GenericSuccess:
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+    ErrorResponse::
+      required:
+          - error
+      properties:
+          error:
+            $ref: '#/components/schemas/ErrorObject'
+    ErrorObject:
+      required:
+          - code
+          - description
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+    RuleOverview:
+      required:
+        - ruleId
+        - name
+        - description
+        - vehicleDataSources
+        - aggregator
+      properties:
+          ruleId:
+            type: integer
+            format: int64
+          name:
+            type: string
+          description:
+            type: string
+          dataSources:
+            type: array
+            items:
+              $ref: '#/components/schemas/VehicleDataSource'
+          aggregator:
+              $ref: '#/components/schemas/RuleAggregator'
+    RuleAggregator:
+      required:
+        - type
+        - value
+      properties:
+        aggregatorType:
+          $ref: '#/components/schemas/RuleAggregatorType'
+        value:
+          type: string
+    RuleDetail: # TODO: Complete
+      allOf:
+        - $ref: '#/components/schemas/RuleOverview'
+        - required:
+            - recipients
+          properties:
+            recipients:
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationRecipient'
+    VehicleDataSource:
+      type: string
+      enum:
+        - Battery
+        - Engine
+        - Contract
+        - Mileage
+        - Fuel
+        - Service
+    NotificationRecipient:
+      required:
+          - value
+          - type
+      properties:
+        value:
+          type: string
+        type:
+          $ref: '#/components/schemas/NotificationRecipientType'
+    RuleAggregatorType:
+      type: string
+      enum:
+        - IMMEDIATE
+        - SCHEDULED
+        - COUNTING
+    NotificationRecipientType:
+      type: string
+      enum:
+        - EMAIL
+        - PHONE_NUMBER
+        - USER

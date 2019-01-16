@@ -8,9 +8,9 @@ interface ClosingButtonAttributes {
 export type ClosingButtonProps = ClosingButtonAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const ClosingButton: React.SFC<ClosingButtonProps> = ({ onClick }) => (
-  <div onClick = {onClick} style={{ cursor: 'pointer'}}>
-  <CloseIcon/>
-</div>
+  <div onClick={onClick} style={{ cursor: 'pointer' }}>
+    <CloseIcon />
+  </div>
 )
 
 export default ClosingButton

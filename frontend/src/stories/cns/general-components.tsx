@@ -1,11 +1,15 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import StoryWrapper from '../StoryWrapper'
+
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import ErrorMessage from '@/atoms/ErrorMessage'
 import NextButton from '@/atoms/NextButton'
 import BackButton from '@/atoms/BackButton'
+
 import { action } from '@storybook/addon-actions'
+import { FormattedMessage } from 'react-intl';
+import { handledStatus, messageFromError } from '@/services/response-service'
 
 storiesOf('General Components', module)
   .addDecorator(StoryWrapper)
@@ -21,6 +25,15 @@ storiesOf('General Components', module)
   .add('Back Button', () => <BackButton onClick={action('Back!')} />)
   .add('Simple Error Message', () =>
     <ErrorMessage message="This is an error message with a string message" />)
+  .add('Requests Error Messages', () =>
+    <>
+      {Object.keys(handledStatus).map((code) =>
+        <ErrorMessage key={code}
+          message={<> <FormattedMessage id={messageFromError({ status: parseInt(code, 10) })} /> ({code}) </>}
+          style={{ marginBottom: '1rem' }} />
+      )}
+    </>
+  )
   .add('Complex Error Message', () =>
     <ErrorMessage message={
       <>

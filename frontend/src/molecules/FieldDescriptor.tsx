@@ -26,8 +26,8 @@ const FieldDescriptor: React.SFC<FieldDescriptorProps> = ({ label, content, ...p
     </Typography>
     <StyledDescriptorField>
       {typeof content === 'string'
-        ? content
-        : <Typography variant="body1">{content}</Typography>}
+        ? <Typography variant="body1">{content}</Typography>
+        : content}
     </StyledDescriptorField>
   </StyledDescriptor>
 )

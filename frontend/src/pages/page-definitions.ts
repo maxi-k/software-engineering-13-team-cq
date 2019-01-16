@@ -1,4 +1,4 @@
-import { lazy,  } from 'react'
+import { lazy } from 'react'
 
 export type LazyComponent = React.LazyExoticComponent<any>
 export interface PageDefinition {
@@ -37,6 +37,20 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     interpolatePath: (ruleId: string) => `/rule/condition/${ruleId}`,
     exact: true,
     component: lazy(() => import('@/pages/RuleDetailCondition'))
+  },
+  ruleEdit: {
+    title: "cns.page.ruleEdit.title",
+    path: '/rule/:ruleId/edit',
+    interpolatePath: (ruleId: string) => `/rule/${ruleId}/edit`,
+    exact: true,
+    component: lazy(() => import('@/pages/RuleEdit'))
+  },
+  ruleDetail: {
+    title: "cns.page.ruleDetail.title",
+    path: '/rule/:ruleId',
+    interpolatePath: (ruleId: string) => `/rule/${ruleId}`,
+    exact: true,
+    component: lazy(() => import('@/pages/RuleDetail'))
   }
 }
 export type PageDefinitions = typeof pageDefinitions

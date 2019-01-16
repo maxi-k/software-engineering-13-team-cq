@@ -66,13 +66,14 @@ interface GenericMessageAttributes extends SpecifiedMessageAttributes, WithTheme
 type GenericMessageProps = GenericMessageAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const GenericMessage: React.SFC<GenericMessageProps> = (props) => {
-  const { className, message, onClose, variant, ...other } = props;
+  const { className, message, onClose, variant, style = {}, ...other } = props;
   const Icon = variantIcon[variant];
   const classes = messageStyles(props.theme)
 
   return (
     <SnackbarContent
       style={{
+        ...style,
         backgroundColor: classes[variant].backgroundColor
       }}
       aria-describedby="client-snackbar"

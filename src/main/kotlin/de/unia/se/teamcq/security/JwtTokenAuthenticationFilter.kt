@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.security
 
+import de.unia.se.teamcq.user.service.IUserService
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +25,9 @@ class JwtTokenAuthenticationFilter : OncePerRequestFilter() {
 
     @Autowired
     lateinit var jwtConfig: JwtConfig
+
+    @Autowired
+    lateinit var userService: IUserService
 
     // See https://medium.com/omarelgabrys-blog/microservices-with-spring-boot-authentication-with-jwt-part-3-fafc9d7187e8
     @Throws(ServletException::class, IOException::class)
@@ -63,6 +67,9 @@ class JwtTokenAuthenticationFilter : OncePerRequestFilter() {
 
             val username = claims["user_name"]
             if (username != null) {
+                // Ensure user exists in our DB
+                userService.getOrCreateUser(username.toString())
+
                 val authorities = listOf(claims["authorities"])
 
                 // 5. Create auth object

@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.vehiclestate.mapping
 
-import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
-import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
@@ -16,14 +16,9 @@ class VehicleStateMapperTest : StringSpec() {
 
     init {
 
-        "convert model to entity" {
+        "Convert model to entity" {
 
-            val vehicleState = VehicleState(
-                    2,
-                    "name",
-                    10,
-                    0.2
-            )
+            val vehicleState = getTestVehicleStateModel()
 
             val vehicleStateEntity = vehicleStateMapper.modelToEntity(vehicleState)
 
@@ -34,14 +29,9 @@ class VehicleStateMapperTest : StringSpec() {
             vehicleStateEntity.batteryCharge shouldBe vehicleState.batteryCharge
         }
 
-        "convert entity to model" {
+        "Convert entity to model" {
 
-            val vehicleStateEntity = VehicleStateEntity(
-                    2,
-                    "name",
-                    10,
-                    0.2
-            )
+            val vehicleStateEntity = getTestVehicleStateEnity()
 
             val vehicleState = vehicleStateMapper.entityToModel(vehicleStateEntity)
 
