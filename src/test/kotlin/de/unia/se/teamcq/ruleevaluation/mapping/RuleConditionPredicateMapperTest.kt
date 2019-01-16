@@ -25,7 +25,7 @@ class RuleConditionPredicateMapperTest : StringSpec() {
             val expectedRuleConditionPredicateDto = getTestRuleConditionPredicateDto()
 
             ruleConditionPredicateDto shouldNotBe null
-            ruleConditionPredicateDto.predicateId shouldBe expectedRuleConditionPredicateDto.predicateId
+            ruleConditionPredicateDto.conditionId shouldBe expectedRuleConditionPredicateDto.conditionId
             ruleConditionPredicateDto.providerName shouldBe expectedRuleConditionPredicateDto.providerName
             ruleConditionPredicateDto.fieldName shouldBe expectedRuleConditionPredicateDto.fieldName
             ruleConditionPredicateDto.comparisonType shouldBe expectedRuleConditionPredicateDto.comparisonType
@@ -40,7 +40,7 @@ class RuleConditionPredicateMapperTest : StringSpec() {
             val expectedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
 
             ruleConditionPredicateModel shouldNotBe null
-            ruleConditionPredicateModel.predicateId shouldBe expectedRuleConditionPredicateModel.predicateId
+            ruleConditionPredicateModel.conditionId shouldBe expectedRuleConditionPredicateModel.conditionId
             ruleConditionPredicateModel.providerName shouldBe expectedRuleConditionPredicateModel.providerName
             ruleConditionPredicateModel.fieldName shouldBe expectedRuleConditionPredicateModel.fieldName
             ruleConditionPredicateModel.comparisonType shouldBe expectedRuleConditionPredicateModel.comparisonType
@@ -55,7 +55,7 @@ class RuleConditionPredicateMapperTest : StringSpec() {
             val expectedRuleConditionPredicateEntity = getTestRuleConditionPredicateEntity()
 
             ruleConditionPredicateEntity shouldNotBe null
-            ruleConditionPredicateEntity.predicateId shouldBe expectedRuleConditionPredicateEntity.predicateId
+            ruleConditionPredicateEntity.conditionId shouldBe expectedRuleConditionPredicateEntity.conditionId
             ruleConditionPredicateEntity.providerName shouldBe expectedRuleConditionPredicateEntity.providerName
             ruleConditionPredicateEntity.fieldName shouldBe expectedRuleConditionPredicateEntity.fieldName
             ruleConditionPredicateEntity.comparisonType shouldBe expectedRuleConditionPredicateEntity.comparisonType
@@ -70,7 +70,7 @@ class RuleConditionPredicateMapperTest : StringSpec() {
             val expectedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
 
             ruleConditionPredicateModel shouldNotBe null
-            ruleConditionPredicateModel.predicateId shouldBe expectedRuleConditionPredicateModel.predicateId
+            ruleConditionPredicateModel.conditionId shouldBe expectedRuleConditionPredicateModel.conditionId
             ruleConditionPredicateModel.providerName shouldBe expectedRuleConditionPredicateModel.providerName
             ruleConditionPredicateModel.fieldName shouldBe expectedRuleConditionPredicateModel.fieldName
             ruleConditionPredicateModel.comparisonType shouldBe expectedRuleConditionPredicateModel.comparisonType

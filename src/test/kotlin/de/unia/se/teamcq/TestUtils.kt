@@ -1,10 +1,8 @@
 package de.unia.se.teamcq
 
-import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
-import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
+import de.unia.se.teamcq.ruleevaluation.dto.*
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
 import de.unia.se.teamcq.ruleevaluation.model.*
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
@@ -175,7 +173,7 @@ object TestUtils {
         return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
     }
 
-    fun getTestRuleConditionCompositeModel(): RuleConditionComposite {
+    fun getTestRuleConditionModel(): RuleCondition {
         return RuleConditionComposite(
                 0,
                 LogicalConnectiveType.ALL,
@@ -185,7 +183,7 @@ object TestUtils {
         )
     }
 
-    fun getTestRuleConditionCompositeDto(): RuleConditionCompositeDto {
+    fun getTestRuleConditionDto(): RuleConditionDto {
         return RuleConditionCompositeDto(
                 0,
                 LogicalConnectiveType.ALL,
@@ -195,7 +193,7 @@ object TestUtils {
         )
     }
 
-    fun getTestRuleConditionCompositeEntity(): RuleConditionCompositeEntity {
+    fun getTestRuleConditionEntity(): RuleConditionEntity {
         return RuleConditionCompositeEntity(
                 0,
                 LogicalConnectiveType.ALL,
