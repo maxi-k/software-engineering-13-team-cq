@@ -23,13 +23,13 @@ const authApiRequest = (path: string, authToken: string, options: object = {}) =
     headers: {
       ...defaultOptions.headers,
       'Authorization': 'Bearer ' + authToken
-    }
+    },
+    ...options
   }
   return apiRequest(path, authOptions)
 }
 
-// TODO: Only mock in test environment
-const doMock = isTest // || isDevelopment
+const doMock = isTest
 const delayResponse = (min: number, max: number) => (
   new Promise(resolve => {
     setTimeout(resolve, Math.random() * (max - min) + min)
