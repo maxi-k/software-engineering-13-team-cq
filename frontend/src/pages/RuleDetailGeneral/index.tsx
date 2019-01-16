@@ -7,9 +7,9 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetail, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetail'
+import RuleDetailGeneral, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetail'
 
-export interface RuleDetailPageAttributes {
+export interface RuleDetailGeneralPageAttributes {
   // Needs to be string because it comes
   // from the router props
   parameters: {
@@ -29,7 +29,7 @@ export interface DispatchAttributes {
   deleteRule(): void
 }
 
-export type RuleDetailPageProps = RuleDetailPageAttributes
+export type RuleDetailGeneralPageProps = RuleDetailGeneralPageAttributes
   & StateAttributes
   & DispatchAttributes
   & React.HTMLAttributes<HTMLDivElement>
@@ -38,7 +38,7 @@ const StyledPageWrapper = styled.div`
     flex-grow: 1;
 `
 
-class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
+class RuleDetailGeneralPage extends React.PureComponent<RuleDetailGeneralPageProps> {
 
   public componentDidMount = () => {
     const { fetchRule } = this.props
@@ -49,13 +49,13 @@ class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
     const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
     return (
       <StyledPageWrapper>
-        <RuleDetail {...ruleDetailProps} />
+        <RuleDetailGeneral {...ruleDetailProps} />
       </StyledPageWrapper>
     )
   }
 }
 
-const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = (state, props) => {
+const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttributes> = (state, props) => {
   const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
   return ({
     rule: rules[parseInt(props.parameters.ruleId, 10)],
@@ -64,7 +64,7 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
   })
 }
 
-const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, DispatchAttributes> = (dispatch, props) => ({
   finishGeneral: (event) => dispatch(push(interpolatePagePath('TBD'))),
   abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
@@ -74,4 +74,4 @@ const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttri
   deleteRule: () => alert('deleting rule')
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailPage)
+export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailGeneralPage)

@@ -24,12 +24,12 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     exact: true,
     component: lazy(() => import('@/pages/TBD'))
   },
-  ruleDetail: {
-    title: "cns.page.ruleDetail.title",
-    path: '/rule/:ruleId',
-    interpolatePath: (ruleId: string) => `/rule/${ruleId}`,
+  ruleDetailGeneral: {
+    title: "cns.page.ruleDetailGeneral.title",
+    path: '/rule/general/:ruleId',
+    interpolatePath: (ruleId: string) => `/rule/general/${ruleId}`,
     exact: true,
-    component: lazy(() => import('@/pages/RuleDetail'))
+    component: lazy(() => import('@/pages/RuleDetailGeneral'))
   }
 }
 export type PageDefinitions = typeof pageDefinitions
