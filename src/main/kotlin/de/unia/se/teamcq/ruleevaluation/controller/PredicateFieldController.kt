@@ -24,6 +24,6 @@ class PredicateFieldController {
         val predicateFieldProviders = predicateFieldContainer.getPredicateFieldProviders()
 
         return predicateFieldProviders
-                .map { predicatefieldProvider -> predicateFieldMapper.modelToDto(predicatefieldProvider) }
+                .map { predicateFieldProvider -> predicateFieldMapper.modelToDto(predicateFieldProvider) }
     }
 }
