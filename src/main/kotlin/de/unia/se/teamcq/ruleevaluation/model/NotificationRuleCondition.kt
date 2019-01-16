@@ -6,9 +6,9 @@ enum class LogicalConnectiveType {
 
 abstract class NotificationRuleCondition(
 
-        var conditionId: Long? = 0,
+    var conditionId: Long? = 0,
 
-        var logicalConnective: LogicalConnectiveType?
+    var logicalConnective: LogicalConnectiveType?
 
 ) {
     // Necessary for MapStruct
@@ -17,11 +17,11 @@ abstract class NotificationRuleCondition(
 
 class NotificationRuleConditionComposite(
 
-        conditionId: Long? = 0,
+    conditionId: Long? = 0,
 
-        logicalConnective: LogicalConnectiveType?,
+    logicalConnective: LogicalConnectiveType?,
 
-        var subConditions: NotificationRuleCondition?
+    var subConditions: NotificationRuleCondition?
 
 ) : NotificationRuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct
@@ -30,11 +30,11 @@ class NotificationRuleConditionComposite(
 
 class NotificationRuleConditionLeaf(
 
-        conditionId: Long? = 0,
+    conditionId: Long? = 0,
 
-        logicalConnective: LogicalConnectiveType?,
+    logicalConnective: LogicalConnectiveType?,
 
-        var conditionPredicate: NotificationRuleConditionPredicate?
+    var conditionPredicate: NotificationRuleConditionPredicate?
 
 ) : NotificationRuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct

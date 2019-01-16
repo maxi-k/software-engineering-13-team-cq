@@ -6,8 +6,6 @@ import java.io.Serializable
 
 data class PredicateFieldDto(
 
-    var predicateId: Long? = 0,
-
     var fieldName: String?,
 
     var dataType: FieldDataType?,
@@ -16,5 +14,5 @@ data class PredicateFieldDto(
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, mutableListOf<ComparisonType>())
+    constructor() : this(null, null, mutableListOf<ComparisonType>())
 }

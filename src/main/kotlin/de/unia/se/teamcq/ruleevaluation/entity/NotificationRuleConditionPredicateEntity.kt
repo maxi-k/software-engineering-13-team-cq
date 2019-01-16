@@ -5,13 +5,13 @@ import java.io.Serializable
 
 data class NotificationRuleConditionPredicateEntity(
 
-        var predicateId: Long? = 0,
+    var predicateId: Long? = 0,
 
-        var providerName: String?,
+    var providerName: String?,
 
-        var comparisonType: ComparisonType?,
+    var comparisonType: ComparisonType?,
 
-        var comparisonValue: String?
+    var comparisonValue: String?
 
 ) : Serializable {
     // Necessary for MapStruct
