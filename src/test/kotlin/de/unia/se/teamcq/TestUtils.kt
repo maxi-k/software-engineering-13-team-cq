@@ -1,6 +1,6 @@
 package de.unia.se.teamcq
 
-import de.unia.se.teamcq.ruleevaluation.dto.*
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
@@ -17,15 +17,25 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
+import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
-import de.unia.se.teamcq.vehiclestate.model.*
+import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
-import java.util.*
+import java.util.Date
 
 object TestUtils {
 
@@ -201,6 +211,26 @@ object TestUtils {
                         getTestRuleConditionPredicateEntity()
                 )
         )
+    }
+
+    fun getTestPredicateFieldProviderModel(): IPredicateFieldProvider {
+        return VehicleStateDataTypeBattery()
+    }
+
+    fun getTestPredicateFieldProviderDto(): PredicateFieldProviderDto {
+        return PredicateFieldProviderDto("Battery", listOf(
+                PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+                PredicateFieldDto("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+                PredicateFieldDto("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+        ))
+    }
+
+    fun getTestPredicateFieldModel(): PredicateField {
+        return PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC)
+    }
+
+    fun getTestPredicateFieldDto(): PredicateFieldDto {
+        return PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC)
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
