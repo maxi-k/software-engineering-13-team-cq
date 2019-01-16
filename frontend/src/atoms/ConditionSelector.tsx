@@ -14,8 +14,6 @@ export interface ConditionSelectorProps {
   comparisonTypeValue: SelectFormattedValue
 }
 
-
-
 const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue }) => {
   return (
     <p>
