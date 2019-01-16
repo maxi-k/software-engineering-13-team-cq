@@ -6,6 +6,8 @@ import { RuleState, RuleOverviewState, RuleDetailState, RuleCreationState } from
 
 import { RouterState } from 'connected-react-router'
 import { Location } from 'history'
+import { CarParkState, CarParkListState } from './car-park'
+import { CarPark, Fleet } from '@/model/CarPark'
 
 export type Selector<T> = StateSelector<RootState, T>
 
@@ -38,6 +40,21 @@ export const ruleCreationStateSelector: Selector<RuleCreationState> = createSele
   [ruleStateSelector],
   ruleState => ruleState.ruleCreation
 )
+
+export const carParkStateSelector: Selector<CarParkState> = state => state.carPark
+export const carParkListSelector: Selector<CarParkListState> = createSelector(
+  [carParkStateSelector],
+  carParkState => carParkState.carParks
+)
+export const carParkFleetsSelector: Selector<{ [key: string]: Fleet }> = createSelector(
+  [carParkListSelector],
+  carParks => Object.values(carParks).reduce((fleets, carPark: CarPark) => (
+    carPark.fleets.reduce((carParkFleets: { [key: string]: Fleet }, fleet: Fleet) => (
+      { ...carParkFleets, [fleet.id]: fleet }
+    ), fleets)
+  ), {})
+)
+
 
 export const routerSelector: Selector<RouterState> = state => state.router
 export const locationSelector: Selector<Location> = createSelector(

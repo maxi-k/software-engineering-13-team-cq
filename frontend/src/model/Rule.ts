@@ -1,3 +1,5 @@
+import { Fleet } from './CarPark'
+
 export enum VehicleDataType {
   Battery = 'battery',
   Engine = 'engine',
@@ -40,6 +42,8 @@ export interface NotificationRuleOverview {
 }
 
 export interface NotificationRuleDetail
-extends NotificationRuleOverview {
+  extends NotificationRuleOverview {
+  applyToAllFleets: boolean,
+  fleets: Fleet[],
   recipients: NotificationRecipient[]
 }

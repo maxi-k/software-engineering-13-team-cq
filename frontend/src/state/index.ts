@@ -10,6 +10,7 @@ import { StateType } from 'typesafe-actions';
 import ruleReducer, { sagas as ruleSagas } from './rule'
 import languageReducer from './language'
 import authReducer, { sagas as authSagas } from './auth'
+import carParkReducer, { sagas as carParkSagas } from './car-park'
 
 export const history = createBrowserHistory()
 
@@ -22,22 +23,24 @@ const middlewares = [
 const allReducers = {
   rule: ruleReducer,
   language: languageReducer,
-  auth: authReducer
+  auth: authReducer,
+  carPark: carParkReducer
 }
 
 const allSagas = [
   ...ruleSagas,
-  ...authSagas
+  ...authSagas,
+  ...carParkSagas
 ]
 
 const composeEnhancers =
   typeof window === 'object' &&
-  // @ts-ignore
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-  // @ts-ignore
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-  }) : compose;
+    // @ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    // @ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
