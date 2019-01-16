@@ -61,6 +61,10 @@ const conditionSelectorProps: ConditionSelectorProps = {
   ]
 }
 
+const StyledFieldSeparator = styled.div`
+    padding: 1rem;
+`
+
 const conditionFinisher = (finishCondition: FinishConditionType) =>
     (e: React.SyntheticEvent<any, any>): void =>
       finishCondition(e)
@@ -93,13 +97,17 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
       <div style={{ paddingLeft: '76rem' }}>
         <ClosingButton onClick={conditionAborter(abortCondition)} />
       </div>
+      <StyledFieldSeparator />
+      <div style={{ paddingLeft: '1rem' }}>
+        <FormattedMessage id = "cns.page.ruleDetailCondition.question" />
+      </div>
       <div style={{ paddingLeft: '1rem' }}>
         <PredicateCounter {... predicateCounterProps} />
       </div>
       <div style={{ paddingLeft: '1rem' }}>
         <ConditionSelector {... conditionSelectorProps} />
       </div>
-      
+      <StyledFieldSeparator />
       <div style={{ paddingLeft: '76rem' }}>
         <NextButton onClick={conditionFinisher(finishCondition)}/> 
       </div>

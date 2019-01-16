@@ -5,6 +5,8 @@
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleDetailGeneral.title": "Allgemein",
     "cns.page.ruleDetailCondition.title": "Bedingungen",
+    "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
+    
 
     "cns.rule.label": "Benachrichtigungsregel",
 
