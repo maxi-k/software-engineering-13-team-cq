@@ -10,6 +10,13 @@ export interface PageDefinition {
 }
 
 export const pageDefinitions: { [key: string]: PageDefinition } = {
+  TBD: {
+    title: "cns.page.TBD.title",
+    path: '/TBD',
+    interpolatePath: () => `/TBD`,
+    exact: true,
+    component: lazy(() => import('@/pages/TBD'))
+  },
   ruleOverview: {
     title: "cns.page.ruleOverview.title",
     path: '/',
@@ -17,19 +24,19 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     exact: true,
     component: lazy(() => import('@/pages/RuleOverview'))
   },
-  TBD: {
-    title: "cns.page.TBD.title",
-    path: '/TBD',
-    interpolatePath: (ruleId: string) => `/TBD`,
-    exact: true,
-    component: lazy(() => import('@/pages/TBD'))
-  },
   ruleDetailGeneral: {
     title: "cns.page.ruleDetailGeneral.title",
     path: '/rule/general/:ruleId',
     interpolatePath: (ruleId: string) => `/rule/general/${ruleId}`,
     exact: true,
     component: lazy(() => import('@/pages/RuleDetailGeneral'))
+  },
+  ruleDetailCondition: {
+    title: "cns.page.DetailCondition.title",
+    path: '/rule/condition/:ruleId',
+    interpolatePath: (ruleId: string) => `/rule/condition/${ruleId}`,
+    exact: true,
+    component: lazy(() => import('@/pages/RuleDetailCondition'))
   }
 }
 export type PageDefinitions = typeof pageDefinitions

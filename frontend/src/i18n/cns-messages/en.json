@@ -3,6 +3,8 @@
 
     "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
+    "cns.page.ruleDetailGeneral.title": "General",
+    "cns.page.ruleDetailCondition.title": "Conditions",
 
     "cns.rule.label": "Notification Rule",
 

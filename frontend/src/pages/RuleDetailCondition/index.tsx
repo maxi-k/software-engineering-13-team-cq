@@ -38,7 +38,7 @@ const StyledPageWrapper = styled.div`
     flex-grow: 1;
 `
 
-class RuleDetailGeneralPage extends React.PureComponent<RuleDetailGeneralPageProps> {
+class RuleDetailConditionPage extends React.PureComponent<RuleDetailGeneralPageProps> {
 
   public componentDidMount = () => {
     const { fetchRule } = this.props
@@ -65,7 +65,7 @@ const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttribu
 }
 
 const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, DispatchAttributes> = (dispatch, props) => ({
-  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleDetailCondition', `${props.parameters.ruleId}`))),
+  finishGeneral: (event) => dispatch(push(interpolatePagePath('TBD'))),
   abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
@@ -74,4 +74,4 @@ const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, Dispat
   deleteRule: () => alert('deleting rule')
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailGeneralPage)
+export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailConditionPage)

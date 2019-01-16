@@ -3,6 +3,8 @@
 
     "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
+    "cns.page.ruleDetailGeneral.title": "Allgemein",
+    "cns.page.ruleDetailCondition.title": "Bedingungen",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
