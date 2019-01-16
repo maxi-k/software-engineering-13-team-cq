@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service
 @Service
 interface IRuleConditionMapper {
 
-    fun modelToDto(ruleCondition: RuleCondition): RuleConditionDto
+    fun modelToDto(ruleConditionModel: RuleCondition): RuleConditionDto
 
     fun dtoToModel(ruleConditionDto: RuleConditionDto): RuleCondition
 
-    fun modelToEntity(ruleCondition: RuleCondition): RuleConditionEntity
+    fun modelToEntity(ruleConditionModel: RuleCondition): RuleConditionEntity
 
     fun entityToModel(ruleConditionEntity: RuleConditionEntity): RuleCondition
 }

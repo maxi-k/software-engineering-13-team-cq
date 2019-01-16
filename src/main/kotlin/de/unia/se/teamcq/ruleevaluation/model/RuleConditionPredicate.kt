@@ -12,7 +12,7 @@ class RuleConditionPredicate(
 
     var comparisonValue: String?
 
-) : RuleCondition(conditionId){
+) : RuleCondition(conditionId) {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null)
 }
