@@ -1,13 +1,11 @@
 package de.unia.se.teamcq.ruleevaluation.mapping
 
-import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.mapstruct.Mapper
-import org.mapstruct.Mapping
 
 @Mapper(componentModel = "spring")
 interface IPredicateFieldMapper {
 
-    @Mapping(source = "predicateFieldProviderName", target = "name")
-    fun modelToDto(predicateFieldProvider: IPredicateFieldProvider): PredicateFieldProviderDto
+    fun modelToDto(predicateField: PredicateField): PredicateFieldDto
 }

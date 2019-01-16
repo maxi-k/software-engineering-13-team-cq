@@ -1,5 +1,6 @@
 package de.unia.se.teamcq
 
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
@@ -13,8 +14,11 @@ import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
+import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
@@ -149,7 +153,19 @@ object TestUtils {
     }
 
     fun getTestPredicateFieldProviderDto(): PredicateFieldProviderDto {
-        return PredicateFieldProviderDto("Battery")
+        return PredicateFieldProviderDto("Battery", listOf(
+                PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+                PredicateFieldDto("voltage", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+                PredicateFieldDto("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+        ))
+    }
+
+    fun getTestPredicateFieldModel(): PredicateField {
+        return PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD)
+    }
+
+    fun getTestPredicateFieldDto(): PredicateFieldDto {
+        return PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD)
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {

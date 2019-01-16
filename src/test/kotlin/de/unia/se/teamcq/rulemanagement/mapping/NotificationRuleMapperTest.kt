@@ -21,7 +21,7 @@ import org.springframework.test.context.ContextConfiguration
 class NotificationRuleMapperTest : StringSpec() {
 
     @MockK(relaxed = true)
-    private lateinit var mockIUserMapper: IUserMapper
+    lateinit var mockIUserMapper: IUserMapper
 
     @InjectMockKs
     lateinit var notificationRuleMapper: INotificationRuleMapperImpl

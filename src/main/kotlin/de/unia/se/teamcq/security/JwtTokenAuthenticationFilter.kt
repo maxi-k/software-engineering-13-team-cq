@@ -74,7 +74,7 @@ class JwtTokenAuthenticationFilter : OncePerRequestFilter() {
 
                 // 5. Create auth object
                 // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
-                // It needs a list of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
+                // It needs a LIST of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
                 val auth = UsernamePasswordAuthenticationToken(
                         username, null, authorities.filterIsInstance<String>()
                             .map { authority -> SimpleGrantedAuthority(authority) })

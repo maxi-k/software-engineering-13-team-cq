@@ -2,7 +2,7 @@ package de.unia.se.teamcq.ruleevaluation.controller
 
 import de.unia.se.teamcq.ruleevaluation.service.IPredicateFieldContainer
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
-import de.unia.se.teamcq.ruleevaluation.mapping.IPredicateFieldMapper
+import de.unia.se.teamcq.ruleevaluation.mapping.IPredicateFieldProviderMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,7 +16,7 @@ class PredicateFieldController {
     lateinit var predicateFieldContainer: IPredicateFieldContainer
 
     @Autowired
-    lateinit var predicateFieldMapper: IPredicateFieldMapper
+    lateinit var predicateFieldProviderMapper: IPredicateFieldProviderMapper
 
     @GetMapping
     fun getPredicateFieldProviders(): List<PredicateFieldProviderDto> {
@@ -24,6 +24,6 @@ class PredicateFieldController {
         val predicateFieldProviders = predicateFieldContainer.getPredicateFieldProviders()
 
         return predicateFieldProviders
-                .map { predicateFieldProvider -> predicateFieldMapper.modelToDto(predicateFieldProvider) }
+                .map { predicateFieldProvider -> predicateFieldProviderMapper.modelToDto(predicateFieldProvider) }
     }
 }

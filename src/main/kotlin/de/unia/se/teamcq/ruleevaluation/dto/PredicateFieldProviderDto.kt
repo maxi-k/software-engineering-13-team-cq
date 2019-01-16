@@ -4,9 +4,11 @@ import java.io.Serializable
 
 data class PredicateFieldProviderDto(
 
-    var name: String?
+    var name: String?,
+
+    val predicateFields: List<PredicateFieldDto>
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null)
+    constructor() : this(null, mutableListOf<PredicateFieldDto>())
 }

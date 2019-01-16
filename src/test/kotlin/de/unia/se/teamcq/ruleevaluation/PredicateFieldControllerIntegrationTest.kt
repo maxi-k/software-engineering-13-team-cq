@@ -1,9 +1,10 @@
-package de.unia.se.teamcq.ruleevaluation.controller
+package de.unia.se.teamcq.ruleevaluation
 
 import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
 import io.kotlintest.specs.StringSpec
+import org.hamcrest.Matchers.equalTo
 import org.hamcrest.Matchers.hasSize
 import org.hamcrest.Matchers.hasItems
 import org.hamcrest.Matchers.greaterThanOrEqualTo
@@ -52,7 +53,10 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
 
             val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
 
-            val expectingAtLeastPredicateFieldProviders = arrayOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
+            val expectingAtLeastPredicateFieldProviders = listOf("Battery", "Contract", "Engine", "Fuel", "Mileage", "Service")
+            val expectingAtLeastPossibleDataTypes = arrayOf("TEXT", "STRING_LIST", "WEEK", "INTEGER", "TEXT", "DECIMAL")
+            val expectingAtLeastPossibleEvaluationStrategies = arrayOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO", "LESSER_THAN_OR_EQUAL_TO")
 
             possibleRequestPaths.map { requestPath ->
 
@@ -61,7 +65,9 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
                         .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
                         .andExpect(status().isOk)
                         .andExpect(jsonPath("$", hasSize<Int>(greaterThanOrEqualTo(6))))
-                        .andExpect(jsonPath("$[*].name", hasItems(*expectingAtLeastPredicateFieldProviders)))
+                        .andExpect(jsonPath("$[*].name", equalTo(expectingAtLeastPredicateFieldProviders)))
+                        .andExpect(jsonPath("$[*].predicateFields[*].dataType", hasItems(*expectingAtLeastPossibleDataTypes)))
+                        .andExpect(jsonPath("$[*].predicateFields[*].possibleEvaluationStrategies[*]", hasItems(*expectingAtLeastPossibleEvaluationStrategies)))
             }
         }
     }

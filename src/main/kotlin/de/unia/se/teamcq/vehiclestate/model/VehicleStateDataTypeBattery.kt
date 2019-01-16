@@ -1,6 +1,9 @@
 package de.unia.se.teamcq.vehiclestate.model
 
+import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
+import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.stereotype.Component
 
 @Component
@@ -20,4 +23,10 @@ class VehicleStateDataTypeBattery(
     constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = "Battery"
+
+    override val predicateFields: List<PredicateField> = listOf(
+            PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+            PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.STANDARD),
+            PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+    )
 }
