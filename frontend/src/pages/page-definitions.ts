@@ -17,12 +17,12 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     exact: true,
     component: lazy(() => import('@/pages/RuleOverview'))
   },
-  ruleEdit: {
-    title: "cns.page.ruleEdit.title",
-    path: '/rule/:ruleId/edit',
-    interpolatePath: (ruleId: string) => `/rule/${ruleId}/edit`,
+  TBD: {
+    title: "cns.page.TBD.title",
+    path: '/TBD',
+    interpolatePath: (ruleId: string) => `/TBD`,
     exact: true,
-    component: lazy(() => import('@/pages/RuleEdit'))
+    component: lazy(() => import('@/pages/TBD'))
   },
   ruleDetail: {
     title: "cns.page.ruleDetail.title",
