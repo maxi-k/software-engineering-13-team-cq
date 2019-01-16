@@ -7,7 +7,7 @@ export interface CommonRuleCreationStateAttributes
 
 }
 
-export type FieldUpdater = (name: string, callback: ((event: any) => any)) => ((value: any) => void)
+export type FieldUpdater = (name: string, callback: ((...event: any) => any)) => ((value: any) => void)
 export interface CommonRuleCreationDispatchAttributes {
   updateField: FieldUpdater
 }
@@ -22,6 +22,18 @@ export type RuleCreationStepView = SFC<RuleCreationStepViewProps>
 export const createInputFieldUpdater = (updater: FieldUpdater, name: string): ((value: any) => void) => (
   updater(name, (event: React.ChangeEvent<HTMLInputElement>) => (
     { $set: event.target.value }
+  ))
+)
+
+export const createCheckboxUpdater = (updater: FieldUpdater, name: string): ((value: any) => void) => (
+  updater(name, (event: React.ChangeEvent<HTMLInputElement>) => (
+    { $set: event.target.checked }
+  ))
+)
+
+export const createMultiValueUpdater = <T>(updater: FieldUpdater, name: string): ((value: any) => void) => (
+  updater(name, (selected: T[], newlySelected: T) => (
+    { $set: selected }
   ))
 )
 

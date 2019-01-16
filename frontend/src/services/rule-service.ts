@@ -45,6 +45,10 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     name: rule.name || 'MOCKED',
     description: rule.description || 'MOCKED',
     aggregatorDescription: 'MOCKED',
+    applyToAllFleets: false,
+    fleets: [
+      { name: 'MOCKED FLEET', id: 'mockedFleet1', numVehicles: 42 }
+    ],
     dataSources: [
       VehicleDataType.Engine
     ],
@@ -82,6 +86,8 @@ const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
 const mockedRuleDetail = (ruleId: number): DetailRule => ({
   ruleId,
   ...mockedRuleOverview[ruleId % mockedRuleOverview.length],
+  applyToAllFleets: true,
+  fleets: [],
   recipients: [{ type: RecipientType.Email, value: 'maxi.kuschewski@gmail.com' },
   { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
 })

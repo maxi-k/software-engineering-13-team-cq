@@ -19,6 +19,7 @@ export enum RuleActionType {
 
   RULE_CREATE_SELECT_STEP = '@rule/CREATE_SELECT_STEP',
   RULE_CREATE_NEXT_STEP = '@rule/CREATE_NEXT_STEP',
+  RULE_CREATE_PREVIOUS_STEP = '@rule/CREATE_PREVIOUS_STEP',
 
   RULE_UPDATE = '@rule/UPDATE',
   RULE_UPDATE_FIELD = '@rule/UPDATE_FIELD',
@@ -52,7 +53,13 @@ export interface RuleState {
 
 const initialState: RuleState = {
   ruleCreation: {
-    inProgressRule: {},
+    inProgressRule: {
+      name: "",
+      description: "",
+      recipients: [],
+      applyToAllFleets: true,
+      fleets: []
+    },
     completedSteps: new Set(),
     currentStep: 0
   },
@@ -84,6 +91,15 @@ const reducer: Reducer<RuleState> = (state = initialState, action) => {
           ...ruleCreation,
           completedSteps: new Set([...Array.from(ruleCreation.completedSteps), ruleCreation.currentStep]),
           currentStep: ruleCreation.currentStep + 1
+        })
+      })
+
+    case RuleActionType.RULE_CREATE_PREVIOUS_STEP:
+      return update(state, {
+        ruleCreation: (ruleCreation: RuleCreationState) => ({
+          ...ruleCreation,
+          completedSteps: update(ruleCreation.completedSteps, { $remove: [ruleCreation.currentStep] }),
+          currentStep: ruleCreation.currentStep - 1
         })
       })
     case RuleActionType.RULE_CREATE_UPDATE_FIELD:
@@ -169,6 +185,7 @@ export const createRuleUpdateField = createAction(RuleActionType.RULE_CREATE_UPD
 ))
 export const createRuleAbort = createAction(RuleActionType.RULE_CREATE_ABORT)
 export const createRuleNextStep = createAction(RuleActionType.RULE_CREATE_NEXT_STEP)
+export const createRulePreviousStep = createAction(RuleActionType.RULE_CREATE_PREVIOUS_STEP)
 export const createRuleSelectStep = createAction(RuleActionType.RULE_CREATE_SELECT_STEP, resolve => (
   (step: number) => resolve(step)
 ))
@@ -177,7 +194,7 @@ export const finishRuleCreation = createAsyncAction(
   RuleActionType.RULE_CREATE_FINISH,
   RuleActionType.RULE_CREATE_SUCCESS,
   RuleActionType.RULE_CREATE_ERROR
-)
+)<void, NotificationRuleDetail, Error>()
 
 export const loadRuleOverview = createAsyncAction(
   RuleActionType.RULE_OVERVIEW_FETCH,

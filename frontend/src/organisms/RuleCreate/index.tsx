@@ -7,6 +7,9 @@ import { StateMapper, DispatchMapper } from '@/state/connector'
 import {
   createRuleAbort,
   createRuleSelectStep,
+  createRulePreviousStep,
+  finishRuleCreation,
+  createRuleNextStep,
   createRuleUpdateField,
   RuleCreationState
 } from '@/state/rule'
@@ -37,12 +40,20 @@ type SelectStepType = (step: number) => void
 interface DispatchAttributes
   extends CommonRuleCreationDispatchAttributes {
   selectStep: SelectStepType,
+  completeCreation(): void,
+  nextStep(): void,
+  previousStep(): void,
   abortCreation(): void
 }
 
 type RuleCreateProps = StateAttributes & DispatchAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const stepTitleKeys = ["general", "fleets", "condition", "timing", "summary"]
+
+const stepComponents: Array<React.LazyExoticComponent<RuleCreationStepView>> = [
+  lazy(() => import('./RuleCreationGeneral')),
+  lazy(() => import('./RuleCreationFleets'))
+]
 
 const stepperProps = (activeStep: number, selectStep: SelectStepType, completedSteps: Set<number>) => ({
   activeStep,
@@ -52,10 +63,6 @@ const stepperProps = (activeStep: number, selectStep: SelectStepType, completedS
     completed: completedSteps.has(index),
   }))
 })
-
-const stepComponents: Array<React.LazyExoticComponent<RuleCreationStepView>> = [
-  lazy(() => import('./RuleCreationGeneral'))
-]
 
 const StyledActionArea = styled.div`
     display: flex;
@@ -101,8 +108,9 @@ const CurrentStepTitle: React.SFC<{ currentStep: number }> = ({ currentStep }) =
 )
 
 const RuleCreate: React.SFC<RuleCreateProps> = (
-  { abortCreation, selectStep, updateField,
-    completedSteps, currentStep, inProgressRule,
+  { abortCreation, selectStep, nextStep, previousStep,
+    completeCreation, inProgressRule, updateField,
+    completedSteps, currentStep,
     ...props }
 ) => (
     <StyledRuleCreationWrapper {...props}>
@@ -123,17 +131,23 @@ const RuleCreate: React.SFC<RuleCreateProps> = (
         }} />
       <StyledActionArea>
         {currentStep !== 0 &&
-          <Button primary="false" iconleft={<BackIcon fill="#fff" />} >
+          <Button primary="false"
+            iconleft={<BackIcon fill="#fff" />}
+            onClick={previousStep}>
             <FormattedMessage id="cns.rule.creation.action.step.previous" />
           </Button>
         }
         {currentStep === stepComponents.length - 1
           ?
-          <Button primary="true" icon={<NextIcon fill="#fff" />} >
+          <Button primary="true"
+            icon={<NextIcon fill="#fff" />}
+            onClick={completeCreation}>
             <FormattedMessage id="cns.rule.creation.action.complete" />
           </Button>
           :
-          <Button primary="true" icon={<NextIcon fill="#fff" />} >
+          <Button primary="true"
+            icon={<NextIcon fill="#fff" />}
+            onClick={nextStep}>
             <FormattedMessage id="cns.rule.creation.action.step.next" />
           </Button>
         }
@@ -152,6 +166,9 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
     confirm("Really abort rule creation?") && dispatch(createRuleAbort())
   ),
   selectStep: (step: number) => dispatch(createRuleSelectStep(step)),
+  previousStep: () => dispatch(createRulePreviousStep()),
+  completeCreation: () => dispatch(finishRuleCreation.request()),
+  nextStep: () => dispatch(createRuleNextStep()),
   updateField: (name, callback) => (value) => (
     dispatch(createRuleUpdateField(name, callback(value)))
   )
