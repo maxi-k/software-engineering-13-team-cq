@@ -8,12 +8,11 @@ import Typography from '@material-ui/core/Typography'
 
 import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
-// import RuleIcon from '@/icons/RuleIcon'
 import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
-// import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
-// import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
-// import { PredicateCounterValue } from '@/model/Rule'
+import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
+import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+import { PredicateCounterValue, VehicleDataType, ComparisonType } from '@/model/Rule'
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -31,11 +30,18 @@ export type RuleDetailConditionProps = FetchingAttributes
 const StyledRuleDetailCondition = styled.div`
 `
 
-/* const predicateCounterProps: PredicateCounterProps = {
+const predicateCounterProps: PredicateCounterProps = {
   options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
-} */
+}
+
+const conditionSelectorProps: ConditionSelectorProps = {
+  beforeText: "cns.condition.selector.beforetext",
+  afterText: "cns.condition.selector.aftertext",
+  dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Fuel, VehicleDataType.Mileage, VehicleDataType.Service],
+  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
+}
 
 const conditionFinisher = (finishCondition: FinishConditionType) =>
     (e: React.SyntheticEvent<any, any>): void =>
@@ -68,6 +74,12 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
       </Typography>
       <div style={{ paddingLeft: '76rem' }}>
         <ClosingButton onClick={conditionAborter(abortCondition)} />
+      </div>
+      <div style={{ paddingLeft: '1rem' }}>
+        <PredicateCounter {... predicateCounterProps} />
+      </div>
+      <div style={{ paddingLeft: '1rem' }}>
+        <ConditionSelector {... conditionSelectorProps} />
       </div>
       
       <div style={{ paddingLeft: '76rem' }}>
