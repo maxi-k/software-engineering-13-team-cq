@@ -18,10 +18,14 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afte
   return (
     <p>
       <FormattedMessage id={beforeText} />
-      <Select value = {dataTypeValue} options = {dataTypeOptions} />
+      <div style={{ width : '200px', height : '50px'}}>
+        <Select value = {dataTypeValue} options = {dataTypeOptions} />
+      </div>
       <FormattedMessage id={afterText} />
-      <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} />
-      <input type = "text" /> %.
+      <div style={{ width : '200px', height : '50px'}}>
+        <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} />
+      </div>
+      <input type = "text" style={{ width : '200px', height : '50px'}}/> %.
     </p>
   )
 }

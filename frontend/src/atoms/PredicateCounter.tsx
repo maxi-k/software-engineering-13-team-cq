@@ -14,7 +14,9 @@ const PredicateCounter: React.SFC<PredicateCounterProps> = ({ value, options, be
   return (
     <p>
       <FormattedMessage id={beforeText} />
-      <Select value = {value} options = {options} />
+      <div style={{ width : '200px', height : '50px'}}>
+        <Select value = {value} options = {options} />
+      </div>
       <FormattedMessage id={afterText} />
     </p>
   )
