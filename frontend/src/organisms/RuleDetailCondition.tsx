@@ -12,6 +12,7 @@ import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+import AddConditionButton from '@/atoms/AddConditionButton';
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -106,6 +107,9 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
       </div>
       <div style={{ paddingLeft: '1rem' }}>
         <ConditionSelector {... conditionSelectorProps} />
+      </div>
+      <div style={{ paddingLeft: '1rem'}}>
+        <AddConditionButton onClick={conditionFinisher(finishCondition)}/>
       </div>
       <StyledFieldSeparator />
       <div style={{ paddingLeft: '76rem' }}>
