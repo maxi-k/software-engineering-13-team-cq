@@ -2,13 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
-
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetail from '@/organisms/RuleDetail'
+import RuleDetail, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetail'
 
 export interface RuleDetailPageAttributes {
   // Needs to be string because it comes
@@ -23,6 +22,8 @@ export interface StateAttributes extends FetchingAttributes {
 }
 
 export interface DispatchAttributes {
+  finishGeneral: FinishGeneralType,
+  abortGeneral: AbortGeneralType,
   fetchRule(): void,
   editRule(): void,
   deleteRule(): void
@@ -64,6 +65,8 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
 }
 
 const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleDetailCondition'))),
+  abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },

@@ -11,18 +11,24 @@ import LoadingIndicator from '@/atoms/LoadingIndicator'
 import RuleRecipientTag from '@/atoms/RuleRecipientTag'
 import FieldDescriptor from '@/molecules/FieldDescriptor'
 import RuleIcon from '@/icons/RuleIcon'
+import NextButton from '@/atoms/NextButton'
+import ClosingButton from '@/atoms/ClosingButton'
 
-interface RuleDetailAttributes {
+export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
+export type AbortGeneralType = (event: React.SyntheticEvent<any, any>) => void
+
+export interface RuleDetailAttributes {
   rule: NotificationRuleDetail
+  finishGeneral: FinishGeneralType
+  abortGeneral: AbortGeneralType
 }
 
-type RuleDetailProps = FetchingAttributes
+export type RuleDetailProps = FetchingAttributes
   & RuleDetailAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledRuleDetail = styled.div`
 `
-
 const StyledRuleInformation = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,9 +43,16 @@ const StyledInfoBlock = styled.div`
 const StyledFieldSeparator = styled.div`
     padding: 1rem;
 `
+const generalFinisher = (finishGeneral: FinishGeneralType) =>
+    (e: React.SyntheticEvent<any, any>): void =>
+      finishGeneral(e)
+
+const generalAborter = (abortGeneral: AbortGeneralType) =>
+    (e: React.SyntheticEvent<any, any>): void =>
+      abortGeneral(e)
 
 const RuleDetail: React.SFC<RuleDetailProps> = ({
-  isFetching, hasFetchError, rule, ...props
+  isFetching, hasFetchError, rule, finishGeneral, abortGeneral, ...props
 }) => {
 
   if (hasFetchError) {
@@ -59,6 +72,9 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
         <FormattedMessage id="cns.rule.label" />{' '}
         "{rule.name}"
       </Typography>
+      <div style={{ paddingLeft: '76rem' }}>
+      <ClosingButton onClick={generalAborter(abortGeneral)} />
+      </div>
       <StyledFieldSeparator />
       <StyledRuleInformation>
         <StyledInfoBlock>
@@ -95,6 +111,10 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
             } />
         </StyledInfoBlock>
       </StyledRuleInformation>
+      <StyledFieldSeparator />
+      <div style={{ paddingLeft: '76rem' }}>
+     <NextButton onClick={generalFinisher(finishGeneral)}/> 
+      </div>
     </StyledRuleDetail>
   )
 }
