@@ -50,7 +50,9 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
       { name: 'MOCKED FLEET', id: 'mockedFleet1', numVehicles: 42 }
     ],
     dataSources: [
-      VehicleDataType.Engine
+      VehicleDataType.Engine,
+      VehicleDataType.Battery,
+      VehicleDataType.Service,
     ],
     recipients: [{
       type: capitalizeString(rule.owner.userSettings.userNotificationType) as RecipientType,
