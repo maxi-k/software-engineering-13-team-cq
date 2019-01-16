@@ -37,7 +37,7 @@ class PredicateFieldProviderMapperTest : StringSpec() {
             val expectedPredicateFieldProviderDto = getTestPredicateFieldProviderDto()
 
             predicateFieldProviderDto shouldNotBe null
-            predicateFieldProviderDto.name shouldBe expectedPredicateFieldProviderDto.name
+            predicateFieldProviderDto.providerName shouldBe expectedPredicateFieldProviderDto.providerName
             predicateFieldProviderDto.predicateFields shouldContain expectedPredicateFieldDto
         }
     }

@@ -59,7 +59,7 @@ class PredicateFieldControllerTest : StringSpec() {
                         .get(requestPath))
                         .andExpect(status().isOk)
                         .andExpect(jsonPath("$", hasSize<Int>(1)))
-                        .andExpect(jsonPath("$[0].name", equalTo("Battery")))
+                        .andExpect(jsonPath("$[0].providerName", equalTo("Battery")))
                         .andExpect(jsonPath("$[0].predicateFields[0].fieldName", equalTo("charge")))
                         .andExpect(jsonPath("$[0].predicateFields[0].dataType", equalTo("DECIMAL")))
                         .andExpect(jsonPath("$[0].predicateFields[0].possibleEvaluationStrategies",

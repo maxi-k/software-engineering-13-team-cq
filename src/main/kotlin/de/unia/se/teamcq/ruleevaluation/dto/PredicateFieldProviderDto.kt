@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class PredicateFieldProviderDto(
 
-    var name: String?,
+    var providerName: String?,
 
     val predicateFields: List<PredicateFieldDto>
 

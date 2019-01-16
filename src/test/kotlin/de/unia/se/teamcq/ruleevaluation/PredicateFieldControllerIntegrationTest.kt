@@ -67,7 +67,7 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
                         .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
                         .andExpect(status().isOk)
                         .andExpect(jsonPath("$", hasSize<Int>(greaterThanOrEqualTo(6))))
-                        .andExpect(jsonPath("$[*].name", equalTo(expectingAtLeastPredicateFieldProviders)))
+                        .andExpect(jsonPath("$[*].providerName", equalTo(expectingAtLeastPredicateFieldProviders)))
                         .andExpect(jsonPath("$[*].predicateFields[*].dataType",
                                 hasItems(*expectingAtLeastPossibleDataTypes)))
                         .andExpect(jsonPath("$[*].predicateFields[*].possibleEvaluationStrategies[*]",

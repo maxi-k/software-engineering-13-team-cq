@@ -8,6 +8,6 @@ import org.mapstruct.Mapping
 @Mapper(componentModel = "spring", uses = [IPredicateFieldMapper::class])
 interface IPredicateFieldProviderMapper {
 
-    @Mapping(source = "predicateFieldProviderName", target = "name")
+    @Mapping(source = "predicateFieldProviderName", target = "providerName")
     fun modelToDto(predicateFieldProvider: IPredicateFieldProvider): PredicateFieldProviderDto
 }
