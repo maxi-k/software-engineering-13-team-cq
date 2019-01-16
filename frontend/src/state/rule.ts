@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleOverview, NotificationRuleDetail } from '@/model/Rule'
 import { ensureResponseStatus } from '@/services/response-service'
-import { fetchRuleOverview, fetchRuleDetail } from '@/services/rule-service'
+import { fetchRuleOverview, fetchRuleDetail, mergeMockedRuleData, APIRule } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
 import { waitForLogin } from './auth'
@@ -146,7 +146,10 @@ function* fetchRuleOverviewGenerator() {
     const authData = yield call(waitForLogin)
     const response = yield call(fetchRuleOverview, authData.accessToken)
     ensureResponseStatus(response);
-    const rules = yield response.json() as NotificationRuleOverview[]
+    const rules = yield response.json()
+      .then((ruleList: APIRule[]) =>
+        ruleList.map(mergeMockedRuleData)
+      ) as NotificationRuleOverview[]
     yield put(loadRuleOverview.success(rules))
   } catch (error) {
     yield put(loadRuleOverview.failure(error))
@@ -160,7 +163,7 @@ function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.requ
     const authData = yield call(waitForLogin)
     const response = yield call(fetchRuleDetail, authData.accessToken, action.payload)
     ensureResponseStatus(response);
-    const rules = yield response.json() as NotificationRuleDetail
+    const rules = yield response.json().then((result: APIRule) => mergeMockedRuleData(result)) as NotificationRuleDetail
     yield put(loadRuleDetail.success(rules))
   } catch (error) {
     yield put(loadRuleDetail.failure(error))
