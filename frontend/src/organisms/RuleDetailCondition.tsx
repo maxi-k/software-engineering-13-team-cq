@@ -39,11 +39,21 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
+  dataTypeValue: {label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: "battery" },
   dataTypeOptions: [
-    { label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: <FormattedMessage id = "cns.vehicle.status.battery.label" /> }
+    {label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: "battery" },
+    {label: <FormattedMessage id = "cns.vehicle.status.contract.label" />, value: "contract" },
+    {label: <FormattedMessage id = "cns.vehicle.status.engine.label" />, value: <FormattedMessage id = "engine" />},
+    {label: <FormattedMessage id = "cns.vehicle.status.service.label" />, value: <FormattedMessage id = "service" />},
+    {label: <FormattedMessage id = "cns.vehicle.status.fuel.label" />, value: <FormattedMessage id = "fuel" />},
+    {label: <FormattedMessage id = "cns.vehicle.status.mileage.label" />, value: <FormattedMessage id = "mileage" />},
   ],
+  comparisonTypeValue: {label: <FormattedMessage id = "cns.condition.selector.equal" />, value: "equal" },
   comparisonTypeOptions: [
-    { label: 'battery', value: 'above' }
+    {label: <FormattedMessage id = "cns.condition.selector.equal" />, value: "equal" },
+    {label: <FormattedMessage id = "cns.condition.selector.unequal" />, value: "unequal" },
+    {label: <FormattedMessage id = "cns.condition.selector.above" />, value: "above" },
+    {label: <FormattedMessage id = "cns.condition.selector.below" />, value: "below" }
   ]
 }
 

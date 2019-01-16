@@ -85,11 +85,21 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
+  dataTypeValue: {label: "battery", value: "battery" },
   dataTypeOptions: [
-    { label: 'battery', value: 'battery' }
+    {label: "battery", value: "battery" },
+    {label: "contract", value: "contract" },
+    {label: "engine", value: "engine" },
+    {label: "fuel", value: "fuel" },
+    {label: "mileage", value: "mileage" },
+    {label: "service", value: "service" },
   ],
+  comparisonTypeValue: {label: "equal", value: "equal" },
   comparisonTypeOptions: [
-    { label: 'battery', value: 'above' }
+    {label: "equal", value: "equal" },
+    {label: "unequal", value: "unequal" },
+    {label: "above", value: "above" },
+    {label: "below", value: "below" }
   ]
 }
 

@@ -1,24 +1,28 @@
 import React from 'react'
 import Select from 'react-select';
-import { SelectValue } from '@/model';
+import { SelectFormattedValue } from '@/model';
+import { FormattedMessage } from 'react-intl';
 
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
 
-  dataTypeOptions: SelectValue[]
-  //dataTypeValue: VehicleDataType
+  dataTypeOptions: SelectFormattedValue[]
+  dataTypeValue: SelectFormattedValue
 
-  comparisonTypeOptions: SelectValue[]
-  //comparisonTypeValue: ComparisonType
+  comparisonTypeOptions: SelectFormattedValue[]
+  comparisonTypeValue: SelectFormattedValue
 }
 
 
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, comparisonTypeOptions }) => {
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue }) => {
   return (
     <p>
-      <Select options = {dataTypeOptions} /> 
+      <FormattedMessage id = {beforeText}/>
+      <Select value = {dataTypeValue} options = {dataTypeOptions} />
+      <FormattedMessage id = {afterText}/>
+      <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} /> 
       <input type="text" name="value" />
       %.
     </p>

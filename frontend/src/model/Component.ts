@@ -10,6 +10,11 @@ export type BasicHTMLProps = HTMLAttributes<HTMLDivElement>
 export type HTMLProps<T> = HTMLAttributes<T>
 
 export interface SelectValue {
-  label: any,
+  label: string,
+  value: any
+}
+
+export interface SelectFormattedValue {
+  label: React.ReactNode,
   value: any
 }
