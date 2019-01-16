@@ -4,7 +4,7 @@ enum class LogicalConnectiveType {
     ANY, ALL
 }
 
-abstract class NotificationRuleCondition(
+abstract class RuleCondition(
 
     var conditionId: Long? = 0,
 
@@ -15,28 +15,28 @@ abstract class NotificationRuleCondition(
     constructor() : this(null, null)
 }
 
-class NotificationRuleConditionComposite(
+class RuleConditionComposite(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var subConditions: NotificationRuleCondition?
+    var subConditions: RuleCondition?
 
-) : NotificationRuleCondition(conditionId, logicalConnective) {
+) : RuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }
 
-class NotificationRuleConditionLeaf(
+class RuleConditionLeaf(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var conditionPredicate: NotificationRuleConditionPredicate?
+    var conditionPredicate: RuleConditionPredicate?
 
-) : NotificationRuleCondition(conditionId, logicalConnective) {
+) : RuleCondition(conditionId, logicalConnective) {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }

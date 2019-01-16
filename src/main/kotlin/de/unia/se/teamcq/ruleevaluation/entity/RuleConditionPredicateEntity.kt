@@ -1,13 +1,15 @@
-package de.unia.se.teamcq.ruleevaluation.dto
+package de.unia.se.teamcq.ruleevaluation.entity
 
 import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
 import java.io.Serializable
 
-data class NotificationRuleConditionPredicateDto(
+data class RuleConditionPredicateEntity(
 
     var predicateId: Long? = 0,
 
     var providerName: String?,
+
+    var fieldName: String?,
 
     var comparisonType: ComparisonType?,
 
@@ -15,5 +17,5 @@ data class NotificationRuleConditionPredicateDto(
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null, null, null, null)
 }

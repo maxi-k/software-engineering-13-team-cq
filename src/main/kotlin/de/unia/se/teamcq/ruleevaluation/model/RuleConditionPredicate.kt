@@ -1,10 +1,12 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
-data class NotificationRuleConditionPredicate(
+data class RuleConditionPredicate(
 
     var predicateId: Long? = 0,
 
     var providerName: String?,
+
+    var fieldName: String?,
 
     var comparisonType: ComparisonType?,
 
@@ -12,5 +14,5 @@ data class NotificationRuleConditionPredicate(
 
 ) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null, null, null, null)
 }

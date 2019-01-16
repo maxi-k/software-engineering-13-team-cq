@@ -1,9 +1,9 @@
-package de.unia.se.teamcq.ruleevaluation.entity
+package de.unia.se.teamcq.ruleevaluation.dto
 
 import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
 import java.io.Serializable
 
-abstract class NotificationRuleConditionEntity(
+abstract class RuleConditionDto(
 
     var conditionId: Long? = 0,
 
@@ -14,28 +14,28 @@ abstract class NotificationRuleConditionEntity(
     constructor() : this(null, null)
 }
 
-class NotificationRuleConditionCompositeEntity(
+class RuleConditionCompositeEntity(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var subConditions: NotificationRuleConditionEntity?
+    var subConditions: RuleConditionDto?
 
-) : NotificationRuleConditionEntity(conditionId, logicalConnective), Serializable {
+) : RuleConditionDto(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }
 
-class NotificationRuleConditionLeafEntity(
+class RuleConditionLeafEntity(
 
     conditionId: Long? = 0,
 
     logicalConnective: LogicalConnectiveType?,
 
-    var conditionPredicate: NotificationRuleConditionPredicateEntity?
+    var conditionPredicate: RuleConditionPredicateDto?
 
-) : NotificationRuleConditionEntity(conditionId, logicalConnective), Serializable {
+) : RuleConditionDto(conditionId, logicalConnective), Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }
