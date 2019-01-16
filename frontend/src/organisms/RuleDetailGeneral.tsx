@@ -17,17 +17,17 @@ import ClosingButton from '@/atoms/ClosingButton'
 export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortGeneralType = (event: React.SyntheticEvent<any, any>) => void
 
-export interface RuleDetailAttributes {
+export interface RuleDetailGeneralAttributes {
   rule: NotificationRuleDetail
   finishGeneral: FinishGeneralType
   abortGeneral: AbortGeneralType
 }
 
-export type RuleDetailProps = FetchingAttributes
-  & RuleDetailAttributes
+export type RuleDetailGeneralProps = FetchingAttributes
+  & RuleDetailGeneralAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
-const StyledRuleDetail = styled.div`
+const StyledRuleDetailGeneral = styled.div`
 `
 const StyledRuleInformation = styled.div`
     display: flex;
@@ -51,7 +51,7 @@ const generalAborter = (abortGeneral: AbortGeneralType) =>
     (e: React.SyntheticEvent<any, any>): void =>
       abortGeneral(e)
 
-const RuleDetail: React.SFC<RuleDetailProps> = ({
+const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
   isFetching, hasFetchError, rule, finishGeneral, abortGeneral, ...props
 }) => {
 
@@ -67,7 +67,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
   }
 
   return (
-    <StyledRuleDetail {...props}>
+    <StyledRuleDetailGeneral {...props}>
       <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
         <FormattedMessage id="cns.rule.label" />{' '}
         "{rule.name}"
@@ -115,8 +115,8 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
       <div style={{ paddingLeft: '76rem' }}>
      <NextButton onClick={generalFinisher(finishGeneral)}/> 
       </div>
-    </StyledRuleDetail>
+    </StyledRuleDetailGeneral>
   )
 }
 
-export default RuleDetail
+export default RuleDetailGeneral
