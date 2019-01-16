@@ -13,10 +13,10 @@ import org.springframework.test.context.ContextConfiguration
 class VehicleStateServiceTest : StringSpec() {
 
     @MockK
-    private lateinit var vehicleStateRepository: IVehicleStateRepository
+    lateinit var vehicleStateRepository: IVehicleStateRepository
 
     @InjectMockKs
-    private lateinit var vehicleStateService: VehicleStateService
+    lateinit var vehicleStateService: VehicleStateService
 
     init {
         MockKAnnotations.init(this)

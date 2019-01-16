@@ -146,7 +146,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
             val ruleId = createdNotificationRule.ruleId!!
 
-            val notificationRuleUpdate = createdNotificationRule.copy(name = "updated name")
+            val notificationRuleUpdate = createdNotificationRule.copy(name = "updated predicateFieldProviderName")
 
             mockMvc.perform(MockMvcRequestBuilders
                     .put("/notification-rule-management/notification-rule/$ruleId")
