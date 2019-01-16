@@ -8,11 +8,12 @@ import Typography from '@material-ui/core/Typography'
 
 import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
-import RuleRecipientTag from '@/atoms/RuleRecipientTag'
-import FieldDescriptor from '@/molecules/FieldDescriptor'
-import RuleIcon from '@/icons/RuleIcon'
+// import RuleIcon from '@/icons/RuleIcon'
 import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
+// import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
+// import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+// import { PredicateCounterValue } from '@/model/Rule'
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -29,20 +30,13 @@ export type RuleDetailConditionProps = FetchingAttributes
 
 const StyledRuleDetailCondition = styled.div`
 `
-const StyledRuleInformation = styled.div`
-    display: flex;
-    flex-direction: row;
-`
 
-const StyledInfoBlock = styled.div`
-    flex-basis: 50%;
-    flex-shrink: 1;
-    padding: 1rem;
-`
+/* const predicateCounterProps: PredicateCounterProps = {
+  options: [ PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None ],
+  beforeText: "cns.predicate.counter.beforetext",
+  afterText: "cns.predicate.counter.aftertext"
+} */
 
-const StyledFieldSeparator = styled.div`
-    padding: 1rem;
-`
 const conditionFinisher = (finishCondition: FinishConditionType) =>
     (e: React.SyntheticEvent<any, any>): void =>
       finishCondition(e)
@@ -73,47 +67,11 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         "{rule.name}"
       </Typography>
       <div style={{ paddingLeft: '76rem' }}>
-      <ClosingButton onClick={conditionAborter(abortCondition)} />
+        <ClosingButton onClick={conditionAborter(abortCondition)} />
       </div>
-      <StyledFieldSeparator />
-      <StyledRuleInformation>
-        <StyledInfoBlock>
-          <FieldDescriptor
-            label={"cns.rule.field.name.label"}
-            content={rule.name} />
-          <StyledFieldSeparator />
-          <FieldDescriptor
-            label={"cns.rule.field.description.label"}
-            content={rule.description} />
-          <StyledFieldSeparator />
-          <FieldDescriptor
-            label={"cns.rule.field.recipients.label"}
-            content={<>
-              {
-                rule.recipients.map(
-                  (recipient) => <RuleRecipientTag
-                    key={recipient.value}
-                    recipient={recipient} />)
-              }
-            </>
-            } />
-        </StyledInfoBlock>
-        <StyledInfoBlock>
-          <FieldDescriptor
-            label={"cns.rule.field.dataSources.label"}
-            content={<>
-              {rule.dataSources.map((dataSource) => (
-                <RuleIcon
-                  type={dataSource}
-                  label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
-              )}
-            </>
-            } />
-        </StyledInfoBlock>
-      </StyledRuleInformation>
-      <StyledFieldSeparator />
+      
       <div style={{ paddingLeft: '76rem' }}>
-     <NextButton onClick={conditionFinisher(finishCondition)}/> 
+        <NextButton onClick={conditionFinisher(finishCondition)}/> 
       </div>
     </StyledRuleDetailCondition>
   )

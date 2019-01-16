@@ -7,9 +7,9 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetailGeneral, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetailGeneral'
+import RuleDetailCondition, { FinishConditionType, AbortConditionType } from '@/organisms/RuleDetailCondition'
 
-export interface RuleDetailGeneralPageAttributes {
+export interface RuleDetailConditionPageAttributes {
   // Needs to be string because it comes
   // from the router props
   parameters: {
@@ -22,14 +22,14 @@ export interface StateAttributes extends FetchingAttributes {
 }
 
 export interface DispatchAttributes {
-  finishGeneral: FinishGeneralType,
-  abortGeneral: AbortGeneralType,
+  finishCondition: FinishConditionType,
+  abortCondition: AbortConditionType,
   fetchRule(): void,
   editRule(): void,
   deleteRule(): void
 }
 
-export type RuleDetailGeneralPageProps = RuleDetailGeneralPageAttributes
+export type RuleDetailConditionPageProps = RuleDetailConditionPageAttributes
   & StateAttributes
   & DispatchAttributes
   & React.HTMLAttributes<HTMLDivElement>
@@ -38,7 +38,7 @@ const StyledPageWrapper = styled.div`
     flex-grow: 1;
 `
 
-class RuleDetailConditionPage extends React.PureComponent<RuleDetailGeneralPageProps> {
+class RuleDetailConditionPage extends React.PureComponent<RuleDetailConditionPageProps> {
 
   public componentDidMount = () => {
     const { fetchRule } = this.props
@@ -49,13 +49,13 @@ class RuleDetailConditionPage extends React.PureComponent<RuleDetailGeneralPageP
     const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
     return (
       <StyledPageWrapper>
-        <RuleDetailGeneral {...ruleDetailProps} />
+        <RuleDetailCondition {...ruleDetailProps} />
       </StyledPageWrapper>
     )
   }
 }
 
-const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttributes> = (state, props) => {
+const mapStateToProps: StateMapper<RuleDetailConditionPageAttributes, StateAttributes> = (state, props) => {
   const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
   return ({
     rule: rules[parseInt(props.parameters.ruleId, 10)],
@@ -64,9 +64,9 @@ const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttribu
   })
 }
 
-const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, DispatchAttributes> = (dispatch, props) => ({
-  finishGeneral: (event) => dispatch(push(interpolatePagePath('TBD'))),
-  abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
+const mapDispatchToProps: DispatchMapper<RuleDetailConditionPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+  finishCondition: (event) => dispatch(push(interpolatePagePath('TBD'))),
+  abortCondition: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },

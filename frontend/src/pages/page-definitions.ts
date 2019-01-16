@@ -32,7 +32,7 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     component: lazy(() => import('@/pages/RuleDetailGeneral'))
   },
   ruleDetailCondition: {
-    title: "cns.page.DetailCondition.title",
+    title: "cns.page.ruleDetailCondition.title",
     path: '/rule/condition/:ruleId',
     interpolatePath: (ruleId: string) => `/rule/condition/${ruleId}`,
     exact: true,
