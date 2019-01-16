@@ -7,7 +7,7 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetailGeneral, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetail'
+import RuleDetailGeneral, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetailGeneral'
 
 export interface RuleDetailGeneralPageAttributes {
   // Needs to be string because it comes
