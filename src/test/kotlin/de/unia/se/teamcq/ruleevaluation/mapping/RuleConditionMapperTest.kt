@@ -1,8 +1,11 @@
 package de.unia.se.teamcq.ruleevaluation.mapping
 
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionDto
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionDtoWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntity
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionModel
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionModelWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionPredicateDto
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionPredicateEntity
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionPredicateModel
@@ -35,10 +38,10 @@ class RuleConditionMapperTest : StringSpec() {
 
         "Convert model to dto" should {
 
-            "Convert condition model of depth 1 to dto" {
+            val mockedRuleConditionPredicateDto = getTestRuleConditionPredicateDto()
+            every { ruleConditionPredicateMapper.modelToDto(any()) } returns mockedRuleConditionPredicateDto
 
-                val mockedRuleConditionPredicateDto = getTestRuleConditionPredicateDto()
-                every { ruleConditionPredicateMapper.modelToDto(any()) } returns mockedRuleConditionPredicateDto
+            "Convert condition model of depth 1 to dto" {
 
                 val ruleConditionCompositeModel = getTestRuleConditionModel()
 
@@ -51,15 +54,29 @@ class RuleConditionMapperTest : StringSpec() {
                 ruleConditionCompositeDto.subConditions shouldContain mockedRuleConditionPredicateDto
             }
 
-            // TODO
+            "Convert condition model of depth greater than 1 to dto" {
+
+                val ruleConditionCompositeModel = getTestRuleConditionModelWithGreaterDepth()
+
+                val ruleConditionCompositeDto = ruleConditionMapper.modelToDto(ruleConditionCompositeModel) as RuleConditionCompositeDto
+                val expectedRuleConditionCompositeDto = getTestRuleConditionDtoWithGreaterDepth() as RuleConditionCompositeDto
+
+                ruleConditionCompositeDto shouldNotBe null
+                ruleConditionCompositeDto.conditionId shouldBe expectedRuleConditionCompositeDto.conditionId
+                ruleConditionCompositeDto.logicalConnective shouldBe expectedRuleConditionCompositeDto.logicalConnective
+
+                val subConditionDto = ruleConditionCompositeDto.subConditions[0] as RuleConditionCompositeDto
+
+                subConditionDto.subConditions shouldContain mockedRuleConditionPredicateDto
+            }
         }
 
         "Convert dto to model" should {
 
-            "Convert condition dto of depth 1 to model" {
+            val mockedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
+            every { ruleConditionPredicateMapper.dtoToModel(any()) } returns mockedRuleConditionPredicateModel
 
-                val mockedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
-                every { ruleConditionPredicateMapper.dtoToModel(any()) } returns mockedRuleConditionPredicateModel
+            "Convert condition dto of depth 1 to model" {
 
                 val ruleConditionCompositeDto = getTestRuleConditionDto()
 
@@ -72,15 +89,29 @@ class RuleConditionMapperTest : StringSpec() {
                 ruleConditionCompositeModel.subConditions shouldContain mockedRuleConditionPredicateModel
             }
 
-            // TODO
+            "Convert condition dto of depth greater than 1 to model" {
+
+                val ruleConditionCompositeDto = getTestRuleConditionDtoWithGreaterDepth()
+
+                val ruleConditionCompositeModel = ruleConditionMapper.dtoToModel(ruleConditionCompositeDto) as RuleConditionComposite
+                val expectedRuleConditionCompositeModel = getTestRuleConditionModelWithGreaterDepth() as RuleConditionComposite
+
+                ruleConditionCompositeModel shouldNotBe null
+                ruleConditionCompositeModel.conditionId shouldBe expectedRuleConditionCompositeModel.conditionId
+                ruleConditionCompositeModel.logicalConnective shouldBe expectedRuleConditionCompositeModel.logicalConnective
+
+                val subConditionModel = ruleConditionCompositeModel.subConditions[0] as RuleConditionComposite
+
+                subConditionModel.subConditions shouldContain mockedRuleConditionPredicateModel
+            }
         }
 
         "Convert model to entity" should {
 
-            "Convert condition model of depth 1 to entity" {
+            val mockedRuleConditionPredicateEntity = getTestRuleConditionPredicateEntity()
+            every { ruleConditionPredicateMapper.modelToEntity(any()) } returns mockedRuleConditionPredicateEntity
 
-                val mockedRuleConditionPredicateEntity = getTestRuleConditionPredicateEntity()
-                every { ruleConditionPredicateMapper.modelToEntity(any()) } returns mockedRuleConditionPredicateEntity
+            "Convert condition model of depth 1 to entity" {
 
                 val ruleConditionCompositeModel = getTestRuleConditionModel()
 
@@ -93,15 +124,29 @@ class RuleConditionMapperTest : StringSpec() {
                 ruleConditionCompositeEntity.subConditions shouldContain mockedRuleConditionPredicateEntity
             }
 
-            // TODO
+            "Convert condition model of depth greater than 1 to entity" {
+
+                val ruleConditionCompositeModel = getTestRuleConditionModelWithGreaterDepth()
+
+                val ruleConditionCompositeEntity = ruleConditionMapper.modelToEntity(ruleConditionCompositeModel) as RuleConditionCompositeEntity
+                val expectedRuleConditionCompositeEntity = getTestRuleConditionEntityWithGreaterDepth() as RuleConditionCompositeEntity
+
+                ruleConditionCompositeEntity shouldNotBe null
+                ruleConditionCompositeEntity.conditionId shouldBe expectedRuleConditionCompositeEntity.conditionId
+                ruleConditionCompositeEntity.logicalConnective shouldBe expectedRuleConditionCompositeEntity.logicalConnective
+
+                val subConditionEntity = ruleConditionCompositeEntity.subConditions[0] as RuleConditionCompositeEntity
+
+                subConditionEntity.subConditions shouldContain mockedRuleConditionPredicateEntity
+            }
         }
 
         "Convert entity to model" should {
 
-            "Convert condition entity of depth 1 to model" {
+            val mockedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
+            every { ruleConditionPredicateMapper.entityToModel(any()) } returns mockedRuleConditionPredicateModel
 
-                val mockedRuleConditionPredicateModel = getTestRuleConditionPredicateModel()
-                every { ruleConditionPredicateMapper.entityToModel(any()) } returns mockedRuleConditionPredicateModel
+            "Convert condition entity of depth 1 to model" {
 
                 val ruleConditionCompositeEntity = getTestRuleConditionEntity()
 
@@ -114,7 +159,21 @@ class RuleConditionMapperTest : StringSpec() {
                 ruleConditionCompositeModel.subConditions shouldContain mockedRuleConditionPredicateModel
             }
 
-            // TODO
+            "Convert condition entity of depth greater than 1 to model" {
+
+                val ruleConditionCompositeEntity = getTestRuleConditionEntityWithGreaterDepth()
+
+                val ruleConditionCompositeModel = ruleConditionMapper.entityToModel(ruleConditionCompositeEntity) as RuleConditionComposite
+                val expectedRuleConditionCompositeModel = getTestRuleConditionModelWithGreaterDepth() as RuleConditionComposite
+
+                ruleConditionCompositeModel shouldNotBe null
+                ruleConditionCompositeModel.conditionId shouldBe expectedRuleConditionCompositeModel.conditionId
+                ruleConditionCompositeModel.logicalConnective shouldBe expectedRuleConditionCompositeModel.logicalConnective
+
+                val subConditionModel = ruleConditionCompositeModel.subConditions[0] as RuleConditionComposite
+
+                subConditionModel.subConditions shouldContain mockedRuleConditionPredicateModel
+            }
         }
     }
 }

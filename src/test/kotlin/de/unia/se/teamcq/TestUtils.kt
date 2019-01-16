@@ -1,22 +1,22 @@
 package de.unia.se.teamcq
 
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
-import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
-import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
-import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
-import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
-import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
 import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
-import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
-import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
+import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
+import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
+import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
+import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
@@ -32,11 +32,11 @@ import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
@@ -142,12 +142,12 @@ object TestUtils {
                 0,
                 "predicateFieldProviderName",
                 setOf(
-                    getTestVehicleStateDataTypeBatteryModel(),
-                    getTestVehicleStateDataTypeContractModel(),
-                    getTestVehicleStateDataTypeEngineModel(),
-                    getTestVehicleStateDataTypeFuelModel(),
-                    getTestVehicleStateDataTypeMileageModel(),
-                    getTestVehicleStateDataTypeServiceModel()
+                        getTestVehicleStateDataTypeBatteryModel(),
+                        getTestVehicleStateDataTypeContractModel(),
+                        getTestVehicleStateDataTypeEngineModel(),
+                        getTestVehicleStateDataTypeFuelModel(),
+                        getTestVehicleStateDataTypeMileageModel(),
+                        getTestVehicleStateDataTypeServiceModel()
                 )
         )
     }
@@ -217,6 +217,39 @@ object TestUtils {
                 LogicalConnectiveType.ALL,
                 listOf(
                         getTestRuleConditionPredicateEntity()
+                )
+        )
+    }
+
+    fun getTestRuleConditionModelWithGreaterDepth(): RuleCondition {
+        return RuleConditionComposite(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionModel(),
+                        getTestRuleConditionModel()
+                )
+        )
+    }
+
+    fun getTestRuleConditionDtoWithGreaterDepth(): RuleConditionDto {
+        return RuleConditionCompositeDto(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionDto(),
+                        getTestRuleConditionDto()
+                )
+        )
+    }
+
+    fun getTestRuleConditionEntityWithGreaterDepth(): RuleConditionEntity {
+        return RuleConditionCompositeEntity(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionEntity(),
+                        getTestRuleConditionEntity()
                 )
         )
     }
