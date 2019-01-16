@@ -1,26 +1,24 @@
 import React from 'react'
-import { ComparisonType, VehicleDataType } from '@/model/Rule'
+import Select from 'react-select';
+import { SelectValue } from '@/model';
 
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
-  dataTypes: VehicleDataType[]
-  comparisonTypes: ComparisonType[]
+
+  dataTypeOptions: SelectValue[]
+  //dataTypeValue: VehicleDataType
+
+  comparisonTypeOptions: SelectValue[]
+  //comparisonTypeValue: ComparisonType
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypes, comparisonTypes }) => {
+
+
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, comparisonTypeOptions }) => {
   return (
     <p>
-      <select>
-        {dataTypes.map((dataType: VehicleDataType) => (
-          <option> {dataType} </option>
-        ))}
-      </select>
-      <select>
-        {comparisonTypes.map((comparisonType: ComparisonType) => (
-          <option> {comparisonType} </option>
-        ))}
-      </select>
+      <Select options = {dataTypeOptions} /> 
       <input type="text" name="value" />
       %.
     </p>

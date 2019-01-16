@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import SingleComponentWrapper from '../SingleComponentWrapper'
-import { PredicateCounterValue, ComparisonType, VehicleDataType } from '@/model/Rule'
+import { PredicateCounterValue } from '@/model/Rule'
 
 /* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
@@ -85,8 +85,12 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Fuel, VehicleDataType.Mileage, VehicleDataType.Service],
-  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
+  dataTypeOptions: [
+    { label: 'battery', value: 'battery' }
+  ],
+  comparisonTypeOptions: [
+    { label: 'battery', value: 'above' }
+  ]
 }
 
 storiesOf('Rule Creation / Third Step', module)

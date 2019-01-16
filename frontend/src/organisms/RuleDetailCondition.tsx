@@ -12,7 +12,7 @@ import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
-import { PredicateCounterValue, VehicleDataType, ComparisonType } from '@/model/Rule'
+import { PredicateCounterValue } from '@/model/Rule'
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -39,8 +39,12 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypes: [VehicleDataType.Battery, VehicleDataType.Contract, VehicleDataType.Engine, VehicleDataType.Fuel, VehicleDataType.Mileage, VehicleDataType.Service],
-  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
+  dataTypeOptions: [
+    { label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: <FormattedMessage id = "cns.vehicle.status.battery.label" /> }
+  ],
+  comparisonTypeOptions: [
+    { label: 'battery', value: 'above' }
+  ]
 }
 
 const conditionFinisher = (finishCondition: FinishConditionType) =>

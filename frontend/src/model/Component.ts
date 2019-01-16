@@ -10,6 +10,6 @@ export type BasicHTMLProps = HTMLAttributes<HTMLDivElement>
 export type HTMLProps<T> = HTMLAttributes<T>
 
 export interface SelectValue {
-  label: string,
+  label: any,
   value: any
 }
