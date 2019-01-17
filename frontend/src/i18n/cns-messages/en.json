@@ -38,16 +38,16 @@
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "User",
 
-    "cns.predicate.counter.beforetext": "If    ",
-    "cns.predicate.counter.aftertext": " of the following conditions are met: ",
+    "cns.predicate.counter.beforetext": "If",
+    "cns.predicate.counter.aftertext": "of the following conditions are met:",
     "cns.predicate.counter.all": "all",
     "cns.predicate.counter.any": "any",
     "cns.predicate.counter.none": "none",
 
-    "cns.condition.selector.beforetext": "The ",
-    "cns.condition.selector.aftertext": " is ",
-    "cns.condition.selector.equal": "equal to",
-    "cns.condition.selector.unequal": "unequal to",
+    "cns.condition.selector.beforetext": "The",
+    "cns.condition.selector.aftertext": "is",
+    "cns.condition.selector.equalTo": "equal to",
+    "cns.condition.selector.unequalTo": "unequal to",
     "cns.condition.selector.below": "below",
     "cns.condition.selector.above": "above"
 }
