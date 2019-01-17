@@ -72,12 +72,12 @@ const TextElementWrapper = styled.div`
 `
 
 const conditionFinisher = (finishCondition: FinishConditionType) =>
-  (e: React.SyntheticEvent<any, any>): void =>
-    finishCondition(e)
+  (event: React.SyntheticEvent<any, any>): void =>
+    finishCondition(event)
 
 const conditionAborter = (abortCondition: AbortConditionType) =>
-  (e: React.SyntheticEvent<any, any>): void =>
-    abortCondition(e)
+  (event: React.SyntheticEvent<any, any>): void =>
+    abortCondition(event)
 
 const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
   isFetching, hasFetchError, rule, finishCondition, abortCondition, ...props
