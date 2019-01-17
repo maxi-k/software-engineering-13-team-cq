@@ -1,5 +1,17 @@
 package de.unia.se.teamcq
 
+import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorCountingDto
+import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorDto
+import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorImmediateDto
+import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorCountingEntity
+import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorEntity
+import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorImmediateEntity
+import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregator
+import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorCounting
+import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorImmediate
+import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorScheduled
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
@@ -40,6 +52,7 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import org.springframework.http.HttpHeaders
+import org.springframework.scheduling.support.CronTrigger
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -269,6 +282,54 @@ object TestUtils {
                         getTestRuleConditionEntity()
                 )
         )
+    }
+
+    fun getTestNotificationAggregatorImmediatelyModel(): NotificationAggregatorImmediate {
+        return NotificationAggregatorImmediate(0)
+    }
+
+    fun getTestNotificationAggregatorImmediatelyDto(): NotificationAggregatorImmediateDto {
+        return NotificationAggregatorImmediateDto(0)
+    }
+
+    fun getTestNotificationAggregatorImmediatelyEntity(): NotificationAggregatorImmediateEntity {
+        return NotificationAggregatorImmediateEntity(0)
+    }
+
+    fun getTestNotificationAggregatorCountingModel(): NotificationAggregatorCounting {
+        return NotificationAggregatorCounting(0, 10)
+    }
+
+    fun getTestNotificationAggregatorCountingDto(): NotificationAggregatorCountingDto {
+        return NotificationAggregatorCountingDto(0, 10)
+    }
+
+    fun getTestNotificationAggregatorCountingEntity(): NotificationAggregatorCountingEntity {
+        return NotificationAggregatorCountingEntity(0, 10)
+    }
+
+    fun getTestNotificationAggregatorScheduledModel(): NotificationAggregatorScheduled {
+        return NotificationAggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
+    }
+
+    fun getTestNotificationAggregatorScheduledDto(): NotificationAggregatorScheduledDto {
+        return NotificationAggregatorScheduledDto(0, "0 0 10 * * MON")
+    }
+
+    fun getTestNotificationAggregatorScheduledEntity(): NotificationAggregatorScheduledEntity {
+        return NotificationAggregatorScheduledEntity(0, "0 0 10 * * MON")
+    }
+
+    fun getTestNotificationAggregatorModel(): NotificationAggregator {
+        return getTestNotificationAggregatorScheduledModel()
+    }
+
+    fun getTestNotificationAggregatorDto(): NotificationAggregatorDto {
+        return getTestNotificationAggregatorScheduledDto()
+    }
+
+    fun getTestNotificationAggregatorEntity(): NotificationAggregatorEntity {
+        return getTestNotificationAggregatorScheduledEntity()
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
