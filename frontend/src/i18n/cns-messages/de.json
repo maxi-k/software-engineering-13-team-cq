@@ -1,5 +1,11 @@
 {
     "cns.user.settings.label": "Benachrichtigungseinstellungen",
+
+    "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
+    "cns.page.ruleDetailGeneral.title": "Allgemein",
+    "cns.page.ruleDetailCondition.title": "Bedingungen",
+    "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
+
     "cns.navigation.back.label": "Zurück",
 
     "cns.message.fetch.error.default": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
@@ -31,16 +37,16 @@
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "Benutzer",
 
-    "cns.predicate.counter.beforetext": "Wenn ",
-    "cns.predicate.counter.aftertext": " der folgenden Bedingungen erfüllt sind: ",
+    "cns.predicate.counter.beforetext": "Wenn",
+    "cns.predicate.counter.aftertext": "der folgenden Bedingungen erfüllt sind:",
     "cns.predicate.counter.all": "alle",
     "cns.predicate.counter.any": "eine",
     "cns.predicate.counter.none": "keine",
 
-    "cns.condition.selector.beforetext": "Der ",
-    "cns.condition.selector.aftertext": " hat einen Wert ",
-    "cns.condition.selector.equal": "gleich",
-    "cns.condition.selector.unequal": "ungleich",
+    "cns.condition.selector.beforetext": "Der",
+    "cns.condition.selector.aftertext": "hat einen Wert",
+    "cns.condition.selector.equalTo": "gleich",
+    "cns.condition.selector.unequalTo": "ungleich",
     "cns.condition.selector.below": "kleiner als",
     "cns.condition.selector.above": "größer als"
 }

@@ -33,24 +33,30 @@ const initialState: AuthState = {
 }
 
 export const reducer: Reducer<AuthState> = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case AuthActionType.AUTH_LOGIN:
-      return update(state, {$merge: {
-        isFetching: true,
-        hasFetchError: false
-      }})
+      return update(state, {
+        $merge: {
+          isFetching: true,
+          hasFetchError: false
+        }
+      })
     case AuthActionType.AUTH_LOGIN_SUCCESS:
-      return update(state, {$merge: {
-        authData: action.payload,
-        isFetching: false,
-        hasFetchError: false
-      }})
+      return update(state, {
+        $merge: {
+          authData: action.payload,
+          isFetching: false,
+          hasFetchError: false
+        }
+      })
     case AuthActionType.AUTH_LOGIN_FAILURE:
-      return update(state, {$merge: {
-        authData: null,
-        isFetching: false,
-        hasFetchError: action.payload || true
-      }})
+      return update(state, {
+        $merge: {
+          authData: null,
+          isFetching: false,
+          hasFetchError: action.payload || true
+        }
+      })
     case AuthActionType.AUTH_LOGOUT:
       return {
         ...initialState
@@ -95,7 +101,7 @@ function* initialLoginSaga() {
 }
 
 export const sagas = isDevelopment
-                   ? [initialLoginSaga]
-                   : []
+  ? [initialLoginSaga]
+  : []
 
 export default reducer

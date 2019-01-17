@@ -1,7 +1,9 @@
-import { connect as reactConnect,
-         Connect,
-         MapStateToProps,
-         MapDispatchToPropsFunction } from 'react-redux'
+import {
+  connect as reactConnect,
+  Connect,
+  MapStateToProps,
+  MapDispatchToPropsFunction
+} from 'react-redux'
 import { RootState } from '@/state'
 
 export type StateMapper<ComponentProps, StoreProps> = MapStateToProps<StoreProps, ComponentProps, RootState>

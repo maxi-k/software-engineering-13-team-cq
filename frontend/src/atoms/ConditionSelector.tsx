@@ -1,31 +1,49 @@
 import React from 'react'
-import { ComparisonType } from '@/model/Rule'
-
-import Select from 'react-select'
+import styled from 'styled-components'
+import Select from 'react-select';
+import { SelectFormattedValue } from '@/model'
 import { FormattedMessage } from 'react-intl'
+
+import SelectWrapper from '@/atoms/TextSelectWrapper'
 
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
-  dataTypes: string[]
-  comparisonTypes: ComparisonType[]
+
+  dataTypeOptions: SelectFormattedValue[]
+  dataTypeValue: SelectFormattedValue
+
+  comparisonTypeOptions: SelectFormattedValue[]
+  comparisonTypeValue: SelectFormattedValue
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypes, comparisonTypes }) => {
+const StyledSeparator = styled.div`
+  width: 4px;
+  display: inline-block;
+`
+
+const StyledTextInput = styled.input`
+  width: 200px;
+  height: 35px;
+`
+
+const ConditionSelector: React.SFC<ConditionSelectorProps> = (
+  { beforeText, afterText,
+    dataTypeOptions, dataTypeValue,
+    comparisonTypeOptions, comparisonTypeValue }
+) => {
   return (
     <p>
       <FormattedMessage id={beforeText} />
-      <Select
-        value={<FormattedMessage id={dataTypes[0]} />}
-        options={dataTypes.map((dataType, i) => <FormattedMessage key={i} id={dataType} />)}
-      />
+      <SelectWrapper>
+        <Select value={dataTypeValue} options={dataTypeOptions} />
+      </SelectWrapper>
       <FormattedMessage id={afterText} />
-      <select>
-        {comparisonTypes.map((comparisonType: ComparisonType) => (
-          <option key={comparisonType}> {comparisonType} </option>
-        ))}
-      </select>
-      <input type="text" name="value" />
+      <SelectWrapper>
+        <Select value={comparisonTypeValue} options={comparisonTypeOptions} />
+      </SelectWrapper>
+      <StyledSeparator />
+      <StyledTextInput type="text" />
       %.
     </p>
   )

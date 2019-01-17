@@ -1,5 +1,11 @@
 {
     "cns.user.settings.label": "Notification Settings",
+
+    "cns.page.ruleOverview.title": "Notification Rules",
+    "cns.page.ruleDetailGeneral.title": "General",
+    "cns.page.ruleDetailCondition.title": "Conditions",
+    "cns.page.ruleDetailCondition.question": "Under what conditions should notifications be triggered?",
+
     "cns.navigation.back.label": "Back",
 
     "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
@@ -21,28 +27,27 @@
     "cns.rule.creation.step.general.fleets": "Fleets",
     "cns.rule.creation.step.general.condition": "Condition",
 
-
-    "cns.vehicle.status.engine.label": "Engine",
-    "cns.vehicle.status.battery.label": "Battery",
-    "cns.vehicle.status.contract.label": "Contract",
-    "cns.vehicle.status.mileage.label": "Mileage",
-    "cns.vehicle.status.fuel.label": "Fuel",
-    "cns.vehicle.status.service.label": "Service",
+    "cns.vehicle.status.engine.label": "engine",
+    "cns.vehicle.status.battery.label": "battery",
+    "cns.vehicle.status.contract.label": "contract",
+    "cns.vehicle.status.mileage.label": "mileage",
+    "cns.vehicle.status.fuel.label": "fuel",
+    "cns.vehicle.status.service.label": "service",
 
     "cns.rule.recipient.email.label": "Mail",
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "User",
 
-    "cns.predicate.counter.beforetext": "If ",
-    "cns.predicate.counter.aftertext": " of the following conditions are met: ",
+    "cns.predicate.counter.beforetext": "If",
+    "cns.predicate.counter.aftertext": "of the following conditions are met:",
     "cns.predicate.counter.all": "all",
     "cns.predicate.counter.any": "any",
     "cns.predicate.counter.none": "none",
 
-    "cns.condition.selector.beforetext": "The ",
-    "cns.condition.selector.aftertext": " is ",
-    "cns.condition.selector.equal": "equal to",
-    "cns.condition.selector.unequal": "unequal to",
+    "cns.condition.selector.beforetext": "The",
+    "cns.condition.selector.aftertext": "is",
+    "cns.condition.selector.equalTo": "equal to",
+    "cns.condition.selector.unequalTo": "unequal to",
     "cns.condition.selector.below": "below",
     "cns.condition.selector.above": "above"
 }
