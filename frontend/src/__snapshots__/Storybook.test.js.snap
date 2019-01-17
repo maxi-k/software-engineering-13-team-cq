@@ -535,6 +535,39 @@ exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
 </div>
 `;
 
+exports[`Storyshots General Components Back Button 1`] = `
+<button
+  className="primary sc-jzJRlG lbarbb"
+  icon={
+    <img
+      src="/assets/svg/chevron-left.svg"
+      style={
+        Object {
+          "height": "20px",
+          "width": "20px",
+        }
+      }
+    />
+  }
+  label="Back"
+  onClick={[Function]}
+  primary="true"
+>
+  <span>
+    Back
+  </span>
+  <img
+    src="/assets/svg/chevron-left.svg"
+    style={
+      Object {
+        "height": "20px",
+        "width": "20px",
+      }
+    }
+  />
+</button>
+`;
+
 exports[`Storyshots General Components Central Loading Indicator 1`] = `
 <div
   className="sc-uJMKN eVXOtU"
@@ -725,6 +758,27 @@ exports[`Storyshots General Components Large Loading Indicator 1`] = `
     />
   </svg>
 </div>
+`;
+
+exports[`Storyshots General Components Next Button 1`] = `
+<button
+  className="primary sc-jzJRlG lbarbb"
+  icon={
+    <img
+      src="/assets/svg/chevron-right.svg"
+    />
+  }
+  label="Next"
+  onClick={[Function]}
+  primary="true"
+>
+  <span>
+    Next
+  </span>
+  <img
+    src="/assets/svg/chevron-right.svg"
+  />
+</button>
 `;
 
 exports[`Storyshots General Components Requests Error Messages 1`] = `

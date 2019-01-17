@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions'
 
 import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
-import { PredicateCounterValue, ComparisonType } from '@/model/Rule'
 
 /* ~~ General Components ~~ */
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
@@ -86,7 +85,12 @@ import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounte
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 
 const predicateCounterProps: PredicateCounterProps = {
-  options: [PredicateCounterValue.All, PredicateCounterValue.Any, PredicateCounterValue.None],
+  value: { label: "all", value: "all" },
+  options: [
+    { label: "all", value: "all" },
+    { label: "any", value: "any" },
+    { label: "none", value: "none" }
+  ],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
 }
@@ -94,8 +98,22 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypes: ["cns.vehicle.status.battery.label", "cns.vehicle.status.contract.label", "cns.vehicle.status.engine.label", "cns.vehicle.status.fuel.label", "cns.vehicle.status.service.label", "cns.vehicle.status.mileage.label"],
-  comparisonTypes: [ComparisonType.Above, ComparisonType.Below, ComparisonType.EqualTo, ComparisonType.UnequalTo],
+  dataTypeValue: { label: "battery", value: "battery" },
+  dataTypeOptions: [
+    { label: "battery", value: "battery" },
+    { label: "contract", value: "contract" },
+    { label: "engine", value: "engine" },
+    { label: "fuel", value: "fuel" },
+    { label: "mileage", value: "mileage" },
+    { label: "service", value: "service" },
+  ],
+  comparisonTypeValue: { label: "equal", value: "equal" },
+  comparisonTypeOptions: [
+    { label: "equal", value: "equal" },
+    { label: "unequal", value: "unequal" },
+    { label: "above", value: "above" },
+    { label: "below", value: "below" }
+  ]
 }
 
 storiesOf('Rule Creation / Third Step', module)

@@ -9,19 +9,16 @@ import javax.persistence.GenerationType
 
 @Entity
 data class VehicleStateEntity(
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    var eventId: Long? = 0,
+    var stateId: Long? = 0,
 
     @get: NotNull
-    var vehicleId: String?,
+    var vehicleId: String?
 
-    @get: NotNull
-    var kilometers: Int?,
-
-    @get: NotNull
-    var batteryCharge: Double?
+    // TODO: Add VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null)
 }

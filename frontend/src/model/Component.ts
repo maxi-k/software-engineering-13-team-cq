@@ -14,3 +14,8 @@ export interface SelectValue {
   label: string,
   value: any
 }
+
+export interface SelectFormattedValue {
+  label: React.ReactNode,
+  value: any
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconProps } from '@fleetdata/shared/components/icons//icon.render.component';
+import { IconProps } from '@fleetdata/shared/components/icons//icon.render.component'
 import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton'
 
