@@ -1752,15 +1752,9 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <p>
-    The 
+    The
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "50px",
-          "width": "200px",
-        }
-      }
+      className="sc-feJyhm gnzLbA"
     >
       <div
         className="css-10nd86i"
@@ -1865,15 +1859,9 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
         </div>
       </div>
     </div>
-     is 
+    is
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "50px",
-          "width": "200px",
-        }
-      }
+      className="sc-feJyhm gnzLbA"
     >
       <div
         className="css-10nd86i"
@@ -1979,23 +1967,13 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       </div>
     </div>
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "width": "4px",
-        }
-      }
+      className="sc-iELTvK hXcheF"
     />
     <input
-      style={
-        Object {
-          "height": "35px",
-          "width": "200px",
-        }
-      }
+      className="sc-cmTdod iikmue"
       type="text"
     />
-     %.
+    %.
   </p>
 </div>
 `;
@@ -2005,15 +1983,9 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <p>
-    If    
+    If
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "50px",
-          "width": "200px",
-        }
-      }
+      className="sc-feJyhm gnzLbA"
     >
       <div
         className="css-10nd86i"
@@ -2118,7 +2090,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
         </div>
       </div>
     </div>
-     of the following conditions are met: 
+    of the following conditions are met:
   </p>
 </div>
 `;

@@ -71,7 +71,6 @@ const TextElementWrapper = styled.div`
     paddingLeft: 1rem;
 `
 
-
 const conditionFinisher = (finishCondition: FinishConditionType) =>
   (e: React.SyntheticEvent<any, any>): void =>
     finishCondition(e)

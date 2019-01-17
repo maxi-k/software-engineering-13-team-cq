@@ -17,7 +17,6 @@ export interface ConditionSelectorProps {
   comparisonTypeValue: SelectFormattedValue
 }
 
-
 const StyledSeparator = styled.div`
   width: 4px;
   display: inline-block;
