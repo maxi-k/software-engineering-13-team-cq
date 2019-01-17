@@ -7,8 +7,8 @@ interface AddConditionButtonAttributes {
 
 export type AddConditionButtonProps = AddConditionButtonAttributes & React.HTMLAttributes<HTMLDivElement>
 
-const AddConditionButton: React.SFC<AddConditionButtonProps> = ({ onClick }) => (
-  <div onClick = {onClick} style={{ cursor: 'pointer', width: '50px'}}>
+const AddConditionButton: React.SFC<AddConditionButtonProps> = ({onClick}) => (
+  <div onClick = {onClick} style={{cursor: 'pointer', width: '50px'}}>
   <PlusIcon/>
 </div>
 )

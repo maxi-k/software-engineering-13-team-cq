@@ -41,22 +41,22 @@ const StyledPageWrapper = styled.div`
 class RuleDetailConditionPage extends React.PureComponent<RuleDetailConditionPageProps> {
 
   public componentDidMount = () => {
-    const { fetchRule } = this.props
+    const {fetchRule} = this.props
     fetchRule()
   }
 
   public render = () => {
-    const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
+    const {parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps} = this.props
     return (
       <StyledPageWrapper>
-        <RuleDetailCondition {...ruleDetailProps} />
+        <RuleDetailCondition {...ruleDetailProps}/>
       </StyledPageWrapper>
     )
   }
 }
 
 const mapStateToProps: StateMapper<RuleDetailConditionPageAttributes, StateAttributes> = (state, props) => {
-  const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
+  const {rules, isFetching, hasFetchError} = ruleDetailStateSelector(state)
   return ({
     rule: rules[parseInt(props.parameters.ruleId, 10)],
     isFetching,

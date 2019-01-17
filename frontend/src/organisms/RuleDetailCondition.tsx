@@ -31,11 +31,11 @@ const StyledRuleDetailCondition = styled.div`
 `
 
 const predicateCounterProps: PredicateCounterProps = {
-  value: {label: <FormattedMessage id = "cns.predicate.counter.all" />, value: "all" },
+  value: {label: <FormattedMessage id = "cns.predicate.counter.all"/>, value: "all"},
   options: [ 
-    {label: <FormattedMessage id = "cns.predicate.counter.all" />, value: "all" },
-    {label: <FormattedMessage id = "cns.predicate.counter.any" />, value: "any" },
-    {label: <FormattedMessage id = "cns.predicate.counter.none" />, value: "none" } 
+    {label: <FormattedMessage id = "cns.predicate.counter.all"/>, value: "all"},
+    {label: <FormattedMessage id = "cns.predicate.counter.any"/>, value: "any"},
+    {label: <FormattedMessage id = "cns.predicate.counter.none"/>, value: "none"} 
   ],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
@@ -44,21 +44,21 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypeValue: {label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: "battery" },
+  dataTypeValue: {label: <FormattedMessage id = "cns.vehicle.status.battery.label"/>, value: "battery"},
   dataTypeOptions: [
-    {label: <FormattedMessage id = "cns.vehicle.status.battery.label" />, value: "battery" },
-    {label: <FormattedMessage id = "cns.vehicle.status.contract.label" />, value: "contract" },
-    {label: <FormattedMessage id = "cns.vehicle.status.engine.label" />, value: <FormattedMessage id = "engine" />},
-    {label: <FormattedMessage id = "cns.vehicle.status.service.label" />, value: <FormattedMessage id = "service" />},
-    {label: <FormattedMessage id = "cns.vehicle.status.fuel.label" />, value: <FormattedMessage id = "fuel" />},
-    {label: <FormattedMessage id = "cns.vehicle.status.mileage.label" />, value: <FormattedMessage id = "mileage" />},
+    {label: <FormattedMessage id = "cns.vehicle.status.battery.label"/>, value: "battery"},
+    {label: <FormattedMessage id = "cns.vehicle.status.contract.label"/>, value: "contract"},
+    {label: <FormattedMessage id = "cns.vehicle.status.engine.label"/>, value: <FormattedMessage id = "engine"/>},
+    {label: <FormattedMessage id = "cns.vehicle.status.service.label"/>, value: <FormattedMessage id = "service"/>},
+    {label: <FormattedMessage id = "cns.vehicle.status.fuel.label"/>, value: <FormattedMessage id = "fuel"/>},
+    {label: <FormattedMessage id = "cns.vehicle.status.mileage.label"/>, value: <FormattedMessage id = "mileage"/>},
   ],
-  comparisonTypeValue: {label: <FormattedMessage id = "cns.condition.selector.equal" />, value: "equal" },
+  comparisonTypeValue: {label: <FormattedMessage id = "cns.condition.selector.equal"/>, value: "equal"},
   comparisonTypeOptions: [
-    {label: <FormattedMessage id = "cns.condition.selector.equal" />, value: "equal" },
-    {label: <FormattedMessage id = "cns.condition.selector.unequal" />, value: "unequal" },
-    {label: <FormattedMessage id = "cns.condition.selector.above" />, value: "above" },
-    {label: <FormattedMessage id = "cns.condition.selector.below" />, value: "below" }
+    {label: <FormattedMessage id = "cns.condition.selector.equal"/>, value: "equal"},
+    {label: <FormattedMessage id = "cns.condition.selector.unequal"/>, value: "unequal"},
+    {label: <FormattedMessage id = "cns.condition.selector.above"/>, value: "above"},
+    {label: <FormattedMessage id = "cns.condition.selector.below"/>, value: "below"}
   ]
 }
 
@@ -81,38 +81,38 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
   if (hasFetchError) {
     return (
       <ErrorMessage message={
-        <FormattedMessage id="cns.message.fetch.error" />
-      } />
+        <FormattedMessage id="cns.message.fetch.error"/>
+      }/>
     )
   }
   if (isFetching || typeof rule === 'undefined' || rule === null) {
-    return <LoadingIndicator isCentral={true} />
+    return <LoadingIndicator isCentral={true}/>
   }
 
   return (
     <StyledRuleDetailCondition {...props}>
-      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
-        <FormattedMessage id="cns.rule.label" />{' '}
+      <Typography variant="h5" style={{paddingLeft: '1rem'}}>
+        <FormattedMessage id="cns.rule.label"/>{' '}
         "{rule.name}"
       </Typography>
-      <div style={{ paddingLeft: '76rem' }}>
-        <ClosingButton onClick={conditionAborter(abortCondition)} />
+      <div style={{paddingLeft: '76rem'}}>
+        <ClosingButton onClick={conditionAborter(abortCondition)}/>
       </div>
-      <StyledFieldSeparator />
-      <div style={{ paddingLeft: '1rem' }}>
-        <FormattedMessage id = "cns.page.ruleDetailCondition.question" />
+      <StyledFieldSeparator/>
+      <div style={{paddingLeft: '1rem'}}>
+        <FormattedMessage id = "cns.page.ruleDetailCondition.question"/>
       </div>
-      <div style={{ paddingLeft: '1rem' }}>
-        <PredicateCounter {... predicateCounterProps} />
+      <div style={{paddingLeft: '1rem'}}>
+        <PredicateCounter {... predicateCounterProps}/>
       </div>
-      <div style={{ paddingLeft: '1rem' }}>
-        <ConditionSelector {... conditionSelectorProps} />
+      <div style={{paddingLeft: '1rem'}}>
+        <ConditionSelector {... conditionSelectorProps}/>
       </div>
-      <div style={{ paddingLeft: '1rem'}}>
+      <div style={{paddingLeft: '1rem'}}>
         <AddConditionButton onClick={conditionFinisher(finishCondition)}/>
       </div>
-      <StyledFieldSeparator />
-      <div style={{ paddingLeft: '76rem' }}>
+      <StyledFieldSeparator/>
+      <div style={{paddingLeft: '76rem'}}>
         <NextButton onClick={conditionFinisher(finishCondition)}/> 
       </div>
     </StyledRuleDetailCondition>

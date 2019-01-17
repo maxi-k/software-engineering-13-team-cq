@@ -14,18 +14,18 @@ export interface ConditionSelectorProps {
   comparisonTypeValue: SelectFormattedValue
 }
 
-const ConditionSelector: React.SFC<ConditionSelectorProps> = ({ beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue}) => { 
+const ConditionSelector: React.SFC<ConditionSelectorProps> = ({beforeText, afterText, dataTypeOptions, dataTypeValue, comparisonTypeOptions, comparisonTypeValue}) => { 
   return (
     <p>
-      <FormattedMessage id={beforeText} />
-      <div style={{ width : '200px', height : '50px', display: 'inline-block'}}>
+      <FormattedMessage id={beforeText}/>
+      <div style={{width : '200px', height : '50px', display: 'inline-block'}}>
         <Select value = {dataTypeValue} options = {dataTypeOptions} />
       </div>
-      <FormattedMessage id={afterText} />
-      <div style={{ width : '200px', height : '50px', display: 'inline-block'}}>
-        <Select value = {comparisonTypeValue} options = {comparisonTypeOptions} />
+      <FormattedMessage id={afterText}/>
+      <div style={{width : '200px', height : '50px', display: 'inline-block'}}>
+        <Select value = {comparisonTypeValue} options = {comparisonTypeOptions}/>
       </div>
-      <div style={{ width : '4px', display: 'inline-block'}} />
+      <div style={{width : '4px', display: 'inline-block'}} />
       <input type = "text" style={{ width : '200px', height : '35px'}}/> %.
     </p>
   )
