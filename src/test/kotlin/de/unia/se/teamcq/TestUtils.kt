@@ -60,6 +60,7 @@ object TestUtils {
                 .withName("rule_name")
                 .withOwner(getTestUserModel())
                 .withDescription("description")
+                .withCondition(getTestRuleConditionModel())
                 .build()
     }
 
@@ -68,7 +69,8 @@ object TestUtils {
                 ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserDto(),
-                description = "description"
+                description = "description",
+                condition = getTestRuleConditionDto()
         )
     }
 
@@ -77,7 +79,8 @@ object TestUtils {
                 ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserEntity(),
-                description = "description"
+                description = "description",
+                condition = getTestRuleConditionEntity()
         )
     }
 

@@ -4,6 +4,8 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleEntity
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
+import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -48,6 +50,12 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val expextedNotificationRule = getTestNotificationRuleModel().apply {
                 owner!!.name = "test1"
                 ruleId = savedNotificationRuleEntity.ruleId
+                condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
+                
+                // TODO: Cleanup
+                val ruleConditionComposite = condition!! as RuleConditionComposite
+                val savedConditionCompositeEntity = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
+                ruleConditionComposite.subConditions[0].conditionId = savedConditionCompositeEntity.subConditions[0].conditionId
             }
             notificationRulesForUser.first() shouldBe expextedNotificationRule
         }
@@ -93,6 +101,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 description = "new"
                 owner = newUser
                 ruleId = savedNotificationRuleEntity.ruleId
+                condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
             }
 
             val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
