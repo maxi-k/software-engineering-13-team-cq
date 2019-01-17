@@ -33,7 +33,7 @@ const RuleRecipientTag: React.SFC<RuleRecipientTagProps> = ({ recipient, ...prop
   <StyledRuleRecipient {...props}>
     <StyledTypeTag>
       <strong>
-        <FormattedMessage id={`cns.rule.recipient.${recipient.type.toLowerCase()}.label`} />
+        <FormattedMessage id={`cns.rule.recipient.${recipient.type.toLowerCase()}.label`}/>
       </strong>
     </StyledTypeTag>
     <StyledValueTag>

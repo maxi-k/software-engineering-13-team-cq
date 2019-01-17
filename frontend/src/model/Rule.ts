@@ -40,6 +40,6 @@ export interface NotificationRuleOverview {
 }
 
 export interface NotificationRuleDetail
-extends NotificationRuleOverview {
+  extends NotificationRuleOverview {
   recipients: NotificationRecipient[]
 }
