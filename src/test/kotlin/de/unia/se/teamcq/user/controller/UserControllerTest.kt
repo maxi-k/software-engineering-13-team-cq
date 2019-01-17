@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.user.controller
 
-import com.google.gson.Gson
+import com.fasterxml.jackson.databind.ObjectMapper
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.user.dto.UserDto
@@ -44,8 +44,6 @@ class UserControllerTest : StringSpec() {
     @MockK
     private lateinit var securityContext: SecurityContext
 
-    private val gson = Gson()
-
     init {
         MockKAnnotations.init(this)
 
@@ -84,9 +82,8 @@ class UserControllerTest : StringSpec() {
                         .session(session))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
-                            val returnedUserDto = gson.fromJson(
-                                    result.response.contentAsString,
-                                    UserDto::class.java)
+                            val returnedUserDto = ObjectMapper()
+                                    .readValue(result.response.contentAsString, UserDto::class.java)
 
                             returnedUserDto shouldBe getTestUserDto()
                         }
@@ -110,12 +107,11 @@ class UserControllerTest : StringSpec() {
                 mockMvc.perform(MockMvcRequestBuilders
                         .put(requestPath)
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(gson.toJson(getTestUserDto())))
+                        .content(ObjectMapper().writeValueAsString(getTestUserDto())))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
-                            val returnedUser = gson.fromJson(
-                                    result.response.contentAsString,
-                                    UserDto::class.java)
+                            val returnedUser = ObjectMapper()
+                                    .readValue(result.response.contentAsString, UserDto::class.java)
 
                             returnedUser shouldBe getTestUserDto()
                         }
