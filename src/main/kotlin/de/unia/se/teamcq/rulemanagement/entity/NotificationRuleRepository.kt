@@ -2,6 +2,7 @@ package de.unia.se.teamcq.rulemanagement.entity
 
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
+import de.unia.se.teamcq.user.entity.IUserEntityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
@@ -17,24 +18,36 @@ class NotificationRuleRepository : INotificationRuleRepository {
     lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
 
     @Autowired
+    lateinit var userEntityRepository: IUserEntityRepository
+
+    @Autowired
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
-        return notificationRuleEntityRepository.findAll().map { notificationRuleEntity ->
+        val userEntity = userEntityRepository.getOne(username)
+
+        val notificationRuleEntities = userEntity.notificationRules.orEmpty()
+
+        return notificationRuleEntities.map { notificationRuleEntity ->
             notificationRuleMapper.entityToModel(notificationRuleEntity)
         }
     }
 
     override fun getNotificationRule(ruleId: Long): NotificationRule? {
-        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).get()
+        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
 
-        return notificationRuleMapper.entityToModel(notificationRuleEntity)
+        return notificationRuleEntity?.let { existingNotificationRuleEntity ->
+            notificationRuleMapper.entityToModel(existingNotificationRuleEntity) }
     }
 
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
+        // Create notificationRuleEntity first so it already has an ID
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
+        // Add NotificationRuleEntity to UserEntity because the mapping is bidirectional
+        userEntityRepository.getOne(notificationRule.owner!!.name!!)
+                .addNotificationRuleEntity(savedNotificationRuleEntity)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)
     }

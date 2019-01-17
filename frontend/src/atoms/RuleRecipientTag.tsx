@@ -15,7 +15,7 @@ const StyledTypeTag = styled.span`
     padding: 0.5rem;
 `
 
-const StyledValueTag = styled.span`
+const StyledValueTag = styled.div`
     display: inline-block;
     padding: 0.5em;
 `

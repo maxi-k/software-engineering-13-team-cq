@@ -1,12 +1,19 @@
 {
     "cns.user.settings.label": "Benachrichtigungseinstellungen",
 
-    "cns.message.fetch.error": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleDetailGeneral.title": "Allgemein",
     "cns.page.ruleDetailCondition.title": "Bedingungen",
     "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
-    
+
+    "cns.navigation.back.label": "Zurück",
+
+    "cns.message.fetch.error.default": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
+    "cns.message.fetch.error.notFound": "Die von Ihnen angeforderte Ressource konnte nicht gefunden werden.",
+    "cns.message.fetch.error.badRequest": "Es gab ein Problem mit der Anfrage, bitte versuchen Sie es noch einmal.",
+    "cns.message.fetch.error.unauthorized": "Sie sind nicht authorisiert, diese Ressource abzufragen. Versuchen Sie, die Webseite neu zu laden und sich anzumelden.",
+    "cns.message.fetch.error.serverError": "Es gab ein Problem während der Anfrage, bitte versuchen Sie es später noch einmal.",
+    "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
@@ -14,7 +21,6 @@
     "cns.rule.field.description.label": "Beschreibung",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.recipients.label": "Empfänger",
-
 
     "cns.rule.creation.step.general.title": "Allgemein",
     "cns.rule.creation.step.general.fleets": "Betroffene Flotten",
@@ -44,4 +50,3 @@
     "cns.condition.selector.below": "kleiner als",
     "cns.condition.selector.above": "größer als"
 }
-

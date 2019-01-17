@@ -4,8 +4,10 @@ import de.unia.se.teamcq.rulemanagement.entity.INotificationRuleRepository
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
+@Transactional
 class NotificationRuleService : INotificationRuleService {
 
     @Autowired

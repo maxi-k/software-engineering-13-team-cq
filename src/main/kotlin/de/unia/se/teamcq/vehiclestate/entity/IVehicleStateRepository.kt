@@ -2,10 +2,8 @@ package de.unia.se.teamcq.vehiclestate.entity
 
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.springframework.stereotype.Repository
-import org.springframework.transaction.annotation.Transactional
 
 @Repository
-@Transactional
 interface IVehicleStateRepository {
 
     fun getAllVehicleStates(): List<VehicleState>

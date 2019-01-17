@@ -1,11 +1,20 @@
 {
     "cns.user.settings.label": "Notification Settings",
 
-    "cns.message.fetch.error": "There was a problem loading this data from the server. Please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleDetailGeneral.title": "General",
     "cns.page.ruleDetailCondition.title": "Conditions",
     "cns.page.ruleDetailCondition.question": "Under what conditions should notifications be triggered?",
+
+    "cns.navigation.back.label": "Back",
+
+    "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
+
+    "cns.message.fetch.error.notFound": "The requested resource could not be found.",
+    "cns.message.fetch.error.badRequest": "There was a problem with your request. Please try it again.",
+    "cns.message.fetch.error.unauthorized": "You are unauthorized to view this resource. Please try to reload the page and log in.",
+    "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
+    "cns.page.ruleOverview.title": "Notification Rules",
 
     "cns.rule.label": "Notification Rule",
 
@@ -17,7 +26,6 @@
     "cns.rule.creation.step.general.title": "General",
     "cns.rule.creation.step.general.fleets": "Fleets",
     "cns.rule.creation.step.general.condition": "Condition",
-
 
     "cns.vehicle.status.engine.label": "engine",
     "cns.vehicle.status.battery.label": "battery",

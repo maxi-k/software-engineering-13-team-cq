@@ -76,11 +76,11 @@ import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounte
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 
 const predicateCounterProps: PredicateCounterProps = {
-  value: {label: "all", value: "all" },
-  options: [ 
-    {label: "all", value: "all" },
-    {label: "any", value: "any" },
-    {label: "none", value: "none" } 
+  value: { label: "all", value: "all" },
+  options: [
+    { label: "all", value: "all" },
+    { label: "any", value: "any" },
+    { label: "none", value: "none" }
   ],
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
@@ -89,21 +89,21 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypeValue: {label: "battery", value: "battery" },
+  dataTypeValue: { label: "battery", value: "battery" },
   dataTypeOptions: [
-    {label: "battery", value: "battery" },
-    {label: "contract", value: "contract" },
-    {label: "engine", value: "engine" },
-    {label: "fuel", value: "fuel" },
-    {label: "mileage", value: "mileage" },
-    {label: "service", value: "service" },
+    { label: "battery", value: "battery" },
+    { label: "contract", value: "contract" },
+    { label: "engine", value: "engine" },
+    { label: "fuel", value: "fuel" },
+    { label: "mileage", value: "mileage" },
+    { label: "service", value: "service" },
   ],
-  comparisonTypeValue: {label: "equal", value: "equal" },
+  comparisonTypeValue: { label: "equal", value: "equal" },
   comparisonTypeOptions: [
-    {label: "equal", value: "equal" },
-    {label: "unequal", value: "unequal" },
-    {label: "above", value: "above" },
-    {label: "below", value: "below" }
+    { label: "equal", value: "equal" },
+    { label: "unequal", value: "unequal" },
+    { label: "above", value: "above" },
+    { label: "below", value: "below" }
   ]
 }
 
