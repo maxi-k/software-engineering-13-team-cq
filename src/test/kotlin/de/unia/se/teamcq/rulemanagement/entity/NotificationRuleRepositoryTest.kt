@@ -6,6 +6,7 @@ import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
+import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -50,12 +51,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
                 owner!!.name = "test1"
                 ruleId = savedNotificationRuleEntity.ruleId
-                condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
-
-                // TODO: Cleanup
-                val ruleConditionComposite = condition!! as RuleConditionComposite
-                val savedConditionCompositeEntity = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
-                ruleConditionComposite.subConditions[0].conditionId = savedConditionCompositeEntity.subConditions[0].conditionId
+                setConditionIds(savedNotificationRuleEntity)
             }
             notificationRulesForUser.first() shouldBe expectedNotificationRule
         }
@@ -69,12 +65,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val actualNotificationRule = notificationRuleRepository.getNotificationRule(savedNotificationRuleEntity.ruleId!!)
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
                 ruleId = savedNotificationRuleEntity.ruleId!!
-                condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
-
-                // TODO: Cleanup
-                val ruleConditionComposite = condition!! as RuleConditionComposite
-                val savedConditionCompositeEntity = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
-                ruleConditionComposite.subConditions[0].conditionId = savedConditionCompositeEntity.subConditions[0].conditionId
+                setConditionIds(savedNotificationRuleEntity)
             }
 
             actualNotificationRule shouldBe expectedNotificationRule
@@ -95,12 +86,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
                 ruleId = savedNotificationRule!!.ruleId!!
-                condition!!.conditionId = savedNotificationRule.condition!!.conditionId
-
-                // TODO: Cleanup
-                val ruleConditionComposite = condition!! as RuleConditionComposite
-                val savedConditionComposite = savedNotificationRule.condition!! as RuleConditionComposite
-                ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
+                setConditionIds(savedNotificationRule)
             }
 
             savedNotificationRule shouldBe expectedNotificationRule
@@ -120,12 +106,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 description = "new"
                 owner = newUser
                 ruleId = savedNotificationRuleEntity.ruleId
-                condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
-
-                // TODO: Cleanup
-                val ruleConditionComposite = condition!! as RuleConditionComposite
-                val savedConditionComposite = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
-                ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
+                setConditionIds(savedNotificationRuleEntity)
             }
 
             val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
@@ -144,5 +125,22 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             notificationRuleEntityRepository.existsById(savedUserEntity.ruleId!!) shouldBe false
         }
+    }
+
+    private fun NotificationRule.setConditionIds(savedNotificationRule: NotificationRule) {
+        condition!!.conditionId = savedNotificationRule.condition!!.conditionId
+
+        val ruleConditionComposite = condition!! as RuleConditionComposite
+        val savedConditionComposite = savedNotificationRule.condition!! as RuleConditionComposite
+        ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
+    }
+
+    private fun NotificationRule.setConditionIds(savedNotificationRuleEntity: NotificationRuleEntity) {
+
+        condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
+
+        val ruleConditionComposite = condition!! as RuleConditionComposite
+        val savedConditionComposite = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
+        ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
     }
 }
