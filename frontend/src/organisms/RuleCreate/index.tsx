@@ -17,7 +17,6 @@ import { ruleCreationStateSelector } from '@/state/selectors'
 
 import Typography from '@material-ui/core/Typography'
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
-import BackIcon from '@fleetdata/shared/components/icons/chevron-left.icon'
 import NextIcon from '@fleetdata/shared/components/icons/chevron-right.icon'
 
 import ErrorMessage from '@/atoms/ErrorMessage'
@@ -52,7 +51,10 @@ const stepTitleKeys = ["general", "fleets", "condition", "timing", "summary"]
 
 const stepComponents: Array<React.LazyExoticComponent<RuleCreationStepView>> = [
   lazy(() => import('./RuleCreationGeneral')),
-  lazy(() => import('./RuleCreationFleets'))
+  lazy(() => import('./RuleCreationFleets')),
+  lazy(() => import('./RuleCreationCondition')),
+  lazy(() => import('./RuleCreationAggregator')),
+  lazy(() => import('./RuleCreationSummary'))
 ]
 
 const stepperProps = (activeStep: number, selectStep: SelectStepType, completedSteps: Set<number>) => ({
@@ -132,7 +134,6 @@ const RuleCreate: React.SFC<RuleCreateProps> = (
       <StyledActionArea>
         {currentStep !== 0 &&
           <Button primary="false"
-            iconleft={<BackIcon fill="#fff" />}
             onClick={previousStep}>
             <FormattedMessage id="cns.rule.creation.action.step.previous" />
           </Button>
