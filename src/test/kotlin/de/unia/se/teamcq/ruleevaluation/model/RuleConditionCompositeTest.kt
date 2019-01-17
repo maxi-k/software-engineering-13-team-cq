@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionCompositeTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionCompositeModel,
@@ -19,7 +19,5 @@ class RuleConditionCompositeTest : StringSpec() {
                     { it.subConditions = emptyList() }
             )
         }
-
-
     }
 }

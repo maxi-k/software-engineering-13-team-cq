@@ -1,5 +1,13 @@
 package de.unia.se.teamcq.ruleevaluation.dto
 
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "@type")
+@JsonSubTypes(
+        JsonSubTypes.Type(value = RuleConditionCompositeDto::class),
+        JsonSubTypes.Type(value = RuleConditionPredicateDto::class)
+)
 abstract class RuleConditionDto(
 
     var conditionId: Long? = 0
@@ -20,5 +28,4 @@ abstract class RuleConditionDto(
 
         return true
     }
-
 }

@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionCompositeDtoTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionCompositeDto,
@@ -20,7 +20,5 @@ class RuleConditionCompositeDtoTest : StringSpec() {
                     { it.subConditions = emptyList() }
             )
         }
-
-
     }
 }

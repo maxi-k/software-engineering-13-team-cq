@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionPredicateTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionPredicateModel,
@@ -21,7 +21,5 @@ class RuleConditionPredicateTest : StringSpec() {
                     { it.providerName = "test" }
             )
         }
-
-
     }
 }

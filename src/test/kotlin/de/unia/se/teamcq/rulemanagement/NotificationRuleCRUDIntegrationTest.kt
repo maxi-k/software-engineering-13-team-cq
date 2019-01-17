@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.rulemanagement
 
-import com.google.gson.Gson
+import com.fasterxml.jackson.databind.ObjectMapper
 import de.unia.se.teamcq.TestUtils.buildMockMvc
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.prepareAccessTokenHeader
@@ -33,8 +33,6 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
     @Autowired
     lateinit var jwtConfig: JwtConfig
 
-    private val gson = Gson()
-
     init {
         "Fail without Authorization" {
 
@@ -45,7 +43,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
             mockMvc.perform(MockMvcRequestBuilders
                     .post("/notification-rule-management/notification-rule")
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleToCreate)))
+                    .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
                     .andExpect(status().isUnauthorized)
         }
 
@@ -59,7 +57,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                     .post("/notification-rule-management/notification-rule")
                     .headers(prepareAccessTokenHeader(jwtConfig, "faketoken"))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleToCreate)))
+                    .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
                     .andExpect(status().isUnauthorized)
         }
 
@@ -152,7 +150,7 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                     .put("/notification-rule-management/notification-rule/$ruleId")
                     .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
                     .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(gson.toJson(notificationRuleUpdate)))
+                    .content(ObjectMapper().writeValueAsString(notificationRuleUpdate)))
                     .andExpect(status().isOk)
 
             mockMvc.perform(MockMvcRequestBuilders
@@ -160,9 +158,8 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                     .headers(prepareAccessTokenHeader(jwtConfig, accessToken)))
                     .andExpect(status().isOk)
                     .andExpect { result ->
-                        val returnedNotificationRule = gson.fromJson(
-                                result.response.contentAsString,
-                                NotificationRuleDto::class.java)
+                        val returnedNotificationRule = ObjectMapper()
+                                .readValue(result.response.contentAsString, NotificationRuleDto::class.java)
 
                         returnedNotificationRule!! shouldBe notificationRuleUpdate
                     }
@@ -181,12 +178,11 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                 .post("/notification-rule-management/notification-rule")
                 .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(gson.toJson(notificationRuleToCreate)))
+                .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
                 .andExpect(status().isOk)
                 .andExpect { result ->
-                    returnedNotificationRule = gson.fromJson(
-                            result.response.contentAsString,
-                            NotificationRuleDto::class.java)
+                    returnedNotificationRule = ObjectMapper()
+                            .readValue(result.response.contentAsString, NotificationRuleDto::class.java)
 
                     returnedNotificationRule!!.ruleId!!.shouldBeGreaterThanOrEqual(1)
                     returnedNotificationRule!!.name shouldBe notificationRuleToCreate.name
@@ -208,9 +204,8 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
                 .andExpect(status().isOk)
                 .andReturn()
 
-        val retrievedNotificationRule = gson.fromJson(
-                result.response.contentAsString,
-                NotificationRuleDto::class.java)
+        val retrievedNotificationRule = ObjectMapper()
+                .readValue(result.response.contentAsString, NotificationRuleDto::class.java)
 
         return retrievedNotificationRule!!
     }

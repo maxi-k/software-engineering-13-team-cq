@@ -10,14 +10,12 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionEntityTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionEntity,
                     { it.conditionId = 1 }
             )
         }
-
-
     }
 }

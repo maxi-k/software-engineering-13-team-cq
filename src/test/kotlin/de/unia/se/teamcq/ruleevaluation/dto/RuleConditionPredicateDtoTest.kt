@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionPredicateDtoTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionPredicateDto,
@@ -22,7 +22,5 @@ class RuleConditionPredicateDtoTest : StringSpec() {
                     { it.providerName = "test" }
             )
         }
-
-
     }
 }

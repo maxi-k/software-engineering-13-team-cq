@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionCompositeEntityTest : StringSpec() {
 
     init {
-        "Equal and HashCode should work" {
+        "Equals and HashCode should work" {
 
             testEqualAndHashCode(
                     ::getTestRuleConditionCompositeEntity,
@@ -20,7 +20,5 @@ class RuleConditionCompositeEntityTest : StringSpec() {
                     { it.subConditions = emptyList() }
             )
         }
-
-
     }
 }

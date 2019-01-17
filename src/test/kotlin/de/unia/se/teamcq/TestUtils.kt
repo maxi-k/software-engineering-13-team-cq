@@ -272,6 +272,7 @@ object TestUtils {
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
+
         generateObject() shouldBe generateObject()
 
         modifiers.forEach { modifier ->
