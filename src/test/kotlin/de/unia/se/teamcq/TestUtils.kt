@@ -37,6 +37,8 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
+import io.kotlintest.shouldBe
+import io.kotlintest.shouldNotBe
 import org.springframework.http.HttpHeaders
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
@@ -194,7 +196,7 @@ object TestUtils {
         return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
     }
 
-    fun getTestRuleConditionModel(): RuleCondition {
+    fun getTestRuleConditionCompositeModel(): RuleConditionComposite {
         return RuleConditionComposite(
                 0,
                 LogicalConnectiveType.ALL,
@@ -204,7 +206,7 @@ object TestUtils {
         )
     }
 
-    fun getTestRuleConditionDto(): RuleConditionDto {
+    fun getTestRuleConditionCompositeDto(): RuleConditionCompositeDto {
         return RuleConditionCompositeDto(
                 0,
                 LogicalConnectiveType.ALL,
@@ -214,7 +216,7 @@ object TestUtils {
         )
     }
 
-    fun getTestRuleConditionEntity(): RuleConditionEntity {
+    fun getTestRuleConditionCompositeEntity(): RuleConditionCompositeEntity {
         return RuleConditionCompositeEntity(
                 0,
                 LogicalConnectiveType.ALL,
@@ -222,6 +224,18 @@ object TestUtils {
                         getTestRuleConditionPredicateEntity()
                 )
         )
+    }
+
+    fun getTestRuleConditionModel(): RuleCondition {
+        return getTestRuleConditionCompositeModel()
+    }
+
+    fun getTestRuleConditionDto(): RuleConditionDto {
+        return getTestRuleConditionCompositeDto()
+    }
+
+    fun getTestRuleConditionEntity(): RuleConditionEntity {
+        return getTestRuleConditionCompositeEntity()
     }
 
     fun getTestRuleConditionModelWithGreaterDepth(): RuleCondition {
@@ -255,6 +269,18 @@ object TestUtils {
                         getTestRuleConditionEntity()
                 )
         )
+    }
+
+    fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
+        generateObject() shouldBe generateObject()
+
+        modifiers.forEach { modifier ->
+            val objectToModify = generateObject()
+            modifier(objectToModify)
+            generateObject() shouldNotBe objectToModify
+        }
+
+        generateObject().hashCode() shouldBe generateObject().hashCode()
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
