@@ -6,7 +6,7 @@ import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
-interface INotificationAggregatorCountingMapper {
+interface IAggregatorCountingMapper {
 
     fun modelToDto(notificationAggregatorCounting: AggregatorCounting):
             AggregatorCountingDto

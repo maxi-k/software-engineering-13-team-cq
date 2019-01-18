@@ -12,46 +12,44 @@ import org.springframework.boot.test.context.SpringBootTest
 class AggregatorScheduledMapperTest : StringSpec() {
 
     @Autowired
-    lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapperImpl
+    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapperImpl
 
     init {
 
-        // TODO: Clean up these tests. We can probably create a higher order util functions that does this
-
         "Convert model to entity" {
 
-            val notificationAggregatorScheduledModel = getTestAggregatorScheduledModel()
+            val aggregatorScheduledModel = getTestAggregatorScheduledModel()
 
-            val notificationAggregatorScheduledEntity = notificationAggregatorScheduledMapper.modelToEntity(notificationAggregatorScheduledModel)
+            val aggregatorScheduledEntity = aggregatorScheduledMapper.modelToEntity(aggregatorScheduledModel)
 
-            notificationAggregatorScheduledEntity shouldBe getTestAggregatorScheduledEntity()
+            aggregatorScheduledEntity shouldBe getTestAggregatorScheduledEntity()
         }
 
         "Convert entity to model" {
 
-            val notificationAggregatorScheduledEntity = getTestAggregatorScheduledEntity()
+            val aggregatorScheduledEntity = getTestAggregatorScheduledEntity()
 
-            val notificationAggregatorScheduledModel = notificationAggregatorScheduledMapper.entityToModel(notificationAggregatorScheduledEntity)
+            val aggregatorScheduledModel = aggregatorScheduledMapper.entityToModel(aggregatorScheduledEntity)
 
-            notificationAggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
+            aggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
         }
 
         "Convert model to dto" {
 
-            val notificationAggregatorScheduledModel = getTestAggregatorScheduledModel()
+            val aggregatorScheduledModel = getTestAggregatorScheduledModel()
 
-            val notificationAggregatorScheduledDto = notificationAggregatorScheduledMapper.modelToDto(notificationAggregatorScheduledModel)
+            val aggregatorScheduledDto = aggregatorScheduledMapper.modelToDto(aggregatorScheduledModel)
 
-            notificationAggregatorScheduledDto shouldBe getTestAggregatorScheduledDto()
+            aggregatorScheduledDto shouldBe getTestAggregatorScheduledDto()
         }
 
         "Convert dto to model" {
 
-            val notificationAggregatorScheduledDto = getTestAggregatorScheduledDto()
+            val aggregatorScheduledDto = getTestAggregatorScheduledDto()
 
-            val notificationAggregatorScheduledModel = notificationAggregatorScheduledMapper.dtoToModel(notificationAggregatorScheduledDto)
+            val aggregatorScheduledModel = aggregatorScheduledMapper.dtoToModel(aggregatorScheduledDto)
 
-            notificationAggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
+            aggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
         }
     }
 }

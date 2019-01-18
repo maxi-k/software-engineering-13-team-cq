@@ -16,49 +16,49 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
-class NotificationAggregatorMapper : INotificationAggregatorMapper {
+class AggregatorMapper : IAggregatorMapper {
 
     @Autowired
-    lateinit var notificationAggregatorImmediatetlyMapper: INotificationAggregatorImmediatetlyMapper
+    lateinit var aggregatorImmediateMapper: IAggregatorImmediateMapper
 
     @Autowired
-    lateinit var notificationAggregatorCountingMapper: INotificationAggregatorCountingMapper
+    lateinit var aggregatorCountingMapper: IAggregatorCountingMapper
 
     @Autowired
-    lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapper
+    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapper
 
     override fun modelToEntity(aggregator: Aggregator): AggregatorEntity {
         return when (aggregator) {
-            is AggregatorImmediate -> notificationAggregatorImmediatetlyMapper.modelToEntity(aggregator)
-            is AggregatorCounting -> notificationAggregatorCountingMapper.modelToEntity(aggregator)
-            is AggregatorScheduled -> notificationAggregatorScheduledMapper.modelToEntity(aggregator)
+            is AggregatorImmediate -> aggregatorImmediateMapper.modelToEntity(aggregator)
+            is AggregatorCounting -> aggregatorCountingMapper.modelToEntity(aggregator)
+            is AggregatorScheduled -> aggregatorScheduledMapper.modelToEntity(aggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregator")
         }
     }
 
     override fun entityToModel(aggregatorEntity: AggregatorEntity): Aggregator {
         return when (aggregatorEntity) {
-            is AggregatorImmediateEntity -> notificationAggregatorImmediatetlyMapper.entityToModel(aggregatorEntity)
-            is AggregatorCountingEntity -> notificationAggregatorCountingMapper.entityToModel(aggregatorEntity)
-            is AggregatorScheduledEntity -> notificationAggregatorScheduledMapper.entityToModel(aggregatorEntity)
+            is AggregatorImmediateEntity -> aggregatorImmediateMapper.entityToModel(aggregatorEntity)
+            is AggregatorCountingEntity -> aggregatorCountingMapper.entityToModel(aggregatorEntity)
+            is AggregatorScheduledEntity -> aggregatorScheduledMapper.entityToModel(aggregatorEntity)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregatorEntity")
         }
     }
 
     override fun modelToDto(aggregator: Aggregator): AggregatorDto {
         return when (aggregator) {
-            is AggregatorImmediate -> notificationAggregatorImmediatetlyMapper.modelToDto(aggregator)
-            is AggregatorCounting -> notificationAggregatorCountingMapper.modelToDto(aggregator)
-            is AggregatorScheduled -> notificationAggregatorScheduledMapper.modelToDto(aggregator)
+            is AggregatorImmediate -> aggregatorImmediateMapper.modelToDto(aggregator)
+            is AggregatorCounting -> aggregatorCountingMapper.modelToDto(aggregator)
+            is AggregatorScheduled -> aggregatorScheduledMapper.modelToDto(aggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregator")
         }
     }
 
     override fun dtoToModel(aggregatorDto: AggregatorDto): Aggregator {
         return when (aggregatorDto) {
-            is AggregatorImmediateDto -> notificationAggregatorImmediatetlyMapper.dtoToModel(aggregatorDto)
-            is AggregatorCountingDto -> notificationAggregatorCountingMapper.dtoToModel(aggregatorDto)
-            is AggregatorScheduledDto -> notificationAggregatorScheduledMapper.dtoToModel(aggregatorDto)
+            is AggregatorImmediateDto -> aggregatorImmediateMapper.dtoToModel(aggregatorDto)
+            is AggregatorCountingDto -> aggregatorCountingMapper.dtoToModel(aggregatorDto)
+            is AggregatorScheduledDto -> aggregatorScheduledMapper.dtoToModel(aggregatorDto)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregatorDto")
         }
     }

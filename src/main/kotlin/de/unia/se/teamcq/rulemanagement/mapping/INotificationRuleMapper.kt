@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.rulemanagement.mapping
 
-import de.unia.se.teamcq.notificationmanagement.mapping.INotificationAggregatorMapper
+import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
@@ -9,7 +9,7 @@ import de.unia.se.teamcq.user.mapping.IUserMapper
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring", uses = [IUserMapper::class, IRuleConditionMapper::class,
-    INotificationAggregatorMapper::class])
+    IAggregatorMapper::class])
 interface INotificationRuleMapper {
 
     fun modelToEntity(notificationRule: NotificationRule): NotificationRuleEntity

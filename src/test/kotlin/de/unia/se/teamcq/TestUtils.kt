@@ -287,15 +287,15 @@ object TestUtils {
         )
     }
 
-    fun getAggregatorImmediatelyModel(): AggregatorImmediate {
+    fun getAggregatorImmediateModel(): AggregatorImmediate {
         return AggregatorImmediate(0)
     }
 
-    fun getTestAggregatorImmediatelyDto(): AggregatorImmediateDto {
+    fun getTestAggregatorImmediateDto(): AggregatorImmediateDto {
         return AggregatorImmediateDto(0)
     }
 
-    fun getTestAggregatorImmediatelyEntity(): AggregatorImmediateEntity {
+    fun getTestAggregatorImmediateEntity(): AggregatorImmediateEntity {
         return AggregatorImmediateEntity(0)
     }
 

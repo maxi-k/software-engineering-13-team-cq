@@ -8,7 +8,7 @@ import org.springframework.scheduling.support.CronTrigger
 import org.springframework.stereotype.Component
 
 @Mapper(componentModel = "spring", uses = [CronTriggerMapper::class])
-interface INotificationAggregatorScheduledMapper {
+interface IAggregatorScheduledMapper {
 
     fun modelToDto(notificationAggregatorScheduled: AggregatorScheduled):
             AggregatorScheduledDto

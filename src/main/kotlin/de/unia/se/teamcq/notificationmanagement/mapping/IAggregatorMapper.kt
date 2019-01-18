@@ -6,7 +6,7 @@ import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import org.springframework.stereotype.Service
 
 @Service
-interface INotificationAggregatorMapper {
+interface IAggregatorMapper {
 
     fun modelToEntity(aggregator: Aggregator): AggregatorEntity
 

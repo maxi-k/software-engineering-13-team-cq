@@ -1,11 +1,11 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
+import de.unia.se.teamcq.TestUtils.getAggregatorImmediateModel
 import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingDto
 import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingEntity
 import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingModel
-import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediatelyDto
-import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediatelyEntity
-import de.unia.se.teamcq.TestUtils.getAggregatorImmediatelyModel
+import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediateDto
+import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediateEntity
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledDto
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledEntity
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledModel
@@ -21,89 +21,89 @@ import org.springframework.test.context.ContextConfiguration
 class AggregatorMapperTest : StringSpec() {
 
     @MockK(relaxed = true)
-    lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapper
+    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapper
 
     @MockK(relaxed = true)
-    lateinit var notificationAggregatorCountingdMapper: INotificationAggregatorCountingMapper
+    lateinit var aggregatorCountingdMapper: IAggregatorCountingMapper
 
     @MockK(relaxed = true)
-    lateinit var notificationAggregatorImmediatelyMapper: INotificationAggregatorImmediatetlyMapper
+    lateinit var aggregatorImmediatelyMapper: IAggregatorImmediateMapper
 
     @InjectMockKs
-    lateinit var notificationAggregatorMapper: NotificationAggregatorMapper
+    lateinit var aggregatorMapper: AggregatorMapper
 
     init {
         MockKAnnotations.init(this)
 
         "Convert model to entity" {
 
-            notificationAggregatorMapper.modelToEntity(getTestAggregatorScheduledModel())
+            aggregatorMapper.modelToEntity(getTestAggregatorScheduledModel())
             verify(exactly = 1) {
-                notificationAggregatorScheduledMapper.modelToEntity(any())
+                aggregatorScheduledMapper.modelToEntity(any())
             }
 
-            notificationAggregatorMapper.modelToEntity(getTestAggregatorCountingModel())
+            aggregatorMapper.modelToEntity(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                notificationAggregatorCountingdMapper.modelToEntity(any())
+                aggregatorCountingdMapper.modelToEntity(any())
             }
 
-            notificationAggregatorMapper.modelToEntity(getAggregatorImmediatelyModel())
+            aggregatorMapper.modelToEntity(getAggregatorImmediateModel())
             verify(exactly = 1) {
-                notificationAggregatorImmediatelyMapper.modelToEntity(any())
+                aggregatorImmediatelyMapper.modelToEntity(any())
             }
         }
 
         "Convert entity to model" {
 
-            notificationAggregatorMapper.entityToModel(getTestAggregatorScheduledEntity())
+            aggregatorMapper.entityToModel(getTestAggregatorScheduledEntity())
             verify(exactly = 1) {
-                notificationAggregatorScheduledMapper.entityToModel(any())
+                aggregatorScheduledMapper.entityToModel(any())
             }
 
-            notificationAggregatorMapper.entityToModel(getTestAggregatorCountingEntity())
+            aggregatorMapper.entityToModel(getTestAggregatorCountingEntity())
             verify(exactly = 1) {
-                notificationAggregatorCountingdMapper.entityToModel(any())
+                aggregatorCountingdMapper.entityToModel(any())
             }
 
-            notificationAggregatorMapper.entityToModel(getTestAggregatorImmediatelyEntity())
+            aggregatorMapper.entityToModel(getTestAggregatorImmediateEntity())
             verify(exactly = 1) {
-                notificationAggregatorImmediatelyMapper.entityToModel(any())
+                aggregatorImmediatelyMapper.entityToModel(any())
             }
         }
 
         "Convert model to dto" {
 
-            notificationAggregatorMapper.modelToDto(getTestAggregatorScheduledModel())
+            aggregatorMapper.modelToDto(getTestAggregatorScheduledModel())
             verify(exactly = 1) {
-                notificationAggregatorScheduledMapper.modelToDto(any())
+                aggregatorScheduledMapper.modelToDto(any())
             }
 
-            notificationAggregatorMapper.modelToDto(getTestAggregatorCountingModel())
+            aggregatorMapper.modelToDto(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                notificationAggregatorCountingdMapper.modelToDto(any())
+                aggregatorCountingdMapper.modelToDto(any())
             }
 
-            notificationAggregatorMapper.modelToDto(getAggregatorImmediatelyModel())
+            aggregatorMapper.modelToDto(getAggregatorImmediateModel())
             verify(exactly = 1) {
-                notificationAggregatorImmediatelyMapper.modelToDto(any())
+                aggregatorImmediatelyMapper.modelToDto(any())
             }
         }
 
         "Convert dto to model" {
 
-            notificationAggregatorMapper.dtoToModel(getTestAggregatorScheduledDto())
+            aggregatorMapper.dtoToModel(getTestAggregatorScheduledDto())
             verify(exactly = 1) {
-                notificationAggregatorScheduledMapper.dtoToModel(any())
+                aggregatorScheduledMapper.dtoToModel(any())
             }
 
-            notificationAggregatorMapper.dtoToModel(getTestAggregatorCountingDto())
+            aggregatorMapper.dtoToModel(getTestAggregatorCountingDto())
             verify(exactly = 1) {
-                notificationAggregatorCountingdMapper.dtoToModel(any())
+                aggregatorCountingdMapper.dtoToModel(any())
             }
 
-            notificationAggregatorMapper.dtoToModel(getTestAggregatorImmediatelyDto())
+            aggregatorMapper.dtoToModel(getTestAggregatorImmediateDto())
             verify(exactly = 1) {
-                notificationAggregatorImmediatelyMapper.dtoToModel(any())
+                aggregatorImmediatelyMapper.dtoToModel(any())
             }
         }
     }

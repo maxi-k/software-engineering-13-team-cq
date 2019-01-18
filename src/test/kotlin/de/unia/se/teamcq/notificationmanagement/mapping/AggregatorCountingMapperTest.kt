@@ -12,44 +12,44 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class AggregatorCountingMapperTest : StringSpec() {
 
-    private var notificationAggregatorCountingMapper = Mappers.getMapper(INotificationAggregatorCountingMapper::class.java)
+    private var aggregatorCountingMapper = Mappers.getMapper(IAggregatorCountingMapper::class.java)
 
     init {
 
         "Convert model to entity" {
 
-            val notificationAggregatorCountingModel = getTestAggregatorCountingModel()
+            val aggregatorCountingModel = getTestAggregatorCountingModel()
 
-            val notificationAggregatorCountingEntity = notificationAggregatorCountingMapper.modelToEntity(notificationAggregatorCountingModel)
+            val aggregatorCountingEntity = aggregatorCountingMapper.modelToEntity(aggregatorCountingModel)
 
-            notificationAggregatorCountingEntity shouldBe getTestAggregatorCountingEntity()
+            aggregatorCountingEntity shouldBe getTestAggregatorCountingEntity()
         }
 
         "Convert entity to model" {
 
-            val notificationAggregatorCountingEntity = getTestAggregatorCountingEntity()
+            val aggregatorCountingEntity = getTestAggregatorCountingEntity()
 
-            val notificationAggregatorCountingModel = notificationAggregatorCountingMapper.entityToModel(notificationAggregatorCountingEntity)
+            val aggregatorCountingModel = aggregatorCountingMapper.entityToModel(aggregatorCountingEntity)
 
-            notificationAggregatorCountingModel shouldBe getTestAggregatorCountingModel()
+            aggregatorCountingModel shouldBe getTestAggregatorCountingModel()
         }
 
         "Convert model to dto" {
 
-            val notificationAggregatorCountingModel = getTestAggregatorCountingModel()
+            val aggregatorCountingModel = getTestAggregatorCountingModel()
 
-            val notificationAggregatorCountingDto = notificationAggregatorCountingMapper.modelToDto(notificationAggregatorCountingModel)
+            val aggregatorCountingDto = aggregatorCountingMapper.modelToDto(aggregatorCountingModel)
 
-            notificationAggregatorCountingDto shouldBe getTestAggregatorCountingDto()
+            aggregatorCountingDto shouldBe getTestAggregatorCountingDto()
         }
 
         "Convert dto to model" {
 
-            val notificationAggregatorCountingDto = getTestAggregatorCountingDto()
+            val aggregatorCountingDto = getTestAggregatorCountingDto()
 
-            val notificationAggregatorCountingModel = notificationAggregatorCountingMapper.dtoToModel(notificationAggregatorCountingDto)
+            val aggregatorCountingModel = aggregatorCountingMapper.dtoToModel(aggregatorCountingDto)
 
-            notificationAggregatorCountingModel shouldBe getTestAggregatorCountingModel()
+            aggregatorCountingModel shouldBe getTestAggregatorCountingModel()
         }
     }
 }

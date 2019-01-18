@@ -12,7 +12,7 @@ import de.unia.se.teamcq.TestUtils.getTestRuleConditionModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
-import de.unia.se.teamcq.notificationmanagement.mapping.INotificationAggregatorMapper
+import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import io.kotlintest.shouldBe
@@ -32,7 +32,7 @@ class NotificationRuleMapperTest : StringSpec() {
     lateinit var mockIRuleConditionMapper: IRuleConditionMapper
 
     @MockK
-    lateinit var mockINotificationAggregatorMapper: INotificationAggregatorMapper
+    lateinit var mockIAggregatorMapper: IAggregatorMapper
 
     @MockK
     lateinit var mockIUserMapper: IUserMapper
@@ -49,7 +49,7 @@ class NotificationRuleMapperTest : StringSpec() {
             every { mockIRuleConditionMapper.modelToEntity(any()) } returns expectedRuleConditionEntity
 
             val expectedNotificationAggregatorEntity = getTestAggregatorEntity()
-            every { mockINotificationAggregatorMapper.modelToEntity(any()) } returns expectedNotificationAggregatorEntity
+            every { mockIAggregatorMapper.modelToEntity(any()) } returns expectedNotificationAggregatorEntity
 
             val expectedUserEntity = getTestUserEntity()
             every { mockIUserMapper.modelToEntity(any()) } returns expectedUserEntity
@@ -73,7 +73,7 @@ class NotificationRuleMapperTest : StringSpec() {
             every { mockIRuleConditionMapper.entityToModel(any()) } returns expectedRuleConditionModel
 
             val expectedNotificationAggregatorModel = getTestAggregatorModel()
-            every { mockINotificationAggregatorMapper.entityToModel(any()) } returns expectedNotificationAggregatorModel
+            every { mockIAggregatorMapper.entityToModel(any()) } returns expectedNotificationAggregatorModel
 
             every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
 
@@ -96,7 +96,7 @@ class NotificationRuleMapperTest : StringSpec() {
             every { mockIRuleConditionMapper.modelToDto(any()) } returns expectedRuleConditionDto
 
             val expectedNotificationAggregatorDto = getTestAggregatorDto()
-            every { mockINotificationAggregatorMapper.modelToDto(any()) } returns expectedNotificationAggregatorDto
+            every { mockIAggregatorMapper.modelToDto(any()) } returns expectedNotificationAggregatorDto
 
             every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
 
@@ -119,7 +119,7 @@ class NotificationRuleMapperTest : StringSpec() {
             every { mockIRuleConditionMapper.dtoToModel(any()) } returns expectedRuleConditionModel
 
             val expectedNotificationAggregatorModel = getTestAggregatorModel()
-            every { mockINotificationAggregatorMapper.dtoToModel(any()) } returns expectedNotificationAggregatorModel
+            every { mockIAggregatorMapper.dtoToModel(any()) } returns expectedNotificationAggregatorModel
 
             every { mockIUserMapper.dtoToModel(any()) } returns getTestUserModel()
 

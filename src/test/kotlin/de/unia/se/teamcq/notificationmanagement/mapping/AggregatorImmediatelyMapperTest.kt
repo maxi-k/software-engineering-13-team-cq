@@ -1,8 +1,8 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
-import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediatelyDto
-import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediatelyEntity
-import de.unia.se.teamcq.TestUtils.getAggregatorImmediatelyModel
+import de.unia.se.teamcq.TestUtils.getAggregatorImmediateModel
+import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediateDto
+import de.unia.se.teamcq.TestUtils.getTestAggregatorImmediateEntity
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import org.mapstruct.factory.Mappers
@@ -12,46 +12,44 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class AggregatorImmediatelyMapperTest : StringSpec() {
 
-    private var notificationAggregatorImmediatelyMapper = Mappers.getMapper(INotificationAggregatorImmediatetlyMapper::class.java)
+    private var aggregatorImmediatelyMapper = Mappers.getMapper(IAggregatorImmediateMapper::class.java)
 
     init {
 
-        // TODO: Clean up these tests. We can probably create a higher order util functions that does this
-
         "Convert model to entity" {
 
-            val notificationAggregatorImmediatelyModel = getAggregatorImmediatelyModel()
+            val aggregatorImmediatelyModel = getAggregatorImmediateModel()
 
-            val notificationAggregatorImmediatelyEntity = notificationAggregatorImmediatelyMapper.modelToEntity(notificationAggregatorImmediatelyModel)
+            val aggregatorImmediatelyEntity = aggregatorImmediatelyMapper.modelToEntity(aggregatorImmediatelyModel)
 
-            notificationAggregatorImmediatelyEntity shouldBe getTestAggregatorImmediatelyEntity()
+            aggregatorImmediatelyEntity shouldBe getTestAggregatorImmediateEntity()
         }
 
         "Convert entity to model" {
 
-            val notificationAggregatorImmediatelyEntity = getTestAggregatorImmediatelyEntity()
+            val aggregatorImmediateEntity = getTestAggregatorImmediateEntity()
 
-            val notificationAggregatorImmediatelyModel = notificationAggregatorImmediatelyMapper.entityToModel(notificationAggregatorImmediatelyEntity)
+            val aggregatorImmediateModel = aggregatorImmediatelyMapper.entityToModel(aggregatorImmediateEntity)
 
-            notificationAggregatorImmediatelyModel shouldBe getAggregatorImmediatelyModel()
+            aggregatorImmediateModel shouldBe getAggregatorImmediateModel()
         }
 
         "Convert model to dto" {
 
-            val notificationAggregatorImmediatlyModel = getAggregatorImmediatelyModel()
+            val aggregatorImmediateModel = getAggregatorImmediateModel()
 
-            val notificationAggregatorImmediatelyDto = notificationAggregatorImmediatelyMapper.modelToDto(notificationAggregatorImmediatlyModel)
+            val aggregatorImmediatelyDto = aggregatorImmediatelyMapper.modelToDto(aggregatorImmediateModel)
 
-            notificationAggregatorImmediatelyDto shouldBe getTestAggregatorImmediatelyDto()
+            aggregatorImmediatelyDto shouldBe getTestAggregatorImmediateDto()
         }
 
         "Convert dto to model" {
 
-            val notificationAggregatorImmediatelyDto = getTestAggregatorImmediatelyDto()
+            val aggregatorImmediateDto = getTestAggregatorImmediateDto()
 
-            val notificationAggregatorImmediatelyModel = notificationAggregatorImmediatelyMapper.dtoToModel(notificationAggregatorImmediatelyDto)
+            val aggregatorImmediateModel = aggregatorImmediatelyMapper.dtoToModel(aggregatorImmediateDto)
 
-            notificationAggregatorImmediatelyModel shouldBe getAggregatorImmediatelyModel()
+            aggregatorImmediateModel shouldBe getAggregatorImmediateModel()
         }
     }
 }

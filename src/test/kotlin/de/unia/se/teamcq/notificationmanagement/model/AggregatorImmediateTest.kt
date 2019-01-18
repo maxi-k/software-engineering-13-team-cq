@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.notificationmanagement.model
 
-import de.unia.se.teamcq.TestUtils.getAggregatorImmediatelyModel
+import de.unia.se.teamcq.TestUtils.getAggregatorImmediateModel
 import de.unia.se.teamcq.TestUtils.testEqualAndHashCode
 import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
@@ -13,7 +13,7 @@ class AggregatorImmediateTest : StringSpec() {
         "Equals and HashCode should work" {
 
             testEqualAndHashCode(
-                    ::getAggregatorImmediatelyModel,
+                    ::getAggregatorImmediateModel,
                     { it.aggregatorId = 1 }
             )
         }
