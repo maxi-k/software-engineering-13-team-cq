@@ -27,7 +27,7 @@ interface INotificationRuleMapper {
     fun dtoToModel(notificationRuleDto: NotificationRuleDto): NotificationRule
 }
 
-//Mapstruct seems to fail converting sets if the contained class is abstract
+// Mapstruct seems to fail converting sets if the contained class is abstract
 @Component
 class RecipientMapperHelper {
 

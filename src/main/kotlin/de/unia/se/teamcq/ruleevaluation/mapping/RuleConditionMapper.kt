@@ -67,9 +67,7 @@ class RuleConditionMapper : IRuleConditionMapper {
             ruleConditionEntity.conditionId = ruleConditionCompositeModel.conditionId
             ruleConditionEntity.logicalConnective = ruleConditionCompositeModel.logicalConnective
             ruleConditionEntity.subConditions = ruleConditionCompositeModel.subConditions.map { condition ->
-                val conditionEntity = modelToEntity(condition)
-                conditionEntity.parentCondition = ruleConditionEntity
-                conditionEntity
+                modelToEntity(condition)
             }
 
             ruleConditionEntity

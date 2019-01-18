@@ -6,23 +6,24 @@ import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 
 data class NotificationRule(
-        var ruleId: Long? = 0,
 
-        var name: String?,
+    var ruleId: Long? = 0,
 
-        var owner: User?,
+    var name: String?,
 
-        var description: String?,
+    var owner: User?,
 
-        var condition: RuleCondition?,
+    var description: String?,
 
-        var aggregator: Aggregator?,
+    var condition: RuleCondition?,
 
-        var recipients: List<Recipient>,
+    var aggregator: Aggregator?,
 
-        var ownerAsAdditionalRecipient: Boolean?
+    var recipients: List<Recipient>,
 
-        ) {
+    var ownerAsAdditionalRecipient: Boolean?
+
+) {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null, null, mutableListOf<Recipient>(), null)
 }

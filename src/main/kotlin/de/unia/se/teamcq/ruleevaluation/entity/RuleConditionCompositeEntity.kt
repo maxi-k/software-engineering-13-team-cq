@@ -1,10 +1,7 @@
 package de.unia.se.teamcq.ruleevaluation.entity
 
 import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
 import java.io.Serializable
-import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.OneToMany
@@ -20,13 +17,12 @@ class RuleConditionCompositeEntity(
     var logicalConnective: LogicalConnectiveType?,
 
     @get: NotNull
-    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RuleConditionEntity::class,
-            orphanRemoval = true, mappedBy = "parentCondition")
-    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(fetch = FetchType.EAGER, cascade = [javax.persistence.CascadeType.ALL],
+            targetEntity = RuleConditionEntity::class, orphanRemoval = true)
     @OrderColumn(name = "sub_conditions_order")
     var subConditions: List<RuleConditionEntity>
 
-) : RuleConditionEntity(conditionId, null), Serializable {
+) : RuleConditionEntity(conditionId), Serializable {
 
     // Necessary for MapStruct
     constructor() : this(null, null, mutableListOf<RuleConditionEntity>())
