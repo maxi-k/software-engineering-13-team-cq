@@ -22,7 +22,7 @@ class RuleConditionPredicateEntity(
     @get: NotNull
     var comparisonValue: String?
 
-) : Serializable, RuleConditionEntity(conditionId) {
+) : Serializable, RuleConditionEntity(conditionId, null) {
 
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null)

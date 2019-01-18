@@ -20,11 +20,11 @@ data class NotificationRuleDto(
 
     var aggregator: AggregatorDto?,
 
-    var recipients: Set<RecipientDto>,
+    var recipients: List<RecipientDto>,
 
     var ownerAsAdditionalRecipient: Boolean?
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null, null, mutableSetOf<RecipientDto>(), null)
+    constructor() : this(null, null, null, null, null, null, mutableListOf<RecipientDto>(), null)
 }

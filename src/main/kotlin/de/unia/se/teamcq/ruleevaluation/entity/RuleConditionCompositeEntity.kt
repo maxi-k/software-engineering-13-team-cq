@@ -6,6 +6,7 @@ import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.OneToMany
+import javax.persistence.OrderColumn
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -18,10 +19,11 @@ class RuleConditionCompositeEntity(
 
     @get: NotNull
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RuleConditionEntity::class,
-            orphanRemoval = true)
+            orphanRemoval = true, mappedBy = "parentCondition")
+    @OrderColumn(name = "sub_conditions_order")
     var subConditions: List<RuleConditionEntity>
 
-) : RuleConditionEntity(conditionId), Serializable {
+) : RuleConditionEntity(conditionId, null), Serializable {
 
     // Necessary for MapStruct
     constructor() : this(null, null, mutableListOf<RuleConditionEntity>())

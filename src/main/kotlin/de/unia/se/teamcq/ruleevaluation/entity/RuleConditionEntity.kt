@@ -5,13 +5,19 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 
 @Entity
 abstract class RuleConditionEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var conditionId: Long? = 0
+    var conditionId: Long? = 0,
+
+    @ManyToOne
+    @JoinColumn(name="parent_id")
+    var parentCondition: RuleConditionEntity?
 
 ) : Serializable {
 

@@ -19,7 +19,7 @@ class NotificationRuleBuilder private constructor() {
 
     private var aggregator: Aggregator? = null
 
-    private var recipients: Set<Recipient> = mutableSetOf()
+    private var recipients: List<Recipient> = mutableListOf()
 
     private var ownerAsAdditionalRecipient: Boolean? = true
 
@@ -35,7 +35,7 @@ class NotificationRuleBuilder private constructor() {
 
     fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
 
-    fun withRecipients(recipients: Set<Recipient>): NotificationRuleBuilder = apply { this.recipients = recipients }
+    fun withRecipients(recipients: List<Recipient>): NotificationRuleBuilder = apply { this.recipients = recipients }
 
     fun withOwnerAsAdditionalRecipient(ownerAsRecipient: Boolean): NotificationRuleBuilder = apply {
         this.ownerAsAdditionalRecipient = ownerAsRecipient

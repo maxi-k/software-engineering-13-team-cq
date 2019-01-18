@@ -34,23 +34,23 @@ class RecipientMapperHelper {
     @Autowired
     lateinit var recipientMapper: IRecipientMapper
 
-    fun modelToEntity(set: Set<Recipient>): Set<RecipientEntity> {
+    fun modelToEntity(list: List<Recipient>): List<RecipientEntity> {
 
-        return set.map { recipient -> recipientMapper.modelToEntity(recipient) }.toSet()
+        return list.map { recipient -> recipientMapper.modelToEntity(recipient) }
     }
 
-    fun entityToModel(set: Set<RecipientEntity>): Set<Recipient> {
+    fun entityToModel(list: List<RecipientEntity>): List<Recipient> {
 
-        return set.map { recipient -> recipientMapper.entityToModel(recipient) }.toSet()
+        return list.map { recipient -> recipientMapper.entityToModel(recipient) }
     }
 
-    fun modelToDto(set: Set<Recipient>): Set<RecipientDto> {
+    fun modelToDto(list: List<Recipient>): List<RecipientDto> {
 
-        return set.map { recipient -> recipientMapper.modelToDto(recipient) }.toSet()
+        return list.map { recipient -> recipientMapper.modelToDto(recipient) }
     }
 
-    fun dtoToModel(set: Set<RecipientDto>): Set<Recipient> {
+    fun dtoToModel(list: List<RecipientDto>): List<Recipient> {
 
-        return set.map { recipient -> recipientMapper.dtoToModel(recipient) }.toSet()
+        return list.map { recipient -> recipientMapper.dtoToModel(recipient) }
     }
 }

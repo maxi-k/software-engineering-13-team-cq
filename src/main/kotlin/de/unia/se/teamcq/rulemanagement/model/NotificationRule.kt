@@ -18,11 +18,11 @@ data class NotificationRule(
 
         var aggregator: Aggregator?,
 
-        var recipients: Set<Recipient>,
+        var recipients: List<Recipient>,
 
         var ownerAsAdditionalRecipient: Boolean?
 
         ) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null, null, mutableSetOf<Recipient>(), null)
+    constructor() : this(null, null, null, null, null, null, mutableListOf<Recipient>(), null)
 }
