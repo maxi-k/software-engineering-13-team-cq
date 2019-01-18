@@ -86,6 +86,8 @@ object TestUtils {
                 .withDescription("description")
                 .withCondition(getTestRuleConditionModel())
                 .withAggregator(getTestAggregatorModel())
+                .withRecipients(getTestRecipientModels())
+                .withOwnerAsAdditionalRecipient(true)
                 .build()
     }
 
@@ -96,7 +98,9 @@ object TestUtils {
                 owner = getTestUserDto(),
                 description = "description",
                 condition = getTestRuleConditionDto(),
-                aggregator = getTestAggregatorDto()
+                aggregator = getTestAggregatorDto(),
+                recipients = getTestRecipientDtos(),
+                ownerAsAdditionalRecipient = true
         )
     }
 
@@ -107,7 +111,9 @@ object TestUtils {
                 owner = getTestUserEntity(),
                 description = "description",
                 condition = getTestRuleConditionEntity(),
-                aggregator = getTestAggregatorEntity()
+                aggregator = getTestAggregatorEntity(),
+                recipients = getTestRecipientEntities(),
+                ownerAsAdditionalRecipient = true
         )
     }
 
@@ -378,6 +384,18 @@ object TestUtils {
 
     fun getTestRecipientSmsEntity(): RecipientSmsEntity {
         return RecipientSmsEntity(0, "12345678")
+    }
+
+    fun getTestRecipientEntities(): Set<RecipientEntity> {
+        return setOf(getTestRecipientSmsEntity(), getTestRecipientMailEntity())
+    }
+
+    fun getTestRecipientDtos(): Set<RecipientDto> {
+        return setOf(getTestRecipientSmsDto(), getTestRecipientMailDto())
+    }
+
+    fun getTestRecipientModels(): Set<Recipient> {
+        return setOf(getTestRecipientSmsModel(), getTestRecipientMailModel())
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

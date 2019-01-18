@@ -17,7 +17,8 @@ class RuleConditionCompositeEntity(
     var logicalConnective: LogicalConnectiveType?,
 
     @get: NotNull
-    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RuleConditionEntity::class)
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RuleConditionEntity::class,
+            orphanRemoval = true)
     var subConditions: List<RuleConditionEntity>
 
 ) : RuleConditionEntity(conditionId), Serializable {

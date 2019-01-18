@@ -6,6 +6,9 @@ import de.unia.se.teamcq.TestUtils.getTestAggregatorModel
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleEntity
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
+import de.unia.se.teamcq.TestUtils.getTestRecipientDtos
+import de.unia.se.teamcq.TestUtils.getTestRecipientEntities
+import de.unia.se.teamcq.TestUtils.getTestRecipientModels
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionDto
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntity
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionModel
@@ -16,7 +19,6 @@ import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -37,6 +39,9 @@ class NotificationRuleMapperTest : StringSpec() {
     @MockK
     lateinit var mockIUserMapper: IUserMapper
 
+    @MockK
+    lateinit var mockRecipientMapperHelper: RecipientMapperHelper
+
     @InjectMockKs
     lateinit var notificationRuleMapper: INotificationRuleMapperImpl
 
@@ -45,95 +50,70 @@ class NotificationRuleMapperTest : StringSpec() {
 
         "Convert model to entity" {
 
-            val expectedRuleConditionEntity = getTestRuleConditionEntity()
-            every { mockIRuleConditionMapper.modelToEntity(any()) } returns expectedRuleConditionEntity
+            every { mockIRuleConditionMapper.modelToEntity(any()) } returns getTestRuleConditionEntity()
 
-            val expectedNotificationAggregatorEntity = getTestAggregatorEntity()
-            every { mockIAggregatorMapper.modelToEntity(any()) } returns expectedNotificationAggregatorEntity
+            every { mockIAggregatorMapper.modelToEntity(any()) } returns getTestAggregatorEntity()
 
-            val expectedUserEntity = getTestUserEntity()
-            every { mockIUserMapper.modelToEntity(any()) } returns expectedUserEntity
+            every { mockIUserMapper.modelToEntity(any()) } returns getTestUserEntity()
+
+            every { mockRecipientMapperHelper.modelToEntity(any()) } returns getTestRecipientEntities()
 
             val notificationRule = getTestNotificationRuleModel()
-            val expectedNotificationRuleEntity = getTestNotificationRuleEntity()
 
             val notificationRuleEntity = notificationRuleMapper.modelToEntity(notificationRule)
 
-            notificationRuleEntity shouldNotBe null
-            notificationRuleEntity.name shouldBe expectedNotificationRuleEntity.name
-            notificationRuleEntity.description shouldBe expectedNotificationRuleEntity.description
-            notificationRuleEntity.owner shouldBe expectedUserEntity
-            notificationRuleEntity.condition shouldBe expectedRuleConditionEntity
-            notificationRuleEntity.aggregator shouldBe expectedNotificationAggregatorEntity
+            notificationRuleEntity shouldBe getTestNotificationRuleEntity()
         }
 
         "Convert entity to model" {
 
-            val expectedRuleConditionModel = getTestRuleConditionModel()
-            every { mockIRuleConditionMapper.entityToModel(any()) } returns expectedRuleConditionModel
+            every { mockIRuleConditionMapper.entityToModel(any()) } returns getTestRuleConditionModel()
 
-            val expectedNotificationAggregatorModel = getTestAggregatorModel()
-            every { mockIAggregatorMapper.entityToModel(any()) } returns expectedNotificationAggregatorModel
+            every { mockIAggregatorMapper.entityToModel(any()) } returns getTestAggregatorModel()
 
             every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
 
+            every { mockRecipientMapperHelper.entityToModel(any()) } returns getTestRecipientModels()
+
             val notificationRuleEntity = getTestNotificationRuleEntity()
-            val expectedNotificationRuleModel = getTestNotificationRuleModel()
 
             val notificationRule = notificationRuleMapper.entityToModel(notificationRuleEntity)
 
-            notificationRule shouldNotBe null
-            notificationRule.name shouldBe expectedNotificationRuleModel.name
-            notificationRule.description shouldBe expectedNotificationRuleModel.description
-            notificationRule.owner shouldBe expectedNotificationRuleModel.owner
-            notificationRule.condition shouldBe expectedRuleConditionModel
-            notificationRule.aggregator shouldBe expectedNotificationAggregatorModel
+            notificationRule shouldBe getTestNotificationRuleModel()
         }
 
         "Convert model to dto" {
 
-            val expectedRuleConditionDto = getTestRuleConditionDto()
-            every { mockIRuleConditionMapper.modelToDto(any()) } returns expectedRuleConditionDto
+            every { mockIRuleConditionMapper.modelToDto(any()) } returns getTestRuleConditionDto()
 
-            val expectedNotificationAggregatorDto = getTestAggregatorDto()
-            every { mockIAggregatorMapper.modelToDto(any()) } returns expectedNotificationAggregatorDto
+            every { mockIAggregatorMapper.modelToDto(any()) } returns getTestAggregatorDto()
 
             every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
 
+            every { mockRecipientMapperHelper.modelToDto(any()) } returns getTestRecipientDtos()
+
             val notificationRule = getTestNotificationRuleModel()
-            val expectedNotificationRuleDto = getTestNotificationRuleDto()
 
             val notificationRuleDto = notificationRuleMapper.modelToDto(notificationRule)
 
-            notificationRuleDto shouldNotBe null
-            notificationRuleDto.name shouldBe expectedNotificationRuleDto.name
-            notificationRuleDto.description shouldBe expectedNotificationRuleDto.description
-            notificationRuleDto.owner shouldBe expectedNotificationRuleDto.owner
-            notificationRuleDto.condition shouldBe expectedRuleConditionDto
-            notificationRuleDto.aggregator shouldBe expectedNotificationAggregatorDto
+            notificationRuleDto shouldBe getTestNotificationRuleDto()
         }
 
         "Convert dto to model" {
 
-            val expectedRuleConditionModel = getTestRuleConditionModel()
-            every { mockIRuleConditionMapper.dtoToModel(any()) } returns expectedRuleConditionModel
+            every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
 
-            val expectedNotificationAggregatorModel = getTestAggregatorModel()
-            every { mockIAggregatorMapper.dtoToModel(any()) } returns expectedNotificationAggregatorModel
+            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
             every { mockIUserMapper.dtoToModel(any()) } returns getTestUserModel()
 
+            every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
+
             val notificationRuleDto = getTestNotificationRuleDto()
-            val expectedNotificationRuleModel = getTestNotificationRuleModel()
 
             val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
 
-            notificationRule shouldNotBe null
-            notificationRule.name shouldBe expectedNotificationRuleModel.name
-            notificationRule.description shouldBe expectedNotificationRuleModel.description
-            notificationRule.owner shouldBe expectedNotificationRuleModel.owner
-            notificationRule.condition shouldBe expectedRuleConditionModel
-            notificationRule.aggregator shouldBe expectedNotificationAggregatorModel
+            notificationRule shouldBe getTestNotificationRuleModel()
         }
     }
 }

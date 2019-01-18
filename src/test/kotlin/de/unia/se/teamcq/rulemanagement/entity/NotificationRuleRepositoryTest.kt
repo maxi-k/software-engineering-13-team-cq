@@ -6,6 +6,10 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientMailEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientSmsEntity
+import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
+import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
@@ -182,6 +186,14 @@ class NotificationRuleRepositoryTest : StringSpec() {
         ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
 
         aggregator!!.aggregatorId = savedNotificationRule.aggregator!!.aggregatorId
+
+        recipients.forEach { recipientWithoutId ->
+
+            recipientWithoutId.recipientId = savedNotificationRule.recipients.first { recipientWithId ->
+                (recipientWithId is RecipientMail && recipientWithoutId is RecipientMail) ||
+                        (recipientWithId is RecipientSms && recipientWithoutId is RecipientSms)
+            }.recipientId
+        }
     }
 
     private fun NotificationRule.setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity: NotificationRuleEntity) {
@@ -194,5 +206,13 @@ class NotificationRuleRepositoryTest : StringSpec() {
         ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
 
         aggregator!!.aggregatorId = savedNotificationRuleEntity.aggregator!!.aggregatorId
+
+        recipients.forEach { recipientWithoutId ->
+
+            recipientWithoutId.recipientId = savedNotificationRuleEntity.recipients.first { recipientWithId ->
+                (recipientWithId is RecipientMailEntity && recipientWithoutId is RecipientMail) ||
+                        (recipientWithId is RecipientSmsEntity && recipientWithoutId is RecipientSms)
+            }.recipientId
+        }
     }
 }
