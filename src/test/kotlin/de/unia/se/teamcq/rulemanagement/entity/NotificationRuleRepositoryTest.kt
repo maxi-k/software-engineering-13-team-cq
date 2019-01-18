@@ -1,13 +1,16 @@
 package de.unia.se.teamcq.rulemanagement.entity
 
+import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingEntity
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleEntity
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -89,26 +92,72 @@ class NotificationRuleRepositoryTest : StringSpec() {
             savedNotificationRule shouldBe expectedNotificationRule
         }
 
-        "UpdateNotificationRule should work and not overwrite user" {
+        "UpdateNotificationRule" should {
+            "Update and not overwrite user" {
 
-            val oldUserEntity = getTestUserEntity().apply { mailAddress = "test1" }
-            val oldUserModel = getTestUserModel().apply { mailAddress = "test1" }
-            val notificationRuleWithOldUser = getTestNotificationRuleEntity().copy(owner = oldUserEntity)
+                val oldUserEntity = getTestUserEntity().apply { mailAddress = "test1" }
+                val oldUserModel = getTestUserModel().apply { mailAddress = "test1" }
+                val notificationRuleWithOldUser = getTestNotificationRuleEntity().copy(owner = oldUserEntity)
 
-            userEnityRepository.save(oldUserEntity)
-            val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleWithOldUser)
+                userEnityRepository.save(oldUserEntity)
+                val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleWithOldUser)
 
-            val newUser = getTestUserModel().apply { mailAddress = "" }
-            val newNotificationRuleWithNewUser = getTestNotificationRuleModel().apply {
-                description = "new"
-                owner = newUser
-                setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
+                val newUser = getTestUserModel().apply { mailAddress = "" }
+                val newNotificationRuleWithNewUser = getTestNotificationRuleModel().apply {
+                    description = "new"
+                    owner = newUser
+                    setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
+                }
+
+                val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
+
+                updatedNotificationRule.copy(owner = null) shouldBe newNotificationRuleWithNewUser.copy(owner = null)
+                updatedNotificationRule.owner shouldBe oldUserModel
             }
 
-            val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
+            "Update conditions" {
 
-            updatedNotificationRule.copy(owner = null) shouldBe newNotificationRuleWithNewUser.copy(owner = null)
-            updatedNotificationRule.owner shouldBe oldUserModel
+                val userEntity = getTestUserEntity()
+                val notificationRuleWithOldCondition = getTestNotificationRuleEntity()
+                        .copy(condition = getTestRuleConditionEntityWithGreaterDepth())
+
+                userEnityRepository.save(userEntity)
+                val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleWithOldCondition)
+
+                val newNotificationRuleWithNewCondition = getTestNotificationRuleModel().apply {
+                    setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
+                }
+
+                val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewCondition)!!
+
+                val expectedNotificationRule = newNotificationRuleWithNewCondition
+                        // Ids of Subclasses of abstract classes may have changed
+                        .apply { setIdsOfRelatedHibernateEntities(updatedNotificationRule) }
+
+                updatedNotificationRule shouldBe expectedNotificationRule
+            }
+
+            "Update aggregators" {
+
+                val userEntity = getTestUserEntity()
+                val notificationRuleWithOldAggregator = getTestNotificationRuleEntity()
+                        .copy(aggregator = getTestAggregatorCountingEntity())
+
+                userEnityRepository.save(userEntity)
+                val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleWithOldAggregator)
+
+                val newNotificationRuleWithNewAggregator = getTestNotificationRuleModel().apply {
+                    setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
+                }
+
+                val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewAggregator)!!
+
+                val expectedNotificationRule = newNotificationRuleWithNewAggregator
+                        // Ids of Subclasses of abstract classes may have changed
+                        .apply { setIdsOfRelatedHibernateEntities(updatedNotificationRule) }
+
+                updatedNotificationRule shouldBe expectedNotificationRule
+            }
         }
 
         "DeleteNotificationRule should work" {
