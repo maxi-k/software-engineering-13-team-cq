@@ -4,6 +4,9 @@ import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientMailDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientSmsDto
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
@@ -333,6 +336,18 @@ object TestUtils {
 
     fun getTestAggregatorEntity(): AggregatorEntity {
         return getTestAggregatorScheduledEntity()
+    }
+
+    fun getTestRecipientDto(): RecipientDto {
+        return getTestRecipientMailDto()
+    }
+
+    fun getTestRecipientMailDto(): RecipientMailDto {
+        return RecipientMailDto(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsDto(): RecipientSmsDto {
+        return RecipientSmsDto(0, "12345678")
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
