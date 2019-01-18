@@ -111,9 +111,9 @@ object TestUtils {
                 owner = getTestUserEntity(),
                 description = "description",
                 condition = getTestRuleConditionEntity(),
-                aggregator = getTestAggregatorEntity(),
-                recipients = getTestRecipientEntities(),
-                ownerAsAdditionalRecipient = true
+                aggregator = getTestAggregatorEntity()//,
+                //recipients = getTestRecipientEntities(),
+                //ownerAsAdditionalRecipient = true
         )
     }
 

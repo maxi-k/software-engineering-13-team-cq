@@ -6,8 +6,6 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
-import de.unia.se.teamcq.notificationmanagement.entity.RecipientMailEntity
-import de.unia.se.teamcq.notificationmanagement.entity.RecipientSmsEntity
 import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
 import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
@@ -209,10 +207,10 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
         recipients.forEach { recipientWithoutId ->
 
-            recipientWithoutId.recipientId = savedNotificationRuleEntity.recipients.first { recipientWithId ->
-                (recipientWithId is RecipientMailEntity && recipientWithoutId is RecipientMail) ||
-                        (recipientWithId is RecipientSmsEntity && recipientWithoutId is RecipientSms)
-            }.recipientId
+            //recipientWithoutId.recipientId = savedNotificationRuleEntity.recipients.first { recipientWithId ->
+            //    (recipientWithId is RecipientMailEntity && recipientWithoutId is RecipientMail) ||
+            //            (recipientWithId is RecipientSmsEntity && recipientWithoutId is RecipientSms)
+            //}.recipientId
         }
     }
 }
