@@ -15,17 +15,17 @@ import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorSche
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
-@Autowired
-lateinit var notificationAggregatorImmediatetlyMapper: INotificationAggregatorImmediatetlyMapper
-
-@Autowired
-lateinit var notificationAggregatorCountingMapper: INotificationAggregatorCountingMapper
-
-@Autowired
-lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapper
-
 @Component
 class NotificationAggregatorMapper : INotificationAggregatorMapper {
+
+    @Autowired
+    lateinit var notificationAggregatorImmediatetlyMapper: INotificationAggregatorImmediatetlyMapper
+
+    @Autowired
+    lateinit var notificationAggregatorCountingMapper: INotificationAggregatorCountingMapper
+
+    @Autowired
+    lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapper
 
     override fun modelToEntity(notificationAggregator: NotificationAggregator): NotificationAggregatorEntity {
         return when (notificationAggregator) {
