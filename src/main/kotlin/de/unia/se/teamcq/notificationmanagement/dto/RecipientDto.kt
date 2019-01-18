@@ -11,7 +11,7 @@ import java.io.Serializable
 )
 abstract class RecipientDto(
 
-        var recipientId: Long? = 0
+    var recipientId: Long? = 0
 
 ) : Serializable {
 

@@ -19,6 +19,8 @@ data class NotificationRuleDto(
 
     var aggregator: AggregatorDto?
 
+    // TODO: Add boolean attribute whether the User wants the notifications himself in addition to recipients
+
 ) : Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null, null)

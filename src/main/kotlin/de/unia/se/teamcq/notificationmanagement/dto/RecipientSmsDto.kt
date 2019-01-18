@@ -2,9 +2,9 @@ package de.unia.se.teamcq.notificationmanagement.dto
 
 class RecipientSmsDto(
 
-        recipientId: Long? = 0,
+    recipientId: Long? = 0,
 
-        var phoneNumber: String?
+    var phoneNumber: String?
 
 ) : RecipientDto(recipientId) {
 
