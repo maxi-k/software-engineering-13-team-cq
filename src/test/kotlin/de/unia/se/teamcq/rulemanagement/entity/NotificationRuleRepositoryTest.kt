@@ -50,8 +50,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
                 owner!!.name = "test1"
-                ruleId = savedNotificationRuleEntity.ruleId
-                setConditionIds(savedNotificationRuleEntity)
+                setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
             }
             notificationRulesForUser.first() shouldBe expectedNotificationRule
         }
@@ -64,8 +63,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             val actualNotificationRule = notificationRuleRepository.getNotificationRule(savedNotificationRuleEntity.ruleId!!)
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
-                ruleId = savedNotificationRuleEntity.ruleId!!
-                setConditionIds(savedNotificationRuleEntity)
+                setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
             }
 
             actualNotificationRule shouldBe expectedNotificationRule
@@ -85,8 +83,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val savedNotificationRule = notificationRuleRepository.createNotificationRule(getTestNotificationRuleModel())
 
             val expectedNotificationRule = getTestNotificationRuleModel().apply {
-                ruleId = savedNotificationRule!!.ruleId!!
-                setConditionIds(savedNotificationRule)
+                setIdsOfRelatedHibernateEntities(savedNotificationRule!!)
             }
 
             savedNotificationRule shouldBe expectedNotificationRule
@@ -105,8 +102,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             val newNotificationRuleWithNewUser = getTestNotificationRuleModel().apply {
                 description = "new"
                 owner = newUser
-                ruleId = savedNotificationRuleEntity.ruleId
-                setConditionIds(savedNotificationRuleEntity)
+                setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
             }
 
             val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
@@ -127,20 +123,27 @@ class NotificationRuleRepositoryTest : StringSpec() {
         }
     }
 
-    private fun NotificationRule.setConditionIds(savedNotificationRule: NotificationRule) {
+    private fun NotificationRule.setIdsOfRelatedHibernateEntities(savedNotificationRule: NotificationRule) {
+        ruleId = savedNotificationRule.ruleId!!
+
         condition!!.conditionId = savedNotificationRule.condition!!.conditionId
 
         val ruleConditionComposite = condition!! as RuleConditionComposite
         val savedConditionComposite = savedNotificationRule.condition!! as RuleConditionComposite
         ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
+
+        aggregator!!.aggregatorId = savedNotificationRule.aggregator!!.aggregatorId
     }
 
-    private fun NotificationRule.setConditionIds(savedNotificationRuleEntity: NotificationRuleEntity) {
+    private fun NotificationRule.setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity: NotificationRuleEntity) {
 
+        ruleId = savedNotificationRuleEntity.ruleId
         condition!!.conditionId = savedNotificationRuleEntity.condition!!.conditionId
 
         val ruleConditionComposite = condition!! as RuleConditionComposite
         val savedConditionComposite = savedNotificationRuleEntity.condition!! as RuleConditionCompositeEntity
         ruleConditionComposite.subConditions[0].conditionId = savedConditionComposite.subConditions[0].conditionId
+
+        aggregator!!.aggregatorId = savedNotificationRuleEntity.aggregator!!.aggregatorId
     }
 }

@@ -1,22 +1,22 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorImmediateDto
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorImmediateEntity
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorImmediate
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
 interface INotificationAggregatorImmediatetlyMapper {
 
-    fun modelToDto(notificationAggregatorImmediate: NotificationAggregatorImmediate):
-            NotificationAggregatorImmediateDto
+    fun modelToDto(notificationAggregatorImmediate: AggregatorImmediate):
+            AggregatorImmediateDto
 
-    fun dtoToModel(notificationAggregatorImmediateDto: NotificationAggregatorImmediateDto):
-            NotificationAggregatorImmediate
+    fun dtoToModel(notificationAggregatorImmediateDto: AggregatorImmediateDto):
+            AggregatorImmediate
 
-    fun modelToEntity(notificationAggregatorImmediate: NotificationAggregatorImmediate):
-            NotificationAggregatorImmediateEntity
+    fun modelToEntity(notificationAggregatorImmediate: AggregatorImmediate):
+            AggregatorImmediateEntity
 
-    fun entityToModel(notificationAggregatorImmediateEntity: NotificationAggregatorImmediateEntity):
-            NotificationAggregatorImmediate
+    fun entityToModel(notificationAggregatorImmediateEntity: AggregatorImmediateEntity):
+            AggregatorImmediate
 }

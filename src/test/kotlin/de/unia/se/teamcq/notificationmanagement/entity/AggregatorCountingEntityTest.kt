@@ -1,22 +1,21 @@
-package de.unia.se.teamcq.notificationmanagement.model
+package de.unia.se.teamcq.notificationmanagement.entity
 
-import de.unia.se.teamcq.TestUtils.getTestNotificationAggregatorScheduledModel
+import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingEntity
 import de.unia.se.teamcq.TestUtils.testEqualAndHashCode
 import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.scheduling.support.CronTrigger
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [TestConfiguration::class])
-class NotificationAggregatorScheduledTest : StringSpec() {
+class AggregatorCountingEntityTest : StringSpec() {
 
     init {
         "Equals and HashCode should work" {
 
             testEqualAndHashCode(
-                    ::getTestNotificationAggregatorScheduledModel,
+                    ::getTestAggregatorCountingEntity,
                     { it.aggregatorId = 1 },
-                    { it.notificationCronTrigger = CronTrigger("0 0 10 * * TUE") }
+                    { it.notificationCountThreshold = 20 }
             )
         }
     }

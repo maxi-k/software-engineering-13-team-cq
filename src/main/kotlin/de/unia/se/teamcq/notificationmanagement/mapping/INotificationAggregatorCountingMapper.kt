@@ -1,22 +1,22 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorCountingDto
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorCountingEntity
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorCounting
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
 interface INotificationAggregatorCountingMapper {
 
-    fun modelToDto(notificationAggregatorCounting: NotificationAggregatorCounting):
-            NotificationAggregatorCountingDto
+    fun modelToDto(notificationAggregatorCounting: AggregatorCounting):
+            AggregatorCountingDto
 
-    fun dtoToModel(notificationAggregatorCountingDto: NotificationAggregatorCountingDto):
-            NotificationAggregatorCounting
+    fun dtoToModel(notificationAggregatorCountingDto: AggregatorCountingDto):
+            AggregatorCounting
 
-    fun modelToEntity(notificationAggregatorCounting: NotificationAggregatorCounting):
-            NotificationAggregatorCountingEntity
+    fun modelToEntity(notificationAggregatorCounting: AggregatorCounting):
+            AggregatorCountingEntity
 
-    fun entityToModel(notificationAggregatorCountingEntity: NotificationAggregatorCountingEntity):
-            NotificationAggregatorCounting
+    fun entityToModel(aggregatorCountingEntity: AggregatorCountingEntity):
+            AggregatorCounting
 }

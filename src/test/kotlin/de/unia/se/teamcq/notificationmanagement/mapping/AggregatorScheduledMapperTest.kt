@@ -1,15 +1,15 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
-import de.unia.se.teamcq.TestUtils.getTestNotificationAggregatorScheduledDto
-import de.unia.se.teamcq.TestUtils.getTestNotificationAggregatorScheduledEntity
-import de.unia.se.teamcq.TestUtils.getTestNotificationAggregatorScheduledModel
+import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledDto
+import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledEntity
+import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledModel
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class NotificationAggregatorScheduledMapperTest : StringSpec() {
+class AggregatorScheduledMapperTest : StringSpec() {
 
     @Autowired
     lateinit var notificationAggregatorScheduledMapper: INotificationAggregatorScheduledMapperImpl
@@ -20,38 +20,38 @@ class NotificationAggregatorScheduledMapperTest : StringSpec() {
 
         "Convert model to entity" {
 
-            val notificationAggregatorScheduledModel = getTestNotificationAggregatorScheduledModel()
+            val notificationAggregatorScheduledModel = getTestAggregatorScheduledModel()
 
             val notificationAggregatorScheduledEntity = notificationAggregatorScheduledMapper.modelToEntity(notificationAggregatorScheduledModel)
 
-            notificationAggregatorScheduledEntity shouldBe getTestNotificationAggregatorScheduledEntity()
+            notificationAggregatorScheduledEntity shouldBe getTestAggregatorScheduledEntity()
         }
 
         "Convert entity to model" {
 
-            val notificationAggregatorScheduledEntity = getTestNotificationAggregatorScheduledEntity()
+            val notificationAggregatorScheduledEntity = getTestAggregatorScheduledEntity()
 
             val notificationAggregatorScheduledModel = notificationAggregatorScheduledMapper.entityToModel(notificationAggregatorScheduledEntity)
 
-            notificationAggregatorScheduledModel shouldBe getTestNotificationAggregatorScheduledModel()
+            notificationAggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
         }
 
         "Convert model to dto" {
 
-            val notificationAggregatorScheduledModel = getTestNotificationAggregatorScheduledModel()
+            val notificationAggregatorScheduledModel = getTestAggregatorScheduledModel()
 
             val notificationAggregatorScheduledDto = notificationAggregatorScheduledMapper.modelToDto(notificationAggregatorScheduledModel)
 
-            notificationAggregatorScheduledDto shouldBe getTestNotificationAggregatorScheduledDto()
+            notificationAggregatorScheduledDto shouldBe getTestAggregatorScheduledDto()
         }
 
         "Convert dto to model" {
 
-            val notificationAggregatorScheduledDto = getTestNotificationAggregatorScheduledDto()
+            val notificationAggregatorScheduledDto = getTestAggregatorScheduledDto()
 
             val notificationAggregatorScheduledModel = notificationAggregatorScheduledMapper.dtoToModel(notificationAggregatorScheduledDto)
 
-            notificationAggregatorScheduledModel shouldBe getTestNotificationAggregatorScheduledModel()
+            notificationAggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
         }
     }
 }

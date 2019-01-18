@@ -1,17 +1,17 @@
 package de.unia.se.teamcq
 
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorCountingDto
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorDto
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorImmediateDto
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorScheduledDto
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorCountingEntity
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorEntity
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorImmediateEntity
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorScheduledEntity
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregator
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorCounting
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorImmediate
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorScheduled
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
@@ -76,6 +76,7 @@ object TestUtils {
                 .withOwner(getTestUserModel())
                 .withDescription("description")
                 .withCondition(getTestRuleConditionModel())
+                .withAggregator(getTestAggregatorModel())
                 .build()
     }
 
@@ -85,7 +86,8 @@ object TestUtils {
                 name = "rule_name",
                 owner = getTestUserDto(),
                 description = "description",
-                condition = getTestRuleConditionDto()
+                condition = getTestRuleConditionDto(),
+                aggregator = getTestAggregatorDto()
         )
     }
 
@@ -95,7 +97,8 @@ object TestUtils {
                 name = "rule_name",
                 owner = getTestUserEntity(),
                 description = "description",
-                condition = getTestRuleConditionEntity()
+                condition = getTestRuleConditionEntity(),
+                aggregator = getTestAggregatorEntity()
         )
     }
 
@@ -284,52 +287,52 @@ object TestUtils {
         )
     }
 
-    fun getTestNotificationAggregatorImmediatelyModel(): NotificationAggregatorImmediate {
-        return NotificationAggregatorImmediate(0)
+    fun getAggregatorImmediatelyModel(): AggregatorImmediate {
+        return AggregatorImmediate(0)
     }
 
-    fun getTestNotificationAggregatorImmediatelyDto(): NotificationAggregatorImmediateDto {
-        return NotificationAggregatorImmediateDto(0)
+    fun getTestAggregatorImmediatelyDto(): AggregatorImmediateDto {
+        return AggregatorImmediateDto(0)
     }
 
-    fun getTestNotificationAggregatorImmediatelyEntity(): NotificationAggregatorImmediateEntity {
-        return NotificationAggregatorImmediateEntity(0)
+    fun getTestAggregatorImmediatelyEntity(): AggregatorImmediateEntity {
+        return AggregatorImmediateEntity(0)
     }
 
-    fun getTestNotificationAggregatorCountingModel(): NotificationAggregatorCounting {
-        return NotificationAggregatorCounting(0, 10)
+    fun getTestAggregatorCountingModel(): AggregatorCounting {
+        return AggregatorCounting(0, 10)
     }
 
-    fun getTestNotificationAggregatorCountingDto(): NotificationAggregatorCountingDto {
-        return NotificationAggregatorCountingDto(0, 10)
+    fun getTestAggregatorCountingDto(): AggregatorCountingDto {
+        return AggregatorCountingDto(0, 10)
     }
 
-    fun getTestNotificationAggregatorCountingEntity(): NotificationAggregatorCountingEntity {
-        return NotificationAggregatorCountingEntity(0, 10)
+    fun getTestAggregatorCountingEntity(): AggregatorCountingEntity {
+        return AggregatorCountingEntity(0, 10)
     }
 
-    fun getTestNotificationAggregatorScheduledModel(): NotificationAggregatorScheduled {
-        return NotificationAggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
+    fun getTestAggregatorScheduledModel(): AggregatorScheduled {
+        return AggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
     }
 
-    fun getTestNotificationAggregatorScheduledDto(): NotificationAggregatorScheduledDto {
-        return NotificationAggregatorScheduledDto(0, "0 0 10 * * MON")
+    fun getTestAggregatorScheduledDto(): AggregatorScheduledDto {
+        return AggregatorScheduledDto(0, "0 0 10 * * MON")
     }
 
-    fun getTestNotificationAggregatorScheduledEntity(): NotificationAggregatorScheduledEntity {
-        return NotificationAggregatorScheduledEntity(0, "0 0 10 * * MON")
+    fun getTestAggregatorScheduledEntity(): AggregatorScheduledEntity {
+        return AggregatorScheduledEntity(0, "0 0 10 * * MON")
     }
 
-    fun getTestNotificationAggregatorModel(): NotificationAggregator {
-        return getTestNotificationAggregatorScheduledModel()
+    fun getTestAggregatorModel(): Aggregator {
+        return getTestAggregatorScheduledModel()
     }
 
-    fun getTestNotificationAggregatorDto(): NotificationAggregatorDto {
-        return getTestNotificationAggregatorScheduledDto()
+    fun getTestAggregatorDto(): AggregatorDto {
+        return getTestAggregatorScheduledDto()
     }
 
-    fun getTestNotificationAggregatorEntity(): NotificationAggregatorEntity {
-        return getTestNotificationAggregatorScheduledEntity()
+    fun getTestAggregatorEntity(): AggregatorEntity {
+        return getTestAggregatorScheduledEntity()
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

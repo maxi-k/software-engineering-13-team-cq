@@ -1,18 +1,18 @@
 package de.unia.se.teamcq.notificationmanagement.mapping
 
-import de.unia.se.teamcq.notificationmanagement.dto.NotificationAggregatorDto
-import de.unia.se.teamcq.notificationmanagement.entity.NotificationAggregatorEntity
-import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregator
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import org.springframework.stereotype.Service
 
 @Service
 interface INotificationAggregatorMapper {
 
-    fun modelToEntity(notificationAggregator: NotificationAggregator): NotificationAggregatorEntity
+    fun modelToEntity(aggregator: Aggregator): AggregatorEntity
 
-    fun entityToModel(notificationAggregatorEntity: NotificationAggregatorEntity): NotificationAggregator
+    fun entityToModel(aggregatorEntity: AggregatorEntity): Aggregator
 
-    fun modelToDto(notificationAggregator: NotificationAggregator): NotificationAggregatorDto
+    fun modelToDto(aggregator: Aggregator): AggregatorDto
 
-    fun dtoToModel(notificationAggregatorDto: NotificationAggregatorDto): NotificationAggregator
+    fun dtoToModel(aggregatorDto: AggregatorDto): Aggregator
 }

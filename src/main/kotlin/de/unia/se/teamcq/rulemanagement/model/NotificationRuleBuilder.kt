@@ -1,24 +1,22 @@
 package de.unia.se.teamcq.rulemanagement.model
 
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 
 class NotificationRuleBuilder private constructor() {
 
-    var ruleId: Long? = 0
-        private set
+    private var ruleId: Long? = 0
 
-    var name: String? = ""
-        private set
+    private var name: String? = ""
 
-    var owner: User? = null
-        private set
+    private var owner: User? = null
 
-    var description: String? = null
-        private set
+    private var description: String? = null
 
-    var condition: RuleCondition? = null
-        private set
+    private var condition: RuleCondition? = null
+
+    private var aggregator: Aggregator? = null
 
     fun withId(ruleId: Long): NotificationRuleBuilder = apply { this.ruleId = ruleId }
 
@@ -30,7 +28,9 @@ class NotificationRuleBuilder private constructor() {
 
     fun withCondition(ruleCondition: RuleCondition): NotificationRuleBuilder = apply { this.condition = ruleCondition }
 
-    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description, condition)
+    fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
+
+    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description, condition, aggregator)
 
     companion object {
         operator fun invoke(): NotificationRuleBuilder {
