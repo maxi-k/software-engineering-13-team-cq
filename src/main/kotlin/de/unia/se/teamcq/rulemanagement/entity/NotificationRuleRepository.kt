@@ -59,7 +59,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
 
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
-        val savedNotificationRuleEntity = notificationRuleEntityRepository.saveAndFlush(notificationRuleEntityToSave)
+        val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)
     }

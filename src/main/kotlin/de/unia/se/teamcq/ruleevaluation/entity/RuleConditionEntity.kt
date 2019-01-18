@@ -2,6 +2,7 @@ package de.unia.se.teamcq.ruleevaluation.entity
 
 import java.io.Serializable
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -15,7 +16,7 @@ abstract class RuleConditionEntity(
     @GeneratedValue(strategy = GenerationType.AUTO)
     var conditionId: Long? = 0,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="parent_id")
     var parentCondition: RuleConditionEntity?
 
