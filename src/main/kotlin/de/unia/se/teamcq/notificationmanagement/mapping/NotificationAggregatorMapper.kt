@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Autowired
-lateinit var notificationAggregatorImmediateMapper: INotificationAggregatorImmediateMapper
+lateinit var notificationAggregatorImmediatetlyMapper: INotificationAggregatorImmediatetlyMapper
 
 @Autowired
 lateinit var notificationAggregatorCountingMapper: INotificationAggregatorCountingMapper
@@ -29,7 +29,7 @@ class NotificationAggregatorMapper : INotificationAggregatorMapper {
 
     override fun modelToEntity(notificationAggregator: NotificationAggregator): NotificationAggregatorEntity {
         return when (notificationAggregator) {
-            is NotificationAggregatorImmediate -> notificationAggregatorImmediateMapper.modelToEntity(notificationAggregator)
+            is NotificationAggregatorImmediate -> notificationAggregatorImmediatetlyMapper.modelToEntity(notificationAggregator)
             is NotificationAggregatorCounting -> notificationAggregatorCountingMapper.modelToEntity(notificationAggregator)
             is NotificationAggregatorScheduled -> notificationAggregatorScheduledMapper.modelToEntity(notificationAggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $notificationAggregator")
@@ -38,7 +38,7 @@ class NotificationAggregatorMapper : INotificationAggregatorMapper {
 
     override fun entityToModel(notificationAggregatorEntity: NotificationAggregatorEntity): NotificationAggregator {
         return when (notificationAggregatorEntity) {
-            is NotificationAggregatorImmediateEntity -> notificationAggregatorImmediateMapper.entityToModel(notificationAggregatorEntity)
+            is NotificationAggregatorImmediateEntity -> notificationAggregatorImmediatetlyMapper.entityToModel(notificationAggregatorEntity)
             is NotificationAggregatorCountingEntity -> notificationAggregatorCountingMapper.entityToModel(notificationAggregatorEntity)
             is NotificationAggregatorScheduledEntity -> notificationAggregatorScheduledMapper.entityToModel(notificationAggregatorEntity)
             else -> throw IllegalArgumentException("Unknown aggregator type: $notificationAggregatorEntity")
@@ -47,7 +47,7 @@ class NotificationAggregatorMapper : INotificationAggregatorMapper {
 
     override fun modelToDto(notificationAggregator: NotificationAggregator): NotificationAggregatorDto {
         return when (notificationAggregator) {
-            is NotificationAggregatorImmediate -> notificationAggregatorImmediateMapper.modelToDto(notificationAggregator)
+            is NotificationAggregatorImmediate -> notificationAggregatorImmediatetlyMapper.modelToDto(notificationAggregator)
             is NotificationAggregatorCounting -> notificationAggregatorCountingMapper.modelToDto(notificationAggregator)
             is NotificationAggregatorScheduled -> notificationAggregatorScheduledMapper.modelToDto(notificationAggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $notificationAggregator")
@@ -56,7 +56,7 @@ class NotificationAggregatorMapper : INotificationAggregatorMapper {
 
     override fun dtoToModel(notificationAggregatorDto: NotificationAggregatorDto): NotificationAggregator {
         return when (notificationAggregatorDto) {
-            is NotificationAggregatorImmediateDto -> notificationAggregatorImmediateMapper.dtoToModel(notificationAggregatorDto)
+            is NotificationAggregatorImmediateDto -> notificationAggregatorImmediatetlyMapper.dtoToModel(notificationAggregatorDto)
             is NotificationAggregatorCountingDto -> notificationAggregatorCountingMapper.dtoToModel(notificationAggregatorDto)
             is NotificationAggregatorScheduledDto -> notificationAggregatorScheduledMapper.dtoToModel(notificationAggregatorDto)
             else -> throw IllegalArgumentException("Unknown aggregator type: $notificationAggregatorDto")

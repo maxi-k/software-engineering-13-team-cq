@@ -6,7 +6,7 @@ import de.unia.se.teamcq.notificationmanagement.model.NotificationAggregatorImme
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
-interface INotificationAggregatorImmediateMapper {
+interface INotificationAggregatorImmediatetlyMapper {
 
     fun modelToDto(notificationAggregatorImmediate: NotificationAggregatorImmediate):
             NotificationAggregatorImmediateDto
