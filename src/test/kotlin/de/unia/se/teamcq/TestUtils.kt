@@ -41,7 +41,6 @@ import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.rulemanagement.model.NotificationRuleBuilder
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.dto.UserSettingsDto
@@ -79,16 +78,16 @@ object TestUtils {
     }
 
     fun getTestNotificationRuleModel(): NotificationRule {
-        return NotificationRuleBuilder()
-                .withId(0)
-                .withName("rule_name")
-                .withOwner(getTestUserModel())
-                .withDescription("description")
-                .withCondition(getTestRuleConditionModel())
-                .withAggregator(getTestAggregatorModel())
-                .withRecipients(getTestRecipientModels())
-                .withOwnerAsAdditionalRecipient(true)
-                .build()
+        return NotificationRule(
+                ruleId = 0,
+                name = "rule_name",
+                owner = getTestUserModel(),
+                description = "description",
+                condition = getTestRuleConditionModel(),
+                aggregator = getTestAggregatorModel(),
+                recipients = getTestRecipientModels(),
+                ownerAsAdditionalRecipient = true
+        )
     }
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
