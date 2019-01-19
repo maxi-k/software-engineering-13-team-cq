@@ -17,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class PredicateFieldProviderMapperTest : StringSpec() {
 
-    @MockK(relaxed = true)
+    @MockK
     lateinit var predicateFieldMapper: IPredicateFieldMapper
 
     @InjectMockKs

@@ -3,9 +3,13 @@ package de.unia.se.teamcq.rulemanagement.mapping
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleEntity
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionDto
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntity
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
+import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
@@ -20,7 +24,10 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class NotificationRuleMapperTest : StringSpec() {
 
-    @MockK(relaxed = true)
+    @MockK
+    lateinit var mockIRuleConditionMapper: IRuleConditionMapper
+
+    @MockK
     lateinit var mockIUserMapper: IUserMapper
 
     @InjectMockKs
@@ -30,6 +37,9 @@ class NotificationRuleMapperTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "Convert model to entity" {
+
+            val expectedRuleConditionEntity = getTestRuleConditionEntity()
+            every { mockIRuleConditionMapper.modelToEntity(any()) } returns expectedRuleConditionEntity
 
             val expectedUserEntity = getTestUserEntity()
             every { mockIUserMapper.modelToEntity(any()) } returns expectedUserEntity
@@ -43,9 +53,13 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleEntity.name shouldBe expectedNotificationRuleEntity.name
             notificationRuleEntity.description shouldBe expectedNotificationRuleEntity.description
             notificationRuleEntity.owner shouldBe expectedUserEntity
+            notificationRuleEntity.condition shouldBe expectedRuleConditionEntity
         }
 
         "Convert entity to model" {
+
+            val expectedRuleConditionModel = getTestRuleConditionModel()
+            every { mockIRuleConditionMapper.entityToModel(any()) } returns expectedRuleConditionModel
 
             every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
 
@@ -58,9 +72,13 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRule.name shouldBe expectedNotificationRuleModel.name
             notificationRule.description shouldBe expectedNotificationRuleModel.description
             notificationRule.owner shouldBe expectedNotificationRuleModel.owner
+            notificationRule.condition shouldBe expectedRuleConditionModel
         }
 
         "Convert model to dto" {
+
+            val expectedRuleConditionDto = getTestRuleConditionDto()
+            every { mockIRuleConditionMapper.modelToDto(any()) } returns expectedRuleConditionDto
 
             every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
 
@@ -73,9 +91,13 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleDto.name shouldBe expectedNotificationRuleDto.name
             notificationRuleDto.description shouldBe expectedNotificationRuleDto.description
             notificationRuleDto.owner shouldBe expectedNotificationRuleDto.owner
+            notificationRuleDto.condition shouldBe expectedRuleConditionDto
         }
 
         "Convert dto to model" {
+
+            val expectedRuleConditionModel = getTestRuleConditionModel()
+            every { mockIRuleConditionMapper.dtoToModel(any()) } returns expectedRuleConditionModel
 
             every { mockIUserMapper.dtoToModel(any()) } returns getTestUserModel()
 
@@ -88,6 +110,7 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRule.name shouldBe expectedNotificationRuleModel.name
             notificationRule.description shouldBe expectedNotificationRuleModel.description
             notificationRule.owner shouldBe expectedNotificationRuleModel.owner
+            notificationRule.condition shouldBe expectedRuleConditionModel
         }
     }
 }
