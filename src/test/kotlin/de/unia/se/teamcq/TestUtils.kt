@@ -49,7 +49,12 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
+import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleReferenceEntity
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.model.FleetReference
+import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
@@ -175,7 +180,7 @@ object TestUtils {
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
-                "predicateFieldProviderName",
+                getTestVehicleReferenceModel(),
                 setOf(
                         getTestVehicleStateDataTypeBatteryModel(),
                         getTestVehicleStateDataTypeContractModel(),
@@ -190,7 +195,7 @@ object TestUtils {
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                "predicateFieldProviderName"
+                getTestVehicleReferenceEntity()
         )
     }
 
@@ -408,6 +413,38 @@ object TestUtils {
         }
 
         generateObject().hashCode() shouldBe generateObject().hashCode()
+    }
+
+    fun getTestFleetReferenceModel(): FleetReference {
+        return FleetReference(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceEntity(): FleetReferenceEntity {
+        return FleetReferenceEntity(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceDto(): FleetReferenceDto {
+        return FleetReferenceDto(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestVehicleReferenceModel(): VehicleReference {
+        return VehicleReference(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceModel()
+        )
+    }
+
+    fun getTestVehicleReferenceEntity(): VehicleReferenceEntity {
+        return VehicleReferenceEntity(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceEntity()
+        )
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
