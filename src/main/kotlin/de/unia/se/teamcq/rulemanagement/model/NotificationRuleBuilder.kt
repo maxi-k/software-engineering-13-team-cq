@@ -18,9 +18,6 @@ class NotificationRuleBuilder private constructor() {
 
     private var aggregator: Aggregator? = null
 
-    var condition: RuleCondition? = null
-        private set
-
     fun withId(ruleId: Long): NotificationRuleBuilder = apply { this.ruleId = ruleId }
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }
