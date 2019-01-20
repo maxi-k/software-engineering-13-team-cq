@@ -24,7 +24,7 @@ class AggregatorMapperTest : StringSpec() {
     lateinit var aggregatorScheduledMapper: AbstractAggregatorScheduledMapper
 
     @MockK(relaxed = true)
-    lateinit var AbstractAggregatorCountingdMapper: AbstractAggregatorCountingMapper
+    lateinit var aggregatorCountingMapper: AbstractAggregatorCountingMapper
 
     @MockK(relaxed = true)
     lateinit var aggregatorImmediatelyMapper: IAggregatorImmediateMapper
@@ -44,7 +44,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.modelToEntity(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                AbstractAggregatorCountingdMapper.modelToEntity(any())
+                aggregatorCountingMapper.modelToEntity(any())
             }
 
             aggregatorMapper.modelToEntity(getAggregatorImmediateModel())
@@ -62,7 +62,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.entityToModel(getTestAggregatorCountingEntity())
             verify(exactly = 1) {
-                AbstractAggregatorCountingdMapper.entityToModel(any())
+                aggregatorCountingMapper.entityToModel(any())
             }
 
             aggregatorMapper.entityToModel(getTestAggregatorImmediateEntity())
@@ -80,7 +80,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.modelToDto(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                AbstractAggregatorCountingdMapper.modelToDto(any())
+                aggregatorCountingMapper.modelToDto(any())
             }
 
             aggregatorMapper.modelToDto(getAggregatorImmediateModel())
@@ -98,7 +98,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.dtoToModel(getTestAggregatorCountingDto())
             verify(exactly = 1) {
-                AbstractAggregatorCountingdMapper.dtoToModel(any())
+                aggregatorCountingMapper.dtoToModel(any())
             }
 
             aggregatorMapper.dtoToModel(getTestAggregatorImmediateDto())
