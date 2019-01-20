@@ -22,7 +22,7 @@ class NotificationRuleBuilder private constructor() {
     private var recipients: List<Recipient> = mutableListOf()
 
     private var ownerAsAdditionalRecipient: Boolean? = true
-
+    
     fun withId(ruleId: Long): NotificationRuleBuilder = apply { this.ruleId = ruleId }
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }

@@ -24,6 +24,7 @@ interface INotificationRuleMapper {
 
     fun modelToDto(notificationRule: NotificationRule): NotificationRuleDto
 
+    @Throws(IllegalArgumentException::class)
     fun dtoToModel(notificationRuleDto: NotificationRuleDto): NotificationRule
 }
 

@@ -47,6 +47,7 @@ data class NotificationRuleEntity(
     var ownerAsAdditionalRecipient: Boolean?
 
 ) : Serializable {
+
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null, null, mutableListOf<RecipientEntity>(), null)
 }
