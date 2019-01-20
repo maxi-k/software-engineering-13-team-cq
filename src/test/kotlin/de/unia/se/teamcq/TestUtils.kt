@@ -91,7 +91,9 @@ object TestUtils {
                 condition = getTestRuleConditionModel(),
                 aggregator = getTestAggregatorModel(),
                 recipients = getTestRecipientModels(),
-                ownerAsAdditionalRecipient = true
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceModels(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -104,7 +106,9 @@ object TestUtils {
                 condition = getTestRuleConditionDto(),
                 aggregator = getTestAggregatorDto(),
                 recipients = getTestRecipientDtos(),
-                ownerAsAdditionalRecipient = true
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceDtos(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -117,7 +121,9 @@ object TestUtils {
                 condition = getTestRuleConditionEntity(),
                 aggregator = getTestAggregatorEntity(),
                 recipients = getTestRecipientEntities(),
-                ownerAsAdditionalRecipient = true
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceEntities(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -402,19 +408,6 @@ object TestUtils {
         return listOf(getTestRecipientSmsModel(), getTestRecipientMailModel())
     }
 
-    fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
-
-        generateObject() shouldBe generateObject()
-
-        modifiers.forEach { modifier ->
-            val objectToModify = generateObject()
-            modifier(objectToModify)
-            generateObject() shouldNotBe objectToModify
-        }
-
-        generateObject().hashCode() shouldBe generateObject().hashCode()
-    }
-
     fun getTestFleetReferenceModel(): FleetReference {
         return FleetReference(
                 fleetId = "UUID123"
@@ -445,6 +438,52 @@ object TestUtils {
                 vin = "UUID456",
                 fleetReference = getTestFleetReferenceEntity()
         )
+    }
+
+    fun getTestFleetReferenceDtoTwo(): FleetReferenceDto {
+        return getTestFleetReferenceDto().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceDtos(): List<FleetReferenceDto> {
+        return listOf(
+                getTestFleetReferenceDto(),
+                getTestFleetReferenceDtoTwo()
+        )
+    }
+
+    fun getTestFleetReferenceModelTwo(): FleetReference {
+        return getTestFleetReferenceModel().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceModels(): List<FleetReference> {
+        return listOf(
+                getTestFleetReferenceModel(),
+                getTestFleetReferenceModelTwo()
+        )
+    }
+
+    fun getTestFleetReferenceEntityTwo(): FleetReferenceEntity {
+        return getTestFleetReferenceEntity().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceEntities(): List<FleetReferenceEntity> {
+        return listOf(
+                getTestFleetReferenceEntity(),
+                getTestFleetReferenceEntityTwo()
+        )
+    }
+
+    fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
+
+        generateObject() shouldBe generateObject()
+
+        modifiers.forEach { modifier ->
+            val objectToModify = generateObject()
+            modifier(objectToModify)
+            generateObject() shouldNotBe objectToModify
+        }
+
+        generateObject().hashCode() shouldBe generateObject().hashCode()
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
