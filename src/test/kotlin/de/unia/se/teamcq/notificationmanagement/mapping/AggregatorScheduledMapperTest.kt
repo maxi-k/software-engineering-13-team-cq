@@ -3,7 +3,9 @@ package de.unia.se.teamcq.notificationmanagement.mapping
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledDto
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledEntity
 import de.unia.se.teamcq.TestUtils.getTestAggregatorScheduledModel
+import io.kotlintest.should
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -12,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class AggregatorScheduledMapperTest : StringSpec() {
 
     @Autowired
-    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapperImpl
+    lateinit var aggregatorScheduledMapper: AbstractAggregatorScheduledMapperImpl
 
     init {
 
@@ -43,13 +45,25 @@ class AggregatorScheduledMapperTest : StringSpec() {
             aggregatorScheduledDto shouldBe getTestAggregatorScheduledDto()
         }
 
-        "Convert dto to model" {
+        "Convert dto to model" should {
 
-            val aggregatorScheduledDto = getTestAggregatorScheduledDto()
+            "Work if NotificationCronTrigger is legal" {
 
-            val aggregatorScheduledModel = aggregatorScheduledMapper.dtoToModel(aggregatorScheduledDto)
+                val aggregatorScheduledDto = getTestAggregatorScheduledDto()
 
-            aggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
+                val aggregatorScheduledModel = aggregatorScheduledMapper.dtoToModel(aggregatorScheduledDto)
+
+                aggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
+            }
+
+            "Throw an exception if NotificationCronTrigger is illegal" {
+
+                val aggregatorScheduledDto = getTestAggregatorScheduledDto().apply { notificationCronTrigger = "test" }
+
+                shouldThrow<IllegalArgumentException> {
+                    aggregatorScheduledMapper.dtoToModel(aggregatorScheduledDto)
+                }
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import de.unia.se.teamcq.TestUtils.getTestAggregatorCountingDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
@@ -132,25 +133,48 @@ class NotificationRuleControllerTest : StringSpec() {
             }
         }
 
-        "CreateNotificationRule NotificationRules should work" {
+        "CreateNotificationRule NotificationRules" should {
 
-            SecurityContextHolder.setContext(securityContext)
-            setCurrentUserToDefault()
+            "Create NotificationRule if all arguments are legal" {
 
-            mockMvc.perform(MockMvcRequestBuilders
-                    .post("/notification-rule-management/notification-rule")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .content(ObjectMapper().writeValueAsString(getTestNotificationRuleDto())))
-                    .andExpect(status().isOk)
-                    .andExpect { result ->
-                        val returnedNotificationRuleDto = ObjectMapper()
-                                .readValue(result.response.contentAsString, NotificationRuleDto::class.java)
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
 
-                        returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
+                mockMvc.perform(MockMvcRequestBuilders
+                        .post("/notification-rule-management/notification-rule")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(ObjectMapper().writeValueAsString(getTestNotificationRuleDto())))
+                        .andExpect(status().isOk)
+                        .andExpect { result ->
+                            val returnedNotificationRuleDto = ObjectMapper()
+                                    .readValue(result.response.contentAsString, NotificationRuleDto::class.java)
+
+                            returnedNotificationRuleDto shouldBe getTestNotificationRuleDto().copy(ruleId = 56)
+                        }
+
+                verify(exactly = 1) {
+                    notificationRuleService.createNotificationRule("Max Mustermann", any())
+                }
+            }
+
+            "Not create NotificationRule if some arguments are illegal" {
+
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
+
+                val notificationRuleToCreate = getTestNotificationRuleDto().apply {
+                    aggregator = getTestAggregatorCountingDto().apply {
+                        notificationCountThreshold = -1
                     }
+                }
 
-            verify(exactly = 1) {
-                notificationRuleService.createNotificationRule("Max Mustermann", any())
+                every { mockNotificationRuleMapper.dtoToModel(notificationRuleToCreate) } throws IllegalArgumentException()
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .post("/notification-rule-management/notification-rule")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
+                        .andExpect(status().isBadRequest)
             }
         }
 
@@ -190,12 +214,33 @@ class NotificationRuleControllerTest : StringSpec() {
                         .content(ObjectMapper().writeValueAsString(notificationRuleUpate)))
                         .andExpect(status().isBadRequest)
             }
+
             "Not update if the user that was set isn't the current user" {
 
                 SecurityContextHolder.setContext(securityContext)
                 setCurrentUserToDefault()
 
                 val notificationRuleUpate = getTestNotificationRuleDto().copy(owner = getTestUserDto().copy(name = "other user"))
+
+                mockMvc.perform(MockMvcRequestBuilders
+                        .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(ObjectMapper().writeValueAsString(notificationRuleUpate)))
+                        .andExpect(status().isBadRequest)
+            }
+
+            "Not update if a aggregator parameter is invalid" {
+
+                SecurityContextHolder.setContext(securityContext)
+                setCurrentUserToDefault()
+
+                val notificationRuleUpate = getTestNotificationRuleDto().apply {
+                    aggregator = getTestAggregatorCountingDto().apply {
+                        notificationCountThreshold = -1
+                    }
+                }
+
+                every { mockNotificationRuleMapper.dtoToModel(notificationRuleUpate) } throws IllegalArgumentException()
 
                 mockMvc.perform(MockMvcRequestBuilders
                         .put("/notification-rule-management/notification-rule/${getTestNotificationRuleDto().ruleId}")

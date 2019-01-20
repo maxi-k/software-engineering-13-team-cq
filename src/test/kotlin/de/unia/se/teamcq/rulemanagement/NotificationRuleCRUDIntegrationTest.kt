@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.rulemanagement
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.TestUtils.buildMockMvc
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.prepareAccessTokenHeader
@@ -163,6 +164,47 @@ class NotificationRuleCRUDIntegrationTest : StringSpec() {
 
                         returnedNotificationRule!! shouldBe notificationRuleUpdate
                     }
+        }
+
+        "CreateNotificationRule should fail if some arguments are illegal" {
+
+            val mockMvc = buildMockMvc(webApplicationContext)
+
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
+
+            val notificationRuleToCreate = getTestNotificationRuleDto().apply {
+                aggregator = TestUtils.getTestAggregatorCountingDto().apply {
+                    notificationCountThreshold = -1
+                }
+            }
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .post("/notification-rule-management/notification-rule")
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
+                    .andExpect(status().isBadRequest)
+        }
+
+        "UpdateNotificationRule should fail if some arguments are illegal" {
+
+            val mockMvc = buildMockMvc(webApplicationContext)
+
+            val accessToken = jwtTokenAuthenticationFilter.createToken("Max Mustermann")
+
+            val notificationRuleToCreate = getTestNotificationRuleDto().apply {
+                aggregator = TestUtils.getTestAggregatorCountingDto().apply {
+                    ruleId = 2
+                    notificationCountThreshold = -1
+                }
+            }
+
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/notification-rule-management/notification-rule/${notificationRuleToCreate.ruleId}")
+                    .headers(prepareAccessTokenHeader(jwtConfig, accessToken))
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(ObjectMapper().writeValueAsString(notificationRuleToCreate)))
+                    .andExpect(status().isBadRequest)
         }
     }
 
