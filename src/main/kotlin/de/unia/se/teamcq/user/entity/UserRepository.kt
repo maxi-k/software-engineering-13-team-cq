@@ -41,6 +41,6 @@ class UserRepository : IUserRepository {
         val userEntity = userEntityRepository.findById(username).orElse(null)
 
         return userEntity?.let { existingUserEntity -> userMapper.entityToModel(existingUserEntity) }
-                ?: return createOrSaveUser(User(username, null, null, UserSettings(UserNotificationType.EMAIL)))
+                ?: return createOrSaveUser(User(username, null, null, UserSettings(0, UserNotificationType.EMAIL)))
     }
 }

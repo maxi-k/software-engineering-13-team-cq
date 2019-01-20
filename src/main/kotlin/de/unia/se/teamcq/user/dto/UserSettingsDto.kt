@@ -5,8 +5,10 @@ import java.io.Serializable
 
 data class UserSettingsDto(
 
+    var settingsId: Long?,
+
     var userNotificationType: UserNotificationType?
 
 ) : Serializable {
-    constructor(): this(null)
+    constructor(): this(null, null)
 }

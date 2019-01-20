@@ -26,7 +26,11 @@ class UserRepositoryTest : StringSpec() {
 
             val savedUser = userRepository.createOrSaveUser(getTestUserModel())
 
-            savedUser shouldBe getTestUserModel()
+            val expectedUser = getTestUserModel().apply {
+                userSettings!!.settingsId = savedUser!!.userSettings!!.settingsId
+            }
+
+            savedUser shouldBe expectedUser
         }
 
         "GetOrCreateUser should work" {
@@ -35,7 +39,11 @@ class UserRepositoryTest : StringSpec() {
 
             val actualUser = userRepository.getOrCreateUser(getTestUserEntity().name!!)
 
-            actualUser shouldBe getTestUserModel()
+            val expectedUser = getTestUserModel().apply {
+                userSettings!!.settingsId = actualUser!!.userSettings!!.settingsId
+            }
+
+            actualUser shouldBe expectedUser
         }
     }
 }

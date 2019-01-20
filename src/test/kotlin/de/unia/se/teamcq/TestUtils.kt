@@ -126,7 +126,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettings(UserNotificationType.EMAIL)
+                userSettings = UserSettings(0, UserNotificationType.EMAIL)
         )
     }
 
@@ -135,7 +135,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettingsDto(UserNotificationType.EMAIL)
+                userSettings = UserSettingsDto(0, UserNotificationType.EMAIL)
         )
     }
 

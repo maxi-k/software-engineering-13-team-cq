@@ -96,17 +96,20 @@ class NotificationRuleRepositoryTest : StringSpec() {
             "Update and not overwrite user" {
 
                 val oldUserEntity = getTestUserEntity().apply { mailAddress = "test1" }
-                val oldUserModel = getTestUserModel().apply { mailAddress = "test1" }
-                val notificationRuleWithOldUser = getTestNotificationRuleEntity().copy(owner = oldUserEntity)
+                val savedOldUserEntity = userEntityRepository.save(oldUserEntity)
+                val oldUserModel = getTestUserModel().apply {
+                    mailAddress = "test1"
+                    userSettings!!.settingsId = savedOldUserEntity.userSettings!!.settingsId
+                }
 
-                userEntityRepository.save(oldUserEntity)
+                val notificationRuleWithOldUser = getTestNotificationRuleEntity().copy(owner = oldUserEntity)
                 val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleWithOldUser)
 
                 val newUser = getTestUserModel().apply { mailAddress = "" }
                 val newNotificationRuleWithNewUser = getTestNotificationRuleModel().apply {
                     description = "new"
-                    owner = newUser
                     setIdsOfRelatedHibernateEntities(savedNotificationRuleEntity)
+                    owner = newUser
                 }
 
                 val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
@@ -186,6 +189,8 @@ class NotificationRuleRepositoryTest : StringSpec() {
         recipients.zip(savedNotificationRule.recipients).forEach { (recipientWithoutId, recipientWithId) ->
             recipientWithoutId.recipientId = recipientWithId.recipientId
         }
+
+        owner!!.userSettings!!.settingsId = savedNotificationRule.owner!!.userSettings!!.settingsId
     }
 }
 
@@ -203,4 +208,6 @@ private fun NotificationRule.setIdsOfRelatedHibernateEntities(savedNotificationR
     recipients.zip(savedNotificationRuleEntity.recipients!!).forEach { (recipientWithoutId, recipientWithId) ->
         recipientWithoutId.recipientId = recipientWithId.recipientId
     }
+
+    owner!!.userSettings!!.settingsId = savedNotificationRuleEntity.owner!!.userSettings!!.settingsId
 }
