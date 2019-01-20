@@ -21,10 +21,10 @@ import org.springframework.test.context.ContextConfiguration
 class AggregatorMapperTest : StringSpec() {
 
     @MockK(relaxed = true)
-    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapper
+    lateinit var aggregatorScheduledMapper: AbstractAggregatorScheduledMapper
 
     @MockK(relaxed = true)
-    lateinit var aggregatorCountingdMapper: IAggregatorCountingMapper
+    lateinit var aggregatorCountingMapper: AbstractAggregatorCountingMapper
 
     @MockK(relaxed = true)
     lateinit var aggregatorImmediatelyMapper: IAggregatorImmediateMapper
@@ -44,7 +44,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.modelToEntity(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                aggregatorCountingdMapper.modelToEntity(any())
+                aggregatorCountingMapper.modelToEntity(any())
             }
 
             aggregatorMapper.modelToEntity(getAggregatorImmediateModel())
@@ -62,7 +62,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.entityToModel(getTestAggregatorCountingEntity())
             verify(exactly = 1) {
-                aggregatorCountingdMapper.entityToModel(any())
+                aggregatorCountingMapper.entityToModel(any())
             }
 
             aggregatorMapper.entityToModel(getTestAggregatorImmediateEntity())
@@ -80,7 +80,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.modelToDto(getTestAggregatorCountingModel())
             verify(exactly = 1) {
-                aggregatorCountingdMapper.modelToDto(any())
+                aggregatorCountingMapper.modelToDto(any())
             }
 
             aggregatorMapper.modelToDto(getAggregatorImmediateModel())
@@ -98,7 +98,7 @@ class AggregatorMapperTest : StringSpec() {
 
             aggregatorMapper.dtoToModel(getTestAggregatorCountingDto())
             verify(exactly = 1) {
-                aggregatorCountingdMapper.dtoToModel(any())
+                aggregatorCountingMapper.dtoToModel(any())
             }
 
             aggregatorMapper.dtoToModel(getTestAggregatorImmediateDto())

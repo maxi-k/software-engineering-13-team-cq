@@ -22,15 +22,15 @@ class AggregatorMapper : IAggregatorMapper {
     lateinit var aggregatorImmediateMapper: IAggregatorImmediateMapper
 
     @Autowired
-    lateinit var aggregatorCountingMapper: IAggregatorCountingMapper
+    lateinit var AbstractAggregatorCountingMapper: AbstractAggregatorCountingMapper
 
     @Autowired
-    lateinit var aggregatorScheduledMapper: IAggregatorScheduledMapper
+    lateinit var aggregatorScheduledMapper: AbstractAggregatorScheduledMapper
 
     override fun modelToEntity(aggregator: Aggregator): AggregatorEntity {
         return when (aggregator) {
             is AggregatorImmediate -> aggregatorImmediateMapper.modelToEntity(aggregator)
-            is AggregatorCounting -> aggregatorCountingMapper.modelToEntity(aggregator)
+            is AggregatorCounting -> AbstractAggregatorCountingMapper.modelToEntity(aggregator)
             is AggregatorScheduled -> aggregatorScheduledMapper.modelToEntity(aggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregator")
         }
@@ -39,7 +39,7 @@ class AggregatorMapper : IAggregatorMapper {
     override fun entityToModel(aggregatorEntity: AggregatorEntity): Aggregator {
         return when (aggregatorEntity) {
             is AggregatorImmediateEntity -> aggregatorImmediateMapper.entityToModel(aggregatorEntity)
-            is AggregatorCountingEntity -> aggregatorCountingMapper.entityToModel(aggregatorEntity)
+            is AggregatorCountingEntity -> AbstractAggregatorCountingMapper.entityToModel(aggregatorEntity)
             is AggregatorScheduledEntity -> aggregatorScheduledMapper.entityToModel(aggregatorEntity)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregatorEntity")
         }
@@ -48,7 +48,7 @@ class AggregatorMapper : IAggregatorMapper {
     override fun modelToDto(aggregator: Aggregator): AggregatorDto {
         return when (aggregator) {
             is AggregatorImmediate -> aggregatorImmediateMapper.modelToDto(aggregator)
-            is AggregatorCounting -> aggregatorCountingMapper.modelToDto(aggregator)
+            is AggregatorCounting -> AbstractAggregatorCountingMapper.modelToDto(aggregator)
             is AggregatorScheduled -> aggregatorScheduledMapper.modelToDto(aggregator)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregator")
         }
@@ -57,7 +57,7 @@ class AggregatorMapper : IAggregatorMapper {
     override fun dtoToModel(aggregatorDto: AggregatorDto): Aggregator {
         return when (aggregatorDto) {
             is AggregatorImmediateDto -> aggregatorImmediateMapper.dtoToModel(aggregatorDto)
-            is AggregatorCountingDto -> aggregatorCountingMapper.dtoToModel(aggregatorDto)
+            is AggregatorCountingDto -> AbstractAggregatorCountingMapper.dtoToModel(aggregatorDto)
             is AggregatorScheduledDto -> aggregatorScheduledMapper.dtoToModel(aggregatorDto)
             else -> throw IllegalArgumentException("Unknown aggregator type: $aggregatorDto")
         }

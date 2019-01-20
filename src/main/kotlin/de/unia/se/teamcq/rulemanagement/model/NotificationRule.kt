@@ -4,6 +4,7 @@ import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
+import java.io.Serializable
 
 data class NotificationRule(
 
@@ -23,7 +24,6 @@ data class NotificationRule(
 
     var ownerAsAdditionalRecipient: Boolean?
 
-) {
-    // Necessary for MapStruct
+) : Serializable {
     constructor() : this(null, null, null, null, null, null, mutableListOf<Recipient>(), null)
 }
