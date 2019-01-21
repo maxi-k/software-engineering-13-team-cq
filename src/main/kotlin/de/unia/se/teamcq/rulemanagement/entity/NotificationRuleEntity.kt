@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.rulemanagement.entity
 
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
 import de.unia.se.teamcq.user.entity.UserEntity
 import java.io.Serializable
@@ -31,9 +32,12 @@ data class NotificationRuleEntity(
     var description: String?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var condition: RuleConditionEntity?
+    var condition: RuleConditionEntity?,
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    var aggregator: AggregatorEntity?
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null)
 }

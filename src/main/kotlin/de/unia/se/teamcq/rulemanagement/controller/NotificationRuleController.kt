@@ -7,14 +7,14 @@ import de.unia.se.teamcq.user.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
@@ -61,12 +61,16 @@ class NotificationRuleController {
         val username = SecurityContextHolder.getContext().authentication.name
         val user = userService.getOrCreateUser(username)
 
-        val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto).copy(owner = user)
-        val notificationRuleIfCreated = notificationRuleService.createNotificationRule(username, notificationRuleToCreate)
+        return try {
+            val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto).copy(owner = user)
+            val notificationRuleIfCreated = notificationRuleService.createNotificationRule(username, notificationRuleToCreate)
 
-        return notificationRuleIfCreated?.let { notificationRule ->
-            ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
-        } ?: (ResponseEntity.notFound().build())
+            notificationRuleIfCreated?.let { notificationRule ->
+                ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
+            } ?: (ResponseEntity.notFound().build())
+        } catch (illegalArgumentException: IllegalArgumentException) {
+            ResponseEntity.badRequest().build()
+        }
     }
 
     @PutMapping("/notification-rule/{ruleId}")
@@ -86,12 +90,16 @@ class NotificationRuleController {
             return ResponseEntity.badRequest().build()
         }
 
-        val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
-        val notificationRuleIfUpdated = notificationRuleService.updateNotificationRule(notificationRuleToCreate)
+        return try {
+            val notificationRuleToCreate = notificationRuleMapper.dtoToModel(notificationRuleDto)
+            val notificationRuleIfUpdated = notificationRuleService.updateNotificationRule(notificationRuleToCreate)
 
-        return notificationRuleIfUpdated?.let { notificationRule ->
-            ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
-        } ?: (ResponseEntity.notFound().build())
+            return notificationRuleIfUpdated?.let { notificationRule ->
+                ResponseEntity.ok(notificationRuleMapper.modelToDto(notificationRule))
+            } ?: (ResponseEntity.notFound().build())
+        } catch (illegalArgumentException: IllegalArgumentException) {
+            ResponseEntity.badRequest().build()
+        }
     }
 
     @DeleteMapping("/notification-rule/{ruleId}")

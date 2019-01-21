@@ -1,5 +1,17 @@
 package de.unia.se.teamcq
 
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
@@ -40,6 +52,7 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import org.springframework.http.HttpHeaders
+import org.springframework.scheduling.support.CronTrigger
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -63,6 +76,7 @@ object TestUtils {
                 .withOwner(getTestUserModel())
                 .withDescription("description")
                 .withCondition(getTestRuleConditionModel())
+                .withAggregator(getTestAggregatorModel())
                 .build()
     }
 
@@ -72,7 +86,8 @@ object TestUtils {
                 name = "rule_name",
                 owner = getTestUserDto(),
                 description = "description",
-                condition = getTestRuleConditionDto()
+                condition = getTestRuleConditionDto(),
+                aggregator = getTestAggregatorDto()
         )
     }
 
@@ -82,7 +97,8 @@ object TestUtils {
                 name = "rule_name",
                 owner = getTestUserEntity(),
                 description = "description",
-                condition = getTestRuleConditionEntity()
+                condition = getTestRuleConditionEntity(),
+                aggregator = getTestAggregatorEntity()
         )
     }
 
@@ -269,6 +285,54 @@ object TestUtils {
                         getTestRuleConditionEntity()
                 )
         )
+    }
+
+    fun getAggregatorImmediateModel(): AggregatorImmediate {
+        return AggregatorImmediate(0)
+    }
+
+    fun getTestAggregatorImmediateDto(): AggregatorImmediateDto {
+        return AggregatorImmediateDto(0)
+    }
+
+    fun getTestAggregatorImmediateEntity(): AggregatorImmediateEntity {
+        return AggregatorImmediateEntity(0)
+    }
+
+    fun getTestAggregatorCountingModel(): AggregatorCounting {
+        return AggregatorCounting(0, 10)
+    }
+
+    fun getTestAggregatorCountingDto(): AggregatorCountingDto {
+        return AggregatorCountingDto(0, 10)
+    }
+
+    fun getTestAggregatorCountingEntity(): AggregatorCountingEntity {
+        return AggregatorCountingEntity(0, 10)
+    }
+
+    fun getTestAggregatorScheduledModel(): AggregatorScheduled {
+        return AggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
+    }
+
+    fun getTestAggregatorScheduledDto(): AggregatorScheduledDto {
+        return AggregatorScheduledDto(0, "0 0 10 * * MON")
+    }
+
+    fun getTestAggregatorScheduledEntity(): AggregatorScheduledEntity {
+        return AggregatorScheduledEntity(0, "0 0 10 * * MON")
+    }
+
+    fun getTestAggregatorModel(): Aggregator {
+        return getTestAggregatorScheduledModel()
+    }
+
+    fun getTestAggregatorDto(): AggregatorDto {
+        return getTestAggregatorScheduledDto()
+    }
+
+    fun getTestAggregatorEntity(): AggregatorEntity {
+        return getTestAggregatorScheduledEntity()
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.rulemanagement.dto
 
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionDto
 import de.unia.se.teamcq.user.dto.UserDto
 import java.io.Serializable
@@ -14,9 +15,11 @@ data class NotificationRuleDto(
 
     var description: String?,
 
-    var condition: RuleConditionDto?
+    var condition: RuleConditionDto?,
+
+    var aggregator: AggregatorDto?
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null)
 }
