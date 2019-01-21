@@ -87,6 +87,8 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.entityToModel(any()) } returns getTestAggregatorModel()
 
+            every { mockIAggregatorMapper.entityToModel(any()) } returns getTestAggregatorModel()
+
             every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
 
             every { mockRecipientMapperHelper.entityToModel(any()) } returns getTestRecipientModels()
@@ -110,6 +112,8 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.modelToDto(any()) } returns getTestAggregatorDto()
 
+            every { mockIAggregatorMapper.modelToDto(any()) } returns getTestAggregatorDto()
+
             every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
 
             every { mockRecipientMapperHelper.modelToDto(any()) } returns getTestRecipientDtos()
@@ -130,6 +134,8 @@ class NotificationRuleMapperTest : StringSpec() {
         "Convert dto to model" {
 
             every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
+
+            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
             every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
