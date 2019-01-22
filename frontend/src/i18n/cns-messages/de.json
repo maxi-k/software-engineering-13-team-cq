@@ -4,6 +4,7 @@
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleDetailGeneral.title": "Allgemein",
     "cns.page.ruleDetailVehicles.title": "Fahrzeuge",
+    "cns.page.ruleDetailVehicles.question": "Auf welche Flotten soll die Regel angewandt werden?",
     "cns.page.ruleDetailCondition.title": "Bedingungen",
     "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
 

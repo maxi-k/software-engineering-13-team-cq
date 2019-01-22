@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 import FleetSelector, { FleetSelectorProps } from '@/atoms/FleetSelector'
+import Typography from '@material-ui/core/Typography'
 
 import {
   FetchingAttributes,
@@ -33,9 +34,9 @@ const StyledFieldSeparator = styled.div`
     padding: 1rem;
 `
 
-/*const TextElementWrapper = styled.div`
+const TextElementWrapper = styled.div`
     paddingLeft: 1rem;
-`*/
+`
 
 const vehiclesFinisher = (finishVehicles: FinishVehiclesType) =>
   (event: React.SyntheticEvent<any, any>): void =>
@@ -77,9 +78,18 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
 
   return (
     <StyledRuleDetailVehicles {...props}>
+      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
+        <FormattedMessage id="cns.rule.label" />{' '}
+        "{rule.name}"
+      </Typography>
       <div style={{ paddingLeft: '96rem' }}>
         <ClosingButton onClick={vehiclesAborter(abortVehicles)} />
       </div>
+      
+      <StyledFieldSeparator />
+      <TextElementWrapper>
+        <FormattedMessage id="cns.page.ruleDetailVehicles.question" />
+      </TextElementWrapper>
       <StyledFieldSeparator />
       <div style={{ paddingLeft: '1rem' }}>
         <FleetSelector {...fleetSelectorProps} />
