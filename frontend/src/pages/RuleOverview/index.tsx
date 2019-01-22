@@ -30,13 +30,13 @@ const StyledOverviewPage = styled.div`
 class RuleOverviewPage extends React.Component<RuleOverviewPageProps> {
 
   public componentDidMount = () => {
-    // const { fetchRules } = this.props
-    // fetchRules()
+    const { fetchRules } = this.props
+    fetchRules()
   }
 
   public render = () => {
     const { rules, ...overviewProps } = this.props
-     const ruleList = [{ruleId: 1, name: "TestRule", description: "Test :-D", dataSources: [], aggregatorDescription: "ASAP!"}] // Object.values(rules)
+     const ruleList = Object.values(rules)
     return (
       <StyledOverviewPage >
         <RuleOverviewHeader />
