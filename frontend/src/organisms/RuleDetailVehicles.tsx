@@ -75,8 +75,6 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
-
-
   return (
     <StyledRuleDetailVehicles {...props}>
       <div style={{ paddingLeft: '96rem' }}>

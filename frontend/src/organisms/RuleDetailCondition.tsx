@@ -100,7 +100,7 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         <FormattedMessage id="cns.rule.label" />{' '}
         "{rule.name}"
       </Typography>
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '96rem' }}>
         <ClosingButton onClick={conditionAborter(abortCondition)} />
       </div>
       <StyledFieldSeparator />
@@ -117,7 +117,7 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         <AddConditionButton onClick={conditionFinisher(finishCondition)} />
       </TextElementWrapper>
       <StyledFieldSeparator />
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '80rem' }}>
         <NextButton onClick={conditionFinisher(finishCondition)} />
       </div>
     </StyledRuleDetailCondition>

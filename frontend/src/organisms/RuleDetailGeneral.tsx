@@ -69,13 +69,13 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
   return (
     <StyledRuleDetailGeneral {...props}>
       
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '96rem' }}>
         <ClosingButton onClick={generalAborter(abortGeneral)} />
       </div>
       <StyledFieldSeparator />
       
       <StyledFieldSeparator />
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '80rem' }}>
         <NextButton onClick={generalFinisher(finishGeneral)} />
       </div>
     </StyledRuleDetailGeneral>
