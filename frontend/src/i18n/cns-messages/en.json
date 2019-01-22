@@ -3,6 +3,7 @@
 
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleDetailGeneral.title": "General",
+    "cns.page.ruleDetailVehicles.title": "Vehicles",
     "cns.page.ruleDetailCondition.title": "Conditions",
     "cns.page.ruleDetailCondition.question": "Under what conditions should notifications be triggered?",
 

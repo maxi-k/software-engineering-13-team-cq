@@ -31,6 +31,13 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     exact: true,
     component: lazy(() => import('@/pages/RuleDetailGeneral'))
   },
+  ruleDetailVehicles: {
+    title: "cns.page.ruleDetailVehicles.title",
+    path: '/rule/vehicles/:ruleId',
+    interpolatePath: (ruleId: string) => `/rule/vehicles/${ruleId}`,
+    exact: true,
+    component: lazy(() => import('@/pages/RuleDetailVehicles'))
+  },
   ruleDetailCondition: {
     title: "cns.page.ruleDetailCondition.title",
     path: '/rule/condition/:ruleId',
