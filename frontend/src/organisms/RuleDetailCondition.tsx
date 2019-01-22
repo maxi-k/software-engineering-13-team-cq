@@ -40,7 +40,7 @@ const predicateCounterProps: PredicateCounterProps = {
   value: { label: <FormattedMessage id="cns.predicate.counter.all" />, value: "all" },
   options: Object.values(PredicateCounterValue).map((predicateCounterValue) => (
     {
-      label: <FormattedMessage id={`cns.predicate.counter.${predicateCounterValue.toLowerCase()}`} />,
+      label: <FormattedMessage id={'cns.predicate.counter.${predicateCounterValue.toLowerCase()}'} />,
       value: predicateCounterValue.toLowerCase()
     })),
   beforeText: "cns.predicate.counter.beforetext",
@@ -53,7 +53,7 @@ const conditionSelectorProps: ConditionSelectorProps = {
   dataTypeValue: { label: <FormattedMessage id="cns.vehicle.status.battery.label" />, value: "battery" },
   dataTypeOptions: Object.values(VehicleDataType).map((vehicleDataType) => (
     {
-      label: <FormattedMessage id={`cns.vehicle.status.${vehicleDataType}.label`} />,
+      label: <FormattedMessage id={'cns.vehicle.status.${vehicleDataType}.label'} />,
       value: vehicleDataType
     })),
   comparisonTypeValue: { label: <FormattedMessage id="cns.condition.selector.equalTo" />, value: "equal" },

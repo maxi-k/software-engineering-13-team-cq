@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
+import FleetSelector, { FleetSelectorProps } from '@/atoms/FleetSelector'
 
 import {
   FetchingAttributes,
@@ -59,15 +60,34 @@ const RuleDetailVehicles: React.SFC<RuleDetailVehiclesProps> = ({
     return <LoadingIndicator isCentral={true} />
   }  */
 
+const fleetSelectorProps: Partial<FleetSelectorProps> = {
+  value: { label: 'BMW', value: 'BMW' },
+  options: [
+    { label: 'BMW', value: 'BMW' },
+    { label: 'Audi', value: 'Audi' },
+    { label: 'Mercedes', value: 'Mercedes' }
+  ],
+  styles: (_) => ({
+    input: (base) => ({
+      ...base,
+      width: '500px'
+    })
+  })
+}
+
+
+
   return (
     <StyledRuleDetailVehicles {...props}>
-     
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '96rem' }}>
         <ClosingButton onClick={vehiclesAborter(abortVehicles)} />
       </div>
       <StyledFieldSeparator />
-      
-      <div style={{ paddingLeft: '76rem' }}>
+      <div style={{ paddingLeft: '1rem' }}>
+        <FleetSelector {...fleetSelectorProps} />
+      </div>
+      <StyledFieldSeparator />
+      <div style={{ paddingLeft: '80rem' }}>
         <NextButton onClick={vehiclesFinisher(finishVehicles)} />
       </div>
     </StyledRuleDetailVehicles>
