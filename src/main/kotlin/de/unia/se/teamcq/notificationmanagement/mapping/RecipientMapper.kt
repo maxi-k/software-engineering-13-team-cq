@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component
 class RecipientMapper : IRecipientMapper {
 
     @Autowired
-    lateinit var recipientMailMapper: IRecipientMailMapper
+    lateinit var recipientMailMapper: AbstractRecipientMailMapper
 
     @Autowired
     lateinit var recipientSmsMapper: IRecipientSmsMapper

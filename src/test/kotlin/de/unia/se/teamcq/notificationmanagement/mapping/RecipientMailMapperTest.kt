@@ -3,7 +3,9 @@ package de.unia.se.teamcq.notificationmanagement.mapping
 import de.unia.se.teamcq.TestUtils.getTestRecipientMailDto
 import de.unia.se.teamcq.TestUtils.getTestRecipientMailEntity
 import de.unia.se.teamcq.TestUtils.getTestRecipientMailModel
+import io.kotlintest.should
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import org.mapstruct.factory.Mappers
 import org.springframework.boot.test.context.TestConfiguration
@@ -12,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class RecipientMailMapperTest : StringSpec() {
 
-    private var recipientMailMapper = Mappers.getMapper(IRecipientMailMapper::class.java)
+    private var recipientMailMapper = Mappers.getMapper(AbstractRecipientMailMapper::class.java)
 
     init {
 
@@ -43,13 +45,25 @@ class RecipientMailMapperTest : StringSpec() {
             recipientMailDto shouldBe getTestRecipientMailDto()
         }
 
-        "Convert dto to model" {
+        "Convert dto to model" should {
 
-            val recipientMailDto = getTestRecipientMailDto()
+            "Work if CountingThreshold is legal" {
 
-            val recipientMailModel = recipientMailMapper.dtoToModel(recipientMailDto)
+                val recipientMailModel = getTestRecipientMailModel()
 
-            recipientMailModel shouldBe getTestRecipientMailModel()
+                val recipientMailDto = recipientMailMapper.modelToDto(recipientMailModel)
+
+                recipientMailDto shouldBe getTestRecipientMailDto()
+            }
+
+            "Throw an exception if CountingThreshold is illegal" {
+
+                val recipientMailDto = getTestRecipientMailDto().apply { mailAddress = "@@@xyz" }
+
+                shouldThrow<IllegalArgumentException> {
+                    recipientMailMapper.dtoToModel(recipientMailDto)
+                }
+            }
         }
     }
 }
