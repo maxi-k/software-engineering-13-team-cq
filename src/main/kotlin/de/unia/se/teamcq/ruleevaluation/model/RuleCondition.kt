@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
 enum class LogicalConnectiveType {
-    ANY, ALL
+    ANY, ALL, NONE
 }
 
 abstract class RuleCondition(

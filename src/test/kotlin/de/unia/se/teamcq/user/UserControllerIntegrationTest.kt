@@ -2,6 +2,7 @@ package de.unia.se.teamcq.user
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
 import de.unia.se.teamcq.user.dto.UserDto
@@ -57,16 +58,23 @@ class UserControllerIntegrationTest : StringSpec() {
                     "/user-notification-settings/"
             )
 
-            val expectedCreatedUser = UserDto(name = "New user", userSettings = UserSettingsDto(UserNotificationType.EMAIL))
-
             possibleRequestPaths.map { requestPath ->
                 mockMvc.perform(MockMvcRequestBuilders
                         .get(requestPath)
                         .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
+
                             val returnedUserDto = ObjectMapper()
                                     .readValue(result.response.contentAsString, UserDto::class.java)
+
+                            val expectedCreatedUser = UserDto(
+                                    name = "New user",
+                                    userSettings = UserSettingsDto(
+                                            returnedUserDto.userSettings!!.settingsId,
+                                            UserNotificationType.EMAIL
+                                    )
+                            )
 
                             returnedUserDto shouldBe expectedCreatedUser
                         }
@@ -91,10 +99,15 @@ class UserControllerIntegrationTest : StringSpec() {
                         .content(ObjectMapper().writeValueAsString(TestUtils.getTestUserDto())))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
-                            val returnedUser = ObjectMapper()
+
+                            val returnedUserDto = ObjectMapper()
                                     .readValue(result.response.contentAsString, UserDto::class.java)
 
-                            returnedUser shouldBe TestUtils.getTestUserDto()
+                            val expectedUserDto = getTestUserDto().apply {
+                                userSettings!!.settingsId = returnedUserDto.userSettings!!.settingsId
+                            }
+
+                            returnedUserDto shouldBe expectedUserDto
                         }
             }
         }
@@ -123,10 +136,15 @@ class UserControllerIntegrationTest : StringSpec() {
                         .headers(TestUtils.prepareAccessTokenHeader(jwtConfig, accessToken)))
                         .andExpect(MockMvcResultMatchers.status().isOk)
                         .andExpect { result ->
+
                             val returnedUserDto = ObjectMapper()
                                     .readValue(result.response.contentAsString, UserDto::class.java)
 
-                            returnedUserDto shouldBe TestUtils.getTestUserDto()
+                            val expectedUserDto = getTestUserDto().apply {
+                                userSettings!!.settingsId = returnedUserDto.userSettings!!.settingsId
+                            }
+
+                            returnedUserDto shouldBe expectedUserDto
                         }
             }
         }

@@ -41,7 +41,6 @@ import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.rulemanagement.model.NotificationRuleBuilder
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.dto.UserSettingsDto
@@ -50,7 +49,12 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
+import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleReferenceEntity
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.model.FleetReference
+import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
@@ -79,16 +83,18 @@ object TestUtils {
     }
 
     fun getTestNotificationRuleModel(): NotificationRule {
-        return NotificationRuleBuilder()
-                .withId(0)
-                .withName("rule_name")
-                .withOwner(getTestUserModel())
-                .withDescription("description")
-                .withCondition(getTestRuleConditionModel())
-                .withAggregator(getTestAggregatorModel())
-                .withRecipients(getTestRecipientModels())
-                .withOwnerAsAdditionalRecipient(true)
-                .build()
+        return NotificationRule(
+                ruleId = 0,
+                name = "rule_name",
+                owner = getTestUserModel(),
+                description = "description",
+                condition = getTestRuleConditionModel(),
+                aggregator = getTestAggregatorModel(),
+                recipients = getTestRecipientModels(),
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceModels(),
+                affectingAllApplicableFleets = false
+        )
     }
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
@@ -100,7 +106,9 @@ object TestUtils {
                 condition = getTestRuleConditionDto(),
                 aggregator = getTestAggregatorDto(),
                 recipients = getTestRecipientDtos(),
-                ownerAsAdditionalRecipient = true
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceDtos(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -113,7 +121,9 @@ object TestUtils {
                 condition = getTestRuleConditionEntity(),
                 aggregator = getTestAggregatorEntity(),
                 recipients = getTestRecipientEntities(),
-                ownerAsAdditionalRecipient = true
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceEntities(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -122,7 +132,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettings(UserNotificationType.EMAIL)
+                userSettings = UserSettings(0, UserNotificationType.EMAIL)
         )
     }
 
@@ -131,7 +141,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettingsDto(UserNotificationType.EMAIL)
+                userSettings = UserSettingsDto(0, UserNotificationType.EMAIL)
         )
     }
 
@@ -176,7 +186,7 @@ object TestUtils {
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
-                "predicateFieldProviderName",
+                getTestVehicleReferenceModel(),
                 setOf(
                         getTestVehicleStateDataTypeBatteryModel(),
                         getTestVehicleStateDataTypeContractModel(),
@@ -191,7 +201,7 @@ object TestUtils {
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                "predicateFieldProviderName"
+                getTestVehicleReferenceEntity()
         )
     }
 
@@ -396,6 +406,71 @@ object TestUtils {
 
     fun getTestRecipientModels(): List<Recipient> {
         return listOf(getTestRecipientSmsModel(), getTestRecipientMailModel())
+    }
+
+    fun getTestFleetReferenceModel(): FleetReference {
+        return FleetReference(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceEntity(): FleetReferenceEntity {
+        return FleetReferenceEntity(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceDto(): FleetReferenceDto {
+        return FleetReferenceDto(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestVehicleReferenceModel(): VehicleReference {
+        return VehicleReference(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceModel()
+        )
+    }
+
+    fun getTestVehicleReferenceEntity(): VehicleReferenceEntity {
+        return VehicleReferenceEntity(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceEntity()
+        )
+    }
+
+    fun getTestFleetReferenceDtoTwo(): FleetReferenceDto {
+        return getTestFleetReferenceDto().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceDtos(): List<FleetReferenceDto> {
+        return listOf(
+                getTestFleetReferenceDto(),
+                getTestFleetReferenceDtoTwo()
+        )
+    }
+
+    fun getTestFleetReferenceModelTwo(): FleetReference {
+        return getTestFleetReferenceModel().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceModels(): List<FleetReference> {
+        return listOf(
+                getTestFleetReferenceModel(),
+                getTestFleetReferenceModelTwo()
+        )
+    }
+
+    fun getTestFleetReferenceEntityTwo(): FleetReferenceEntity {
+        return getTestFleetReferenceEntity().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceEntities(): List<FleetReferenceEntity> {
+        return listOf(
+                getTestFleetReferenceEntity(),
+                getTestFleetReferenceEntityTwo()
+        )
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

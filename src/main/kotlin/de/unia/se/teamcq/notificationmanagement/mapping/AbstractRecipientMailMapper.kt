@@ -17,7 +17,8 @@ abstract class AbstractRecipientMailMapper {
         val emailValidator = EmailValidator.getInstance()
 
         if (!emailValidator.isValid(recipientMailDto.mailAddress)) {
-            throw IllegalArgumentException("NotificationCronTrigger must be a valid CronTrigger!")
+            throw IllegalArgumentException("Attribute MailAddress of RecipientMailDto" +
+                    " must be a valid Email Address but was ${recipientMailDto.mailAddress}")
         }
     }
 

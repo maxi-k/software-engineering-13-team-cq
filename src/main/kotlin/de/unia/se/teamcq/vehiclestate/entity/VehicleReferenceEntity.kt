@@ -4,24 +4,20 @@ import java.io.Serializable
 import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
-data class VehicleStateEntity(
+data class VehicleReferenceEntity(
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    var stateId: Long? = 0,
+    @Id
+    var vin: String?,
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
-    @JoinColumn(name = "fk_vehicle")
-    var vehicleReference: VehicleReferenceEntity?
-
-    // TODO: Add VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
+    @JoinColumn(name = "fk_fleet")
+    var fleetReference: FleetReferenceEntity?
 
 ) : Serializable {
     // Necessary for MapStruct
