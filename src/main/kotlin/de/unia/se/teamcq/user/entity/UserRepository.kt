@@ -2,7 +2,6 @@ package de.unia.se.teamcq.user.entity
 
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import de.unia.se.teamcq.user.model.User
-import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
@@ -41,6 +40,6 @@ class UserRepository : IUserRepository {
         val userEntity = userEntityRepository.findById(username).orElse(null)
 
         return userEntity?.let { existingUserEntity -> userMapper.entityToModel(existingUserEntity) }
-                ?: return createOrSaveUser(User(username, null, null, UserSettings(0, UserNotificationType.EMAIL)))
+                ?: return createOrSaveUser(User(username, null, null, UserSettings.DEFAULT_USER_SETTINGS))
     }
 }

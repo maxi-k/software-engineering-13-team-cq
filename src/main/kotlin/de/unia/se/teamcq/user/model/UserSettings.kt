@@ -7,4 +7,8 @@ data class UserSettings(
     var userNotificationType: UserNotificationType?
 ) {
     constructor(): this(null, null)
+
+    companion object {
+        val DEFAULT_USER_SETTINGS = UserSettings(0, UserNotificationType.EMAIL)
+    }
 }
