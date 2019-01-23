@@ -1,9 +1,10 @@
 import { authApiRequest, mockRequest, doMock } from '@/services/api-service'
-import { capitalizeString } from '@/services/string-service'
+import { capitalizeString } from '@/utilities/string-util'
 import {
   NotificationRuleOverview as OverviewRule,
   NotificationRuleDetail as DetailRule,
   NotificationRecipientType as RecipientType,
+  LogicalConnective,
   VehicleDataType
 } from '@/model'
 
@@ -57,7 +58,11 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     recipients: [{
       type: capitalizeString(rule.owner.userSettings.userNotificationType) as RecipientType,
       value: `OWNER::${rule.owner.mailAddress}/${rule.owner.cellPhoneNumber}`
-    }]
+    }],
+    condition: {
+      logicalConnective: LogicalConnective.Any,
+      subConditions: new Set()
+    }
   })
 
 const mockedRule: OverviewRule = {
@@ -92,4 +97,8 @@ const mockedRuleDetail = (ruleId: number): DetailRule => ({
   fleets: [],
   recipients: [{ type: RecipientType.Email, value: 'maxi.kuschewski@gmail.com' },
   { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
+  condition: {
+    logicalConnective: LogicalConnective.All,
+    subConditions: new Set()
+  }
 })

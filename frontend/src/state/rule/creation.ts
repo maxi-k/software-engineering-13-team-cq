@@ -5,10 +5,10 @@ import { put, takeEvery } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 
 // import { ensureResponseStatus } from '@/services/response-service'
-import { NotificationRuleDetail } from '@/model/Rule'
+import { NotificationRuleInProgress, NotificationRuleDetail, LogicalConnective } from '@/model/Rule'
 
 export interface RuleCreationState {
-  readonly inProgressRule: Partial<NotificationRuleDetail>
+  readonly inProgressRule: NotificationRuleInProgress
   readonly completedSteps: Set<number>,
   readonly currentStep: number
 }
@@ -31,7 +31,11 @@ const initialState = {
     description: "",
     recipients: [],
     applyToAllFleets: true,
-    fleets: []
+    fleets: [],
+    condition: {
+      logicalConnective: LogicalConnective.Any,
+      subConditions: new Set(),
+    }
   },
   completedSteps: new Set(),
   currentStep: 0

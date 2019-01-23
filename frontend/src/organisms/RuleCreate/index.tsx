@@ -22,7 +22,7 @@ import NextIcon from '@fleetdata/shared/components/icons/chevron-right.icon'
 import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
 import ViewHeader from '@/molecules/ViewHeader'
-import ClosingButton from '@/atoms/ClosingButton'
+import AbortButton from '@/atoms/BackButton'
 import RuleCreationStepper from '@/molecules/RuleCreationStepper'
 
 import {
@@ -117,9 +117,9 @@ const RuleCreate: React.SFC<RuleCreateProps> = (
 ) => (
     <StyledRuleCreationWrapper {...props}>
       <ViewHeader title="cns.page.ruleCreate.title">
-        <ClosingButton
-          onClick={abortCreation}
-          width={40} height={40} />
+        <AbortButton
+          label="cns.navigation.abort.label"
+          onClick={abortCreation} />
       </ViewHeader>
       <RuleCreationStepper
         {...stepperProps(currentStep, selectStep, completedSteps)}

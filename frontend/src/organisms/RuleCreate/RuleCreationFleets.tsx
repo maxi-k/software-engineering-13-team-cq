@@ -6,7 +6,7 @@ import {
   createCheckboxUpdater,
   createMultiValueUpdater
 } from './common'
-import { SelectValue, Fleet, NotificationRuleDetail } from '@/model'
+import { Fleet, NotificationRuleInProgress } from '@/model'
 import { StateMapper } from '@/state/connector'
 import { carParkFleetsSelector } from '@/state/selectors'
 
@@ -16,7 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FleetSelector from '@/atoms/FleetSelector'
 
 interface RuleCreationFleetSelectorAttributes {
-  rule: Partial<NotificationRuleDetail>,
+  rule: NotificationRuleInProgress,
   updater(...event: any): void
 }
 
@@ -29,22 +29,8 @@ type RuleCreationFleetSelectorProps =
   & RuleCreationFleetSelectorStateAttributes
 
 const convertFleetsToOptions = (fleets: Fleet[]) => (
-  fleets.map((fleet) => ({ label: fleet.name, value: fleet.id }))
+  fleets.map((fleet) => ({ label: fleet.name, value: fleet }))
 )
-
-const convertOptionsToFleets = (
-  options: SelectValue[],
-  fleets: { [key: string]: Fleet }
-) => (options.map((option) => (fleets[option.value])))
-
-const convertFleetSelectorUpdater = (
-  updater: RuleCreationFleetSelectorAttributes['updater'],
-  fleets: { [key: string]: Fleet }
-) => (
-    (selected: SelectValue[], newlySelected: SelectValue) => (
-      updater(convertOptionsToFleets(selected, fleets))
-    )
-  )
 
 const mapStateToProps: StateMapper<RuleCreationFleetSelectorAttributes, RuleCreationFleetSelectorStateAttributes> = (state, props) => ({
   fleets: carParkFleetsSelector(state)
@@ -57,7 +43,7 @@ const RuleCreationFleetSelector: React.SFC<RuleCreationFleetSelectorProps> = (
     <FleetSelector
       value={convertFleetsToOptions(rule.fleets || [])}
       options={convertFleetsToOptions(Object.values(fleets))}
-      onChange={convertFleetSelectorUpdater(updater, fleets)}
+      onChange={updater}
     />
   )
 }
@@ -71,14 +57,14 @@ const RuleCreationFleets: RuleCreationStepView = (
       <FormControlLabel
         control={
           <Switch checked={inProgressRule.applyToAllFleets}
-            onChange={createCheckboxUpdater(updateField, 'applyToAllFleets')}
+            onChange={createCheckboxUpdater(updateField)('applyToAllFleets')}
             value="applyToAllFleets" />
         }
         label={<FormattedMessage id="cns.rule.field.applyToAllFleets.label" />} />
       {!inProgressRule.applyToAllFleets &&
         <ConnectedRuleCreationFleetSelector
           rule={inProgressRule}
-          updater={createMultiValueUpdater(updateField, 'fleets')} />
+          updater={createMultiValueUpdater(updateField)('fleets')} />
       }
     </div>
   )

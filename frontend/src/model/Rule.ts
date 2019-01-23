@@ -1,13 +1,5 @@
 import { Fleet } from './CarPark'
-
-export enum VehicleDataType {
-  Battery = 'battery',
-  Engine = 'engine',
-  Contract = 'contract',
-  Mileage = 'mileage',
-  Fuel = 'fuel',
-  Service = 'service'
-}
+import { VehicleDataField, VehicleDataType } from './Vehicle'
 
 export enum ComparisonType {
   Above = 'above',
@@ -22,10 +14,21 @@ export enum NotificationRecipientType {
   User = 'user'
 }
 
-export enum PredicateCounterValue {
-  All = "All",
-  Any = "Any",
-  None = "None"
+export enum LogicalConnective {
+  All = 'all',
+  Any = 'any',
+  None = 'none'
+}
+
+export interface ConditionComposite {
+  logicalConnective: LogicalConnective,
+  // Only model one layer of the composite for now...
+  subConditions: Set<Condition<any>>
+}
+
+export interface Condition<T extends VehicleDataField> {
+  appliedField: T,
+  comparisonConstant: T['fieldType']
 }
 
 export interface NotificationRecipient {
@@ -45,5 +48,10 @@ export interface NotificationRuleDetail
   extends NotificationRuleOverview {
   applyToAllFleets: boolean,
   fleets: Fleet[],
-  recipients: NotificationRecipient[]
+  recipients: NotificationRecipient[],
+  condition: ConditionComposite
+}
+
+export interface NotificationRuleInProgress
+  extends Partial<NotificationRuleDetail> {
 }

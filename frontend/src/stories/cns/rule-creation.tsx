@@ -91,6 +91,7 @@ const predicateCounterProps: PredicateCounterProps = {
     { label: "any", value: "any" },
     { label: "none", value: "none" }
   ],
+  onChange: action('predicate counter'),
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
 }
