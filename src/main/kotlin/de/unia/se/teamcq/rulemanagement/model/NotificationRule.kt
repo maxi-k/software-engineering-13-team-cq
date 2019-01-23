@@ -1,5 +1,7 @@
 package de.unia.se.teamcq.rulemanagement.model
 
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
+import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 
 data class NotificationRule(
@@ -9,21 +11,13 @@ data class NotificationRule(
 
     var owner: User?,
 
-    // @get: NotNull
-    // var recipients: List<String>,
+    var description: String?,
 
-    var description: String?
+    var condition: RuleCondition?,
 
-    // @get: NotNull
-    // var fleets: MutableList<Fleet>,
-
-    // @get: NotNull
-    // var formula: Formula,
-
-    // @get: NotNull
-    // var aggregator: Aggregator,
+    var aggregator: Aggregator?
 
 ) {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null, null, null, null, null)
 }

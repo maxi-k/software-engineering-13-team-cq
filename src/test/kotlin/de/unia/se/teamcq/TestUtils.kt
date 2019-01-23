@@ -1,6 +1,34 @@
 package de.unia.se.teamcq
 
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
+import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
+import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
+import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
+import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionDto
+import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionPredicateDto
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
+import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionPredicateEntity
+import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
+import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
+import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
+import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
+import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
+import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
+import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
@@ -13,20 +41,18 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
-import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
-import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
-import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.ruleevaluation.model.PredicateField
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
+import io.kotlintest.shouldBe
+import io.kotlintest.shouldNotBe
 import org.springframework.http.HttpHeaders
+import org.springframework.scheduling.support.CronTrigger
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -49,6 +75,8 @@ object TestUtils {
                 .withName("rule_name")
                 .withOwner(getTestUserModel())
                 .withDescription("description")
+                .withCondition(getTestRuleConditionModel())
+                .withAggregator(getTestAggregatorModel())
                 .build()
     }
 
@@ -57,7 +85,9 @@ object TestUtils {
                 ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserDto(),
-                description = "description"
+                description = "description",
+                condition = getTestRuleConditionDto(),
+                aggregator = getTestAggregatorDto()
         )
     }
 
@@ -66,7 +96,9 @@ object TestUtils {
                 ruleId = 0,
                 name = "rule_name",
                 owner = getTestUserEntity(),
-                description = "description"
+                description = "description",
+                condition = getTestRuleConditionEntity(),
+                aggregator = getTestAggregatorEntity()
         )
     }
 
@@ -131,12 +163,12 @@ object TestUtils {
                 0,
                 "predicateFieldProviderName",
                 setOf(
-                    getTestVehicleStateDataTypeBatteryModel(),
-                    getTestVehicleStateDataTypeContractModel(),
-                    getTestVehicleStateDataTypeEngineModel(),
-                    getTestVehicleStateDataTypeFuelModel(),
-                    getTestVehicleStateDataTypeMileageModel(),
-                    getTestVehicleStateDataTypeServiceModel()
+                        getTestVehicleStateDataTypeBatteryModel(),
+                        getTestVehicleStateDataTypeContractModel(),
+                        getTestVehicleStateDataTypeEngineModel(),
+                        getTestVehicleStateDataTypeFuelModel(),
+                        getTestVehicleStateDataTypeMileageModel(),
+                        getTestVehicleStateDataTypeServiceModel()
                 )
         )
     }
@@ -166,6 +198,154 @@ object TestUtils {
 
     fun getTestPredicateFieldDto(): PredicateFieldDto {
         return PredicateFieldDto("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC)
+    }
+
+    fun getTestRuleConditionPredicateModel(): RuleConditionPredicate {
+        return RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+    }
+
+    fun getTestRuleConditionPredicateDto(): RuleConditionPredicateDto {
+        return RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+    }
+
+    fun getTestRuleConditionPredicateEntity(): RuleConditionPredicateEntity {
+        return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+    }
+
+    fun getTestRuleConditionCompositeModel(): RuleConditionComposite {
+        return RuleConditionComposite(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        getTestRuleConditionPredicateModel()
+                )
+        )
+    }
+
+    fun getTestRuleConditionCompositeDto(): RuleConditionCompositeDto {
+        return RuleConditionCompositeDto(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        getTestRuleConditionPredicateDto()
+                )
+        )
+    }
+
+    fun getTestRuleConditionCompositeEntity(): RuleConditionCompositeEntity {
+        return RuleConditionCompositeEntity(
+                0,
+                LogicalConnectiveType.ALL,
+                listOf(
+                        getTestRuleConditionPredicateEntity()
+                )
+        )
+    }
+
+    fun getTestRuleConditionModel(): RuleCondition {
+        return getTestRuleConditionCompositeModel()
+    }
+
+    fun getTestRuleConditionDto(): RuleConditionDto {
+        return getTestRuleConditionCompositeDto()
+    }
+
+    fun getTestRuleConditionEntity(): RuleConditionEntity {
+        return getTestRuleConditionCompositeEntity()
+    }
+
+    fun getTestRuleConditionModelWithGreaterDepth(): RuleCondition {
+        return RuleConditionComposite(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionModel(),
+                        getTestRuleConditionModel()
+                )
+        )
+    }
+
+    fun getTestRuleConditionDtoWithGreaterDepth(): RuleConditionDto {
+        return RuleConditionCompositeDto(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionDto(),
+                        getTestRuleConditionDto()
+                )
+        )
+    }
+
+    fun getTestRuleConditionEntityWithGreaterDepth(): RuleConditionEntity {
+        return RuleConditionCompositeEntity(
+                0,
+                LogicalConnectiveType.ANY,
+                listOf(
+                        getTestRuleConditionEntity(),
+                        getTestRuleConditionEntity()
+                )
+        )
+    }
+
+    fun getAggregatorImmediateModel(): AggregatorImmediate {
+        return AggregatorImmediate(0)
+    }
+
+    fun getTestAggregatorImmediateDto(): AggregatorImmediateDto {
+        return AggregatorImmediateDto(0)
+    }
+
+    fun getTestAggregatorImmediateEntity(): AggregatorImmediateEntity {
+        return AggregatorImmediateEntity(0)
+    }
+
+    fun getTestAggregatorCountingModel(): AggregatorCounting {
+        return AggregatorCounting(0, 10)
+    }
+
+    fun getTestAggregatorCountingDto(): AggregatorCountingDto {
+        return AggregatorCountingDto(0, 10)
+    }
+
+    fun getTestAggregatorCountingEntity(): AggregatorCountingEntity {
+        return AggregatorCountingEntity(0, 10)
+    }
+
+    fun getTestAggregatorScheduledModel(): AggregatorScheduled {
+        return AggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
+    }
+
+    fun getTestAggregatorScheduledDto(): AggregatorScheduledDto {
+        return AggregatorScheduledDto(0, "0 0 10 * * MON")
+    }
+
+    fun getTestAggregatorScheduledEntity(): AggregatorScheduledEntity {
+        return AggregatorScheduledEntity(0, "0 0 10 * * MON")
+    }
+
+    fun getTestAggregatorModel(): Aggregator {
+        return getTestAggregatorScheduledModel()
+    }
+
+    fun getTestAggregatorDto(): AggregatorDto {
+        return getTestAggregatorScheduledDto()
+    }
+
+    fun getTestAggregatorEntity(): AggregatorEntity {
+        return getTestAggregatorScheduledEntity()
+    }
+
+    fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
+
+        generateObject() shouldBe generateObject()
+
+        modifiers.forEach { modifier ->
+            val objectToModify = generateObject()
+            modifier(objectToModify)
+            generateObject() shouldNotBe objectToModify
+        }
+
+        generateObject().hashCode() shouldBe generateObject().hashCode()
     }
 
     fun prepareAccessTokenHeader(jwtConfig: JwtConfig, accessToken: String): HttpHeaders {
