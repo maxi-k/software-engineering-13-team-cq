@@ -4,14 +4,23 @@ import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientMailDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientSmsDto
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientMailEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientSmsEntity
 import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
+import de.unia.se.teamcq.notificationmanagement.model.Recipient
+import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
+import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
@@ -77,6 +86,8 @@ object TestUtils {
                 .withDescription("description")
                 .withCondition(getTestRuleConditionModel())
                 .withAggregator(getTestAggregatorModel())
+                .withRecipients(getTestRecipientModels())
+                .withOwnerAsAdditionalRecipient(true)
                 .build()
     }
 
@@ -87,7 +98,9 @@ object TestUtils {
                 owner = getTestUserDto(),
                 description = "description",
                 condition = getTestRuleConditionDto(),
-                aggregator = getTestAggregatorDto()
+                aggregator = getTestAggregatorDto(),
+                recipients = getTestRecipientDtos(),
+                ownerAsAdditionalRecipient = true
         )
     }
 
@@ -98,7 +111,9 @@ object TestUtils {
                 owner = getTestUserEntity(),
                 description = "description",
                 condition = getTestRuleConditionEntity(),
-                aggregator = getTestAggregatorEntity()
+                aggregator = getTestAggregatorEntity(),
+                recipients = getTestRecipientEntities(),
+                ownerAsAdditionalRecipient = true
         )
     }
 
@@ -333,6 +348,54 @@ object TestUtils {
 
     fun getTestAggregatorEntity(): AggregatorEntity {
         return getTestAggregatorScheduledEntity()
+    }
+
+    fun getTestRecipientDto(): RecipientDto {
+        return getTestRecipientMailDto()
+    }
+
+    fun getTestRecipientMailDto(): RecipientMailDto {
+        return RecipientMailDto(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsDto(): RecipientSmsDto {
+        return RecipientSmsDto(0, "12345678")
+    }
+
+    fun getTestRecipientModel(): Recipient {
+        return getTestRecipientMailModel()
+    }
+
+    fun getTestRecipientMailModel(): RecipientMail {
+        return RecipientMail(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsModel(): RecipientSms {
+        return RecipientSms(0, "12345678")
+    }
+
+    fun getTestRecipientEntity(): RecipientEntity {
+        return getTestRecipientMailEntity()
+    }
+
+    fun getTestRecipientMailEntity(): RecipientMailEntity {
+        return RecipientMailEntity(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsEntity(): RecipientSmsEntity {
+        return RecipientSmsEntity(0, "12345678")
+    }
+
+    fun getTestRecipientEntities(): List<RecipientEntity> {
+        return listOf(getTestRecipientSmsEntity(), getTestRecipientMailEntity())
+    }
+
+    fun getTestRecipientDtos(): List<RecipientDto> {
+        return listOf(getTestRecipientSmsDto(), getTestRecipientMailDto())
+    }
+
+    fun getTestRecipientModels(): List<Recipient> {
+        return listOf(getTestRecipientSmsModel(), getTestRecipientMailModel())
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

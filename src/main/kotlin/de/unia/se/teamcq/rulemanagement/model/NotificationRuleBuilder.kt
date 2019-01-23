@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.rulemanagement.model
 
 import de.unia.se.teamcq.notificationmanagement.model.Aggregator
+import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 
@@ -18,6 +19,10 @@ class NotificationRuleBuilder private constructor() {
 
     private var aggregator: Aggregator? = null
 
+    private var recipients: List<Recipient> = mutableListOf()
+
+    private var ownerAsAdditionalRecipient: Boolean? = true
+
     fun withId(ruleId: Long): NotificationRuleBuilder = apply { this.ruleId = ruleId }
 
     fun withName(name: String): NotificationRuleBuilder = apply { this.name = name }
@@ -30,7 +35,14 @@ class NotificationRuleBuilder private constructor() {
 
     fun withAggregator(aggregator: Aggregator): NotificationRuleBuilder = apply { this.aggregator = aggregator }
 
-    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description, condition, aggregator)
+    fun withRecipients(recipients: List<Recipient>): NotificationRuleBuilder = apply { this.recipients = recipients }
+
+    fun withOwnerAsAdditionalRecipient(ownerAsRecipient: Boolean): NotificationRuleBuilder = apply {
+        this.ownerAsAdditionalRecipient = ownerAsRecipient
+    }
+
+    fun build(): NotificationRule = NotificationRule(ruleId, name, owner, description, condition, aggregator,
+            recipients, ownerAsAdditionalRecipient)
 
     companion object {
         operator fun invoke(): NotificationRuleBuilder {
