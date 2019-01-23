@@ -8,7 +8,7 @@ data class FleetReference(
     // Necessary for MapStruct
     constructor() : this(null)
 
-    fun fetchVehicleData() {
+    fun fetchFleetData() {
         TODO()
     }
 }
