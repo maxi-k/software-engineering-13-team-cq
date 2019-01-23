@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration
 class RecipientMapperTest : StringSpec() {
 
     @MockK(relaxed = true)
-    lateinit var recipientMailMapper: IRecipientMailMapper
+    lateinit var recipientMailMapper: AbstractRecipientMailMapper
 
     @MockK(relaxed = true)
     lateinit var recipientSmsMapper: IRecipientSmsMapper
