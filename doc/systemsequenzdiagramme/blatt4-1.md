@@ -18,7 +18,7 @@ Der Flottenmanager ist am System authentifiziert.
 
 #### Nachbedingung
 
-Die erstellte Regel wurde dem System hinzugefügt.
+Eine neue Regel ist aktiv im System.
 
 #### Ausnahmen
 
@@ -53,6 +53,7 @@ Es existieren Regeln, die modifiziert werden können.
 
 #### Nachbedingung
 
+Die Regel ist in ihrer neuen Definition aktiv, die alte Definition ist inaktiv.
 Die Regel wurde entsprechend der Änderungen gespreichert. Die veralteten Einstellungen wurden verworfen.
 
 #### Ausnahme
