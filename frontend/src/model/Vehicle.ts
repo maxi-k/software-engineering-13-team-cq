@@ -1,3 +1,5 @@
+import { PredicateField } from './PredicateField'
+
 export enum VehicleDataType {
   Battery = 'battery',
   Engine = 'engine',
@@ -7,35 +9,13 @@ export enum VehicleDataType {
   Service = 'service'
 }
 
-export enum VehicleDataFieldType {
-  String,
-  Number,
-  Percentage,
-  Date
+export interface VehicleDataField<DataType> {
+  vehicleDataType: VehicleDataType,
+  predicateField: PredicateField<DataType>
 }
 
-export interface VehicleDataField {
-  type: VehicleDataFieldType,
-  fieldType: any,
-  fieldName: string
-}
-export interface VehicleDataFieldString
-  extends VehicleDataField {
-  type: VehicleDataFieldType.String,
-  fieldType: string
-}
-export interface VehicleDataFieldPercentage
-  extends VehicleDataField {
-  type: VehicleDataFieldType.Percentage,
-  fieldType: number
-}
-export interface VehicleDataFieldNumber
-  extends VehicleDataField {
-  type: VehicleDataFieldType.Number,
-  fieldType: number
-}
-export interface VehicleDataFieldDate
-  extends VehicleDataField {
-  type: VehicleDataFieldType.Date,
-  fieldType: Date
+// As returned by the API
+export interface VehiclePredicateFields {
+  providerName: VehicleDataType,
+  predicateFields: Array<PredicateField<any>>
 }

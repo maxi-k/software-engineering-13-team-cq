@@ -1,10 +1,22 @@
 import React from 'react'
-import { RuleCreationStepView, createSingleValueUpdater, createMultiValueUpdater, nestValueUpdater } from './common'
+import {
+  RuleCreationStepView,
+  FieldUpdater,
+  createMergingValueUpdater,
+  createSingleValueUpdater,
+  nestValueUpdater
+} from './common'
+import {
+  LogicalConnective,
+  RuleCondition,
+  RuleConditionPredicate,
+} from '@/model'
+import { createUUID } from '@/services/identifier-service'
+import { mapObjectToArray } from '@/utilities/collection-util'
+
 import PredicateCounter from '@/atoms/PredicateCounter'
 import AddConditionButton from '@/atoms/AddConditionButton'
 // import ConditionSelector from '@/atoms/ConditionSelector'
-import { LogicalConnective, VehicleDataFieldType } from '@/model'
-import { mapObjectToArray } from '@/utilities/collection-util'
 
 const logicalConnectiveToSelectOption = (connective: LogicalConnective) => (
   {
@@ -15,31 +27,55 @@ const logicalConnectiveToSelectOption = (connective: LogicalConnective) => (
 
 const addConditionUpdater = (callback: ((...value: any) => void)) => (
   (event: React.SyntheticEvent<any, any>) => (
-    callback('$add', {
-      type: VehicleDataFieldType.String,
-      fieldName: 'vehicleName'
-    })
+    callback({ [createUUID()]: {} })
   )
 )
+
+const EditablePredicate: React.SFC<{
+  predicate: Partial<RuleConditionPredicate<any>>,
+  updateField: FieldUpdater
+}> = ({ predicate, updateField }) => (
+  <div>{JSON.stringify(predicate)}</div>
+)
+
+const PredicateList: React.SFC<{
+  predicates: RuleCondition['predicates'],
+  updateField: FieldUpdater
+}> = (
+  { predicates = {}, updateField }
+) => (
+      <>
+        {mapObjectToArray(predicates, (key: string | number, predicate: RuleConditionPredicate<any>) => (
+          <EditablePredicate key={key}
+            predicate={predicate}
+            updateField={nestValueUpdater(updateField)(key)} />
+        ))
+        }
+      </>
+    )
 
 const RuleCreationCondition: RuleCreationStepView = (
   { inProgressRule: { condition }, updateField }
 ) => {
-  const logicalConnective = condition
-    ? condition.logicalConnective
-    : LogicalConnective.All;
-  const nestedUpdater = nestValueUpdater(updateField)('condition')
+  const logicalConnective = condition.logicalConnective || LogicalConnective.All
+  const predicates = condition.predicates || {}
+  const conditionUpdater = nestValueUpdater(updateField)('condition')
+  const predicatesUpdater = nestValueUpdater(conditionUpdater)('predicates')
   return (
     <div>
       <PredicateCounter
-        onChange={createSingleValueUpdater(nestedUpdater)('logicalConnective')}
+        onChange={createSingleValueUpdater(conditionUpdater)('logicalConnective')}
         value={logicalConnectiveToSelectOption(logicalConnective)}
         options={mapObjectToArray(LogicalConnective, (k, v) => logicalConnectiveToSelectOption(v))}
         beforeText="cns.predicate.counter.beforetext"
         afterText="cns.predicate.counter.aftertext"
       />
+      <PredicateList
+        predicates={predicates}
+        updateField={predicatesUpdater}
+      />
       <AddConditionButton
-        onClick={addConditionUpdater(createMultiValueUpdater(nestedUpdater)('conditions'))}
+        onClick={addConditionUpdater(createMergingValueUpdater(conditionUpdater)('predicates'))}
       />
     </div>
   )

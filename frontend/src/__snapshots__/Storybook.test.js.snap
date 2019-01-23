@@ -2031,7 +2031,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"
 >
-  <p>
+  <div>
     If
     <div
       className="sc-cmTdod eUZYIX"
@@ -2140,7 +2140,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
       </div>
     </div>
     of the following conditions are met:
-  </p>
+  </div>
 </div>
 `;
 

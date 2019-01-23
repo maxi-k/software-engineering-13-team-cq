@@ -29,7 +29,7 @@ type RuleCreationFleetSelectorProps =
   & RuleCreationFleetSelectorStateAttributes
 
 const convertFleetsToOptions = (fleets: Fleet[]) => (
-  fleets.map((fleet) => ({ label: fleet.name, value: fleet }))
+  fleets.map((fleet) => ({ label: fleet.name, value: fleet, key: fleet.id }))
 )
 
 const mapStateToProps: StateMapper<RuleCreationFleetSelectorAttributes, RuleCreationFleetSelectorStateAttributes> = (state, props) => ({

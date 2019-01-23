@@ -1,0 +1,230 @@
+[
+    {
+        "providerName": "Battery",
+        "predicateFields": [
+            {
+                "fieldName": "charge",
+                "dataType": "DECIMAL",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "voltage",
+                "dataType": "DECIMAL",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "status",
+                "dataType": "TEXT",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO"
+                ]
+            }
+        ]
+    },
+    {
+        "providerName": "Contract",
+        "predicateFields": [
+            {
+                "fieldName": "duePerWeek",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "vins",
+                "dataType": "STRING_LIST",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "CONTAINED_IN",
+                    "NOT_CONTAINED_IN"
+                ]
+            },
+            {
+                "fieldName": "calendarWeek",
+                "dataType": "WEEK",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            }
+        ]
+    },
+    {
+        "providerName": "Engine",
+        "predicateFields": [
+            {
+                "fieldName": "power",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "capacity",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "fuelType",
+                "dataType": "TEXT",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO"
+                ]
+            }
+        ]
+    },
+    {
+        "providerName": "Fuel",
+        "predicateFields": [
+            {
+                "fieldName": "level",
+                "dataType": "DECIMAL",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "liters",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "range",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            }
+        ]
+    },
+    {
+        "providerName": "Mileage",
+        "predicateFields": [
+            {
+                "fieldName": "current",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "remaining",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "reached",
+                "dataType": "INTEGER",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            }
+        ]
+    },
+    {
+        "providerName": "Service",
+        "predicateFields": [
+            {
+                "fieldName": "dueDate",
+                "dataType": "DATE",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO",
+                    "GREATER_THAN",
+                    "LESSER_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO",
+                    "LESSER_THAN_OR_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "brakeFluid",
+                "dataType": "TEXT",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO"
+                ]
+            },
+            {
+                "fieldName": "status",
+                "dataType": "TEXT",
+                "possibleEvaluationStrategies": [
+                    "EQUAL_TO",
+                    "NOT_EQUAL_TO"
+                ]
+            }
+        ]
+    }
+]

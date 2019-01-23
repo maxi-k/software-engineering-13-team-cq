@@ -69,12 +69,17 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
 }
 
 import RuleCreationGeneral from '@/organisms/RuleCreate/RuleCreationGeneral'
-const updateFieldAction = (name: string) => action(`Update field ${name}`)
+const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
   .add('Screen', () => <RuleCreationGeneral
     updateField={updateFieldAction}
-    inProgressRule={{}} />)
+    inProgressRule={{
+      condition: {
+        logicalConnective: LogicalConnective.Any,
+        predicates: {}
+      }
+    }} />)
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
@@ -83,6 +88,7 @@ storiesOf('Rule Creation / Second Step', module)
 /* ~~ Third-Step Components ~~ */
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+import { LogicalConnective } from '@/model';
 
 const predicateCounterProps: PredicateCounterProps = {
   value: { label: "all", value: "all" },

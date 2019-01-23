@@ -34,7 +34,7 @@ const initialState = {
     fleets: [],
     condition: {
       logicalConnective: LogicalConnective.Any,
-      subConditions: new Set(),
+      predicates: {},
     }
   },
   completedSteps: new Set(),
@@ -65,11 +65,12 @@ const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
       })
       )
     case RuleCreationActionType.RULE_CREATE_UPDATE_FIELD:
-      return update(state, {
+      const updateMap = {
         inProgressRule: {
           [action.payload.fieldName]: action.payload.value
         }
-      });
+      }
+      return update(state, updateMap);
     default:
       return state
   }

@@ -11,6 +11,7 @@ import ruleReducer, { sagas as ruleSagas } from './rule'
 import languageReducer from './language'
 import authReducer, { sagas as authSagas } from './auth'
 import carParkReducer, { sagas as carParkSagas } from './car-park'
+import predicateFieldReducer, { sagas as predicateFieldSagas } from './predicate-field'
 
 export const history = createBrowserHistory()
 
@@ -24,13 +25,15 @@ const allReducers = {
   rule: ruleReducer,
   language: languageReducer,
   auth: authReducer,
-  carPark: carParkReducer
+  carPark: carParkReducer,
+  predicateField: predicateFieldReducer
 }
 
 const allSagas = [
   ...ruleSagas,
   ...authSagas,
-  ...carParkSagas
+  ...carParkSagas,
+  ...predicateFieldSagas
 ]
 
 const composeEnhancers =

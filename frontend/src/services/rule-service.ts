@@ -61,7 +61,7 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     }],
     condition: {
       logicalConnective: LogicalConnective.Any,
-      subConditions: new Set()
+      predicates: {}
     }
   })
 
@@ -99,6 +99,6 @@ const mockedRuleDetail = (ruleId: number): DetailRule => ({
   { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
   condition: {
     logicalConnective: LogicalConnective.All,
-    subConditions: new Set()
+    predicates: {}
   }
 })

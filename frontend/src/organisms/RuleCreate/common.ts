@@ -7,7 +7,8 @@ export interface CommonRuleCreationStateAttributes
 
 }
 
-export type FieldUpdater = (name: string, callback: ((...event: any) => any)) => ((value: any) => void)
+export type FieldKey = string | number
+export type FieldUpdater = (name: FieldKey, callback: ((...event: any[]) => any)) => ((...value: any[]) => void)
 export interface CommonRuleCreationDispatchAttributes {
   updateField: FieldUpdater
 }
@@ -19,7 +20,7 @@ export type RuleCreationStepViewProps =
 
 export type RuleCreationStepView = SFC<RuleCreationStepViewProps>
 
-export type FieldUpdateCreator = (updater: FieldUpdater) => (name: string) => ((value: any) => void)
+export type FieldUpdateCreator = (updater: FieldUpdater) => (name: FieldKey) => ((value: any) => void)
 export const createInputFieldUpdater: FieldUpdateCreator = updater => name => (
   updater(name, (event: React.ChangeEvent<HTMLInputElement>) => (
     { $set: event.target.value }
@@ -50,9 +51,21 @@ export const createSingleValueUpdater: FieldUpdateCreator = updater => name => (
   ))
 )
 
-export const nestValueUpdater = (updater: FieldUpdater) => (outerName: string): FieldUpdater => (
+export const createMergingValueUpdater: FieldUpdateCreator = updater => name => (
+  updater(name, <T extends { value: any }>(toAdd: Record<any, T>) => (
+    { $merge: toAdd }
+  ))
+)
+
+export const createRemovingValueUpdater: FieldUpdateCreator = updater => name => (
+  updater(name, (toRemove: string[]) => (
+    { $unset: toRemove }
+  ))
+)
+
+export const nestValueUpdater = (updater: FieldUpdater) => (outerName: FieldKey): FieldUpdater => (
   (innerName, callback) => (
-    updater(outerName, (...event: any) => ({ [innerName]: callback(...event) }))
+    updater(outerName, (...event: any[]) => ({ [innerName]: callback(...event) }))
   )
 )
 

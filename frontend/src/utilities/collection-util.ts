@@ -5,6 +5,7 @@ export const mapObjectToArray = <ObjectType, ResultType>(
   enumeration: ObjectType,
   callback: KeyValueMapper<ObjectType, ResultType>): ResultType[] => (
     Object.keys(enumeration).map((key: string) => (
-      callback(key as keyof ObjectType, enumeration[key as keyof ObjectType])
+      callback(key as keyof ObjectType,
+        enumeration[key as keyof ObjectType])
     ))
   )

@@ -170,8 +170,8 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
   previousStep: () => dispatch(createRulePreviousStep()),
   completeCreation: () => dispatch(finishRuleCreation.request()),
   nextStep: () => dispatch(createRuleNextStep()),
-  updateField: (name, callback) => (value) => (
-    dispatch(createRuleUpdateField(name, callback(value)))
+  updateField: (name, callback) => (...values) => (
+    dispatch(createRuleUpdateField(name, callback(...values)))
   )
 })
 

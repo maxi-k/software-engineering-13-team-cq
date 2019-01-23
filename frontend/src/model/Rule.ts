@@ -1,3 +1,4 @@
+import { DeepPartial } from 'ts-essentials'
 import { Fleet } from './CarPark'
 import { VehicleDataField, VehicleDataType } from './Vehicle'
 
@@ -20,15 +21,17 @@ export enum LogicalConnective {
   None = 'none'
 }
 
-export interface ConditionComposite {
+export interface RuleCondition {
   logicalConnective: LogicalConnective,
   // Only model one layer of the composite for now...
-  subConditions: Set<Condition<any>>
+  predicates: { [key: string]: RuleConditionPredicate<any> }
 }
 
-export interface Condition<T extends VehicleDataField> {
-  appliedField: T,
-  comparisonConstant: T['fieldType']
+export interface RuleConditionPredicate<FieldType> {
+  vehicleDataType: VehicleDataType,
+  appliedField: VehicleDataField<FieldType>,
+  comparisonConstant: FieldType,
+  comparisonField: ComparisonType
 }
 
 export interface NotificationRecipient {
@@ -49,9 +52,10 @@ export interface NotificationRuleDetail
   applyToAllFleets: boolean,
   fleets: Fleet[],
   recipients: NotificationRecipient[],
-  condition: ConditionComposite
+  condition: RuleCondition
 }
 
-export interface NotificationRuleInProgress
-  extends Partial<NotificationRuleDetail> {
-}
+export type NotificationRuleInProgress
+  = Partial<NotificationRuleDetail> & {
+    condition: DeepPartial<RuleCondition>
+  }
