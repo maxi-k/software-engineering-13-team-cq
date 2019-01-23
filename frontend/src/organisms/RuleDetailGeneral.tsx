@@ -18,7 +18,7 @@ export type FinishGeneralType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortGeneralType = (event: React.SyntheticEvent<any, any>) => void
 
 export interface RuleDetailGeneralAttributes {
-  rule: NotificationRuleDetail
+  ruleDetail: NotificationRuleDetail
   finishGeneral: FinishGeneralType
   abortGeneral: AbortGeneralType
 }
@@ -44,15 +44,15 @@ const StyledFieldSeparator = styled.div`
     padding: 1rem;
 `
 const generalFinisher = (finishGeneral: FinishGeneralType) =>
-    (e: React.SyntheticEvent<any, any>): void =>
-      finishGeneral(e)
+  (event: React.SyntheticEvent<any, any>): void =>
+    finishGeneral(event)
 
 const generalAborter = (abortGeneral: AbortGeneralType) =>
-    (e: React.SyntheticEvent<any, any>): void =>
-      abortGeneral(e)
+  (event: React.SyntheticEvent<any, any>): void =>
+    abortGeneral(event)
 
 const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
-  isFetching, hasFetchError, rule, finishGeneral, abortGeneral, ...props
+  isFetching, hasFetchError, ruleDetail, finishGeneral, abortGeneral, ...props
 }) => {
 
   if (hasFetchError) {
@@ -62,7 +62,7 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
       } />
     )
   }
-  if (isFetching || typeof rule === 'undefined' || rule === null) {
+  if (isFetching || typeof ruleDetail === 'undefined' || ruleDetail === null) {
     return <LoadingIndicator isCentral={true} />
   }
 
@@ -70,27 +70,27 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
     <StyledRuleDetailGeneral {...props}>
       <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
         <FormattedMessage id="cns.rule.label" />{' '}
-        "{rule.name}"
+        "{ruleDetail.name}"
       </Typography>
       <div style={{ paddingLeft: '76rem' }}>
-      <ClosingButton onClick={generalAborter(abortGeneral)} />
+        <ClosingButton onClick={generalAborter(abortGeneral)} />
       </div>
       <StyledFieldSeparator />
       <StyledRuleInformation>
         <StyledInfoBlock>
           <FieldDescriptor
             label={"cns.rule.field.name.label"}
-            content={rule.name} />
+            content={ruleDetail.name} />
           <StyledFieldSeparator />
           <FieldDescriptor
             label={"cns.rule.field.description.label"}
-            content={rule.description} />
+            content={ruleDetail.description} />
           <StyledFieldSeparator />
           <FieldDescriptor
             label={"cns.rule.field.recipients.label"}
             content={<>
               {
-                rule.recipients.map(
+                ruleDetail.recipients.map(
                   (recipient) => <RuleRecipientTag
                     key={recipient.value}
                     recipient={recipient} />)
@@ -102,8 +102,9 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
           <FieldDescriptor
             label={"cns.rule.field.dataSources.label"}
             content={<>
-              {rule.dataSources.map((dataSource) => (
+              {ruleDetail.dataSources.map((dataSource) => (
                 <RuleIcon
+                  key={dataSource}
                   type={dataSource}
                   label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
               )}
@@ -113,7 +114,7 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
       </StyledRuleInformation>
       <StyledFieldSeparator />
       <div style={{ paddingLeft: '76rem' }}>
-     <NextButton onClick={generalFinisher(finishGeneral)}/> 
+        <NextButton onClick={generalFinisher(finishGeneral)} />
       </div>
     </StyledRuleDetailGeneral>
   )

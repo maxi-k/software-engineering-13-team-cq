@@ -23,10 +23,8 @@ class VehicleStateMapperTest : StringSpec() {
             val vehicleStateEntity = vehicleStateMapper.modelToEntity(vehicleState)
 
             vehicleStateEntity shouldNotBe null
-            vehicleStateEntity.eventId shouldBe vehicleState.eventId
+            vehicleStateEntity.stateId shouldBe vehicleState.stateId
             vehicleStateEntity.vehicleId shouldBe vehicleState.vehicleId
-            vehicleStateEntity.kilometers shouldBe vehicleState.kilometers
-            vehicleStateEntity.batteryCharge shouldBe vehicleState.batteryCharge
         }
 
         "Convert entity to model" {
@@ -36,10 +34,8 @@ class VehicleStateMapperTest : StringSpec() {
             val vehicleState = vehicleStateMapper.entityToModel(vehicleStateEntity)
 
             vehicleState shouldNotBe null
-            vehicleStateEntity.eventId shouldBe vehicleState.eventId
+            vehicleStateEntity.stateId shouldBe vehicleState.stateId
             vehicleStateEntity.vehicleId shouldBe vehicleState.vehicleId
-            vehicleStateEntity.kilometers shouldBe vehicleState.kilometers
-            vehicleStateEntity.batteryCharge shouldBe vehicleState.batteryCharge
         }
     }
 }

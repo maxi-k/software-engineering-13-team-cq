@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration
 @ContextConfiguration(classes = [(TestConfiguration::class)])
 class UserMapperTest : StringSpec() {
 
-    private var vehicleStateMapper: IUserMapper = Mappers.getMapper(IUserMapper::class.java)
+    private var userMapper: IUserMapper = Mappers.getMapper(IUserMapper::class.java)
 
     init {
 
@@ -20,7 +20,7 @@ class UserMapperTest : StringSpec() {
 
             val user = getTestUserModel()
 
-            val userEntity = vehicleStateMapper.modelToEntity(user)
+            val userEntity = userMapper.modelToEntity(user)
 
             userEntity shouldNotBe null
             userEntity.cellPhoneNumber shouldBe user.cellPhoneNumber
@@ -33,7 +33,7 @@ class UserMapperTest : StringSpec() {
 
             val userEntity = getTestUserEntity()
 
-            val user = vehicleStateMapper.entityToModel(userEntity)
+            val user = userMapper.entityToModel(userEntity)
 
             user shouldNotBe null
             user.cellPhoneNumber shouldBe userEntity.cellPhoneNumber

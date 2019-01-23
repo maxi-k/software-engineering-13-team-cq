@@ -37,16 +37,16 @@
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "Benutzer",
 
-    "cns.predicate.counter.beforetext": "Wenn ",
-    "cns.predicate.counter.aftertext": " der folgenden Bedingungen erfüllt sind: ",
+    "cns.predicate.counter.beforetext": "Wenn",
+    "cns.predicate.counter.aftertext": "der folgenden Bedingungen erfüllt sind:",
     "cns.predicate.counter.all": "alle",
     "cns.predicate.counter.any": "eine",
     "cns.predicate.counter.none": "keine",
 
-    "cns.condition.selector.beforetext": "Der ",
-    "cns.condition.selector.aftertext": " hat einen Wert ",
-    "cns.condition.selector.equal": "gleich",
-    "cns.condition.selector.unequal": "ungleich",
+    "cns.condition.selector.beforetext": "Der",
+    "cns.condition.selector.aftertext": "hat einen Wert",
+    "cns.condition.selector.equalTo": "gleich",
+    "cns.condition.selector.unequalTo": "ungleich",
     "cns.condition.selector.below": "kleiner als",
     "cns.condition.selector.above": "größer als"
 }

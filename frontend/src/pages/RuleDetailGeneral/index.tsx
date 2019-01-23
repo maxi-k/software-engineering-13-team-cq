@@ -18,7 +18,7 @@ export interface RuleDetailGeneralPageAttributes {
 }
 
 export interface StateAttributes extends FetchingAttributes {
-  rule: NotificationRuleDetail
+  ruleDetail: NotificationRuleDetail
 }
 
 export interface DispatchAttributes {
@@ -58,7 +58,7 @@ class RuleDetailGeneralPage extends React.PureComponent<RuleDetailGeneralPagePro
 const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttributes> = (state, props) => {
   const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
   return ({
-    rule: rules[parseInt(props.parameters.ruleId, 10)],
+    ruleDetail: rules[parseInt(props.parameters.ruleId, 10)],
     isFetching,
     hasFetchError
   })
