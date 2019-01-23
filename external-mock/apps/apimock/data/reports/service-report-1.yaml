@@ -1,0 +1,27 @@
+type: service
+carPark: cccccccc-0000-cccc-0000-000000000001
+fleets:
+- cccccccc-0000-ffff-0000-000000000001
+overdueVins: []
+vehiclesDuePerWeek:
+- calendarWeek: 41
+  vins: []
+- calendarWeek: 42
+  vins: []
+- calendarWeek: 43
+  vins: []
+- calendarWeek: 44
+  vins:
+  - WBA7J0102HGJ36060
+- calendarWeek: 45
+  vins: []
+- calendarWeek: 46
+  vins: []
+- calendarWeek: 47
+  vins: []
+- calendarWeek: 48
+  vins: []
+- calendarWeek: 49
+  vins: []
+currentCalendarWeek: 41
+

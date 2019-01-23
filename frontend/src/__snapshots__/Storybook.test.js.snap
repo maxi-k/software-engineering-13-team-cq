@@ -1,0 +1,2528 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Fleetdata / App Provided App 1`] = `
+Array [
+  <div
+    className="sc-kgoBCf cFaVGf"
+    id="content-wrapper"
+  >
+    <div
+      className="sc-cHGsZl lmHbbS"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="sc-hmzhuo cFjKCa"
+      >
+        <div
+          className="sc-TOsTZ eqvloj"
+        >
+          <div
+            className="sc-kgAjT kmzIQb"
+          >
+            <img
+              alt="BMW Group"
+              className="sc-cJSrbW cMLsDY"
+              height="35"
+              src="/assets/svg/bmw-group.svg"
+            />
+            <img
+              alt="BMW Logo"
+              className="sc-cJSrbW cMLsDY"
+              height="35"
+              src="/assets/img/bmw_group_logos.png"
+            />
+          </div>
+          <div
+            className="sc-frDJqD fufUhH"
+          >
+            <div>
+              <button
+                className="active sc-eNQAEJ kUjIoI"
+                onClick={[Function]}
+              >
+                EN
+              </button>
+              <button
+                className="sc-eNQAEJ kUjIoI"
+                onClick={[Function]}
+              >
+                DE
+              </button>
+            </div>
+            <button
+              className="MuiButtonBase-root-7 MuiIconButton-root-1 sc-gisBJw HOOIA sc-fMiknA iFBZZh"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label-6"
+              >
+                <svg
+                  height="100%"
+                  id="default"
+                  style={
+                    Object {
+                      "fill": "#92a2bd",
+                      "height": "24px",
+                      "marginTop": undefined,
+                      "minWidth": "24px",
+                      "width": "24px",
+                    }
+                  }
+                  version="1.1"
+                  viewBox="0 6 96 96"
+                  width="100%"
+                >
+                  <path
+                    d="M48,42h.093A11.9981,11.9981,0,0,0,60,29.907,12.0548,12.0548,0,0,0,47.907,18,12,12,0,0,0,48,42ZM42.085,24.176A8.2476,8.2476,0,0,1,47.9214,21.7,8.3714,8.3714,0,0,1,56.3,29.9358,8.2984,8.2984,0,0,1,48.093,38.3H48a8.301,8.301,0,0,1-5.915-14.124Z"
+                  />
+                  <path
+                    d="M66,50.1735a59.3969,59.3969,0,0,0-36-.1292c-1.3569.4271-2.6866.9142-4,1.4343V78h4V54.267a55.225,55.225,0,0,1,36,.1292V78h4V51.629C68.6882,51.0989,67.356,50.61,66,50.1735Z"
+                  />
+                   
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <ul
+          className="sc-hMqMXs geyain"
+        >
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU jOfwbr"
+              color="#92a2bd"
+              href="/dashboard"
+              onClick={[Function]}
+            >
+              <span>
+                Dashboard
+              </span>
+            </a>
+          </li>
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU hVPECh"
+              color="#ff9100"
+              href="/service-view"
+              onClick={[Function]}
+            >
+              <span>
+                Fleet monitoring
+              </span>
+            </a>
+          </li>
+          <li
+            className="sc-kEYyzF ZNagI"
+          >
+            <a
+              aria-current={null}
+              className="sc-kkGfuU ZkczR"
+              color="#a2ad00"
+              href="/car-park"
+              onClick={[Function]}
+            >
+              <span>
+                Car Park Management
+              </span>
+            </a>
+          </li>
+          )}
+        </ul>
+      </div>
+      <div
+        className="sc-ksYbfQ lCPkU"
+      />
+    </div>
+    <div
+      className="sc-kGXeez ezsGtn"
+    >
+      <main
+        className="sc-cSHVUG btqosa"
+      >
+        <div
+          className="MuiGrid-container-14 MuiGrid-spacing-xs-40-40"
+        >
+          <div
+            className="MuiGrid-item-15 MuiGrid-grid-xs-12-54 MuiGrid-grid-md-3-73 MuiGrid-grid-lg-2-86"
+          >
+            <div
+              className="sc-kpOJdX eMVMNs"
+            >
+              Your content goes here...
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <button
+                autoFocus={true}
+                className="primary sc-jzJRlG brGhCA"
+                icon={
+                  <img
+                    src="/assets/svg/chevron-right.svg"
+                  />
+                }
+                label="Open Dialog"
+                onClick={[Function]}
+                primary="true"
+                width="auto"
+              >
+                <span>
+                  Open Dialog
+                </span>
+                <img
+                  src="/assets/svg/chevron-right.svg"
+                />
+              </button>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="sc-dNLxif PGUIr"
+              >
+                <div
+                  className="MuiPaper-root-111 MuiPaper-elevation0-113 sc-hqyNC dOAmVs"
+                >
+                  <div
+                    className="sc-jbKcbu bdomrr"
+                  >
+                    <div
+                      className="nav-label"
+                    >
+                      Nav Button
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <button
+                className="MuiButtonBase-root-7 MuiButton-root-138 MuiButton-text-140 MuiButton-outlined-146 sc-htpNat cujHkP"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-139 label"
+                >
+                  <svg
+                    height="100%"
+                    id="default"
+                    style={
+                      Object {
+                        "fill": "#92a2bd",
+                        "height": "40px",
+                        "marginTop": undefined,
+                        "minWidth": "40px",
+                        "width": "40px",
+                      }
+                    }
+                    version="1.1"
+                    viewBox="0 0 83.2 83.2"
+                    width="100%"
+                  >
+                    <polygon
+                      points="43.6,39.6 43.6,10.6 39.6,10.6 39.6,39.6 10.6,39.6 10.6,43.6 39.6,43.6 39.6,72.6 43.6,72.6  43.6,43.6 72.6,43.6 72.6,39.6"
+                    />
+                  </svg>
+                  <span>
+                    Add Manually
+                  </span>
+                </span>
+              </button>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="MuiFormControl-root-176 sc-cvbbAY hwPHSZ"
+              >
+                <div
+                  className="MuiInputBase-root-200 MuiInput-root-187 MuiInputBase-formControl-201 MuiInput-formControl-188 sc-gipzik hrrmOw"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiSelect-root-180 root"
+                  >
+                    <div
+                      aria-haspopup="true"
+                      aria-owns={null}
+                      aria-pressed="false"
+                      className="MuiSelect-select-181 select MuiSelect-selectMenu-184 MuiInputBase-input-210 MuiInput-input-195"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="MuiListItemText-root-217"
+                      >
+                        <span
+                          className="MuiTypography-root-223 MuiTypography-subtitle1-241 MuiListItemText-primary-220"
+                        >
+                          All fleet vehicles
+                        </span>
+                      </div>
+                    </div>
+                    <input
+                      id="fleet-select"
+                      name="fleet-select"
+                      type="hidden"
+                      value="ALL_FLEETS"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-258 MuiSelect-icon-186 icon"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="sc-jqCOkK hrGQAV"
+              />
+              <div
+                className="MuiFormControl-root-176 sc-cvbbAY hwPHSZ"
+              >
+                <div
+                  className="MuiInputBase-root-200 MuiInput-root-187 MuiInputBase-formControl-201 MuiInput-formControl-188 sc-fBuWsC kQnnxH sc-gipzik hrrmOw"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="MuiSelect-root-180 root"
+                  >
+                    <div
+                      aria-haspopup="true"
+                      aria-owns={null}
+                      aria-pressed="false"
+                      className="MuiSelect-select-181 select MuiSelect-selectMenu-184 MuiInputBase-input-210 MuiInput-input-195"
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        className="MuiListItemText-root-217"
+                      >
+                        <span
+                          className="MuiTypography-root-223 MuiTypography-subtitle1-241 MuiListItemText-primary-220"
+                        >
+                          All fleet vehicles
+                        </span>
+                      </div>
+                    </div>
+                    <input
+                      id="fleet-select"
+                      name="fleet-select"
+                      type="hidden"
+                      value="ALL_FLEETS"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root-258 MuiSelect-icon-186 icon"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>,
+  <footer
+    className="sc-jKJlTe eyMvcP"
+  >
+    <div
+      className="sc-dxgOiQ cSKmXI sc-kGXeez ezsGtn"
+    >
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/imprint"
+          onClick={[Function]}
+        >
+          Imprint
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/privacy"
+          onClick={[Function]}
+        >
+          Data Protection
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/cookies"
+          onClick={[Function]}
+        >
+          Cookies
+        </a>
+      </div>
+      <div>
+        <a
+          className="sc-ckVGcZ itqOKt"
+          href="/t-and-c"
+          onClick={[Function]}
+        >
+          T&C
+        </a>
+      </div>
+      <div
+        style={
+          Object {
+            "marginLeft": "auto",
+          }
+        }
+      >
+        © Copyright 2018 BMW Group
+      </div>
+    </div>
+  </footer>,
+]
+`;
+
+exports[`Storyshots Fleetdata / Components Left Icon Button 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    iconleft={
+      <_default
+        color="white"
+      />
+    }
+    label="LeftIcon Button"
+    primary="true"
+  >
+    <svg
+      height="100%"
+      id="default"
+      style={
+        Object {
+          "fill": "white",
+          "height": "96px",
+          "marginTop": undefined,
+          "minWidth": "undefinedpx",
+          "width": "96px",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 62 84"
+      width="100%"
+    >
+      <g>
+        <path
+          d="M71,33H68V27a21,21,0,0,0-42,0v6H16V90H78V33ZM30,27a17,17,0,0,1,34,0v6H30ZM74,86H20V37H74Z"
+          transform="translate(-16 -6)"
+        />
+        <path
+          d="M53,56.16a6,6,0,1,0-7.86,5.74L41.72,75H52.28L48.83,61.9A6,6,0,0,0,53,56.16Z"
+          transform="translate(-16 -6)"
+        />
+      </g>
+    </svg>
+    <span>
+      LeftIcon Button
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Primary Button 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    label="Prop: 'label'"
+    primary="true"
+  >
+    <span>
+      Prop: 'label'
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Right Icon Button 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <button
+    className="primary sc-jzJRlG lbarbb"
+    icon={
+      <img
+        src="/assets/svg/chevron-right.svg"
+      />
+    }
+    label="RightIcon Button"
+    primary="true"
+  >
+    <span>
+      RightIcon Button
+    </span>
+    <img
+      src="/assets/svg/chevron-right.svg"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <button
+    className="sc-jzJRlG lbarbb"
+    label="Secondary Button"
+  >
+    <span>
+      Secondary Button
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots General Components Back Button 1`] = `
+<button
+  className="primary sc-jzJRlG lbarbb"
+  icon={
+    <img
+      src="/assets/svg/chevron-left.svg"
+      style={
+        Object {
+          "height": "20px",
+          "width": "20px",
+        }
+      }
+    />
+  }
+  label="Back"
+  onClick={[Function]}
+  primary="true"
+>
+  <span>
+    Back
+  </span>
+  <img
+    src="/assets/svg/chevron-left.svg"
+    style={
+      Object {
+        "height": "20px",
+        "width": "20px",
+      }
+    }
+  />
+</button>
+`;
+
+exports[`Storyshots General Components Central Loading Indicator 1`] = `
+<div
+  className="sc-uJMKN eVXOtU"
+  size="80"
+>
+  <div
+    className="MuiCircularProgress-root-55 MuiCircularProgress-colorPrimary-58 MuiCircularProgress-indeterminate-57"
+    role="progressbar"
+    style={
+      Object {
+        "height": 80,
+        "width": 80,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-60"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-61 MuiCircularProgress-circleIndeterminate-63"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots General Components Complex Error Message 1`] = `
+<div
+  aria-describedby="client-snackbar"
+  className="MuiTypography-root-305 MuiTypography-body2-313 MuiPaper-root-278 MuiPaper-elevation6-286 MuiSnackbarContent-root-275"
+  role="alertdialog"
+  style={
+    Object {
+      "backgroundColor": "#d32f2f",
+    }
+  }
+>
+  <div
+    className="MuiSnackbarContent-message-276"
+  >
+    <span
+      id="client-snackbar"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-340"
+        focusable="false"
+        role="presentation"
+        style={
+          Object {
+            "fontSize": 20,
+            "marginRight": 8,
+            "opacity": 0.9,
+          }
+        }
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span>
+        This is an error message with a 
+        <strong>
+          react node
+        </strong>
+         as message!  
+      </span>
+      <div
+        className="MuiCircularProgress-root-266 MuiCircularProgress-indeterminate-268"
+        role="progressbar"
+        style={
+          Object {
+            "height": 20,
+            "width": 20,
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-271"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-272 MuiCircularProgress-circleIndeterminate-274"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </div>
+      <span>
+          🔥 🔥 
+      </span>
+    </span>
+  </div>
+  <div
+    className="MuiSnackbarContent-action-277"
+  >
+    <button
+      aria-label="Close"
+      className="MuiButtonBase-root-355 MuiIconButton-root-349 MuiIconButton-colorInherit-350"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-354"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-340"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots General Components Large Loading Indicator 1`] = `
+<div
+  className="MuiCircularProgress-root-46 MuiCircularProgress-colorPrimary-49 MuiCircularProgress-indeterminate-48"
+  role="progressbar"
+  style={
+    Object {
+      "height": 80,
+      "width": 80,
+    }
+  }
+>
+  <svg
+    className="MuiCircularProgress-svg-51"
+    viewBox="22 22 44 44"
+  >
+    <circle
+      className="MuiCircularProgress-circle-52 MuiCircularProgress-circleIndeterminate-54"
+      cx={44}
+      cy={44}
+      fill="none"
+      r={20.2}
+      strokeWidth={3.6}
+      style={Object {}}
+    />
+  </svg>
+</div>
+`;
+
+exports[`Storyshots General Components Next Button 1`] = `
+<button
+  className="primary sc-jzJRlG lbarbb"
+  icon={
+    <img
+      src="/assets/svg/chevron-right.svg"
+    />
+  }
+  label="Next"
+  onClick={[Function]}
+  primary="true"
+>
+  <span>
+    Next
+  </span>
+  <img
+    src="/assets/svg/chevron-right.svg"
+  />
+</button>
+`;
+
+exports[`Storyshots General Components Requests Error Messages 1`] = `
+Array [
+  <div
+    aria-describedby="client-snackbar"
+    className="MuiTypography-root-213 MuiTypography-body2-221 MuiPaper-root-186 MuiPaper-elevation6-194 MuiSnackbarContent-root-183"
+    role="alertdialog"
+    style={
+      Object {
+        "backgroundColor": "#d32f2f",
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <div
+      className="MuiSnackbarContent-message-184"
+    >
+      <span
+        id="client-snackbar"
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-248"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginRight": 8,
+              "opacity": 0.9,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+         
+        There was a problem with your request. Please try it again.
+         (
+        400
+        ) 
+      </span>
+    </div>
+    <div
+      className="MuiSnackbarContent-action-185"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-263 MuiIconButton-root-257 MuiIconButton-colorInherit-258"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-262"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-248"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    aria-describedby="client-snackbar"
+    className="MuiTypography-root-213 MuiTypography-body2-221 MuiPaper-root-186 MuiPaper-elevation6-194 MuiSnackbarContent-root-183"
+    role="alertdialog"
+    style={
+      Object {
+        "backgroundColor": "#d32f2f",
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <div
+      className="MuiSnackbarContent-message-184"
+    >
+      <span
+        id="client-snackbar"
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-248"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginRight": 8,
+              "opacity": 0.9,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+         
+        You are unauthorized to view this resource. Please try to reload the page and log in.
+         (
+        401
+        ) 
+      </span>
+    </div>
+    <div
+      className="MuiSnackbarContent-action-185"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-263 MuiIconButton-root-257 MuiIconButton-colorInherit-258"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-262"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-248"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    aria-describedby="client-snackbar"
+    className="MuiTypography-root-213 MuiTypography-body2-221 MuiPaper-root-186 MuiPaper-elevation6-194 MuiSnackbarContent-root-183"
+    role="alertdialog"
+    style={
+      Object {
+        "backgroundColor": "#d32f2f",
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <div
+      className="MuiSnackbarContent-message-184"
+    >
+      <span
+        id="client-snackbar"
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-248"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginRight": 8,
+              "opacity": 0.9,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+         
+        The requested resource could not be found.
+         (
+        404
+        ) 
+      </span>
+    </div>
+    <div
+      className="MuiSnackbarContent-action-185"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-263 MuiIconButton-root-257 MuiIconButton-colorInherit-258"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-262"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-248"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    aria-describedby="client-snackbar"
+    className="MuiTypography-root-213 MuiTypography-body2-221 MuiPaper-root-186 MuiPaper-elevation6-194 MuiSnackbarContent-root-183"
+    role="alertdialog"
+    style={
+      Object {
+        "backgroundColor": "#d32f2f",
+        "marginBottom": "1rem",
+      }
+    }
+  >
+    <div
+      className="MuiSnackbarContent-message-184"
+    >
+      <span
+        id="client-snackbar"
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-248"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginRight": 8,
+              "opacity": 0.9,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+         
+        There was a problem while executing your request, please try again later.
+         (
+        500
+        ) 
+      </span>
+    </div>
+    <div
+      className="MuiSnackbarContent-action-185"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-263 MuiIconButton-root-257 MuiIconButton-colorInherit-258"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-262"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-248"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots General Components Simple Error Message 1`] = `
+<div
+  aria-describedby="client-snackbar"
+  className="MuiTypography-root-121 MuiTypography-body2-129 MuiPaper-root-94 MuiPaper-elevation6-102 MuiSnackbarContent-root-91"
+  role="alertdialog"
+  style={
+    Object {
+      "backgroundColor": "#d32f2f",
+    }
+  }
+>
+  <div
+    className="MuiSnackbarContent-message-92"
+  >
+    <span
+      id="client-snackbar"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-156"
+        focusable="false"
+        role="presentation"
+        style={
+          Object {
+            "fontSize": 20,
+            "marginRight": 8,
+            "opacity": 0.9,
+          }
+        }
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      This is an error message with a string message
+    </span>
+  </div>
+  <div
+    className="MuiSnackbarContent-action-93"
+  >
+    <button
+      aria-label="Close"
+      className="MuiButtonBase-root-171 MuiIconButton-root-165 MuiIconButton-colorInherit-166"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-170"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-156"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots General Components Small Loading Indicator 1`] = `
+<div
+  className="MuiCircularProgress-root-37 MuiCircularProgress-colorPrimary-40 MuiCircularProgress-indeterminate-39"
+  role="progressbar"
+  style={
+    Object {
+      "height": 40,
+      "width": 40,
+    }
+  }
+>
+  <svg
+    className="MuiCircularProgress-svg-42"
+    viewBox="22 22 44 44"
+  >
+    <circle
+      className="MuiCircularProgress-circle-43 MuiCircularProgress-circleIndeterminate-45"
+      cx={44}
+      cy={44}
+      fill="none"
+      r={20.2}
+      strokeWidth={3.6}
+      style={Object {}}
+    />
+  </svg>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    <svg
+      height="100%"
+      id="default"
+      style={
+        Object {
+          "fill": "#92a2bd",
+          "height": "96px",
+          "marginTop": undefined,
+          "minWidth": "undefinedpx",
+          "width": "96px",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 49 49"
+      width="100%"
+    >
+      <polygon
+        points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
+37.787,40 40,37.787 26.713,24.5 "
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="MuiStep-root-646"
+  >
+    <button
+      className="MuiButtonBase-root-655 MuiStepButton-root-651"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiStepLabel-root-658 MuiStepLabel-horizontal-659"
+      >
+        <span
+          className="MuiStepLabel-labelContainer-668"
+        >
+          <span
+            className="MuiTypography-root-669 MuiTypography-body2-677 MuiStepLabel-label-661 MuiStepLabel-active-662"
+          >
+            General
+          </span>
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="MuiPaper-root-717 MuiPaper-elevation0-719 MuiStepper-root-713 MuiStepper-horizontal-714"
+    style={
+      Object {
+        "width": "90%",
+      }
+    }
+  >
+    <div
+      className="MuiStep-root-744 MuiStep-horizontal-745"
+    >
+      <button
+        className="MuiButtonBase-root-753 MuiStepButton-root-749 MuiStepButton-horizontal-750"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-756 MuiStepLabel-horizontal-757"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-764"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-772 MuiStepIcon-root-767"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-768"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                1
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-766"
+          >
+            <span
+              className="MuiTypography-root-781 MuiTypography-body2-789 MuiStepLabel-label-759"
+            >
+              General
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-816 MuiStepConnector-horizontal-817 MuiStepConnector-active-820"
+    >
+      <span
+        className="MuiStepConnector-line-823 MuiStepConnector-lineHorizontal-824"
+      />
+    </div>
+    <div
+      className="MuiStep-root-744 MuiStep-horizontal-745"
+    >
+      <button
+        className="MuiButtonBase-root-753 MuiStepButton-root-749 MuiStepButton-horizontal-750"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-756 MuiStepLabel-horizontal-757"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-764"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-772 MuiStepIcon-root-767 MuiStepIcon-active-769"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-768"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                2
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-766"
+          >
+            <span
+              className="MuiTypography-root-781 MuiTypography-body2-789 MuiStepLabel-label-759 MuiStepLabel-active-760"
+            >
+              Fleets
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-816 MuiStepConnector-horizontal-817 MuiStepConnector-disabled-822"
+    >
+      <span
+        className="MuiStepConnector-line-823 MuiStepConnector-lineHorizontal-824"
+      />
+    </div>
+    <div
+      className="MuiStep-root-744 MuiStep-horizontal-745"
+    >
+      <button
+        className="MuiButtonBase-root-753 MuiButtonBase-disabled-754 MuiStepButton-root-749 MuiStepButton-horizontal-750"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-756 MuiStepLabel-horizontal-757 MuiStepLabel-disabled-763"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-764"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-772 MuiStepIcon-root-767"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-768"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                3
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-766"
+          >
+            <span
+              className="MuiTypography-root-781 MuiTypography-body2-789 MuiStepLabel-label-759"
+            >
+              Condition
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="css-10nd86i"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="css-1ykgphr"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className="css-1hwfws3"
+      >
+        <div
+          className="css-xwjg1b"
+        >
+          <div
+            className="css-rf4tka"
+          >
+            BMW
+          </div>
+          <div
+            className="css-1alnv5e"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="css-19bqh2r"
+              focusable="false"
+              height={14}
+              viewBox="0 0 20 20"
+              width={14}
+            >
+              <path
+                d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          className="css-1k1ozsg"
+        >
+          <div
+            className=""
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="none"
+              autoComplete="off"
+              autoCorrect="off"
+              disabled={false}
+              id="react-select-2-input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              spellCheck="false"
+              style={
+                Object {
+                  "background": 0,
+                  "border": 0,
+                  "boxSizing": "content-box",
+                  "color": "inherit",
+                  "fontSize": "inherit",
+                  "opacity": 1,
+                  "outline": 0,
+                  "padding": 0,
+                  "width": "1px",
+                }
+              }
+              tabIndex="0"
+              type="text"
+              value=""
+            />
+            <div
+              style={
+                Object {
+                  "height": 0,
+                  "left": 0,
+                  "overflow": "scroll",
+                  "position": "absolute",
+                  "top": 0,
+                  "visibility": "hidden",
+                  "whiteSpace": "pre",
+                }
+              }
+            >
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-1wy0on6"
+      >
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-19bqh2r"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+            />
+          </svg>
+        </div>
+        <span
+          className="css-d8oujb"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            aria-hidden="true"
+            className="css-19bqh2r"
+            focusable="false"
+            height={20}
+            viewBox="0 0 20 20"
+            width={20}
+          >
+            <path
+              d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <p>
+    The
+    <div
+      className="sc-feJyhm gnzLbA"
+    >
+      <div
+        className="css-10nd86i"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="css-vj8t7z"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="css-1hwfws3"
+          >
+            <div
+              className="css-xp4uvy"
+            >
+              battery
+            </div>
+            <div
+              className="css-1g6gooi"
+            >
+              <div
+                className=""
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-4-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1wy0on6"
+          >
+            <span
+              className="css-d8oujb"
+            />
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    is
+    <div
+      className="sc-feJyhm gnzLbA"
+    >
+      <div
+        className="css-10nd86i"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="css-vj8t7z"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="css-1hwfws3"
+          >
+            <div
+              className="css-xp4uvy"
+            >
+              equal
+            </div>
+            <div
+              className="css-1g6gooi"
+            >
+              <div
+                className=""
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-5-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1wy0on6"
+          >
+            <span
+              className="css-d8oujb"
+            />
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-iELTvK hXcheF"
+    />
+    <input
+      className="sc-cmTdod iikmue"
+      type="text"
+    />
+    %.
+  </p>
+</div>
+`;
+
+exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <p>
+    If
+    <div
+      className="sc-feJyhm gnzLbA"
+    >
+      <div
+        className="css-10nd86i"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="css-vj8t7z"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="css-1hwfws3"
+          >
+            <div
+              className="css-xp4uvy"
+            >
+              all
+            </div>
+            <div
+              className="css-1g6gooi"
+            >
+              <div
+                className=""
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-3-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1wy0on6"
+          >
+            <span
+              className="css-d8oujb"
+            />
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    of the following conditions are met:
+  </p>
+</div>
+`;
+
+exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
+<div
+  className="sc-uJMKN eVXOtU"
+  size="80"
+>
+  <div
+    className="MuiCircularProgress-root-536 MuiCircularProgress-colorPrimary-539 MuiCircularProgress-indeterminate-538"
+    role="progressbar"
+    style={
+      Object {
+        "height": 80,
+        "width": 80,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-541"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-542 MuiCircularProgress-circleIndeterminate-544"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview / Complete Successful 1`] = `
+<div
+  className="sc-kafWEX iWBJQd"
+>
+  <div
+    className="sc-tilXH bJLPWy sc-gGBfsJ kPSuHc"
+  >
+    <div
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      >
+        <div
+          className="nav-label sc-fYxtnH dwaVQg"
+        >
+          <svg
+            height="100%"
+            id="default"
+            style={
+              Object {
+                "fill": "#92a2bd",
+                "height": "96px",
+                "marginTop": undefined,
+                "minWidth": "undefinedpx",
+                "width": "96px",
+              }
+            }
+            version="1.1"
+            viewBox="0 0 83.2 83.2"
+            width="100%"
+          >
+            <polygon
+              points="43.6,39.6 43.6,10.6 39.6,10.6 39.6,39.6 10.6,39.6 10.6,43.6 39.6,43.6 39.6,72.6 43.6,72.6  43.6,43.6 72.6,43.6 72.6,39.6"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
+  >
+    <div
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      >
+        <div
+          className="nav-label sc-fYxtnH dwaVQg"
+        >
+          <h6
+            className="MuiTypography-root-501 MuiTypography-h6-518"
+          >
+            Rule Name
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <h6
+            className="MuiTypography-root-501 MuiTypography-subtitle1-519"
+          >
+            Sent every Tuesday, 9:00 AM
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
+  >
+    <div
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      >
+        <div
+          className="nav-label sc-fYxtnH dwaVQg"
+        >
+          <h6
+            className="MuiTypography-root-501 MuiTypography-h6-518"
+          >
+            Rule Name 2
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <h6
+            className="MuiTypography-root-501 MuiTypography-subtitle1-519"
+          >
+            Sent every Tuesday, 9:00 AM
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview / Complete With Error 1`] = `
+<div
+  className="sc-kafWEX iWBJQd"
+>
+  <div
+    aria-describedby="client-snackbar"
+    className="MuiTypography-root-584 MuiTypography-body2-592 MuiPaper-root-557 MuiPaper-elevation6-565 MuiSnackbarContent-root-554"
+    role="alertdialog"
+    style={
+      Object {
+        "backgroundColor": "#d32f2f",
+      }
+    }
+  >
+    <div
+      className="MuiSnackbarContent-message-555"
+    >
+      <span
+        id="client-snackbar"
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+          }
+        }
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-619"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+              "marginRight": 8,
+              "opacity": 0.9,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+        There was a problem loading this data from the server. Please try again later.
+      </span>
+    </div>
+    <div
+      className="MuiSnackbarContent-action-556"
+    >
+      <button
+        aria-label="Close"
+        className="MuiButtonBase-root-634 MuiIconButton-root-628 MuiIconButton-colorInherit-629"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-633"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-619"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="sc-tilXH bJLPWy sc-gGBfsJ gKsVSL"
+  >
+    <div
+      className="MuiPaper-root-367 MuiPaper-elevation0-369 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      >
+        <div
+          className="nav-label sc-fYxtnH dwaVQg"
+        >
+          <svg
+            height="100%"
+            id="default"
+            style={
+              Object {
+                "fill": "#92a2bd",
+                "height": "96px",
+                "marginTop": undefined,
+                "minWidth": "undefinedpx",
+                "width": "96px",
+              }
+            }
+            version="1.1"
+            viewBox="0 0 83.2 83.2"
+            width="100%"
+          >
+            <polygon
+              points="43.6,39.6 43.6,10.6 39.6,10.6 39.6,39.6 10.6,39.6 10.6,43.6 39.6,43.6 39.6,72.6 43.6,72.6  43.6,43.6 72.6,43.6 72.6,39.6"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="sc-ktHwxA bEXIEy sc-gGBfsJ gKsVSL"
+  >
+    <div
+      className="MuiPaper-root-403 MuiPaper-elevation0-405 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+    >
+      <div
+        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+      >
+        <div
+          className="nav-label sc-fYxtnH dwaVQg"
+        >
+          <h6
+            className="MuiTypography-root-430 MuiTypography-h6-447"
+          >
+            Rule Name
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <h6
+            className="MuiTypography-root-430 MuiTypography-subtitle1-448"
+          >
+            Sent every Tuesday, 9:00 AM
+          </h6>
+          <hr
+            className="sc-cIShpX gcJlWc"
+          />
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+          <div
+            className="sc-hEsumM dpAakk"
+          >
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Welcome to this Storybook 1`] = `
+<section
+  className="sc-bdVaJa ktFUja"
+>
+  <h2>
+    Welcome to the BMW CNS Storybook!
+  </h2>
+  <p>
+    This view is used to showcase some of the components, separated from their surroundings and any logic.
+  </p>
+  <p>
+    The goal is to conciously design every possible state (active, inactive, loading, error, etc.), 
+    <br />
+    while at the same time separating logic from looks.
+  </p>
+  <p>
+    Please select a component from the sidebar on the left. Note that the components listed under 
+    <strong>
+      Fleetdata
+    </strong>
+     
+    <br />
+     are part of the package provided by MbW, and are not created or modified by the CNS team.
+  </p>
+</section>
+`;

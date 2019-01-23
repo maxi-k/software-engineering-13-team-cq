@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'BMWGroupCondensed';
+  font-weight: normal;
+  src: url(/assets/fonts/BMWGroupCondensed-Regular.eot);
+  src: url(/assets/fonts/BMWGroupCondensed-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(/assets/fonts/BMWGroupCondensed-Regular.woff2) format('woff2'),
+    url(/assets/fonts/BMWGroupCondensed-Regular.woff) format('woff'),
+    url(/assets/fonts/BMWGroupCondensed-Regular.ttf) format('truetype'),
+    url(/assets/fonts/BMWGroupCondensed-Regular.svg#BMWGroupCondensed-Regular)
+      format('svg');
+}
+
+@font-face {
+  font-family: 'BMWGroupCondensed';
+  font-weight: bold;
+  src: url(/assets/fonts/BMWGroupCondensed-Bold.eot);
+  src: url(/assets/fonts/BMWGroupCondensed-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(/assets/fonts/BMWGroupCondensed-Bold.woff2) format('woff2'),
+    url(/assets/fonts/BMWGroupCondensed-Bold.woff) format('woff'),
+    url(/assets/fonts/BMWGroupCondensed-Bold.ttf) format('truetype'),
+    url(/assets/fonts/BMWGroupCondensed-Bold.svg#BMWGroupCondensed-Bold)
+      format('svg');
+}

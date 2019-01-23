@@ -1,0 +1,53 @@
+{
+    "cns.user.settings.label": "Notification Settings",
+
+    "cns.page.ruleOverview.title": "Notification Rules",
+    "cns.page.ruleDetailGeneral.title": "General",
+    "cns.page.ruleDetailCondition.title": "Conditions",
+    "cns.page.ruleDetailCondition.question": "Under what conditions should notifications be triggered?",
+
+    "cns.navigation.back.label": "Back",
+
+    "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
+
+    "cns.message.fetch.error.notFound": "The requested resource could not be found.",
+    "cns.message.fetch.error.badRequest": "There was a problem with your request. Please try it again.",
+    "cns.message.fetch.error.unauthorized": "You are unauthorized to view this resource. Please try to reload the page and log in.",
+    "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
+    "cns.page.ruleOverview.title": "Notification Rules",
+
+    "cns.rule.label": "Notification Rule",
+
+    "cns.rule.field.name.label": "Rule Name",
+    "cns.rule.field.description.label": "Description",
+    "cns.rule.field.dataSources.label": "Data Sources",
+    "cns.rule.field.recipients.label": "Recipients",
+
+    "cns.rule.creation.step.general.title": "General",
+    "cns.rule.creation.step.general.fleets": "Fleets",
+    "cns.rule.creation.step.general.condition": "Condition",
+
+    "cns.vehicle.status.engine.label": "engine",
+    "cns.vehicle.status.battery.label": "battery",
+    "cns.vehicle.status.contract.label": "contract",
+    "cns.vehicle.status.mileage.label": "mileage",
+    "cns.vehicle.status.fuel.label": "fuel",
+    "cns.vehicle.status.service.label": "service",
+
+    "cns.rule.recipient.email.label": "Mail",
+    "cns.rule.recipient.phonenumber.label": "SMS",
+    "cns.rule.recipient.user.label": "User",
+
+    "cns.predicate.counter.beforetext": "If",
+    "cns.predicate.counter.aftertext": "of the following conditions are met:",
+    "cns.predicate.counter.all": "all",
+    "cns.predicate.counter.any": "any",
+    "cns.predicate.counter.none": "none",
+
+    "cns.condition.selector.beforetext": "The",
+    "cns.condition.selector.aftertext": "is",
+    "cns.condition.selector.equalTo": "equal to",
+    "cns.condition.selector.unequalTo": "unequal to",
+    "cns.condition.selector.below": "below",
+    "cns.condition.selector.above": "above"
+}
