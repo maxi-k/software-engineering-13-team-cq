@@ -19,6 +19,7 @@ import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 import AddConditionButton from '@/atoms/AddConditionButton';
+// import { FormHelperText } from '@material-ui/core';
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -100,7 +101,7 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         <FormattedMessage id="cns.rule.label" />{' '}
         "{rule.name}"
       </Typography>
-      <div style={{ paddingLeft: '96rem' }}>
+      <div style={{  }}>
         <ClosingButton onClick={conditionAborter(abortCondition)} />
       </div>
       <StyledFieldSeparator />
