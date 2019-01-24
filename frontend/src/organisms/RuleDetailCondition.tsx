@@ -68,7 +68,9 @@ const conditionSelectorProps: ConditionSelectorProps = {
     value: comparisonType
   })),
   // tslint:disable-next-line:no-console
-  onChangeComparisonType: (e: any) => console.log(e)
+  onChangeComparisonType: (e: any) => console.log(e),
+  // tslint:disable-next-line:no-console
+  onClickRemove: (e: any) => console.log(e)
 }
 
 const StyledFieldSeparator = styled.div`

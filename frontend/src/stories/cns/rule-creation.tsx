@@ -125,7 +125,8 @@ const conditionSelectorProps: ConditionSelectorProps = {
     { label: "unequal", value: "unequal" },
     { label: "above", value: "above" },
     { label: "below", value: "below" }
-  ]
+  ],
+  onClickRemove: action('remove condition')
 }
 
 storiesOf('Rule Creation / Third Step', module)

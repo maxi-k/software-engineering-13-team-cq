@@ -21,7 +21,9 @@ import { mapObjectToArray } from '@/utilities/collection-util';
 export interface EditableRulePredicateAttributes {
   predicate: Partial<RuleConditionPredicate<any>>
   setVehicleDataField(vehicleDataField: VehicleDataField<any>): void
-  setComparisonType(comparisonType: string): void // TODO: Replicate possible comparison types as type?
+  setComparisonType(comparisonType: string): void,
+  removeRule(event: React.SyntheticEvent<any, any>): void
+  // TODO: Replicate possible comparison types as type?
 }
 
 interface StateAttributes {
@@ -91,7 +93,7 @@ const vehicleDataChangeConverter = (callback: EditableRulePredicateAttributes['s
 )
 
 const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
-  predicate, predicateFields, setVehicleDataField, setComparisonType
+  predicate, predicateFields, setVehicleDataField, setComparisonType, removeRule
 }) => {
   const applicableVehicleType =
     typeof predicate.appliedField === 'undefined' || predicate.appliedField === null
@@ -124,6 +126,7 @@ const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
           : null
       )}
       onChangeComparisonType={comparisonTypeChangeConverter(setComparisonType)}
+      onClickRemove={removeRule}
       beforeText="cns.condition.selector.beforetext"
       afterText="cns.condition.selector.aftertext"
     />

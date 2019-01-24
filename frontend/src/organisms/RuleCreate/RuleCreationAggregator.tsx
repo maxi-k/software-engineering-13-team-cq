@@ -6,7 +6,7 @@ const RuleCreationAggregator: RuleCreationStepView = (
 ) => (
     <div>
       Aggregator
-  </div>
+    </div>
   )
 
 export default RuleCreationAggregator
