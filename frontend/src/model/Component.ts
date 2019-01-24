@@ -24,6 +24,12 @@ export interface SelectFormattedValue {
   value: any
 }
 
+export interface SelectGroupedOptions<SelectValueType> {
+  key?: KeyType,
+  label: string | React.ReactNode,
+  options: SelectValueType[]
+}
+
 export type SelectOnChangeType<SelectValueType> = (
   value: ValueType<SelectValueType>,
   action: ActionMeta | InputActionMeta
