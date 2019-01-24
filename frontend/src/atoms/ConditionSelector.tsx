@@ -12,7 +12,7 @@ export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
 
-  dataTypeOptions: SelectGroupedOptions<SelectValue>[]
+  dataTypeOptions: Array<SelectGroupedOptions<SelectValue>>
   dataTypeValue: SelectValue | null
 
   comparisonTypeOptions: SelectValue[]

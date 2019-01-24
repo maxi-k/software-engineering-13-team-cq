@@ -50,6 +50,32 @@
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "Benutzer",
 
+
+    "cns.predicate.field.battery.charge.label": "Ladung",
+    "cns.predicate.field.battery.voltage.label": "Spannung",
+    "cns.predicate.field.battery.status.label": "Status",
+
+    "cns.predicate.field.contract.duePerWeek.label": "Diese Woche fällig",
+    "cns.predicate.field.contract.vins.label": "VINs",
+    "cns.predicate.field.contract.calendarWeek.label": "Kalenderwoche",
+
+    "cns.predicate.field.engine.power.label": "Stärke",
+    "cns.predicate.field.engine.capacity.label": "Kapazität",
+    "cns.predicate.field.engine.fuelType.label": "Kraftstoff",
+
+    "cns.predicate.field.fuel.level.label": "Füllstand",
+    "cns.predicate.field.fuel.liters.label": "Liters",
+    "cns.predicate.field.fuel.range.label": "Reichweite",
+
+    "cns.predicate.field.mileage.current.label": "Momentaner Kilometerstand",
+    "cns.predicate.field.mileage.remaining.label": "Verbleibende Laufleistung",
+    "cns.predicate.field.mileage.reached.label": "Erreichte Laufleistung",
+
+    "cns.predicate.field.service.dueDate.label": "Fälligkeitsdatum",
+    "cns.predicate.field.service.brakeFluid.label": "Bremsflüssigkeit",
+    "cns.predicate.field.service.status.label": "Service Status",
+
+
     "cns.predicate.counter.beforetext": "Wenn",
     "cns.predicate.counter.aftertext": "der folgenden Bedingungen erfüllt sind:",
     "cns.predicate.counter.all": "alle",

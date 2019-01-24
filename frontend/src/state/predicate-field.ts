@@ -17,8 +17,9 @@ export enum PredicateFieldActionType {
 }
 export type PredicateFieldAction = Action<PredicateFieldActionType>
 
+export type PredicateFieldListState = Partial<Record<VehicleDataType, VehiclePredicateFields>>
 export interface PredicateFieldState extends FetchingData {
-  readonly predicateFields: Partial<Record<VehicleDataType, VehiclePredicateFields>>
+  readonly predicateFields: PredicateFieldListState
 }
 
 const initialState = {

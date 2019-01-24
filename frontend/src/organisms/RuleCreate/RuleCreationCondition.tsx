@@ -16,7 +16,7 @@ import { mapObjectToArray } from '@/utilities/collection-util'
 
 import PredicateCounter from '@/atoms/PredicateCounter'
 import AddConditionButton from '@/atoms/AddConditionButton'
-// import ConditionSelector from '@/atoms/ConditionSelector'
+import EditableRulePredicate from '@/molecules/EditableRulePredicate'
 
 const logicalConnectiveToSelectOption = (connective: LogicalConnective) => (
   {
@@ -31,13 +31,6 @@ const addConditionUpdater = (callback: ((...value: any) => void)) => (
   )
 )
 
-const EditablePredicate: React.SFC<{
-  predicate: Partial<RuleConditionPredicate<any>>,
-  updateField: FieldUpdater
-}> = ({ predicate, updateField }) => (
-  <div>{JSON.stringify(predicate)}</div>
-)
-
 const PredicateList: React.SFC<{
   predicates: RuleCondition['predicates'],
   updateField: FieldUpdater
@@ -46,9 +39,10 @@ const PredicateList: React.SFC<{
 ) => (
       <>
         {mapObjectToArray(predicates, (key: string | number, predicate: RuleConditionPredicate<any>) => (
-          <EditablePredicate key={key}
+          <EditableRulePredicate
+            key={key}
             predicate={predicate}
-            updateField={nestValueUpdater(updateField)(key)} />
+          />
         ))
         }
       </>

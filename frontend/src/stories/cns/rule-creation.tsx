@@ -106,14 +106,17 @@ const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
   dataTypeValue: { label: "battery", value: "battery" },
-  dataTypeOptions: [
-    { label: "battery", value: "battery" },
-    { label: "contract", value: "contract" },
-    { label: "engine", value: "engine" },
-    { label: "fuel", value: "fuel" },
-    { label: "mileage", value: "mileage" },
-    { label: "service", value: "service" },
-  ],
+  dataTypeOptions: [{
+    label: "vehicle",
+    options: [
+      { label: "battery", value: "battery" },
+      { label: "contract", value: "contract" },
+      { label: "engine", value: "engine" },
+      { label: "fuel", value: "fuel" },
+      { label: "mileage", value: "mileage" },
+      { label: "service", value: "service" },
+    ]
+  }],
   comparisonTypeValue: { label: "equal", value: "equal" },
   comparisonTypeOptions: [
     { label: "equal", value: "equal" },

@@ -3,10 +3,11 @@ import { RootState } from './index'
 import { LanguageType, LanguageState } from './language'
 import { AuthState, AuthData } from './auth'
 import { RuleState, RuleOverviewState, RuleDetailState, RuleCreationState } from './rule'
+import { CarParkState, CarParkListState } from './car-park'
+import { PredicateFieldState, PredicateFieldListState } from './predicate-field'
 
 import { RouterState } from 'connected-react-router'
 import { Location } from 'history'
-import { CarParkState, CarParkListState } from './car-park'
 import { CarPark, Fleet } from '@/model/CarPark'
 
 export type Selector<T> = StateSelector<RootState, T>
@@ -53,6 +54,11 @@ export const carParkFleetsSelector: Selector<{ [key: string]: Fleet }> = createS
       { ...carParkFleets, [fleet.id]: fleet }
     ), fleets)
   ), {})
+)
+export const predicateFieldStateSelector: Selector<PredicateFieldState> = state => state.predicateField
+export const predicateFieldListSelector: Selector<PredicateFieldListState> = createSelector(
+  [predicateFieldStateSelector],
+  predicateFieldState => predicateFieldState.predicateFields
 )
 
 export const routerSelector: Selector<RouterState> = state => state.router

@@ -55,7 +55,10 @@ const conditionSelectorProps: ConditionSelectorProps = {
   dataTypeOptions: Object.values(VehicleDataType).map((vehicleDataType) => (
     {
       label: `cns.vehicle.status.${vehicleDataType}.label`,
-      value: vehicleDataType
+      options: [{
+        label: `cns.vehicle.status.${vehicleDataType}.label`,
+        value: vehicleDataType
+      }]
     })),
   comparisonTypeValue: { label: "cns.condition.selector.equalTo", value: "equal" },
   comparisonTypeOptions: Object.values(ComparisonType).map((comparisonType) => ({
