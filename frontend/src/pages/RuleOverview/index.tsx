@@ -36,7 +36,7 @@ class RuleOverviewPage extends React.Component<RuleOverviewPageProps> {
 
   public render = () => {
     const { rules, ...overviewProps } = this.props
-     const ruleList = Object.values(rules)
+    const ruleList = Object.values(rules)
     return (
       <StyledOverviewPage >
         <RuleOverviewHeader />

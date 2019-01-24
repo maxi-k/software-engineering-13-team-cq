@@ -10,7 +10,7 @@ import {
 } from '@/model'
 
 import ErrorMessage from '@/atoms/ErrorMessage'
-// import LoadingIndicator from '@/atoms/LoadingIndicator'
+import LoadingIndicator from '@/atoms/LoadingIndicator'
 import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 
@@ -57,9 +57,9 @@ const RuleDetailVehicles: React.SFC<RuleDetailVehiclesProps> = ({
       } />
     )
   }
-  /* if (isFetching || typeof rule === 'undefined' || rule === null) {
+  if (isFetching || typeof rule === 'undefined' || rule === null) {
     return <LoadingIndicator isCentral={true} />
-  }  */
+  } 
 
 const fleetSelectorProps: Partial<FleetSelectorProps> = {
   value: { label: 'BMW', value: 'BMW' },

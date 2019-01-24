@@ -56,9 +56,9 @@ class RuleDetailVehiclePage extends React.PureComponent<RuleDetailVehiclePagePro
 }
 
 const mapStateToProps: StateMapper<RuleDetailVehiclesPageAttributes, StateAttributes> = (state, props) => {
-  const {/*rules,*/ isFetching, hasFetchError} = ruleDetailStateSelector(state)
+  const {rules, isFetching, hasFetchError} = ruleDetailStateSelector(state)
   return ({
-    rule: {ruleId: 1, name: "TestRule", description: "Test :-D", dataSources: [], aggregatorDescription: "ASAP!", recipients: []}, // rules[parseInt(props.parameters.ruleId, 10)],
+    rule: rules[parseInt(props.parameters.ruleId, 10)],
     isFetching,
     hasFetchError
   })
