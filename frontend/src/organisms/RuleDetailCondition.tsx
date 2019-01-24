@@ -60,11 +60,15 @@ const conditionSelectorProps: ConditionSelectorProps = {
         value: vehicleDataType
       }]
     })),
+  // tslint:disable-next-line:no-console
+  onChangeDataType: (e: any) => console.log(e),
   comparisonTypeValue: { label: "cns.condition.selector.equalTo", value: "equal" },
   comparisonTypeOptions: Object.values(ComparisonType).map((comparisonType) => ({
     label: `cns.condition.selector.${comparisonType}`,
     value: comparisonType
-  }))
+  })),
+  // tslint:disable-next-line:no-console
+  onChangeComparisonType: (e: any) => console.log(e)
 }
 
 const StyledFieldSeparator = styled.div`

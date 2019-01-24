@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import {
   RuleCreationStepView,
   FieldUpdater,
@@ -10,6 +11,7 @@ import {
   LogicalConnective,
   RuleCondition,
   RuleConditionPredicate,
+  VehicleDataField
 } from '@/model'
 import { createUUID } from '@/services/identifier-service'
 import { mapObjectToArray } from '@/utilities/collection-util'
@@ -31,21 +33,45 @@ const addConditionUpdater = (callback: ((...value: any) => void)) => (
   )
 )
 
+const predicateVehicleDataFieldUpdater = (callback: ((...value: any) => void)) => (
+  (field: VehicleDataField<any>) => (
+    callback({
+      appliedField: field,
+      comparisonType: null
+    }))
+)
+
+const predicateComparisonTypeUpdater = (callback: ((...value: any) => void)) => (
+  (comparisonType: string) => (
+    callback({ comparisonType })
+  )
+)
+
+const StyledPredicateList = styled.div`
+    padding: 0.5rem 0 0 1rem;
+`
+
 const PredicateList: React.SFC<{
   predicates: RuleCondition['predicates'],
   updateField: FieldUpdater
 }> = (
   { predicates = {}, updateField }
 ) => (
-      <>
-        {mapObjectToArray(predicates, (key: string | number, predicate: RuleConditionPredicate<any>) => (
-          <EditableRulePredicate
-            key={key}
-            predicate={predicate}
-          />
-        ))
+      <StyledPredicateList>
+        {mapObjectToArray(predicates, (key: string | number, predicate: RuleConditionPredicate<any>) => {
+          const updater = createMergingValueUpdater(updateField)(key)
+          return (
+            <EditableRulePredicate
+              key={key}
+              predicate={predicate}
+              setVehicleDataField={predicateVehicleDataFieldUpdater(updater)}
+              setComparisonType={predicateComparisonTypeUpdater(updater)}
+            />
+          )
+        })
+
         }
-      </>
+      </StyledPredicateList>
     )
 
 const RuleCreationCondition: RuleCreationStepView = (

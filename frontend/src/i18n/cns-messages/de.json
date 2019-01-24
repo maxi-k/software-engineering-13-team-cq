@@ -75,6 +75,14 @@
     "cns.predicate.field.service.brakeFluid.label": "Bremsflüssigkeit",
     "cns.predicate.field.service.status.label": "Service Status",
 
+    "cns.predicate.comparison.NOT_EQUAL_TO.label": "nicht gleich",
+    "cns.predicate.comparison.EQUAL_TO.label": "gleich",
+    "cns.predicate.comparison.GREATER_THAN.label": "größer als",
+    "cns.predicate.comparison.LESSER_THAN.label": "kleiner als",
+    "cns.predicate.comparison.GREATER_THAN_OR_EQUAL_TO.label": "größer oder gleich",
+    "cns.predicate.comparison.LESSER_THAN_OR_EQUAL_TO.label": "kleiner oder gleichk",
+    "cns.predicate.comparison.CONTAINED_IN.label": "enthalten in",
+    "cns.predicate.comparison.NOT_CONTAINED_IN.label": "nicht enthalten in",
 
     "cns.predicate.counter.beforetext": "Wenn",
     "cns.predicate.counter.aftertext": "der folgenden Bedingungen erfüllt sind:",

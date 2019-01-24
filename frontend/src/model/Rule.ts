@@ -28,10 +28,9 @@ export interface RuleCondition {
 }
 
 export interface RuleConditionPredicate<FieldType> {
-  vehicleDataType: VehicleDataType,
   appliedField: VehicleDataField<FieldType>,
   comparisonConstant: FieldType,
-  comparisonField: ComparisonType
+  comparisonType: string
 }
 
 export interface NotificationRecipient {

@@ -105,6 +105,7 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
+  onChangeDataType: action('change data type'),
   dataTypeValue: { label: "battery", value: "battery" },
   dataTypeOptions: [{
     label: "vehicle",
@@ -117,6 +118,7 @@ const conditionSelectorProps: ConditionSelectorProps = {
       { label: "service", value: "service" },
     ]
   }],
+  onChangeComparisonType: action('change comparison type'),
   comparisonTypeValue: { label: "equal", value: "equal" },
   comparisonTypeOptions: [
     { label: "equal", value: "equal" },

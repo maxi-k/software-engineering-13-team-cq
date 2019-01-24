@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Select from 'react-select';
 import { FormattedMessage } from 'react-intl'
 
-import { SelectValue, SelectGroupedOptions } from '@/model'
+import { SelectValue, SelectFormattedValue, SelectGroupedOptions, SelectOnChangeType } from '@/model'
 import { translateSelectValue } from '@/services/translation-service'
 
 import SelectWrapper from '@/atoms/TextSelectWrapper'
@@ -17,6 +17,9 @@ export interface ConditionSelectorProps {
 
   comparisonTypeOptions: SelectValue[]
   comparisonTypeValue: SelectValue | null
+
+  onChangeDataType: SelectOnChangeType<SelectFormattedValue | null>
+  onChangeComparisonType: SelectOnChangeType<SelectFormattedValue | null>
 }
 
 const StyledSeparator = styled.div`
@@ -32,7 +35,9 @@ const StyledTextInput = styled.input`
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
   { beforeText, afterText,
     dataTypeOptions, dataTypeValue,
-    comparisonTypeOptions, comparisonTypeValue }
+    comparisonTypeOptions, comparisonTypeValue,
+    onChangeDataType, onChangeComparisonType
+  }
 ) => {
   return (
     <div>
@@ -40,6 +45,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       <SelectWrapper>
         <Select
           value={dataTypeValue ? translateSelectValue(dataTypeValue) : null}
+          onChange={onChangeDataType}
           options={dataTypeOptions.map(({ label, options }) => ({
             label: typeof label === 'string' ? <FormattedMessage id={label} /> : label,
             options: options.map(translateSelectValue)
@@ -49,6 +55,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       <SelectWrapper>
         <Select
           value={comparisonTypeValue ? translateSelectValue(comparisonTypeValue) : null}
+          onChange={onChangeComparisonType}
           options={comparisonTypeOptions.map(translateSelectValue)} />
       </SelectWrapper>
       <StyledSeparator />
