@@ -1,11 +1,15 @@
 import { Reducer, Action } from 'redux'
 import { createAction, createAsyncAction } from 'typesafe-actions'
 import update from 'immutability-helper'
-import { put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 
-// import { ensureResponseStatus } from '@/services/response-service'
-import { NotificationRuleInProgress, NotificationRuleDetail, LogicalConnective } from '@/model/Rule'
+import { NotificationRuleInProgress, NotificationRuleDetail, LogicalConnective, AggregatorStrategy } from '@/model/Rule'
+import { ruleCreationStateSelector } from '@/state/selectors'
+import { convertToAPIRule, createNewRule } from '@/services/rule-service'
+import { ensureResponseStatus } from '@/services/response-service'
+
+import { waitForLogin } from '@/state/auth'
 
 export interface RuleCreationState {
   readonly inProgressRule: NotificationRuleInProgress
@@ -32,6 +36,9 @@ const initialState = {
     recipients: [],
     applyToAllFleets: true,
     fleets: [],
+    aggregator: {
+      strategy: AggregatorStrategy.Immediate
+    },
     condition: {
       logicalConnective: LogicalConnective.Any,
       predicates: {},
@@ -71,6 +78,10 @@ const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
         }
       }
       return update(state, updateMap);
+    case RuleCreationActionType.RULE_CREATE_ERROR:
+    case RuleCreationActionType.RULE_CREATE_SUCCESS:
+      // do nothing for now
+      return state
     default:
       return state
   }
@@ -100,8 +111,24 @@ function* abortRuleCreationGenerator() {
   yield put(push('/'))
 }
 
+function* finishRuleCreationGenerator() {
+  try {
+    const authData = yield call(waitForLogin)
+    const ruleData = yield select(ruleCreationStateSelector)
+    const fullRule = convertToAPIRule(ruleData.inProgressRule)
+    const response = yield call(createNewRule, authData.accessToken, fullRule)
+    ensureResponseStatus(response);
+    const rule = yield response.json() as NotificationRuleDetail
+    yield put(finishRuleCreation.success(rule))
+    yield put(push(`/rule/${rule.ruleId}`))
+  } catch (error) {
+    yield put(finishRuleCreation.failure(error))
+  }
+}
+
 function* ruleCreationSaga() {
   yield takeEvery(RuleCreationActionType.RULE_CREATE_ABORT, abortRuleCreationGenerator);
+  yield takeLatest(RuleCreationActionType.RULE_CREATE_FINISH, finishRuleCreationGenerator)
 }
 
 export const ruleCreationSagas = [
