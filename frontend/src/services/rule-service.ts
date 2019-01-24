@@ -5,7 +5,8 @@ import {
   NotificationRuleDetail as DetailRule,
   NotificationRecipientType as RecipientType,
   LogicalConnective,
-  VehicleDataType
+  VehicleDataType,
+  AggregatorStrategy
 } from '@/model'
 
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
@@ -62,6 +63,9 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     condition: {
       logicalConnective: LogicalConnective.Any,
       predicates: {}
+    },
+    aggregator: {
+      strategy: AggregatorStrategy.Immediate
     }
   })
 
@@ -100,5 +104,9 @@ const mockedRuleDetail = (ruleId: number): DetailRule => ({
   condition: {
     logicalConnective: LogicalConnective.All,
     predicates: {}
+  },
+  aggregator: {
+    strategy: AggregatorStrategy.Counting,
+    value: 20
   }
 })

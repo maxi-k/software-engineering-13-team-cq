@@ -21,6 +21,17 @@ export enum LogicalConnective {
   None = 'none'
 }
 
+export enum AggregatorStrategy {
+  Counting,
+  Immediate,
+  Scheduled
+}
+
+export interface Aggregator {
+  strategy: AggregatorStrategy
+  value?: string | number
+}
+
 export interface RuleCondition {
   logicalConnective: LogicalConnective,
   // Only model one layer of the composite for now...
@@ -48,10 +59,11 @@ export interface NotificationRuleOverview {
 
 export interface NotificationRuleDetail
   extends NotificationRuleOverview {
-  applyToAllFleets: boolean,
-  fleets: Fleet[],
-  recipients: NotificationRecipient[],
+  applyToAllFleets: boolean
+  fleets: Fleet[]
+  recipients: NotificationRecipient[]
   condition: RuleCondition
+  aggregator: Aggregator
 }
 
 export type NotificationRuleInProgress
