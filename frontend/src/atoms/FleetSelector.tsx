@@ -3,19 +3,17 @@ import Select from 'react-select'
 import { withTheme, WithTheme } from '@material-ui/core/styles'
 import { Props as SelectProps } from 'react-select/lib/Select'
 import { SelectComponents } from 'react-select/lib/components'
-import { ValueType, ActionMeta, InputActionMeta } from 'react-select/lib/types'
 import { StylesConfig, mergeStyles } from 'react-select/lib/styles'
 
-import { SelectValue } from '@/model'
+import { SelectValue, SelectOnChangeType } from '@/model'
 
-type OnChangeType = (value: ValueType<SelectValue>, action: ActionMeta | InputActionMeta) => void
 export interface FleetSelectorAttributes {
   value: SelectValue,
   options: SelectValue[],
   placeholder?: string,
   components?: Partial<SelectComponents<any>>,
   theme: WithTheme,
-  onChange: OnChangeType,
+  onChange: SelectOnChangeType<SelectValue>,
   styles?(theme: WithTheme): StylesConfig,
 }
 export type FleetSelectorProps = FleetSelectorAttributes & Partial<SelectProps<SelectValue>>

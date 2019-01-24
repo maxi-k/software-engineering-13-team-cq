@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 
@@ -33,10 +32,6 @@ export type RuleDetailPageProps = RuleDetailPageAttributes
   & DispatchAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
-const StyledPageWrapper = styled.div`
-    flex-grow: 1;
-`
-
 class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
 
   public componentDidMount = () => {
@@ -47,9 +42,7 @@ class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
   public render = () => {
     const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
     return (
-      <StyledPageWrapper>
-        <RuleDetail {...ruleDetailProps} />
-      </StyledPageWrapper>
+      <RuleDetail {...ruleDetailProps} />
     )
   }
 }

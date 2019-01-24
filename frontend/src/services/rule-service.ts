@@ -1,9 +1,10 @@
 import { authApiRequest, mockRequest, doMock } from '@/services/api-service'
-import { capitalizeString } from '@/services/string-service'
+import { capitalizeString } from '@/utilities/string-util'
 import {
   NotificationRuleOverview as OverviewRule,
   NotificationRuleDetail as DetailRule,
   NotificationRecipientType as RecipientType,
+  LogicalConnective,
   VehicleDataType
 } from '@/model'
 
@@ -45,13 +46,23 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     name: rule.name || 'MOCKED',
     description: rule.description || 'MOCKED',
     aggregatorDescription: 'MOCKED',
+    applyToAllFleets: false,
+    fleets: [
+      { name: 'MOCKED FLEET', id: 'mockedFleet1', numVehicles: 42 }
+    ],
     dataSources: [
-      VehicleDataType.Engine
+      VehicleDataType.Engine,
+      VehicleDataType.Battery,
+      VehicleDataType.Service,
     ],
     recipients: [{
       type: capitalizeString(rule.owner.userSettings.userNotificationType) as RecipientType,
       value: `OWNER::${rule.owner.mailAddress}/${rule.owner.cellPhoneNumber}`
-    }]
+    }],
+    condition: {
+      logicalConnective: LogicalConnective.Any,
+      predicates: {}
+    }
   })
 
 const mockedRule: OverviewRule = {
@@ -82,6 +93,12 @@ const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
 const mockedRuleDetail = (ruleId: number): DetailRule => ({
   ruleId,
   ...mockedRuleOverview[ruleId % mockedRuleOverview.length],
+  applyToAllFleets: true,
+  fleets: [],
   recipients: [{ type: RecipientType.Email, value: 'maxi.kuschewski@gmail.com' },
   { type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
+  condition: {
+    logicalConnective: LogicalConnective.All,
+    predicates: {}
+  }
 })

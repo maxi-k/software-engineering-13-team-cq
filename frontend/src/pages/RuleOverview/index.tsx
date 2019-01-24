@@ -52,8 +52,8 @@ const mapStateToProps: StateMapper<{}, RuleOverviewStateProps> = (state, ownProp
 
 const mapDispatchToProps: DispatchMapper<{}, RuleOverviewDispatchProps> = (dispatch, props) => ({
   fetchRules: () => dispatch(loadRuleOverview.request()),
-  selectRule: (event, rule) => dispatch(push(interpolatePagePath('ruleDetailGeneral', `${rule.ruleId}`))),
-  addRule: () => alert('add rule')
+  selectRule: (event, rule) => dispatch(push(interpolatePagePath('ruleDetail', `${rule.ruleId}`))),
+  addRule: () => dispatch(push(interpolatePagePath('ruleCreate')))
 })
 
 export default

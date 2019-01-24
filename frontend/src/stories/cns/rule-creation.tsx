@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
+import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
 
 /* ~~ General Components ~~ */
@@ -29,11 +30,11 @@ const creationStepperProps: RuleCreationStepperProps = {
     creationStepProps,
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.general.fleets"
+      titleKey: "cns.rule.creation.step.fleets.title"
     },
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.general.condition"
+      titleKey: "cns.rule.creation.step.condition.title"
     },
 
   ]
@@ -67,6 +68,19 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
+import RuleCreationGeneral from '@/organisms/RuleCreate/RuleCreationGeneral'
+const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
+storiesOf('Rule Creation / First Step', module)
+  .addDecorator(StoryWrapper)
+  .add('Screen', () => <RuleCreationGeneral
+    updateField={updateFieldAction}
+    inProgressRule={{
+      condition: {
+        logicalConnective: LogicalConnective.Any,
+        predicates: {}
+      }
+    }} />)
+
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Fleet Selector', () => <FleetSelector {...fleetSelectorProps} />)
@@ -74,6 +88,7 @@ storiesOf('Rule Creation / Second Step', module)
 /* ~~ Third-Step Components ~~ */
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+import { LogicalConnective } from '@/model';
 
 const predicateCounterProps: PredicateCounterProps = {
   value: { label: "all", value: "all" },
@@ -82,6 +97,7 @@ const predicateCounterProps: PredicateCounterProps = {
     { label: "any", value: "any" },
     { label: "none", value: "none" }
   ],
+  onChange: action('predicate counter'),
   beforeText: "cns.predicate.counter.beforetext",
   afterText: "cns.predicate.counter.aftertext"
 }
@@ -89,15 +105,20 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
+  onChangeDataType: action('change data type'),
   dataTypeValue: { label: "battery", value: "battery" },
-  dataTypeOptions: [
-    { label: "battery", value: "battery" },
-    { label: "contract", value: "contract" },
-    { label: "engine", value: "engine" },
-    { label: "fuel", value: "fuel" },
-    { label: "mileage", value: "mileage" },
-    { label: "service", value: "service" },
-  ],
+  dataTypeOptions: [{
+    label: "vehicle",
+    options: [
+      { label: "battery", value: "battery" },
+      { label: "contract", value: "contract" },
+      { label: "engine", value: "engine" },
+      { label: "fuel", value: "fuel" },
+      { label: "mileage", value: "mileage" },
+      { label: "service", value: "service" },
+    ]
+  }],
+  onChangeComparisonType: action('change comparison type'),
   comparisonTypeValue: { label: "equal", value: "equal" },
   comparisonTypeOptions: [
     { label: "equal", value: "equal" },

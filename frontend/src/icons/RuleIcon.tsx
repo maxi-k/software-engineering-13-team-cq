@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { FormattedMessage } from 'react-intl'
-import { VehicleDataType } from '@/model/Rule'
+import { VehicleDataType } from '@/model'
 
 interface RuleIconProps {
   type: VehicleDataType,

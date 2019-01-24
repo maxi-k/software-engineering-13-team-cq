@@ -24,6 +24,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     lateinit var notificationRuleMapper: INotificationRuleMapper
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
+
         val userEntity = userEntityRepository.getOne(username)
 
         val notificationRuleEntities = userEntity.notificationRules.orEmpty()
@@ -34,6 +35,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun getNotificationRule(ruleId: Long): NotificationRule? {
+
         val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
 
         return notificationRuleEntity?.let { existingNotificationRuleEntity ->
@@ -41,6 +43,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {
+
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
         // Create notificationRuleEntity first so it already has an ID
@@ -53,6 +56,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun updateNotificationRule(notificationRule: NotificationRule): NotificationRule? {
+
         val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
 
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
@@ -61,6 +65,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun deleteNotificationRule(ruleId: Long) {
+
         notificationRuleEntityRepository.deleteById(ruleId)
     }
 }

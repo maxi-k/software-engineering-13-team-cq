@@ -9,6 +9,7 @@
     "cns.page.ruleDetailCondition.question": "Under what conditions should notifications be triggered?",
 
     "cns.navigation.back.label": "Back",
+    "cns.navigation.abort.label": "Abort",
 
     "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
 
@@ -17,6 +18,8 @@
     "cns.message.fetch.error.unauthorized": "You are unauthorized to view this resource. Please try to reload the page and log in.",
     "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
+    "cns.page.ruleCreate.title": "Create Rule",
+    "cns.page.ruleEdit.title": "Edit Rule",
 
     "cns.rule.label": "Notification Rule",
 
@@ -24,8 +27,25 @@
     "cns.rule.field.description.label": "Description",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.recipients.label": "Recipients",
+    "cns.rule.field.applyToAllFleets.label": "Apply this rule to all fleets?",
+
+
+    "cns.rule.creation.error.default": "There was an error displaying this component.",
+    "cns.rule.creation.step.label": "Step",
+
+    "cns.rule.creation.action.complete": "Complete",
+    "cns.rule.creation.action.step.next": "Next",
+    "cns.rule.creation.action.step.previous": "Back",
+
+    "cns.rule.creation.step.general.fleets": "Fleets",
+    "cns.rule.creation.step.general.condition": "Condition",
 
     "cns.rule.creation.step.general.title": "General",
+    "cns.rule.creation.step.fleets.title": "Fleets",
+    "cns.rule.creation.step.condition.title": "Condition",
+    "cns.rule.creation.step.timing.title": "Timing",
+    "cns.rule.creation.step.summary.title": "Preview",
+
     "cns.rule.creation.step.general.fleets": "Fleets",
     "cns.rule.creation.step.general.condition": "Condition",
 
@@ -39,6 +59,41 @@
     "cns.rule.recipient.email.label": "Mail",
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "User",
+
+
+    "cns.predicate.field.battery.charge.label": "Charge",
+    "cns.predicate.field.battery.voltage.label": "Voltage",
+    "cns.predicate.field.battery.status.label": "Status",
+
+    "cns.predicate.field.contract.duePerWeek.label": "Due per week",
+    "cns.predicate.field.contract.vins.label": "VINs",
+    "cns.predicate.field.contract.calendarWeek.label": "Calendar Week",
+
+    "cns.predicate.field.engine.power.label": "Power",
+    "cns.predicate.field.engine.capacity.label": "Capacity",
+    "cns.predicate.field.engine.fuelType.label": "Fuel Type",
+
+    "cns.predicate.field.fuel.level.label": "Level",
+    "cns.predicate.field.fuel.liters.label": "Liters",
+    "cns.predicate.field.fuel.range.label": "Range",
+
+    "cns.predicate.field.mileage.current.label": "Current Mileage",
+    "cns.predicate.field.mileage.remaining.label": "Remaining Mileage",
+    "cns.predicate.field.mileage.reached.label": "Reached Mileage",
+
+    "cns.predicate.field.service.dueDate.label": "Due Date",
+    "cns.predicate.field.service.brakeFluid.label": "Brake Fluid",
+    "cns.predicate.field.service.status.label": "Service Status",
+
+    "cns.predicate.comparison.NOT_EQUAL_TO.label": "not equal to",
+    "cns.predicate.comparison.EQUAL_TO.label": "equal to",
+    "cns.predicate.comparison.GREATER_THAN.label": "greater than",
+    "cns.predicate.comparison.LESSER_THAN.label": "less than",
+    "cns.predicate.comparison.GREATER_THAN_OR_EQUAL_TO.label": "greater than or equal to",
+    "cns.predicate.comparison.LESSER_THAN_OR_EQUAL_TO.label": "less than or equal to",
+    "cns.predicate.comparison.CONTAINED_IN.label": "contained in",
+    "cns.predicate.comparison.NOT_CONTAINED_IN.label": "not contained in",
+
 
     "cns.predicate.counter.beforetext": "If",
     "cns.predicate.counter.aftertext": "of the following conditions are met:",
