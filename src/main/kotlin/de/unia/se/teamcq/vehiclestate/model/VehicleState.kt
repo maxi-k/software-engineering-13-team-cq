@@ -8,7 +8,7 @@ data class VehicleState(
     var stateId: Long? = 0,
 
     @get: NotNull
-    var vehicleId: String?,
+    var vehicleReference: VehicleReference?,
 
     @get: NotNull
     var vehicleStateDataTypes: Set<VehicleStateDataType>?

@@ -12,7 +12,7 @@ data class UserSettingsEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = 0,
+    var settingsId: Long? = 0,
 
     var userNotificationType: UserNotificationType?
 

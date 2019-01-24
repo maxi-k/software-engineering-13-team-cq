@@ -4,14 +4,23 @@ import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientMailDto
+import de.unia.se.teamcq.notificationmanagement.dto.RecipientSmsDto
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
 import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientMailEntity
+import de.unia.se.teamcq.notificationmanagement.entity.RecipientSmsEntity
 import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
+import de.unia.se.teamcq.notificationmanagement.model.Recipient
+import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
+import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldDto
 import de.unia.se.teamcq.ruleevaluation.dto.PredicateFieldProviderDto
 import de.unia.se.teamcq.ruleevaluation.dto.RuleConditionCompositeDto
@@ -32,7 +41,6 @@ import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
 import de.unia.se.teamcq.rulemanagement.entity.NotificationRuleEntity
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.rulemanagement.model.NotificationRuleBuilder
 import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.dto.UserSettingsDto
@@ -41,7 +49,12 @@ import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
+import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
+import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleReferenceEntity
 import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.model.FleetReference
+import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
@@ -70,14 +83,18 @@ object TestUtils {
     }
 
     fun getTestNotificationRuleModel(): NotificationRule {
-        return NotificationRuleBuilder()
-                .withId(0)
-                .withName("rule_name")
-                .withOwner(getTestUserModel())
-                .withDescription("description")
-                .withCondition(getTestRuleConditionModel())
-                .withAggregator(getTestAggregatorModel())
-                .build()
+        return NotificationRule(
+                ruleId = 0,
+                name = "rule_name",
+                owner = getTestUserModel(),
+                description = "description",
+                condition = getTestRuleConditionModel(),
+                aggregator = getTestAggregatorModel(),
+                recipients = getTestRecipientModels(),
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceModels(),
+                affectingAllApplicableFleets = false
+        )
     }
 
     fun getTestNotificationRuleDto(): NotificationRuleDto {
@@ -87,7 +104,11 @@ object TestUtils {
                 owner = getTestUserDto(),
                 description = "description",
                 condition = getTestRuleConditionDto(),
-                aggregator = getTestAggregatorDto()
+                aggregator = getTestAggregatorDto(),
+                recipients = getTestRecipientDtos(),
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceDtos(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -98,7 +119,11 @@ object TestUtils {
                 owner = getTestUserEntity(),
                 description = "description",
                 condition = getTestRuleConditionEntity(),
-                aggregator = getTestAggregatorEntity()
+                aggregator = getTestAggregatorEntity(),
+                recipients = getTestRecipientEntities(),
+                ownerAsAdditionalRecipient = true,
+                affectedFleets = getTestFleetReferenceEntities(),
+                affectingAllApplicableFleets = false
         )
     }
 
@@ -107,7 +132,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettings(UserNotificationType.EMAIL)
+                userSettings = UserSettings(0, UserNotificationType.EMAIL)
         )
     }
 
@@ -116,7 +141,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettingsDto(UserNotificationType.EMAIL)
+                userSettings = UserSettingsDto(0, UserNotificationType.EMAIL)
         )
     }
 
@@ -161,7 +186,7 @@ object TestUtils {
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
-                "predicateFieldProviderName",
+                getTestVehicleReferenceModel(),
                 setOf(
                         getTestVehicleStateDataTypeBatteryModel(),
                         getTestVehicleStateDataTypeContractModel(),
@@ -176,7 +201,7 @@ object TestUtils {
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                "predicateFieldProviderName"
+                getTestVehicleReferenceEntity()
         )
     }
 
@@ -333,6 +358,119 @@ object TestUtils {
 
     fun getTestAggregatorEntity(): AggregatorEntity {
         return getTestAggregatorScheduledEntity()
+    }
+
+    fun getTestRecipientDto(): RecipientDto {
+        return getTestRecipientMailDto()
+    }
+
+    fun getTestRecipientMailDto(): RecipientMailDto {
+        return RecipientMailDto(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsDto(): RecipientSmsDto {
+        return RecipientSmsDto(0, "12345678")
+    }
+
+    fun getTestRecipientModel(): Recipient {
+        return getTestRecipientMailModel()
+    }
+
+    fun getTestRecipientMailModel(): RecipientMail {
+        return RecipientMail(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsModel(): RecipientSms {
+        return RecipientSms(0, "12345678")
+    }
+
+    fun getTestRecipientEntity(): RecipientEntity {
+        return getTestRecipientMailEntity()
+    }
+
+    fun getTestRecipientMailEntity(): RecipientMailEntity {
+        return RecipientMailEntity(0, "test@example.com")
+    }
+
+    fun getTestRecipientSmsEntity(): RecipientSmsEntity {
+        return RecipientSmsEntity(0, "12345678")
+    }
+
+    fun getTestRecipientEntities(): List<RecipientEntity> {
+        return listOf(getTestRecipientSmsEntity(), getTestRecipientMailEntity())
+    }
+
+    fun getTestRecipientDtos(): List<RecipientDto> {
+        return listOf(getTestRecipientSmsDto(), getTestRecipientMailDto())
+    }
+
+    fun getTestRecipientModels(): List<Recipient> {
+        return listOf(getTestRecipientSmsModel(), getTestRecipientMailModel())
+    }
+
+    fun getTestFleetReferenceModel(): FleetReference {
+        return FleetReference(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceEntity(): FleetReferenceEntity {
+        return FleetReferenceEntity(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestFleetReferenceDto(): FleetReferenceDto {
+        return FleetReferenceDto(
+                fleetId = "UUID123"
+        )
+    }
+
+    fun getTestVehicleReferenceModel(): VehicleReference {
+        return VehicleReference(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceModel()
+        )
+    }
+
+    fun getTestVehicleReferenceEntity(): VehicleReferenceEntity {
+        return VehicleReferenceEntity(
+                vin = "UUID456",
+                fleetReference = getTestFleetReferenceEntity()
+        )
+    }
+
+    fun getTestFleetReferenceDtoTwo(): FleetReferenceDto {
+        return getTestFleetReferenceDto().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceDtos(): List<FleetReferenceDto> {
+        return listOf(
+                getTestFleetReferenceDto(),
+                getTestFleetReferenceDtoTwo()
+        )
+    }
+
+    fun getTestFleetReferenceModelTwo(): FleetReference {
+        return getTestFleetReferenceModel().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceModels(): List<FleetReference> {
+        return listOf(
+                getTestFleetReferenceModel(),
+                getTestFleetReferenceModelTwo()
+        )
+    }
+
+    fun getTestFleetReferenceEntityTwo(): FleetReferenceEntity {
+        return getTestFleetReferenceEntity().copy(fleetId = "UUID234")
+    }
+
+    fun getTestFleetReferenceEntities(): List<FleetReferenceEntity> {
+        return listOf(
+                getTestFleetReferenceEntity(),
+                getTestFleetReferenceEntityTwo()
+        )
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

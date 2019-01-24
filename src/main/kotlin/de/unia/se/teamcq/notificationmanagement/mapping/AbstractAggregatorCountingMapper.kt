@@ -14,9 +14,11 @@ abstract class AbstractAggregatorCountingMapper {
     fun checkLegalArguments(aggregatorCountingDto: AggregatorCountingDto) {
 
         if (aggregatorCountingDto.notificationCountThreshold == null) {
-            throw IllegalArgumentException("NotificationCountThreshold required!")
+            throw IllegalArgumentException("Attribute NotificationCountThreshold of AggregatorCountingDto" +
+                    " is required but was null!")
         } else if (aggregatorCountingDto.notificationCountThreshold!! < 0) {
-            throw IllegalArgumentException("NotificationCountThreshold must be positive!")
+            throw IllegalArgumentException("Attribute NotificationCountThreshold of AggregatorCountingDto " +
+                    " has to be above 0 but was ${aggregatorCountingDto.notificationCountThreshold!!}")
         }
     }
 

@@ -16,12 +16,14 @@ abstract class AbstractAggregatorScheduledMapper {
     fun checkLegalArguments(aggregatorScheduledDto: AggregatorScheduledDto) {
 
         if (aggregatorScheduledDto.notificationCronTrigger == null) {
-            throw IllegalArgumentException("NotificationCronTrigger required!")
+            throw IllegalArgumentException("Attribute NotificationCronTrigger of AggregatorScheduledDto" +
+                    " is required but was null!")
         } else {
             try {
                 CronTrigger(aggregatorScheduledDto.notificationCronTrigger!!)
             } catch (illegalArgumentException: IllegalArgumentException) {
-                throw IllegalArgumentException("NotificationCronTrigger must be a valid CronTrigger!")
+                throw IllegalArgumentException("Attribute NotificationCronTrigger of AggregatorScheduledDto" +
+                " must be a valid CronTrigger but was ${aggregatorScheduledDto.notificationCronTrigger!!}!")
             }
         }
     }
