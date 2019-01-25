@@ -1,4 +1,4 @@
-# Initial Meeting October 31, 2018
+# Meeting January, 17, 2019
 (To prevent translation errors, this protocol is kept in the language
 of the meeting, which was held in german).
 
