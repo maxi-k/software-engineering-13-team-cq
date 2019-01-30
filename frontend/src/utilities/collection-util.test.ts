@@ -37,6 +37,22 @@ it("transforms entries when there's a function in the transformationMap", () => 
   })
 })
 
+it("transforms entries with an array in the transformationMap", () => {
+  expect(transformObject(testObject, {
+    nestedObjectKey: [
+      (value: any) => (['newKey1', (value.noKey1 as string) + 'NewValue'] as [string, string]),
+      (value: any) => (['newKey2', (value as string)] as [string, string]),
+      (value: any) => (['nestedObjectKey', {}] as [string, object])
+    ]
+  })).toEqual({
+    key1: 'value1',
+    numberKey2: 2,
+    newKey1: 'noValue1NewValue',
+    newKey2: testObject.nestedObjectKey,
+    nestedObjectKey: {}
+  })
+})
+
 it("transforms nestedEntries", () => {
   expect(transformObject(testObject, {
     key1: (value1: any) => (['newKey1', (value1 as string) + 'new'] as [string, string]),

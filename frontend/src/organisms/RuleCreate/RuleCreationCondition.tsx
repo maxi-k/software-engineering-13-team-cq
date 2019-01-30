@@ -47,6 +47,12 @@ const predicateComparisonTypeUpdater = (callback: ((...value: any) => void)) => 
   )
 )
 
+const predicateComparisonConstantUpdater = (callback: ((...value: any) => void)) => (
+  (comparisonConstant: string) => (
+    callback({ comparisonConstant })
+  )
+)
+
 const predicateRemoveUpdater = (updater: FieldUpdater, key: string | number) => (
   (event: React.SyntheticEvent<any, any>) => (
     updater('$unset', () => [key])()
@@ -72,6 +78,7 @@ const PredicateList: React.SFC<{
               predicate={predicate}
               setVehicleDataField={predicateVehicleDataFieldUpdater(updater)}
               setComparisonType={predicateComparisonTypeUpdater(updater)}
+              setComparisonConstant={predicateComparisonConstantUpdater(updater)}
               removeRule={predicateRemoveUpdater(updateField, key)}
             />
           )

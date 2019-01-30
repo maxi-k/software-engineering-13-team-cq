@@ -2020,7 +2020,9 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     />
     <input
       className="sc-btzYZH eUPTEi"
+      onChange={[Function]}
       type="text"
+      value="comparison constant"
     />
     %.
     <button

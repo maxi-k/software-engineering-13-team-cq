@@ -22,6 +22,7 @@ export interface EditableRulePredicateAttributes {
   predicate: Partial<RuleConditionPredicate<any>>
   setVehicleDataField(vehicleDataField: VehicleDataField<any>): void
   setComparisonType(comparisonType: string): void,
+  setComparisonConstant(comparisonConstant: string): void
   removeRule(event: React.SyntheticEvent<any, any>): void
   // TODO: Replicate possible comparison types as type?
 }
@@ -83,6 +84,12 @@ const comparisonTypeChangeConverter = (callback: EditableRulePredicateAttributes
   )
 )
 
+const comparisonConstantChangeConverter = (callback: EditableRulePredicateAttributes['setComparisonConstant']): ((event: React.FormEvent<HTMLInputElement>) => void) => (
+  (event) => (
+    callback(event.currentTarget.value as string)
+  )
+)
+
 const vehicleDataChangeConverter = (callback: EditableRulePredicateAttributes['setVehicleDataField']): SelectOnChangeType<SelectFormattedValue | null> => (
   (selected) => (
     typeof selected !== 'undefined'
@@ -93,7 +100,7 @@ const vehicleDataChangeConverter = (callback: EditableRulePredicateAttributes['s
 )
 
 const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
-  predicate, predicateFields, setVehicleDataField, setComparisonType, removeRule
+  predicate, predicateFields, setVehicleDataField, setComparisonType, setComparisonConstant, removeRule
 }) => {
   const applicableVehicleType =
     typeof predicate.appliedField === 'undefined' || predicate.appliedField === null
@@ -120,12 +127,10 @@ const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
         : createPredicateFieldSelectValue(predicate.appliedField)}
       onChangeDataType={vehicleDataChangeConverter(setVehicleDataField)}
       comparisonTypeOptions={comparisonTypeOptions}
-      comparisonTypeValue={comparisonTypeSelectValue || (
-        comparisonTypeOptions.length > 0
-          ? comparisonTypeOptions[0]
-          : null
-      )}
+      comparisonTypeValue={comparisonTypeSelectValue || null}
       onChangeComparisonType={comparisonTypeChangeConverter(setComparisonType)}
+      comparisonConstant={predicate.comparisonConstant || ""}
+      onChangeComparisonConstant={comparisonConstantChangeConverter(setComparisonConstant)}
       onClickRemove={removeRule}
       beforeText="cns.condition.selector.beforetext"
       afterText="cns.condition.selector.aftertext"

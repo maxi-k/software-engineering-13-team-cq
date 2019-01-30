@@ -106,6 +106,8 @@ const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
   onChangeDataType: action('change data type'),
+  onChangeComparisonConstant: action('change comparison constant'),
+  comparisonConstant: 'comparison constant',
   dataTypeValue: { label: "battery", value: "battery" },
   dataTypeOptions: [{
     label: "vehicle",

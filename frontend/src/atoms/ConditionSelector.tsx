@@ -20,8 +20,11 @@ export interface ConditionSelectorProps {
   comparisonTypeOptions: SelectValue[]
   comparisonTypeValue: SelectValue | null
 
+  comparisonConstant: string,
+
   onChangeDataType: SelectOnChangeType<SelectFormattedValue | null>
   onChangeComparisonType: SelectOnChangeType<SelectFormattedValue | null>,
+  onChangeComparisonConstant: (event: React.FormEvent<HTMLInputElement>) => void,
   onClickRemove(event: React.SyntheticEvent<any, any>): void
 }
 
@@ -49,8 +52,9 @@ const RemovalButton: React.SFC<React.HTMLAttributes<HTMLButtonElement>> = ({ onC
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
   { beforeText, afterText,
     dataTypeOptions, dataTypeValue,
-    comparisonTypeOptions, comparisonTypeValue,
-    onChangeDataType, onChangeComparisonType, onClickRemove
+    comparisonTypeOptions, comparisonTypeValue, comparisonConstant,
+    onChangeDataType, onChangeComparisonType, onChangeComparisonConstant,
+    onClickRemove
   }
 ) => {
   return (
@@ -73,7 +77,10 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
           options={comparisonTypeOptions.map(translateSelectValue)} />
       </SelectWrapper>
       <StyledSeparator />
-      <StyledTextInput type="text" />
+      <StyledTextInput
+        value={comparisonConstant}
+        onChange={onChangeComparisonConstant}
+        type="text" />
       %.
       <RemovalButton onClick={onClickRemove} />
     </div>

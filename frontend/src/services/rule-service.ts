@@ -9,9 +9,11 @@ import {
   VehicleDataType,
   AggregatorStrategy,
   Aggregator,
-  Fleet
+  Fleet,
+  RuleConditionPredicate,
+  VehicleDataField
 } from '@/model'
-import { transformObject, pickMap } from '@/utilities/collection-util';
+import { transformObject, transformObjects, pickMap } from '@/utilities/collection-util';
 
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
 export const fetchRuleOverview = (accessToken: string) => (
@@ -76,13 +78,36 @@ export const convertToAPIRule = (rule: DetailRule): object => ({
   ...transformObject(rule, {
     fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
     applyToAllFleets: 'affectingAllApplicableFleets',
-    condition: (oldCondition: any) => (['condition', {
-      '@type': 'RuleConditionCompositeDto',
-      ...transformObject(oldCondition, {
-        logicalConnective: (connective: any) => (['logicalConnective', connective.toUpperCase()] as [string, string]),
-        predicates: (predicates: any) => (['predicates', Object.values(predicates)] as [string, string[]])
-      })
-    }] as [string, object]),
+    condition: (oldCondition: any) => (['condition', transformObject(oldCondition, {
+      logicalConnective: (connective: any) => (['logicalConnective', connective.toUpperCase()] as [string, string]),
+      predicates: (predicates: any) => (['subConditions', transformObjects(Object.values(predicates), {
+        appliedField: [
+          (value: any) => {
+            return [
+              'providerName',
+              capitalizeString((value as VehicleDataField<any>).vehicleDataType)
+            ]
+          },
+          (value: any) => [
+            'fieldName',
+            (value as VehicleDataField<any>).predicateField.fieldName
+          ],
+          (value: any, outerObject: RuleConditionPredicate<any>) => [
+            'comparisonType',
+            outerObject.comparisonType
+          ],
+          (value: any, outerObject: RuleConditionPredicate<any>) => [
+            'comparisonValue',
+            outerObject.comparisonConstant
+          ],
+          (value: any) => ['appliedField', null]
+        ]
+      }, {
+          '@type': 'RuleConditionPredicateDto',
+        })] as [string, object[]])
+    }, {
+        '@type': 'RuleConditionCompositeDto'
+      })] as [string, object]),
     aggregator: (aggregator: any) => (['aggregator', {
       '@type': convertAggregatorType(aggregator.strategy),
       ...convertAggregatorValueKey(aggregator as Aggregator)

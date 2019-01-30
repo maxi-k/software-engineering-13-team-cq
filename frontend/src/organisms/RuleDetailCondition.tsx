@@ -62,6 +62,9 @@ const conditionSelectorProps: ConditionSelectorProps = {
     })),
   // tslint:disable-next-line:no-console
   onChangeDataType: (e: any) => console.log(e),
+  comparisonConstant: "value",
+  // tslint:disable-next-line:no-console
+  onChangeComparisonConstant: (e: any) => console.log(e),
   comparisonTypeValue: { label: "cns.condition.selector.equalTo", value: "equal" },
   comparisonTypeOptions: Object.values(ComparisonType).map((comparisonType) => ({
     label: `cns.condition.selector.${comparisonType}`,
