@@ -1,19 +1,26 @@
 import React from 'react'
+import styled from 'styled-components'
+import { FormattedMessage } from 'react-intl'
+
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
 
-interface BackButtonAttributes {
-  size?: number,
+interface DispatchAttributes {
+  label?: string,
   onClick(event: React.SyntheticEvent<any, any>): void
 }
+type BackButtonProps = DispatchAttributes & React.HTMLAttributes<HTMLButtonElement>
 
-export type BackButtonProps = BackButtonAttributes & React.HTMLAttributes<HTMLDivElement>;
-
-const BackButton: React.SFC<BackButtonProps> = ({ onClick, size = 20 }) => (
-  <Button
-    onClick={onClick}
-    label="Back"
-    primary="true"
-    icon={<img style={{ width: `${size}px`, height: `${size}px` }} src="/assets/svg/chevron-left.svg" />} />
-)
+const StyledBackButton = styled(Button)`
+  width: min-content;
+`
+const BackButton: React.SFC<BackButtonProps> = (
+  { label = "cns.navigation.back.label", ...props }
+) => (
+    <StyledBackButton
+      {...props}
+      primary="false" >
+      <FormattedMessage id={label} />
+    </StyledBackButton>
+  )
 
 export default BackButton

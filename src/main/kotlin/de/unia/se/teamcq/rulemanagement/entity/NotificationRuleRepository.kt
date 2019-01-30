@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
+import javax.transaction.Transactional
 
 @Repository
 interface INotificationRuleEntityRepository : JpaRepository<NotificationRuleEntity, Long>
@@ -22,6 +25,10 @@ class NotificationRuleRepository : INotificationRuleRepository {
 
     @Autowired
     lateinit var notificationRuleMapper: INotificationRuleMapper
+
+    @Autowired
+    @PersistenceContext
+    lateinit var entityManager: EntityManager
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
 
@@ -42,9 +49,14 @@ class NotificationRuleRepository : INotificationRuleRepository {
             notificationRuleMapper.entityToModel(existingNotificationRuleEntity) }
     }
 
+    @Transactional
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {
-
-        val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
+        // Use merge so that the persistence layer does not
+        // try to create existing entities this references,
+        // but instead uses the already existing ones.
+        val notificationRuleEntityToSave = entityManager.merge(
+                notificationRuleMapper.modelToEntity(notificationRule)
+        )
 
         // Create notificationRuleEntity first so it already has an ID
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)

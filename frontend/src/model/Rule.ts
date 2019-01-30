@@ -1,11 +1,6 @@
-export enum VehicleDataType {
-  Battery = 'battery',
-  Engine = 'engine',
-  Contract = 'contract',
-  Mileage = 'mileage',
-  Fuel = 'fuel',
-  Service = 'service'
-}
+import { DeepPartial } from 'ts-essentials'
+import { Fleet } from './CarPark'
+import { VehicleDataField, VehicleDataType } from './Vehicle'
 
 export enum ComparisonType {
   Above = 'above',
@@ -20,10 +15,33 @@ export enum NotificationRecipientType {
   User = 'user'
 }
 
-export enum PredicateCounterValue {
-  All = "All",
-  Any = "Any",
-  None = "None"
+export enum LogicalConnective {
+  All = 'all',
+  Any = 'any',
+  None = 'none'
+}
+
+export enum AggregatorStrategy {
+  Counting,
+  Immediate,
+  Scheduled
+}
+
+export interface Aggregator {
+  strategy: AggregatorStrategy
+  value?: string | number
+}
+
+export interface RuleCondition {
+  logicalConnective: LogicalConnective,
+  // Only model one layer of the composite for now...
+  predicates: { [key: string]: RuleConditionPredicate<any> }
+}
+
+export interface RuleConditionPredicate<FieldType> {
+  appliedField: VehicleDataField<FieldType>,
+  comparisonConstant: FieldType,
+  comparisonType: string
 }
 
 export interface NotificationRecipient {
@@ -41,5 +59,14 @@ export interface NotificationRuleOverview {
 
 export interface NotificationRuleDetail
   extends NotificationRuleOverview {
+  applyToAllFleets: boolean
+  fleets: Fleet[]
   recipients: NotificationRecipient[]
+  condition: RuleCondition
+  aggregator: Aggregator
 }
+
+export type NotificationRuleInProgress
+  = Partial<NotificationRuleDetail> & {
+    condition: DeepPartial<RuleCondition>
+  }

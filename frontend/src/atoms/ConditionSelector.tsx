@@ -1,20 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select';
-import { SelectFormattedValue } from '@/model'
 import { FormattedMessage } from 'react-intl'
 
+import { SelectValue, SelectFormattedValue, SelectGroupedOptions, SelectOnChangeType } from '@/model'
+import { translateSelectValue } from '@/services/translation-service'
+
+import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
+import IconButton from '@material-ui/core/IconButton'
 import SelectWrapper from '@/atoms/TextSelectWrapper'
 
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
 
-  dataTypeOptions: SelectFormattedValue[]
-  dataTypeValue: SelectFormattedValue
+  dataTypeOptions: Array<SelectGroupedOptions<SelectValue>>
+  dataTypeValue: SelectValue | null
 
-  comparisonTypeOptions: SelectFormattedValue[]
-  comparisonTypeValue: SelectFormattedValue
+  comparisonTypeOptions: SelectValue[]
+  comparisonTypeValue: SelectValue | null
+
+  comparisonConstant: string,
+
+  onChangeDataType: SelectOnChangeType<SelectFormattedValue | null>
+  onChangeComparisonType: SelectOnChangeType<SelectFormattedValue | null>,
+  onChangeComparisonConstant: (event: React.FormEvent<HTMLInputElement>) => void,
+  onClickRemove(event: React.SyntheticEvent<any, any>): void
 }
 
 const StyledSeparator = styled.div`
@@ -27,25 +38,52 @@ const StyledTextInput = styled.input`
   height: 35px;
 `
 
+const StyledRemovalButton = styled(IconButton)`
+  display: inline-block;
+`
+
+const RemovalButton: React.SFC<React.HTMLAttributes<HTMLButtonElement>> = ({ onClick }) => (
+  <StyledRemovalButton
+    onClick={onClick}>
+    <CloseIcon width={30} height={30} />
+  </StyledRemovalButton>
+)
+
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
   { beforeText, afterText,
     dataTypeOptions, dataTypeValue,
-    comparisonTypeOptions, comparisonTypeValue }
+    comparisonTypeOptions, comparisonTypeValue, comparisonConstant,
+    onChangeDataType, onChangeComparisonType, onChangeComparisonConstant,
+    onClickRemove
+  }
 ) => {
   return (
-    <p>
+    <div>
       <FormattedMessage id={beforeText} />
       <SelectWrapper>
-        <Select value={dataTypeValue} options={dataTypeOptions} />
+        <Select
+          value={dataTypeValue ? translateSelectValue(dataTypeValue) : null}
+          onChange={onChangeDataType}
+          options={dataTypeOptions.map(({ label, options }) => ({
+            label: typeof label === 'string' ? <FormattedMessage id={label} /> : label,
+            options: options.map(translateSelectValue)
+          }))} />
       </SelectWrapper>
       <FormattedMessage id={afterText} />
       <SelectWrapper>
-        <Select value={comparisonTypeValue} options={comparisonTypeOptions} />
+        <Select
+          value={comparisonTypeValue ? translateSelectValue(comparisonTypeValue) : null}
+          onChange={onChangeComparisonType}
+          options={comparisonTypeOptions.map(translateSelectValue)} />
       </SelectWrapper>
       <StyledSeparator />
-      <StyledTextInput type="text" />
+      <StyledTextInput
+        value={comparisonConstant}
+        onChange={onChangeComparisonConstant}
+        type="text" />
       %.
-    </p>
+      <RemovalButton onClick={onClickRemove} />
+    </div>
   )
 }
 

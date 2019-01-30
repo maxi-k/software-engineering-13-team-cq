@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import {
   FetchingAttributes,
   NotificationRuleDetail,
-  PredicateCounterValue,
+  LogicalConnective,
   VehicleDataType,
   ComparisonType
 } from '@/model'
@@ -37,10 +37,11 @@ const StyledRuleDetailCondition = styled.div`
 `
 
 const predicateCounterProps: PredicateCounterProps = {
-  value: { label: <FormattedMessage id="cns.predicate.counter.all" />, value: "all" },
-  options: Object.values(PredicateCounterValue).map((predicateCounterValue) => (
+  value: { label: "cns.predicate.counter.all", value: "all" },
+  onChange: (value: any) => (value),
+  options: Object.values(LogicalConnective).map((predicateCounterValue) => (
     {
-      label: <FormattedMessage id={`cns.predicate.counter.${predicateCounterValue.toLowerCase()}`} />,
+      label: `cns.predicate.counter.${predicateCounterValue.toLowerCase()}`,
       value: predicateCounterValue.toLowerCase()
     })),
   beforeText: "cns.predicate.counter.beforetext",
@@ -50,17 +51,29 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
-  dataTypeValue: { label: <FormattedMessage id="cns.vehicle.status.battery.label" />, value: "battery" },
+  dataTypeValue: { label: "cns.vehicle.status.battery.label", value: "battery" },
   dataTypeOptions: Object.values(VehicleDataType).map((vehicleDataType) => (
     {
-      label: <FormattedMessage id={`cns.vehicle.status.${vehicleDataType}.label`} />,
-      value: vehicleDataType
+      label: `cns.vehicle.status.${vehicleDataType}.label`,
+      options: [{
+        label: `cns.vehicle.status.${vehicleDataType}.label`,
+        value: vehicleDataType
+      }]
     })),
-  comparisonTypeValue: { label: <FormattedMessage id="cns.condition.selector.equalTo" />, value: "equal" },
+  // tslint:disable-next-line:no-console
+  onChangeDataType: (e: any) => console.log(e),
+  comparisonConstant: "value",
+  // tslint:disable-next-line:no-console
+  onChangeComparisonConstant: (e: any) => console.log(e),
+  comparisonTypeValue: { label: "cns.condition.selector.equalTo", value: "equal" },
   comparisonTypeOptions: Object.values(ComparisonType).map((comparisonType) => ({
-    label: <FormattedMessage id={`cns.condition.selector.${comparisonType}`} />,
+    label: `cns.condition.selector.${comparisonType}`,
     value: comparisonType
-  }))
+  })),
+  // tslint:disable-next-line:no-console
+  onChangeComparisonType: (e: any) => console.log(e),
+  // tslint:disable-next-line:no-console
+  onClickRemove: (e: any) => console.log(e)
 }
 
 const StyledFieldSeparator = styled.div`

@@ -16,9 +16,7 @@ matrix:
     - cd frontend
     script:
     - yarn install
-    - yarn test
-    after_success:
-    - yarn run coverage
+    - yarn test-coverage
 
 notifications:
   slack: s-e-13:HvejBsdv4uwO1HjExPJKnSKd
