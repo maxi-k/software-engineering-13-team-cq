@@ -125,7 +125,7 @@ const createRecipient = (rule: APIRule): Recipient => (
       value: `OWNER::${rule.owner.mailAddress}/${rule.owner.cellPhoneNumber}`
     } : {
       type: RecipientType.Email,
-      value: 'lol@lol.com'
+      value: 'test@example.com'
     }
 )
 
@@ -153,13 +153,6 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
       strategy: AggregatorStrategy.Immediate
     }
   })
-
-// export const mergeMockedRuleCreateData = (rule: DetailRule): APIRule => ({
-//   name: 'MOCKED NAME',
-//   description: 'MOCKED DESCRIPTION',
-//
-//   ...rule
-// })
 
 const mockedRule: OverviewRule = {
   ruleId: 0,
