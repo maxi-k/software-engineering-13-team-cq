@@ -116,6 +116,7 @@ function* finishRuleCreationGenerator() {
     const authData = yield call(waitForLogin)
     const ruleData = yield select(ruleCreationStateSelector)
     const fullRule = convertToAPIRule(ruleData.inProgressRule)
+    // console.log(JSON.stringify(fullRule))
     const response = yield call(createNewRule, authData.accessToken, fullRule)
     ensureResponseStatus(response);
     const rule = yield response.json() as NotificationRuleDetail

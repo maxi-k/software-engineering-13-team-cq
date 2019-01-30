@@ -1,11 +1,11 @@
 export interface Fleet {
-  id: string,
+  fleetId: string,
   name: string,
   numVehicles: number
 }
 
 export interface CarPark {
-  id: string,
+  carParkId: string,
   name: string,
   admins: string[],
   customer: string,

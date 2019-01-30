@@ -51,7 +51,7 @@ export const carParkFleetsSelector: Selector<{ [key: string]: Fleet }> = createS
   [carParkListSelector],
   carParks => Object.values(carParks).reduce((fleets, carPark: CarPark) => (
     carPark.fleets.reduce((carParkFleets: { [key: string]: Fleet }, fleet: Fleet) => (
-      { ...carParkFleets, [fleet.id]: fleet }
+      { ...carParkFleets, [fleet.fleetId]: fleet }
     ), fleets)
   ), {})
 )

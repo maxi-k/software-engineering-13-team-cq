@@ -1,5 +1,18 @@
 import update from 'immutability-helper'
 
+export const pluck = <T, K extends keyof T>(o: T, names: K[]): Array<T[K]> => (
+  names.map(n => o[n])
+)
+
+export const pick = <T, K extends keyof T>(object: T, ...names: K[]): Pick<T, K> => (
+  names.reduce((newObj, key) => (
+    { ...newObj, [key]: object[key] }
+  ), {}) as Pick<T, K>
+)
+export const pickMap = <T, K extends keyof T>(objects: T[], ...names: K[]): Array<Pick<T, K>> => (
+  objects.map((entry: T) => pick(entry, ...names))
+)
+
 export type ValueOf<ObjectType> = ObjectType[keyof ObjectType]
 export type KeyValueMapper<ObjectType, ResultType> = (key: keyof ObjectType, value: ValueOf<ObjectType>) => ResultType
 

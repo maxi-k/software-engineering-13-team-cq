@@ -8,9 +8,10 @@ import {
   LogicalConnective,
   VehicleDataType,
   AggregatorStrategy,
-  Aggregator
+  Aggregator,
+  Fleet
 } from '@/model'
-import { transformObject } from '@/utilities/collection-util';
+import { transformObject, pickMap } from '@/utilities/collection-util';
 
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
 export const fetchRuleOverview = (accessToken: string) => (
@@ -73,7 +74,7 @@ const convertAggregatorValueKey = (aggregator: Aggregator): object => {
 export const convertToAPIRule = (rule: DetailRule): object => ({
   ownerAsAdditionalRecipient: true,
   ...transformObject(rule, {
-    fleets: 'affectedFleets',
+    fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
     applyToAllFleets: 'affectingAllApplicableFleets',
     condition: (oldCondition: any) => (['condition', {
       '@type': 'RuleConditionCompositeDto',
@@ -111,7 +112,7 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     aggregatorDescription: 'MOCKED',
     applyToAllFleets: false,
     fleets: [
-      { name: 'MOCKED FLEET', id: 'mockedFleet1', numVehicles: 42 }
+      { name: 'MOCKED FLEET', fleetId: 'mockedFleet1', numVehicles: 42 }
     ],
     dataSources: [
       VehicleDataType.Engine,
