@@ -25,11 +25,11 @@ data class NotificationRule(
 
     var ownerAsAdditionalRecipient: Boolean?,
 
-    var affectedFleets: List<FleetReference>?,
+    var affectedFleets: Set<FleetReference>?,
 
     var affectingAllApplicableFleets: Boolean?
 
 ) : Serializable {
     constructor() : this(null, null, null, null, null, null, mutableListOf<Recipient>(), null,
-            mutableListOf<FleetReference>(), null)
+            mutableSetOf<FleetReference>(), null)
 }

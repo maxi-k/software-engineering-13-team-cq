@@ -8,17 +8,7 @@ import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import java.io.Serializable
-import javax.persistence.CascadeType
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToMany
-import javax.persistence.ManyToOne
-import javax.persistence.OneToMany
-import javax.persistence.OneToOne
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -55,7 +45,7 @@ data class NotificationRuleEntity(
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH])
     // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
     @Fetch(value = FetchMode.SUBSELECT)
-    var affectedFleets: List<FleetReferenceEntity>?,
+    var affectedFleets: Set<FleetReferenceEntity>?,
 
     var affectingAllApplicableFleets: Boolean?
 
@@ -63,5 +53,5 @@ data class NotificationRuleEntity(
 
     // Necessary for MapStruct
     constructor() : this(null, null, null, null, null, null, mutableListOf<RecipientEntity>(), null,
-            mutableListOf<FleetReferenceEntity>(), null)
+            mutableSetOf<FleetReferenceEntity>(), null)
 }
