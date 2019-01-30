@@ -13,7 +13,7 @@ import {
   RuleConditionPredicate,
   VehicleDataField
 } from '@/model'
-import { createUUID } from '@/services/identifier-service'
+import { createRandomKey } from '@/services/identifier-service'
 import { mapObjectToArray } from '@/utilities/collection-util'
 
 import PredicateCounter from '@/atoms/PredicateCounter'
@@ -29,7 +29,7 @@ const logicalConnectiveToSelectOption = (connective: LogicalConnective) => (
 
 const addConditionUpdater = (callback: ((...value: any) => void)) => (
   (event: React.SyntheticEvent<any, any>) => (
-    callback({ [createUUID()]: {} })
+    callback({ [createRandomKey()]: {} })
   )
 )
 

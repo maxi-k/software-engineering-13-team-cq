@@ -137,7 +137,7 @@ export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
     aggregatorDescription: 'MOCKED',
     applyToAllFleets: false,
     fleets: [
-      { name: 'MOCKED FLEET', fleetId: 'mockedFleet1', numVehicles: 42 }
+      { name: 'MOCKED FLEET', fleetId: 'mockedFleet1', numberOfVehicles: 42 }
     ],
     dataSources: [
       VehicleDataType.Engine,
