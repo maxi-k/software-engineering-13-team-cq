@@ -455,8 +455,8 @@ object TestUtils {
         return getTestFleetReferenceModel().copy(fleetId = "UUID234")
     }
 
-    fun getTestFleetReferenceModels(): Set<FleetReference> {
-        return setOf(
+    fun getTestFleetReferenceModels(): List<FleetReference> {
+        return listOf(
                 getTestFleetReferenceModel(),
                 getTestFleetReferenceModelTwo()
         )
@@ -466,8 +466,8 @@ object TestUtils {
         return getTestFleetReferenceEntity().copy(fleetId = "UUID234")
     }
 
-    fun getTestFleetReferenceEntities(): Set<FleetReferenceEntity> {
-        return setOf(
+    fun getTestFleetReferenceEntities(): List<FleetReferenceEntity> {
+        return listOf(
                 getTestFleetReferenceEntity(),
                 getTestFleetReferenceEntityTwo()
         )
