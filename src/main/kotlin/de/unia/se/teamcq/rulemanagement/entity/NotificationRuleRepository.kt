@@ -3,9 +3,7 @@ package de.unia.se.teamcq.rulemanagement.entity
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
-import org.hibernate.Session
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.jpa.provider.HibernateUtils
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
@@ -30,7 +28,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
 
     @Autowired
     @PersistenceContext
-    lateinit var entityManager: EntityManager;
+    lateinit var entityManager: EntityManager
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
 
