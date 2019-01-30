@@ -1,26 +1,33 @@
 import React from 'react'
 import Select from 'react-select';
 import { FormattedMessage } from 'react-intl'
-import { SelectFormattedValue } from '@/model';
+import { SelectFormattedValue, SelectValue, SelectOnChangeType } from '@/model';
+import { translateSelectValue } from '@/services/translation-service'
 
 import SelectWrapper from '@/atoms/TextSelectWrapper'
 
 export interface PredicateCounterProps {
-  value: SelectFormattedValue
-  options: SelectFormattedValue[]
+  value: SelectValue,
+  onChange: SelectOnChangeType<SelectFormattedValue>
+  options: SelectValue[]
   beforeText: string
   afterText: string
 }
 
-const PredicateCounter: React.SFC<PredicateCounterProps> = ({ value, options, beforeText, afterText }) => {
+const PredicateCounter: React.SFC<PredicateCounterProps> = ({
+  value, options, beforeText, afterText, ...selectProps
+}) => {
   return (
-    <p>
+    <div>
       <FormattedMessage id={beforeText} />
       <SelectWrapper>
-        <Select value={value} options={options} />
+        <Select
+          {...selectProps}
+          value={translateSelectValue(value)}
+          options={options.map(translateSelectValue)} />
       </SelectWrapper>
       <FormattedMessage id={afterText} />
-    </p>
+    </div>
   )
 }
 

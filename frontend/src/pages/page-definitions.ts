@@ -24,20 +24,6 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     exact: true,
     component: lazy(() => import('@/pages/RuleOverview'))
   },
-  ruleDetailGeneral: {
-    title: "cns.page.ruleDetailGeneral.title",
-    path: '/rule/general/:ruleId',
-    interpolatePath: (ruleId: string) => `/rule/general/${ruleId}`,
-    exact: true,
-    component: lazy(() => import('@/pages/RuleDetailGeneral'))
-  },
-  ruleDetailCondition: {
-    title: "cns.page.ruleDetailCondition.title",
-    path: '/rule/condition/:ruleId',
-    interpolatePath: (ruleId: string) => `/rule/condition/${ruleId}`,
-    exact: true,
-    component: lazy(() => import('@/pages/RuleDetailCondition'))
-  },
   ruleEdit: {
     title: "cns.page.ruleEdit.title",
     path: '/rule/:ruleId/edit',
@@ -51,6 +37,13 @@ export const pageDefinitions: { [key: string]: PageDefinition } = {
     interpolatePath: (ruleId: string) => `/rule/${ruleId}`,
     exact: true,
     component: lazy(() => import('@/pages/RuleDetail'))
+  },
+  ruleCreate: {
+    title: "cns.page.ruleCreate.title",
+    path: '/create',
+    interpolatePath: () => '/create',
+    exact: true,
+    component: lazy(() => import('@/pages/RuleCreate'))
   }
 }
 export type PageDefinitions = typeof pageDefinitions

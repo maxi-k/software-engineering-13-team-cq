@@ -7,6 +7,7 @@
     "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
 
     "cns.navigation.back.label": "Zurück",
+    "cns.navigation.abort.label": "Abbrechen",
 
     "cns.message.fetch.error.default": "Es gab ein Problem beim Laden der Daten. Versuchen Sie es später noch einmal.",
     "cns.message.fetch.error.notFound": "Die von Ihnen angeforderte Ressource konnte nicht gefunden werden.",
@@ -14,6 +15,8 @@
     "cns.message.fetch.error.unauthorized": "Sie sind nicht authorisiert, diese Ressource abzufragen. Versuchen Sie, die Webseite neu zu laden und sich anzumelden.",
     "cns.message.fetch.error.serverError": "Es gab ein Problem während der Anfrage, bitte versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
+    "cns.page.ruleCreate.title": "Regel erstellen",
+    "cns.page.ruleEdit.title": "Regel bearbeiten",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
@@ -21,10 +24,20 @@
     "cns.rule.field.description.label": "Beschreibung",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.recipients.label": "Empfänger",
+    "cns.rule.field.applyToAllFleets.label": "Diese Regel auf alle Flotten anwenden?",
+
+    "cns.rule.creation.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
+    "cns.rule.creation.step.label": "Schritt",
+
+    "cns.rule.creation.action.complete": "Fertigstellen",
+    "cns.rule.creation.action.step.next": "Weiter",
+    "cns.rule.creation.action.step.previous": "Zurück",
 
     "cns.rule.creation.step.general.title": "Allgemein",
-    "cns.rule.creation.step.general.fleets": "Betroffene Flotten",
-    "cns.rule.creation.step.general.condition": "Regel Bedingung",
+    "cns.rule.creation.step.fleets.title": "Flotten",
+    "cns.rule.creation.step.condition.title": "Bedingung",
+    "cns.rule.creation.step.timing.title": "Timing",
+    "cns.rule.creation.step.summary.title": "Vorschau",
 
     "cns.vehicle.status.engine.label": "Motor",
     "cns.vehicle.status.battery.label": "Batterie",
@@ -36,6 +49,40 @@
     "cns.rule.recipient.email.label": "Email",
     "cns.rule.recipient.phonenumber.label": "SMS",
     "cns.rule.recipient.user.label": "Benutzer",
+
+
+    "cns.predicate.field.battery.charge.label": "Ladung",
+    "cns.predicate.field.battery.voltage.label": "Spannung",
+    "cns.predicate.field.battery.status.label": "Status",
+
+    "cns.predicate.field.contract.duePerWeek.label": "Diese Woche fällig",
+    "cns.predicate.field.contract.vins.label": "VINs",
+    "cns.predicate.field.contract.calendarWeek.label": "Kalenderwoche",
+
+    "cns.predicate.field.engine.power.label": "Stärke",
+    "cns.predicate.field.engine.capacity.label": "Kapazität",
+    "cns.predicate.field.engine.fuelType.label": "Kraftstoff",
+
+    "cns.predicate.field.fuel.level.label": "Füllstand",
+    "cns.predicate.field.fuel.liters.label": "Liters",
+    "cns.predicate.field.fuel.range.label": "Reichweite",
+
+    "cns.predicate.field.mileage.current.label": "Momentaner Kilometerstand",
+    "cns.predicate.field.mileage.remaining.label": "Verbleibende Laufleistung",
+    "cns.predicate.field.mileage.reached.label": "Erreichte Laufleistung",
+
+    "cns.predicate.field.service.dueDate.label": "Fälligkeitsdatum",
+    "cns.predicate.field.service.brakeFluid.label": "Bremsflüssigkeit",
+    "cns.predicate.field.service.status.label": "Service Status",
+
+    "cns.predicate.comparison.NOT_EQUAL_TO.label": "nicht gleich",
+    "cns.predicate.comparison.EQUAL_TO.label": "gleich",
+    "cns.predicate.comparison.GREATER_THAN.label": "größer als",
+    "cns.predicate.comparison.LESSER_THAN.label": "kleiner als",
+    "cns.predicate.comparison.GREATER_THAN_OR_EQUAL_TO.label": "größer oder gleich",
+    "cns.predicate.comparison.LESSER_THAN_OR_EQUAL_TO.label": "kleiner oder gleichk",
+    "cns.predicate.comparison.CONTAINED_IN.label": "enthalten in",
+    "cns.predicate.comparison.NOT_CONTAINED_IN.label": "nicht enthalten in",
 
     "cns.predicate.counter.beforetext": "Wenn",
     "cns.predicate.counter.aftertext": "der folgenden Bedingungen erfüllt sind:",

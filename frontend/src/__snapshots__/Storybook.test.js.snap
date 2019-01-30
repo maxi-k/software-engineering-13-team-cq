@@ -537,34 +537,13 @@ exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
 
 exports[`Storyshots General Components Back Button 1`] = `
 <button
-  className="primary sc-jzJRlG lbarbb"
-  icon={
-    <img
-      src="/assets/svg/chevron-left.svg"
-      style={
-        Object {
-          "height": "20px",
-          "width": "20px",
-        }
-      }
-    />
-  }
-  label="Back"
+  className="sc-gGBfsJ iNTxbL sc-jzJRlG lbarbb"
   onClick={[Function]}
-  primary="true"
+  primary="false"
 >
   <span>
     Back
   </span>
-  <img
-    src="/assets/svg/chevron-left.svg"
-    style={
-      Object {
-        "height": "20px",
-        "width": "20px",
-      }
-    }
-  />
 </button>
 `;
 
@@ -1307,40 +1286,110 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / First Step Screen 1`] = `
+<div>
+  <div
+    className="MuiFormControl-root-853 MuiFormControl-marginNormal-854 MuiFormControl-fullWidth-856"
+  >
+    <label
+      className="MuiFormLabel-root-864 MuiInputLabel-root-857 MuiInputLabel-formControl-858 MuiInputLabel-animated-861 MuiInputLabel-filled-862"
+      data-shrink={false}
+    >
+      Rule Name
+    </label>
+    <div
+      className="MuiInputBase-root-884 MuiFilledInput-root-871 MuiFilledInput-underline-872 MuiInputBase-fullWidth-893 MuiInputBase-formControl-885"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        className="MuiInputBase-input-894 MuiFilledInput-input-879"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="MuiFormControl-root-853 MuiFormControl-marginNormal-854 MuiFormControl-fullWidth-856"
+  >
+    <label
+      className="MuiFormLabel-root-864 MuiInputLabel-root-857 MuiInputLabel-formControl-858 MuiInputLabel-animated-861 MuiInputLabel-filled-862"
+      data-shrink={false}
+    >
+      Description
+    </label>
+    <div
+      className="MuiInputBase-root-884 MuiFilledInput-root-871 MuiFilledInput-underline-872 MuiInputBase-fullWidth-893 MuiInputBase-formControl-885 MuiInputBase-multiline-892 MuiFilledInput-multiline-878"
+      onClick={[Function]}
+    >
+      <textarea
+        aria-invalid={false}
+        className="MuiInputBase-input-894 MuiFilledInput-input-879 MuiInputBase-inputMultiline-896 MuiFilledInput-inputMultiline-881"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        rows={3}
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"
 >
-  <div
+  <button
+    className="MuiButtonBase-root-841 MuiIconButton-root-835"
+    disabled={false}
+    onBlur={[Function]}
     onClick={[Function]}
-    style={
-      Object {
-        "cursor": "pointer",
-      }
-    }
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
   >
-    <svg
-      height="100%"
-      id="default"
-      style={
-        Object {
-          "fill": "#92a2bd",
-          "height": "96px",
-          "marginTop": undefined,
-          "minWidth": "undefinedpx",
-          "width": "96px",
-        }
-      }
-      version="1.1"
-      viewBox="0 0 49 49"
-      width="100%"
+    <span
+      className="MuiIconButton-label-840"
     >
-      <polygon
-        points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
+      <svg
+        height="100%"
+        id="default"
+        style={
+          Object {
+            "fill": "#92a2bd",
+            "height": "96px",
+            "marginTop": undefined,
+            "minWidth": "undefinedpx",
+            "width": "96px",
+          }
+        }
+        version="1.1"
+        viewBox="0 0 49 49"
+        width="100%"
+      >
+        <polygon
+          points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
 37.787,40 40,37.787 26.713,24.5 "
-      />
-    </svg>
-  </div>
+        />
+      </svg>
+    </span>
+  </button>
 </div>
 `;
 
@@ -1751,10 +1800,10 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"
 >
-  <p>
+  <div>
     The
     <div
-      className="sc-feJyhm gnzLbA"
+      className="sc-cmTdod eUZYIX"
     >
       <div
         className="css-10nd86i"
@@ -1861,7 +1910,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     </div>
     is
     <div
-      className="sc-feJyhm gnzLbA"
+      className="sc-cmTdod eUZYIX"
     >
       <div
         className="css-10nd86i"
@@ -1967,14 +2016,59 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       </div>
     </div>
     <div
-      className="sc-iELTvK hXcheF"
+      className="sc-jwKygS SfvGh"
     />
     <input
-      className="sc-cmTdod iikmue"
+      className="sc-btzYZH eUPTEi"
+      onChange={[Function]}
       type="text"
+      value="comparison constant"
     />
     %.
-  </p>
+    <button
+      className="MuiButtonBase-root-934 MuiIconButton-root-928 sc-lhVmIH jfZkKL"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-933"
+      >
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "#92a2bd",
+              "height": "30px",
+              "marginTop": undefined,
+              "minWidth": "30px",
+              "width": "30px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 49 49"
+          width="100%"
+        >
+          <polygon
+            points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
+37.787,40 40,37.787 26.713,24.5 "
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
 </div>
 `;
 
@@ -1982,10 +2076,10 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"
 >
-  <p>
+  <div>
     If
     <div
-      className="sc-feJyhm gnzLbA"
+      className="sc-cmTdod eUZYIX"
     >
       <div
         className="css-10nd86i"
@@ -2091,7 +2185,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
       </div>
     </div>
     of the following conditions are met:
-  </p>
+  </div>
 </div>
 `;
 
@@ -2130,20 +2224,20 @@ exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
 
 exports[`Storyshots Rule Overview / Complete Successful 1`] = `
 <div
-  className="sc-kafWEX iWBJQd"
+  className="sc-feJyhm hUMoB"
 >
   <div
-    className="sc-tilXH bJLPWy sc-gGBfsJ kPSuHc"
+    className="sc-hEsumM jgSClR sc-jnlKLf enDPxI"
   >
     <div
-      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-hEsumM jgSClR sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+        className="sc-fYxtnH dpcrfJ sc-jbKcbu bdomrr"
       >
         <div
-          className="nav-label sc-fYxtnH dwaVQg"
+          className="nav-label sc-tilXH eEaEnp"
         >
           <svg
             height="100%"
@@ -2170,17 +2264,17 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
     </div>
   </div>
   <div
-    className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
+    className="sc-cIShpX cVdoGZ sc-jnlKLf enDPxI"
   >
     <div
-      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-cIShpX cVdoGZ sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+        className="sc-fYxtnH dpcrfJ sc-jbKcbu bdomrr"
       >
         <div
-          className="nav-label sc-fYxtnH dwaVQg"
+          className="nav-label sc-tilXH eEaEnp"
         >
           <h6
             className="MuiTypography-root-501 MuiTypography-h6-518"
@@ -2188,7 +2282,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             Rule Name
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <h6
             className="MuiTypography-root-501 MuiTypography-subtitle1-519"
@@ -2196,10 +2290,10 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             Sent every Tuesday, 9:00 AM
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/engine.png"
@@ -2212,7 +2306,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/battery.png"
@@ -2229,17 +2323,17 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
     </div>
   </div>
   <div
-    className="sc-ktHwxA bEXIEy sc-gGBfsJ kPSuHc"
+    className="sc-cIShpX cVdoGZ sc-jnlKLf enDPxI"
   >
     <div
-      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-474 MuiPaper-elevation0-476 sc-cIShpX cVdoGZ sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+        className="sc-fYxtnH dpcrfJ sc-jbKcbu bdomrr"
       >
         <div
-          className="nav-label sc-fYxtnH dwaVQg"
+          className="nav-label sc-tilXH eEaEnp"
         >
           <h6
             className="MuiTypography-root-501 MuiTypography-h6-518"
@@ -2247,7 +2341,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             Rule Name 2
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <h6
             className="MuiTypography-root-501 MuiTypography-subtitle1-519"
@@ -2255,10 +2349,10 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             Sent every Tuesday, 9:00 AM
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/engine.png"
@@ -2271,7 +2365,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/battery.png"
@@ -2292,7 +2386,7 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
 
 exports[`Storyshots Rule Overview / Complete With Error 1`] = `
 <div
-  className="sc-kafWEX iWBJQd"
+  className="sc-feJyhm hUMoB"
 >
   <div
     aria-describedby="client-snackbar"
@@ -2396,17 +2490,17 @@ exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div
-    className="sc-tilXH bJLPWy sc-gGBfsJ gKsVSL"
+    className="sc-hEsumM jgSClR sc-jnlKLf gBXXci"
   >
     <div
-      className="MuiPaper-root-367 MuiPaper-elevation0-369 sc-tilXH bJLPWy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-367 MuiPaper-elevation0-369 sc-hEsumM jgSClR sc-hqyNC dOAmVs"
       onClick={[Function]}
     >
       <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+        className="sc-fYxtnH dpcrfJ sc-jbKcbu bdomrr"
       >
         <div
-          className="nav-label sc-fYxtnH dwaVQg"
+          className="nav-label sc-tilXH eEaEnp"
         >
           <svg
             height="100%"
@@ -2440,16 +2534,16 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div
-    className="sc-ktHwxA bEXIEy sc-gGBfsJ gKsVSL"
+    className="sc-cIShpX cVdoGZ sc-jnlKLf gBXXci"
   >
     <div
-      className="MuiPaper-root-403 MuiPaper-elevation0-405 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      className="MuiPaper-root-403 MuiPaper-elevation0-405 sc-cIShpX cVdoGZ sc-hqyNC dOAmVs"
     >
       <div
-        className="sc-jnlKLf ghqNHh sc-jbKcbu bdomrr"
+        className="sc-fYxtnH dpcrfJ sc-jbKcbu bdomrr"
       >
         <div
-          className="nav-label sc-fYxtnH dwaVQg"
+          className="nav-label sc-tilXH eEaEnp"
         >
           <h6
             className="MuiTypography-root-430 MuiTypography-h6-447"
@@ -2457,7 +2551,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             Rule Name
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <h6
             className="MuiTypography-root-430 MuiTypography-subtitle1-448"
@@ -2465,10 +2559,10 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             Sent every Tuesday, 9:00 AM
           </h6>
           <hr
-            className="sc-cIShpX gcJlWc"
+            className="sc-kafWEX bhYbBP"
           />
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/engine.png"
@@ -2481,7 +2575,7 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
             />
           </div>
           <div
-            className="sc-hEsumM dpAakk"
+            className="sc-ktHwxA fIvZho"
           >
             <img
               src="/assets/img/battery.png"
@@ -2523,6 +2617,11 @@ exports[`Storyshots Welcome to this Storybook 1`] = `
      
     <br />
      are part of the package provided by MbW, and are not created or modified by the CNS team.
+  </p>
+  <p>
+    This app is running in 
+    test
+     mode.
   </p>
 </section>
 `;

@@ -10,6 +10,8 @@ import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
+import io.kotlintest.matchers.boolean.shouldBeFalse
+import io.kotlintest.matchers.withClue
 import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -90,6 +92,46 @@ class NotificationRuleRepositoryTest : StringSpec() {
             }
 
             savedNotificationRule shouldBe expectedNotificationRule
+
+            withClue("rule fleet ordering should be persisted") {
+                savedNotificationRule!!.affectedFleets!!.forEachIndexed { index, fleetEntity ->
+                    fleetEntity shouldBe expectedNotificationRule.affectedFleets!![index]
+                }
+            }
+        }
+
+        // TODO: Does *not* fail when incorrectly using EntityManager#merge in the resository save function yet
+        "CreateNotificationRule should use existing fleets" {
+
+            userEntityRepository.save(getTestUserEntity())
+
+            val rule1 = getTestNotificationRuleModel()
+            val rule2 = getTestNotificationRuleModel()
+
+            withClue("rules should be structurally equal") {
+                rule1 shouldBe rule2
+                rule1.affectedFleets!![0] shouldBe rule2.affectedFleets!![0]
+            }
+            withClue("rules should not be identical") {
+                (rule1 === rule2).shouldBeFalse()
+                (rule1.affectedFleets!![0] === rule2.affectedFleets!![0]).shouldBeFalse()
+            }
+
+            val savedNotificationRule1 = notificationRuleRepository.createNotificationRule(rule1)
+            // should fail when not using entity manager
+            val savedNotificationRule2 = notificationRuleRepository.createNotificationRule(rule2)
+
+            val expectedNotificationRule1 = getTestNotificationRuleModel().apply {
+                setIdsOfRelatedRepositoryEntities(savedNotificationRule1!!)
+            }
+            val expectedNotificationRule2 = getTestNotificationRuleModel().apply {
+                setIdsOfRelatedRepositoryEntities(savedNotificationRule2!!)
+            }
+
+            savedNotificationRule1 shouldBe expectedNotificationRule1
+            savedNotificationRule2 shouldBe expectedNotificationRule2
+
+            // savedNotificationRule1.affectedFleets[0] shouldBe savedNotificationRule2.affectedFleets[0]
         }
 
         "UpdateNotificationRule" should {
