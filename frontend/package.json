@@ -47,7 +47,7 @@
     "build": "cross-env NODE_ENV=production build-storybook -s public -o build",
     "test": "craco test",
     "test-coverage": "craco test --collectCoverage",
-    "test-commit": "CI=true craco test --bail --ci --forceExit",
+    "test-commit": "CI=true craco test --bail --ci --detectOpenHandles --collectCoverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
@@ -83,6 +83,16 @@
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0"
+  },
+  "jest": {
+   "coverageThreshold": {
+       "global": {
+         "branches": 25,
+         "functions": 30,
+         "lines": 41,
+         "statements": -600
+       }
+   }
   },
   "husky": {
     "hooks": {
