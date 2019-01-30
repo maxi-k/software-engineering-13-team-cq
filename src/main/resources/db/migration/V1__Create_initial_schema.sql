@@ -29,7 +29,7 @@ CREATE TABLE notification_rule_entity
 CREATE TABLE notification_rule_entity_affected_fleets 
   ( 
      notification_rule_entity_rule_id INT8 NOT NULL, 
-     affected_fleets_fleet_id         VARCHAR(255) NOT NULL 
+     affected_fleets_fleet_id         VARCHAR(255) NOT NULL
   ); 
 
 CREATE TABLE notification_rule_entity_recipients 
