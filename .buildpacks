@@ -1,1 +1,2 @@
-frontend=https://github.com/mars/create-react-app-buildpack
+apps/customisable-notification-service-backend=https://github.com/heroku/heroku-buildpack-gradle
+apps/customisable-notification-service-frontend=https://github.com/mars/create-react-app-buildpack

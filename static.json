@@ -1,3 +1,3 @@
 {
-    "root": "frontend/build/"
+    "root": "apps/customisable-notification-service-frontend/build/"
 }
