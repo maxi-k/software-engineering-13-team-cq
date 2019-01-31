@@ -134,5 +134,5 @@ jacocoTestCoverageVerification {
 // To run coverage verification during the build (and fail when appropriate)
 check.dependsOn jacocoTestCoverageVerification
 
-// For the pre-commit hook
+// For the pre-push hook
 apply from: rootProject.file('gradle/install-git-hooks.gradle')
