@@ -1,11 +1,11 @@
 import { isDevelopment, isTest } from './environment-service'
 
 const apiUrl = isDevelopment
-  ? 'http://localhost:3000'
+  ? ''
   : process.env.REACT_APP_CNS_BACKEND_URL || ''
 
 const fleetdataUrl = isDevelopment
-  ? 'http://localhost:3000'
+  ? ''
   : process.env.REACT_APP_FLEETDATA_BACKEND_URL || ''
 
 const defaultOptions = {

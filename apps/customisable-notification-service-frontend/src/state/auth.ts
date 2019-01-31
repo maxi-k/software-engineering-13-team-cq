@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 import { call, put, take, select } from 'redux-saga/effects'
 
 import { FetchingData } from '@/model'
-import { isDevelopment } from '@/services/environment-service'
+import { isTest } from '@/services/environment-service'
 import { fetchAuthenticationToken } from '@/services/auth-service'
 import { ensureResponseStatus } from '@/services/response-service'
 
@@ -100,8 +100,8 @@ function* initialLoginSaga() {
 
 }
 
-export const sagas = isDevelopment
-  ? [initialLoginSaga]
-  : []
+export const sagas = isTest
+  ? []
+  : [initialLoginSaga]
 
 export default reducer
