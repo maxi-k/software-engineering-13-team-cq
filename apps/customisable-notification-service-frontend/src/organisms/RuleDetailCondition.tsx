@@ -10,11 +10,8 @@ import {
   ComparisonType
 } from '@/model'
 
-import Typography from '@material-ui/core/Typography'
-
 import ErrorMessage from '@/atoms/ErrorMessage'
 import LoadingIndicator from '@/atoms/LoadingIndicator'
-import NextButton from '@/atoms/NextButton'
 import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
@@ -114,7 +111,7 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         style={{ padding: '1rem' }}
         title="cns.page.rule.label"
         titleSuffix={` '${rule.name}'`} >
-         <ClosingButton onClick={conditionAborter(abortCondition)} />
+        <ClosingButton onClick={conditionAborter(abortCondition)} />
       </ViewHeader>
       <StyledFieldSeparator />
       <TextElementWrapper>

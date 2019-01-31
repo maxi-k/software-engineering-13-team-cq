@@ -18,6 +18,7 @@
     "no-empty-interface": false,
     "ordered-imports": ["any"],
     "eofline": true,
-    "no-consecutive-blank-lines": true
+    "no-consecutive-blank-lines": true,
+    "no-unused-variable": true
   }
 }
