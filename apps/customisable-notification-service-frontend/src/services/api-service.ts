@@ -4,6 +4,10 @@ const apiUrl = isDevelopment
   ? 'http://localhost:3000'
   : process.env.REACT_APP_CNS_BACKEND_URL || ''
 
+const fleetdataUrl = isDevelopment
+  ? 'http://localhost:3000'
+  : process.env.REACT_APP_FLEETDATA_BACKEND_URL || ''
+
 const defaultOptions = {
   headers: {
     'Content-Type': 'application/json'
@@ -52,6 +56,7 @@ const mockRequest = (path: string, response: object, fetchOptions: object = {}) 
 
 export {
   apiUrl,
+  fleetdataUrl,
   apiRequest,
   authApiRequest,
   doMock,

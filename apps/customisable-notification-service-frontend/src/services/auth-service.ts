@@ -1,8 +1,4 @@
-import { isDevelopment } from './environment-service'
-
-const authServiceUrl = isDevelopment
-                     ? '' // On Development, it's local (see proxy paths from /setupProxy.js)
-                     : '' // TODO: Insert production url for auth service
+import { fleetdataUrl as authServiceUrl } from './api-service'
 
 const authenticationUrl = authServiceUrl + '/api/login'
 const authenticationParameters: RequestInit = {
