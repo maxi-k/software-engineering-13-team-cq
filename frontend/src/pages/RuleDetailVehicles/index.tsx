@@ -7,9 +7,9 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetailGeneral, { FinishGeneralType, AbortGeneralType } from '@/organisms/RuleDetailGeneral'
+import RuleDetailVehicles, { FinishVehiclesType, AbortVehiclesType } from '@/organisms/RuleDetailVehicles'
 
-export interface RuleDetailGeneralPageAttributes {
+export interface RuleDetailVehiclesPageAttributes {
   // Needs to be string because it comes
   // from the router props
   parameters: {
@@ -18,18 +18,18 @@ export interface RuleDetailGeneralPageAttributes {
 }
 
 export interface StateAttributes extends FetchingAttributes {
-  ruleDetail: NotificationRuleDetail
+  rule: NotificationRuleDetail
 }
 
 export interface DispatchAttributes {
-  finishGeneral: FinishGeneralType,
-  abortGeneral: AbortGeneralType,
+  finishVehicles: FinishVehiclesType,
+  abortVehicles: AbortVehiclesType,
   fetchRule(): void,
   editRule(): void,
   deleteRule(): void
 }
 
-export type RuleDetailGeneralPageProps = RuleDetailGeneralPageAttributes
+export type RuleDetailVehiclePageProps = RuleDetailVehiclesPageAttributes
   & StateAttributes
   & DispatchAttributes
   & React.HTMLAttributes<HTMLDivElement>
@@ -38,35 +38,35 @@ const StyledPageWrapper = styled.div`
     flex-grow: 1;
 `
 
-class RuleDetailGeneralPage extends React.PureComponent<RuleDetailGeneralPageProps> {
+class RuleDetailVehiclePage extends React.PureComponent<RuleDetailVehiclePageProps> {
 
   public componentDidMount = () => {
-    const { fetchRule } = this.props
+    const {fetchRule} = this.props
     fetchRule()
   }
 
   public render = () => {
-    const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
+    const {parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps} = this.props
     return (
       <StyledPageWrapper>
-        <RuleDetailGeneral {...ruleDetailProps} />
+        <RuleDetailVehicles {...ruleDetailProps}/>
       </StyledPageWrapper>
     )
   }
 }
 
-const mapStateToProps: StateMapper<RuleDetailGeneralPageAttributes, StateAttributes> = (state, props) => {
-  const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
+const mapStateToProps: StateMapper<RuleDetailVehiclesPageAttributes, StateAttributes> = (state, props) => {
+  const {rules, isFetching, hasFetchError} = ruleDetailStateSelector(state)
   return ({
-    ruleDetail: rules[parseInt(props.parameters.ruleId, 10)],
+    rule: rules[parseInt(props.parameters.ruleId, 10)],
     isFetching,
     hasFetchError
   })
 }
 
-const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, DispatchAttributes> = (dispatch, props) => ({
-  finishGeneral: (event) => dispatch(push(interpolatePagePath('ruleDetailVehicles', `${props.parameters.ruleId}`))),
-  abortGeneral: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
+const mapDispatchToProps: DispatchMapper<RuleDetailVehiclesPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+  finishVehicles: (event) => dispatch(push(interpolatePagePath('ruleDetailCondition'))),
+  abortVehicles: (event) => dispatch(push(interpolatePagePath('ruleOverview'))),
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },
@@ -74,4 +74,4 @@ const mapDispatchToProps: DispatchMapper<RuleDetailGeneralPageAttributes, Dispat
   deleteRule: () => alert('deleting rule')
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailGeneralPage)
+export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailVehiclePage)

@@ -40,7 +40,7 @@ class RuleOverviewPage extends React.Component<RuleOverviewPageProps> {
     return (
       <StyledOverviewPage >
         <RuleOverviewHeader />
-        <RuleOverview {...overviewProps} rules={ruleList} />
+        <RuleOverview {...overviewProps} rules={ruleList} /> 
       </StyledOverviewPage >
     )
   }

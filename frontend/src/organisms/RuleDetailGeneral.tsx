@@ -118,6 +118,7 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
       </div>
     </StyledRuleDetailGeneral>
   )
+
 }
 
 export default RuleDetailGeneral

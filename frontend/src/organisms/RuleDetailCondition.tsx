@@ -19,6 +19,7 @@ import ClosingButton from '@/atoms/ClosingButton'
 import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
 import AddConditionButton from '@/atoms/AddConditionButton';
+import ViewHeader from '@/molecules/ViewHeader';
 
 export type FinishConditionType = (event: React.SyntheticEvent<any, any>) => void
 export type AbortConditionType = (event: React.SyntheticEvent<any, any>) => void
@@ -61,19 +62,19 @@ const conditionSelectorProps: ConditionSelectorProps = {
       }]
     })),
   // tslint:disable-next-line:no-console
-  onChangeDataType: (e: any) => console.log(e),
+  onChangeDataType: (event: any) => console.log(event),
   comparisonConstant: "value",
   // tslint:disable-next-line:no-console
-  onChangeComparisonConstant: (e: any) => console.log(e),
+  onChangeComparisonConstant: (event: any) => console.log(event),
   comparisonTypeValue: { label: "cns.condition.selector.equalTo", value: "equal" },
   comparisonTypeOptions: Object.values(ComparisonType).map((comparisonType) => ({
     label: `cns.condition.selector.${comparisonType}`,
     value: comparisonType
   })),
   // tslint:disable-next-line:no-console
-  onChangeComparisonType: (e: any) => console.log(e),
+  onChangeComparisonType: (event: any) => console.log(event),
   // tslint:disable-next-line:no-console
-  onClickRemove: (e: any) => console.log(e)
+  onClickRemove: (event: any) => console.log(event)
 }
 
 const StyledFieldSeparator = styled.div`
@@ -109,13 +110,12 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
 
   return (
     <StyledRuleDetailCondition {...props}>
-      <Typography variant="h5" style={{ paddingLeft: '1rem' }}>
-        <FormattedMessage id="cns.rule.label" />{' '}
-        "{rule.name}"
-      </Typography>
-      <div style={{ paddingLeft: '76rem' }}>
-        <ClosingButton onClick={conditionAborter(abortCondition)} />
-      </div>
+      <ViewHeader
+        style={{ padding: '1rem' }}
+        title="cns.page.rule.label"
+        titleSuffix={` '${rule.name}'`} >
+         <ClosingButton onClick={conditionAborter(abortCondition)} />
+      </ViewHeader>
       <StyledFieldSeparator />
       <TextElementWrapper>
         <FormattedMessage id="cns.page.ruleDetailCondition.question" />
@@ -130,9 +130,9 @@ const RuleDetailCondition: React.SFC<RuleDetailConditionProps> = ({
         <AddConditionButton onClick={conditionFinisher(finishCondition)} />
       </TextElementWrapper>
       <StyledFieldSeparator />
-      <div style={{ paddingLeft: '76rem' }}>
+      {/* <div style={{ paddingLeft: '76rem' }}>
         <NextButton onClick={conditionFinisher(finishCondition)} />
-      </div>
+      </div> */}
     </StyledRuleDetailCondition>
   )
 }
