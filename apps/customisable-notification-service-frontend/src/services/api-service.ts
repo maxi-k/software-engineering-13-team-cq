@@ -4,6 +4,9 @@ const apiUrl = isDevelopment
   ? 'http://localhost:3000'
   : process.env.REACT_APP_BACKEND_URL || ''
 
+// tslint:disable-next-line:no-console
+console.log('API URL SET TO: ', apiUrl)
+
 const defaultOptions = {
   headers: {
     'Content-Type': 'application/json'
