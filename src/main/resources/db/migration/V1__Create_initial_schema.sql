@@ -73,7 +73,7 @@ CREATE TABLE user_entity
      name                      VARCHAR(255) NOT NULL, 
      cell_phone_number         VARCHAR(255), 
      mail_address              VARCHAR(255), 
-     user_settings_settings_id INT8, 
+     user_settings_settings_id INT8 NOT NULL,
      PRIMARY KEY (name) 
   ); 
 
