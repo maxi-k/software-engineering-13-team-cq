@@ -1,7 +1,7 @@
 matrix:
   include:
   - language: java
-    jdk: oraclejdk8
+    jdk: openjdk8
     services: postgresql
     before_script:
       - cd apps/customisable-notification-service-backend
