@@ -2,10 +2,7 @@ import { isDevelopment, isTest } from './environment-service'
 
 const apiUrl = isDevelopment
   ? 'http://localhost:3000'
-  : process.env.REACT_APP_BACKEND_URL || ''
-
-// tslint:disable-next-line:no-console
-console.log('API URL SET TO: ', apiUrl)
+  : process.env.REACT_APP_CNS_BACKEND_URL || ''
 
 const defaultOptions = {
   headers: {
