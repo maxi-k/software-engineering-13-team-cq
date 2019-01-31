@@ -19,7 +19,7 @@ class UserEntity(
 
     var cellPhoneNumber: String? = null,
 
-    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, optional = false)
     var userSettings: UserSettingsEntity?,
 
     // Eager should to be changed to lazy if the amount of entities we were told to expect
