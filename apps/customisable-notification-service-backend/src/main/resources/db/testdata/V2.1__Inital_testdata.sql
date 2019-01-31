@@ -107,3 +107,8 @@ VALUES      (
                 1,
                 'cccccccc-0000-ffff-0000-000000000099'
             ) ON CONFLICT DO NOTHING;
+
+-- Important: Increase the number added to the sequence
+-- as we insert more test data.
+select setval('hibernate_sequence', nextval('hibernate_sequence') + 6, false)
+

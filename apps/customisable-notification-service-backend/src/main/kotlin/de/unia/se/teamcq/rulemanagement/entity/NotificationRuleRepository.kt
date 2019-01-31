@@ -68,8 +68,12 @@ class NotificationRuleRepository : INotificationRuleRepository {
     }
 
     override fun updateNotificationRule(notificationRule: NotificationRule): NotificationRule? {
-
-        val notificationRuleEntityToSave = notificationRuleMapper.modelToEntity(notificationRule)
+        // Use merge so that the persistence layer does not
+        // try to create existing entities this references,
+        // but instead uses the already existing ones.
+        val notificationRuleEntityToSave = entityManager.merge(
+                notificationRuleMapper.modelToEntity(notificationRule)
+        )
 
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 
