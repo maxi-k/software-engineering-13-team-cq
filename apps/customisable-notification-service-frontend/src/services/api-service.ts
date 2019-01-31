@@ -14,15 +14,20 @@ const defaultOptions = {
   }
 }
 
-const apiRequest = (path: string, options: object = {}) => {
+type ApiRequestOptions = RequestInit & {
+  urlPrefix?: string
+}
+
+const apiRequest = (path: string, options: ApiRequestOptions = {}) => {
+  const { urlPrefix = apiUrl } = options
   return fetch(path.startsWith('/')
-    ? apiUrl + path
-    : apiUrl + '/' + path
+    ? urlPrefix + path
+    : urlPrefix + '/' + path
     , { ...defaultOptions, ...options }
   )
 }
 
-const authApiRequest = (path: string, authToken: string, options: object = {}) => {
+const authApiRequest = (path: string, authToken: string, options: ApiRequestOptions = {}) => {
   const optionsWithAuthHeaders = {
     headers: {
       ...defaultOptions.headers,

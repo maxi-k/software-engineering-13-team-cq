@@ -9,11 +9,13 @@ export interface CarParkAPIResponse {
   items: CarPark[]
 }
 
-const fetchCarParksUrl = carParkServiceUrl + '/api/car-parks'
+const fetchCarParksPath = '/api/car-parks'
 export const fetchCarParks = (accessToken: string) => (
   doMock
-    ? mockRequest(fetchCarParksUrl, require('./mocks/mockedCarParks.json'))
-    : authApiRequest(fetchCarParksUrl, accessToken)
+    ? mockRequest(fetchCarParksPath, require('./mocks/mockedCarParks.json'))
+    : authApiRequest(fetchCarParksPath, accessToken, {
+      urlPrefix: carParkServiceUrl
+    })
 )
 
 export const convertFromAPICarPark = (apiCarPark: object): CarPark => transformObject(apiCarPark, {
