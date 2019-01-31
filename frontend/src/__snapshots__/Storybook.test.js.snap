@@ -2020,9 +2020,54 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     />
     <input
       className="sc-btzYZH eUPTEi"
+      onChange={[Function]}
       type="text"
+      value="comparison constant"
     />
     %.
+    <button
+      className="MuiButtonBase-root-934 MuiIconButton-root-928 sc-lhVmIH jfZkKL"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-933"
+      >
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "#92a2bd",
+              "height": "30px",
+              "marginTop": undefined,
+              "minWidth": "30px",
+              "width": "30px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 49 49"
+          width="100%"
+        >
+          <polygon
+            points="40,11.213 37.787,9 24.5,22.287 11.213,9 9,11.213 22.287,24.5 9,37.787 11.213,40 24.5,26.713 
+37.787,40 40,37.787 26.713,24.5 "
+          />
+        </svg>
+      </span>
+    </button>
   </div>
 </div>
 `;
