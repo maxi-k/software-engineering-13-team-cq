@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/apidoc", "/apidoc/**", "/webjars/**" //swagger-ui resources
         );
         web.ignoring().antMatchers("/api/login");
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "*");
     }
 
     @Bean
@@ -46,4 +47,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(mockAuthenticationProvider);
     }
 }
-
