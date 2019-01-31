@@ -15,6 +15,7 @@ import javax.transaction.Transactional
 interface INotificationRuleEntityRepository : JpaRepository<NotificationRuleEntity, Long>
 
 @Component
+@Transactional
 class NotificationRuleRepository : INotificationRuleRepository {
 
     @Autowired
@@ -49,7 +50,6 @@ class NotificationRuleRepository : INotificationRuleRepository {
             notificationRuleMapper.entityToModel(existingNotificationRuleEntity) }
     }
 
-    @Transactional
     override fun createNotificationRule(notificationRule: NotificationRule): NotificationRule? {
         // Use merge so that the persistence layer does not
         // try to create existing entities this references,
