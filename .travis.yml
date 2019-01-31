@@ -3,6 +3,8 @@ matrix:
   - language: java
     jdk: openjdk8
     services: postgresql
+    env:
+      - TERM=dumb
     before_script:
       - cd apps/customisable-notification-service-backend
       - psql -c 'create database cns;' -U postgres
