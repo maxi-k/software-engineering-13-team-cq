@@ -11,6 +11,8 @@ import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStanda
 import RuleCreationStepper, { RuleCreationStepperProps }
   from '@/molecules/RuleCreationStepper'
 import ClosingButton from '@/atoms/ClosingButton'
+import RuleRecipientTag from '@/atoms/RuleRecipientTag'
+import { NotificationRecipient, NotificationRecipientType } from '@/model/Rule'
 
 const creationStepProps: RuleCreationStepEmbeddedProps = {
   titleKey: "cns.rule.creation.step.general.title",
@@ -38,6 +40,11 @@ const creationStepperProps: RuleCreationStepperProps = {
     },
 
   ]
+}
+
+const notificationRecipient: NotificationRecipient = {
+  type: NotificationRecipientType.Email,
+  value: ""
 }
 
 storiesOf('Rule Creation / General Components', module)
@@ -80,6 +87,7 @@ storiesOf('Rule Creation / First Step', module)
         predicates: {}
       }
     }} />)
+    .add('Rule Recipient Tag', () =>  <RuleRecipientTag recipient={notificationRecipient}/>)
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)

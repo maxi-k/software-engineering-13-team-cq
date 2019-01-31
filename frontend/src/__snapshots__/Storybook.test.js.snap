@@ -1286,6 +1286,25 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / First Step Rule Recipient Tag 1`] = `
+<div
+  className="sc-jwKygS lOZmc"
+>
+  <span
+    className="sc-iELTvK eCGLeE"
+  >
+    <strong>
+      Mail
+    </strong>
+  </span>
+  <div
+    className="sc-cmTdod haSJpz"
+  >
+    
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Creation / First Step Screen 1`] = `
 <div>
   <div
@@ -1803,7 +1822,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
   <div>
     The
     <div
-      className="sc-cmTdod eUZYIX"
+      className="sc-lhVmIH oIsQZ"
     >
       <div
         className="css-10nd86i"
@@ -1910,7 +1929,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     </div>
     is
     <div
-      className="sc-cmTdod eUZYIX"
+      className="sc-lhVmIH oIsQZ"
     >
       <div
         className="css-10nd86i"
@@ -2016,17 +2035,17 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       </div>
     </div>
     <div
-      className="sc-jwKygS SfvGh"
+      className="sc-bYSBpT eLeOTv"
     />
     <input
-      className="sc-btzYZH eUPTEi"
+      className="sc-elJkPf bTdWkj"
       onChange={[Function]}
       type="text"
       value="comparison constant"
     />
     %.
     <button
-      className="MuiButtonBase-root-934 MuiIconButton-root-928 sc-lhVmIH jfZkKL"
+      className="MuiButtonBase-root-943 MuiIconButton-root-937 sc-jtRfpW dFrKLM"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2043,7 +2062,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-933"
+        className="MuiIconButton-label-942"
       >
         <svg
           height="100%"
@@ -2079,7 +2098,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
   <div>
     If
     <div
-      className="sc-cmTdod eUZYIX"
+      className="sc-lhVmIH oIsQZ"
     >
       <div
         className="css-10nd86i"
