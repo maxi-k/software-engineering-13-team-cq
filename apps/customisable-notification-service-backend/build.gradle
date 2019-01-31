@@ -31,7 +31,7 @@ apply plugin: "net.ltgt.apt-idea"
 apply plugin: "net.ltgt.apt-eclipse"
 
 group = 'de.unia.se'
-version = '0.0.1-SNAPSHOT'
+version = "${version}"
 sourceCompatibility = 1.8
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -99,6 +99,12 @@ dependencies {
     ktlint "com.github.shyiko:ktlint:0.29.0"
 
     kapt "org.mapstruct:mapstruct-processor:1.2.0.Final"
+}
+
+task resolveDependencies {
+    doLast {
+        configurations.testRuntimeClasspath.resolve()
+    }
 }
 
 task ktlint(type: JavaExec, group: "verification") {

@@ -7,22 +7,6 @@ services:
 # Services
   cockpit:
     build: apps/cockpit
-  customisable-notification-service:
-    build: apps/customisable-notification-service
-    depends_on:
-      - db
-    ports:
-      - 127.0.0.1:${COCKPIT_LOCAL_PORT:-4043}:8080
-    environment:
-      - JWT_VERIFIER_KEY=file:/env/local/jwt/jwtRS256.key.pub
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/cns
-      - SPRING_DATASOURCE_USERNAME=students
-      - SPRING_DATASOURCE_PASSWORD=students
-      - BMWFD_OAUTH_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}/oauth/token
-      - BMWFD_OAUTH_CLIENT=${BMWFD_CNS_CLIENT_ID:-0b7d5206-0beb-41f2-8d6f-4e0c970ce04d}
-      - BMWFD_OAUTH_SECRET=${BMWFD_CNS_CLIENT_SECRET:-ABC1234}
-      - BMWFD_FLEETDATA_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}
-      - SPRING_PROFILES_ACTIVE=dev
 # Databases
   db:
     image: postgres:9.6.2
@@ -80,3 +64,34 @@ services:
       - 9091:3000
     volumes:
       - ./apps/grafana/config:/var/lib/grafana grafana/grafana
+
+  # -- END: Provided docker-compose file
+  #
+  # Customisable Notification Service - Backend
+  cns-backend:
+    build: apps/customisable-notification-service-backend
+    volumes:
+      - ./apps/customisable-notification-service-backend:/app
+    depends_on:
+      - db
+      - fleetdata 
+    ports:
+      - 127.0.0.1:${COCKPIT_LOCAL_PORT:-8080}:8080
+    environment:
+      - JWT_VERIFIER_KEY=file:/env/local/jwt/jwtRS256.key.pub
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/cns
+      - SPRING_DATASOURCE_USERNAME=students
+      - SPRING_DATASOURCE_PASSWORD=students
+      - BMWFD_OAUTH_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}/oauth/token
+      - BMWFD_OAUTH_CLIENT=${BMWFD_CNS_CLIENT_ID:-0b7d5206-0beb-41f2-8d6f-4e0c970ce04d}
+      - BMWFD_OAUTH_SECRET=${BMWFD_CNS_CLIENT_SECRET:-ABC1234}
+      - BMWFD_FLEETDATA_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}
+      - SPRING_PROFILES_ACTIVE=dev
+
+  # Customisable Notification Service - Frontend
+  cns-frontend:
+    build: apps/customisable-notification-service-frontend
+    ports:
+      - 3000:8081
+    volumes:
+      - ./apps/customisable-notification-service-backend:/app
