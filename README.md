@@ -2,7 +2,35 @@
 
 [![Build Status](https://travis-ci.com/maxi-k/se-master-sem1-st.svg?token=vJCFyC8fzGGkCLryVRQA&branch=master)](https://travis-ci.com/maxi-k/se-master-sem1-st)
 
-## The App
+## Contents
+
+- `apps/`: contains all deployables; contains all services of the FleetData application as well as services for testing, monitoring and local development
+- `env/`: environement configuration files for local/test/int/prod deployments
+- `scripts/`: usefull scripts for common tasks
+- `docker-compose.yaml`: use this compose configuration to start the application locally
+- `Passwords.kdbx`: [KeePass](keepass.info) encrypted Password-Database containing all relevant passwords
+
+## Local Development
+
+### Build & Run
+
+There is a `docker-compose.yaml` file that can be used to deploy the service locally.
+Build and deploy by running following commands in the root directory.
+
+```
+docker-compose up --build
+```
+
+To remove the local services with all data use
+```
+docker-compose down -v
+```
+
+## Services
+
+Each service is documented in its own README.
+
+## The CNS App
 The App is divided into a frontend and a backend. They are deployed to
 Heroku automatically if the CI is done and all tests pass.
 * Frontend: https://st-calculator-frontend.herokuapp.com/
@@ -14,8 +42,6 @@ Heroku has to spin them up first.
 
 ## Team "CQ"
 - Stefan Grafberger (*Team leader*)
-- Swantje Kastrup
-- Bernhard Pöttinger
 - Fiona Guerin
 - Maximilian Kuschewski
 
@@ -26,13 +52,14 @@ Language (Backend) | Kotlin
 Language (Frontend) | React
 Web Framework | Spring Boot
 Build Tool | Gradle
-ORM | https://github.com/JetBrains/Exposed (falls zu instabil oder nicht complete: http://hibernate.org/) |
+ORM | Hibernate
+Database Migration | Flyway
 Unit Testing | https://github.com/kotlintest/kotlintest,  (Potentiell auch: http://joel-costigliola.github.io/assertj/)
 Mocking | https://mockk.io/
 IDE | IntelliJ IDEA
-| UI Prototyping | moqups.com |
-| Issue Tracking | Github
-| Code Style / Linter | https://github.com/shyiko/ktlint
+UI Prototyping | Figma |
+Issue Tracking | Github
+Code Style / Linter | https://github.com/shyiko/ktlint
 
 ## Contributing
 - Create issues for everything
@@ -52,7 +79,10 @@ IDE | IntelliJ IDEA
 
 ## How to run the application
 
+- [ ] TODO: Write up docker guide
+
 ### How to run the backend
+In `apps/customisable-notification-service-backend`
 * Unix: ```./gradlew bootRun```
 * Windows: use *gradlew.bat*
 
@@ -60,8 +90,7 @@ IDE | IntelliJ IDEA
 Starting a development environment for the frontend with auto
 reloading and more can be done using:
 ```sh
-cd calculator/frontend
-npm install
-npm start
+cd apps/customisable-notification-service-frontend
+yarn install
+yarn start
 ```
-Using `yarn` instead of `npm` is recommended.
