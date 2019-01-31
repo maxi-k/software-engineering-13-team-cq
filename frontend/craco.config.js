@@ -40,7 +40,15 @@ module.exports = {
         configure: {
             moduleNameMapper: {
                 ...jestAliases
-            }
+            },
+            collectCoverageFrom: [
+                "src/**/*.{js,jsx,ts,tsx}",
+                "!node_modules/**/*",
+                "!src/setupProxy.js",
+                "!src/serviceWorker.ts",
+                "!src/fleetdata/**/*",
+                "!src/i18n/components/**/*"
+            ]
         }
     }
 };

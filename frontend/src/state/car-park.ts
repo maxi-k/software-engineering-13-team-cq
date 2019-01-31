@@ -6,7 +6,7 @@ import { ensureResponseStatus } from '@/services/response-service'
 import { FetchingData } from '@/model'
 
 import { CarPark } from '@/model/CarPark'
-import { fetchCarParks, CarParkAPIResponse } from '@/services/car-park-service'
+import { fetchCarParks, CarParkAPIResponse, convertFromAPICarPark } from '@/services/car-park-service'
 
 import { waitForLogin } from './auth'
 
@@ -54,7 +54,7 @@ const reducer: Reducer<CarParkState> = (state = initialState, action) => {
           hasFetchError: false,
           carParks: action.payload.reduce(
             (obj: CarParkState['carParks'], carPark: CarPark) => (
-              update(obj, { $merge: { [carPark.id]: carPark } })
+              update(obj, { $merge: { [carPark.carParkId]: carPark } })
             ), {})
         }
       })
@@ -76,7 +76,9 @@ function* fetchCarParksGenerator() {
     const authData = yield call(waitForLogin)
     const response = yield call(fetchCarParks, authData.accessToken)
     ensureResponseStatus(response.body)
-    const carParks = yield response.json().then((result: CarParkAPIResponse) => result.items)
+    const carParks = yield response.json().then((result: CarParkAPIResponse) =>
+      result.items.map(convertFromAPICarPark)
+    )
     yield put(loadCarParks.success(carParks))
   } catch (error) {
     yield put(loadCarParks.failure(error))

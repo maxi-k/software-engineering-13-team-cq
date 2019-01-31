@@ -1,5 +1,5 @@
-import { createUUID } from './identifier-service'
+import { createRandomKey } from './identifier-service'
 
 it('generates unique uuids', () => {
-  expect(createUUID()).not.toBe(createUUID())
+  expect(createRandomKey()).not.toBe(createRandomKey())
 })

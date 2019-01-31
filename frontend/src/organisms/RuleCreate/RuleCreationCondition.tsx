@@ -13,7 +13,7 @@ import {
   RuleConditionPredicate,
   VehicleDataField
 } from '@/model'
-import { createUUID } from '@/services/identifier-service'
+import { createRandomKey } from '@/services/identifier-service'
 import { mapObjectToArray } from '@/utilities/collection-util'
 
 import PredicateCounter from '@/atoms/PredicateCounter'
@@ -29,7 +29,7 @@ const logicalConnectiveToSelectOption = (connective: LogicalConnective) => (
 
 const addConditionUpdater = (callback: ((...value: any) => void)) => (
   (event: React.SyntheticEvent<any, any>) => (
-    callback({ [createUUID()]: {} })
+    callback({ [createRandomKey()]: {} })
   )
 )
 
@@ -44,6 +44,18 @@ const predicateVehicleDataFieldUpdater = (callback: ((...value: any) => void)) =
 const predicateComparisonTypeUpdater = (callback: ((...value: any) => void)) => (
   (comparisonType: string) => (
     callback({ comparisonType })
+  )
+)
+
+const predicateComparisonConstantUpdater = (callback: ((...value: any) => void)) => (
+  (comparisonConstant: string) => (
+    callback({ comparisonConstant })
+  )
+)
+
+const predicateRemoveUpdater = (updater: FieldUpdater, key: string | number) => (
+  (event: React.SyntheticEvent<any, any>) => (
+    updater('$unset', () => [key])()
   )
 )
 
@@ -66,6 +78,8 @@ const PredicateList: React.SFC<{
               predicate={predicate}
               setVehicleDataField={predicateVehicleDataFieldUpdater(updater)}
               setComparisonType={predicateComparisonTypeUpdater(updater)}
+              setComparisonConstant={predicateComparisonConstantUpdater(updater)}
+              removeRule={predicateRemoveUpdater(updateField, key)}
             />
           )
         })

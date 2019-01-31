@@ -6,6 +6,8 @@ import { FormattedMessage } from 'react-intl'
 import { SelectValue, SelectFormattedValue, SelectGroupedOptions, SelectOnChangeType } from '@/model'
 import { translateSelectValue } from '@/services/translation-service'
 
+import CloseIcon from '@fleetdata/shared/components/icons/close.icon'
+import IconButton from '@material-ui/core/IconButton'
 import SelectWrapper from '@/atoms/TextSelectWrapper'
 
 export interface ConditionSelectorProps {
@@ -18,8 +20,12 @@ export interface ConditionSelectorProps {
   comparisonTypeOptions: SelectValue[]
   comparisonTypeValue: SelectValue | null
 
+  comparisonConstant: string,
+
   onChangeDataType: SelectOnChangeType<SelectFormattedValue | null>
-  onChangeComparisonType: SelectOnChangeType<SelectFormattedValue | null>
+  onChangeComparisonType: SelectOnChangeType<SelectFormattedValue | null>,
+  onChangeComparisonConstant: (event: React.FormEvent<HTMLInputElement>) => void,
+  onClickRemove(event: React.SyntheticEvent<any, any>): void
 }
 
 const StyledSeparator = styled.div`
@@ -32,11 +38,23 @@ const StyledTextInput = styled.input`
   height: 35px;
 `
 
+const StyledRemovalButton = styled(IconButton)`
+  display: inline-block;
+`
+
+const RemovalButton: React.SFC<React.HTMLAttributes<HTMLButtonElement>> = ({ onClick }) => (
+  <StyledRemovalButton
+    onClick={onClick}>
+    <CloseIcon width={30} height={30} />
+  </StyledRemovalButton>
+)
+
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
   { beforeText, afterText,
     dataTypeOptions, dataTypeValue,
-    comparisonTypeOptions, comparisonTypeValue,
-    onChangeDataType, onChangeComparisonType
+    comparisonTypeOptions, comparisonTypeValue, comparisonConstant,
+    onChangeDataType, onChangeComparisonType, onChangeComparisonConstant,
+    onClickRemove
   }
 ) => {
   return (
@@ -59,8 +77,12 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
           options={comparisonTypeOptions.map(translateSelectValue)} />
       </SelectWrapper>
       <StyledSeparator />
-      <StyledTextInput type="text" />
+      <StyledTextInput
+        value={comparisonConstant}
+        onChange={onChangeComparisonConstant}
+        type="text" />
       %.
+      <RemovalButton onClick={onClickRemove} />
     </div>
   )
 }

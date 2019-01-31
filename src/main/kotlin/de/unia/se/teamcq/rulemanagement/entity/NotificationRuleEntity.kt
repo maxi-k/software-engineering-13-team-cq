@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
+import javax.persistence.OrderColumn
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -55,6 +56,7 @@ data class NotificationRuleEntity(
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH])
     // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
     @Fetch(value = FetchMode.SUBSELECT)
+    @OrderColumn
     var affectedFleets: List<FleetReferenceEntity>?,
 
     var affectingAllApplicableFleets: Boolean?

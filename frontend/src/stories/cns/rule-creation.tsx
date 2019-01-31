@@ -106,6 +106,8 @@ const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
   onChangeDataType: action('change data type'),
+  onChangeComparisonConstant: action('change comparison constant'),
+  comparisonConstant: 'comparison constant',
   dataTypeValue: { label: "battery", value: "battery" },
   dataTypeOptions: [{
     label: "vehicle",
@@ -125,7 +127,8 @@ const conditionSelectorProps: ConditionSelectorProps = {
     { label: "unequal", value: "unequal" },
     { label: "above", value: "above" },
     { label: "below", value: "below" }
-  ]
+  ],
+  onClickRemove: action('remove condition')
 }
 
 storiesOf('Rule Creation / Third Step', module)
