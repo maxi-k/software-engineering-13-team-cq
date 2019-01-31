@@ -35,6 +35,8 @@ const authApiRequest = (path: string, authToken: string, options: ApiRequestOpti
     },
     ...options
   }
+  // tslint:disable-next-line:no-console
+  console.log(`Sending authenticated api request to ${path} with headers:`, optionsWithAuthHeaders)
   return apiRequest(path, optionsWithAuthHeaders)
 }
 
