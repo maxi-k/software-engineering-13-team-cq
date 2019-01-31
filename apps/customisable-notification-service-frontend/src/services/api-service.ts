@@ -2,7 +2,7 @@ import { isDevelopment, isTest } from './environment-service'
 
 const apiUrl = isDevelopment
   ? 'http://localhost:3000'
-  : 'st-calculator-backend.herokuapp.com'
+  : process.env.REACT_APP_BACKEND_URL || ''
 
 const defaultOptions = {
   headers: {
