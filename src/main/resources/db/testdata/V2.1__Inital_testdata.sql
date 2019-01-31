@@ -2,7 +2,7 @@ INSERT INTO user_settings_entity
             (user_notification_type, 
              settings_id) 
 VALUES      (0, 
-             1); 
+             1) ON CONFLICT DO NOTHING;
 
 INSERT INTO user_entity 
             (cell_phone_number, 
@@ -12,13 +12,13 @@ INSERT INTO user_entity
 VALUES      (NULL, 
              NULL, 
              1, 
-             'aaaaaaaa-0000-aaaa-0000-000000000001'); 
+             'aaaaaaaa-0000-aaaa-0000-000000000001') ON CONFLICT DO NOTHING;
 
 INSERT INTO aggregator_entity 
             (dtype, 
              aggregator_id) 
 VALUES      ('AggregatorImmediateEntity', 
-             2); 
+             2) ON CONFLICT DO NOTHING;
 
 INSERT INTO rule_condition_entity 
             (logical_connective, 
@@ -26,7 +26,7 @@ INSERT INTO rule_condition_entity
              condition_id) 
 VALUES      (2, 
              'RuleConditionCompositeEntity', 
-             3); 
+             3) ON CONFLICT DO NOTHING;
 
 INSERT INTO rule_condition_entity 
             (comparison_type, 
@@ -40,7 +40,7 @@ VALUES      (4,
              'voltage', 
              'battery', 
              'RuleConditionPredicateEntity', 
-             4); 
+             4) ON CONFLICT DO NOTHING;
 
 INSERT INTO rule_condition_entity 
             (comparison_type, 
@@ -54,7 +54,7 @@ VALUES      (5,
              'current', 
              'Mileage', 
              'RuleConditionPredicateEntity', 
-             5); 
+             5) ON CONFLICT DO NOTHING;
 
 INSERT INTO notification_rule_entity 
             (affecting_all_applicable_fleets, 
@@ -72,15 +72,15 @@ VALUES      (false,
              'First Testrule', 
              'aaaaaaaa-0000-aaaa-0000-000000000001', 
              true, 
-             6); 
+             6) ON CONFLICT DO NOTHING;
 
 INSERT INTO fleet_reference_entity 
             (fleet_id) 
-VALUES      ('cccccccc-0000-ffff-0000-000000000001'); 
+VALUES      ('cccccccc-0000-ffff-0000-000000000001') ON CONFLICT DO NOTHING;
 
 INSERT INTO fleet_reference_entity 
             (fleet_id) 
-VALUES      ('cccccccc-0000-ffff-0000-000000000099'); 
+VALUES      ('cccccccc-0000-ffff-0000-000000000099') ON CONFLICT DO NOTHING;
 
 INSERT INTO rule_condition_entity_sub_conditions 
             (rule_condition_composite_entity_condition_id, 
@@ -88,7 +88,7 @@ INSERT INTO rule_condition_entity_sub_conditions
              sub_conditions_condition_id) 
 VALUES      (3, 
              0, 
-             4); 
+             4) ON CONFLICT DO NOTHING;
 
 INSERT INTO rule_condition_entity_sub_conditions 
             (rule_condition_composite_entity_condition_id, 
@@ -96,7 +96,7 @@ INSERT INTO rule_condition_entity_sub_conditions
              sub_conditions_condition_id) 
 VALUES      (3, 
              1, 
-             5); 
+             5) ON CONFLICT DO NOTHING;
 
 INSERT INTO notification_rule_entity_affected_fleets 
             (notification_rule_entity_rule_id, 
@@ -104,7 +104,7 @@ INSERT INTO notification_rule_entity_affected_fleets
              affected_fleets_fleet_id) 
 VALUES      (6, 
              0, 
-             'cccccccc-0000-ffff-0000-000000000001'); 
+             'cccccccc-0000-ffff-0000-000000000001') ON CONFLICT DO NOTHING;
 
 INSERT INTO notification_rule_entity_affected_fleets 
             (notification_rule_entity_rule_id, 
@@ -112,4 +112,4 @@ INSERT INTO notification_rule_entity_affected_fleets
              affected_fleets_fleet_id) 
 VALUES      (6, 
              1, 
-             'cccccccc-0000-ffff-0000-000000000099')
+             'cccccccc-0000-ffff-0000-000000000099') ON CONFLICT DO NOTHING;
