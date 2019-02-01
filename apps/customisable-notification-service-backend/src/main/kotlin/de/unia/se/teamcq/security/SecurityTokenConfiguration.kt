@@ -53,6 +53,10 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
         configuration.allowCredentials = true
+        // FIXME: When actually deploying for production,
+        // the current CORS config should be removed completely,
+        // as it won't be necessary when serving frontend and backend
+        // from a single URL.
         configuration.allowedOrigins = listOf("*")
         configuration.allowedMethods = listOf("*")
         configuration.allowedHeaders = listOf("*")
