@@ -54,8 +54,9 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
         val configuration = CorsConfiguration()
         configuration.allowCredentials = true
         configuration.allowedOrigins = listOf("*")
-        configuration.allowedMethods = listOf("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+        configuration.allowedMethods = listOf("*")
         configuration.allowedHeaders = listOf("*")
+
         val source = UrlBasedCorsConfigurationSource()
         source.registerCorsConfiguration("/**", configuration)
         return source
