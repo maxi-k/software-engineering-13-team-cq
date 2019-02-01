@@ -35,7 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/apidoc", "/apidoc/**", "/webjars/**" //swagger-ui resources
         );
         web.ignoring().antMatchers("/api/login");
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "*");
     }
 
     @Bean
@@ -55,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        System.out.println("APPLYING CORS CONFIGURATION");
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
