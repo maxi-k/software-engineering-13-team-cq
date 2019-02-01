@@ -33,9 +33,9 @@ Each service is documented in its own README.
 ## The CNS App
 The App is divided into a frontend and a backend. They are deployed to
 Heroku automatically if the CI is done and all tests pass.
-* Frontend: https://st-calculator-frontend.herokuapp.com/
-* Backend: https://st-calculator-backend.herokuapp.com/
-* Example Backend Service: https://st-calculator-backend.herokuapp.com/eval?e=42%2B314
+* Frontend: https://unia-se-teamcq-cns-frontend.herokuapp.com/ 
+* Backend: https://unia-se-teamcq-cns-backend.herokuapp.com/
+* Api-Mock: https://unia-se-teamcq-apimock-backend.herokuapp.com/
 
 When first accessing those services, there might be a short delay, as
 Heroku has to spin them up first.
