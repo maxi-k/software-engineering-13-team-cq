@@ -43,7 +43,6 @@ class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
-                .antMatchers(HttpMethod.OPTIONS, "*").permitAll()
                 .antMatchers(HttpMethod.POST, jwtConfig.Uri).permitAll()
                 // Any other request must be authenticated
                 .anyRequest().authenticated()
