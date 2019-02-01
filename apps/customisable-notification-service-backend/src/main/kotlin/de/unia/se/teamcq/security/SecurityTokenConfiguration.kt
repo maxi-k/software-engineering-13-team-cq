@@ -15,7 +15,6 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
-
 @Configuration
 @EnableWebSecurity // Enable security config. This annotation denotes config for spring security.
 class SecurityTokenConfiguration : WebSecurityConfigurerAdapter() {
