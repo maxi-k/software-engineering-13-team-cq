@@ -1,9 +1,12 @@
 matrix:
   include:
   - language: java
-    jdk: oraclejdk8
+    jdk: openjdk8
     services: postgresql
+    env:
+      - TERM=dumb
     before_script:
+      - cd apps/customisable-notification-service-backend
       - psql -c 'create database cns;' -U postgres
       - psql -c "CREATE USER students WITH PASSWORD 'students';" -U postgres
       - rm src/main/resources/application-dev.properties
@@ -13,10 +16,10 @@ matrix:
     node_js:
     - "10"
     before_script:
-    - cd frontend
+      - cd apps/customisable-notification-service-frontend/
     script:
-    - yarn install
-    - yarn test-coverage
+      - yarn install
+      - yarn test-coverage
 
 notifications:
   slack: s-e-13:HvejBsdv4uwO1HjExPJKnSKd
