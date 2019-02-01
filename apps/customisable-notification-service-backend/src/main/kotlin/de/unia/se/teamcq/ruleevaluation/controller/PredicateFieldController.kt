@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/predicate-fields")
-@CrossOrigin
 class PredicateFieldController {
 
     @Autowired

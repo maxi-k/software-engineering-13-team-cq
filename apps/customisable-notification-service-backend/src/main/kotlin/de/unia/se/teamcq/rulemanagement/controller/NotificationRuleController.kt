@@ -20,7 +20,6 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/notification-rule-management")
-@CrossOrigin
 class NotificationRuleController {
 
     @Autowired
