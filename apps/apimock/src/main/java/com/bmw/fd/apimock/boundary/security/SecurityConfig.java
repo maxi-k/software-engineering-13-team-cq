@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/apidoc", "/apidoc/**", "/webjars/**" //swagger-ui resources
         );
         web.ignoring().antMatchers("/api/login");
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "*");
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
     }
 
     @Bean
