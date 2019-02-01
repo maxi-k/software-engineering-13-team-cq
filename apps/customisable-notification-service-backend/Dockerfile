@@ -31,22 +31,3 @@ VOLUME /tmp
 EXPOSE 8080
 COPY --from=builder /gradle/src/build/libs/src-docker.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
-
-# ARG GRADLE_VERSION=4.10.2
-# ARG JAVA_VERSION=8-alpine
-#
-# FROM gradle:${GRADLE_VERSION}-jdk${JAVA_VERSION} as BUILD
-#
-# COPY . /src
-# WORKDIR /src
-#
-# RUN gradle --version
-# RUN gradle --no-daemon resolveDependencies
-# RUN gradle --no-daemon -Pversion=docker bootJar --info --debug
-#
-# FROM gradle:${GRADLE_VERSION}-jre${JAVA_VERSION}
-#
-# COPY --from=BUILD /src/build/libs/customisable-notification-service-backend-docker.jar /bin/runner/run.jar
-# WORKDIR /bin/runner
-#
-# CMD ["java","-jar","run.jar"]
