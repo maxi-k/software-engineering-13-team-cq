@@ -13,3 +13,4 @@ ENTRYPOINT ["nginx", "-g","daemon off;"]
 EXPOSE 8081
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build/ /usr/share/nginx/html
+
