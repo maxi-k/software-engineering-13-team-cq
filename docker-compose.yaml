@@ -18,6 +18,7 @@ services:
       - POSTGRES_MULTIPLE_DATABASES="cns"
       - POSTGRES_USER=students
       - POSTGRES_PASSWORD=students
+
 # FleetData
   fleetdata:
     build: apps/apimock
@@ -88,13 +89,17 @@ services:
       - BMWFD_FLEETDATA_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}
       - SPRING_PROFILES_ACTIVE=dev
 
-  # Customisable Notification Service - Frontend
+        # Customisable Notification Service - Frontend
   cns-frontend:
     build: apps/customisable-notification-service-frontend
     ports:
       - 3000:8081
+    depends_on:
+      - fleetdata
+      - cns-backend
     volumes:
-      - ./apps/customisable-notification-service-backend:/app
+      - ./apps/customisable-notification-service-frontend:/app
     environment:
-      - REACT_APP_CNS_BACKEND_URL=${CNS_BACKEND_HOST:-http://fleetdata:8080}
-      - REACT_APP_FLEETDATA_BACKEND_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://fleetdata:4042}
+      - REACT_APP_CNS_BACKEND_URL=${CNS_BACKEND_HOST:-http://0.0.0.0:8080}
+      - REACT_APP_FLEETDATA_BACKEND_URL=${BMWFD_CNS_FLEETDATA_HOST:-http://0.0.0.0:4042}
+
