@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.Random;
 
 @RestController
+@org.springframework.web.bind.annotation.CrossOrigin
 public class VehicleImageMockController {
 
 

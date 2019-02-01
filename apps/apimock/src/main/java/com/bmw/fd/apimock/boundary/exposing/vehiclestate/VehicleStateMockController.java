@@ -12,6 +12,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api/vehicles")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class VehicleStateMockController {
 
     private final RestMock vehicles =  RestMock.create("data/vehicles")

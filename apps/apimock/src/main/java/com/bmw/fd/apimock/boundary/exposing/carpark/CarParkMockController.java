@@ -17,6 +17,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/car-parks")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class CarParkMockController {
 
     private final RestMock carParks = RestMock.create("data/car-parks")

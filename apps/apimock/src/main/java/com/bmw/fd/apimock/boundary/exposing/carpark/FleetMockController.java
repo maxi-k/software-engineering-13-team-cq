@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 
 @RestController
 @RequestMapping("/api/car-parks/{carParkId}/fleets")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class FleetMockController {
 
     private final RestMock fleets = RestMock.create("data/fleets")

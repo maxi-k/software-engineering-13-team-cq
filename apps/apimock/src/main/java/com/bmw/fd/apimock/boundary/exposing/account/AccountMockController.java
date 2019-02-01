@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/accounts")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class AccountMockController {
 
     private final RestMock accounts = RestMock.create("data/accounts")

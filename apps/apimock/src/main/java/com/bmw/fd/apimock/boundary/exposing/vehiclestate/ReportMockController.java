@@ -14,6 +14,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/reports")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class ReportMockController {
 
     private final RestMock serviceReports =  RestMock.create("data/reports")

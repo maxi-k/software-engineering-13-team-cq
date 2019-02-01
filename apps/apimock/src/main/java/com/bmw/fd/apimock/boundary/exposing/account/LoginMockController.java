@@ -26,6 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/login")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class LoginMockController {
 
     private final TokenEndpoint tokenEndpoint;

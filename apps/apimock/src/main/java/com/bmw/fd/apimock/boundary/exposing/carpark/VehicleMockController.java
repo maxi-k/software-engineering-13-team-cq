@@ -19,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/car-parks/{carParkId}/vehicles")
+@org.springframework.web.bind.annotation.CrossOrigin
 public class VehicleMockController {
 
     private final RestMock vehicles;
