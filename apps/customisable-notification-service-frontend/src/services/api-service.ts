@@ -8,14 +8,15 @@ const fleetdataUrl = isDevelopment
   ? ''
   : process.env.REACT_APP_FLEETDATA_BACKEND_URL || ''
 
-const defaultOptions = {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
-
 type ApiRequestOptions = RequestInit & {
   urlPrefix?: string
+}
+
+const defaultOptions: ApiRequestOptions = {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  mode: "cors"
 }
 
 const apiRequest = (path: string, options: ApiRequestOptions = {}) => {
