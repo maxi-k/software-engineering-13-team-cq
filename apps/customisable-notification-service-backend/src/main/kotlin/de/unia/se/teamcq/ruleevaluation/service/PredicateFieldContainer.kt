@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -13,4 +14,16 @@ class PredicateFieldContainer : IPredicateFieldContainer {
     override fun getPredicateFieldProviders(): Set<IPredicateFieldProvider> {
         return predicateFieldProviders
     }
+
+    override fun getPredicateFieldProviderByName(predicateFieldProviderName: String): IPredicateFieldProvider? =
+            predicateFieldProviders.find { predicateFieldProvider ->
+                predicateFieldProvider.predicateFieldProviderName === predicateFieldProviderName
+            }
+
+    override fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField<*, *>? =
+            getPredicateFieldProviderByName(predicateFieldProviderName)?.let {
+                it.predicateFields.find { predicateField ->
+                    predicateField.fieldName == predicateFieldName
+                }
+            }
 }
