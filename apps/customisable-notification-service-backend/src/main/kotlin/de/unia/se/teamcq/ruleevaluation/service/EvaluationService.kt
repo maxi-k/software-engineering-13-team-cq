@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
@@ -10,10 +9,6 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import java.lang.ClassCastException
-
-typealias RuleConditionReducer = (RuleCondition, RuleCondition) -> Boolean
-typealias PredicateReducer = (predicates: Iterable<RuleCondition>, predicate: (RuleCondition) -> Boolean) -> Boolean
 
 @Component
 class EvaluationService : IEvaluationService {
@@ -27,9 +22,8 @@ class EvaluationService : IEvaluationService {
     override fun checkCondition(ruleCondition: RuleCondition, vehicleState: VehicleState): Boolean {
         when (ruleCondition) {
             is RuleConditionComposite -> {
-                ruleCondition.logicalConnective?.let {
-                    val predicateReducer = getPredicateReducerFromLogicalConnective(it)
-                    return predicateReducer(ruleCondition.subConditions) { subCondition ->
+                ruleCondition.logicalConnective?.getPredicateReducer()?.let {
+                    return it(ruleCondition.subConditions) { subCondition ->
                         checkCondition(subCondition, vehicleState)
                     }
                 }
@@ -69,19 +63,4 @@ class EvaluationService : IEvaluationService {
             else -> return false
         }
     }
-
-    // TODO: Evaluate whether this is implemented better with
-    // polymorphism over LogicalConnectiveType instead of a `when`
-    private fun getPredicateReducerFromLogicalConnective(logicalConnectiveType: LogicalConnectiveType): PredicateReducer =
-            when (logicalConnectiveType) {
-                LogicalConnectiveType.ALL -> { iterable, predicate ->
-                    iterable.all(predicate)
-                }
-                LogicalConnectiveType.ANY -> { iterable, predicate ->
-                    iterable.any(predicate)
-                }
-                LogicalConnectiveType.NONE -> { iterable, predicate ->
-                    iterable.none(predicate)
-                }
-            }
 }

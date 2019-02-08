@@ -1,12 +1,23 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
 enum class FieldDataType {
-    TEXT, INTEGER, DECIMAL, DATE, STRING_LIST, WEEK
+    TEXT,
+    INTEGER,
+    DECIMAL,
+    DATE,
+    STRING_LIST,
+    WEEK
 }
 
 enum class ComparisonType {
-    EQUAL_TO, NOT_EQUAL_TO, GREATER_THAN, LESSER_THAN, GREATER_THAN_OR_EQUAL_TO, LESSER_THAN_OR_EQUAL_TO,
-    CONTAINED_IN, NOT_CONTAINED_IN
+    EQUAL_TO,
+    NOT_EQUAL_TO,
+    GREATER_THAN,
+    LESSER_THAN,
+    GREATER_THAN_OR_EQUAL_TO,
+    LESSER_THAN_OR_EQUAL_TO,
+    CONTAINED_IN,
+    NOT_CONTAINED_IN
 }
 
 object EvaluationStrategies {
