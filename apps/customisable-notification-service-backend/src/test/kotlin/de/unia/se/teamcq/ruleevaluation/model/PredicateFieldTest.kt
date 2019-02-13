@@ -17,11 +17,11 @@ class PredicateFieldTest : StringSpec() {
         "FieldDataType Conversion transforms String correctly" {
             val testedDate = LocalTime.now()
             forall(
-                    row(FieldDataType.TEXT, "Hello World",  "Hello World"),
-                    row(FieldDataType.WEEK, "42", 42),
-                    row(FieldDataType.DECIMAL, "10.2", 10.2f),
-                    row(FieldDataType.DATE, testedDate.toString(), testedDate),
-                    row(FieldDataType.STRING_LIST, "string as part of list", "string as part of list")
+                row(FieldDataType.TEXT, "Hello World", "Hello World"),
+                row(FieldDataType.WEEK, "42", 42),
+                row(FieldDataType.DECIMAL, "10.2", 10.2f),
+                row(FieldDataType.DATE, testedDate.toString(), testedDate),
+                row(FieldDataType.STRING_LIST, "string as part of list", "string as part of list")
             ) { fieldDataType, inputValue, outputValue ->
                 fieldDataType.convertToFieldType(inputValue) shouldBe outputValue
             }
@@ -33,7 +33,6 @@ class PredicateFieldTest : StringSpec() {
             shouldThrow<IllegalArgumentException> {
                 ComparisonType.EQUAL_TO.compare(listOf(31.4f), 31.4f)
             }
-
         }
     }
 }

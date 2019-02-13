@@ -6,7 +6,6 @@ import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import org.springframework.stereotype.Component
-import java.text.DateFormat
 
 @Component
 class EvaluationPredicateService : IEvaluationPredicateService {
@@ -39,7 +38,7 @@ class EvaluationPredicateService : IEvaluationPredicateService {
                 FieldDataType.TEXT, FieldDataType.INTEGER, FieldDataType.DECIMAL, FieldDataType.WEEK, FieldDataType.DATE -> {
                     if (dataValue is Comparable<*> && convertedComparisonValue is Comparable<*>) {
                         @Suppress("UNCHECKED_CAST")
-                        comparisonType.compare( dataValue as Comparable<T>, convertedComparisonValue)
+                        comparisonType.compare(dataValue as Comparable<T>, convertedComparisonValue)
                     } else {
                         throw IllegalArgumentException()
                     }

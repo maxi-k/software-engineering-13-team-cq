@@ -1,7 +1,5 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
-import java.lang.IllegalArgumentException
-import java.text.DateFormat
 import java.time.LocalTime
 
 enum class FieldDataType {
@@ -24,7 +22,7 @@ enum class FieldDataType {
         override fun convertToFieldType(value: String): Any = value.toInt()
     };
 
-    abstract fun convertToFieldType(value: String): Any;
+    abstract fun convertToFieldType(value: String): Any
 }
 
 enum class ComparisonType {
