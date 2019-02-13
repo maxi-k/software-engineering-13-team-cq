@@ -2,6 +2,7 @@ package de.unia.se.teamcq.ruleevaluation.model
 
 import java.lang.IllegalArgumentException
 import java.text.DateFormat
+import java.time.LocalTime
 
 enum class FieldDataType {
     TEXT {
@@ -14,7 +15,7 @@ enum class FieldDataType {
         override fun convertToFieldType(value: String): Any = value.toFloat()
     },
     DATE {
-        override fun convertToFieldType(value: String): Any = DateFormat.getDateInstance().parse(value)
+        override fun convertToFieldType(value: String): Any = LocalTime.parse(value)
     },
     STRING_LIST {
         override fun convertToFieldType(value: String): Any = value
