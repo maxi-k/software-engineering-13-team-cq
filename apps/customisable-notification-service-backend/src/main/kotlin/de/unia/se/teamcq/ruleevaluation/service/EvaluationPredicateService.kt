@@ -34,21 +34,19 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         comparisonValue: String
     ): Boolean {
         try {
-            val convertedComparisonValue = convertToFieldType(fieldDataType, comparisonValue) as? T
+            val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
             return when (fieldDataType) {
                 FieldDataType.TEXT, FieldDataType.INTEGER, FieldDataType.DECIMAL, FieldDataType.WEEK, FieldDataType.DATE -> {
                     if (dataValue is Comparable<*> && convertedComparisonValue is Comparable<*>) {
                         @Suppress("UNCHECKED_CAST")
-                        compareComparables(comparisonType,
-                                dataValue as Comparable<T>,
-                                convertedComparisonValue)
+                        comparisonType.compare( dataValue as Comparable<T>, convertedComparisonValue)
                     } else {
                         throw IllegalArgumentException()
                     }
                 }
                 FieldDataType.STRING_LIST -> {
                     if (dataValue is Iterable<*>) {
-                        compareContainers(comparisonType, dataValue, convertedComparisonValue)
+                        comparisonType.compare(dataValue, convertedComparisonValue)
                     } else {
                         throw IllegalArgumentException()
                     }
@@ -58,41 +56,4 @@ class EvaluationPredicateService : IEvaluationPredicateService {
             throw IllegalArgumentException()
         }
     }
-
-    private fun <R, T : Comparable<R>> compareComparables(
-        comparisonType: ComparisonType,
-        firstValue: T,
-        secondValue: R
-    ): Boolean =
-        when (comparisonType) {
-            ComparisonType.EQUAL_TO -> firstValue == secondValue
-            ComparisonType.NOT_EQUAL_TO -> firstValue != secondValue
-            ComparisonType.GREATER_THAN -> firstValue > secondValue
-            ComparisonType.LESSER_THAN -> firstValue < secondValue
-            ComparisonType.GREATER_THAN_OR_EQUAL_TO -> firstValue >= secondValue
-            ComparisonType.LESSER_THAN_OR_EQUAL_TO -> firstValue <= secondValue
-            // TODO: Throw exception? return false? create own exception type?
-            else -> throw IllegalArgumentException()
-        }
-
-    private fun <T> compareContainers(
-        comparisonType: ComparisonType,
-        firstValue: Iterable<T>,
-        secondValue: T
-    ): Boolean =
-            when (comparisonType) {
-                ComparisonType.CONTAINED_IN -> firstValue.contains(secondValue)
-                ComparisonType.NOT_CONTAINED_IN -> !firstValue.contains(secondValue)
-                else -> throw IllegalArgumentException()
-            }
-
-    private fun convertToFieldType(fieldDataType: FieldDataType, value: String): Any =
-            when (fieldDataType) {
-                FieldDataType.TEXT, FieldDataType.STRING_LIST -> value
-                FieldDataType.INTEGER, FieldDataType.WEEK -> value.toInt()
-                FieldDataType.DECIMAL -> value.toFloat()
-                // TODO: Think about how dates are saved,
-                // and which format we need here
-                FieldDataType.DATE -> DateFormat.getDateInstance().parse(value)
-            }
 }

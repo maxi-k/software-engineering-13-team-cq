@@ -1,23 +1,73 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
+import java.lang.IllegalArgumentException
+import java.text.DateFormat
+
 enum class FieldDataType {
-    TEXT,
-    INTEGER,
-    DECIMAL,
-    DATE,
-    STRING_LIST,
-    WEEK
+    TEXT {
+        override fun convertToFieldType(value: String): Any = value
+    },
+    INTEGER {
+        override fun convertToFieldType(value: String): Any = value.toInt()
+    },
+    DECIMAL {
+        override fun convertToFieldType(value: String): Any = value.toFloat()
+    },
+    DATE {
+        override fun convertToFieldType(value: String): Any = DateFormat.getDateInstance().parse(value)
+    },
+    STRING_LIST {
+        override fun convertToFieldType(value: String): Any = value
+    },
+    WEEK {
+        override fun convertToFieldType(value: String): Any = value.toInt()
+    };
+
+    abstract fun convertToFieldType(value: String): Any;
 }
 
 enum class ComparisonType {
-    EQUAL_TO,
-    NOT_EQUAL_TO,
-    GREATER_THAN,
-    LESSER_THAN,
-    GREATER_THAN_OR_EQUAL_TO,
-    LESSER_THAN_OR_EQUAL_TO,
-    CONTAINED_IN,
-    NOT_CONTAINED_IN
+    EQUAL_TO {
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue == secondValue
+    },
+    NOT_EQUAL_TO {
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue != secondValue
+    },
+    GREATER_THAN {
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue > secondValue
+    },
+    LESSER_THAN {
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue < secondValue
+    },
+    GREATER_THAN_OR_EQUAL_TO {
+
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue >= secondValue
+    },
+    LESSER_THAN_OR_EQUAL_TO {
+        override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
+                firstValue <= secondValue
+    },
+    CONTAINED_IN {
+        override fun <T> compare(firstValue: Iterable<T>, secondValue: T): Boolean =
+                firstValue.contains(secondValue)
+    },
+    NOT_CONTAINED_IN {
+        override fun <T> compare(firstValue: Iterable<T>, secondValue: T): Boolean =
+                firstValue.contains(secondValue)
+    };
+
+    open fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean {
+        throw IllegalArgumentException()
+    }
+
+    open fun <T> compare(firstValue: Iterable<T>, secondValue: T): Boolean {
+        throw IllegalArgumentException()
+    }
 }
 
 object EvaluationStrategies {
