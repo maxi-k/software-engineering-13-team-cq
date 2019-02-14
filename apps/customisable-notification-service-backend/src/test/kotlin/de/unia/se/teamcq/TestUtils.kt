@@ -217,7 +217,7 @@ object TestUtils {
         ))
     }
 
-    fun getTestPredicateFieldModel(): PredicateField<Any, String> {
+    fun getTestPredicateFieldModel(): PredicateField<VehicleStateDataTypeBattery, String> {
         return PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC) { "test value" }
     }
 

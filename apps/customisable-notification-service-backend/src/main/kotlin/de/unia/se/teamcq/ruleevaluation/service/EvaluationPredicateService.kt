@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 @Component
 class EvaluationPredicateService : IEvaluationPredicateService {
 
-    override fun <T : VehicleStateDataType> checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: T, predicateField: PredicateField<T, Any>): Boolean {
+    override fun <T : VehicleStateDataType> checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: T, predicateField: PredicateField<T, *>): Boolean {
 
         val comparisonType = ruleConditionPredicate.comparisonType
         val comparisonValue = ruleConditionPredicate.comparisonValue

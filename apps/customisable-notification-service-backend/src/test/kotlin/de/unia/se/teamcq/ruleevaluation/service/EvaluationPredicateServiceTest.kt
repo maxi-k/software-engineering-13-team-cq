@@ -27,21 +27,24 @@ class EvaluationPredicateServiceTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        val vehicleStateDataType = TestUtils.getTestVehicleStateDataTypeBatteryModel()
-        every { predicateFieldContainer.getPredicateFieldByProviderAndName(any(), any()) } returns vehicleStateDataType.predicateFields.find { it.fieldName == "voltage" }
-
         "Evaluates RulePredicates correctly" {
 
-            val predicate = RuleConditionPredicate(0L,
-                    "battery",
-                    "voltage",
-                    ComparisonType.GREATER_THAN,
-                    (vehicleStateDataType.voltage!! + 1).toString())
+            val predicateField = TestUtils.getTestPredicateFieldModel()
+            val vehicleStateDataType = TestUtils.getTestVehicleStateDataTypeBatteryModel()
+            val predicate = TestUtils.getTestRuleConditionPredicateModel().apply {
+                comparisonValue = predicateField.fieldValueAccessor(vehicleStateDataType)
+            }
+
+            every {
+                predicateFieldContainer.getPredicateFieldByProviderAndName(any(), any())
+            } returns vehicleStateDataType.predicateFields.find {
+                it.fieldName == predicateField.fieldName
+            }
 
             evaluationPredicateService.checkPredicate(
                     predicate,
                     vehicleStateDataType,
-                    predicateFieldContainer.getPredicateFieldByProviderAndName("battery", "voltage") as PredicateField<VehicleStateDataTypeBattery, Any>
+                    predicateField
             ) shouldBe false
         }
     }

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service
 @Service
 interface IEvaluationPredicateService {
 
-    fun <T : VehicleStateDataType> checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: T, predicateField: PredicateField<T, Any>): Boolean
+    fun <T : VehicleStateDataType> checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: T, predicateField: PredicateField<T, *>): Boolean
 }

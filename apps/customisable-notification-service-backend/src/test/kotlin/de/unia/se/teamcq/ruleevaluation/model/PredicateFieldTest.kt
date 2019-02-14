@@ -43,6 +43,38 @@ class PredicateFieldTest : StringSpec() {
             }
         }
 
+        "ComparisonType GREATER_THAN should compare values correctly" {
+            ComparisonType.GREATER_THAN.compare(42, 3) shouldBe true
+            ComparisonType.GREATER_THAN.compare(42, 42) shouldBe false
+            shouldThrow<IllegalArgumentException> {
+                ComparisonType.GREATER_THAN.compare(listOf(42), 42)
+            }
+        }
+
+        "ComparisonType GREATER_THAN_OR_EQUAL_TO should compare values correctly" {
+            ComparisonType.GREATER_THAN_OR_EQUAL_TO.compare(42.0, 3.14) shouldBe true
+            ComparisonType.GREATER_THAN_OR_EQUAL_TO.compare(42, 42) shouldBe true
+            shouldThrow<IllegalArgumentException> {
+                ComparisonType.GREATER_THAN_OR_EQUAL_TO.compare(listOf(42), 42)
+            }
+        }
+
+        "ComparisonType LESSER_THAN should compare values correctly" {
+            ComparisonType.LESSER_THAN.compare(3, 42) shouldBe true
+            ComparisonType.LESSER_THAN.compare(42, 42) shouldBe false
+            shouldThrow<IllegalArgumentException> {
+                ComparisonType.LESSER_THAN.compare(listOf(42), 42)
+            }
+        }
+
+        "ComparisonType LESSER_THAN_OR_EQUAL_TO should compare values correctly" {
+            ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(3.14, 42.0) shouldBe true
+            ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(42, 42) shouldBe true
+            shouldThrow<IllegalArgumentException> {
+                ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(listOf(42), 42)
+            }
+        }
+
         "ComparisonType CONTAINED_IN should compare values correctly" {
             ComparisonType.CONTAINED_IN.compare(listOf("vin1", "vin2"), "vin1") shouldBe true
             ComparisonType.CONTAINED_IN.compare(listOf("vin1", "vin2"), "vin3") shouldBe false
