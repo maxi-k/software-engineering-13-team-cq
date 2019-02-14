@@ -29,6 +29,4 @@ data class NotificationRule(
 
     var affectingAllApplicableFleets: Boolean? = null
 
-    // FIXME: Can we do everything with default values?
-
 )
