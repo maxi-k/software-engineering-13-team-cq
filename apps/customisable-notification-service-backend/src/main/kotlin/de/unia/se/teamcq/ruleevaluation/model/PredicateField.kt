@@ -57,7 +57,7 @@ enum class ComparisonType {
     },
     NOT_CONTAINED_IN {
         override fun <T> compare(firstValue: Iterable<T>, secondValue: T): Boolean =
-                firstValue.contains(secondValue)
+                !firstValue.contains(secondValue)
     };
 
     open fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean {
