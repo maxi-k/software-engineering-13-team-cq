@@ -1,8 +1,9 @@
 package de.unia.se.teamcq.notificationmanagement.dto
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 class AggregatorImmediateDto(
 
-    aggregatorId: Long? = 0
+    aggregatorId: Long? = null
 
 ) : AggregatorDto(aggregatorId) {
 

@@ -1,8 +1,9 @@
 package de.unia.se.teamcq.notificationmanagement.model
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class Recipient(
 
-    var recipientId: Long? = 0
+    var recipientId: Long? = null
 
 ) {
 

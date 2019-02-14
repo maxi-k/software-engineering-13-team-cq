@@ -7,20 +7,18 @@ import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.stereotype.Component
 
 @Component
+// Constructor with (null)-default values for everything necessary for MapStruct
 class VehicleStateDataTypeFuel(
 
-    var level: Double?,
+    var level: Double? = null,
 
-    var liters: Int?,
+    var liters: Int? = null,
 
-    var range: Int?,
+    var range: Int? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = "Fuel"
 

@@ -3,9 +3,10 @@ package de.unia.se.teamcq.notificationmanagement.entity
 import javax.persistence.Entity
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 class AggregatorImmediateEntity(
 
-    aggregatorId: Long? = 0
+    aggregatorId: Long? = null
 
 ) : AggregatorEntity(aggregatorId) {
 

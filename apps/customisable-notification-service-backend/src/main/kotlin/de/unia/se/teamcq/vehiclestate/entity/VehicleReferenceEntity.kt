@@ -9,17 +9,15 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class VehicleReferenceEntity(
 
     @Id
-    var vin: String?,
+    var vin: String? = null,
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_fleet")
-    var fleetReference: FleetReferenceEntity?
+    var fleetReference: FleetReferenceEntity? = null
 
-) : Serializable {
-    // Necessary for MapStruct
-    constructor() : this(null, null)
-}
+) : Serializable

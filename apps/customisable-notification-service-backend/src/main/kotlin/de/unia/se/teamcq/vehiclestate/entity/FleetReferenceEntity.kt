@@ -5,12 +5,10 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class FleetReferenceEntity(
 
     @Id
-    var fleetId: String?
+    var fleetId: String? = null
 
-) : Serializable {
-    // Necessary for MapStruct
-    constructor() : this(null)
-}
+) : Serializable

@@ -1,8 +1,9 @@
 package de.unia.se.teamcq.notificationmanagement.model
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class Aggregator(
 
-    var aggregatorId: Long? = 0
+    var aggregatorId: Long? = null
 
 ) {
 

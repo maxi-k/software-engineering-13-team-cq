@@ -94,8 +94,8 @@ class NotificationRuleRepositoryTest : StringSpec() {
             savedNotificationRule shouldBe expectedNotificationRule
 
             withClue("rule fleet ordering should be persisted") {
-                savedNotificationRule!!.affectedFleets!!.forEachIndexed { index, fleetEntity ->
-                    fleetEntity shouldBe expectedNotificationRule.affectedFleets!![index]
+                savedNotificationRule!!.affectedFleets.forEachIndexed { index, fleetEntity ->
+                    fleetEntity shouldBe expectedNotificationRule.affectedFleets[index]
                 }
             }
         }
@@ -110,11 +110,11 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             withClue("rules should be structurally equal") {
                 rule1 shouldBe rule2
-                rule1.affectedFleets!![0] shouldBe rule2.affectedFleets!![0]
+                rule1.affectedFleets[0] shouldBe rule2.affectedFleets[0]
             }
             withClue("rules should not be identical") {
                 (rule1 === rule2).shouldBeFalse()
-                (rule1.affectedFleets!![0] === rule2.affectedFleets!![0]).shouldBeFalse()
+                (rule1.affectedFleets[0] === rule2.affectedFleets[0]).shouldBeFalse()
             }
 
             val savedNotificationRule1 = notificationRuleRepository.createNotificationRule(rule1)

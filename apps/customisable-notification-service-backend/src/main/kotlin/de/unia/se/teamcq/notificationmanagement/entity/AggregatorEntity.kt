@@ -7,11 +7,12 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class AggregatorEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var aggregatorId: Long? = 0
+    var aggregatorId: Long? = null
 
 ) : Serializable {
 

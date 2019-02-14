@@ -5,31 +5,30 @@ import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
-import java.io.Serializable
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class NotificationRule(
 
-    var ruleId: Long? = 0,
+    var ruleId: Long? = null,
 
-    var name: String?,
+    var name: String? = null,
 
-    var owner: User?,
+    var owner: User? = null,
 
-    var description: String?,
+    var description: String? = null,
 
-    var condition: RuleCondition?,
+    var condition: RuleCondition? = null,
 
-    var aggregator: Aggregator?,
+    var aggregator: Aggregator? = null,
 
-    var recipients: List<Recipient>,
+    var recipients: List<Recipient> = mutableListOf(),
 
-    var ownerAsAdditionalRecipient: Boolean?,
+    var ownerAsAdditionalRecipient: Boolean? = null,
 
-    var affectedFleets: List<FleetReference>?,
+    var affectedFleets: List<FleetReference> = mutableListOf(),
 
-    var affectingAllApplicableFleets: Boolean?
+    var affectingAllApplicableFleets: Boolean? = null
 
-) : Serializable {
-    constructor() : this(null, null, null, null, null, null, mutableListOf<Recipient>(), null,
-            mutableListOf<FleetReference>(), null)
-}
+    // FIXME: Can we do everything with default values?
+
+)

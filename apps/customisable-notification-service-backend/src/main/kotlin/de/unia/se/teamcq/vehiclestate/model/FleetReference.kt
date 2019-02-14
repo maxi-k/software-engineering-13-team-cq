@@ -1,12 +1,11 @@
 package de.unia.se.teamcq.vehiclestate.model
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class FleetReference(
 
-    var fleetId: String?
+    var fleetId: String? = null
 
 ) {
-    // Necessary for MapStruct
-    constructor() : this(null)
 
     fun fetchFleetData() {
         TODO()

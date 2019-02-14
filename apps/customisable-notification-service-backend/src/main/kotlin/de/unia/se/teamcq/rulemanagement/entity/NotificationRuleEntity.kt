@@ -23,47 +23,43 @@ import javax.persistence.OrderColumn
 import javax.validation.constraints.NotNull
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class NotificationRuleEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var ruleId: Long? = 0,
+    var ruleId: Long? = null,
 
     @get: NotNull
-    var name: String?,
+    var name: String? = null,
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_owner")
-    var owner: UserEntity?,
+    var owner: UserEntity? = null,
 
-    var description: String?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var condition: RuleConditionEntity?,
+    var description: String? = null,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var aggregator: AggregatorEntity?,
+    var condition: RuleConditionEntity? = null,
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    var aggregator: AggregatorEntity? = null,
 
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RecipientEntity::class,
             orphanRemoval = true)
     // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
     @Fetch(value = FetchMode.SUBSELECT)
-    var recipients: List<RecipientEntity>?,
+    var recipients: List<RecipientEntity>? = mutableListOf(),
 
     @get: NotNull
-    var ownerAsAdditionalRecipient: Boolean?,
+    var ownerAsAdditionalRecipient: Boolean? = null,
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH])
     // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
     @Fetch(value = FetchMode.SUBSELECT)
     @OrderColumn
-    var affectedFleets: List<FleetReferenceEntity>?,
+    var affectedFleets: List<FleetReferenceEntity>? = mutableListOf(),
 
-    var affectingAllApplicableFleets: Boolean?
+    var affectingAllApplicableFleets: Boolean? = null
 
-) : Serializable {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null, null, mutableListOf<RecipientEntity>(), null,
-            mutableListOf<FleetReferenceEntity>(), null)
-}
+) : Serializable
