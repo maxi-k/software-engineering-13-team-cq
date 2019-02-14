@@ -41,7 +41,7 @@ class EvaluationService : IEvaluationService {
                 )?.let { predicateField ->
                     vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
                         vehicleStateDataTypes.find {
-                            (it as IPredicateFieldProvider).predicateFieldProviderName === ruleCondition.providerName!!
+                            it.predicateFieldProviderName === ruleCondition.providerName!!
                         }
                     }?.let { vehicleStateDataType ->
                         return try {

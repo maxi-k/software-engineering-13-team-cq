@@ -10,7 +10,7 @@ enum class FieldDataType {
         override fun convertToFieldType(value: String): Any = value.toInt()
     },
     DECIMAL {
-        override fun convertToFieldType(value: String): Any = value.toFloat()
+        override fun convertToFieldType(value: String): Any = value.toDouble()
     },
     DATE {
         override fun convertToFieldType(value: String): Any = Instant.parse(value)
