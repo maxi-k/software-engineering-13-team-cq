@@ -19,7 +19,7 @@ class PredicateFieldTest : StringSpec() {
             forall(
                 row(FieldDataType.TEXT, "Hello World", "Hello World"),
                 row(FieldDataType.WEEK, "42", 42),
-                row(FieldDataType.DECIMAL, "10.2", 10.2f),
+                row(FieldDataType.DECIMAL, "10.2", 10.2),
                 row(FieldDataType.DATE, testedDate.toString(), testedDate),
                 row(FieldDataType.STRING_LIST, "string as part of list", "string as part of list")
             ) { fieldDataType, inputValue, outputValue ->
