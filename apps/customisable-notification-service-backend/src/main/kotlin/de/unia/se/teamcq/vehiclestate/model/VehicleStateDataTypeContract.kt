@@ -2,7 +2,6 @@ package de.unia.se.teamcq.vehiclestate.model
 
 import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
 import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.stereotype.Component
 
@@ -17,7 +16,7 @@ class VehicleStateDataTypeContract(
 
     dataTypeId: Long?
 
-) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
+) : VehicleStateDataType(dataTypeId) {
 
     // Necessary for MapStruct
     constructor() : this(null, mutableListOf<String>(), null, null)
