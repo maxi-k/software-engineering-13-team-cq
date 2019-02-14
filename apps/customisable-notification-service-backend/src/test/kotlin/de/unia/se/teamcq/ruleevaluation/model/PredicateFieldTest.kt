@@ -7,15 +7,15 @@ import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
-import java.lang.IllegalArgumentException
-import java.time.LocalTime
+import java.time.Instant
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class PredicateFieldTest : StringSpec() {
 
     init {
         "FieldDataType Conversion transforms String correctly" {
-            val testedDate = LocalTime.now()
+            val testedDate = Instant.now()
+
             forall(
                 row(FieldDataType.TEXT, "Hello World", "Hello World"),
                 row(FieldDataType.WEEK, "42", 42),

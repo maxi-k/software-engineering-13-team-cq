@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
-import java.time.LocalTime
+import java.time.Instant
 
 enum class FieldDataType {
     TEXT {
@@ -13,7 +13,7 @@ enum class FieldDataType {
         override fun convertToFieldType(value: String): Any = value.toFloat()
     },
     DATE {
-        override fun convertToFieldType(value: String): Any = LocalTime.parse(value)
+        override fun convertToFieldType(value: String): Any = Instant.parse(value)
     },
     STRING_LIST {
         override fun convertToFieldType(value: String): Any = value
