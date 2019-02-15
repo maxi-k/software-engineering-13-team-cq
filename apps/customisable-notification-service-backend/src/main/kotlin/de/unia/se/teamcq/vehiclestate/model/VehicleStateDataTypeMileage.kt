@@ -30,7 +30,7 @@ class VehicleStateDataTypeMileage(
             when (fieldName) {
                 "current" -> this.current
                 "remaining" -> this.remaining
-                "reachted" -> this.reached
+                "reached" -> this.reached
                 else -> super.retrieveFieldValue(fieldName)
             }
 
