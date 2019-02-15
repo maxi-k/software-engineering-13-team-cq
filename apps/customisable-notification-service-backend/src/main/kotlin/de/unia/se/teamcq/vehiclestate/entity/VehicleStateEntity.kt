@@ -26,21 +26,21 @@ data class VehicleStateEntity(
     var vehicleDataTypeBattery: VehicleDataTypeBattery?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeContract: VehicleDataTypeContractEntity?
+    var vehicleDataTypeContract: VehicleDataTypeContractEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeEngine: VehicleDataTypeEngineEntity?
+    var vehicleDataTypeEngine: VehicleDataTypeEngineEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeFuel: VehicleDataTypeFuelEntity?
+    var vehicleDataTypeFuel: VehicleDataTypeFuelEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeMileage: VehicleDataTypeMileageEntity?
+    var vehicleDataTypeMileage: VehicleDataTypeMileageEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     var vehicleDataTypeService: VehicleDataTypeServiceEntity?
 
-    // TODO: Add other VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
+    // Inheritance: See https://www.baeldung.com/hibernate-inheritance
 
 ) : Serializable {
     // Necessary for MapStruct
