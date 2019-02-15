@@ -28,15 +28,14 @@ class PredicateFieldContainerTest : StringSpec() {
             predicateFieldProviders shouldBe mockedPredicateFieldProviders
         }
 
-        /* Disabled because mock does not work, see comment below */
-        "GetPredicateFieldProviders".config(enabled = false) {
+        "GetPredicateFieldProviders" {
 
             val mockedProvider = TestUtils.getTestPredicateFieldProviderModel()
-            /*
-             This doesn't work for some reason:
-             io.mockk.MockKException: Failed matching mocking signature for SignedCall(...)
-            */
-            every { mockedPredicateFieldProviders.filter(captureLambda()) } returns listOf(mockedProvider)
+            // We need to mock the iterator instead of the `filter` function
+            // used in the #getPredicateFieldProviderByName function,
+            // because filter itself is an inline function, and does not exist
+            // in byte-code.
+            every { mockedPredicateFieldProviders.iterator() } returns listOf(mockedProvider).iterator()
 
             "Find a model stored by the PredicateFieldProvider set" {
                 predicateFieldContainer.getPredicateFieldProviderByName(
