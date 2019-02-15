@@ -4,19 +4,18 @@ import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.scheduling.job.ScheduledAggregatorRuleJob
 import de.unia.se.teamcq.scheduling.job.VehicleStateDataImportJob
 import de.unia.se.teamcq.scheduling.job.VehicleStateDataProcessingJob
+import org.quartz.CronScheduleBuilder
 import org.quartz.JobBuilder
 import org.quartz.JobDataMap
 import org.quartz.JobDetail
 import org.quartz.Scheduler
 import org.quartz.SchedulerException
-import org.quartz.SimpleScheduleBuilder
 import org.quartz.Trigger
 import org.quartz.TriggerBuilder
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-import java.time.ZonedDateTime
-import java.util.Date
 import java.util.UUID
 
 @Component
@@ -25,12 +24,16 @@ class NotificationScheduler : INotificationScheduler {
     @Autowired
     private lateinit var scheduler: Scheduler
 
+    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 0/1 * * * ?}")
+    private lateinit var dataImportCronString: String
+
+    @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 0/1 * * * ?}")
+    private lateinit var dataProcessingCronString: String
+
     override fun scheduleNotificationRule(notificationRule: NotificationRule) {
         try {
-            val dateTime = ZonedDateTime.now()
-
             val jobDetail = buildScheduledAggregatorRuleJobDetail("email", "subject", "body")
-            val trigger = buildJobTrigger(jobDetail, dateTime)
+            val trigger = buildJobTrigger(jobDetail, "")
             scheduler.scheduleJob(jobDetail, trigger)
         } catch (ex: SchedulerException) {
             logger.error("Error scheduling email", ex)
@@ -38,14 +41,27 @@ class NotificationScheduler : INotificationScheduler {
     }
 
     override fun scheduleVehicleStateDataImport() {
-        println("VehicleStateDataImport scheduling triggered!")
+        try {
+            val jobDetail = buildDataImportJobDetail("email", "subject", "body")
+            val trigger = buildJobTrigger(jobDetail, dataImportCronString)
+            scheduler.scheduleJob(jobDetail, trigger)
+        } catch (ex: SchedulerException) {
+            logger.error("Error scheduling email", ex)
+        }
     }
 
     override fun scheduleVehicleStateDataProcessing() {
-        println("VehicleStateDataProcessing scheduling triggered!")
+        try {
+            val jobDetail = buildDataProcessingJobDetail("email", "subject", "body")
+            val trigger = buildJobTrigger(jobDetail, dataProcessingCronString)
+            scheduler.scheduleJob(jobDetail, trigger)
+        } catch (ex: SchedulerException) {
+            logger.error("Error scheduling email", ex)
+        }
     }
 
     companion object {
+
         private val logger = LoggerFactory.getLogger(NotificationScheduler::class.java)
 
         private fun buildScheduledAggregatorRuleJobDetail(email: String, subject: String, body: String): JobDetail {
@@ -93,13 +109,14 @@ class NotificationScheduler : INotificationScheduler {
                     .build()
         }
 
-        private fun buildJobTrigger(jobDetail: JobDetail, startAt: ZonedDateTime): Trigger {
+        private fun buildJobTrigger(jobDetail: JobDetail, cronExpressionString: String): Trigger {
             return TriggerBuilder.newTrigger()
                     .forJob(jobDetail)
                     .withIdentity(jobDetail.key.name, "email-triggers")
                     .withDescription("Send Email Trigger")
-                    .startAt(Date.from(startAt.toInstant()))
-                    .withSchedule(SimpleScheduleBuilder.simpleSchedule().withMisfireHandlingInstructionFireNow())
+                    .withSchedule(CronScheduleBuilder
+                            .cronSchedule(cronExpressionString)
+                            .withMisfireHandlingInstructionFireAndProceed())
                     .build()
         }
     }
