@@ -38,8 +38,8 @@ class PredicateFieldContainer : IPredicateFieldContainer {
         predicateFieldProviderName: String,
         predicateFieldName: String
     ): PredicateField? =
-            getPredicateFieldProviderByName(predicateFieldProviderName)?.let {
-                val predicateFieldsWithMatchingName = it.predicateFields.filter { predicateField ->
+            getPredicateFieldProviderByName(predicateFieldProviderName)?.let { predicateFieldProvider ->
+                val predicateFieldsWithMatchingName = predicateFieldProvider.predicateFields.filter { predicateField ->
                     predicateField.fieldName == predicateFieldName
                 }
                 return when {

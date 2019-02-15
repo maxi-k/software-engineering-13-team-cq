@@ -203,8 +203,8 @@ object TestUtils {
     inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
         updater: (VehicleStateDatum) -> Unit
     ): VehicleState {
-        this.vehicleStateDataTypes?.find {
-            it is VehicleStateDatum
+        this.vehicleStateDataTypes?.find { vehicleStateDataType ->
+            vehicleStateDataType is VehicleStateDatum
         }?.apply {
             when (this) {
                 is VehicleStateDatum -> updater(this)
