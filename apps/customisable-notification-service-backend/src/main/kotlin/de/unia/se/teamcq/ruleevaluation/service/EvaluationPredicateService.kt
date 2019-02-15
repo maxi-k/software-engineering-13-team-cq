@@ -43,7 +43,9 @@ class EvaluationPredicateService : IEvaluationPredicateService {
             is S -> comparisonType.compare(dataValue, convertedComparisonValue)
             else -> throw IllegalArgumentException(
                     "Given converted comparisonValue $convertedComparisonValue could not be " +
-                    "compared to $dataValue using the comparison $comparisonType.")
+                            "compared to $dataValue using the comparison $comparisonType. " +
+                            "This can happen if a declared PredicateField DataType mismatches with the " +
+                            "type of the actual backing field.")
         }
     }
 }
