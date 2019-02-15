@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.ruleevaluation
 
 import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.TestUtils.updateVehicleStateDataTypeField
 import de.unia.se.teamcq.ruleevaluation.service.IEvaluationService
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import io.kotlintest.should
@@ -22,20 +23,34 @@ class EvaluationServiceIntegrationTest : StringSpec() {
             "Evaluate a flat NotificationRule correctly" {
 
                 val testCondition = TestUtils.getTestRuleConditionPredicateModel()
-                val testVehicleState = TestUtils.getTestVehicleStateModel()
+                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    it.charge = testCondition.comparisonValue?.toDouble()?.plus(1)
+                }
                 evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
 
-                val testVehicleState2 = testVehicleState.apply {
-                    this.vehicleStateDataTypes?.find {
-                        it.predicateFieldProviderName == testCondition.providerName
-                    }?.apply {
-                        if (this is VehicleStateDataTypeBattery) {
-                            this.charge = testCondition.comparisonValue?.toDouble()
-                        }
-                    }
+                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    it.charge = testCondition.comparisonValue?.toDouble()
                 }
 
-                evaluationService.checkCondition(testCondition, testVehicleState2) shouldBe true
+                evaluationService.checkCondition(testCondition, testVehicleState) shouldBe true
+            }
+
+            "Evaluate a composite NotificationRule correctly" {
+
+                val predicateCondition = TestUtils.getTestRuleConditionPredicateModel()
+                val testCondition = TestUtils.getTestRuleConditionCompositeModel().apply {
+                    subConditions = listOf(predicateCondition)
+                }
+                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    it.charge = predicateCondition.comparisonValue?.toDouble()?.plus(1)
+                }
+                evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
+
+                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    it.charge = predicateCondition.comparisonValue?.toDouble()
+                }
+
+                evaluationService.checkCondition(testCondition, testVehicleState) shouldBe true
             }
         }
     }

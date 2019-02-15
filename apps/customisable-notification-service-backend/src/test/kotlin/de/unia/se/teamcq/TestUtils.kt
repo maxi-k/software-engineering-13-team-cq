@@ -56,6 +56,7 @@ import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
@@ -196,6 +197,19 @@ object TestUtils {
                         getTestVehicleStateDataTypeServiceModel()
                 )
         )
+    }
+
+    fun <VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
+        dataTypeName: String,
+        updater: (VehicleStateDatum) -> Unit
+    ): VehicleState {
+        this.vehicleStateDataTypes?.find {
+            it.predicateFieldProviderName == dataTypeName
+        }?.apply {
+            @Suppress("UNCHECKED_CAST")
+            updater(this as VehicleStateDatum)
+        }
+        return this
     }
 
     fun getTestVehicleStateEnity(): VehicleStateEntity {
