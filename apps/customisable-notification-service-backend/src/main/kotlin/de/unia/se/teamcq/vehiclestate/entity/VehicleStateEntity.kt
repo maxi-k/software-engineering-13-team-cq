@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
+import javax.persistence.OneToOne
 import javax.persistence.ManyToOne
 
 @Entity
@@ -19,7 +20,7 @@ data class VehicleStateEntity(
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_vehicle")
-    var vehicleReference: VehicleReferenceEntity?
+    var vehicleReference: VehicleReferenceEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     var vehicleDataTypeBattery: VehicleDataTypeBattery?
