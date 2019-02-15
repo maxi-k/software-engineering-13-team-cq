@@ -23,7 +23,7 @@ class VehicleStateDataTypeFuel(
 
     override val predicateFieldProviderName: String = PREDICATE_FIELD_PROVIDER_NAME
 
-    override val predicateFields: List<PredicateField> = PREDICATE_FIELDS
+    override val predicateFields: Map<String, PredicateField> = PREDICATE_FIELDS
 
     @Throws(IllegalArgumentException::class)
     override fun retrieveFieldValue(fieldName: String): Any? =
@@ -36,10 +36,10 @@ class VehicleStateDataTypeFuel(
 
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Fuel"
-        val PREDICATE_FIELDS = listOf(
-            PredicateField("level", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
-            PredicateField("liters", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            PredicateField("range", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)
+        val PREDICATE_FIELDS = mapOf(
+            "level" to PredicateField("level", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+            "liters" to PredicateField("liters", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            "range" to PredicateField("range", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)
         )
     }
 }

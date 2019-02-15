@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -33,27 +32,6 @@ class PredicateFieldContainer : IPredicateFieldContainer {
             else -> predicateFieldProvidersWithMatchingName[0]
         }
     }
-
-    override fun getPredicateFieldByProviderAndName(
-        predicateFieldProviderName: String,
-        predicateFieldName: String
-    ): PredicateField? =
-            getPredicateFieldProviderByName(predicateFieldProviderName)?.let { predicateFieldProvider ->
-                val predicateFieldsWithMatchingName = predicateFieldProvider.getPredicateFieldsByName(
-                        predicateFieldName
-                )
-                return when {
-                    predicateFieldsWithMatchingName.isEmpty() -> null
-                    predicateFieldsWithMatchingName.size > 1 -> {
-                        LOGGER.warn(
-                                "Found multiple PredicateField instances with the same name for Provider " +
-                                        "$predicateFieldProviderName and Field Name $predicateFieldName"
-                        )
-                        predicateFieldsWithMatchingName[0]
-                    }
-                    else -> predicateFieldsWithMatchingName[0]
-                }
-            }
 
     companion object {
         val LOGGER: Logger = LoggerFactory.getLogger(PredicateFieldContainer::class.java)

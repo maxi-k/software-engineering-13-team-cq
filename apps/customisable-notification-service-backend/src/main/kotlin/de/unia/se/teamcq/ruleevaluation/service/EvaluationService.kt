@@ -53,12 +53,14 @@ class EvaluationService : IEvaluationService {
         }
         // Find the PredicateField this Condition should use,
         // throw an exception if it cannot be found or cast.
-        val predicateField = predicateFieldContainer.getPredicateFieldByProviderAndName(
-                ruleCondition.providerName!!, ruleCondition.fieldName!!
-        ) ?: throw IllegalArgumentException(
-                "No PredicateField under the name ${ruleCondition.providerName}.${ruleCondition.fieldName} " +
-                        "could be found, which is what the $ruleCondition should be applied to."
-        )
+        val predicateField = predicateFieldContainer
+                .getPredicateFieldProviderByName(ruleCondition.providerName!!)
+                ?.predicateFields?.get(ruleCondition.fieldName!!)
+                ?: throw IllegalArgumentException(
+                        "No PredicateField under the name " +
+                                "${ruleCondition.providerName}.${ruleCondition.fieldName} " +
+                                "could be found, which is what the $ruleCondition should be applied to."
+                )
         // Find the VehicleStateDataType this ConditionPredicate applies to.
         // If the given VehicleState doesn't provide the required Datum, return false
         val vehicleStateDataType = vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
