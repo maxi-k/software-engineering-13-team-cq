@@ -126,7 +126,7 @@ class EvaluationServiceTest : StringSpec() {
 
             "Throw an exception if the providerName is null" {
                 val ruleConditionWithoutProviderName = TestUtils.getTestRuleConditionPredicateModel().apply {
-                   providerName = null
+                    providerName = null
                 }
                 shouldThrow<IllegalArgumentException> {
                     evaluationService.checkCondition(ruleConditionWithoutProviderName, testVehicleState)
