@@ -1,6 +1,5 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
@@ -19,21 +18,22 @@ class EvaluationService : IEvaluationService {
     @Autowired
     lateinit var evaluationPredicateService: IEvaluationPredicateService
 
+    @Throws(IllegalArgumentException::class)
     override fun checkCondition(ruleCondition: RuleCondition, vehicleState: VehicleState): Boolean {
         when (ruleCondition) {
             is RuleConditionComposite -> {
-                ruleCondition.logicalConnective?.getPredicateReducer()?.let {
-                    return it(ruleCondition.subConditions) { subCondition ->
+                ruleCondition.logicalConnective?.getPredicateReducer()?.let { predicateReducer ->
+                    return predicateReducer(ruleCondition.subConditions) { subCondition ->
                         checkCondition(subCondition, vehicleState)
                     }
                 }
-                // TODO: Throw or return false if there is no connective?
-                return false
+                throw IllegalArgumentException("Given composite NotificationRule did not have a logical connective.")
             }
             is RuleConditionPredicate -> {
                 if (ruleCondition.providerName.isNullOrBlank() ||
                         ruleCondition.fieldName.isNullOrBlank()) {
                     // TODO: Throw or return false if there are no names set?
+                    throw IllegalArgumentException("Given composite NotificationRule did not have a logical connective.")
                     return false
                 }
                 predicateFieldContainer.getPredicateFieldByProviderAndName(
