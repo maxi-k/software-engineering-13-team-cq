@@ -1,7 +1,5 @@
 package de.unia.se.teamcq.vehiclestate.model
 
-import javax.validation.constraints.NotNull
-
 import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
 import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
@@ -12,16 +10,12 @@ import java.util.Date
 @Component
 class VehicleStateDataTypeService(
 
-    @get: NotNull
     var dueDate: Date?,
 
-    @get: NotNull
     var brakeFluid: String?,
 
-    @get: NotNull
     var status: String?,
 
-    @get: NotNull
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
