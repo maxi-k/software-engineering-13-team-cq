@@ -2,6 +2,8 @@ package de.unia.se.teamcq.scheduling.service
 
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.scheduling.job.ScheduledAggregatorRuleJob
+import de.unia.se.teamcq.scheduling.job.VehicleStateDataImportJob
+import de.unia.se.teamcq.scheduling.job.VehicleStateDataProcessingJob
 import org.quartz.JobBuilder
 import org.quartz.JobDataMap
 import org.quartz.JobDetail
@@ -27,7 +29,7 @@ class NotificationScheduler : INotificationScheduler {
         try {
             val dateTime = ZonedDateTime.now()
 
-            val jobDetail = buildJobDetail("email", "subject", "body")
+            val jobDetail = buildScheduledAggregatorRuleJobDetail("email", "subject", "body")
             val trigger = buildJobTrigger(jobDetail, dateTime)
             scheduler.scheduleJob(jobDetail, trigger)
         } catch (ex: SchedulerException) {
@@ -46,7 +48,7 @@ class NotificationScheduler : INotificationScheduler {
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationScheduler::class.java)
 
-        private fun buildJobDetail(email: String, subject: String, body: String): JobDetail {
+        private fun buildScheduledAggregatorRuleJobDetail(email: String, subject: String, body: String): JobDetail {
             val jobDataMap = JobDataMap()
 
             jobDataMap["email"] = email
@@ -54,6 +56,36 @@ class NotificationScheduler : INotificationScheduler {
             jobDataMap["body"] = body
 
             return JobBuilder.newJob(ScheduledAggregatorRuleJob::class.java)
+                    .withIdentity(UUID.randomUUID().toString(), "email-jobs")
+                    .withDescription("Send Email Job")
+                    .usingJobData(jobDataMap)
+                    .storeDurably()
+                    .build()
+        }
+
+        private fun buildDataImportJobDetail(email: String, subject: String, body: String): JobDetail {
+            val jobDataMap = JobDataMap()
+
+            jobDataMap["email"] = email
+            jobDataMap["subject"] = subject
+            jobDataMap["body"] = body
+
+            return JobBuilder.newJob(VehicleStateDataImportJob::class.java)
+                    .withIdentity(UUID.randomUUID().toString(), "email-jobs")
+                    .withDescription("Send Email Job")
+                    .usingJobData(jobDataMap)
+                    .storeDurably()
+                    .build()
+        }
+
+        private fun buildDataProcessingJobDetail(email: String, subject: String, body: String): JobDetail {
+            val jobDataMap = JobDataMap()
+
+            jobDataMap["email"] = email
+            jobDataMap["subject"] = subject
+            jobDataMap["body"] = body
+
+            return JobBuilder.newJob(VehicleStateDataProcessingJob::class.java)
                     .withIdentity(UUID.randomUUID().toString(), "email-jobs")
                     .withDescription("Send Email Job")
                     .usingJobData(jobDataMap)
