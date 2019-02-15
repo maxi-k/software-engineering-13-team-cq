@@ -30,7 +30,7 @@ class EvaluationPredicateService : IEvaluationPredicateService {
     private inline fun <reified T, reified R : Iterable<T>, reified S : Comparable<T>> compareValues(
         comparisonType: ComparisonType,
         fieldDataType: FieldDataType,
-        dataValue: T,
+        actualVehicleStateValue: T,
         comparisonValue: String
     ): Boolean {
         val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
@@ -38,12 +38,12 @@ class EvaluationPredicateService : IEvaluationPredicateService {
                         "ComparisonValue Conversion of $comparisonValue to $fieldDataType " +
                                 "failed for comparison $comparisonType.")
 
-        return when (dataValue) {
-            is R -> comparisonType.compare(dataValue, convertedComparisonValue)
-            is S -> comparisonType.compare(dataValue, convertedComparisonValue)
+        return when (actualVehicleStateValue) {
+            is R -> comparisonType.compare(actualVehicleStateValue, convertedComparisonValue)
+            is S -> comparisonType.compare(actualVehicleStateValue, convertedComparisonValue)
             else -> throw IllegalArgumentException(
                     "Given converted comparisonValue $convertedComparisonValue could not be " +
-                            "compared to $dataValue using the comparison $comparisonType. " +
+                            "compared to $actualVehicleStateValue using the comparison $comparisonType. " +
                             "This can happen if a declared PredicateField DataType mismatches with the " +
                             "type of the actual backing field.")
         }
