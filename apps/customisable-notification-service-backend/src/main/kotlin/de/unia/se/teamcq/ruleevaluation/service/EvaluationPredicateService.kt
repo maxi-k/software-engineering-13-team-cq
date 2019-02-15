@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component
 @Component
 class EvaluationPredicateService : IEvaluationPredicateService {
 
+    @Throws(IllegalArgumentException::class)
     override fun checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: VehicleStateDataType, predicateField: PredicateField): Boolean {
 
         val comparisonType = ruleConditionPredicate.comparisonType
@@ -18,12 +19,7 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         val fieldDataType = predicateField.dataType
         val dataValue = vehicleStateDataType.retrieveFieldValue(predicateField.fieldName!!)
 
-        return try {
-            compareValues(comparisonType!!, fieldDataType!!, dataValue, comparisonValue!!)
-        } catch (illegalArgumentException: IllegalArgumentException) {
-            // TODO: Use exception or false return value?
-            false
-        }
+        return compareValues(comparisonType!!, fieldDataType!!, dataValue, comparisonValue!!)
     }
 
     @Throws(IllegalArgumentException::class)
@@ -34,12 +30,12 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         comparisonValue: String
     ): Boolean {
         val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
-                ?: throw IllegalArgumentException("ComparisonValue Conversion failed")
+                ?: throw IllegalArgumentException("ComparisonValue Conversion of $comparisonValue to $fieldDataType failed for comparison $comparisonType.")
 
         return when (dataValue) {
             is R -> comparisonType.compare(dataValue, convertedComparisonValue)
             is S -> comparisonType.compare(dataValue, convertedComparisonValue)
-            else -> throw IllegalArgumentException("Given comparisonValue could not be compared.")
+            else -> throw IllegalArgumentException("Given converted comparisonValue $convertedComparisonValue could not be compared to $dataValue using the comparison $comparisonType.")
         }
     }
 }
