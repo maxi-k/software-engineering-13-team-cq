@@ -20,13 +20,9 @@ class VehicleStateDataTypeBattery(
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)
 
-    override val predicateFieldProviderName: String = "Battery"
+    override val predicateFieldProviderName: String = PREDICATE_FIELD_PROVIDER_NAME
 
-    override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
-            PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
-            PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
-    )
+    override val predicateFields: List<PredicateField> = PREDICATE_FIELDS
 
     @Throws(IllegalArgumentException::class)
     override fun retrieveFieldValue(fieldName: String): Any? =
@@ -36,4 +32,13 @@ class VehicleStateDataTypeBattery(
             "status" -> this.status
             else -> super.retrieveFieldValue(fieldName)
         }
+
+    companion object {
+        const val PREDICATE_FIELD_PROVIDER_NAME = "Battery"
+        val PREDICATE_FIELDS = listOf(
+            PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+            PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
+            PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+        )
+    }
 }

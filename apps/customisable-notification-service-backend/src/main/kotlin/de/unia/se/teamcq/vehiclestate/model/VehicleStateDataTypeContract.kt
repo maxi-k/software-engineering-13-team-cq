@@ -3,6 +3,7 @@ package de.unia.se.teamcq.vehiclestate.model
 import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
 import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery.Companion.PREDICATE_FIELDS
 import org.springframework.stereotype.Component
 
 @Component
@@ -21,13 +22,9 @@ class VehicleStateDataTypeContract(
     // Necessary for MapStruct
     constructor() : this(null, mutableListOf<String>(), null, null)
 
-    override val predicateFieldProviderName: String = "Contract"
+    override val predicateFieldProviderName: String = PREDICATE_FIELD_PROVIDER_NAME
 
-    override val predicateFields: List<PredicateField> = listOf(
-            PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            PredicateField("vins", FieldDataType.STRING_LIST, EvaluationStrategies.LIST),
-            PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.NUMERIC)
-    )
+    override val predicateFields: List<PredicateField> = PREDICATE_FIELDS
 
     @Throws(IllegalArgumentException::class)
     override fun retrieveFieldValue(fieldName: String): Any? =
@@ -37,4 +34,13 @@ class VehicleStateDataTypeContract(
                 "calendarWeek" -> this.calendarWeek
                 else -> super.retrieveFieldValue(fieldName)
             }
+
+    companion object {
+        const val PREDICATE_FIELD_PROVIDER_NAME = "Contract"
+        val PREDICATE_FIELDS = listOf(
+            PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            PredicateField("vins", FieldDataType.STRING_LIST, EvaluationStrategies.LIST),
+            PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.NUMERIC)
+        )
+    }
 }
