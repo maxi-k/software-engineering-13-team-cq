@@ -18,31 +18,31 @@ class PredicateFieldContainer : IPredicateFieldContainer {
     }
 
     override fun getPredicateFieldProviderByName(predicateFieldProviderName: String): IPredicateFieldProvider? {
-        val foundValues = predicateFieldProviders.filter { predicateFieldProvider ->
+        val predicateFieldProvidersWithMatchingName = predicateFieldProviders.filter { predicateFieldProvider ->
             predicateFieldProvider.predicateFieldProviderName == predicateFieldProviderName
         }
         return when {
-            foundValues.isEmpty() -> null
-            foundValues.size > 1 -> {
+            predicateFieldProvidersWithMatchingName.isEmpty() -> null
+            predicateFieldProvidersWithMatchingName.size > 1 -> {
                 LOGGER.warn("Found multiple PredicateFieldProvider instances with the same name: $predicateFieldProviderName")
-                foundValues[0]
+                predicateFieldProvidersWithMatchingName[0]
             }
-            else -> foundValues[0]
+            else -> predicateFieldProvidersWithMatchingName[0]
         }
     }
 
     override fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField? =
             getPredicateFieldProviderByName(predicateFieldProviderName)?.let {
-                val foundValues = it.predicateFields.filter { predicateField ->
+                val predicateFieldsWithMatchingName = it.predicateFields.filter { predicateField ->
                     predicateField.fieldName == predicateFieldName
                 }
                 return when {
-                    foundValues.isEmpty() -> null
-                    foundValues.size > 1 -> {
+                    predicateFieldsWithMatchingName.isEmpty() -> null
+                    predicateFieldsWithMatchingName.size > 1 -> {
                         LOGGER.warn("Found multiple PredicateField instances with the same name for Provider $predicateFieldProviderName and Field Name $predicateFieldName")
-                        foundValues[0]
+                        predicateFieldsWithMatchingName[0]
                     }
-                    else -> foundValues[0]
+                    else -> predicateFieldsWithMatchingName[0]
                 }
             }
 

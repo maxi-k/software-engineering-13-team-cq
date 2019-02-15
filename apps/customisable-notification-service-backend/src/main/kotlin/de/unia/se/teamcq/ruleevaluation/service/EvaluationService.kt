@@ -20,28 +20,24 @@ class EvaluationService : IEvaluationService {
     override fun checkCondition(ruleCondition: RuleCondition, vehicleState: VehicleState): Boolean {
         when (ruleCondition) {
             is RuleConditionComposite -> {
-                ruleCondition.logicalConnective?.getPredicateReducer()?.let { predicateReducer ->
-                    return predicateReducer(ruleCondition.subConditions) { subCondition ->
-                        // TODO: Catch recursive call exceptions here, and decide whether to
-                        // throw or return? Use custom Exceptions, instead of IllegalArgumentExceptions
-                        // to decide?
-                        checkCondition(subCondition, vehicleState)
-                    }
+                val predicateReducer = ruleCondition.logicalConnective?.getPredicateReducer()
+                        ?: throw IllegalArgumentException("Given composite NotificationRule $ruleCondition did not have a logical connective.")
+                return predicateReducer(ruleCondition.subConditions) { subCondition ->
+                    checkCondition(subCondition, vehicleState)
                 }
-                throw IllegalArgumentException("Given composite NotificationRule did not have a logical connective.")
             }
             is RuleConditionPredicate -> {
                 // If the condition did not supply a provider and a target field,
                 // throw an exception. Don't return false, as a ConditionComposite with Connective NONE
                 // could apply, even though the condition didn't even apply to a field
                 if (ruleCondition.providerName.isNullOrBlank() || ruleCondition.fieldName.isNullOrBlank()) {
-                    throw IllegalArgumentException("Given predicate NotificationRule did not specify a target PredicateField")
+                    throw IllegalArgumentException("Given predicate NotificationRule $ruleCondition did not specify a target PredicateField")
                 }
                 // Find the PredicateField this Condition should use,
                 // throw an exception if it cannot be found or cast.
                 val predicateField = predicateFieldContainer.getPredicateFieldByProviderAndName(
                         ruleCondition.providerName!!, ruleCondition.fieldName!!
-                ) ?: throw IllegalArgumentException("The given VehicleStateDataType did not match the field name it was registered under.")
+                ) ?: throw IllegalArgumentException("No PredicateField under the name ${ruleCondition.providerName}.${ruleCondition.fieldName} could be found, which is what the $ruleCondition should be applied to.")
                 // Find the VehicleStateDataType this ConditionPredicate applies to.
                 // If the given VehicleState doesn't provide the required Datum, return false
                 val vehicleStateDataType = vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
@@ -56,7 +52,7 @@ class EvaluationService : IEvaluationService {
                         predicateField
                 )
             }
-            else -> throw IllegalArgumentException("The given RuleCondition was of no known subtype.")
+            else -> throw IllegalArgumentException("The given RuleCondition $ruleCondition was of no known subtype.")
         }
     }
 }
