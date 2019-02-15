@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.TestUtils
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -17,19 +18,30 @@ class EvaluationPredicateServiceTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "Evaluates RulePredicates correctly" {
+        "The CheckPredicate method" should {
 
             val predicateField = TestUtils.getTestPredicateFieldModel()
             val vehicleStateDataType = TestUtils.getTestVehicleStateDataTypeBatteryModel()
-            val predicate = TestUtils.getTestRuleConditionPredicateModel().apply {
-                comparisonValue = vehicleStateDataType.retrieveFieldValue(predicateField.fieldName!!).toString()
-            }
 
-            evaluationPredicateService.checkPredicate(
-                    predicate,
-                    vehicleStateDataType,
-                    predicateField
-            ) shouldBe true
+            "Evaluate RulePredicates correctly" {
+                val predicate = TestUtils.getTestRuleConditionPredicateModel().apply {
+                    comparisonValue = vehicleStateDataType.retrieveFieldValue(predicateField.fieldName!!).toString()
+                }
+                evaluationPredicateService.checkPredicate(
+                        predicate,
+                        vehicleStateDataType,
+                        predicateField
+                ) shouldBe true
+
+                predicate.apply {
+                    comparisonValue = "-$comparisonValue"
+                }
+                evaluationPredicateService.checkPredicate(
+                        predicate,
+                        vehicleStateDataType,
+                        predicateField
+                ) shouldBe false
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration
 import java.lang.IllegalArgumentException
 
 @ContextConfiguration(classes = [TestConfiguration::class])
-class VehicleStateDataTypeTest: StringSpec() {
+class VehicleStateDataTypeTest : StringSpec() {
 
     init {
         "VehicleStateDataTypeBattery should contain relevant predicate fields" {
