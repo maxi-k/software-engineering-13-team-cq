@@ -86,3 +86,4 @@ class VehicleStateDataTypeTest : StringSpec() {
         }
     }
 }
+
