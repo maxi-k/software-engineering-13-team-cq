@@ -2,6 +2,7 @@ package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -28,7 +29,7 @@ class PredicateFieldContainerTest : StringSpec() {
             predicateFieldProviders shouldBe mockedPredicateFieldProviders
         }
 
-        "GetPredicateFieldProviders" {
+        "GetPredicateFieldProviders" should {
 
             val mockedProvider = TestUtils.getTestPredicateFieldProviderModel()
             // We need to mock the iterator instead of the `filter` function
@@ -43,10 +44,21 @@ class PredicateFieldContainerTest : StringSpec() {
                 ) shouldBe mockedProvider
             }
 
-            "Return null if the model does not exist" {
+            "Return null if the Provider does not exist" {
                 predicateFieldContainer.getPredicateFieldProviderByName(
                         "nonExistent"
                 ) shouldBe null
+            }
+
+            "Return a value if multiple Providers exist" {
+                every { mockedPredicateFieldProviders.iterator() } returns listOf(
+                        mockedProvider,
+                        mockedProvider
+                ).iterator()
+
+                predicateFieldContainer.getPredicateFieldProviderByName(
+                        mockedProvider.predicateFieldProviderName
+                ) shouldBe mockedProvider
             }
         }
     }
