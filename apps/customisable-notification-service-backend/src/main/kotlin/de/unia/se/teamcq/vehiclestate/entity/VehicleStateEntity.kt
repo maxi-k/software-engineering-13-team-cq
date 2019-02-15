@@ -21,9 +21,7 @@ data class VehicleStateEntity(
     @JoinColumn(name = "fk_vehicle")
     var vehicleReference: VehicleReferenceEntity?
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
-        CascadeType.PERSIST])
-    @JoinColumn(name = "fk_vehicle")
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     var vehicleDataTypeBattery: VehicleDataTypeBattery?
 
     // TODO: Add other VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance

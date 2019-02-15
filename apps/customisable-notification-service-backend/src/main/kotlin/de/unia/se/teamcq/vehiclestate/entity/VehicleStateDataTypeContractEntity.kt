@@ -3,24 +3,22 @@ package de.unia.se.teamcq.vehiclestate.entity
 import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id
-import javax.persistence.CascadeType
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
 
 @Entity
-data class VehicleStateDataTypeBatteryEntity(
+data class VehicleStateDataTypeContractEntity(
 
     @get: NotNull
-    var charge: Double?,
+    var duePerWeek: Int?,
 
     @get: NotNull
-    var voltage: Double?,
+    @Fetch(value = FetchMode.SUBSELECT)
+    var vins: List<String>?,
 
     @get: NotNull
-    var status: String?,
+    var calendarWeek: Int?,
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var dataTypeId: Long?
