@@ -1,5 +1,7 @@
 package de.unia.se.teamcq.vehiclestate.model
 
+import javax.validation.constraints.NotNull
+
 import de.unia.se.teamcq.ruleevaluation.model.EvaluationStrategies
 import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
@@ -9,12 +11,16 @@ import org.springframework.stereotype.Component
 @Component
 class VehicleStateDataTypeContract(
 
+    @get: NotNull
     var duePerWeek: Int?,
 
+    @get: NotNull
     var vins: List<String>?,
 
+    @get: NotNull
     var calendarWeek: Int?,
 
+    @get: NotNull
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
