@@ -7,7 +7,7 @@ import org.mapstruct.BeforeMapping
 import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
-interface IRuleConditionPredicateMapper {
+abstract class AbstractRuleConditionPredicateMapper {
 
     @BeforeMapping
     @Throws(IllegalArgumentException::class)
@@ -27,15 +27,15 @@ interface IRuleConditionPredicateMapper {
         }
     }
 
-    fun modelToDto(ruleConditionPredicate: RuleConditionPredicate):
+    abstract fun modelToDto(ruleConditionPredicate: RuleConditionPredicate):
             RuleConditionPredicateDto
 
-    fun dtoToModel(notificationRuleConditionPredicateDto: RuleConditionPredicateDto):
+    abstract fun dtoToModel(notificationRuleConditionPredicateDto: RuleConditionPredicateDto):
             RuleConditionPredicate
 
-    fun modelToEntity(ruleConditionPredicate: RuleConditionPredicate):
+    abstract fun modelToEntity(ruleConditionPredicate: RuleConditionPredicate):
             RuleConditionPredicateEntity
 
-    fun entityToModel(ruleConditionPredicateEntity: RuleConditionPredicateEntity):
+    abstract fun entityToModel(ruleConditionPredicateEntity: RuleConditionPredicateEntity):
             RuleConditionPredicate
 }
