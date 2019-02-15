@@ -24,43 +24,43 @@ class EvaluationService : IEvaluationService {
             is RuleConditionComposite -> {
                 ruleCondition.logicalConnective?.getPredicateReducer()?.let { predicateReducer ->
                     return predicateReducer(ruleCondition.subConditions) { subCondition ->
+                        // TODO: Catch recursive call exceptions here, and decide whether to
+                        // throw or return? Use custom Exceptions, instead of IllegalArgumentExceptions
+                        // to decide?
                         checkCondition(subCondition, vehicleState)
                     }
                 }
                 throw IllegalArgumentException("Given composite NotificationRule did not have a logical connective.")
             }
             is RuleConditionPredicate -> {
-                if (ruleCondition.providerName.isNullOrBlank() ||
-                        ruleCondition.fieldName.isNullOrBlank()) {
-                    // TODO: Throw or return false if there are no names set?
-                    throw IllegalArgumentException("Given composite NotificationRule did not have a logical connective.")
-                    return false
+                // If the condition did not supply a provider and a target field,
+                // throw an exception. Don't return false, as a ConditionComposite with Connective NONE
+                // could apply, even though the condition didn't even apply to a field
+                if (ruleCondition.providerName.isNullOrBlank() || ruleCondition.fieldName.isNullOrBlank()) {
+                    throw IllegalArgumentException("Given predicate NotificationRule did not specify a target PredicateField")
                 }
-                predicateFieldContainer.getPredicateFieldByProviderAndName(
+                // Find the PredicateField this Condition should use,
+                // throw an exception if it cannot be found or cast.
+                @Suppress("UNCHECKED_CAST")
+                val predicateField = predicateFieldContainer.getPredicateFieldByProviderAndName(
                         ruleCondition.providerName!!, ruleCondition.fieldName!!
-                )?.let { predicateField ->
-                    vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
-                        vehicleStateDataTypes.find {
-                            it.predicateFieldProviderName === ruleCondition.providerName!!
-                        }
-                    }?.let { vehicleStateDataType ->
-                        return try {
-                            @Suppress("UNCHECKED_CAST")
-                            evaluationPredicateService.checkPredicate(
-                                    ruleCondition,
-                                    vehicleStateDataType,
-                                    predicateField as PredicateField<VehicleStateDataType, Any>
-                            )
-                        } catch (e: ClassCastException) {
-                            // TODO: Throw or return false if the cast failed?
-                            false
-                        }
+                ) as? PredicateField<VehicleStateDataType, Any>
+                        ?: throw IllegalArgumentException("The given VehicleStateDataType did not match the field name it was registered under.")
+                // Find the VehicleStateDataType this ConditionPredicate applies to.
+                // If the given VehicleState doesn't provide the required Datum, return false
+                val vehicleStateDataType = vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
+                    vehicleStateDataTypes.find {
+                        it.predicateFieldProviderName === ruleCondition.providerName!!
                     }
-                }
-                return false
+                } ?: return false
+
+                return evaluationPredicateService.checkPredicate(
+                        ruleCondition,
+                        vehicleStateDataType,
+                        predicateField
+                )
             }
-            // TODO: Throw or return false if the argument was of the wrong subtype?
-            else -> return false
+            else -> throw IllegalArgumentException("The given RuleCondition was of no known subtype.")
         }
     }
 }

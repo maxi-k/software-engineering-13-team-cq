@@ -26,33 +26,19 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         }
     }
 
-    private inline fun <reified T> compareValues(
+    private inline fun <reified T, reified R : Iterable<T>, reified S : Comparable<T>> compareValues(
         comparisonType: ComparisonType,
         fieldDataType: FieldDataType,
         dataValue: T,
         comparisonValue: String
     ): Boolean {
-        try {
-            val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
-            return when (fieldDataType) {
-                FieldDataType.TEXT, FieldDataType.INTEGER, FieldDataType.DECIMAL, FieldDataType.WEEK, FieldDataType.DATE -> {
-                    if (dataValue is Comparable<*> && convertedComparisonValue is Comparable<*>) {
-                        @Suppress("UNCHECKED_CAST")
-                        comparisonType.compare(dataValue as Comparable<T>, convertedComparisonValue)
-                    } else {
-                        throw IllegalArgumentException()
-                    }
-                }
-                FieldDataType.STRING_LIST -> {
-                    if (dataValue is Iterable<*>) {
-                        comparisonType.compare(dataValue, convertedComparisonValue)
-                    } else {
-                        throw IllegalArgumentException()
-                    }
-                }
-            }
-        } catch (castException: ClassCastException) {
-            throw IllegalArgumentException()
+        val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
+                ?: throw IllegalArgumentException("ComparisonValue Conversion failed")
+
+        return when (dataValue) {
+            is R -> comparisonType.compare(dataValue, convertedComparisonValue)
+            is S -> comparisonType.compare(dataValue, convertedComparisonValue)
+            else -> throw IllegalArgumentException("Given comparisonValue could not be compared.")
         }
     }
 }
