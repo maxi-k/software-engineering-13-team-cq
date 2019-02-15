@@ -50,8 +50,8 @@ class PredicateFieldControllerTest : StringSpec() {
                     "/predicate-fields/"
             )
 
-            val expectedComparisonTypes = listOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESSER_THAN",
-                    "GREATER_THAN_OR_EQUAL_TO", "LESSER_THAN_OR_EQUAL_TO")
+            val expectedComparisonTypes = listOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN", "LESS_THAN",
+                    "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN_OR_EQUAL_TO")
 
             possibleRequestPaths.map { requestPath ->
 

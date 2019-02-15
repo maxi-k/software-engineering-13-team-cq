@@ -1,7 +1,28 @@
 package de.unia.se.teamcq.ruleevaluation.model
 
+typealias PredicateReducer = (
+    predicates: Iterable<RuleCondition>,
+    predicate: (RuleCondition) -> Boolean
+) -> Boolean
+
 enum class LogicalConnectiveType {
-    ANY, ALL, NONE
+    ANY {
+        override fun getPredicateReducer(): PredicateReducer = { iterable, predicate ->
+            iterable.any(predicate)
+        }
+    },
+    ALL {
+        override fun getPredicateReducer(): PredicateReducer = { iterable, predicate ->
+            iterable.all(predicate)
+        }
+    },
+    NONE {
+        override fun getPredicateReducer(): PredicateReducer = { iterable, predicate ->
+            iterable.none(predicate)
+        }
+    };
+
+    abstract fun getPredicateReducer(): PredicateReducer
 }
 
 abstract class RuleCondition(

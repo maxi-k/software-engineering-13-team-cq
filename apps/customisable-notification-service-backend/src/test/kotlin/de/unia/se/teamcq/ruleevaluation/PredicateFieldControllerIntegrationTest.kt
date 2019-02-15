@@ -58,7 +58,7 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
             val expectingAtLeastPossibleDataTypes = arrayOf("TEXT", "STRING_LIST", "WEEK", "INTEGER",
                     "TEXT", "DECIMAL")
             val expectingAtLeastPossibleEvaluationStrategies = arrayOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN",
-                    "LESSER_THAN", "GREATER_THAN_OR_EQUAL_TO", "LESSER_THAN_OR_EQUAL_TO")
+                    "LESS_THAN", "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN_OR_EQUAL_TO")
 
             possibleRequestPaths.map { requestPath ->
 
