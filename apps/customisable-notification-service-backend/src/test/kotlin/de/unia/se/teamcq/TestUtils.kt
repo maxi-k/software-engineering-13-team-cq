@@ -72,6 +72,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import java.lang.IllegalArgumentException
 import java.util.Date
 
 object TestUtils {
@@ -199,15 +200,17 @@ object TestUtils {
         )
     }
 
-    fun <VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
+    inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
         dataTypeName: String,
         updater: (VehicleStateDatum) -> Unit
     ): VehicleState {
         this.vehicleStateDataTypes?.find {
             it.predicateFieldProviderName == dataTypeName
         }?.apply {
-            @Suppress("UNCHECKED_CAST")
-            updater(this as VehicleStateDatum)
+            when (this) {
+                is VehicleStateDatum -> updater(this)
+                else -> throw IllegalArgumentException("Passed data type name $dataTypeName name in test did not fit required ${VehicleStateDatum::class.java} type.")
+            }
         }
         return this
     }
