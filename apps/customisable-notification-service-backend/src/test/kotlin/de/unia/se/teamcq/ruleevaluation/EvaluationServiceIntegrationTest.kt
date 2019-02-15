@@ -65,7 +65,7 @@ class EvaluationServiceIntegrationTest : StringSpec() {
                     comparisonValue = batteryLowerBound.toString()
                 }
                 val predicateConditionUpperBound = TestUtils.getTestRuleConditionPredicateModel().apply {
-                    comparisonType = ComparisonType.LESSER_THAN_OR_EQUAL_TO
+                    comparisonType = ComparisonType.LESS_THAN_OR_EQUAL_TO
                     comparisonValue = batteryUpperBound.toString()
                 }
                 val testCondition = TestUtils.getTestRuleConditionCompositeModel().apply {

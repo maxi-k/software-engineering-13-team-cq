@@ -59,19 +59,19 @@ class PredicateFieldTest : StringSpec() {
             }
         }
 
-        "ComparisonType LESSER_THAN should compare values correctly" {
-            ComparisonType.LESSER_THAN.compare(3, 42) shouldBe true
-            ComparisonType.LESSER_THAN.compare(42, 42) shouldBe false
+        "ComparisonType LESS_THAN should compare values correctly" {
+            ComparisonType.LESS_THAN.compare(3, 42) shouldBe true
+            ComparisonType.LESS_THAN.compare(42, 42) shouldBe false
             shouldThrow<IllegalArgumentException> {
-                ComparisonType.LESSER_THAN.compare(listOf(42), 42)
+                ComparisonType.LESS_THAN.compare(listOf(42), 42)
             }
         }
 
-        "ComparisonType LESSER_THAN_OR_EQUAL_TO should compare values correctly" {
-            ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(3.14, 42.0) shouldBe true
-            ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(42, 42) shouldBe true
+        "ComparisonType LESS_THAN_OR_EQUAL_TO should compare values correctly" {
+            ComparisonType.LESS_THAN_OR_EQUAL_TO.compare(3.14, 42.0) shouldBe true
+            ComparisonType.LESS_THAN_OR_EQUAL_TO.compare(42, 42) shouldBe true
             shouldThrow<IllegalArgumentException> {
-                ComparisonType.LESSER_THAN_OR_EQUAL_TO.compare(listOf(42), 42)
+                ComparisonType.LESS_THAN_OR_EQUAL_TO.compare(listOf(42), 42)
             }
         }
 

@@ -243,15 +243,15 @@ object TestUtils {
     }
 
     fun getTestRuleConditionPredicateModel(): RuleConditionPredicate {
-        return RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionPredicateDto(): RuleConditionPredicateDto {
-        return RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionPredicateEntity(): RuleConditionPredicateEntity {
-        return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionCompositeModel(): RuleConditionComposite {

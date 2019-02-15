@@ -38,7 +38,7 @@ enum class ComparisonType {
         override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
                 firstValue > secondValue
     },
-    LESSER_THAN {
+    LESS_THAN {
         override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
                 firstValue < secondValue
     },
@@ -47,7 +47,7 @@ enum class ComparisonType {
         override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
                 firstValue >= secondValue
     },
-    LESSER_THAN_OR_EQUAL_TO {
+    LESS_THAN_OR_EQUAL_TO {
         override fun <T> compare(firstValue: Comparable<T>, secondValue: T): Boolean =
                 firstValue <= secondValue
     },
@@ -73,9 +73,9 @@ object EvaluationStrategies {
     val NUMERIC = listOf(ComparisonType.EQUAL_TO,
         ComparisonType.NOT_EQUAL_TO,
         ComparisonType.GREATER_THAN,
-        ComparisonType.LESSER_THAN,
+        ComparisonType.LESS_THAN,
         ComparisonType.GREATER_THAN_OR_EQUAL_TO,
-        ComparisonType.LESSER_THAN_OR_EQUAL_TO
+        ComparisonType.LESS_THAN_OR_EQUAL_TO
     )
 
     val LIST = listOf(ComparisonType.EQUAL_TO,
