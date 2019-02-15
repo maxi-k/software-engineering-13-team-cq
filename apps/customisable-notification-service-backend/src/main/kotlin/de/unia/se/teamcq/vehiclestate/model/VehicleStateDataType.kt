@@ -10,6 +10,8 @@ abstract class VehicleStateDataType(
 
     @Throws(IllegalArgumentException::class)
     open fun retrieveFieldValue(fieldName: String): Any? {
-        throw IllegalArgumentException("The field with the name $fieldName does not exist on ${javaClass.simpleName}.")
+        throw IllegalArgumentException(
+                "The field with the name $fieldName does not exist on ${javaClass.simpleName}."
+        )
     }
 }

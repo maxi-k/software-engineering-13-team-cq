@@ -11,7 +11,11 @@ import org.springframework.stereotype.Component
 class EvaluationPredicateService : IEvaluationPredicateService {
 
     @Throws(IllegalArgumentException::class)
-    override fun checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: VehicleStateDataType, predicateField: PredicateField): Boolean {
+    override fun checkPredicate(
+        ruleConditionPredicate: RuleConditionPredicate,
+        vehicleStateDataType: VehicleStateDataType,
+        predicateField: PredicateField
+    ): Boolean {
 
         val comparisonType = ruleConditionPredicate.comparisonType
         val comparisonValue = ruleConditionPredicate.comparisonValue
@@ -30,12 +34,16 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         comparisonValue: String
     ): Boolean {
         val convertedComparisonValue = fieldDataType.convertToFieldType(comparisonValue) as? T
-                ?: throw IllegalArgumentException("ComparisonValue Conversion of $comparisonValue to $fieldDataType failed for comparison $comparisonType.")
+                ?: throw IllegalArgumentException(
+                        "ComparisonValue Conversion of $comparisonValue to $fieldDataType " +
+                                "failed for comparison $comparisonType.")
 
         return when (dataValue) {
             is R -> comparisonType.compare(dataValue, convertedComparisonValue)
             is S -> comparisonType.compare(dataValue, convertedComparisonValue)
-            else -> throw IllegalArgumentException("Given converted comparisonValue $convertedComparisonValue could not be compared to $dataValue using the comparison $comparisonType.")
+            else -> throw IllegalArgumentException(
+                    "Given converted comparisonValue $convertedComparisonValue could not be " +
+                    "compared to $dataValue using the comparison $comparisonType.")
         }
     }
 }
