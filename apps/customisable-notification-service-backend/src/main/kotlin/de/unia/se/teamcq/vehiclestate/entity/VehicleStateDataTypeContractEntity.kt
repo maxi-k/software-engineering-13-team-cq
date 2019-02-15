@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 
 @Entity
+@PrimaryKeyJoinColumn(name = "dataTypeId")
 data class VehicleStateDataTypeContractEntity(
 
     @get: NotNull
@@ -18,12 +19,9 @@ data class VehicleStateDataTypeContractEntity(
     var vins: List<String>?,
 
     @get: NotNull
-    var calendarWeek: Int?,
+    var calendarWeek: Int?
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    var dataTypeId: Long?
-
-) : Serializable {
+) : VehicleStateDataTypeEntity, Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)
 }
