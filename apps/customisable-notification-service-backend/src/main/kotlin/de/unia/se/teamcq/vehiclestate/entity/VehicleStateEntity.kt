@@ -21,7 +21,12 @@ data class VehicleStateEntity(
     @JoinColumn(name = "fk_vehicle")
     var vehicleReference: VehicleReferenceEntity?
 
-    // TODO: Add VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
+        CascadeType.PERSIST])
+    @JoinColumn(name = "fk_vehicle")
+    var vehicleDataTypeBattery: VehicleDataTypeBattery?
+
+    // TODO: Add other VehicleStateDataTypeEntities. See https://www.baeldung.com/hibernate-inheritance
 
 ) : Serializable {
     // Necessary for MapStruct
