@@ -24,10 +24,8 @@ class VehicleStateDataProcessingJob : QuartzJobBean() {
     }
 
     private fun sendMail(fromEmail: String, toEmail: String, subject: String, body: String) {
-        logger.info("Sending Email to {}", toEmail)
-        logger.info("fromEmail: {}, subject: {}, body: {}", toEmail)
-
-        println("VehicleStateDataImport scheduling triggered!")
+        logger.info("Data Processing triggered!")
+        logger.info("fromEmail: {}, toEmail: {}, subject: {}, body: {}", fromEmail, toEmail, subject, body)
         // TODO. Code used in Quartz tutorial: https://www.callicoder.com/spring-boot-quartz-scheduler-email-scheduling-example/
     }
 

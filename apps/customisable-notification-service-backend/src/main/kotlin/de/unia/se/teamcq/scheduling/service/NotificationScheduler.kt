@@ -34,7 +34,7 @@ class NotificationScheduler : INotificationScheduler {
         try {
             val jobDetail = buildScheduledAggregatorRuleJobDetail("email", "subject", "body")
             val trigger = buildJobTrigger(jobDetail, "")
-            scheduler.scheduleJob(jobDetail, trigger)
+            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
         } catch (ex: SchedulerException) {
             logger.error("Error scheduling email", ex)
         }
@@ -44,7 +44,7 @@ class NotificationScheduler : INotificationScheduler {
         try {
             val jobDetail = buildDataImportJobDetail("email", "subject", "body")
             val trigger = buildJobTrigger(jobDetail, dataImportCronString)
-            scheduler.scheduleJob(jobDetail, trigger)
+            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
         } catch (ex: SchedulerException) {
             logger.error("Error scheduling email", ex)
         }
@@ -54,7 +54,7 @@ class NotificationScheduler : INotificationScheduler {
         try {
             val jobDetail = buildDataProcessingJobDetail("email", "subject", "body")
             val trigger = buildJobTrigger(jobDetail, dataProcessingCronString)
-            scheduler.scheduleJob(jobDetail, trigger)
+            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
         } catch (ex: SchedulerException) {
             logger.error("Error scheduling email", ex)
         }
@@ -87,7 +87,7 @@ class NotificationScheduler : INotificationScheduler {
             jobDataMap["body"] = body
 
             return JobBuilder.newJob(VehicleStateDataImportJob::class.java)
-                    .withIdentity(UUID.randomUUID().toString(), "email-jobs")
+                    .withIdentity("data-import", "vehicle-state-jobs")
                     .withDescription("Send Email Job")
                     .usingJobData(jobDataMap)
                     .storeDurably()
@@ -102,7 +102,7 @@ class NotificationScheduler : INotificationScheduler {
             jobDataMap["body"] = body
 
             return JobBuilder.newJob(VehicleStateDataProcessingJob::class.java)
-                    .withIdentity(UUID.randomUUID().toString(), "email-jobs")
+                    .withIdentity("data-processing", "vehicle-state-jobs")
                     .withDescription("Send Email Job")
                     .usingJobData(jobDataMap)
                     .storeDurably()
