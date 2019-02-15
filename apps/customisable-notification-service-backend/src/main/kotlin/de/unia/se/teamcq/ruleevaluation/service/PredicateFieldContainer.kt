@@ -39,9 +39,9 @@ class PredicateFieldContainer : IPredicateFieldContainer {
         predicateFieldName: String
     ): PredicateField? =
             getPredicateFieldProviderByName(predicateFieldProviderName)?.let { predicateFieldProvider ->
-                val predicateFieldsWithMatchingName = predicateFieldProvider.predicateFields.filter { predicateField ->
-                    predicateField.fieldName == predicateFieldName
-                }
+                val predicateFieldsWithMatchingName = predicateFieldProvider.getPredicateFieldsByName(
+                        predicateFieldName
+                )
                 return when {
                     predicateFieldsWithMatchingName.isEmpty() -> null
                     predicateFieldsWithMatchingName.size > 1 -> {
