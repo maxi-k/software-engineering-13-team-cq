@@ -21,7 +21,7 @@ enum class LogicalConnectiveType {
             iterable.none(predicate)
         }
     };
-    
+
     abstract fun getPredicateReducer(): PredicateReducer
 }
 
