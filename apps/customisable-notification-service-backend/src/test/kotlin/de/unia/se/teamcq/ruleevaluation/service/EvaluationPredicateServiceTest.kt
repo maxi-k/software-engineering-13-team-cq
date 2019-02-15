@@ -14,8 +14,6 @@ import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
-import java.lang.ClassCastException
-import java.lang.IllegalArgumentException
 import java.time.format.DateTimeParseException
 
 @ContextConfiguration(classes = [TestConfiguration::class])
