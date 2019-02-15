@@ -3,8 +3,10 @@ package de.unia.se.teamcq.ruleevaluation.service
 import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
 import de.unia.se.teamcq.ruleevaluation.model.LogicalConnectiveType
+import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import io.kotlintest.should
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -12,6 +14,7 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
+import java.lang.IllegalArgumentException
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class EvaluationServiceTest : StringSpec() {
@@ -103,6 +106,58 @@ class EvaluationServiceTest : StringSpec() {
                     )
                 }
                 evaluationService.checkCondition(compositeCondition, testVehicleState) shouldBe false
+            }
+
+            "Throw an exception if an unknown RuleCondition subtype is passed" {
+                val newRuleCondition = object : RuleCondition() { }
+                shouldThrow<IllegalArgumentException> {
+                    evaluationService.checkCondition(newRuleCondition, testVehicleState)
+                }
+            }
+
+            "Throw an exception if the LogicalConnective is null" {
+                val ruleConditionWithoutLogicalConnectiveType = TestUtils.getTestRuleConditionCompositeModel().apply {
+                    logicalConnective = null
+                }
+                shouldThrow<IllegalArgumentException> {
+                    evaluationService.checkCondition(ruleConditionWithoutLogicalConnectiveType, testVehicleState)
+                }
+            }
+
+            "Throw an exception if the providerName is null" {
+                val ruleConditionWithoutProviderName = TestUtils.getTestRuleConditionPredicateModel().apply {
+                   providerName = null
+                }
+                shouldThrow<IllegalArgumentException> {
+                    evaluationService.checkCondition(ruleConditionWithoutProviderName, testVehicleState)
+                }
+            }
+
+            "Throw an exception if the fieldName is null" {
+                val ruleConditionWithoutFieldName = TestUtils.getTestRuleConditionPredicateModel().apply {
+                    fieldName = null
+                }
+                shouldThrow<IllegalArgumentException> {
+                    evaluationService.checkCondition(ruleConditionWithoutFieldName, testVehicleState)
+                }
+            }
+
+            "Return false if the given VehicleState does not have the Fields required by the Predicate" {
+                val emptyVehicleState = TestUtils.getTestVehicleStateModel().apply {
+                    vehicleStateDataTypes = emptySet()
+                }
+                evaluationService.checkCondition(truePredicate, emptyVehicleState) shouldBe false
+            }
+
+            "Throw an exception if the given predicateFieldProvider could not be found" {
+                every {
+                    predicateFieldContainer.getPredicateFieldProviderByName(any())
+                } returns null
+
+                val ruleConditionWithoutFieldName = TestUtils.getTestRuleConditionPredicateModel()
+                shouldThrow<IllegalArgumentException> {
+                    evaluationService.checkCondition(ruleConditionWithoutFieldName, testVehicleState)
+                }
             }
         }
     }
