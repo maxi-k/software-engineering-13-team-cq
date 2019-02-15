@@ -14,7 +14,7 @@ data class VehicleStateDataTypeFuelDto(
     @get: NotNull
     var range: Int?
 
-) : Serializable {
+) : VehicleStateDataTypeDto, Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)
 }

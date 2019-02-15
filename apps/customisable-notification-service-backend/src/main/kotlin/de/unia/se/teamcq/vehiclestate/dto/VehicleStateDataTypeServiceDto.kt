@@ -14,7 +14,7 @@ data class VehicleStateDataTypeServiceDto(
     @get: NotNull
     var status: String?
 
-) : Serializable {
+) : VehicleStateDataTypeDto, Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)
 }

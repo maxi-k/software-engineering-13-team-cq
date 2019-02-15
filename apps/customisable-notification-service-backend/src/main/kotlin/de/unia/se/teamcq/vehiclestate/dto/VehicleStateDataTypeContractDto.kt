@@ -14,7 +14,7 @@ data class VehicleStateDataTypeContractDto(
     @get: NotNull
     var calendarWeek: Int?
 
-) : Serializable {
+) : VehicleStateDataTypeDto, Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null, null)
 }
