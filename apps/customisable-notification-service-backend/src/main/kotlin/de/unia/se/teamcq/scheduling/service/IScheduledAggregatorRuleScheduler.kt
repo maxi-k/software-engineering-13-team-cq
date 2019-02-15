@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.scheduling
+package de.unia.se.teamcq.scheduling.service
 
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.springframework.stereotype.Service

@@ -1,6 +1,7 @@
-package de.unia.se.teamcq.scheduling
+package de.unia.se.teamcq.scheduling.service
 
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
+import de.unia.se.teamcq.scheduling.job.ScheduledAggregatorRuleJob
 import org.quartz.JobBuilder
 import org.quartz.JobDataMap
 import org.quartz.JobDetail

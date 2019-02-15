@@ -1,4 +1,4 @@
-package de.unia.se.teamcq.scheduling
+package de.unia.se.teamcq.scheduling.job
 
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
