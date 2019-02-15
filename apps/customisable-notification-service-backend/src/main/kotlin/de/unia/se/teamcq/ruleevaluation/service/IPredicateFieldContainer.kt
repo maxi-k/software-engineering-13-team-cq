@@ -11,5 +11,5 @@ interface IPredicateFieldContainer {
 
     fun getPredicateFieldProviderByName(predicateFieldProviderName: String): IPredicateFieldProvider?
 
-    fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField<*, *>?
+    fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField?
 }

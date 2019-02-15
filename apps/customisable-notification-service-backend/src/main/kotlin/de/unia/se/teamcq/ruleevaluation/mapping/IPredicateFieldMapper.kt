@@ -7,5 +7,5 @@ import org.mapstruct.Mapper
 @Mapper(componentModel = "spring")
 interface IPredicateFieldMapper {
 
-    fun modelToDto(predicateField: PredicateField<*, *>): PredicateFieldDto
+    fun modelToDto(predicateField: PredicateField): PredicateFieldDto
 }

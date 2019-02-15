@@ -22,14 +22,14 @@ class EvaluationPredicateServiceTest : StringSpec() {
             val predicateField = TestUtils.getTestPredicateFieldModel()
             val vehicleStateDataType = TestUtils.getTestVehicleStateDataTypeBatteryModel()
             val predicate = TestUtils.getTestRuleConditionPredicateModel().apply {
-                comparisonValue = predicateField.fieldValueAccessor(vehicleStateDataType)
+                comparisonValue = vehicleStateDataType.retrieveFieldValue(predicateField.fieldName!!).toString()
             }
 
             evaluationPredicateService.checkPredicate(
                     predicate,
                     vehicleStateDataType,
                     predicateField
-            ) shouldBe false
+            ) shouldBe true
         }
     }
 }

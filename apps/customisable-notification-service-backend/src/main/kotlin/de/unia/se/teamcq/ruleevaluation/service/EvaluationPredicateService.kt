@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component
 @Component
 class EvaluationPredicateService : IEvaluationPredicateService {
 
-    override fun <T : VehicleStateDataType> checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: T, predicateField: PredicateField<T, *>): Boolean {
+    override fun checkPredicate(ruleConditionPredicate: RuleConditionPredicate, vehicleStateDataType: VehicleStateDataType, predicateField: PredicateField): Boolean {
 
         val comparisonType = ruleConditionPredicate.comparisonType
         val comparisonValue = ruleConditionPredicate.comparisonValue
 
         val fieldDataType = predicateField.dataType
-        val dataValue = predicateField.fieldValueAccessor(vehicleStateDataType)
+        val dataValue = vehicleStateDataType.retrieveFieldValue(predicateField.fieldName!!)
 
         return try {
             compareValues(comparisonType!!, fieldDataType!!, dataValue, comparisonValue!!)
@@ -26,6 +26,7 @@ class EvaluationPredicateService : IEvaluationPredicateService {
         }
     }
 
+    @Throws(IllegalArgumentException::class)
     private inline fun <reified T, reified R : Iterable<T>, reified S : Comparable<T>> compareValues(
         comparisonType: ComparisonType,
         fieldDataType: FieldDataType,

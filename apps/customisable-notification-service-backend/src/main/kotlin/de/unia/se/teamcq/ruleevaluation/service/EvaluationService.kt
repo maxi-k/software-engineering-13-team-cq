@@ -1,11 +1,9 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
-import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionPredicate
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
-import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -41,16 +39,14 @@ class EvaluationService : IEvaluationService {
                 }
                 // Find the PredicateField this Condition should use,
                 // throw an exception if it cannot be found or cast.
-                @Suppress("UNCHECKED_CAST")
                 val predicateField = predicateFieldContainer.getPredicateFieldByProviderAndName(
                         ruleCondition.providerName!!, ruleCondition.fieldName!!
-                ) as? PredicateField<VehicleStateDataType, Any>
-                        ?: throw IllegalArgumentException("The given VehicleStateDataType did not match the field name it was registered under.")
+                ) ?: throw IllegalArgumentException("The given VehicleStateDataType did not match the field name it was registered under.")
                 // Find the VehicleStateDataType this ConditionPredicate applies to.
                 // If the given VehicleState doesn't provide the required Datum, return false
                 val vehicleStateDataType = vehicleState.vehicleStateDataTypes?.let { vehicleStateDataTypes ->
                     vehicleStateDataTypes.find {
-                        it.predicateFieldProviderName === ruleCondition.providerName!!
+                        it.predicateFieldProviderName == ruleCondition.providerName!!
                     }
                 } ?: return false
 

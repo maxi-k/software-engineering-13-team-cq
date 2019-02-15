@@ -17,10 +17,10 @@ class PredicateFieldContainer : IPredicateFieldContainer {
 
     override fun getPredicateFieldProviderByName(predicateFieldProviderName: String): IPredicateFieldProvider? =
             predicateFieldProviders.find { predicateFieldProvider ->
-                predicateFieldProvider.predicateFieldProviderName === predicateFieldProviderName
+                predicateFieldProvider.predicateFieldProviderName == predicateFieldProviderName
             }
 
-    override fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField<*, *>? =
+    override fun getPredicateFieldByProviderAndName(predicateFieldProviderName: String, predicateFieldName: String): PredicateField? =
             getPredicateFieldProviderByName(predicateFieldProviderName)?.let {
                 it.predicateFields.find { predicateField ->
                     predicateField.fieldName == predicateFieldName

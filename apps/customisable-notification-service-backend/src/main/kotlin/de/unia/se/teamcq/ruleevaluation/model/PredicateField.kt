@@ -89,17 +89,15 @@ object EvaluationStrategies {
     )
 }
 
-data class PredicateField<ContainerType, FieldType>(
+data class PredicateField(
 
     var fieldName: String?,
 
     var dataType: FieldDataType?,
 
-    var possibleEvaluationStrategies: List<ComparisonType>,
-
-    var fieldValueAccessor: (ContainerType) -> FieldType?
+    var possibleEvaluationStrategies: List<ComparisonType>
 
 ) {
     // Necessary for MapStruct
-    constructor() : this(null, null, mutableListOf<ComparisonType>(), { null })
+    constructor() : this(null, null, mutableListOf<ComparisonType>())
 }

@@ -24,9 +24,18 @@ class VehicleStateDataTypeService(
 
     override val predicateFieldProviderName: String = "Service"
 
-    override val predicateFields: List<PredicateField<VehicleStateDataTypeService, Any>> = listOf(
-            PredicateField("dueDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC) { it.dueDate },
-            PredicateField("brakeFluid", FieldDataType.TEXT, EvaluationStrategies.TEXT) { it.brakeFluid },
-            PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT) { it.status }
+    override val predicateFields: List<PredicateField> = listOf(
+            PredicateField("dueDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
+            PredicateField("brakeFluid", FieldDataType.TEXT, EvaluationStrategies.TEXT),
+            PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
     )
+
+    @Throws(IllegalArgumentException::class)
+    override fun retrieveFieldValue(fieldName: String): Any? =
+            when (fieldName) {
+                "dueDate" -> this.dueDate
+                "brakeFluid" -> this.brakeFluid
+                "status" -> this.status
+                else -> super.retrieveFieldValue(fieldName)
+            }
 }
