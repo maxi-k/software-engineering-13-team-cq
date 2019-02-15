@@ -17,7 +17,7 @@ import java.util.Date
 import java.util.UUID
 
 @Component
-class ScheduledAggregatorRuleScheduler: IScheduledAggregatorRuleScheduler {
+class ScheduledAggregatorRuleScheduler : IScheduledAggregatorRuleScheduler {
 
     @Autowired
     private val scheduler: Scheduler? = null
@@ -29,7 +29,6 @@ class ScheduledAggregatorRuleScheduler: IScheduledAggregatorRuleScheduler {
             val jobDetail = buildJobDetail("email", "subject", "body")
             val trigger = buildJobTrigger(jobDetail, dateTime)
             scheduler!!.scheduleJob(jobDetail, trigger)
-
         } catch (ex: SchedulerException) {
             logger.error("Error scheduling email", ex)
         }

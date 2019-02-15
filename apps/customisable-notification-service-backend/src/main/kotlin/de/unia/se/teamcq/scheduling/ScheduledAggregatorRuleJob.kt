@@ -26,7 +26,6 @@ class ScheduledAggregatorRuleJob : QuartzJobBean() {
         logger.info("fromEmail: {}, subject: {}, body: {}", toEmail)
 
         // TODO. Code used in Quartz tutorial: https://www.callicoder.com/spring-boot-quartz-scheduler-email-scheduling-example/
-
     }
 
     companion object {
