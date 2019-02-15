@@ -26,12 +26,12 @@ class EvaluationServiceIntegrationTest : StringSpec() {
             "Evaluate a flat NotificationRule correctly" {
 
                 val testCondition = TestUtils.getTestRuleConditionPredicateModel()
-                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                     it.charge = testCondition.comparisonValue?.toDouble()?.plus(1)
                 }
                 evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
 
-                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                     it.charge = testCondition.comparisonValue?.toDouble()
                 }
 
@@ -44,12 +44,12 @@ class EvaluationServiceIntegrationTest : StringSpec() {
                 val testCondition = TestUtils.getTestRuleConditionCompositeModel().apply {
                     subConditions = listOf(predicateCondition)
                 }
-                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                val testVehicleState = TestUtils.getTestVehicleStateModel().updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                     it.charge = predicateCondition.comparisonValue?.toDouble()?.plus(1)
                 }
                 evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
 
-                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                     it.charge = predicateCondition.comparisonValue?.toDouble()
                 }
 
@@ -78,21 +78,21 @@ class EvaluationServiceIntegrationTest : StringSpec() {
                 val testVehicleState = TestUtils.getTestVehicleStateModel()
 
                 withClue("Values below the lower bound should be rejected") {
-                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                         it.charge = batteryLowerBound - 0.01
                     }
                     evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
                 }
 
                 withClue("Values above the upper bound should be rejected") {
-                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                         it.charge = batteryUpperBound + 0.01
                     }
                     evaluationService.checkCondition(testCondition, testVehicleState) shouldBe false
                 }
 
                 withClue("Values within the bound should be accepted (upper bound is inclusive)") {
-                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>("Battery") {
+                    testVehicleState.updateVehicleStateDataTypeField<VehicleStateDataTypeBattery>() {
                         it.charge = batteryUpperBound
                     }
                     evaluationService.checkCondition(testCondition, testVehicleState) shouldBe true

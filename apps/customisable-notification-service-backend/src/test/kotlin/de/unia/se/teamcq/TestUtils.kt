@@ -201,15 +201,16 @@ object TestUtils {
     }
 
     inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
-        dataTypeName: String,
         updater: (VehicleStateDatum) -> Unit
     ): VehicleState {
         this.vehicleStateDataTypes?.find {
-            it.predicateFieldProviderName == dataTypeName
+            it is VehicleStateDatum
         }?.apply {
             when (this) {
                 is VehicleStateDatum -> updater(this)
-                else -> throw IllegalArgumentException("Passed data type name $dataTypeName name in test did not fit required ${VehicleStateDatum::class.java} type.")
+                else -> throw IllegalArgumentException(
+                        "Passed data type in test did not fit required ${VehicleStateDatum::class.java} type."
+                )
             }
         }
         return this
