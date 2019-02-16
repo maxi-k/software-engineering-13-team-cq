@@ -94,7 +94,7 @@ class NotificationScheduler : INotificationScheduler {
         private fun buildScheduledAggregatorRuleJobDetail(ruleId: Long): JobDetail {
             val jobDataMap = JobDataMap()
 
-            jobDataMap["ruleId"] = ruleId
+            jobDataMap["ruleId"] = ruleId.toString()
 
             return JobBuilder.newJob(ScheduledAggregatorRuleJob::class.java)
                     .withIdentity(getScheduledNotificationJobKey(ruleId))

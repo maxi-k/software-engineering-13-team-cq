@@ -86,5 +86,18 @@ class NotificationSchedulerTest : StringSpec() {
                 scheduler.scheduleJob(any(), any(), any())
             }
         }
+
+        "ScheduleVehicleStateDataProcessing should schedule the Data Processing" {
+            clearMocks(scheduler, notificationScheduler)
+
+            every { scheduler.scheduleJob(any(), any(), any()) } just Runs
+            ReflectionTestUtils.setField(notificationScheduler, "dataProcessingCronString", "0 0/1 * * * ?")
+
+            notificationScheduler.scheduleVehicleStateDataProcessing()
+
+            verify(exactly = 1) {
+                scheduler.scheduleJob(any(), any(), any())
+            }
+        }
     }
 }
