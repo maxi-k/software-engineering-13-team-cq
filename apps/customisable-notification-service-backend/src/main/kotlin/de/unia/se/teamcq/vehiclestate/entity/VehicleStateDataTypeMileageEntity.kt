@@ -16,4 +16,4 @@ data class VehicleStateDataTypeMileageEntity(
     @get: NotNull
     var reached: Int? = null
 
-) : VehicleStateDataTypeEntity() 
+) : VehicleStateDataTypeEntity(), Serializable 

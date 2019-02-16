@@ -16,4 +16,4 @@ data class VehicleStateDataTypeEngineEntity(
     @get: NotNull
     var fuelType: String? = null
 
-) : VehicleStateDataTypeEntity() 
+) : VehicleStateDataTypeEntity(), Serializable

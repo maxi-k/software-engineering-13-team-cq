@@ -24,8 +24,9 @@ data class VehicleStateEntity(
     @JoinColumn(name = "fk_vehicle")
     var vehicleReference: VehicleReferenceEntity? = null,
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypes: HashSet<VehicleStateDataTypeEntity>? = hashSetOf<VehicleStateDataTypeEntity>()
+    @ElementCollection
+    @Column(name = "vehicle_state_data_type")
+    var vehicleStateDataTypes: Set<VehicleStateDataTypeEntity>? = hashSetOf<VehicleStateDataTypeEntity>()
 
     // Inheritance: See https://www.baeldung.com/hibernate-inheritance
 

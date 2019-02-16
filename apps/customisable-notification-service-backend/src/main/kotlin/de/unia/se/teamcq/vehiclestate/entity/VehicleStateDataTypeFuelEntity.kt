@@ -16,4 +16,4 @@ data class VehicleStateDataTypeFuelEntity(
     @get: NotNull
     var range: Int? = null
 
-) : VehicleStateDataTypeEntity() 
+) : VehicleStateDataTypeEntity(), Serializable
