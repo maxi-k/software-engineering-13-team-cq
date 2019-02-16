@@ -20,29 +20,11 @@ data class VehicleStateEntity(
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_vehicle")
-    var vehicleReference: VehicleReferenceEntity?,
+    var vehicleReference: VehicleReferenceEntity? = null,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeBattery: VehicleStateDataTypeBatteryEntity?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeContract: VehicleStateDataTypeContractEntity?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeEngine: VehicleStateDataTypeEngineEntity?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeFuel: VehicleStateDataTypeFuelEntity?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeMileage: VehicleStateDataTypeMileageEntity?,
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeService: VehicleStateDataTypeServiceEntity?
+    var vehicleStateDataTypes: Set<VehicleStateDataTypeEntity>? = hashSetOf()
 
     // Inheritance: See https://www.baeldung.com/hibernate-inheritance
 
-) : Serializable {
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null, null, null, null)
-}
+) : Serializable 
