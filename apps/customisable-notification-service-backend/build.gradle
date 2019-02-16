@@ -29,6 +29,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: "net.ltgt.apt"
 apply plugin: "net.ltgt.apt-idea"
 apply plugin: "net.ltgt.apt-eclipse"
+apply plugin: "idea"
 
 group = 'de.unia.se'
 version = "${version}"
@@ -45,9 +46,27 @@ jar {
     version = '0.1.0'
 }
 
-sourceSets{
-    main.java.srcDirs += 'src/main/kotlin/'
-    test.java.srcDirs += 'src/test/kotlin/'
+sourceSets {
+    main {
+        kotlin {
+            srcDirs = ['src/main/kotlin/', 'build/generated/src/apt/main', 'build/generated/src/kapt/main', 'build/generated/src/kaptKotlin/main']
+        }
+    }
+
+    test {
+        kotlin {
+            srcDirs = ['src/test/kotlin']
+        }
+    }
+}
+
+idea {
+    module {
+        // Marks the already(!) added srcDir as "generated"
+        generatedSourceDirs += file('build/generated/src/apt/main')
+        generatedSourceDirs += file('build/generated/src/kapt/main')
+        generatedSourceDirs += file('build/generated/src/kaptKotlin/main')
+    }
 }
 
 repositories {
