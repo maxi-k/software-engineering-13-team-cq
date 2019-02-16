@@ -21,7 +21,7 @@ data class VehicleStateDataTypeMileageEntity(
     @get: NotNull
     var reached: Int?
 
-) : VehicleStateDataTypeEntity, Serializable {
+) : VehicleStateDataTypeEntity(null), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null, null)
 }

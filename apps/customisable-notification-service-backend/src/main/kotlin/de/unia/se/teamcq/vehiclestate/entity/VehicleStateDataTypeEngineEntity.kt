@@ -21,7 +21,7 @@ data class VehicleStateDataTypeEngineEntity(
     @get: NotNull
     var fuelType: String?
 
-) : VehicleStateDataTypeEntity, Serializable {
+) : VehicleStateDataTypeEntity(null), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
+    constructor() : this(null, null, null)
 }

@@ -23,7 +23,7 @@ data class VehicleStateEntity(
     var vehicleReference: VehicleReferenceEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleStateDataTypeBattery: VehicleStateDataTypeBattery?,
+    var vehicleStateDataTypeBattery: VehicleStateDataTypeBatteryEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     var vehicleStateDataTypeContract: VehicleStateDataTypeContractEntity?,
