@@ -15,7 +15,7 @@ class VehicleStateDataTypeMileage(
 
     var reached: Int? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 

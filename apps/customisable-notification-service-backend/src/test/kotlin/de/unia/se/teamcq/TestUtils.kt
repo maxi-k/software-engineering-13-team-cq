@@ -161,7 +161,7 @@ object TestUtils {
     fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
         return VehicleStateDataTypeContract(
                 10,
-                listOf("1002A", "1008B"),
+                setOf("1002A", "1008B"),
                 9,
                 11
         )

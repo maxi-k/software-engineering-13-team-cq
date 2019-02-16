@@ -7,7 +7,7 @@ import javax.persistence.GenerationType
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-open class VehicleStateDataTypeEntity(
+abstract class VehicleStateDataTypeEntity(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var dataTypeId: Long? = 0
 )

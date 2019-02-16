@@ -15,7 +15,7 @@ class VehicleStateDataTypeBattery(
 
     var status: String? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 

@@ -15,7 +15,7 @@ class VehicleStateDataTypeEngine(
 
     var fuelType: String? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
 
