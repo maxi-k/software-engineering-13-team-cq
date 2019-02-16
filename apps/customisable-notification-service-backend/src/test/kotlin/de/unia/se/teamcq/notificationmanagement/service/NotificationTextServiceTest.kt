@@ -1,25 +1,21 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
 import de.unia.se.teamcq.TestUtils.getTestNotificationDataModel
-import io.kotlintest.should
 import io.kotlintest.specs.StringSpec
-import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.InjectMockKs
-import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.test.context.ContextConfiguration
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 
-@ContextConfiguration(classes = [TestConfiguration::class])
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class NotificationTextServiceTest : StringSpec() {
 
-    @InjectMockKs
+    @Autowired
     private lateinit var notificationTextService: NotificationTextService
 
     init {
-        MockKAnnotations.init(this)
 
-        "GetTextForNotification should work" should {
+        "GetTextForNotification should work" {
             val notificationData = getTestNotificationDataModel()
-            notificationTextService.getTextForNotification(notificationData)
+            notificationTextService.getHtmlMailTextForNotification(notificationData)
         }
     }
 }

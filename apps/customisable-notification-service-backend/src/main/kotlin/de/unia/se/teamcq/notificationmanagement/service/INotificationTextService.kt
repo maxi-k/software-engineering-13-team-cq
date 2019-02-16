@@ -15,5 +15,5 @@ interface INotificationTextService {
      *
      * @param notificationData The [NotificationData], containing all required information
      */
-    fun getTextForNotification(notificationData: NotificationData)
+    fun getHtmlMailTextForNotification(notificationData: NotificationData): String
 }
