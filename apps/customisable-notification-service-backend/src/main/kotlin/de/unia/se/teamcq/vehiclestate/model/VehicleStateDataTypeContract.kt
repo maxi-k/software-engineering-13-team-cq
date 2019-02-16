@@ -9,18 +9,15 @@ import org.springframework.stereotype.Component
 @Component
 class VehicleStateDataTypeContract(
 
-    var duePerWeek: Int?,
+    var duePerWeek: Int? = null,
 
-    var vins: List<String>?,
+    var vins: Set<String>? = null,
 
-    var calendarWeek: Int?,
+    var calendarWeek: Int? = null,
 
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
-
-    // Necessary for MapStruct
-    constructor() : this(null, mutableListOf<String>(), null, null)
 
     override val predicateFieldProviderName: String = "Contract"
 

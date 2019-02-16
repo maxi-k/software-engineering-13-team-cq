@@ -10,15 +10,14 @@ import javax.validation.constraints.NotNull
 data class VehicleStateDataTypeContractEntity(
 
     @get: NotNull
-    var duePerWeek: Int?,
+    var duePerWeek: Int? = null,
 
-    @Fetch(value = FetchMode.SUBSELECT)
-    var vins: List<String>?,
+    @ElementCollection
+    //@CollectionTable(name = "contract_vins", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "vin")
+    private Set<String> vins = new HashSet<>();
 
     @get: NotNull
-    var calendarWeek: Int?
+    var calendarWeek: Int? = null
 
-) : VehicleStateDataTypeEntity() {
-    // Necessary for MapStruct
-    constructor() : this(null, mutableListOf<String>(), null)
-}
+) : VehicleStateDataTypeEntity() 

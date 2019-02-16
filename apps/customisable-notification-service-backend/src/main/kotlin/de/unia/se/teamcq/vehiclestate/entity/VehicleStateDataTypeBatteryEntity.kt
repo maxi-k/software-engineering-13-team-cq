@@ -8,15 +8,12 @@ import javax.validation.constraints.NotNull
 data class VehicleStateDataTypeBatteryEntity(
 
     @get: NotNull
-    var charge: Double?,
+    var charge: Double? = null,
 
     @get: NotNull
-    var voltage: Double?,
+    var voltage: Double? = null,
 
     @get: NotNull
-    var status: String?
+    var status: String? = null
 
-) : VehicleStateDataTypeEntity() {
-    // Necessary for MapStruct
-    constructor() : this(null, null, null)
-}
+) : VehicleStateDataTypeEntity() 

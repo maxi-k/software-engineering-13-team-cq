@@ -9,18 +9,15 @@ import org.springframework.stereotype.Component
 @Component
 class VehicleStateDataTypeEngine(
 
-    var power: Int?,
+    var power: Int? = null,
 
-    var capacity: Int?,
+    var capacity: Int? = null,
 
-    var fuelType: String?,
+    var fuelType: String? = null,
 
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = "Engine"
 

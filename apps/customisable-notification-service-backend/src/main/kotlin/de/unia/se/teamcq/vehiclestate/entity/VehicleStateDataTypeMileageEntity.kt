@@ -8,15 +8,12 @@ import javax.validation.constraints.NotNull
 data class VehicleStateDataTypeMileageEntity(
 
     @get: NotNull
-    var current: Int?,
+    var current: Int? = null,
 
     @get: NotNull
-    var remaining: Int?,
+    var remaining: Int? = null,
 
     @get: NotNull
-    var reached: Int?
+    var reached: Int? = null
 
-) : VehicleStateDataTypeEntity() {
-    // Necessary for MapStruct
-    constructor() : this(null, null, null)
-}
+) : VehicleStateDataTypeEntity() 

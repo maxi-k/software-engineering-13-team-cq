@@ -9,18 +9,15 @@ import org.springframework.stereotype.Component
 @Component
 class VehicleStateDataTypeMileage(
 
-    var current: Int?,
+    var current: Int? = null,
 
-    var remaining: Int?,
+    var remaining: Int? = null,
 
-    var reached: Int?,
+    var reached: Int? = null,
 
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = "Mileage"
 

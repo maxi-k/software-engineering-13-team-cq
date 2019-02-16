@@ -9,15 +9,12 @@ import java.util.Date
 data class VehicleStateDataTypeServiceEntity(
 
     @get: NotNull
-    var dueDate: Date?,
+    var dueDate: Date? = null,
 
     @get: NotNull
-    var brakeFluid: String?,
+    var brakeFluid: String? = null,
 
     @get: NotNull
-    var status: String?
+    var status: String? = null
 
-) : VehicleStateDataTypeEntity() {
-    // Necessary for MapStruct
-    constructor() : this(null, null, null)
-}
+) : VehicleStateDataTypeEntity() 

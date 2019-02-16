@@ -10,18 +10,15 @@ import java.util.Date
 @Component
 class VehicleStateDataTypeService(
 
-    var dueDate: Date?,
+    var dueDate: Date? = null,
 
-    var brakeFluid: String?,
+    var brakeFluid: String? = null,
 
-    var status: String?,
+    var status: String? = null,
 
     dataTypeId: Long?
 
 ) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = "Service"
 
