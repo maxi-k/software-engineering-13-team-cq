@@ -7,20 +7,18 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery.Companio
 import org.springframework.stereotype.Component
 
 @Component
+// Constructor with (null)-default values for everything necessary for MapStruct
 class VehicleStateDataTypeContract(
 
-    var duePerWeek: Int?,
+    var duePerWeek: Int? = null,
 
-    var vins: List<String>?,
+    var vins: List<String>? = mutableListOf(),
 
-    var calendarWeek: Int?,
+    var calendarWeek: Int? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId) {
-
-    // Necessary for MapStruct
-    constructor() : this(null, mutableListOf<String>(), null, null)
 
     override val predicateFieldProviderName: String = PREDICATE_FIELD_PROVIDER_NAME
 

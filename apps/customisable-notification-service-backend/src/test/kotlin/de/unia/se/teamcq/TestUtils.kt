@@ -18,6 +18,7 @@ import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
+import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
 import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
@@ -65,8 +66,8 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
+import org.quartz.CronExpression
 import org.springframework.http.HttpHeaders
-import org.springframework.scheduling.support.CronTrigger
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -203,7 +204,7 @@ object TestUtils {
     inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
         updater: (VehicleStateDatum) -> Unit
     ): VehicleState {
-        this.vehicleStateDataTypes?.find { vehicleStateDataType ->
+        this.vehicleStateDataTypes.find { vehicleStateDataType ->
             vehicleStateDataType is VehicleStateDatum
         }?.apply {
             when (this) {
@@ -355,15 +356,15 @@ object TestUtils {
     }
 
     fun getTestAggregatorScheduledModel(): AggregatorScheduled {
-        return AggregatorScheduled(0, CronTrigger("0 0 10 * * MON"))
+        return AggregatorScheduled(0, CronExpression("0 15 10 ? * TUE"))
     }
 
     fun getTestAggregatorScheduledDto(): AggregatorScheduledDto {
-        return AggregatorScheduledDto(0, "0 0 10 * * MON")
+        return AggregatorScheduledDto(0, "0 15 10 ? * TUE")
     }
 
     fun getTestAggregatorScheduledEntity(): AggregatorScheduledEntity {
-        return AggregatorScheduledEntity(0, "0 0 10 * * MON")
+        return AggregatorScheduledEntity(0, "0 15 10 ? * TUE")
     }
 
     fun getTestAggregatorModel(): Aggregator {
@@ -489,6 +490,10 @@ object TestUtils {
                 getTestFleetReferenceEntity(),
                 getTestFleetReferenceEntityTwo()
         )
+    }
+
+    fun getTestNotificationDataModel(): NotificationData {
+        return NotificationData(getTestVehicleStateModel(), getTestNotificationRuleModel())
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

@@ -8,9 +8,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
         JsonSubTypes.Type(value = RuleConditionCompositeDto::class),
         JsonSubTypes.Type(value = RuleConditionPredicateDto::class)
 )
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class RuleConditionDto(
 
-    var conditionId: Long? = 0
+    var conditionId: Long? = null
 
 ) {
 

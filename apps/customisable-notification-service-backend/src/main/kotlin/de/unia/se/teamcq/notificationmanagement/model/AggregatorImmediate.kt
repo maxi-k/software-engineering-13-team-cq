@@ -1,8 +1,9 @@
 package de.unia.se.teamcq.notificationmanagement.model
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 class AggregatorImmediate(
 
-    aggregatorId: Long? = 0
+    aggregatorId: Long? = null
 
 ) : Aggregator(aggregatorId) {
 

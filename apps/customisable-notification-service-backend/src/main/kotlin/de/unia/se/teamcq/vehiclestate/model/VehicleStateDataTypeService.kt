@@ -7,20 +7,18 @@ import org.springframework.stereotype.Component
 import java.util.Date
 
 @Component
+// Constructor with (null)-default values for everything necessary for MapStruct
 class VehicleStateDataTypeService(
 
-    var dueDate: Date?,
+    var dueDate: Date? = null,
 
-    var brakeFluid: String?,
+    var brakeFluid: String? = null,
 
-    var status: String?,
+    var status: String? = null,
 
-    dataTypeId: Long?
+    dataTypeId: Long? = null
 
 ) : VehicleStateDataType(dataTypeId) {
-
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null)
 
     override val predicateFieldProviderName: String = PREDICATE_FIELD_PROVIDER_NAME
 

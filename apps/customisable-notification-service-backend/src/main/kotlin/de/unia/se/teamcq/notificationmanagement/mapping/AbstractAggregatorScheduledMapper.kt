@@ -5,8 +5,9 @@ import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import org.mapstruct.BeforeMapping
 import org.mapstruct.Mapper
-import org.springframework.scheduling.support.CronTrigger
+import org.quartz.CronExpression
 import org.springframework.stereotype.Component
+import java.text.ParseException
 
 @Mapper(componentModel = "spring", uses = [CronTriggerMapper::class])
 abstract class AbstractAggregatorScheduledMapper {
@@ -20,10 +21,10 @@ abstract class AbstractAggregatorScheduledMapper {
                     " is required but was null!")
         } else {
             try {
-                CronTrigger(aggregatorScheduledDto.notificationCronTrigger!!)
-            } catch (illegalArgumentException: IllegalArgumentException) {
-                throw IllegalArgumentException("Attribute NotificationCronTrigger of AggregatorScheduledDto" +
-                " must be a valid CronTrigger but was ${aggregatorScheduledDto.notificationCronTrigger!!}!")
+                CronExpression(aggregatorScheduledDto.notificationCronTrigger!!)
+            } catch (parseException: ParseException) {
+                throw IllegalArgumentException("Attribute notificationCronExpression of AggregatorScheduledDto" +
+                " must be a valid CronExpression but was ${aggregatorScheduledDto.notificationCronTrigger}!")
             }
         }
     }
@@ -44,11 +45,11 @@ abstract class AbstractAggregatorScheduledMapper {
 @Component
 object CronTriggerMapper {
 
-    fun stringToCronTrigger(string: String): CronTrigger {
-        return CronTrigger(string)
+    fun stringToCronExpression(string: String): CronExpression {
+        return CronExpression(string)
     }
 
-    fun cronTriggerToString(cronTrigger: CronTrigger): String {
-        return cronTrigger.expression
+    fun cronExpressionToString(cronExpression: CronExpression): String {
+        return cronExpression.cronExpression
     }
 }

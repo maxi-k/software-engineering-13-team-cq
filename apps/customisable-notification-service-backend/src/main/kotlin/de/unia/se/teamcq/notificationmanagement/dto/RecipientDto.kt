@@ -9,9 +9,10 @@ import java.io.Serializable
         JsonSubTypes.Type(value = RecipientMailDto::class),
         JsonSubTypes.Type(value = RecipientSmsDto::class)
 )
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class RecipientDto(
 
-    var recipientId: Long? = 0
+    var recipientId: Long? = null
 
 ) : Serializable {
 

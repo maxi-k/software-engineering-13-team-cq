@@ -4,7 +4,7 @@ import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 
 abstract class VehicleStateDataType(
 
-    var dataTypeId: Long?
+    var dataTypeId: Long? = null
 
 ) : IPredicateFieldProvider {
 

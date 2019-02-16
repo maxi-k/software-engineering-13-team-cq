@@ -25,9 +25,10 @@ enum class LogicalConnectiveType {
     abstract fun getPredicateReducer(): PredicateReducer
 }
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class RuleCondition(
 
-    var conditionId: Long? = 0
+    var conditionId: Long? = null
 
 ) {
 

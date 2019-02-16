@@ -2,6 +2,7 @@ package de.unia.se.teamcq.rulemanagement.service
 
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.rulemanagement.entity.INotificationRuleRepository
+import de.unia.se.teamcq.scheduling.service.INotificationScheduler
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -9,6 +10,7 @@ import io.mockk.every
 import io.mockk.verify
 import io.mockk.just
 import io.mockk.Runs
+import io.mockk.clearMocks
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import org.springframework.boot.test.context.TestConfiguration
@@ -19,6 +21,9 @@ class NotificationRuleServiceTest : StringSpec() {
 
     @MockK
     private lateinit var notificationRuleRepository: INotificationRuleRepository
+
+    @MockK
+    private lateinit var notificationScheduler: INotificationScheduler
 
     @InjectMockKs
     private lateinit var notificationRuleService: NotificationRuleService
@@ -52,33 +57,41 @@ class NotificationRuleServiceTest : StringSpec() {
 
         "CreateNotificationRule should work" {
             every { notificationRuleRepository.createNotificationRule(any()) } returns mockedNotificationRule
+            every { notificationScheduler.updateNotificationRuleScheduleAsNecessary(any()) } just Runs
 
             val notificationRules = notificationRuleService.createNotificationRule("test", mockedNotificationRule)
             notificationRules shouldBe notificationRules
 
             verify(exactly = 1) {
                 notificationRuleRepository.createNotificationRule(any())
+                notificationScheduler.updateNotificationRuleScheduleAsNecessary(any())
             }
         }
 
         "UpdateNotificationRule should work" {
+            clearMocks(notificationScheduler)
+
             every { notificationRuleRepository.updateNotificationRule(any()) } returns mockedNotificationRule
+            every { notificationScheduler.updateNotificationRuleScheduleAsNecessary(any()) } just Runs
 
             val notificationRules = notificationRuleService.updateNotificationRule(mockedNotificationRule)
             notificationRules shouldBe notificationRules
 
             verify(exactly = 1) {
                 notificationRuleRepository.updateNotificationRule(any())
+                notificationScheduler.updateNotificationRuleScheduleAsNecessary(any())
             }
         }
 
         "DeleteNotificationRule should work" {
-            every { notificationRuleRepository.deleteNotificationRule(any()) } just Runs
+            every { notificationRuleRepository.deleteNotificationRule(1) } just Runs
+            every { notificationScheduler.deleteNotificationRuleSchedule(1) } just Runs
 
             notificationRuleService.deleteNotificationRule(1)
 
             verify(exactly = 1) {
                 notificationRuleRepository.deleteNotificationRule(1)
+                notificationScheduler.deleteNotificationRuleSchedule((1))
             }
         }
     }
