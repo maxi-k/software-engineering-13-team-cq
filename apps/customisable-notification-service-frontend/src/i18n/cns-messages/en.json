@@ -88,9 +88,9 @@
     "cns.predicate.comparison.NOT_EQUAL_TO.label": "not equal to",
     "cns.predicate.comparison.EQUAL_TO.label": "equal to",
     "cns.predicate.comparison.GREATER_THAN.label": "greater than",
-    "cns.predicate.comparison.LESSER_THAN.label": "less than",
+    "cns.predicate.comparison.LESS_THAN.label": "less than",
     "cns.predicate.comparison.GREATER_THAN_OR_EQUAL_TO.label": "greater than or equal to",
-    "cns.predicate.comparison.LESSER_THAN_OR_EQUAL_TO.label": "less than or equal to",
+    "cns.predicate.comparison.LESS_THAN_OR_EQUAL_TO.label": "less than or equal to",
     "cns.predicate.comparison.CONTAINED_IN.label": "contained in",
     "cns.predicate.comparison.NOT_CONTAINED_IN.label": "not contained in",
 

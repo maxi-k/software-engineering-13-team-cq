@@ -7,30 +7,27 @@ import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
 import java.io.Serializable
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class NotificationRuleDto(
 
-    var ruleId: Long? = 0,
+    var ruleId: Long? = null,
 
-    var name: String?,
+    var name: String? = null,
 
-    var owner: UserDto?,
+    var owner: UserDto? = null,
 
-    var description: String?,
+    var description: String? = null,
 
-    var condition: RuleConditionDto?,
+    var condition: RuleConditionDto? = null,
 
-    var aggregator: AggregatorDto?,
+    var aggregator: AggregatorDto? = null,
 
-    var recipients: List<RecipientDto>,
+    var recipients: List<RecipientDto> = mutableListOf(),
 
-    var ownerAsAdditionalRecipient: Boolean?,
+    var ownerAsAdditionalRecipient: Boolean? = null,
 
-    var affectedFleets: List<FleetReferenceDto>?,
+    var affectedFleets: List<FleetReferenceDto> = mutableListOf(),
 
-    var affectingAllApplicableFleets: Boolean?
+    var affectingAllApplicableFleets: Boolean? = null
 
-) : Serializable {
-    // Necessary for MapStruct
-    constructor() : this(null, null, null, null, null, null, mutableListOf<RecipientDto>(), null,
-            mutableListOf<FleetReferenceDto>(), null)
-}
+) : Serializable

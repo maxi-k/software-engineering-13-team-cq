@@ -7,11 +7,12 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class RecipientEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var recipientId: Long? = 0
+    var recipientId: Long? = null
 
 ) : Serializable {
 

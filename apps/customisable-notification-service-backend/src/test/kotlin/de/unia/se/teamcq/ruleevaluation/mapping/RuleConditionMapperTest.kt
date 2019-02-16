@@ -28,7 +28,7 @@ import org.springframework.test.context.ContextConfiguration
 class RuleConditionMapperTest : StringSpec() {
 
     @MockK
-    lateinit var ruleConditionPredicateMapper: IRuleConditionPredicateMapper
+    lateinit var ruleConditionPredicateMapper: AbstractRuleConditionPredicateMapper
 
     @InjectMockKs
     lateinit var ruleConditionMapper: RuleConditionMapper

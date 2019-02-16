@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component
 class RuleConditionMapper : IRuleConditionMapper {
 
     @Autowired
-    lateinit var ruleConditionPredicateMapper: IRuleConditionPredicateMapper
+    lateinit var ruleConditionPredicateMapper: AbstractRuleConditionPredicateMapper
 
     override fun modelToDto(ruleConditionModel: RuleCondition): RuleConditionDto {
 

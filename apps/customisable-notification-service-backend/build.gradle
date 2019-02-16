@@ -44,29 +44,25 @@ compileTestKotlin {
 jar {
     baseName = 'se13-teamcq'
     version = '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'AnnotationProcessorKt'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
-sourceSets {
-    main {
-        kotlin {
-            srcDirs = ['src/main/kotlin/', 'build/generated/src/apt/main', 'build/generated/src/kapt/main', 'build/generated/src/kaptKotlin/main']
-        }
-    }
-
-    test {
-        kotlin {
-            srcDirs = ['src/test/kotlin']
-        }
-    }
+sourceSets{
+    main.java.srcDirs += 'src/main/kotlin/'
+    main.java.srcDirs += 'build/generated/source/kapt/main'
+    main.java.srcDirs += 'build/generated/source/apt/main'
+    main.java.srcDirs += 'build/generated/source/kaptKotlin/main'
+    test.java.srcDirs += 'src/test/kotlin/'
 }
 
 idea {
-    module {
-        // Marks the already(!) added srcDir as "generated"
-        generatedSourceDirs += file('build/generated/src/apt/main')
-        generatedSourceDirs += file('build/generated/src/kapt/main')
-        generatedSourceDirs += file('build/generated/src/kaptKotlin/main')
-    }
+    module.generatedSourceDirs += file('build/generated/source/kapt')
+    module.generatedSourceDirs += file('build/generated/source/apt')
+    module.generatedSourceDirs += file('build/generated/source/kaptKotlin')
 }
 
 repositories {
@@ -94,6 +90,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-data-jpa:$spring_boot_version"
     compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
     compile "org.springframework.boot:spring-boot-starter-security:$spring_boot_version"
+    compile "org.springframework.boot:spring-boot-starter-quartz:$spring_boot_version"
     compile "org.springframework.security:spring-security-test:4.1.3.RELEASE"
     compile "io.jsonwebtoken:jjwt:0.9.1"
     compile "com.google.code.gson:gson:$gson_version"

@@ -10,9 +10,10 @@ import java.io.Serializable
         JsonSubTypes.Type(value = AggregatorImmediateDto::class),
         JsonSubTypes.Type(value = AggregatorScheduledDto::class)
 )
+// Constructor with (null)-default values for everything necessary for MapStruct
 abstract class AggregatorDto(
 
-    var aggregatorId: Long? = 0
+    var aggregatorId: Long? = null
 
 ) : Serializable {
 
