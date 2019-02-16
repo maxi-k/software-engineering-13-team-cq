@@ -11,7 +11,7 @@ data class VehicleState(
     var vehicleReference: VehicleReference?,
 
     @get: NotNull
-    var vehicleStateDataTypes: Set<VehicleStateDataType>?
+    var vehicleStateDataTypes: HashSet<VehicleStateDataType>?
 
 ) {
     // Necessary for MapStruct
