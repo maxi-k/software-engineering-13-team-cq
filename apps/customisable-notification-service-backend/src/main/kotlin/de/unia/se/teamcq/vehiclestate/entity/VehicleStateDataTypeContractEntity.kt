@@ -5,6 +5,8 @@ import javax.persistence.Entity
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import javax.validation.constraints.NotNull
+import javax.persistence.ElementCollection
+import javax.persistence.Column
 
 @Entity
 data class VehicleStateDataTypeContractEntity(
@@ -15,7 +17,7 @@ data class VehicleStateDataTypeContractEntity(
     @ElementCollection
     //@CollectionTable(name = "contract_vins", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "vin")
-    private Set<String> vins = new HashSet<>();
+    var vins: Set<String>? = hashSetOf(),
 
     @get: NotNull
     var calendarWeek: Int? = null
