@@ -20,7 +20,7 @@ data class VehicleStateDataTypeBatteryEntity(
     @get: NotNull
     var status: String?
 
-) : VehicleStateDataTypeEntity(null), Serializable {
+) : VehicleStateDataTypeEntity(), Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }

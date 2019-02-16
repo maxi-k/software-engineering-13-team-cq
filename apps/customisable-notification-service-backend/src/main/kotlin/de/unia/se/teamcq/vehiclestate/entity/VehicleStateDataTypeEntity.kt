@@ -9,5 +9,5 @@ import javax.persistence.MappedSuperclass
 @MappedSuperclass
 abstract class VehicleStateDataTypeEntity(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    var dataTypeId: Long?
+    var dataTypeId: Long? = 0
 ) 

@@ -11,20 +11,18 @@ import javax.persistence.PrimaryKeyJoinColumn
 import javax.validation.constraints.NotNull
 
 @Entity
-@PrimaryKeyJoinColumn(name = "dataTypeId")
 data class VehicleStateDataTypeContractEntity(
 
     @get: NotNull
     var duePerWeek: Int?,
 
-    @get: NotNull
     @Fetch(value = FetchMode.SUBSELECT)
     var vins: List<String>?,
 
     @get: NotNull
     var calendarWeek: Int?
 
-) : VehicleStateDataTypeEntity(null), Serializable {
+) : VehicleStateDataTypeEntity(), Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null, null)
+    constructor() : this(null, mutableListOf<String>(), null)
 }

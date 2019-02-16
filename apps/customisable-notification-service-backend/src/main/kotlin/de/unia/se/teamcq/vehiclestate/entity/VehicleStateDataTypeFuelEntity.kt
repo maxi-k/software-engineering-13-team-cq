@@ -9,7 +9,6 @@ import javax.persistence.PrimaryKeyJoinColumn
 import javax.validation.constraints.NotNull
 
 @Entity
-@PrimaryKeyJoinColumn(name = "dataTypeId")
 data class VehicleStateDataTypeFuelEntity(
 
     @get: NotNull
@@ -21,7 +20,7 @@ data class VehicleStateDataTypeFuelEntity(
     @get: NotNull
     var range: Int?
 
-) : VehicleStateDataTypeEntity(null), Serializable {
+) : VehicleStateDataTypeEntity(), Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }

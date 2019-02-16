@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull
 import java.util.Date
 
 @Entity
-@PrimaryKeyJoinColumn(name = "dataTypeId")
 data class VehicleStateDataTypeServiceEntity(
 
     @get: NotNull
@@ -22,7 +21,7 @@ data class VehicleStateDataTypeServiceEntity(
     @get: NotNull
     var status: String?
 
-) : VehicleStateDataTypeEntity(null), Serializable {
+) : VehicleStateDataTypeEntity(), Serializable {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }
