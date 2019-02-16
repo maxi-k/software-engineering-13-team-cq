@@ -29,6 +29,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: "net.ltgt.apt"
 apply plugin: "net.ltgt.apt-idea"
 apply plugin: "net.ltgt.apt-eclipse"
+apply plugin: "idea"
 
 group = 'de.unia.se'
 version = "${version}"
@@ -43,11 +44,25 @@ compileTestKotlin {
 jar {
     baseName = 'se13-teamcq'
     version = '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'AnnotationProcessorKt'
+    }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 sourceSets{
     main.java.srcDirs += 'src/main/kotlin/'
+    main.java.srcDirs += 'build/generated/source/kapt/main'
+    main.java.srcDirs += 'build/generated/source/apt/main'
+    main.java.srcDirs += 'build/generated/source/kaptKotlin/main'
     test.java.srcDirs += 'src/test/kotlin/'
+}
+
+idea {
+    module.generatedSourceDirs += file('build/generated/source/kapt')
+    module.generatedSourceDirs += file('build/generated/source/apt')
+    module.generatedSourceDirs += file('build/generated/source/kaptKotlin')
 }
 
 repositories {
