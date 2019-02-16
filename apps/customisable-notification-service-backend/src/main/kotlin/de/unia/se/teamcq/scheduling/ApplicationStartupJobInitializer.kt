@@ -13,7 +13,7 @@ class ApplicationStartupJobInitializer {
     private lateinit var notificationScheduler: NotificationScheduler
 
     @EventListener(ApplicationReadyEvent::class)
-    fun doSomethingAfterStartup() {
+    fun initializeVehicleStateProcessingJobs() {
         notificationScheduler.scheduleVehicleStateDataImport()
         notificationScheduler.scheduleVehicleStateDataProcessing()
     }

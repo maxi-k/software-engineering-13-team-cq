@@ -18,6 +18,7 @@ import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
+import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.notificationmanagement.model.RecipientMail
 import de.unia.se.teamcq.notificationmanagement.model.RecipientSms
@@ -489,6 +490,10 @@ object TestUtils {
                 getTestFleetReferenceEntity(),
                 getTestFleetReferenceEntityTwo()
         )
+    }
+
+    fun getTestNotificationDataModel(): NotificationData {
+        return NotificationData(getTestVehicleStateModel(), getTestNotificationRuleModel())
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
