@@ -7,7 +7,7 @@ import javax.persistence.GenerationType
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class VehicleStateDataTypeEntity(
+open class VehicleStateDataTypeEntity(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var dataTypeId: Long? = 0
 ) : Serializable

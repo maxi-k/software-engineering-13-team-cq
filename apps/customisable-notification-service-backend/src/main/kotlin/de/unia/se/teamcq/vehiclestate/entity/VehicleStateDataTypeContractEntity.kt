@@ -17,7 +17,7 @@ data class VehicleStateDataTypeContractEntity(
     @ElementCollection
     //@CollectionTable(name = "contract_vins", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "vin")
-    var vins: Set<String>? = hashSetOf(),
+    var vins: Set<String>? = hashSetOf<String>(),
 
     @get: NotNull
     var calendarWeek: Int? = null

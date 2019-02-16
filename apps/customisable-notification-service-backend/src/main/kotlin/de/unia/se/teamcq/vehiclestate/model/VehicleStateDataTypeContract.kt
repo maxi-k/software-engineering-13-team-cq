@@ -11,7 +11,7 @@ class VehicleStateDataTypeContract(
 
     var duePerWeek: Int? = null,
 
-    var vins: Set<String>? = hashSetOf(),
+    var vins: Set<String>? = hashSetOf<String>(),
 
     var calendarWeek: Int? = null,
 
