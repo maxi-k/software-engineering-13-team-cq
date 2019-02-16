@@ -44,5 +44,5 @@ data class VehicleStateEntity(
 
 ) : Serializable {
     // Necessary for MapStruct
-    constructor() : this(null, null)
+    constructor() : this(null, null, null, null, null, null, null, null)
 }
