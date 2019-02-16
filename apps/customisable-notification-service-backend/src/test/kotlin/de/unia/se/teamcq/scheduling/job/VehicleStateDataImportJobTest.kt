@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.scheduling.job
 
+import de.unia.se.teamcq.scheduling.job.JobTestUtils.invokeScheduledJobExecuteInternal
 import de.unia.se.teamcq.vehiclestate.service.VehicleStateService
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -32,23 +33,11 @@ class VehicleStateDataImportJobTest : StringSpec() {
 
             every { vehicleStateService.importNewVehicleData() } just Runs
 
-            invokeExecuteInternal(vehicleStateDataImportJob, jobExecutionContext)
+            invokeScheduledJobExecuteInternal(vehicleStateDataImportJob, jobExecutionContext)
 
             verify(exactly = 1) {
                 vehicleStateService.importNewVehicleData()
             }
         }
-    }
-
-    // Can't test this without reflection because Kotlin interprets protected differently than Java and
-    // VehicleStateDataImportJob overrides a protected Quartz method
-    private fun invokeExecuteInternal(
-        vehicleStateDataImportJob: VehicleStateDataImportJob,
-        jobExecutionContext: JobExecutionContext
-    ) {
-
-        val method = vehicleStateDataImportJob.javaClass.getDeclaredMethod("executeInternal", JobExecutionContext::class.java)
-        method.isAccessible = true
-        method.invoke(vehicleStateDataImportJob, jobExecutionContext)
     }
 }

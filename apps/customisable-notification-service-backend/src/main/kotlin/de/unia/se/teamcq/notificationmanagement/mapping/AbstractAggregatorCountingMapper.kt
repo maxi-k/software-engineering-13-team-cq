@@ -18,7 +18,7 @@ abstract class AbstractAggregatorCountingMapper {
                     " is required but was null!")
         } else if (aggregatorCountingDto.notificationCountThreshold!! < 0) {
             throw IllegalArgumentException("Attribute NotificationCountThreshold of AggregatorCountingDto " +
-                    " has to be above 0 but was ${aggregatorCountingDto.notificationCountThreshold!!}")
+                    " has to be above 0 but was ${aggregatorCountingDto.notificationCountThreshold}")
         }
     }
 

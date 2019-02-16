@@ -24,7 +24,7 @@ abstract class AbstractAggregatorScheduledMapper {
                 CronExpression(aggregatorScheduledDto.notificationCronTrigger!!)
             } catch (parseException: ParseException) {
                 throw IllegalArgumentException("Attribute notificationCronExpression of AggregatorScheduledDto" +
-                " must be a valid CronExpression but was ${aggregatorScheduledDto.notificationCronTrigger!!}!")
+                " must be a valid CronExpression but was ${aggregatorScheduledDto.notificationCronTrigger}!")
             }
         }
     }

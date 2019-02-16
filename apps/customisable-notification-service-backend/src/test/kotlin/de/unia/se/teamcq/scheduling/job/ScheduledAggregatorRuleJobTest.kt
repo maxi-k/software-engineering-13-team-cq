@@ -3,6 +3,7 @@ package de.unia.se.teamcq.scheduling.job
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.notificationmanagement.service.NotificationService
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
+import de.unia.se.teamcq.scheduling.job.JobTestUtils.invokeScheduledJobExecuteInternal
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
@@ -50,23 +51,11 @@ class ScheduledAggregatorRuleJobTest : StringSpec() {
             every { notificationRuleService.getNotificationRule(any()) } returns notificationRule
             every { notificationService.sendNotificationForScheduledRule(any()) } just Runs
 
-            invokeExecuteInternal(scheduledAggregatorRuleJob, jobExecutionContext)
+            invokeScheduledJobExecuteInternal(scheduledAggregatorRuleJob, jobExecutionContext)
 
             verify(exactly = 1) {
                 notificationService.sendNotificationForScheduledRule(any())
             }
         }
-    }
-
-    // Can't test this without reflection because Kotlin interprets protected differently than Java and
-    // ScheduledAggregatorRuleJob overrides a protected Quartz method
-    private fun invokeExecuteInternal(
-        scheduledAggregatorRuleJob: ScheduledAggregatorRuleJob,
-        jobExecutionContext: JobExecutionContext
-    ) {
-
-        val method = scheduledAggregatorRuleJob.javaClass.getDeclaredMethod("executeInternal", JobExecutionContext::class.java)
-        method.isAccessible = true
-        method.invoke(scheduledAggregatorRuleJob, jobExecutionContext)
     }
 }

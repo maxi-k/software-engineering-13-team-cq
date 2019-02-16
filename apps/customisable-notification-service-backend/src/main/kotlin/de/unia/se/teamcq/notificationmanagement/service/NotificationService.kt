@@ -9,14 +9,17 @@ import org.springframework.stereotype.Component
 class NotificationService : INotificationService {
 
     override fun sendNotificationForScheduledRule(notificationRule: NotificationRule) {
+        // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
         logger.info("Sending notifications for scheduled rule with ID {}", notificationRule.ruleId)
     }
 
     override fun sendNotificationForNonScheduledRule(notificationRule: NotificationRule) {
+        // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
         logger.info("Sending notifications for non-scheduled rule with ID {}", notificationRule.ruleId)
     }
 
     override fun storeNotificationData(notificationData: NotificationData) {
+        // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
         logger.info("Storing notificationData for rule with ID {}", notificationData.notificationRule.ruleId)
     }
 
