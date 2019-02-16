@@ -4,5 +4,8 @@ interface IPredicateFieldProvider {
 
     val predicateFieldProviderName: String
 
-    val predicateFields: List<PredicateField>
+    val predicateFields: Map<String, PredicateField>
+
+    fun predicateFieldValues(): List<PredicateField> =
+            predicateFields.values.toList()
 }
