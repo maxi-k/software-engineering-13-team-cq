@@ -1,9 +1,12 @@
 package de.unia.se.teamcq.scheduling.job
 
+import de.unia.se.teamcq.notificationmanagement.service.INotificationService
+import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import org.quartz.DisallowConcurrentExecution
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.quartz.QuartzJobBean
 import org.springframework.stereotype.Component
 
@@ -11,23 +14,24 @@ import org.springframework.stereotype.Component
 @DisallowConcurrentExecution
 class ScheduledAggregatorRuleJob : QuartzJobBean() {
 
+    @Autowired
+    private lateinit var notificationService: INotificationService
+
+    @Autowired
+    private lateinit var notificationRuleService: INotificationRuleService
+
     @Throws(JobExecutionException::class)
     override fun executeInternal(jobExecutionContext: JobExecutionContext) {
-        logger.info("Executing Job with key {}", jobExecutionContext.jobDetail.key)
+        logger.info("Sending notifications for scheduled notification rule job {}", jobExecutionContext.jobDetail.key)
 
         val jobDataMap = jobExecutionContext.mergedJobDataMap
-        val subject = jobDataMap.getString("subject")
-        val body = jobDataMap.getString("body")
-        val recipientEmail = jobDataMap.getString("email")
+        val ruleId = jobDataMap.getLongValueFromString("ruleId")
 
-        sendMail("username", recipientEmail, subject, body)
-    }
+        val notificationRule = notificationRuleService.getNotificationRule(ruleId)
+        notificationService.sendNotificationForScheduledRule(notificationRule!!)
 
-    private fun sendMail(fromEmail: String, toEmail: String, subject: String, body: String) {
-        logger.info("Sending Email to {}", toEmail)
-        logger.info("fromEmail: {}, subject: {}, body: {}", toEmail)
-
-        // TODO. Code used in Quartz tutorial: https://www.callicoder.com/spring-boot-quartz-scheduler-email-scheduling-example/
+        logger.info("Finished sending notifications for scheduled notification rule job {}",
+                jobExecutionContext.jobDetail.key)
     }
 
     companion object {

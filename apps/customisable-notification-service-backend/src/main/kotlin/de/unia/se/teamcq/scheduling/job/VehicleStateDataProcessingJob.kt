@@ -1,9 +1,11 @@
 package de.unia.se.teamcq.scheduling.job
 
+import de.unia.se.teamcq.notificationmanagement.service.IRuleStateProcessingService
 import org.quartz.DisallowConcurrentExecution
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.quartz.QuartzJobBean
 import org.springframework.stereotype.Component
 
@@ -11,22 +13,16 @@ import org.springframework.stereotype.Component
 @DisallowConcurrentExecution
 class VehicleStateDataProcessingJob : QuartzJobBean() {
 
+    @Autowired
+    private lateinit var ruleStateProcessingService: IRuleStateProcessingService
+
     @Throws(JobExecutionException::class)
     override fun executeInternal(jobExecutionContext: JobExecutionContext) {
-        logger.info("Executing Job with key {}", jobExecutionContext.jobDetail.key)
-
-        val jobDataMap = jobExecutionContext.mergedJobDataMap
-        val subject = jobDataMap.getString("subject")
-        val body = jobDataMap.getString("body")
-        val recipientEmail = jobDataMap.getString("email")
-
-        sendMail("username", recipientEmail, subject, body)
-    }
-
-    private fun sendMail(fromEmail: String, toEmail: String, subject: String, body: String) {
-        logger.info("Data Processing triggered!")
-        logger.info("fromEmail: {}, toEmail: {}, subject: {}, body: {}", fromEmail, toEmail, subject, body)
-        // TODO. Code used in Quartz tutorial: https://www.callicoder.com/spring-boot-quartz-scheduler-email-scheduling-example/
+        logger.info("Starting to process new Vehicle States")
+        val started = System.currentTimeMillis()
+        ruleStateProcessingService.processNewVehicleStates()
+        val time = (System.currentTimeMillis() - started) / 1000
+        logger.info("Finished processing new Vehicle States in {} s", time)
     }
 
     companion object {
