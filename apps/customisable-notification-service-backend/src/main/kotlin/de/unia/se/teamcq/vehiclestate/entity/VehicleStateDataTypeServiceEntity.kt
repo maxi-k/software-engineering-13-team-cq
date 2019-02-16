@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.PrimaryKeyJoinColumn
 import javax.validation.constraints.NotNull
+import java.util.Date
 
 @Entity
 @PrimaryKeyJoinColumn(name = "dataTypeId")

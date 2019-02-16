@@ -23,22 +23,22 @@ data class VehicleStateEntity(
     var vehicleReference: VehicleReferenceEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeBattery: VehicleDataTypeBattery?,
+    var vehicleStateDataTypeBattery: VehicleStateDataTypeBattery?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeContract: VehicleDataTypeContractEntity?,
+    var vehicleStateDataTypeContract: VehicleStateDataTypeContractEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeEngine: VehicleDataTypeEngineEntity?,
+    var vehicleStateDataTypeEngine: VehicleStateDataTypeEngineEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeFuel: VehicleDataTypeFuelEntity?,
+    var vehicleStateDataTypeFuel: VehicleStateDataTypeFuelEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeMileage: VehicleDataTypeMileageEntity?,
+    var vehicleStateDataTypeMileage: VehicleStateDataTypeMileageEntity?,
 
     @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    var vehicleDataTypeService: VehicleDataTypeServiceEntity?
+    var vehicleStateDataTypeService: VehicleStateDataTypeServiceEntity?
 
     // Inheritance: See https://www.baeldung.com/hibernate-inheritance
 
