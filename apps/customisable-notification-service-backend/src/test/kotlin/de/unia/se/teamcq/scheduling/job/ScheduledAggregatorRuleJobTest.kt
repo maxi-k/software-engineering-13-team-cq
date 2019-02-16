@@ -59,7 +59,7 @@ class ScheduledAggregatorRuleJobTest : StringSpec() {
     }
 
     // Can't test this without reflection because Kotlin interprets protected differently than Java and
-    // ScheduledAggregatorRuleJob overrides a protected Spring method
+    // ScheduledAggregatorRuleJob overrides a protected Quartz method
     private fun invokeExecuteInternal(
         scheduledAggregatorRuleJob: ScheduledAggregatorRuleJob,
         jobExecutionContext: JobExecutionContext

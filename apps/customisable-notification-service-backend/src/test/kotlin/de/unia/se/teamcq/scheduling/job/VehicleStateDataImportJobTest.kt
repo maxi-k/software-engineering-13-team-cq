@@ -41,7 +41,7 @@ class VehicleStateDataImportJobTest : StringSpec() {
     }
 
     // Can't test this without reflection because Kotlin interprets protected differently than Java and
-    // VehicleStateDataImportJob overrides a protected Spring method
+    // VehicleStateDataImportJob overrides a protected Quartz method
     private fun invokeExecuteInternal(
         vehicleStateDataImportJob: VehicleStateDataImportJob,
         jobExecutionContext: JobExecutionContext
