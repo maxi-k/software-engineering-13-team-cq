@@ -2,10 +2,6 @@ package de.unia.se.teamcq.vehiclestate.entity
 
 import java.io.Serializable
 import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.PrimaryKeyJoinColumn
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -20,7 +16,7 @@ data class VehicleStateDataTypeFuelEntity(
     @get: NotNull
     var range: Int?
 
-) : VehicleStateDataTypeEntity(), Serializable {
+) : VehicleStateDataTypeEntity() {
     // Necessary for MapStruct
     constructor() : this(null, null, null)
 }

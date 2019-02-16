@@ -10,4 +10,4 @@ import javax.persistence.MappedSuperclass
 abstract class VehicleStateDataTypeEntity(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var dataTypeId: Long? = 0
-) 
+) : Serializable
