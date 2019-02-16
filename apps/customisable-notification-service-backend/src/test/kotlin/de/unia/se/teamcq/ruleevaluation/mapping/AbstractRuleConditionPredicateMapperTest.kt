@@ -5,15 +5,17 @@ import de.unia.se.teamcq.TestUtils.getTestRuleConditionPredicateEntity
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionPredicateModel
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import org.mapstruct.factory.Mappers
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
+import java.lang.IllegalArgumentException
 
 @ContextConfiguration(classes = [(TestConfiguration::class)])
-class RuleConditionPredicateMapperTest : StringSpec() {
+class AbstractRuleConditionPredicateMapperTest : StringSpec() {
 
-    private var ruleConditionPredicateMapper: IRuleConditionPredicateMapper = Mappers.getMapper(IRuleConditionPredicateMapper::class.java)
+    private var ruleConditionPredicateMapper: AbstractRuleConditionPredicateMapper = Mappers.getMapper(AbstractRuleConditionPredicateMapper::class.java)
 
     init {
 
@@ -75,6 +77,28 @@ class RuleConditionPredicateMapperTest : StringSpec() {
             ruleConditionPredicateModel.fieldName shouldBe expectedRuleConditionPredicateModel.fieldName
             ruleConditionPredicateModel.comparisonType shouldBe expectedRuleConditionPredicateModel.comparisonType
             ruleConditionPredicateModel.comparisonValue shouldBe expectedRuleConditionPredicateModel.comparisonValue
+        }
+
+        "Throw an Exception if the fieldName or providerName fields are null" {
+            val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                providerName = null
+                fieldName = null
+            }
+
+            shouldThrow<IllegalArgumentException> {
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
+            }
+        }
+
+        "Throw an Exception if the fieldName or providerName fields are blank" {
+            val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                providerName = ""
+                fieldName = ""
+            }
+
+            shouldThrow<IllegalArgumentException> {
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
+            }
         }
     }
 }

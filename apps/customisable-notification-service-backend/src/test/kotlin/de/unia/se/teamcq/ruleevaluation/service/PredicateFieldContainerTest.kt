@@ -1,9 +1,12 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
+import de.unia.se.teamcq.TestUtils
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
+import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
+import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import org.springframework.boot.test.context.TestConfiguration
@@ -22,9 +25,41 @@ class PredicateFieldContainerTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "GetPredicateFieldProviders should return expected PredicateFieldProviders" {
-
             val predicateFieldProviders = predicateFieldContainer.getPredicateFieldProviders()
             predicateFieldProviders shouldBe mockedPredicateFieldProviders
+        }
+
+        "GetPredicateFieldProviders" should {
+
+            val mockedProvider = TestUtils.getTestPredicateFieldProviderModel()
+            // We need to mock the iterator instead of the `filter` function
+            // used in the #getPredicateFieldProviderByName function,
+            // because filter itself is an inline function, and does not exist
+            // in byte-code.
+            every { mockedPredicateFieldProviders.iterator() } returns listOf(mockedProvider).iterator()
+
+            "Find a model stored by the PredicateFieldProvider set" {
+                predicateFieldContainer.getPredicateFieldProviderByName(
+                        mockedProvider.predicateFieldProviderName
+                ) shouldBe mockedProvider
+            }
+
+            "Return null if the Provider does not exist" {
+                predicateFieldContainer.getPredicateFieldProviderByName(
+                        "nonExistent"
+                ) shouldBe null
+            }
+
+            "Return a value if multiple Providers exist" {
+                every { mockedPredicateFieldProviders.iterator() } returns listOf(
+                        mockedProvider,
+                        mockedProvider
+                ).iterator()
+
+                predicateFieldContainer.getPredicateFieldProviderByName(
+                        mockedProvider.predicateFieldProviderName
+                ) shouldBe mockedProvider
+            }
         }
     }
 }

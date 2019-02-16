@@ -56,6 +56,7 @@ import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
@@ -71,6 +72,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
+import java.lang.IllegalArgumentException
 import java.util.Date
 
 object TestUtils {
@@ -198,6 +200,22 @@ object TestUtils {
         )
     }
 
+    inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
+        updater: (VehicleStateDatum) -> Unit
+    ): VehicleState {
+        this.vehicleStateDataTypes.find { vehicleStateDataType ->
+            vehicleStateDataType is VehicleStateDatum
+        }?.apply {
+            when (this) {
+                is VehicleStateDatum -> updater(this)
+                else -> throw IllegalArgumentException(
+                        "Passed data type in test did not fit required ${VehicleStateDatum::class.java} type."
+                )
+            }
+        }
+        return this
+    }
+
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
@@ -226,15 +244,15 @@ object TestUtils {
     }
 
     fun getTestRuleConditionPredicateModel(): RuleConditionPredicate {
-        return RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicate(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionPredicateDto(): RuleConditionPredicateDto {
-        return RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicateDto(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionPredicateEntity(): RuleConditionPredicateEntity {
-        return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESSER_THAN_OR_EQUAL_TO, "0.1")
+        return RuleConditionPredicateEntity(0, "Battery", "charge", ComparisonType.LESS_THAN_OR_EQUAL_TO, "0.1")
     }
 
     fun getTestRuleConditionCompositeModel(): RuleConditionComposite {

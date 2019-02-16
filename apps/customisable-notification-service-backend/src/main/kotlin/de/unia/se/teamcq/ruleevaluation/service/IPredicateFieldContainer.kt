@@ -15,4 +15,6 @@ import org.springframework.stereotype.Service
 interface IPredicateFieldContainer {
 
     fun getPredicateFieldProviders(): Set<IPredicateFieldProvider>
+
+    fun getPredicateFieldProviderByName(predicateFieldProviderName: String): IPredicateFieldProvider?
 }
