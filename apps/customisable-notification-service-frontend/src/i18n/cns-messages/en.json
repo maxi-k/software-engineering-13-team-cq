@@ -25,6 +25,7 @@
 
     "cns.rule.field.name.label": "Rule Name",
     "cns.rule.field.description.label": "Description",
+    "cns.rule.field.owner.label": "Rule Owner",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.recipients.label": "Recipients",
     "cns.rule.field.applyToAllFleets.label": "Apply this rule to all fleets?",

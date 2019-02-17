@@ -12,8 +12,9 @@ import ViewHeader from '@/modules/shared/components/ViewHeader'
 import BackButton from '@/modules/shared/parts/BackButton'
 import RuleIcon from '@/modules/shared/components/RuleIcon'
 
-import FieldDescriptor from '@/modules/rule-detail/components/FieldDescriptor'
-import RuleRecipientTag from '@/modules/rule-detail/components/RuleRecipientTag'
+import FieldDescriptor from '../components/FieldDescriptor'
+import PropertyTag from '../components/PropertyTag'
+import RuleRecipientTag from '../components/RuleRecipientTag'
 
 interface RuleDetailAttributes {
   rule: NotificationRuleDetail
@@ -82,6 +83,12 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
           <FieldDescriptor
             label={"cns.rule.field.recipients.label"}
             content={<>
+              {
+                rule.ownerAsAdditionalRecipient &&
+                <PropertyTag>
+                  <FormattedMessage id="cns.rule.field.owner.label" />
+                </PropertyTag>
+              }
               {
                 rule.recipients.map(
                   (recipient) => <RuleRecipientTag
