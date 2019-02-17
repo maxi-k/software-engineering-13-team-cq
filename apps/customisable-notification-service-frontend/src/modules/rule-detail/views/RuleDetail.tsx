@@ -100,6 +100,22 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
         </StyledInfoBlock>
         <StyledInfoBlock>
           <FieldDescriptor
+            label={"cns.rule.field.affectedFleets.label"}
+            content={rule.applyToAllFleets
+              ? <FormattedMessage id="cns.rule.field.affectedFleets.value.all.label" />
+              : <>{
+                rule.fleets.map((fleet) => (
+                  <PropertyTag>
+                    {fleet.name} (
+                    <FormattedMessage
+                      id="cns.rule.field.affectedFleets.value.vehicleCount.label"
+                      values={{ vehicleCount: fleet.numberOfVehicles }} />)
+                  </PropertyTag>
+                ))
+              } </>
+            } />
+          <StyledFieldSeparator />
+          <FieldDescriptor
             label={"cns.rule.field.dataSources.label"}
             content={<>
               {rule.dataSources.map((dataSource) => (
