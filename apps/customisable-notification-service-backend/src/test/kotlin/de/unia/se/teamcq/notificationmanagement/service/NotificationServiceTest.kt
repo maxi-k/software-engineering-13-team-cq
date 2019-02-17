@@ -6,11 +6,15 @@ import io.kotlintest.should
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class NotificationServiceTest : StringSpec() {
+
+    @MockK
+    private lateinit var notificationTextService: INotificationTextService
 
     @InjectMockKs
     private lateinit var notificationService: NotificationService

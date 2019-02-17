@@ -48,6 +48,7 @@ import de.unia.se.teamcq.user.dto.UserSettingsDto
 import de.unia.se.teamcq.user.entity.UserEntity
 import de.unia.se.teamcq.user.entity.UserSettingsEntity
 import de.unia.se.teamcq.user.model.User
+import de.unia.se.teamcq.user.model.UserLocale
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
@@ -135,7 +136,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettings(0, UserNotificationType.EMAIL)
+                userSettings = UserSettings(0, UserNotificationType.EMAIL, UserLocale.EN)
         )
     }
 
@@ -144,7 +145,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettingsDto(0, UserNotificationType.EMAIL)
+                userSettings = UserSettingsDto(0, UserNotificationType.EMAIL, UserLocale.EN)
         )
     }
 
@@ -153,7 +154,7 @@ object TestUtils {
                 name = "Max Mustermann",
                 mailAddress = "test@example.de",
                 cellPhoneNumber = "1",
-                userSettings = UserSettingsEntity(0, UserNotificationType.EMAIL),
+                userSettings = UserSettingsEntity(0, UserNotificationType.EMAIL, UserLocale.EN),
                 notificationRules = emptySet())
     }
 
@@ -493,7 +494,7 @@ object TestUtils {
     }
 
     fun getTestNotificationDataModel(): NotificationData {
-        return NotificationData(getTestVehicleStateModel(), getTestNotificationRuleModel())
+        return NotificationData(getTestNotificationRuleModel(), setOf(getTestVehicleStateModel()))
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {

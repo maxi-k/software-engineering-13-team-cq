@@ -1,14 +1,16 @@
 package de.unia.se.teamcq.user.model
 
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class UserSettings(
 
-    var settingsId: Long?,
+    var settingsId: Long? = null,
 
-    var userNotificationType: UserNotificationType?
+    var userNotificationType: UserNotificationType? = null,
+
+    var locale: UserLocale? = null
 ) {
-    constructor(): this(null, null)
 
     companion object {
-        val DEFAULT_USER_SETTINGS = UserSettings(0, UserNotificationType.EMAIL)
+        val DEFAULT_USER_SETTINGS = UserSettings(null, UserNotificationType.EMAIL, UserLocale.EN)
     }
 }

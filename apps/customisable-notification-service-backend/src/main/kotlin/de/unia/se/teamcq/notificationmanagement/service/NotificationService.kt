@@ -3,10 +3,14 @@ package de.unia.se.teamcq.notificationmanagement.service
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
 class NotificationService : INotificationService {
+
+    @Autowired
+    private lateinit var notificationTextService: INotificationTextService
 
     override fun sendNotificationForScheduledRule(notificationRule: NotificationRule) {
         // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
