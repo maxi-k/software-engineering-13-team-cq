@@ -49,7 +49,6 @@ class NotificationAttachmentServiceTest : StringSpec() {
                 val formattedExpectedCsvContent = expectedCsvContext.replace(systemLineSeparator, "\r\n")
 
                 csvText shouldBe formattedExpectedCsvContent
-
             }
         }
     }
