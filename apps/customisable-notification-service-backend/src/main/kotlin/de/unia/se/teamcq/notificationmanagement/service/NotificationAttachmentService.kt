@@ -71,7 +71,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
             val fieldNamesOfProvider = fieldProvider.predicateFields.values.map { vehicleStateField ->
                 vehicleStateField.fieldName!!
             }.sorted()
-            
+
             fieldProvider to fieldNamesOfProvider
         }.toMap().toSortedMap(compareBy { fieldProvider -> fieldProvider.predicateFieldProviderName })
     }
