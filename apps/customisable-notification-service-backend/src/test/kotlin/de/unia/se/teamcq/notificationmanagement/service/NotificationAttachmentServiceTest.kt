@@ -39,12 +39,17 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val csvText = FileCopyUtils.copyToString(csvResource.inputStream.bufferedReader())
 
-                csvText shouldBe
-                        """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
+                val expectedCsvContext = """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
                            |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
                            |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
                            |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
-                           |""".trimMargin().replace("\n", "\r\n")
+                           |""".trimMargin()
+
+                val systemLineSeparator = System.getProperty("line.separator")
+                val formattedExpectedCsvContent = expectedCsvContext.replace(systemLineSeparator, "\r\n")
+
+                csvText shouldBe formattedExpectedCsvContent
+
             }
         }
     }
