@@ -54,7 +54,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
             bufferedWriter!!.flush()
             Closeables.close(bufferedWriter, threwException)
-            csvPrinter!!.close()
+            Closeables.close(csvPrinter, threwException)
         }
 
         return ByteArrayResource(byteArrayOutputStream.toByteArray())
