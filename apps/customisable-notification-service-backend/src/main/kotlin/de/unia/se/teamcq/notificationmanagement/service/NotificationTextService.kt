@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import java.util.Date
-import java.util.Locale
 import javax.annotation.Resource
 
 @Component
@@ -19,7 +18,7 @@ class NotificationTextService : INotificationTextService {
 
         logger.info("Generating text for rule with ID {}", notificationData.notificationRule.ruleId)
 
-        val locale = Locale.ENGLISH
+        val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
         val context = Context(locale)
 
@@ -34,7 +33,7 @@ class NotificationTextService : INotificationTextService {
 
         logger.info("Generating text for rule with ID {}", notificationData.notificationRule.ruleId)
 
-        val locale = Locale.ENGLISH
+        val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
         val context = Context(locale)
 
