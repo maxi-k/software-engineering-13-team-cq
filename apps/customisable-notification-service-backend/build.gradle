@@ -98,6 +98,7 @@ dependencies {
     compile "commons-validator:commons-validator:1.4.0"
     compile "org.flywaydb:flyway-core:$flyway_version"
     compile "org.apache.commons:commons-csv:1.5"
+    compile "com.google.guava:guava:27.0.1-jre"
 
     compile "org.mapstruct:mapstruct-jdk8:1.2.0.Final"
     testCompile "org.mapstruct:mapstruct-jdk8:1.2.0.Final"
