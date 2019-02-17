@@ -25,6 +25,11 @@ import de.unia.se.teamcq.notificationmanagement.service.NotificationTextService
 @Configuration
 class ThymeleafConfiguration {
 
+    /**
+     * Get a i18n message source
+     *
+     * @return A [ResourceBundleMessageSource] that provides i18n
+     */
     @Bean
     fun notificationsTextSource(): ResourceBundleMessageSource {
         val messageSource = ResourceBundleMessageSource()
@@ -32,6 +37,11 @@ class ThymeleafConfiguration {
         return messageSource
     }
 
+    /**
+     * Provides a [TemplateEngine] for notification templating
+     *
+     * @return A [TemplateEngine] with i18n able to resolve both html and text templates
+     */
     @Bean(name = ["notificationTemplateEngine"])
     fun templateEngine(): TemplateEngine {
 
@@ -44,6 +54,11 @@ class ThymeleafConfiguration {
         return templateEngine
     }
 
+    /**
+     * Get a [ITemplateResolver] for text templating
+     *
+     * @return A [ITemplateResolver] that can be used e.g. for SMS messages
+     */
     fun textTemplateResolver(): ITemplateResolver {
         val templateResolver = ClassLoaderTemplateResolver()
         templateResolver.order = 1
@@ -56,6 +71,11 @@ class ThymeleafConfiguration {
         return templateResolver
     }
 
+    /**
+     * Get a [ITemplateResolver] for html templating
+     *
+     * @return A [ITemplateResolver] that can be used e.g. for Html mails
+     */
     fun htmlTemplateResolver(): ITemplateResolver {
         val templateResolver = ClassLoaderTemplateResolver()
         templateResolver.order = 2
