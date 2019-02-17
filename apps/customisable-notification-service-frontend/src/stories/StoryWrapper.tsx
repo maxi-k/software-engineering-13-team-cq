@@ -1,8 +1,8 @@
 import React from 'react'
 import { RenderFunction } from '@storybook/react';
-import StyleWrapper from '@/StyleWrapper'
-import IntlWrapper from '@/IntlWrapper'
-import StoreWrapper from '@/StoreWrapper'
+import StyleWrapper from '@/wrappers/StyleWrapper'
+import IntlWrapper from '@/wrappers/IntlWrapper'
+import StoreWrapper from '@/wrappers/StoreWrapper'
 
 const StoryWrapper = (story: RenderFunction) => (
   <StyleWrapper>

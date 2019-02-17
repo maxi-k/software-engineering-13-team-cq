@@ -7,7 +7,7 @@ import { ruleDetailStateSelector } from '@/state/selectors'
 import { loadRuleDetail } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-import RuleDetailVehicles, { FinishVehiclesType, AbortVehiclesType } from '@/organisms/RuleDetailVehicles'
+import RuleDetailVehicles, { FinishVehiclesType, AbortVehiclesType } from '@/modules/rule-detail/parts/RuleDetailVehicles'
 
 export interface RuleDetailVehiclesPageAttributes {
   // Needs to be string because it comes

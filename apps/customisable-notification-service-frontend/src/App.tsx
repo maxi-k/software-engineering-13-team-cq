@@ -8,11 +8,11 @@ import {
   StyledTopPaddingContainer
 } from '@fleetdata/shared/styled-components/page.style';
 
-import StoreWrapper from '@/StoreWrapper'
-import StyleWrapper from '@/StyleWrapper'
+import StoreWrapper from '@/wrappers/StoreWrapper'
+import StyleWrapper from '@/wrappers/StyleWrapper'
 
 import Pages from '@/pages'
-import Header from '@/organisms/Header'
+import Header from '@/modules/shared/parts/Header'
 
 import { addLocaleData, IntlProvider } from 'react-intl';
 import de from 'react-intl/locale-data/de';
