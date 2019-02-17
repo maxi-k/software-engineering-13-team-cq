@@ -15,6 +15,7 @@ import RuleIcon from '@/modules/shared/components/RuleIcon'
 import FieldDescriptor from '../components/FieldDescriptor'
 import PropertyTag from '../components/PropertyTag'
 import RuleRecipientTag from '../components/RuleRecipientTag'
+import RuleConditionDetail from '../components/RuleConditionDetail'
 
 interface RuleDetailAttributes {
   rule: NotificationRuleDetail
@@ -97,6 +98,11 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
               }
             </>
             } />
+          <StyledFieldSeparator />
+          <FieldDescriptor
+            label={"cns.rule.field.condition.label"}
+            content={<RuleConditionDetail condition={rule.condition} />}
+          />
         </StyledInfoBlock>
         <StyledInfoBlock>
           <FieldDescriptor
@@ -105,7 +111,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
               ? <FormattedMessage id="cns.rule.field.affectedFleets.value.all.label" />
               : <>{
                 rule.fleets.map((fleet) => (
-                  <PropertyTag>
+                  <PropertyTag key={fleet.fleetId}>
                     {fleet.name} (
                     <FormattedMessage
                       id="cns.rule.field.affectedFleets.value.vehicleCount.label"

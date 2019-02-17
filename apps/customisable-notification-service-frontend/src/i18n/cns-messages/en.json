@@ -32,6 +32,7 @@
     "cns.rule.field.affectedFleets.value.vehicleCount.label": "{vehicleCount, plural, =0 {No Vehicles} one {{vehicleCount} Vehicles} other {{vehicleCount} Vehicles}} ",
     "cns.rule.field.applyToAllFleets.label": "Apply this rule to all fleets?",
     "cns.rule.field.dataSources.label": "Data Sources",
+    "cns.rule.field.condition.label": "Condition",
 
 
     "cns.rule.creation.error.default": "There was an error displaying this component.",

@@ -31,6 +31,7 @@
     "cns.rule.field.affectedFleets.value.vehicleCount.label": "{vehicleCount, plural, =0 {Keine Fahrzeuge} one {{vehicleCount} Fahrzeug} other {{vehicleCount} Fahrzeuge}} ",
     "cns.rule.field.applyToAllFleets.label": "Diese Regel auf alle Flotten anwenden?",
     "cns.rule.field.dataSources.label": "Datenquellen",
+    "cns.rule.field.condition.label": "Bedingung",
 
     "cns.rule.creation.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
     "cns.rule.creation.step.label": "Schritt",

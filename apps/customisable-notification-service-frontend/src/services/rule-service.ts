@@ -6,6 +6,7 @@ import {
   NotificationRecipient as Recipient,
   NotificationRuleOwner as RuleOwner,
   NotificationRecipientType as RecipientType,
+  RuleCondition,
   LogicalConnective,
   VehicleDataType,
   AggregatorStrategy,
@@ -45,17 +46,39 @@ export const createNewRule = (accessToken: string, rule: object) => (
 )
 
 export interface APIRule {
-  ruleId: number,
-  name: string,
-  description: string,
+  ruleId: number
+  name: string
+  description: string
   owner: {
-    name: string,
-    mailAddress: string,
-    cellPhoneNumber: string,
+    name: string
+    mailAddress: string
+    cellPhoneNumber: string
     userSettings: {
       userNotificationType: 'EMAIL' | 'SMS'
     },
   }
+  affectedFleets: object[]
+  condition: APICondition
+  recipients: object[]
+  affectingAllApplicableFleets: boolean
+  ownerAsAdditionalRecipient: boolean
+  aggregator: object
+}
+
+interface APICondition {
+  '@type': string,
+  conditionId: number,
+  logicalConnective: 'NONE' | 'ANY' | 'ALL'
+  subConditions: APIPredicate[]
+}
+
+interface APIPredicate {
+  '@type': string,
+  conditionId: number,
+  providerName: string,
+  fieldName: string,
+  comparisonType: string,
+  comparisonValue: string
 }
 
 const convertAggregatorType = (aggregatorStrategy: AggregatorStrategy): string => (
@@ -73,6 +96,66 @@ const convertAggregatorValueKey = (aggregator: Aggregator): object => {
       return {}
   }
 }
+
+const convertAPIAggregator = (apiAggregator: { [key: string]: any }): Aggregator => {
+  switch (apiAggregator['@type']) {
+    case 'AggregatorScheduledDto':
+      return {
+        strategy: AggregatorStrategy.Scheduled,
+        value: apiAggregator.notificationCronTrigger
+      }
+    case 'AggregatorCountingDto':
+      return {
+        strategy: AggregatorStrategy.Counting,
+        value: apiAggregator.notificationCountThreshold
+      }
+    case 'AggregatorImmediateDto':
+    default:
+      return { strategy: AggregatorStrategy.Immediate }
+  }
+}
+
+export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject(rule, {
+  affectedFleets: 'fleets',
+  affectingAllApplicableFleets: 'applyToAllFleets',
+  aggregator: (apiAggregator: any) => (
+    ['aggregator', convertAPIAggregator(apiAggregator as object)] as [string, Aggregator]
+  ),
+  owner: 'owner',
+  recipients: 'recipients',
+  ownerAsAdditionalRecipient: 'ownerAsAdditionalRecipient',
+  condition: (condition: any) => (['condition', transformObject(condition, {
+
+    logicalConnective: ((connective: any): [string, LogicalConnective] => (
+      ['logicalConnective', capitalizeString(connective as string) as LogicalConnective]
+    )),
+    subConditions: (subConditions: any): [string, RuleCondition['predicates']] => [
+      'predicates',
+      (subConditions as APIPredicate[]).reduce((predicateMap, predicate: APIPredicate) => (
+        {
+          ...predicateMap,
+          [predicate.conditionId]: {
+            comparisonType: predicate.comparisonType,
+            comparisonConstant: predicate.comparisonValue,
+            appliedField: {
+              vehicleDataType: predicate.providerName,
+              predicateField: {
+                // TODO: Get this from the api or somewhere else
+                dataType: 'text',
+                fieldName: predicate.fieldName,
+                // TODO: Get this from the api or somewhere else
+                possibleEvaluationStrategies: []
+              }
+            }
+          } as RuleConditionPredicate<any>
+        }), {}) as { [key: string]: RuleConditionPredicate<any> }]
+  })
+  ] as [string, RuleCondition])
+}, {
+    dataSources: rule.condition.subConditions.map((subCondition) =>
+      subCondition.providerName
+    )
+  }) as DetailRule
 
 export const convertToAPIRule = (rule: DetailRule): object => transformObject(rule, {
   fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
@@ -124,51 +207,7 @@ export const ruleOwnerAsRecipient = (ruleOwner: RuleOwner): Recipient => (
     }
 )
 
-const createRecipient = (rule: APIRule): Recipient => (
-  rule.owner ?
-    {
-      type: capitalizeString(rule.owner
-        ? rule.owner.userSettings.userNotificationType
-        : RecipientType.Email
-      ) as RecipientType,
-      value: `OWNER::${rule.owner.mailAddress}/${rule.owner.cellPhoneNumber}`
-    } : {
-      type: RecipientType.Email,
-      value: 'test@example.com'
-    }
-)
-
-export const mergeMockedRuleData = (rule: APIRule): DetailRule => (
-  {
-    ruleId: rule.ruleId,
-    name: rule.name || 'MOCKED',
-    description: rule.description || 'MOCKED',
-    aggregatorDescription: 'MOCKED',
-    applyToAllFleets: false,
-    owner: {
-      name: 'MOCKED',
-      userSettings: {
-        userNotificationType: 'EMAIL'
-      }
-    },
-    ownerAsAdditionalRecipient: true,
-    fleets: [
-      { name: 'MOCKED FLEET', fleetId: 'mockedFleet1', numberOfVehicles: 42 }
-    ],
-    dataSources: [
-      VehicleDataType.Engine,
-      VehicleDataType.Battery,
-      VehicleDataType.Service,
-    ],
-    recipients: [createRecipient(rule)],
-    condition: {
-      logicalConnective: LogicalConnective.Any,
-      predicates: {}
-    },
-    aggregator: {
-      strategy: AggregatorStrategy.Immediate
-    }
-  })
+/* BEGIN: Mocks */
 
 const mockedRule: OverviewRule = {
   ruleId: 0,
