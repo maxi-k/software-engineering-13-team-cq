@@ -1,6 +1,5 @@
 package de.unia.se.teamcq.notificationmanagement
 
-import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ResourceBundleMessageSource
@@ -10,7 +9,6 @@ import org.thymeleaf.templatemode.TemplateMode
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import org.thymeleaf.templateresolver.ITemplateResolver
 import de.unia.se.teamcq.notificationmanagement.service.NotificationTextService
-
 
 /**
  * A configuration for the [TemplateEngine] used in [NotificationTextService].
