@@ -1288,17 +1288,17 @@ exports[`Storyshots General Components Small Loading Indicator 1`] = `
 
 exports[`Storyshots Rule Creation / First Step Rule Recipient Tag 1`] = `
 <div
-  className="sc-jwKygS lOZmc"
+  className="sc-btzYZH kYSOjP sc-iELTvK fpMbRF"
 >
   <span
-    className="sc-iELTvK eCGLeE"
+    className="sc-cmTdod keKjuy"
   >
     <strong>
       Mail
     </strong>
   </span>
   <div
-    className="sc-cmTdod haSJpz"
+    className="sc-jwKygS fQittr"
   >
     
   </div>
@@ -1822,7 +1822,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
   <div>
     The
     <div
-      className="sc-lhVmIH oIsQZ"
+      className="sc-bYSBpT bDVAIK"
     >
       <div
         className="css-10nd86i"
@@ -1929,7 +1929,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     </div>
     is
     <div
-      className="sc-lhVmIH oIsQZ"
+      className="sc-bYSBpT bDVAIK"
     >
       <div
         className="css-10nd86i"
@@ -2035,17 +2035,17 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       </div>
     </div>
     <div
-      className="sc-bYSBpT eLeOTv"
+      className="sc-elJkPf cmTyyf"
     />
     <input
-      className="sc-elJkPf bTdWkj"
+      className="sc-jtRfpW gqsRWl"
       onChange={[Function]}
       type="text"
       value="comparison constant"
     />
     %.
     <button
-      className="MuiButtonBase-root-943 MuiIconButton-root-937 sc-jtRfpW dFrKLM"
+      className="MuiButtonBase-root-943 MuiIconButton-root-937 sc-kTUwUJ daVkDE"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -2098,7 +2098,7 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
   <div>
     If
     <div
-      className="sc-lhVmIH oIsQZ"
+      className="sc-bYSBpT bDVAIK"
     >
       <div
         className="css-10nd86i"
@@ -2213,17 +2213,17 @@ exports[`Storyshots Rule Detail / General Components Recipient Tag 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div
-    className="sc-jwKygS lOZmc"
+    className="sc-btzYZH kYSOjP sc-iELTvK fpMbRF"
   >
     <span
-      className="sc-iELTvK eCGLeE"
+      className="sc-cmTdod keKjuy"
     >
       <strong>
         Mail
       </strong>
     </span>
     <div
-      className="sc-cmTdod haSJpz"
+      className="sc-jwKygS fQittr"
     >
       test@example.com
     </div>
