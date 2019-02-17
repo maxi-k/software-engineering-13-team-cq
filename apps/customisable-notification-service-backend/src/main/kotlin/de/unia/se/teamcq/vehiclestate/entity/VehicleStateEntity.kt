@@ -23,7 +23,7 @@ data class VehicleStateEntity(
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_vehicle")
-    var vehicleReference: VehicleReferenceEntity? = null
+    var vehicleReference: VehicleReferenceEntity? = null,
 
     @ElementCollection
     @Column(name = "vehicle_state_data_type")

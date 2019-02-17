@@ -66,7 +66,7 @@ class EvaluationService : IEvaluationService {
         val vehicleStateDataType = vehicleState.vehicleStateDataTypes.find { vehicleStateDataType ->
             vehicleStateDataType.predicateFieldProviderName == ruleCondition.providerName!!
             } ?: return false
-        }
+
 
         return evaluationPredicateService.checkPredicate(
                 ruleCondition,
