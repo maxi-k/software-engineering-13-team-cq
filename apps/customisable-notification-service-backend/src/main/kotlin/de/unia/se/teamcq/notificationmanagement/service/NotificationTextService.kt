@@ -37,6 +37,6 @@ class NotificationTextService : INotificationTextService {
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationTextService::class.java)
 
-        const val HTML_MAIL_TEMPLATE = "html/notification-mail"
+        const val HTML_MAIL_TEMPLATE = "notification-mail"
     }
 }

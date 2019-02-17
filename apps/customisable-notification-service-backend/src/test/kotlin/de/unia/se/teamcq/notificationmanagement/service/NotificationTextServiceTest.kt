@@ -1,6 +1,7 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
 import de.unia.se.teamcq.TestUtils.getTestNotificationDataModel
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -15,7 +16,9 @@ class NotificationTextServiceTest : StringSpec() {
 
         "GetTextForNotification should work" {
             val notificationData = getTestNotificationDataModel()
-            notificationTextService.getHtmlMailTextForNotification(notificationData)
+            val htmlText = notificationTextService.getHtmlMailTextForNotification(notificationData)
+
+            htmlText shouldBe ""
         }
     }
 }
