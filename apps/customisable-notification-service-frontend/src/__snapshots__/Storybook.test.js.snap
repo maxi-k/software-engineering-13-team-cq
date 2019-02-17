@@ -2208,6 +2208,29 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Detail / General Components Recipient Tag 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="sc-jwKygS lOZmc"
+  >
+    <span
+      className="sc-iELTvK eCGLeE"
+    >
+      <strong>
+        Mail
+      </strong>
+    </span>
+    <div
+      className="sc-cmTdod haSJpz"
+    >
+      test@example.com
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Overview / Complete Fetching 1`] = `
 <div
   className="sc-uJMKN eVXOtU"
