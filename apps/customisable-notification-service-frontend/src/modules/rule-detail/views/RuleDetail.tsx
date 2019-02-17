@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 import { messageFromError } from '@/services/response-service'
+import { media } from '@/fleetdata/utils/media-query'
 
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -28,6 +29,10 @@ const StyledRuleDetail = styled.div`
 const StyledRuleInformation = styled.div`
  display: flex;
  flex-direction: row;
+
+ ${media.md`
+    flex-direction: column;
+ `};
 `
 
 const StyledInfoBlock = styled.div`
