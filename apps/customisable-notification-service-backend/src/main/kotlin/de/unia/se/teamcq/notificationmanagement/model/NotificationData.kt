@@ -5,9 +5,9 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleState
 
 class NotificationData(
 
-    val triggeringVehicleState: VehicleState,
+    val notificationRule: NotificationRule,
 
-    val notificationRule: NotificationRule
+    val matchedVehicleStates: List<VehicleState>
 
 ) : INotificationData {
 
