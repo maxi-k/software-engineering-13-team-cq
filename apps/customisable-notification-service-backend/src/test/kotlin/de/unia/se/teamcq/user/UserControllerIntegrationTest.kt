@@ -7,6 +7,7 @@ import de.unia.se.teamcq.security.JwtConfig
 import de.unia.se.teamcq.security.JwtTokenAuthenticationFilter
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.dto.UserSettingsDto
+import de.unia.se.teamcq.user.model.UserLocale
 import de.unia.se.teamcq.user.model.UserNotificationType
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -72,7 +73,8 @@ class UserControllerIntegrationTest : StringSpec() {
                                     name = "New user",
                                     userSettings = UserSettingsDto(
                                             returnedUserDto.userSettings!!.settingsId,
-                                            UserNotificationType.EMAIL
+                                            UserNotificationType.EMAIL,
+                                            UserLocale.EN
                                     )
                             )
 

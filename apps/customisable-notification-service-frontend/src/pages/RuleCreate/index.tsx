@@ -1,6 +1,6 @@
 import React from 'react'
 
-import RuleCreate from '@/organisms/RuleCreate'
+import RuleCreate from '@/modules/rule-modification/views/RuleCreation'
 
 const RuleCreatePage = () => (
   <RuleCreate />

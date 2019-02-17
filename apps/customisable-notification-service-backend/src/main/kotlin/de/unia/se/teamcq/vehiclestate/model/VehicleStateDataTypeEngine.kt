@@ -7,6 +7,7 @@ import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.stereotype.Component
 
 @Component
+// Constructor with (null)-default values for everything necessary for MapStruct
 class VehicleStateDataTypeEngine(
 
     var power: Int? = null,

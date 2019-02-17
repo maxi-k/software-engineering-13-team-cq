@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component
 import java.util.Date
 
 @Component
+// Constructor with (null)-default values for everything necessary for MapStruct
 class VehicleStateDataTypeService(
 
     var dueDate: Date? = null,

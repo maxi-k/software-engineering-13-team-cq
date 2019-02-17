@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component
 class RuleStateProcessingService : IRuleStateProcessingService {
 
     override fun processNewVehicleStates() {
+        // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
         logger.info("Processing new VehicleStates")
     }
 

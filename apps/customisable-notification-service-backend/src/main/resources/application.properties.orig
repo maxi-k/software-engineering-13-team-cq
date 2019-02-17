@@ -1,0 +1,49 @@
+spring.profiles.active=dev
+
+## Hibernate Properties
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+# We only want to validate the Flyway migrations but not let Hibernate set the schema
+spring.jpa.hibernate.ddl-auto = validate
+spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults=false
+
+# Colored console logging
+spring.output.ansi.enabled = ALWAYS
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type=TRACE
+# https://github.com/pranavpr/kotlin-spring-boot-hibernate-postgresql-rest-api/commit/1a5c0b859fa66a5d4e867bb568f4a8db922830cd
+# spring.cache.type=redis
+# spring.redis.host=localhost
+# spring.redis.port=6379
+
+## Flyway
+spring.flyway.locations=classpath:/db/migration
+
+## QuartzProperties
+spring.quartz.job-store-type = jdbc
+spring.quartz.jdbc.initialize-schema = never
+<<<<<<< HEAD
+spring.quartz.properties.org.quartz.threadPool.threadCount = 5
+=======
+spring.quartz.properties.org.quartz.threadPool.threadCount = 3
+>>>>>>> master
+spring.quartz.wait-for-jobs-to-complete-on-shutdown = true
+spring.quartz.auto-startup = true
+spring.quartz.properties.org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+
+<<<<<<< HEAD
+=======
+# THYMELEAF
+spring.thymeleaf.encoding=UTF-8
+spring.thymeleaf.cache=false
+
+>>>>>>> master
+## Our own properties
+
+# When to check for and import new vehicle state data
+de.unia.se.teamcq.scheduling.data-import-cron=0 0/1 * * * ?
+# When to check for and process new imported vehicle state data
+de.unia.se.teamcq.scheduling.data-processing-cron=0 0/1 * * * ?

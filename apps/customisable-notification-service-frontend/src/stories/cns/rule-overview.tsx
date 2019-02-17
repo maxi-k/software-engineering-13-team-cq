@@ -5,9 +5,9 @@ import { action } from '@storybook/addon-actions'
 import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
 
-import AddRuleTile from '@/atoms/AddRuleTile'
-import RuleTile, { RuleTileProps } from '@/atoms/RuleTile'
-import RuleOverview, { RuleOverviewProps } from '@/molecules/RuleOverview'
+import AddRuleTile from '@/modules/rule-overview/components/AddRuleTile'
+import RuleTile, { RuleTileProps } from '@/modules/rule-overview/components/RuleTile'
+import RuleOverview, { RuleOverviewProps } from '@/modules/rule-overview/views/RuleOverview'
 import { VehicleDataType } from '@/model'
 
 const ruleTileProps: RuleTileProps = {

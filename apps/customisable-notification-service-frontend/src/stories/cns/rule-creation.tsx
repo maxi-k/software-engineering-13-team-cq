@@ -2,17 +2,17 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
+import { NotificationRecipient, NotificationRecipientType } from '@/model/Rule'
 import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
 
 /* ~~ General Components ~~ */
+import ClosingButton from '@/modules/shared/components/ClosingButton'
+import RuleRecipientTag from '@/modules/rule-detail/components/RuleRecipientTag'
 import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
-  from '@/atoms/RuleCreationStep'
+  from '@/modules/rule-modification/components/RuleCreationStep'
 import RuleCreationStepper, { RuleCreationStepperProps }
-  from '@/molecules/RuleCreationStepper'
-import ClosingButton from '@/atoms/ClosingButton'
-import RuleRecipientTag from '@/atoms/RuleRecipientTag'
-import { NotificationRecipient, NotificationRecipientType } from '@/model/Rule'
+  from '@/modules/rule-modification/components/RuleCreationStepper'
 
 const creationStepProps: RuleCreationStepEmbeddedProps = {
   titleKey: "cns.rule.creation.step.general.title",
@@ -57,7 +57,7 @@ storiesOf('Rule Creation / General Components', module)
   .add('Close Procedure', () => <ClosingButton onClick={action('Closed procedure')} />)
 
 /* ~~ Second-Step Components ~~ */
-import FleetSelector, { FleetSelectorProps } from '@/atoms/FleetSelector'
+import FleetSelector, { FleetSelectorProps } from '@/modules/rule-modification/components/FleetSelector'
 
 const fleetSelectorProps: Partial<FleetSelectorProps> = {
   value: { label: 'BMW', value: 'BMW' },
@@ -75,7 +75,7 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
-import RuleCreationGeneral from '@/organisms/RuleCreate/RuleCreationGeneral'
+import RuleCreationGeneral from '@/modules/rule-modification/parts/RuleCreationGeneral'
 const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
@@ -94,8 +94,8 @@ storiesOf('Rule Creation / Second Step', module)
   .add('Fleet Selector', () => <FleetSelector {...fleetSelectorProps} />)
 
 /* ~~ Third-Step Components ~~ */
-import PredicateCounter, { PredicateCounterProps } from '@/atoms/PredicateCounter'
-import ConditionSelector, { ConditionSelectorProps } from '@/atoms/ConditionSelector'
+import PredicateCounter, { PredicateCounterProps } from '@/modules/rule-modification/components/PredicateCounter'
+import ConditionSelector, { ConditionSelectorProps } from '@/modules/rule-modification/components/ConditionSelector'
 import { LogicalConnective } from '@/model';
 
 const predicateCounterProps: PredicateCounterProps = {

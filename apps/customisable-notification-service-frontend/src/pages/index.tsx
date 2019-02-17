@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Route, Switch, RouteComponentProps } from 'react-router'
-import LoadingIndicator from '@/atoms/LoadingIndicator'
+import LoadingIndicator from '@/modules/shared/components/LoadingIndicator'
 import { pageDefinitions, LazyComponent } from './page-definitions'
 import Fallback from '@/pages/Fallback'
 

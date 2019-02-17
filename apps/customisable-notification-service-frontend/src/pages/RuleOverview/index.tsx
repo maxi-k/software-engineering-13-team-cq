@@ -5,8 +5,8 @@ import { connect, StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleOverviewStateSelector } from '@/state/selectors'
 import { loadRuleOverview, RuleOverviewState } from '@/state/rule'
 
-import RuleOverview, { SelectRuleType } from '@/molecules/RuleOverview'
-import RuleOverviewHeader from '@/organisms/RuleOverviewHeader'
+import RuleOverview, { SelectRuleType } from '@/modules/rule-overview/views/RuleOverview'
+import RuleOverviewHeader from '@/modules/rule-overview/parts/RuleOverviewHeader'
 
 import styled from 'styled-components'
 

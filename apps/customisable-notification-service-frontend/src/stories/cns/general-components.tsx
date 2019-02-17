@@ -2,10 +2,11 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import StoryWrapper from '../StoryWrapper'
 
-import LoadingIndicator from '@/atoms/LoadingIndicator'
-import ErrorMessage from '@/atoms/ErrorMessage'
-import NextButton from '@/atoms/NextButton'
-import BackButton from '@/atoms/BackButton'
+import LoadingIndicator from '@/modules/shared/components/LoadingIndicator'
+import ErrorMessage from '@/modules/shared/components/ErrorMessage'
+import BackButton from '@/modules/shared/components/BackButton'
+
+import NextButton from '@/modules/rule-modification/components/NextButton'
 
 import { action } from '@storybook/addon-actions'
 import { FormattedMessage } from 'react-intl';

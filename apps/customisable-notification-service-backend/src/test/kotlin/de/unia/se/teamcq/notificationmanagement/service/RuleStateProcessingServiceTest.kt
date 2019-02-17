@@ -17,6 +17,7 @@ class RuleStateProcessingServiceTest : StringSpec() {
         MockKAnnotations.init(this)
 
         "ProcessNewVehicleStates should be idempotent and trigger notifications accordingly" should {
+            // TODO: #112 Backend: Set up NotificationRule VehicleStateUpdate Processing
             ruleStateProcessingService.processNewVehicleStates()
         }
     }

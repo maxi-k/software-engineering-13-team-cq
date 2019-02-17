@@ -21,11 +21,16 @@ This frontend for the BMW CNS frontend uses
 Have a look at `package.json` for a complete list
 
 ## Used Patterns / Conventions
-- [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
+- ~~[Atomic
+  Design](http://bradfrost.com/blog/post/atomic-web-design/)~~
+  Deprecated in favor of a domain-based modularization
 - The [Redux Duck Pattern](https://github.com/erikras/ducks-modular-redux)
 
 For a more high-level documentation on the code, explanations about used
-practices and more, please go to [The Frontend Documentation](../doc/technische-dokumentation/frontend-development.md)
+practices and more, please go to [The Frontend
+Documentation](../doc/technische-dokumentation/frontend-development.md).
+**Please read that document for an overview of the followed guidelines
+before developing.**
 
 ## Guides
 - React + Redux + Typescript: https://github.com/piotrwitek/react-redux-typescript-guide

@@ -14,20 +14,19 @@ import javax.persistence.ElementCollection
 import javax.persistence.Column
 
 @Entity
+// Constructor with (null)-default values for everything necessary for MapStruct
 data class VehicleStateEntity(
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    var stateId: Long? = 0,
+    var stateId: Long? = null,
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_vehicle")
-    var vehicleReference: VehicleReferenceEntity? = null,
+    var vehicleReference: VehicleReferenceEntity? = null
 
     @ElementCollection
     @Column(name = "vehicle_state_data_type")
     var vehicleStateDataTypes: Set<VehicleStateDataTypeEntity>? = hashSetOf<VehicleStateDataTypeEntity>()
 
-    // Inheritance: See https://www.baeldung.com/hibernate-inheritance
-
-) : Serializable 
+) : Serializable

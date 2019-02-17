@@ -5212,11 +5212,6 @@ extend@^3.0.0, extend@~3.0.2:
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
-extensible-duck@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/extensible-duck/-/extensible-duck-1.5.0.tgz#46e0d30a1d64435fccc5546d8e2a47a7392e8712"
-  integrity sha512-Om0pNs/yX8LRiPwE8Zg2KPp2vYHRLRJnx4ORgw7PujWF/lxyK8vsfqJa2QJ5Yk8TC167YjZds+nb+E8+AAM6VA==
-
 external-editor@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/external-editor/-/external-editor-3.0.3.tgz#5866db29a97826dbe4bf3afd24070ead9ea43a27"
