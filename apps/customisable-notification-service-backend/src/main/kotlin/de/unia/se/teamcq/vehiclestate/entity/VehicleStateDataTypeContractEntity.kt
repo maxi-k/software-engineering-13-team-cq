@@ -16,7 +16,7 @@ data class VehicleStateDataTypeContractEntity(
 
     @ElementCollection
     @Column(name = "vin")
-    var vins: Set<String>? = hashSetOf<String>(),
+    var vins: Set<String>? = mutableSetOf(),
 
     @get: NotNull
     var calendarWeek: Int? = null
