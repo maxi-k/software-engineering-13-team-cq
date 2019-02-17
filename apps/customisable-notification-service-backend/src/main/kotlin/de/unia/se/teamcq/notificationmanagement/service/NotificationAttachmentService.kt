@@ -37,7 +37,6 @@ class NotificationAttachmentService : INotificationAttachmentService {
         var threwException = true
 
         try {
-
             bufferedWriter = BufferedWriter(OutputStreamWriter(byteArrayOutputStream))
             val csvFormat = CSVFormat.DEFAULT.withHeader(*csvColumnNames.toTypedArray())
             csvPrinter = CSVPrinter(bufferedWriter, csvFormat)
@@ -49,11 +48,9 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
             threwException = false
         } catch (exception: Exception) {
-
             val ruleId = notificationData.notificationRule.ruleId
             logger.error("Error while writing Notification Attachment CSV for Rule $ruleId", exception)
         } finally {
-
             bufferedWriter!!.flush()
             Closeables.close(bufferedWriter, threwException)
             Closeables.close(csvPrinter, threwException)
