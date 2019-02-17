@@ -7,12 +7,74 @@ explanations as to why we made certain decisions.
 For more general stuff focused on tooling and external guides and
 references, please read [The Frontend README](../../frontend/README.md).
 
+## General Conventions
+
+### Modules
+The Frontend components are modularized based on the different parts of the
+domain, like entity `modification`, `detail`, `overview` and so on, as
+well as a `shared` module, which contains very general components used
+by every module, like loading indicators.
+
+Each module's components are divided into three subtypes:
+- `components`: Basic Components which are based solely on their props
+  and possibly internal state
+- `parts`: Components which use external state, like from the `redux`
+  store
+- `views`: Components which may use external state, and define a
+  coherent and usable interface to the user (not just parts of it).
+
+These subtypes are reflected in the directory structure.
+
+### Dependencies
+
+As a rule of thumb, components from modules should only ever use
+other components from their own module, or components from the
+`shared` module, but not components from other modules.
+
+Inside Modules, the dependency hierarchy should strictly follow the level of
+abstraction, that is, `views` should depend on `parts` and basic `components`,
+`parts` should depend on `components`, but `components` should never
+depend on `parts`, and `parts` should never depend on `views`:
+
+```
+views -> parts -> components
+```
+
+### Imports
+
+Imports can be absolute from the base level of the project using the
+prefix `@/`, or relative. As a rule of thumb, you should
+- Use *relative* imports when using components from your own module
+- Use *absolute* imports when using components from other modules
+- Use *absolute* imports for importing services, state and utilities.
+
+Try to order imports in a somewhat consistent way, following this
+order for import statements in the file:
+- React (if required)
+- Services and logic from third party libraries
+- Services and logic from the project
+- *Blank Line*
+- React Components from third party libraries
+- React Components from the `shared` module
+- React Components from other modules
+- React Components from your own module
+
+There will be some unclear cases, like when a library provides a
+Component which is not really a "display"-type component, but instead
+more of a logical / functionality providing component (like `i18n`s
+`FormattedMessage` or a `MediaQuery` component). You may place these
+in the *servcies & logic* section as well as the *3rd party component*
+section. In general, do what feels right.
+
+If there are a lot of imports, insert more blank lines between the
+bullet points above.
+
 ## Typescript, React and Props
 
 ### Props Basics
 
-`Props` are the things passed between react components.
-They can be passed between components like this:
+`Props` are the things passed between react components. They can be
+passed between components like this:
 
 ```jsx
 const MyComponent = ({ color, size }) => {
