@@ -18,7 +18,7 @@ class VehicleStateDataTypeEngine(
 
     dataTypeId: Long? = null
 
-) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
+) : VehicleStateDataType(dataTypeId) {
 
     override val predicateFieldProviderName: String = "Engine"
 

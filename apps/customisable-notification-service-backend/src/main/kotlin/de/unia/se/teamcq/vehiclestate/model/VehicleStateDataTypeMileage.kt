@@ -18,7 +18,7 @@ class VehicleStateDataTypeMileage(
 
     dataTypeId: Long? = null
 
-) : VehicleStateDataType(dataTypeId), IPredicateFieldProvider {
+) : VehicleStateDataType(dataTypeId) {
 
     override val predicateFieldProviderName: String = "Mileage"
 
