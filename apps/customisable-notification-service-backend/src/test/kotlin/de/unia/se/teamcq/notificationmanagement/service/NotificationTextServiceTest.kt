@@ -14,11 +14,18 @@ class NotificationTextServiceTest : StringSpec() {
 
     init {
 
-        "GetTextForNotification should work" {
+        "GetHtmlMailTextForNotification should work" {
             val notificationData = getTestNotificationDataModel()
             val htmlText = notificationTextService.getHtmlMailTextForNotification(notificationData)
 
             htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
+        }
+
+        "GetSmsTextForNotification should work" {
+            val notificationData = getTestNotificationDataModel()
+            val smsText = notificationTextService.getSmsTextForNotification(notificationData)
+
+            smsText.shouldContain(notificationData.notificationRule.owner!!.name!!)
         }
     }
 }

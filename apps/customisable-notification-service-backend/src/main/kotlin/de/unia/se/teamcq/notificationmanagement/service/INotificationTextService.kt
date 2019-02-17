@@ -11,9 +11,16 @@ import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 interface INotificationTextService {
 
     /**
-     * Generate the text-body for a Notification
+     * Generate a html mail for a Notification
      *
      * @param notificationData The [NotificationData], containing all required information
      */
     fun getHtmlMailTextForNotification(notificationData: NotificationData): String
+
+    /**
+     * Generate a plain-text SMS for a Notification
+     *
+     * @param notificationData The [NotificationData], containing all required information
+     */
+    fun getSmsTextForNotification(notificationData: NotificationData): String
 }

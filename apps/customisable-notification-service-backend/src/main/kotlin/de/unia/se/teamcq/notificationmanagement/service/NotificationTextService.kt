@@ -27,13 +27,29 @@ class NotificationTextService : INotificationTextService {
         context.setVariable("subscriptionDate", Date())
         context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
 
-        // Create the HTML body using Thymeleaf
-        return this.templateEngine.process(HTML_MAIL_TEMPLATE, context)
+        return templateEngine.process(HTML_MAIL_TEMPLATE, context)
+    }
+
+    override fun getSmsTextForNotification(notificationData: NotificationData): String {
+
+        logger.info("Generating text for rule with ID {}", notificationData.notificationRule.ruleId)
+
+        val locale = Locale.ENGLISH
+
+        val context = Context(locale)
+
+        context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
+        context.setVariable("subscriptionDate", Date())
+        context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
+
+        return templateEngine.process(TEXT_SMS_TEMPLATE, context)
     }
 
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationTextService::class.java)
 
         const val HTML_MAIL_TEMPLATE = "notification-mail"
+
+        const val TEXT_SMS_TEMPLATE = "notification-sms"
     }
 }
