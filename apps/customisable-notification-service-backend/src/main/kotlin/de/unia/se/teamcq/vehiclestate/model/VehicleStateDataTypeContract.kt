@@ -25,20 +25,21 @@ class VehicleStateDataTypeContract(
     override val predicateFields: Map<String, PredicateField> = PREDICATE_FIELDS
 
     @Throws(IllegalArgumentException::class)
-    override fun retrieveFieldValue(fieldName: String): Any? =
-            when (fieldName) {
-                "duePerWeek" -> this.duePerWeek
-                "vins" -> this.vins
-                "calendarWeek" -> this.calendarWeek
-                else -> super.retrieveFieldValue(fieldName)
-            }
+    override fun retrieveFieldValue(fieldName: String): Any? {
+        return when (fieldName) {
+            "duePerWeek" -> this.duePerWeek
+            "vins" -> this.vins
+            "calendarWeek" -> this.calendarWeek
+            else -> super.retrieveFieldValue(fieldName)
+        }
+    }
 
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Contract"
         val PREDICATE_FIELDS = mapOf(
-                "duePerWeek" to PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-                "vins" to PredicateField("vins", FieldDataType.STRING_LIST, EvaluationStrategies.LIST),
-                "calendarWeek" to PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.NUMERIC)
+            "duePerWeek" to PredicateField("duePerWeek", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            "vins" to PredicateField("vins", FieldDataType.STRING_LIST, EvaluationStrategies.LIST),
+            "calendarWeek" to PredicateField("calendarWeek", FieldDataType.WEEK, EvaluationStrategies.NUMERIC)
         )
     }
 }

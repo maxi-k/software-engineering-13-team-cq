@@ -65,7 +65,7 @@ class EvaluationService : IEvaluationService {
         // If the given VehicleState doesn't provide the required Datum, return false
         val vehicleStateDataType = vehicleState.vehicleStateDataTypes.find { vehicleStateDataType ->
             vehicleStateDataType.predicateFieldProviderName == ruleCondition.providerName!!
-            } ?: return false
+        } ?: return false
 
 
         return evaluationPredicateService.checkPredicate(

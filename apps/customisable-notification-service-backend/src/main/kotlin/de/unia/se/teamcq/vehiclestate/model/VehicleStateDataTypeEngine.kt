@@ -25,20 +25,21 @@ class VehicleStateDataTypeEngine(
     override val predicateFields: Map<String, PredicateField> = PREDICATE_FIELDS
 
     @Throws(IllegalArgumentException::class)
-    override fun retrieveFieldValue(fieldName: String): Any? =
-            when (fieldName) {
-                "power" -> this.power
-                "capacity" -> this.capacity
-                "fuelType" -> this.fuelType
-                else -> super.retrieveFieldValue(fieldName)
-            }
+    override fun retrieveFieldValue(fieldName: String): Any? {
+        return when (fieldName) {
+            "power" -> this.power
+            "capacity" -> this.capacity
+            "fuelType" -> this.fuelType
+            else -> super.retrieveFieldValue(fieldName)
+        }
+    }
 
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Engine"
         val PREDICATE_FIELDS = mapOf(
-                "power" to PredicateField("power", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-                "capacity" to PredicateField("capacity", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-                "fuelType" to PredicateField("fuelType", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+            "power" to PredicateField("power", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            "capacity" to PredicateField("capacity", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
+            "fuelType" to PredicateField("fuelType", FieldDataType.TEXT, EvaluationStrategies.TEXT)
         )
     }
 }

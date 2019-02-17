@@ -17,4 +17,4 @@ data class VehicleStateDataTypeServiceEntity(
     @get: NotNull
     var status: String? = null
 
-) : VehicleStateDataTypeEntity(), Serializable 
+) : VehicleStateDataTypeEntity(), Serializable
