@@ -14,6 +14,17 @@ class NotificationAttachmentService : INotificationAttachmentService {
     private lateinit var predicateFieldContainer: PredicateFieldContainer
 
     override fun getCsvAttachment(notificationData: NotificationData): Resource {
-        return ByteArrayResource("test".toByteArray())
+
+        val vehicleStateFields = listOf("state_id", "vin")
+        // TODO: Consider using fleetReference.fetchVehicleData to retrieve additional information
+
+        val vehicleStateDataTypeFields = predicateFieldContainer
+            .getPredicateFieldProviders().flatMap { fieldProvider ->
+                    fieldProvider.predicateFields.values.map { vehicleStateField ->
+                    vehicleStateField.fieldName
+                }
+            }
+
+        return ByteArrayResource(vehicleStateDataTypeFields.joinToString(",").toByteArray())
     }
 }

@@ -225,6 +225,14 @@ object TestUtils {
         )
     }
 
+    fun getTestPredicateFieldProviders(): Set<IPredicateFieldProvider> {
+        return setOf(
+                VehicleStateDataTypeBattery(),
+                VehicleStateDataTypeEngine(),
+                VehicleStateDataTypeService()
+        )
+    }
+
     fun getTestPredicateFieldProviderModel(): IPredicateFieldProvider {
         return VehicleStateDataTypeBattery()
     }
