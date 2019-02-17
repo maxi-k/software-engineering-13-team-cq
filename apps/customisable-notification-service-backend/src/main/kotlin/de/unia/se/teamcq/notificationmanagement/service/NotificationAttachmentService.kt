@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
+import com.google.common.base.CaseFormat
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.ruleevaluation.service.PredicateFieldContainer
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,6 +16,7 @@ import com.google.common.io.Closeables
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.slf4j.LoggerFactory
+import java.util.SortedMap
 
 @Component
 class NotificationAttachmentService : INotificationAttachmentService {
@@ -60,7 +62,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
         return ByteArrayResource(byteArrayOutputStream.toByteArray())
     }
 
-    private fun getDataTypesWithFields(): Map<IPredicateFieldProvider, List<String>> {
+    private fun getDataTypesWithFields(): SortedMap<IPredicateFieldProvider, List<String>> {
 
         val predicateFieldProviders = predicateFieldContainer.getPredicateFieldProviders()
 
@@ -68,9 +70,10 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
             val fieldNamesOfProvider = fieldProvider.predicateFields.values.map { vehicleStateField ->
                 vehicleStateField.fieldName!!
-            }
+            }.sorted()
+            
             fieldProvider to fieldNamesOfProvider
-        }.toMap()
+        }.toMap().toSortedMap(compareBy { fieldProvider -> fieldProvider.predicateFieldProviderName })
     }
 
     private fun getCsvColumnNames(dataTypesWithFields: Map<IPredicateFieldProvider, List<String>>): List<String> {
@@ -79,9 +82,15 @@ class NotificationAttachmentService : INotificationAttachmentService {
         // TODO: than the one below
         val vehicleStateFields = listOf("state_id", "vin")
 
-        val vehicleStateDataTypeFieldNames = dataTypesWithFields.flatMap { (predicateFieldProvider, fieldNames) ->
+        val vehicleStateDataTypeFieldNames = dataTypesWithFields.flatMap { (dataType, fieldNames) ->
             fieldNames.map { fieldName ->
-                "${predicateFieldProvider.predicateFieldProviderName}_$fieldName"
+
+                val formattedProviderName = CaseFormat.UPPER_CAMEL.to(
+                        CaseFormat.LOWER_UNDERSCORE, dataType.predicateFieldProviderName
+                )
+                val formattedFieldName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName)
+
+                "${formattedProviderName}_$formattedFieldName"
             }
         }
 
@@ -98,12 +107,12 @@ class NotificationAttachmentService : INotificationAttachmentService {
                 vehicleState.vehicleReference!!.vin!!
         )
 
-        val predicateFieldValues = dataTypesWithFields.flatMap { (predicateFieldProvider, fieldNames) ->
+        val predicateFieldValues = dataTypesWithFields.flatMap { (predicateProviderWithNextValues, fieldNames) ->
 
             val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes
 
             val matchingDataType = allVehicleStateDataTypes.filter { dataType ->
-                dataType.predicateFieldProviderName == predicateFieldProvider.predicateFieldProviderName
+                dataType.predicateFieldProviderName == predicateProviderWithNextValues.predicateFieldProviderName
             }
 
             val fieldValues = matchingDataType.flatMap { dataType ->

@@ -3,7 +3,6 @@ package de.unia.se.teamcq.notificationmanagement.service
 import de.unia.se.teamcq.TestUtils.getTestNotificationDataModel
 import de.unia.se.teamcq.TestUtils.getTestPredicateFieldProviders
 import de.unia.se.teamcq.ruleevaluation.service.PredicateFieldContainer
-import io.kotlintest.matchers.string.shouldContain
 import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -40,12 +39,11 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val csvText = FileCopyUtils.copyToString(csvResource.inputStream.bufferedReader())
 
-                csvText.shouldContain("charge")
                 csvText shouldBe
-                        """|state_id,vin,Battery_charge,Battery_voltage,Battery_status,Engine_power,Engine_capacity,Engine_fuelType,Service_dueDate,Service_brakeFluid,Service_status
-                           |0,UUID456,0.5,0.7,Healthy,120,120,Gas,Sun Jan 18 22:54:10 CET 1970,Fine,Healthy
-                           |0,UUID456,0.5,0.7,Healthy,120,120,Gas,Sun Jan 18 22:54:10 CET 1970,Fine,Healthy
-                           |0,UUID456,0.5,0.7,Healthy,120,120,Gas,Sun Jan 18 22:54:10 CET 1970,Fine,Healthy
+                        """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
                            |""".trimMargin().replace("\n", "\r\n")
             }
         }
