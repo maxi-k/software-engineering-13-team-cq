@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
 import de.unia.se.teamcq.TestUtils.getTestNotificationDataModel
-import io.kotlintest.shouldBe
+import io.kotlintest.matchers.string.shouldContain
 import io.kotlintest.specs.StringSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,7 +18,7 @@ class NotificationTextServiceTest : StringSpec() {
             val notificationData = getTestNotificationDataModel()
             val htmlText = notificationTextService.getHtmlMailTextForNotification(notificationData)
 
-            htmlText shouldBe ""
+            htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
         }
     }
 }

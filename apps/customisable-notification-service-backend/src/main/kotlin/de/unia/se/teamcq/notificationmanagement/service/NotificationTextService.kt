@@ -3,12 +3,9 @@ package de.unia.se.teamcq.notificationmanagement.service
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.core.io.ByteArrayResource
-import org.springframework.core.io.InputStreamSource
 import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
-import org.thymeleaf.spring5.ISpringTemplateEngine
 import java.util.Date
 import java.util.Locale
 
