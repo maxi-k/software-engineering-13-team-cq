@@ -7,7 +7,7 @@ class NotificationData(
 
     val notificationRule: NotificationRule,
 
-    val matchedVehicleStates: List<VehicleState>
+    val matchedVehicleStates: Set<VehicleState>
 
 ) : INotificationData {
 

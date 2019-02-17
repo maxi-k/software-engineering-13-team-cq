@@ -494,7 +494,7 @@ object TestUtils {
     }
 
     fun getTestNotificationDataModel(): NotificationData {
-        return NotificationData(getTestNotificationRuleModel(), listOf(getTestVehicleStateModel()))
+        return NotificationData(getTestNotificationRuleModel(), setOf(getTestVehicleStateModel()))
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
