@@ -2,17 +2,17 @@ package de.unia.se.teamcq.notificationmanagement.service
 
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import java.util.Date
 import java.util.Locale
+import javax.annotation.Resource
 
 @Component
 class NotificationTextService : INotificationTextService {
 
-    @Autowired
+    @Resource(name = "notificationTemplateEngine")
     lateinit var templateEngine: TemplateEngine
 
     override fun getHtmlMailTextForNotification(notificationData: NotificationData): String {
