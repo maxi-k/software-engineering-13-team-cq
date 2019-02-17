@@ -20,9 +20,9 @@ class VehicleStateDataTypeFuel(
 
 ) : VehicleStateDataType(dataTypeId) {
 
-    override val predicateFieldProviderName: String = "Fuel"
+    val predicateFieldProviderName: String = "Fuel"
 
-    override val predicateFields: List<PredicateField> = listOf(
+    val predicateFields: List<PredicateField> = listOf(
             PredicateField("level", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
             PredicateField("liters", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
             PredicateField("range", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)

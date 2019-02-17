@@ -20,9 +20,9 @@ class VehicleStateDataTypeBattery(
 
 ) : VehicleStateDataType(dataTypeId) {
 
-    override val predicateFieldProviderName: String = "Battery"
+    val predicateFieldProviderName: String = "Battery"
 
-    override val predicateFields: List<PredicateField> = listOf(
+    val predicateFields: List<PredicateField> = listOf(
             PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
             PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
             PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)

@@ -21,9 +21,9 @@ class VehicleStateDataTypeService(
 
 ) : VehicleStateDataType(dataTypeId) {
 
-    override val predicateFieldProviderName: String = "Service"
+    val predicateFieldProviderName: String = "Service"
 
-    override val predicateFields: List<PredicateField> = listOf(
+    val predicateFields: List<PredicateField> = listOf(
             PredicateField("dueDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
             PredicateField("brakeFluid", FieldDataType.TEXT, EvaluationStrategies.TEXT),
             PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
