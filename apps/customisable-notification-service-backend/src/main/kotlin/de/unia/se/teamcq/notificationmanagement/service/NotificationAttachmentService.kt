@@ -119,11 +119,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
                 fieldNames.map { predicateFieldInDataType ->
                     val fieldValue = dataType.retrieveFieldValue(predicateFieldInDataType)
 
-                    if (fieldValue is Date) {
-                        dateFormat.format(fieldValue)
-                    } else {
-                        fieldValue
-                    }
+                    applyDateFormatIfDate(fieldValue)
                 }
             }
 
@@ -131,6 +127,14 @@ class NotificationAttachmentService : INotificationAttachmentService {
         }
 
         return vehicleStateFieldValues.plus(predicateFieldValues)
+    }
+
+    private fun applyDateFormatIfDate(fieldValue: Any?): Any? {
+        return if (fieldValue is Date) {
+            dateFormat.format(fieldValue)
+        } else {
+            fieldValue
+        }
     }
 
     companion object {
