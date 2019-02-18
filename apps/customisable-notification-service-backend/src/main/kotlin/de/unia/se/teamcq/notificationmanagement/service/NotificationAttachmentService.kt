@@ -1,22 +1,25 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
 import com.google.common.base.CaseFormat
+import com.google.common.io.Closeables
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
+import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.ruleevaluation.service.PredicateFieldContainer
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import org.apache.commons.csv.CSVFormat
+import org.apache.commons.csv.CSVPrinter
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
-import org.apache.commons.csv.CSVFormat
-import org.apache.commons.csv.CSVPrinter
 import java.io.BufferedWriter
 import java.io.ByteArrayOutputStream
 import java.io.OutputStreamWriter
-import com.google.common.io.Closeables
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
-import de.unia.se.teamcq.vehiclestate.model.VehicleState
-import org.slf4j.LoggerFactory
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.SortedMap
+import java.util.TimeZone
 
 @Component
 class NotificationAttachmentService : INotificationAttachmentService {
@@ -114,7 +117,13 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
             val fieldValues = matchingDataType.flatMap { dataType ->
                 fieldNames.map { predicateFieldInDataType ->
-                    dataType.retrieveFieldValue(predicateFieldInDataType)
+                    val fieldValue = dataType.retrieveFieldValue(predicateFieldInDataType)
+
+                    if (fieldValue is Date) {
+                        dateFormat.format(fieldValue)
+                    } else {
+                        fieldValue
+                    }
                 }
             }
 
@@ -126,5 +135,10 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationAttachmentService::class.java)
+
+        // ISO 8601, see https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
+        private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
     }
 }
