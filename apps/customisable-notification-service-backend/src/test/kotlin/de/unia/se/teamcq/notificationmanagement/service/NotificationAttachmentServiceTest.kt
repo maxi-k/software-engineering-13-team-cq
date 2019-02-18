@@ -13,6 +13,7 @@ import io.mockk.impl.annotations.MockK
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.util.FileCopyUtils
+import java.util.TimeZone
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class NotificationAttachmentServiceTest : StringSpec() {
@@ -30,6 +31,9 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
             "Generate a valid csv" {
 
+                // Without this, test may fail because of the date in the csv text
+                TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
+
                 every { predicateFieldContainer.getPredicateFieldProviders() } returns
                         getTestPredicateFieldProviders()
 
@@ -40,9 +44,9 @@ class NotificationAttachmentServiceTest : StringSpec() {
                 val csvText = FileCopyUtils.copyToString(csvResource.inputStream.bufferedReader())
 
                 val expectedCsvContext = """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 22:54:10 CET 1970,Healthy
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 21:54:10 UTC 1970,Healthy
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 21:54:10 UTC 1970,Healthy
+                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,Sun Jan 18 21:54:10 UTC 1970,Healthy
                            |""".trimMargin()
 
                 val systemLineSeparator = System.getProperty("line.separator")
