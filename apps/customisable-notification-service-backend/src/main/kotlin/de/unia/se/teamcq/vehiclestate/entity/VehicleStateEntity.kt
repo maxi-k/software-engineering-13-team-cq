@@ -1,17 +1,7 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
 import java.io.Serializable
-import javax.persistence.CascadeType
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.OneToOne
-import javax.persistence.ManyToOne
-import javax.persistence.ElementCollection
-import javax.persistence.Column
+import javax.persistence.*
 
 @Entity
 // Constructor with (null)-default values for everything necessary for MapStruct
@@ -26,7 +16,8 @@ data class VehicleStateEntity(
     var vehicleReference: VehicleReferenceEntity? = null,
 
     @ElementCollection
-    @Column(name = "vehicle_state_data_type")
-    var vehicleStateDataTypes: Set<VehicleStateDataTypeEntity>? = hashSetOf<VehicleStateDataTypeEntity>()
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = VehicleStateDataTypeEntity::class,
+            orphanRemoval = true)
+    var vehicleStateDataTypes: Set<VehicleStateDataTypeEntity> = mutableSetOf()
 
 ) : Serializable
