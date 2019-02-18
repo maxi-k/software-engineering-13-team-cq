@@ -113,14 +113,15 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
             val matchingDataType = allVehicleStateDataTypes.filter { dataType ->
                 dataType.predicateFieldProviderName == predicateProviderWithNextValues.predicateFieldProviderName
-            }
+            }.firstOrNull()
 
-            val fieldValues = matchingDataType.flatMap { dataType ->
-                fieldNames.map { predicateFieldInDataType ->
-                    val fieldValue = dataType.retrieveFieldValue(predicateFieldInDataType)
+            val fieldValues = fieldNames.map { predicateFieldInDataType ->
 
-                    applyDateFormatIfDate(fieldValue)
+                val fieldValue = matchingDataType?.let { dataType ->
+                    dataType.retrieveFieldValue(predicateFieldInDataType)
                 }
+
+                applyDateFormatIfDate(fieldValue)
             }
 
             fieldValues
