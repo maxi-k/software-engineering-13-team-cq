@@ -15,6 +15,7 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import java.io.BufferedWriter
 import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.io.OutputStreamWriter
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,7 +31,6 @@ class NotificationAttachmentService : INotificationAttachmentService {
     override fun getCsvAttachment(notificationData: NotificationData): Resource {
 
         val dataTypesWithFields = getDataTypesWithFields()
-
         val csvColumnNames = getCsvColumnNames(dataTypesWithFields)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
@@ -50,11 +50,11 @@ class NotificationAttachmentService : INotificationAttachmentService {
             }
 
             threwException = false
-        } catch (exception: Exception) {
+        } catch (iOException: IOException) {
             val ruleId = notificationData.notificationRule.ruleId
-            logger.error("Error while writing Notification Attachment CSV for Rule $ruleId", exception)
+            logger.error("Error while writing Notification Attachment CSV for Rule $ruleId", iOException)
         } finally {
-            bufferedWriter!!.flush()
+            bufferedWriter?.flush()
             Closeables.close(bufferedWriter, threwException)
             Closeables.close(csvPrinter, threwException)
         }
@@ -79,8 +79,8 @@ class NotificationAttachmentService : INotificationAttachmentService {
     private fun getCsvColumnNames(dataTypesWithFields: Map<IPredicateFieldProvider, List<String>>): List<String> {
 
         // TODO: Consider using fleetReference.fetchVehicleData to retrieve more information
-        // TODO: than the one below
-        val vehicleStateFields = listOf("state_id", "vin")
+        // TODO: than the one below, see #150
+        val vehicleStateFields = listOf(STATE_ID_FIELD_NAME, VIN_FIELD_NAME)
 
         val vehicleStateDataTypeFieldNames = dataTypesWithFields.flatMap { (dataType, fieldNames) ->
             fieldNames.map { fieldName ->
@@ -104,7 +104,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
         val vehicleStateFieldValues = listOf(
                 vehicleState.stateId,
-                vehicleState.vehicleReference!!.vin!!
+                vehicleState.vehicleReference?.vin
         )
 
         val predicateFieldValues = dataTypesWithFields.flatMap { (predicateProviderWithNextValues, fieldNames) ->
@@ -138,6 +138,10 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationAttachmentService::class.java)
+
+        private const val STATE_ID_FIELD_NAME = "state_id"
+
+        private const val VIN_FIELD_NAME = "vin"
 
         // ISO 8601, see https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
         private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").apply {
