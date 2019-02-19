@@ -20,6 +20,7 @@
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleCreate.title": "Create Rule",
     "cns.page.ruleEdit.title": "Edit Rule",
+    "cns.page.ruleDelete.title": "Delete Rule",
 
     "cns.rule.label": "Notification Rule",
 

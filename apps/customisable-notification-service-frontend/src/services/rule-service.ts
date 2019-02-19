@@ -35,6 +35,19 @@ export const fetchRuleDetail = (accessToken: string, ruleId: number) => (
     : authApiRequest(ruleDetailUrl(ruleId), accessToken)
 )
 
+export const deleteRule = (accessToken: string, ruleId: number) => (
+  doMock
+    ? (
+      // We want a console print here, as there will be no information in
+      // the network tab, and this is development only.
+      // tslint:disable-next-line:no-console
+      console.info("Mocking deletion of remote NotificationRule with ID " + ruleId)
+    )
+    : authApiRequest(ruleDetailUrl(ruleId), accessToken, {
+      method: 'DELETE'
+    })
+)
+
 const ruleCreationUrl = '/notification-rule-management/notification-rule'
 export const createNewRule = (accessToken: string, rule: object) => (
   doMock

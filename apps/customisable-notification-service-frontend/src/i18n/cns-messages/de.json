@@ -19,6 +19,7 @@
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleCreate.title": "Regel erstellen",
     "cns.page.ruleEdit.title": "Regel bearbeiten",
+    "cns.page.ruleDelete.title": "Regel löschen",
 
     "cns.rule.label": "Benachrichtigungsregel",
 

@@ -16,7 +16,7 @@ export enum RuleDetailActionType {
 
   RULE_DETAIL_FETCH = '@rule/detail/FETCH',
   RULE_DETAIL_FETCH_FAILURE = '@rule/detail/FETCH_FAILURE',
-  RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS'
+  RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS',
 }
 export type RuleDetailAction = Action<RuleDetailActionType>
 

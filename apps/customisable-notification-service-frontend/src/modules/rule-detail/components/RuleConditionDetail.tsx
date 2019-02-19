@@ -17,7 +17,9 @@ const StyledRuleConditionDetail = styled.div`
 
 const InlineVariable = styled.span`
   font-weight: bold;
-  padding: 0 0.35em;
+  font-style: italic;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
 `
 
 const PredicateWrapper = styled.div`

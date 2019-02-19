@@ -174,7 +174,7 @@ Array [
               />
               <button
                 autoFocus={true}
-                className="primary sc-jzJRlG brGhCA"
+                className="primary sc-jzJRlG cDvAUG"
                 icon={
                   <img
                     src="/assets/svg/chevron-right.svg"
@@ -437,7 +437,7 @@ exports[`Storyshots Fleetdata / Components Left Icon Button 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <button
-    className="primary sc-jzJRlG lbarbb"
+    className="primary sc-jzJRlG cSDgQj"
     iconleft={
       <_default
         color="white"
@@ -485,7 +485,7 @@ exports[`Storyshots Fleetdata / Components Primary Button 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <button
-    className="primary sc-jzJRlG lbarbb"
+    className="primary sc-jzJRlG cSDgQj"
     label="Prop: 'label'"
     primary="true"
   >
@@ -501,7 +501,7 @@ exports[`Storyshots Fleetdata / Components Right Icon Button 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <button
-    className="primary sc-jzJRlG lbarbb"
+    className="primary sc-jzJRlG cSDgQj"
     icon={
       <img
         src="/assets/svg/chevron-right.svg"
@@ -525,7 +525,7 @@ exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <button
-    className="sc-jzJRlG lbarbb"
+    className="sc-jzJRlG cSDgQj"
     label="Secondary Button"
   >
     <span>
@@ -537,7 +537,7 @@ exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
 
 exports[`Storyshots General Components Back Button 1`] = `
 <button
-  className="sc-gGBfsJ iNTxbL sc-jzJRlG lbarbb"
+  className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
   onClick={[Function]}
   primary="false"
 >
@@ -741,7 +741,7 @@ exports[`Storyshots General Components Large Loading Indicator 1`] = `
 
 exports[`Storyshots General Components Next Button 1`] = `
 <button
-  className="primary sc-jzJRlG lbarbb"
+  className="primary sc-jzJRlG cSDgQj"
   icon={
     <img
       src="/assets/svg/chevron-right.svg"
