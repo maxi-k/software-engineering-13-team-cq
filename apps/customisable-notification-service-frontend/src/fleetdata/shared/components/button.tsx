@@ -76,41 +76,41 @@ export const BMWButton = styled((props: IBMWButtonProps) => (
   <UnstyledBMWButton {...props} />
 ))`
   background-color: ${getVariant({
-  text: 'transparent',
-  flat: transparentize(0.35, lightblue),
-  default: hovermediumgray,
-})};
+    text: 'transparent',
+    flat: transparentize(0.35, lightblue),
+    default: hovermediumgray,
+  })};
   font-weight: ${getVariant({
-  text: 'bold',
-  flat: 'normal',
-  default: 'bold',
-})};
+    text: 'bold',
+    flat: 'normal',
+    default: 'bold',
+  })};
   font-size: 18px;
   color: ${getVariant({
-  text: mediumgray,
-  flat: darkgray,
-  default: white,
-})};
+    text: mediumgray,
+    flat: darkgray,
+    default: white,
+  })};
   font-family: 'BMWGroupCondensed', 'Arial', 'sans-serif';
   border-radius: ${getVariant({ text: 0, flat: rem(16), default: 0 })};
   padding-right: ${getVariant({
-  text: rem(16),
-  flat: rem(8),
-  default: '1.813rem',
-})};
+    text: rem(16),
+    flat: rem(8),
+    default: '1.813rem',
+  })};
   padding-left: ${getVariant({
-  text: rem(16),
-  flat: rem(8),
-  default: '1.813rem',
-})};
+    text: rem(16),
+    flat: rem(8),
+    default: '1.813rem',
+  })};
   padding-bottom: 0;
   padding-top: 2px;
 
   text-transform: ${getVariant({
-  text: 'uppercase',
-  flat: 'normal',
-  default: 'uppercase',
-})};
+    text: 'uppercase',
+    flat: 'normal',
+    default: 'uppercase',
+  })};
   text-decoration: none;
   text-align: center;
   border: 0;
@@ -139,15 +139,15 @@ export const BMWButton = styled((props: IBMWButtonProps) => (
   &:hover,
   &:focus {
     background-color: ${getVariant({
-    text: 'transparent',
-    flat: transparentize(0.35, blue),
-    default: black,
-  })};
+      text: 'transparent',
+      flat: transparentize(0.35, blue),
+      default: black,
+    })};
     color: ${getVariant({
-    text: hovermediumgray,
-    flat: darkgray,
-    default: white,
-  })};
+      text: hovermediumgray,
+      flat: darkgray,
+      default: white,
+    })};
     outline: none;
   }
 
@@ -163,36 +163,36 @@ export const BMWButton = styled((props: IBMWButtonProps) => (
 
   & > span {
     margin: 0 ${getVariant({
-    text: 0,
-    flat: '24px',
-    default: 0,
-  })} 0 0;
+      text: 0,
+      flat: '24px',
+      default: 0,
+    })} 0 0;
   }
 
   &.primary {
     color: ${getVariant({
-    text: lightblue,
-    flat: mediumgray,
-    default: white,
-  })};
+      text: lightblue,
+      flat: mediumgray,
+      default: white,
+    })};
     background-color: ${getVariant({
-    text: 'transparent',
-    flat: transparentize(0.35, lightblue),
-    default: lightblue,
-  })};
+      text: 'transparent',
+      flat: transparentize(0.35, lightblue),
+      default: lightblue,
+    })};
 
     &:hover,
     &:focus {
       background-color: ${getVariant({
-    text: 'transparent',
-    flat: blue,
-    default: blue,
-  })};
+        text: 'transparent',
+        flat: blue,
+        default: blue,
+      })};
       color: ${getVariant({
-    text: blue,
-    flat: mediumgray,
-    default: white,
-  })};
+        text: blue,
+        flat: mediumgray,
+        default: white,
+      })};
       outline: none;
     }
   }
