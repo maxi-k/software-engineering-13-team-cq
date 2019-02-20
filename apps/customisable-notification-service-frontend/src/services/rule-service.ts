@@ -138,9 +138,9 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
   recipients: 'recipients',
   ownerAsAdditionalRecipient: 'ownerAsAdditionalRecipient',
   condition: (condition: any) => (['condition', transformObject(condition, {
-
+    '@type': (typeValue: any) => ['@type', undefined] as [string, undefined],
     logicalConnective: ((connective: any): [string, LogicalConnective] => (
-      ['logicalConnective', capitalizeString(connective as string) as LogicalConnective]
+      ['logicalConnective', (connective as string).toLowerCase() as LogicalConnective]
     )),
     subConditions: (subConditions: any): [string, RuleCondition['predicates']] => [
       'predicates',
@@ -170,7 +170,7 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
     )
   }) as DetailRule
 
-export const convertToAPIRule = (rule: DetailRule): object => transformObject(rule, {
+export const convertToAPIRule = (rule: DetailRule): APIRule => transformObject(rule, {
   fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
   applyToAllFleets: 'affectingAllApplicableFleets',
   condition: (oldCondition: any) => (['condition', transformObject(oldCondition, {
@@ -207,7 +207,7 @@ export const convertToAPIRule = (rule: DetailRule): object => transformObject(ru
     '@type': convertAggregatorType(aggregator.strategy),
     ...convertAggregatorValueKey(aggregator as Aggregator)
   }] as [string, object])
-})
+}) as APIRule
 
 export const ruleOwnerAsRecipient = (ruleOwner: RuleOwner): Recipient => (
   ruleOwner.userSettings.userNotificationType === 'EMAIL'
@@ -245,7 +245,7 @@ const mockedRule2: OverviewRule = {
   ]
 }
 
-const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
+export const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
 
 export const mockedRuleDetail = (ruleId: number): DetailRule => ({
   ruleId,
