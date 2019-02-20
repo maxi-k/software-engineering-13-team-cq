@@ -63,16 +63,16 @@ class NotificationAttachmentService : INotificationAttachmentService {
         }.toMap().toSortedMap()
     }
 
-    private fun getCsvColumnNames(dataTypesWithFields: Map<String, List<String>>): List<String> {
+    private fun getCsvColumnNames(dataTypeNamesToFields: Map<String, List<String>>): List<String> {
 
         // TODO: Consider using fleetReference.fetchVehicleData to retrieve more information
         // TODO: than the one below, see #150
         val vehicleStateFields = listOf(STATE_ID_FIELD_NAME, VIN_FIELD_NAME)
 
-        val vehicleStateDataTypeFieldNames = dataTypesWithFields.flatMap { (dataType, fieldNames) ->
+        val vehicleStateDataTypeFieldNames = dataTypeNamesToFields.flatMap { (nameOfProviderWithField, fieldNames) ->
             fieldNames.map { fieldName ->
                 val formattedProviderName = CaseFormat.UPPER_CAMEL.to(
-                        CaseFormat.LOWER_UNDERSCORE, dataType
+                        CaseFormat.LOWER_UNDERSCORE, nameOfProviderWithField
                 )
                 val formattedFieldName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName)
 
@@ -85,7 +85,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
     private fun getCsvRecordValues(
         vehicleState: VehicleState,
-        dataTypesWithFields: Map<String, List<String>>
+        dataTypeNamesToFields: Map<String, List<String>>
     ): List<Any?> {
 
         val vehicleStateFieldValues = listOf(
@@ -97,7 +97,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
             dataType.predicateFieldProviderName to dataType
         }.toMap()
 
-        val predicateFieldValues = dataTypesWithFields.flatMap { (nameOfProviderWithField, fieldNames) ->
+        val predicateFieldValues = dataTypeNamesToFields.flatMap { (nameOfProviderWithField, fieldNames) ->
 
             val matchingDataType = allVehicleStateDataTypes[nameOfProviderWithField]
 
