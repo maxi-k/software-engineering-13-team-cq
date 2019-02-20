@@ -1,21 +1,18 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
 import com.google.common.base.CaseFormat
-import com.google.common.io.Closeables
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.ruleevaluation.service.PredicateFieldContainer
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import java.io.BufferedWriter
 import java.io.ByteArrayOutputStream
-import java.io.IOException
 import java.io.OutputStreamWriter
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -34,29 +31,18 @@ class NotificationAttachmentService : INotificationAttachmentService {
         val csvColumnNames = getCsvColumnNames(dataTypesWithFields)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
-        var bufferedWriter: BufferedWriter? = null
-        var csvPrinter: CSVPrinter? = null
+        val bufferedWriter = BufferedWriter(OutputStreamWriter(byteArrayOutputStream))
 
-        var threwException = true
+        val csvFormat = CSVFormat.DEFAULT.withHeader(*csvColumnNames.toTypedArray())
+        val csvPrinter = CSVPrinter(bufferedWriter, csvFormat)
 
-        try {
-            bufferedWriter = BufferedWriter(OutputStreamWriter(byteArrayOutputStream))
-            val csvFormat = CSVFormat.DEFAULT.withHeader(*csvColumnNames.toTypedArray())
-            csvPrinter = CSVPrinter(bufferedWriter, csvFormat)
-
-            notificationData.matchedVehicleStates.map { vehicleState ->
-                val csvRecordValues = getCsvRecordValues(vehicleState, dataTypesWithFields)
-                csvPrinter.printRecord(csvRecordValues)
+        bufferedWriter.use {
+            csvPrinter.use {
+                notificationData.matchedVehicleStates.map { vehicleState ->
+                    val csvRecordValues = getCsvRecordValues(vehicleState, dataTypesWithFields)
+                    csvPrinter.printRecord(csvRecordValues)
+                }
             }
-
-            threwException = false
-        } catch (iOException: IOException) {
-            val ruleId = notificationData.notificationRule.ruleId
-            logger.error("Error while writing Notification Attachment CSV for Rule $ruleId", iOException)
-        } finally {
-            bufferedWriter?.flush()
-            Closeables.close(bufferedWriter, threwException)
-            Closeables.close(csvPrinter, threwException)
         }
 
         return ByteArrayResource(byteArrayOutputStream.toByteArray())
@@ -137,10 +123,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(NotificationAttachmentService::class.java)
-
         private const val STATE_ID_FIELD_NAME = "state_id"
-
         private const val VIN_FIELD_NAME = "vin"
 
         // ISO 8601, see https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
