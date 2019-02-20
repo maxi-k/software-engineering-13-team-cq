@@ -8,7 +8,7 @@ import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
 import { BMWButton } from '@fleetdata/shared/components/button';
 import EditIcon from '@fleetdata/shared/components/icons/edit.icon'
-import DeleteIcon from '@fleetdata/shared/components/icons/edit.icon'
+import DeleteIcon from '@fleetdata/shared/components/icons/delete.icon'
 
 import EmbeddedIcon from '@/modules/shared/components/EmbeddedIcon'
 import ErrorMessage from '@/modules/shared/components/ErrorMessage'
