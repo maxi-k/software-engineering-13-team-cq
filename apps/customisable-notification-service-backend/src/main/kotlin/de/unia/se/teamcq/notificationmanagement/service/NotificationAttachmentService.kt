@@ -2,7 +2,6 @@ package de.unia.se.teamcq.notificationmanagement.service
 
 import com.google.common.base.CaseFormat
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
-import de.unia.se.teamcq.ruleevaluation.model.IPredicateFieldProvider
 import de.unia.se.teamcq.ruleevaluation.service.PredicateFieldContainer
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.apache.commons.csv.CSVFormat
@@ -50,7 +49,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
         return ByteArrayResource(byteArrayOutputStream.toByteArray())
     }
 
-    private fun getDataTypesWithFields(): SortedMap<IPredicateFieldProvider, List<String>> {
+    private fun getDataTypesWithFields(): SortedMap<String, List<String>> {
 
         val predicateFieldProviders = predicateFieldContainer.getPredicateFieldProviders()
 
@@ -60,11 +59,11 @@ class NotificationAttachmentService : INotificationAttachmentService {
                 vehicleStateField.fieldName!!
             }.sorted()
 
-            fieldProvider to fieldNamesOfProvider
-        }.toMap().toSortedMap(compareBy { fieldProvider -> fieldProvider.predicateFieldProviderName })
+            fieldProvider.predicateFieldProviderName to fieldNamesOfProvider
+        }.toMap().toSortedMap()
     }
 
-    private fun getCsvColumnNames(dataTypesWithFields: Map<IPredicateFieldProvider, List<String>>): List<String> {
+    private fun getCsvColumnNames(dataTypesWithFields: Map<String, List<String>>): List<String> {
 
         // TODO: Consider using fleetReference.fetchVehicleData to retrieve more information
         // TODO: than the one below, see #150
@@ -72,9 +71,8 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
         val vehicleStateDataTypeFieldNames = dataTypesWithFields.flatMap { (dataType, fieldNames) ->
             fieldNames.map { fieldName ->
-
                 val formattedProviderName = CaseFormat.UPPER_CAMEL.to(
-                        CaseFormat.LOWER_UNDERSCORE, dataType.predicateFieldProviderName
+                        CaseFormat.LOWER_UNDERSCORE, dataType
                 )
                 val formattedFieldName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName)
 
@@ -87,7 +85,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
     private fun getCsvRecordValues(
         vehicleState: VehicleState,
-        dataTypesWithFields: Map<IPredicateFieldProvider, List<String>>
+        dataTypesWithFields: Map<String, List<String>>
     ): List<Any?> {
 
         val vehicleStateFieldValues = listOf(
@@ -95,13 +93,13 @@ class NotificationAttachmentService : INotificationAttachmentService {
                 vehicleState.vehicleReference?.vin
         )
 
-        val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes
+        val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes.map { dataType ->
+            dataType.predicateFieldProviderName to dataType
+        }.toMap()
 
-        val predicateFieldValues = dataTypesWithFields.flatMap { (predicateProviderWithNextValues, fieldNames) ->
+        val predicateFieldValues = dataTypesWithFields.flatMap { (nameOfProviderWithField, fieldNames) ->
 
-            val matchingDataType = allVehicleStateDataTypes.firstOrNull { dataType ->
-                dataType.predicateFieldProviderName == predicateProviderWithNextValues.predicateFieldProviderName
-            }
+            val matchingDataType = allVehicleStateDataTypes[nameOfProviderWithField]
 
             val fieldValues = fieldNames.map { predicateFieldInDataType ->
                 val fieldValue = matchingDataType?.retrieveFieldValue(predicateFieldInDataType)
