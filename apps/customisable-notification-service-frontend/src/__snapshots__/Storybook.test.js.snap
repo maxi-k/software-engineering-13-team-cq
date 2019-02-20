@@ -2208,6 +2208,450 @@ exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Detail / Complete Fetching 1`] = `
+<div
+  className="sc-uJMKN eVXOtU"
+  size="80"
+>
+  <div
+    className="MuiCircularProgress-root-964 MuiCircularProgress-colorPrimary-967 MuiCircularProgress-indeterminate-966"
+    role="progressbar"
+    style={
+      Object {
+        "height": 80,
+        "width": 80,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-969"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-970 MuiCircularProgress-circleIndeterminate-972"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Detail / Complete Success 1`] = `
+<div
+  className="sc-esjQYD bVhgMq"
+>
+  <header
+    className="sc-dqBHgY diSgKh"
+    style={
+      Object {
+        "padding": "1rem",
+      }
+    }
+  >
+    <h5
+      className="MuiTypography-root-1074 MuiTypography-h5-1090"
+    >
+      
+      Edit Rule
+       'Status Reports'
+    </h5>
+  </header>
+  <div
+    className="sc-gxMtzJ HiaTB"
+  >
+    <div
+      className="sc-RefOD DMnwk"
+    >
+      <button
+        className="sc-jzJRlG cSDgQj"
+        icon={
+          <WithTheme(EmbeddedIcon)
+            component={[Function]}
+          />
+        }
+        onClick={[Function]}
+      >
+        <span>
+          Edit Rule
+        </span>
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "[object Object]",
+              "height": "24px",
+              "marginTop": undefined,
+              "minWidth": "24px",
+              "width": "24px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 96 96"
+          width="100%"
+        >
+          <g>
+            <polygon
+              points="73,74 23,74 23,22 53.617,22 56.973,18 19,18 19,78 77,78 77,36.915 73,41.682 	"
+            />
+            <path
+              d="M38.495,47.954l-2.978,3.551l-3.568,17.708l16.82-6.588l2.979-3.55l0,0l29.649-35.334l-13.252-11.12 L38.495,47.954L38.495,47.954z M68.613,17.974l7.43,6.235L48.837,56.633l-7.431-6.236L68.613,17.974z M46.338,59.496l-9.287,3.638 l1.97-9.778L46.338,59.496z"
+            />
+          </g>
+        </svg>
+      </button>
+      <button
+        className="sc-jzJRlG cSDgQj"
+        icon={
+          <WithTheme(EmbeddedIcon)
+            component={[Function]}
+          />
+        }
+        onClick={[Function]}
+      >
+        <span>
+          Delete Rule
+        </span>
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "[object Object]",
+              "height": "24px",
+              "marginTop": undefined,
+              "minWidth": "24px",
+              "width": "24px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 96 96"
+          width="100%"
+        >
+          <g>
+            <polygon
+              points="73,74 23,74 23,22 53.617,22 56.973,18 19,18 19,78 77,78 77,36.915 73,41.682 	"
+            />
+            <path
+              d="M38.495,47.954l-2.978,3.551l-3.568,17.708l16.82-6.588l2.979-3.55l0,0l29.649-35.334l-13.252-11.12 L38.495,47.954L38.495,47.954z M68.613,17.974l7.43,6.235L48.837,56.633l-7.431-6.236L68.613,17.974z M46.338,59.496l-9.287,3.638 l1.97-9.778L46.338,59.496z"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+    <button
+      className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
+      goToHome={true}
+      onClick={[Function]}
+      primary="false"
+    >
+      <span>
+        Back
+      </span>
+    </button>
+  </div>
+  <div
+    className="sc-ibxdXY fXpsiD"
+  />
+  <div
+    className="sc-kIPQKe lhWmXO"
+  >
+    <div
+      className="sc-eXEjpC iBlZJx"
+    >
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Rule Name
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          <p
+            className="MuiTypography-root-1074 MuiTypography-body1-1083"
+          >
+            Status Reports
+          </p>
+        </div>
+      </div>
+      <div
+        className="sc-ibxdXY fXpsiD"
+      />
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Description
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          <p
+            className="MuiTypography-root-1074 MuiTypography-body1-1083"
+          >
+            Rule Description for an examplary Notification Rule
+          </p>
+        </div>
+      </div>
+      <div
+        className="sc-ibxdXY fXpsiD"
+      />
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Recipients
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          <div
+            className="sc-iELTvK fpMbRF"
+          >
+            Rule Owner
+          </div>
+          <div
+            className="sc-btzYZH kYSOjP sc-iELTvK fpMbRF"
+          >
+            <span
+              className="sc-cmTdod keKjuy"
+            >
+              <strong>
+                SMS
+              </strong>
+            </span>
+            <div
+              className="sc-jwKygS fQittr"
+            >
+              +49 1234567890
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-ibxdXY fXpsiD"
+      />
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Condition
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          <div
+            className="sc-iyvyFf eAjCtQ"
+          >
+            If
+            <span
+              className="sc-hwwEjo lfhMQs"
+            >
+              all
+            </span>
+            of the following conditions are met:
+            <div
+              className="sc-kPVwWT CiPVm"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-eXEjpC iBlZJx"
+    >
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Affected Fleets
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          All Fleets
+        </div>
+      </div>
+      <div
+        className="sc-ibxdXY fXpsiD"
+      />
+      <div
+        className="sc-dfVpRl cUhEmu"
+      >
+        <span
+          className="MuiTypography-root-1074 MuiTypography-overline-1094"
+        >
+          Data Sources
+        </span>
+        <div
+          className="sc-gzOgki dPnIJc"
+        >
+          <div
+            className="sc-ktHwxA imxtbk"
+            label="cns.vehicle.status.engine.label"
+          >
+            <img
+              src="/assets/img/engine.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+            <span>
+              engine
+            </span>
+          </div>
+          <div
+            className="sc-ktHwxA imxtbk"
+            label="cns.vehicle.status.battery.label"
+          >
+            <img
+              src="/assets/img/battery.png"
+              style={
+                Object {
+                  "height": "20px",
+                  "width": "20px",
+                }
+              }
+            />
+            <span>
+              battery
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Detail / Complete With Error 1`] = `
+<div
+  aria-describedby="client-snackbar"
+  className="MuiTypography-root-1012 MuiTypography-body2-1020 MuiPaper-root-985 MuiPaper-elevation6-993 MuiSnackbarContent-root-982"
+  role="alertdialog"
+  style={
+    Object {
+      "backgroundColor": "#d32f2f",
+    }
+  }
+>
+  <div
+    className="MuiSnackbarContent-message-983"
+  >
+    <span
+      id="client-snackbar"
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+        }
+      }
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-1047"
+        focusable="false"
+        role="presentation"
+        style={
+          Object {
+            "fontSize": 20,
+            "marginRight": 8,
+            "opacity": 0.9,
+          }
+        }
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      There was a problem loading this data from the server. Please try again later.
+    </span>
+  </div>
+  <div
+    className="MuiSnackbarContent-action-984"
+  >
+    <button
+      aria-label="Close"
+      className="MuiButtonBase-root-1062 MuiIconButton-root-1056 MuiIconButton-colorInherit-1057"
+      disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-1061"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-1047"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Detail / General Components Property Tag 1`] = `
+<div
+  className="sc-bbmXgH dVcTmh"
+>
+  <div
+    className="sc-iELTvK fpMbRF"
+  >
+    Property Label
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Detail / General Components Recipient Tag 1`] = `
 <div
   className="sc-bbmXgH dVcTmh"

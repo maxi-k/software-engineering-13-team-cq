@@ -247,7 +247,7 @@ const mockedRule2: OverviewRule = {
 
 const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
 
-const mockedRuleDetail = (ruleId: number): DetailRule => ({
+export const mockedRuleDetail = (ruleId: number): DetailRule => ({
   ruleId,
   ...mockedRuleOverview[ruleId % mockedRuleOverview.length],
   applyToAllFleets: true,
