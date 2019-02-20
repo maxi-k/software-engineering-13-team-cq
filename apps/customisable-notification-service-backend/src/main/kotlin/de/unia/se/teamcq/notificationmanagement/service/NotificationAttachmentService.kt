@@ -13,6 +13,7 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import java.io.BufferedWriter
 import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.io.OutputStreamWriter
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -25,6 +26,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
     @Autowired
     private lateinit var predicateFieldContainer: PredicateFieldContainer
 
+    @Throws(IOException::class)
     override fun getCsvAttachment(notificationData: NotificationData): Resource {
 
         val dataTypesWithFields = getDataTypesWithFields()
@@ -93,18 +95,16 @@ class NotificationAttachmentService : INotificationAttachmentService {
                 vehicleState.vehicleReference?.vin
         )
 
-        val predicateFieldValues = dataTypesWithFields.flatMap { (predicateProviderWithNextValues, fieldNames) ->
+        val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes
 
-            val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes
+        val predicateFieldValues = dataTypesWithFields.flatMap { (predicateProviderWithNextValues, fieldNames) ->
 
             val matchingDataType = allVehicleStateDataTypes.firstOrNull { dataType ->
                 dataType.predicateFieldProviderName == predicateProviderWithNextValues.predicateFieldProviderName
             }
 
             val fieldValues = fieldNames.map { predicateFieldInDataType ->
-
                 val fieldValue = matchingDataType?.retrieveFieldValue(predicateFieldInDataType)
-
                 applyDateFormatIfDate(fieldValue)
             }
 
