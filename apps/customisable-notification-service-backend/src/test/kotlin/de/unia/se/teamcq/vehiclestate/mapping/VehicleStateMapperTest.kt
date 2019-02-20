@@ -2,8 +2,11 @@ package de.unia.se.teamcq.vehiclestate.mapping
 
 import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceModel
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeEntities
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeModels
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
+import de.unia.se.teamcq.rulemanagement.mapping.RecipientMapperHelper
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
@@ -20,6 +23,9 @@ class VehicleStateMapperTest : StringSpec() {
     @MockK
     lateinit var mockIVehicleReferenceMapper: IVehicleReferenceMapper
 
+    @MockK
+    lateinit var mockVehicleStateMapperHelper: VehicleStateMapperHelper
+
     @InjectMockKs
     lateinit var vehicleStateMapper: IVehicleStateMapperImpl
 
@@ -29,6 +35,8 @@ class VehicleStateMapperTest : StringSpec() {
         "Convert model to entity" {
 
             every { mockIVehicleReferenceMapper.modelToEntity(any()) } returns getTestVehicleReferenceEntity()
+
+            every { mockVehicleStateMapperHelper.modelToEntity(any()) } returns getTestVehicleStateDataTypeEntities()
 
             val vehicleState = getTestVehicleStateModel()
 
@@ -41,16 +49,14 @@ class VehicleStateMapperTest : StringSpec() {
 
             every { mockIVehicleReferenceMapper.entityToModel(any()) } returns getTestVehicleReferenceModel()
 
+            every { mockVehicleStateMapperHelper.entityToModel(any()) } returns getTestVehicleStateDataTypeModels()
+
             val vehicleStateEntity = getTestVehicleStateEnity()
 
             val vehicleStateModel = vehicleStateMapper.entityToModel(vehicleStateEntity)
 
-            // TODO: Once we persist this fully in the DB:
-            // vehicleStateModel shouldBe getTestVehicleStateModel()
+            vehicleStateModel shouldBe getTestVehicleStateModel()
 
-            vehicleStateModel shouldNotBe null
-            vehicleStateModel.stateId shouldBe getTestVehicleStateModel().stateId
-            vehicleStateModel.vehicleReference shouldBe getTestVehicleStateModel().vehicleReference
         }
     }
 }

@@ -52,9 +52,7 @@ import de.unia.se.teamcq.user.model.UserLocale
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
-import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
-import de.unia.se.teamcq.vehiclestate.entity.VehicleReferenceEntity
-import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
+import de.unia.se.teamcq.vehiclestate.entity.*
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
@@ -162,8 +160,21 @@ object TestUtils {
         return VehicleStateDataTypeBattery(0.5, 0.7, "Healthy", 10)
     }
 
+    fun getTestVehicleStateDataTypeBatteryEntity(): VehicleStateDataTypeBatteryEntity {
+        return VehicleStateDataTypeBatteryEntity(0.5, 0.7, "Healthy", 10)
+    }
+
     fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
         return VehicleStateDataTypeContract(
+                10,
+                setOf("1002A", "1008B"),
+                9,
+                11
+        )
+    }
+
+    fun getTestVehicleStateDataTypeContractEntity(): VehicleStateDataTypeContractEntity {
+        return VehicleStateDataTypeContractEntity(
                 10,
                 setOf("1002A", "1008B"),
                 9,
@@ -175,30 +186,61 @@ object TestUtils {
         return VehicleStateDataTypeEngine(120, 120, "Gas", 12)
     }
 
+    fun getTestVehicleStateDataTypeEngineEntity(): VehicleStateDataTypeEngineEntity {
+        return VehicleStateDataTypeEngineEntity(120, 120, "Gas", 12)
+    }
+
     fun getTestVehicleStateDataTypeFuelModel(): VehicleStateDataTypeFuel {
         return VehicleStateDataTypeFuel(0.4, 50, 1000, 13)
+    }
+
+    fun getTestVehicleStateDataTypeFuelEntity(): VehicleStateDataTypeFuelEntity {
+        return VehicleStateDataTypeFuelEntity(0.4, 50, 1000, 13)
     }
 
     fun getTestVehicleStateDataTypeMileageModel(): VehicleStateDataTypeMileage {
         return VehicleStateDataTypeMileage(10000, 5000, 1000, 14)
     }
 
+    fun getTestVehicleStateDataTypeMileageEntity(): VehicleStateDataTypeMileageEntity {
+        return VehicleStateDataTypeMileageEntity(10000, 5000, 1000, 14)
+    }
+
     fun getTestVehicleStateDataTypeServiceModel(): VehicleStateDataTypeService {
         return VehicleStateDataTypeService(Date(1547650098), "Fine", "Healthy", 15)
+    }
+
+    fun getTestVehicleStateDataTypeServiceEntity(): VehicleStateDataTypeServiceEntity {
+        return VehicleStateDataTypeServiceEntity(Date(1547650098), "Fine", "Healthy", 15)
     }
 
     fun getTestVehicleStateModel(): VehicleState {
         return VehicleState(
                 0,
                 getTestVehicleReferenceModel(),
-                setOf(
-                        getTestVehicleStateDataTypeBatteryModel(),
-                        getTestVehicleStateDataTypeContractModel(),
-                        getTestVehicleStateDataTypeEngineModel(),
-                        getTestVehicleStateDataTypeFuelModel(),
-                        getTestVehicleStateDataTypeMileageModel(),
-                        getTestVehicleStateDataTypeServiceModel()
-                )
+                getTestVehicleStateDataTypeModels()
+        )
+    }
+
+    fun getTestVehicleStateDataTypeModels(): Set<VehicleStateDataType> {
+        return setOf(
+                getTestVehicleStateDataTypeBatteryModel(),
+                getTestVehicleStateDataTypeContractModel(),
+                getTestVehicleStateDataTypeEngineModel(),
+                getTestVehicleStateDataTypeFuelModel(),
+                getTestVehicleStateDataTypeMileageModel(),
+                getTestVehicleStateDataTypeServiceModel()
+        )
+    }
+
+    fun getTestVehicleStateDataTypeEntities(): Set<VehicleStateDataTypeEntity> {
+        return setOf(
+                getTestVehicleStateDataTypeBatteryEntity(),
+                getTestVehicleStateDataTypeContractEntity(),
+                getTestVehicleStateDataTypeEngineEntity(),
+                getTestVehicleStateDataTypeFuelEntity(),
+                getTestVehicleStateDataTypeMileageEntity(),
+                getTestVehicleStateDataTypeServiceEntity()
         )
     }
 
@@ -221,7 +263,8 @@ object TestUtils {
     fun getTestVehicleStateEnity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
-                getTestVehicleReferenceEntity()
+                getTestVehicleReferenceEntity(),
+                getTestVehicleStateDataTypeEntities()
         )
     }
 

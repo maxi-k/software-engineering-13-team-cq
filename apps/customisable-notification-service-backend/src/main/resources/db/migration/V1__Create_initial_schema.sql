@@ -1,4 +1,4 @@
- CREATE TABLE aggregator_entity
+CREATE TABLE aggregator_entity
   ( 
      dtype                        VARCHAR(31) NOT NULL, 
      aggregator_id                INT8 NOT NULL, 
