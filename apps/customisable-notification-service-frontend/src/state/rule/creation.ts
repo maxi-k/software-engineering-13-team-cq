@@ -4,18 +4,14 @@ import update from 'immutability-helper'
 import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 
-import { NotificationRuleInProgress, NotificationRuleDetail, LogicalConnective, AggregatorStrategy } from '@/model/Rule'
+import { RuleModificationState as RuleCreationState } from './common'
+import { NotificationRuleDetail, LogicalConnective, AggregatorStrategy } from '@/model/Rule'
 import { ruleCreationStateSelector } from '@/state/selectors'
 import { convertToAPIRule, createNewRule } from '@/services/rule-service'
 import { ensureResponseStatus } from '@/services/response-service'
 
 import { waitForLogin } from '@/state/auth'
 
-export interface RuleCreationState {
-  readonly inProgressRule: NotificationRuleInProgress
-  readonly completedSteps: Set<number>,
-  readonly currentStep: number
-}
 export enum RuleCreationActionType {
   RULE_CREATE_ABORT = '@rule/CREATE_ABORT',
   RULE_CREATE_FINISH = '@rule/CREATE_FINISH',

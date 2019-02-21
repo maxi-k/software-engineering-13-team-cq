@@ -1,25 +1,26 @@
 import React from 'react'
 import Stepper from '@material-ui/core/Stepper'
-import RuleCreationStep, { RuleCreationStepEmbeddedProps } from './RuleCreationStep'
+import RuleModificationStep, { RuleModificationStepEmbeddedProps } from './RuleModificationStep'
 
 export type SelectStepType = (stepIndex: number, event: React.SyntheticEvent<any, any>) => void
-export interface RuleCreationStepperAttributes {
+export interface RuleModificationStepperAttributes {
   activeStep: number,
   alternativeLabel?: boolean,
-  stepProps: RuleCreationStepEmbeddedProps[],
+  stepProps: RuleModificationStepEmbeddedProps[],
   selectStep: SelectStepType
 }
-export type RuleCreationStepperProps = RuleCreationStepperAttributes & React.HTMLAttributes<HTMLDivElement>
+export type RuleModificationStepperProps = RuleModificationStepperAttributes
+                                         & React.HTMLAttributes<HTMLDivElement>
 
 const stepSelector = (selectStep: SelectStepType, stepIndex: number) =>
   (event: React.SyntheticEvent<any, any>): void =>
     selectStep(stepIndex, event)
 
-const RuleCreationStepper: React.SFC<RuleCreationStepperProps> =
+const RuleModificationStepper: React.SFC<RuleModificationStepperProps> =
   ({ stepProps, selectStep, ...stepperProps }) => (
     <Stepper {...stepperProps} >
       {stepProps.map((props, idx) => (
-        <RuleCreationStep
+        <RuleModificationStep
           key={props.titleKey}
           active={idx === stepperProps.activeStep}
           selectStep={stepSelector(selectStep, idx)}
@@ -28,4 +29,4 @@ const RuleCreationStepper: React.SFC<RuleCreationStepperProps> =
     </Stepper>
   )
 
-export default RuleCreationStepper
+export default RuleModificationStepper

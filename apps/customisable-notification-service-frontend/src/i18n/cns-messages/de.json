@@ -34,18 +34,18 @@
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
 
-    "cns.rule.creation.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
-    "cns.rule.creation.step.label": "Schritt",
+    "cns.rule.modification.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
+    "cns.rule.modification.step.label": "Schritt",
 
-    "cns.rule.creation.action.complete": "Fertigstellen",
-    "cns.rule.creation.action.step.next": "Weiter",
-    "cns.rule.creation.action.step.previous": "Zurück",
+    "cns.rule.modification.action.complete": "Fertigstellen",
+    "cns.rule.modification.action.step.next": "Weiter",
+    "cns.rule.modification.action.step.previous": "Zurück",
 
-    "cns.rule.creation.step.general.title": "Allgemein",
-    "cns.rule.creation.step.fleets.title": "Flotten",
-    "cns.rule.creation.step.condition.title": "Bedingung",
-    "cns.rule.creation.step.timing.title": "Timing",
-    "cns.rule.creation.step.summary.title": "Vorschau",
+    "cns.rule.modification.step.general.title": "Allgemein",
+    "cns.rule.modification.step.fleets.title": "Flotten",
+    "cns.rule.modification.step.condition.title": "Bedingung",
+    "cns.rule.modification.step.timing.title": "Timing",
+    "cns.rule.modification.step.summary.title": "Vorschau",
 
     "cns.vehicle.status.engine.label": "Motor",
     "cns.vehicle.status.battery.label": "Batterie",

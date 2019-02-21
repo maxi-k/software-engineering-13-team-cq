@@ -1,9 +1,9 @@
 import React from 'react'
-import { RuleCreationStepView, createInputFieldUpdater } from '../creation-common'
+import { RuleModificationStepView, createInputFieldUpdater } from '../modification-common'
 
 import InputField from '@/modules/shared/components/InputField'
 
-const RuleCreationGeneral: RuleCreationStepView = (
+const RuleModificationGeneral: RuleModificationStepView = (
   { inProgressRule, updateField }
 ) => (
     <div>
@@ -21,4 +21,4 @@ const RuleCreationGeneral: RuleCreationStepView = (
     </div>
   )
 
-export default RuleCreationGeneral
+export default RuleModificationGeneral

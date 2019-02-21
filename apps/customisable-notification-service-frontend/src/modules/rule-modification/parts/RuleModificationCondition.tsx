@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-  RuleCreationStepView,
+  RuleModificationStepView,
   FieldUpdater,
   createMergingValueUpdater,
   createSingleValueUpdater,
   nestValueUpdater
-} from '../creation-common'
+} from '../modification-common'
 import {
   LogicalConnective,
   RuleCondition,
@@ -88,7 +88,7 @@ const PredicateList: React.SFC<{
       </StyledPredicateList>
     )
 
-const RuleCreationCondition: RuleCreationStepView = (
+const RuleModificationCondition: RuleModificationStepView = (
   { inProgressRule: { condition }, updateField }
 ) => {
   const logicalConnective = condition.logicalConnective || LogicalConnective.All
@@ -115,4 +115,4 @@ const RuleCreationCondition: RuleCreationStepView = (
   )
 }
 
-export default RuleCreationCondition
+export default RuleModificationCondition

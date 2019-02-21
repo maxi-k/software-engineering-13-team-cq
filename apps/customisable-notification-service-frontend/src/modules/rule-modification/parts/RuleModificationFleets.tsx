@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import {
-  RuleCreationStepView,
+  RuleModificationStepView,
   createCheckboxUpdater,
   createMultiValueUpdater
-} from '../creation-common'
+} from '../modification-common'
 import { Fleet, NotificationRuleInProgress } from '@/model'
 import { StateMapper } from '@/state/connector'
 import { carParkFleetsSelector } from '@/state/selectors'
@@ -15,28 +15,28 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 import FleetSelector from '../components/FleetSelector'
 
-interface RuleCreationFleetSelectorAttributes {
+interface RuleModificationFleetSelectorAttributes {
   rule: NotificationRuleInProgress,
   updater(...event: any): void
 }
 
-interface RuleCreationFleetSelectorStateAttributes {
+interface RuleModificationFleetSelectorStateAttributes {
   fleets: { [key: string]: Fleet }
 }
 
-type RuleCreationFleetSelectorProps =
-  RuleCreationFleetSelectorAttributes
-  & RuleCreationFleetSelectorStateAttributes
+type RuleModificationFleetSelectorProps =
+  RuleModificationFleetSelectorAttributes
+  & RuleModificationFleetSelectorStateAttributes
 
 const convertFleetsToOptions = (fleets: Fleet[]) => (
   fleets.map((fleet) => ({ label: fleet.name, value: fleet, key: fleet.fleetId }))
 )
 
-const mapStateToProps: StateMapper<RuleCreationFleetSelectorAttributes, RuleCreationFleetSelectorStateAttributes> = (state, props) => ({
+const mapStateToProps: StateMapper<RuleModificationFleetSelectorAttributes, RuleModificationFleetSelectorStateAttributes> = (state, props) => ({
   fleets: carParkFleetsSelector(state)
 })
 
-const RuleCreationFleetSelector: React.SFC<RuleCreationFleetSelectorProps> = (
+const RuleModificationFleetSelector: React.SFC<RuleModificationFleetSelectorProps> = (
   { rule, updater, fleets }
 ) => {
   return (
@@ -48,9 +48,9 @@ const RuleCreationFleetSelector: React.SFC<RuleCreationFleetSelectorProps> = (
   )
 }
 
-const ConnectedRuleCreationFleetSelector = connect(mapStateToProps)(RuleCreationFleetSelector)
+const ConnectedRuleModificationFleetSelector = connect(mapStateToProps)(RuleModificationFleetSelector)
 
-const RuleCreationFleets: RuleCreationStepView = (
+const RuleModificationFleets: RuleModificationStepView = (
   { inProgressRule, updateField }
 ) => (
     <div>
@@ -62,11 +62,11 @@ const RuleCreationFleets: RuleCreationStepView = (
         }
         label={<FormattedMessage id="cns.rule.field.applyToAllFleets.label" />} />
       {!inProgressRule.applyToAllFleets &&
-        <ConnectedRuleCreationFleetSelector
+        <ConnectedRuleModificationFleetSelector
           rule={inProgressRule}
           updater={createMultiValueUpdater(updateField)('fleets')} />
       }
     </div>
   )
 
-export default RuleCreationFleets
+export default RuleModificationFleets

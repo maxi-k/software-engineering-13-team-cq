@@ -36,24 +36,24 @@
     "cns.rule.field.condition.label": "Condition",
 
 
-    "cns.rule.creation.error.default": "There was an error displaying this component.",
-    "cns.rule.creation.step.label": "Step",
+    "cns.rule.modification.error.default": "There was an error displaying this component.",
+    "cns.rule.modification.step.label": "Step",
 
-    "cns.rule.creation.action.complete": "Complete",
-    "cns.rule.creation.action.step.next": "Next",
-    "cns.rule.creation.action.step.previous": "Back",
+    "cns.rule.modification.action.complete": "Complete",
+    "cns.rule.modification.action.step.next": "Next",
+    "cns.rule.modification.action.step.previous": "Back",
 
-    "cns.rule.creation.step.general.fleets": "Fleets",
-    "cns.rule.creation.step.general.condition": "Condition",
+    "cns.rule.modification.step.general.fleets": "Fleets",
+    "cns.rule.modification.step.general.condition": "Condition",
 
-    "cns.rule.creation.step.general.title": "General",
-    "cns.rule.creation.step.fleets.title": "Fleets",
-    "cns.rule.creation.step.condition.title": "Condition",
-    "cns.rule.creation.step.timing.title": "Timing",
-    "cns.rule.creation.step.summary.title": "Preview",
+    "cns.rule.modification.step.general.title": "General",
+    "cns.rule.modification.step.fleets.title": "Fleets",
+    "cns.rule.modification.step.condition.title": "Condition",
+    "cns.rule.modification.step.timing.title": "Timing",
+    "cns.rule.modification.step.summary.title": "Preview",
 
-    "cns.rule.creation.step.general.fleets": "Fleets",
-    "cns.rule.creation.step.general.condition": "Condition",
+    "cns.rule.modification.step.general.fleets": "Fleets",
+    "cns.rule.modification.step.general.condition": "Condition",
 
     "cns.vehicle.status.engine.label": "engine",
     "cns.vehicle.status.battery.label": "battery",

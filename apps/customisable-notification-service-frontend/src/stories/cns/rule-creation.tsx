@@ -9,34 +9,34 @@ import SingleComponentWrapper from '../SingleComponentWrapper'
 /* ~~ General Components ~~ */
 import ClosingButton from '@/modules/shared/components/ClosingButton'
 import RuleRecipientTag from '@/modules/rule-detail/components/RuleRecipientTag'
-import RuleCreationStep, { RuleCreationStepEmbeddedProps, RuleCreationStepStandaloneProps }
-  from '@/modules/rule-modification/components/RuleCreationStep'
-import RuleCreationStepper, { RuleCreationStepperProps }
-  from '@/modules/rule-modification/components/RuleCreationStepper'
+import RuleModificationStep, { RuleModificationStepEmbeddedProps, RuleModificationStepStandaloneProps }
+  from '@/modules/rule-modification/components/RuleModificationStep'
+import RuleModificationStepper, { RuleModificationStepperProps }
+  from '@/modules/rule-modification/components/RuleModificationStepper'
 
-const creationStepProps: RuleCreationStepEmbeddedProps = {
-  titleKey: "cns.rule.creation.step.general.title",
+const creationStepProps: RuleModificationStepEmbeddedProps = {
+  titleKey: "cns.rule.modification.step.general.title",
   completed: false
 }
 
-const creationStepStandaloneProps: RuleCreationStepStandaloneProps = {
+const creationStepStandaloneProps: RuleModificationStepStandaloneProps = {
   ...creationStepProps,
   active: true,
   selectStep: action('Select Step (Stanalone)')
 }
 
-const creationStepperProps: RuleCreationStepperProps = {
+const creationStepperProps: RuleModificationStepperProps = {
   activeStep: 1,
   selectStep: action('Select Step'),
   stepProps: [
     creationStepProps,
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.fleets.title"
+      titleKey: "cns.rule.modification.step.fleets.title"
     },
     {
       ...creationStepProps,
-      titleKey: "cns.rule.creation.step.condition.title"
+      titleKey: "cns.rule.modification.step.condition.title"
     },
 
   ]
@@ -49,8 +49,8 @@ const notificationRecipient: NotificationRecipient = {
 
 storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
-  .add('Single Step', () => <RuleCreationStep {...creationStepStandaloneProps} />)
-  .add('Stepper', () => <RuleCreationStepper {...creationStepperProps} style={{ width: '90%' }} />)
+  .add('Single Step', () => <RuleModificationStep {...creationStepStandaloneProps} />)
+  .add('Stepper', () => <RuleModificationStepper {...creationStepperProps} style={{ width: '90%' }} />)
 
 storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
@@ -75,11 +75,11 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
-import RuleCreationGeneral from '@/modules/rule-modification/parts/RuleCreationGeneral'
+import RuleModificationGeneral from '@/modules/rule-modification/parts/RuleModificationGeneral'
 const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
-  .add('Screen', () => <RuleCreationGeneral
+  .add('Screen', () => <RuleModificationGeneral
     updateField={updateFieldAction}
     inProgressRule={{
       condition: {
@@ -87,7 +87,7 @@ storiesOf('Rule Creation / First Step', module)
         predicates: {}
       }
     }} />)
-    .add('Rule Recipient Tag', () =>  <RuleRecipientTag recipient={notificationRecipient}/>)
+  .add('Rule Recipient Tag', () => <RuleRecipientTag recipient={notificationRecipient} />)
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
