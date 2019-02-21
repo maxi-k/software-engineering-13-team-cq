@@ -4,7 +4,7 @@ import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceModel
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeEntities
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeModels
-import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -40,7 +40,7 @@ class VehicleStateMapperTest : StringSpec() {
 
             val vehicleStateEntity = vehicleStateMapper.modelToEntity(vehicleState)
 
-            vehicleStateEntity shouldBe getTestVehicleStateEnity()
+            vehicleStateEntity shouldBe getTestVehicleStateEntity()
         }
 
         "Convert entity to model" {
@@ -49,7 +49,7 @@ class VehicleStateMapperTest : StringSpec() {
 
             every { mockVehicleStateMapperHelper.entityToModel(any()) } returns getTestVehicleStateDataTypeModels()
 
-            val vehicleStateEntity = getTestVehicleStateEnity()
+            val vehicleStateEntity = getTestVehicleStateEntity()
 
             val vehicleStateModel = vehicleStateMapper.entityToModel(vehicleStateEntity)
 

@@ -269,7 +269,7 @@ object TestUtils {
         return this
     }
 
-    fun getTestVehicleStateEnity(): VehicleStateEntity {
+    fun getTestVehicleStateEntity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
                 getTestVehicleReferenceEntity(),
