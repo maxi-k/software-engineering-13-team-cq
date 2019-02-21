@@ -6,9 +6,7 @@ import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeEntities
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeModels
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
-import de.unia.se.teamcq.rulemanagement.mapping.RecipientMapperHelper
 import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -56,7 +54,6 @@ class VehicleStateMapperTest : StringSpec() {
             val vehicleStateModel = vehicleStateMapper.entityToModel(vehicleStateEntity)
 
             vehicleStateModel shouldBe getTestVehicleStateModel()
-
         }
     }
 }

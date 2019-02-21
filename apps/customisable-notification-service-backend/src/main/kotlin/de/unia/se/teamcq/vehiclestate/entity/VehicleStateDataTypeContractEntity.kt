@@ -1,12 +1,10 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
 import java.io.Serializable
-import javax.persistence.Entity
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
-import javax.validation.constraints.NotNull
-import javax.persistence.ElementCollection
 import javax.persistence.Column
+import javax.persistence.ElementCollection
+import javax.persistence.Entity
+import javax.validation.constraints.NotNull
 
 @Entity
 class VehicleStateDataTypeContractEntity(

@@ -4,7 +4,6 @@ import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeEntity
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
 import org.springframework.stereotype.Service
 
-
 @Service
 interface IVehicleStateDataTypeMapper {
 

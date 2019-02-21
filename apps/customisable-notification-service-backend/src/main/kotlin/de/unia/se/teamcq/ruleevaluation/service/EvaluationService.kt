@@ -67,7 +67,6 @@ class EvaluationService : IEvaluationService {
             vehicleStateDataType.predicateFieldProviderName == ruleCondition.providerName!!
         } ?: return false
 
-
         return evaluationPredicateService.checkPredicate(
                 ruleCondition,
                 vehicleStateDataType,

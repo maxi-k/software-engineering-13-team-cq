@@ -52,7 +52,16 @@ import de.unia.se.teamcq.user.model.UserLocale
 import de.unia.se.teamcq.user.model.UserNotificationType
 import de.unia.se.teamcq.user.model.UserSettings
 import de.unia.se.teamcq.vehiclestate.dto.FleetReferenceDto
-import de.unia.se.teamcq.vehiclestate.entity.*
+import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeBatteryEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeContractEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeEngineEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeFuelEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeMileageEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeServiceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState

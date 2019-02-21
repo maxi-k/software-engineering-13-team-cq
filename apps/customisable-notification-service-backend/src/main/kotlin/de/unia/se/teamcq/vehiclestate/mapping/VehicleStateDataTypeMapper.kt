@@ -1,16 +1,19 @@
 package de.unia.se.teamcq.vehiclestate.mapping
 
-import de.unia.se.teamcq.notificationmanagement.dto.AggregatorScheduledDto
-import de.unia.se.teamcq.notificationmanagement.entity.AggregatorCountingEntity
-import de.unia.se.teamcq.notificationmanagement.entity.AggregatorEntity
-import de.unia.se.teamcq.notificationmanagement.entity.AggregatorImmediateEntity
-import de.unia.se.teamcq.notificationmanagement.entity.AggregatorScheduledEntity
-import de.unia.se.teamcq.notificationmanagement.model.Aggregator
-import de.unia.se.teamcq.notificationmanagement.model.AggregatorCounting
-import de.unia.se.teamcq.notificationmanagement.model.AggregatorImmediate
-import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
-import de.unia.se.teamcq.vehiclestate.entity.*
-import de.unia.se.teamcq.vehiclestate.model.*
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeBatteryEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeContractEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeEngineEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeFuelEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeMileageEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateDataTypeServiceEntity
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataType
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeBattery
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeContract
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeEngine
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
+import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -58,6 +61,4 @@ class VehicleStateDataTypeMapper : IVehicleStateDataTypeMapper {
             else -> throw IllegalArgumentException("Unknown VehicleStateDataTypeEntity: $vehicleStateDataTypeEntity")
         }
     }
-
-
 }

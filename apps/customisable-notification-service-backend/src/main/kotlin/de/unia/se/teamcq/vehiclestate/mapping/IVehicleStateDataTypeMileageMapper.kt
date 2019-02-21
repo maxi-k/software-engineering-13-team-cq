@@ -8,7 +8,6 @@ import org.mapstruct.ReportingPolicy
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 interface IVehicleStateDataTypeMileageMapper {
 
-
     fun modelToEntity(vehicleStateDataTypeMileage: VehicleStateDataTypeMileage): VehicleStateDataTypeMileageEntity
 
     fun entityToModel(vehicleStateDataTypeMileageEntity: VehicleStateDataTypeMileageEntity): VehicleStateDataTypeMileage
