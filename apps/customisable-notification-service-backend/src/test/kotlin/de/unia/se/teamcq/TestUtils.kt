@@ -268,6 +268,14 @@ object TestUtils {
         )
     }
 
+    fun getTestPredicateFieldProviders(): Set<IPredicateFieldProvider> {
+        return setOf(
+                VehicleStateDataTypeBattery(),
+                VehicleStateDataTypeEngine(),
+                VehicleStateDataTypeService()
+        )
+    }
+
     fun getTestPredicateFieldProviderModel(): IPredicateFieldProvider {
         return VehicleStateDataTypeBattery()
     }
@@ -537,7 +545,11 @@ object TestUtils {
     }
 
     fun getTestNotificationDataModel(): NotificationData {
-        return NotificationData(getTestNotificationRuleModel(), setOf(getTestVehicleStateModel()))
+        return NotificationData(getTestNotificationRuleModel(), setOf(
+                getTestVehicleStateModel(),
+                getTestVehicleStateModel(),
+                getTestVehicleStateModel())
+        )
     }
 
     fun <T> testEqualAndHashCode(generateObject: () -> T, vararg modifiers: (T) -> Unit) {
