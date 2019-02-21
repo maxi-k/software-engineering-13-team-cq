@@ -20,6 +20,7 @@ export const fetchCarParks = (accessToken: string) => (
 
 export const convertFromAPICarPark = (apiCarPark: object): CarPark => transformObject(apiCarPark, {
   id: 'carParkId',
+  numVehicles: 'numberOfVehicles',
   numUnassignedVehicles: 'numberOfUnassignedVehicles',
   fleets: (apiFleets: any) => ['fleets', apiFleets.map((fleet: object) => transformObject(fleet, {
     id: 'fleetId',

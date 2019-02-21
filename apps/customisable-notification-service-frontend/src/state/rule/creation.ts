@@ -35,6 +35,7 @@ const initialState = {
     description: "",
     recipients: [],
     applyToAllFleets: true,
+    ownerAsAdditionalRecipient: true,
     fleets: [],
     aggregator: {
       strategy: AggregatorStrategy.Immediate

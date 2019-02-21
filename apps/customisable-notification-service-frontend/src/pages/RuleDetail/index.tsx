@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleDetailStateSelector } from '@/state/selectors'
-import { loadRuleDetail } from '@/state/rule'
+import { loadRuleDetail, deleteRemoteRule } from '@/state/rule'
 import { interpolatePagePath } from '@/pages/page-definitions'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
@@ -24,8 +24,8 @@ export interface StateAttributes extends FetchingAttributes {
 
 export interface DispatchAttributes {
   fetchRule(): void,
-  editRule(): void,
-  deleteRule(): void
+  editRule(rule: NotificationRuleDetail): void,
+  deleteRule(rule: NotificationRuleDetail): void
 }
 
 export type RuleDetailPageProps = RuleDetailPageAttributes
@@ -43,7 +43,10 @@ class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
   public render = () => {
     const { parameters, fetchRule, editRule, deleteRule, ...ruleDetailProps } = this.props
     return (
-      <RuleDetail {...ruleDetailProps} />
+      <RuleDetail
+        {...ruleDetailProps}
+        toggleEditRule={editRule}
+        toggleDeleteRule={deleteRule} />
     )
   }
 }
@@ -62,7 +65,10 @@ const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttri
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },
   editRule: () => dispatch(push(interpolatePagePath('ruleEdit', props.parameters.ruleId))),
-  deleteRule: () => alert('deleting rule')
+  deleteRule: (rule: NotificationRuleDetail) => {
+    dispatch(deleteRemoteRule.request(parseInt(props.parameters.ruleId, 10)))
+    dispatch(push('/'))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailPage)

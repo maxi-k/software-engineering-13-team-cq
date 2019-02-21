@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleOverview } from '@/model/Rule'
 import { ensureResponseStatus } from '@/services/response-service'
-import { fetchRuleOverview, mergeMockedRuleData, APIRule } from '@/services/rule-service'
+import { fetchRuleOverview, convertFromAPIRule, APIRule } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
 import { waitForLogin } from '@/state/auth'
@@ -72,7 +72,7 @@ function* fetchRuleOverviewGenerator() {
     ensureResponseStatus(response);
     const rules = yield response.json()
       .then((ruleList: APIRule[]) =>
-        ruleList.map(mergeMockedRuleData)
+        ruleList.map(convertFromAPIRule)
       ) as NotificationRuleOverview[]
     yield put(loadRuleOverview.success(rules))
   } catch (error) {

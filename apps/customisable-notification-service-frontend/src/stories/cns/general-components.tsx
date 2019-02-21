@@ -5,12 +5,14 @@ import StoryWrapper from '../StoryWrapper'
 import LoadingIndicator from '@/modules/shared/components/LoadingIndicator'
 import ErrorMessage from '@/modules/shared/components/ErrorMessage'
 import BackButton from '@/modules/shared/components/BackButton'
+import RuleIcon from '@/modules/shared/components/RuleIcon'
 
 import NextButton from '@/modules/rule-modification/components/NextButton'
 
 import { action } from '@storybook/addon-actions'
 import { FormattedMessage } from 'react-intl';
 import { handledStatus, messageFromError } from '@/services/response-service'
+import { VehicleDataType } from '@/model'
 
 storiesOf('General Components', module)
   .addDecorator(StoryWrapper)
@@ -47,3 +49,10 @@ storiesOf('General Components', module)
         <span>&nbsp; 🔥 🔥 </span>
       </>
     } />)
+  .add('Rule Icons', () => <>
+    {
+      Object.values(VehicleDataType).map((vehicleDataType) =>
+        <RuleIcon key={vehicleDataType} type={vehicleDataType} />
+      )
+    }
+  </>)

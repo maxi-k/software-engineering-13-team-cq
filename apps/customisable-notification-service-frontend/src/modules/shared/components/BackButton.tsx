@@ -4,14 +4,19 @@ import { FormattedMessage } from 'react-intl'
 
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
 
-interface DispatchAttributes {
-  label?: string,
+interface BackButtonAttributes {
+  label?: string
+  fullWidth?: boolean
   onClick(event: React.SyntheticEvent<any, any>): void
 }
-type BackButtonProps = DispatchAttributes & React.HTMLAttributes<HTMLButtonElement>
 
-const StyledBackButton = styled(Button)`
-  width: min-content;
+export type BackButtonProps = BackButtonAttributes
+                            & React.HTMLAttributes<HTMLButtonElement>
+
+const StyledBackButton = styled<BackButtonProps & { primary: string }>(
+  ({ fullWidth, ...buttonProps }) => <Button {...buttonProps} />
+)`
+  ${props => props.fullWidth ? '' : 'width: min-content;'}
 `
 const BackButton: React.SFC<BackButtonProps> = (
   { label = "cns.navigation.back.label", ...props }

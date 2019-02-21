@@ -10,5 +10,6 @@ export interface CarPark {
   admins: string[],
   customer: string,
   numberOfUnassignedVehicles: number,
+  numberOfVehicles: number,
   fleets: Fleet[]
 }

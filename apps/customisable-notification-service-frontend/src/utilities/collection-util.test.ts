@@ -38,6 +38,18 @@ describe('transformObject works as expected', () => {
     })
   })
 
+  it("removes entries when there's a function in the transformationMap which returns undefined", () => {
+    expect(transformObject(testObject, {
+      key1: (value1: any) => (['key1', undefined] as [string, string])
+    })).toEqual({
+      numberKey2: 2,
+      nestedObjectKey: {
+        noKey1: 'noValue1',
+        noKey2: []
+      }
+    })
+  })
+
   it("transforms entries with an array in the transformationMap", () => {
     expect(transformObject(testObject, {
       nestedObjectKey: [

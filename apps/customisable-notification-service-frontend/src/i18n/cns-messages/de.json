@@ -19,14 +19,20 @@
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleCreate.title": "Regel erstellen",
     "cns.page.ruleEdit.title": "Regel bearbeiten",
+    "cns.page.ruleDelete.title": "Regel löschen",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
     "cns.rule.field.name.label": "Regelname",
     "cns.rule.field.description.label": "Beschreibung",
-    "cns.rule.field.dataSources.label": "Datenquellen",
+    "cns.rule.field.owner.label": "Besitzer der Regel",
     "cns.rule.field.recipients.label": "Empfänger",
+    "cns.rule.field.affectedFleets.label": "Betroffene Flotten",
+    "cns.rule.field.affectedFleets.value.all.label": "Alle Flotten",
+    "cns.rule.field.affectedFleets.value.vehicleCount.label": "{vehicleCount, plural, =0 {Keine Fahrzeuge} one {{vehicleCount} Fahrzeug} other {{vehicleCount} Fahrzeuge}} ",
     "cns.rule.field.applyToAllFleets.label": "Diese Regel auf alle Flotten anwenden?",
+    "cns.rule.field.dataSources.label": "Datenquellen",
+    "cns.rule.field.condition.label": "Bedingung",
 
     "cns.rule.creation.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
     "cns.rule.creation.step.label": "Schritt",
