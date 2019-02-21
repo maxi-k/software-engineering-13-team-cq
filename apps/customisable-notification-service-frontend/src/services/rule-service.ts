@@ -153,11 +153,7 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
             appliedField: {
               vehicleDataType: predicate.providerName,
               predicateField: {
-                // TODO: Get this from the api or somewhere else
-                dataType: 'text',
                 fieldName: predicate.fieldName,
-                // TODO: Get this from the api or somewhere else
-                possibleEvaluationStrategies: []
               }
             }
           } as RuleConditionPredicate<any>
