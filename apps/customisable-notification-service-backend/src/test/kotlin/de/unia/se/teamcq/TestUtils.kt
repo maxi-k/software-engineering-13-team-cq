@@ -440,6 +440,10 @@ object TestUtils {
         return getTestAggregatorScheduledEntity()
     }
 
+    fun getTestVehicleStateDataTypeEntity(): VehicleStateDataTypeEntity {
+        return getTestVehicleStateDataTypeBatteryEntity()
+    }
+
     fun getTestRecipientDto(): RecipientDto {
         return getTestRecipientMailDto()
     }
