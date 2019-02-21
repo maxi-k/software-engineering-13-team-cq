@@ -444,6 +444,10 @@ object TestUtils {
         return getTestVehicleStateDataTypeBatteryEntity()
     }
 
+    fun getTestVehicleStateDataTypeModel(): VehicleStateDataType {
+        return getTestVehicleStateDataTypeBatteryModel()
+    }
+
     fun getTestRecipientDto(): RecipientDto {
         return getTestRecipientMailDto()
     }

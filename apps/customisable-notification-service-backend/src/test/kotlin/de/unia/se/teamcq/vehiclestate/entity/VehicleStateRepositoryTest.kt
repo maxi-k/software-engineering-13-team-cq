@@ -2,6 +2,8 @@ package de.unia.se.teamcq.vehiclestate.entity
 
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -35,12 +37,9 @@ class VehicleStateRepositoryTest : StringSpec() {
 
             allVehicleStates.size shouldBeGreaterThanOrEqual 2
 
-            val savedVehicleStateEntityInResult = allVehicleStates.any { vehicleState ->
-                vehicleState.stateId == savedVehicleStateEntity.stateId &&
-                        vehicleState.vehicleReference == getTestVehicleStateModel().vehicleReference
-            }
+            val savedVehicleStateModel = vehicleStateRepository.getVehicleState(savedVehicleStateEntity.stateId!!)
 
-            savedVehicleStateEntityInResult shouldBe true
+            allVehicleStates shouldContain savedVehicleStateModel
         }
 
         "GetVehicleState should work" {
@@ -49,14 +48,20 @@ class VehicleStateRepositoryTest : StringSpec() {
 
             val actualVehicleState = vehicleStateRepository.getVehicleState(savedVehicleStateEntity.stateId!!)
 
-            actualVehicleState shouldBe getTestVehicleStateModel().copy(stateId = savedVehicleStateEntity.stateId)
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(actualVehicleState!!)
+
+            actualVehicleState shouldBe expectedVehicleStateModel
         }
 
         "CreateVehicleState should work" {
 
             val savedVehicleState = vehicleStateRepository.createVehicleState(getTestVehicleStateModel())
 
-            savedVehicleState shouldBe getTestVehicleStateModel().copy(savedVehicleState!!.stateId)
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(savedVehicleState!!)
+
+            savedVehicleState shouldBe expectedVehicleStateModel
         }
 
         "UpdateVehicleState should work" {
@@ -65,9 +70,12 @@ class VehicleStateRepositoryTest : StringSpec() {
 
             val newVehicleState = getTestVehicleStateModel().copy(stateId = oldVehicleStateEntity.stateId)
 
-            val actualVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
+            val updatedVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
 
-            actualVehicleState shouldBe newVehicleState
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(updatedVehicleState)
+
+            updatedVehicleState shouldBe expectedVehicleStateModel
         }
 
         "DeleteVehicleState should work" {
@@ -77,6 +85,19 @@ class VehicleStateRepositoryTest : StringSpec() {
             vehicleStateRepository.deleteVehicleState(savedVehicleStateEntity.stateId!!)
 
             vehicleStateEntityRepository.existsById(savedVehicleStateEntity.stateId!!) shouldBe false
+        }
+    }
+
+    private fun VehicleState.setIdsOfRelatedRepositoryEntities(savedVehicleState: VehicleState) {
+
+        stateId = savedVehicleState.stateId
+
+        val sortedDataTypes = vehicleStateDataTypes.sortedBy { dataType -> dataType.predicateFieldProviderName }
+        val sortedDataTypeEntities = savedVehicleState.vehicleStateDataTypes
+                .sortedBy { dataType -> dataType::class.simpleName }
+
+        sortedDataTypes.zip(sortedDataTypeEntities).forEach { (dataTypeWithoutID, dataTypeWithId) ->
+            dataTypeWithoutID.dataTypeId = dataTypeWithId.dataTypeId
         }
     }
 }

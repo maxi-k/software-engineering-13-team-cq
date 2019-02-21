@@ -29,7 +29,7 @@ class VehicleStateMapperHelperTest : StringSpec() {
 
             vehicleStateMapperHelper.modelToEntity(vehicleStateDataTypes).size shouldBe 6
 
-            verify(exactly = 6) {
+            verify(exactly = vehicleStateDataTypes.size) {
                 vehicleStateDataTypeMapper.modelToEntity(any())
             }
         }
@@ -40,7 +40,7 @@ class VehicleStateMapperHelperTest : StringSpec() {
 
             vehicleStateMapperHelper.entityToModel(vehicleStateDataTypeEntities).size shouldBe 6
 
-            verify(exactly = 6) {
+            verify(exactly = vehicleStateDataTypeEntities.size) {
                 vehicleStateDataTypeMapper.entityToModel(any())
             }
         }
