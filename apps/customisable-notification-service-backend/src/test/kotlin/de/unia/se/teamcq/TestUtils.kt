@@ -547,8 +547,8 @@ object TestUtils {
     fun getTestNotificationDataModel(): NotificationData {
         return NotificationData(getTestNotificationRuleModel(), setOf(
                 getTestVehicleStateModel(),
-                getTestVehicleStateModel(),
-                getTestVehicleStateModel())
+                getTestVehicleStateModel().apply { stateId = 1 },
+                getTestVehicleStateModel().apply { stateId = 2 })
         )
     }
 
