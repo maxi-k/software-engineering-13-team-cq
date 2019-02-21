@@ -2441,7 +2441,6 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
     </div>
     <button
       className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
-      goToHome={true}
       onClick={[Function]}
       primary="false"
     >
