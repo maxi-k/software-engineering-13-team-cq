@@ -13,9 +13,10 @@ interface DispatchAttributes {
 }
 type BackButtonProps = DispatchAttributes
   & StyledBackButtonProps
+  & BackButtonAttributes
   & React.HTMLAttributes<HTMLButtonElement>
 
-const BackButton: React.SFC<BackButtonProps> = (props) => (
+const BackButton: React.SFC<BackButtonProps> = ({ goToHome, ...props }) => (
   <StyledBackButton {...props} />
 )
 
