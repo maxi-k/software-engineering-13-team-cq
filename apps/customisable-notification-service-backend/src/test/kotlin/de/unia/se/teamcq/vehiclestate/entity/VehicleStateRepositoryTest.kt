@@ -1,8 +1,11 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
-import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
+import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.matchers.numerics.shouldBeGreaterThanOrEqual
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,14 +25,10 @@ class VehicleStateRepositoryTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        // TODO: These tests need to be reenabled as soon as we save DataTypeEntities
-        // TODO: I decided against changing these tests in the meanwhile as this is exactly
-        // TODO: how they should work again later
-
         "GetAllVehicleStates should work" {
 
-            val vehicleStateEntityA = getTestVehicleStateEnity().copy(stateId = 1)
-            val vehicleStateEntityB = getTestVehicleStateEnity().copy(stateId = 2)
+            val vehicleStateEntityA = getTestVehicleStateEntity()
+            val vehicleStateEntityB = getTestVehicleStateEntity()
 
             val savedVehicleStateEntity = vehicleStateEntityRepository.save(vehicleStateEntityA)
             vehicleStateEntityRepository.save(vehicleStateEntityB)
@@ -38,46 +37,67 @@ class VehicleStateRepositoryTest : StringSpec() {
 
             allVehicleStates.size shouldBeGreaterThanOrEqual 2
 
-            val expectedVehicleStateModel = getTestVehicleStateModel()
-                    .copy(stateId = savedVehicleStateEntity.stateId)
+            val savedVehicleStateModel = vehicleStateRepository.getVehicleState(savedVehicleStateEntity.stateId!!)
 
-            // allVehicleStates.contains(expectedVehicleStateModel) shouldBe true
+            allVehicleStates shouldContain savedVehicleStateModel
         }
 
         "GetVehicleState should work" {
 
-            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
 
             val actualVehicleState = vehicleStateRepository.getVehicleState(savedVehicleStateEntity.stateId!!)
 
-            // actualVehicleState shouldBe getTestVehicleStateModel().copy(stateId = savedVehicleStateEntity.stateId)
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(actualVehicleState!!)
+
+            actualVehicleState shouldBe expectedVehicleStateModel
         }
 
         "CreateVehicleState should work" {
 
             val savedVehicleState = vehicleStateRepository.createVehicleState(getTestVehicleStateModel())
 
-            // savedVehicleState shouldBe getTestVehicleStateModel().copy(savedVehicleState!!.stateId)
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(savedVehicleState!!)
+
+            savedVehicleState shouldBe expectedVehicleStateModel
         }
 
         "UpdateVehicleState should work" {
 
-            val oldVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
+            val oldVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
 
             val newVehicleState = getTestVehicleStateModel().copy(stateId = oldVehicleStateEntity.stateId)
 
-            val actualVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
+            val updatedVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
 
-            // actualVehicleState shouldBe newVehicleState
+            val expectedVehicleStateModel = getTestVehicleStateModel()
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(updatedVehicleState)
+
+            updatedVehicleState shouldBe expectedVehicleStateModel
         }
 
         "DeleteVehicleState should work" {
 
-            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEnity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
 
             vehicleStateRepository.deleteVehicleState(savedVehicleStateEntity.stateId!!)
 
-            // vehicleStateEntityRepository.existsById(savedVehicleStateEntity.stateId!!) shouldBe false
+            vehicleStateEntityRepository.existsById(savedVehicleStateEntity.stateId!!) shouldBe false
+        }
+    }
+
+    private fun VehicleState.setIdsOfRelatedRepositoryEntities(savedVehicleState: VehicleState) {
+
+        stateId = savedVehicleState.stateId
+
+        val sortedDataTypes = vehicleStateDataTypes.sortedBy { dataType -> dataType.predicateFieldProviderName }
+        val sortedDataTypeEntities = savedVehicleState.vehicleStateDataTypes
+                .sortedBy { dataType -> dataType::class.simpleName }
+
+        sortedDataTypes.zip(sortedDataTypeEntities).forEach { (dataTypeWithoutID, dataTypeWithId) ->
+            dataTypeWithoutID.dataTypeId = dataTypeWithId.dataTypeId
         }
     }
 }

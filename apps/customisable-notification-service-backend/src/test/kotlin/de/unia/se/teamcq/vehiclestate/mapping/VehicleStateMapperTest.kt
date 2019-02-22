@@ -2,10 +2,11 @@ package de.unia.se.teamcq.vehiclestate.mapping
 
 import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleReferenceModel
-import de.unia.se.teamcq.TestUtils.getTestVehicleStateEnity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeEntities
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeModels
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -20,6 +21,9 @@ class VehicleStateMapperTest : StringSpec() {
     @MockK
     lateinit var mockIVehicleReferenceMapper: IVehicleReferenceMapper
 
+    @MockK
+    lateinit var mockVehicleStateMapperHelper: VehicleStateMapperHelper
+
     @InjectMockKs
     lateinit var vehicleStateMapper: IVehicleStateMapperImpl
 
@@ -30,27 +34,26 @@ class VehicleStateMapperTest : StringSpec() {
 
             every { mockIVehicleReferenceMapper.modelToEntity(any()) } returns getTestVehicleReferenceEntity()
 
+            every { mockVehicleStateMapperHelper.modelToEntity(any()) } returns getTestVehicleStateDataTypeEntities()
+
             val vehicleState = getTestVehicleStateModel()
 
             val vehicleStateEntity = vehicleStateMapper.modelToEntity(vehicleState)
 
-            vehicleStateEntity shouldBe getTestVehicleStateEnity()
+            vehicleStateEntity shouldBe getTestVehicleStateEntity()
         }
 
         "Convert entity to model" {
 
             every { mockIVehicleReferenceMapper.entityToModel(any()) } returns getTestVehicleReferenceModel()
 
-            val vehicleStateEntity = getTestVehicleStateEnity()
+            every { mockVehicleStateMapperHelper.entityToModel(any()) } returns getTestVehicleStateDataTypeModels()
+
+            val vehicleStateEntity = getTestVehicleStateEntity()
 
             val vehicleStateModel = vehicleStateMapper.entityToModel(vehicleStateEntity)
 
-            // TODO: Once we persist this fully in the DB:
-            // vehicleStateModel shouldBe getTestVehicleStateModel()
-
-            vehicleStateModel shouldNotBe null
-            vehicleStateModel.stateId shouldBe getTestVehicleStateModel().stateId
-            vehicleStateModel.vehicleReference shouldBe getTestVehicleStateModel().vehicleReference
+            vehicleStateModel shouldBe getTestVehicleStateModel()
         }
     }
 }

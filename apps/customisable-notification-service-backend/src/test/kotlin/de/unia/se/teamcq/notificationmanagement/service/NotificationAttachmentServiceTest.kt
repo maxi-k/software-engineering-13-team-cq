@@ -45,8 +45,8 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val expectedCsvContext = """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
                            |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
+                           |1,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
+                           |2,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
                            |""".trimMargin()
 
                 val systemLineSeparator = System.getProperty("line.separator")
@@ -70,9 +70,9 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val expectedCsvContext = """|state_id,vin,battery_charge,battery_status,battery_voltage,engine_capacity,engine_fuel_type,engine_power,service_brake_fluid,service_due_date,service_status
                            |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
-                           |0,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
-                           |1,2,,,,120,Gas,120,,,
+                           |1,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
+                           |2,UUID456,0.5,Healthy,0.7,120,Gas,120,Fine,1970-01-18T21:54:10.098Z,Healthy
+                           |3,2,,,,120,Gas,120,,,
                            |""".trimMargin()
 
                 val systemLineSeparator = System.getProperty("line.separator")
@@ -87,7 +87,7 @@ class NotificationAttachmentServiceTest : StringSpec() {
         return NotificationData(notificationData.notificationRule,
                 notificationData.matchedVehicleStates.plus(
                         VehicleState(
-                                1,
+                                3,
                                 VehicleReference("2"),
                                 vehicleStateDataTypes = setOf(getTestVehicleStateDataTypeEngineModel())
                         )
