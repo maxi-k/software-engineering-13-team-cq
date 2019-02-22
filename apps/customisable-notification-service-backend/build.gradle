@@ -158,6 +158,8 @@ task generateApi {
     }
 }
 
+compileJava.dependsOn generateApi
+
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
