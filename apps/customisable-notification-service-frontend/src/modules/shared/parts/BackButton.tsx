@@ -1,20 +1,26 @@
 import React from 'react'
-import { goBack } from 'connected-react-router'
+import { goBack, push } from 'connected-react-router'
 
 import { StateMapper, DispatchMapper, connect } from '@/state/connector'
-import StyledBackButton from '../components/BackButton'
+import StyledBackButton, { BackButtonProps as StyledBackButtonProps } from '../components/BackButton'
+
+export interface BackButtonAttributes {
+  goToHome?: boolean
+}
 
 interface DispatchAttributes {
   onClick(event: React.SyntheticEvent<any, any>): void
 }
-type BackButtonProps = DispatchAttributes & React.HTMLAttributes<HTMLButtonElement>
+type BackButtonProps = DispatchAttributes
+  & StyledBackButtonProps
+  & React.HTMLAttributes<HTMLButtonElement>
 
 const BackButton: React.SFC<BackButtonProps> = (props) => (
   <StyledBackButton {...props} />
 )
 
 const mapStateToProps: StateMapper<{}, {}> = (state, ownProps) => ({})
-const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, ownProps) => ({
-  onClick: () => dispatch(goBack())
+const mapDispatchToProps: DispatchMapper<BackButtonAttributes, DispatchAttributes> = (dispatch, ownProps) => ({
+  onClick: () => dispatch(ownProps.goToHome ? push('/') : goBack())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(BackButton)

@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl'
 
 import { NotificationRecipient } from '@/model'
 
+import PropertyTag from './PropertyTag'
+
 export interface RuleRecipientTagAttributes {
   recipient: NotificationRecipient
 }
@@ -20,20 +22,16 @@ const StyledValueTag = styled.div`
     padding: 0.5em;
 `
 
-const StyledRuleRecipient = styled.div`
-    display: inline-block;
+const StyledRuleRecipient = styled(PropertyTag)`
     background-color: #DEDEDE;
-    border-radius: 2px;
-    margin: 0.5rem;
     padding: 0;
-    overflow: hidden;
 `
 
 const RuleRecipientTag: React.SFC<RuleRecipientTagProps> = ({ recipient, ...props }) => (
   <StyledRuleRecipient {...props}>
     <StyledTypeTag>
       <strong>
-        <FormattedMessage id={`cns.rule.recipient.${recipient.type.toLowerCase()}.label`}/>
+        <FormattedMessage id={`cns.rule.recipient.${recipient.type.toLowerCase()}.label`} />
       </strong>
     </StyledTypeTag>
     <StyledValueTag>

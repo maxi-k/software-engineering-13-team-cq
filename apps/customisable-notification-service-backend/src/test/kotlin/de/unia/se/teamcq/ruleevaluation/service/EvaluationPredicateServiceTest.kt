@@ -54,7 +54,7 @@ class EvaluationPredicateServiceTest : StringSpec() {
                 val contractVehicleStateDataType = getTestVehicleStateDataTypeContractModel()
                 val stringListPredicate = TestUtils.getTestRuleConditionPredicateModel().apply {
                     comparisonType = ComparisonType.CONTAINED_IN
-                    comparisonValue = contractVehicleStateDataType.vins?.get(0)
+                    comparisonValue = contractVehicleStateDataType.vins?.first()
                 }
                 val vinPredicateField = contractVehicleStateDataType.predicateFields["vins"]!!
 

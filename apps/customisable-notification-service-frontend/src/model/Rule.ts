@@ -49,6 +49,16 @@ export interface NotificationRecipient {
   value: string
 }
 
+export interface NotificationRuleOwner {
+  name: string
+  mailAddress?: string
+  cellPhoneNumber?: string
+  userSettings: {
+    settingsId?: number,
+    userNotificationType: 'EMAIL' | 'SMS'
+  }
+}
+
 export interface NotificationRuleOverview {
   ruleId: number,
   name: string,
@@ -59,9 +69,11 @@ export interface NotificationRuleOverview {
 
 export interface NotificationRuleDetail
   extends NotificationRuleOverview {
+  owner: NotificationRuleOwner
+  recipients: NotificationRecipient[]
+  ownerAsAdditionalRecipient: boolean
   applyToAllFleets: boolean
   fleets: Fleet[]
-  recipients: NotificationRecipient[]
   condition: RuleCondition
   aggregator: Aggregator
 }

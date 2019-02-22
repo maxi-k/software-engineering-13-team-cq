@@ -105,7 +105,7 @@ export const BMWButton = styled((props: IBMWButtonProps) => (
   })};
   padding-bottom: 0;
   padding-top: 2px;
-  
+
   text-transform: ${getVariant({
     text: 'uppercase',
     flat: 'normal',
