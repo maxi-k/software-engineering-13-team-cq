@@ -5,8 +5,7 @@ import de.bmw.authentication.auth.*
 import de.bmw.authentication.model.*
 import de.bmw.authentication.api.LoginApi
 
-import java.io.File;
-import java.util.*;
+import java.lang.Exception
 
 
 
@@ -19,7 +18,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
         try {
             val result = apiInstance.login(username, password)
             System.out.println(result)
-        } catch (e: ApiException) {
+        } catch (e: Exception) {
             System.err.println("Exception when calling LoginApi#login")
             e.printStackTrace()
         }
