@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+
 import { messageFromError } from '@/services/response-service'
+import { mergeFleetInformation } from '@/services/car-park-service'
+import { StateMapper } from '@/state/connector'
+import { carParkFleetsSelector } from '@/state/selectors'
+import { FetchingAttributes, NotificationRuleDetail, Fleet } from '@/model'
+
 import { media } from '@/fleetdata/utils/media-query'
-
-import { FetchingAttributes, NotificationRuleDetail } from '@/model'
-
 import { BMWButton } from '@fleetdata/shared/components/button';
 import EditIcon from '@fleetdata/shared/components/icons/edit.icon'
 import DeleteIcon from '@fleetdata/shared/components/icons/delete.icon'
@@ -29,8 +33,13 @@ interface RuleDetailAttributes {
   toggleDeleteRule(rule: NotificationRuleDetail): void
 }
 
+interface StateAttributes {
+  fleets: { [key: string]: Fleet }
+}
+
 type RuleDetailProps = FetchingAttributes
   & RuleDetailAttributes
+  & StateAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const StyledRuleDetail = styled.div`
@@ -65,7 +74,7 @@ const FlexButtonWrapper = styled.div`
 `
 
 const RuleDetail: React.SFC<RuleDetailProps> = ({
-  isFetching, hasFetchError, rule,
+  isFetching, hasFetchError, rule, fleets,
   toggleEditRule, toggleDeleteRule,
   ...props
 }) => {
@@ -145,7 +154,7 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
             content={rule.applyToAllFleets
               ? <FormattedMessage id="cns.rule.field.affectedFleets.value.all.label" />
               : <>{
-                rule.fleets.map((fleet) => (
+                mergeFleetInformation(fleets, rule.fleets).map((fleet) => (
                   <PropertyTag key={fleet.fleetId}>
                     {fleet.name} (
                     <FormattedMessage
@@ -173,4 +182,8 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
   )
 }
 
-export default RuleDetail
+const mapStateToProps: StateMapper<RuleDetailAttributes, StateAttributes> = (state, props) => ({
+  fleets: carParkFleetsSelector(state)
+})
+
+export default connect(mapStateToProps)(RuleDetail)

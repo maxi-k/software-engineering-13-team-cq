@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
+import { mergeFleetInformation } from '@/services/car-park-service'
 import {
   RuleModificationStepView,
   createCheckboxUpdater,
@@ -41,7 +42,7 @@ const RuleModificationFleetSelector: React.SFC<RuleModificationFleetSelectorProp
 ) => {
   return (
     <FleetSelector
-      value={convertFleetsToOptions(rule.fleets || [])}
+      value={convertFleetsToOptions(mergeFleetInformation(fleets, rule.fleets || []))}
       options={convertFleetsToOptions(Object.values(fleets))}
       onChange={updater}
     />

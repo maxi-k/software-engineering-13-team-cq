@@ -4,8 +4,11 @@ import update from 'immutability-helper'
 import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 
-import { RuleModificationState as RuleCreationState } from './common'
-import { NotificationRuleDetail, LogicalConnective, AggregatorStrategy } from '@/model/Rule'
+import {
+  RuleModificationState as RuleCreationState,
+  initialModificationState
+} from './common'
+import { NotificationRuleDetail } from '@/model/Rule'
 import { ruleCreationStateSelector } from '@/state/selectors'
 import { convertToAPIRule, createNewRule } from '@/services/rule-service'
 import { ensureResponseStatus } from '@/services/response-service'
@@ -25,25 +28,7 @@ export enum RuleCreationActionType {
 }
 export type RuleCreationAction = Action<RuleCreationActionType>
 
-const initialState = {
-  inProgressRule: {
-    name: "",
-    description: "",
-    recipients: [],
-    applyToAllFleets: true,
-    ownerAsAdditionalRecipient: true,
-    fleets: [],
-    aggregator: {
-      strategy: AggregatorStrategy.Immediate
-    },
-    condition: {
-      logicalConnective: LogicalConnective.Any,
-      predicates: {},
-    }
-  },
-  completedSteps: new Set(),
-  currentStep: 0
-}
+const initialState = { ...initialModificationState }
 
 const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
   switch (action.type) {

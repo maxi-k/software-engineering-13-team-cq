@@ -41,6 +41,10 @@ export const ruleCreationStateSelector: Selector<RuleModificationState> = create
   [ruleStateSelector],
   ruleState => ruleState.ruleCreation
 )
+export const ruleEditingStateSelector: Selector<RuleModificationState> = createSelector(
+  [ruleStateSelector],
+  ruleState => ruleState.ruleEditing
+)
 
 export const carParkStateSelector: Selector<CarParkState> = state => state.carPark
 export const carParkListSelector: Selector<CarParkListState> = createSelector(
