@@ -1,7 +1,12 @@
 import fetchMock from 'fetch-mock'
-import { CarPark } from '@/model'
-import { fetchCarParks, convertFromAPICarPark } from "../car-park-service";
+import { CarPark, Fleet } from '@/model'
+import {
+  fetchCarParks,
+  convertFromAPICarPark,
+  mergeFleetInformation
+} from "../car-park-service";
 import mockedCarParks from '../mocks/mockedCarParks.json'
+import mockedFleets from '../mocks/mockedFleets.json'
 
 describe('The CarPark fetch functions', () => {
   it('fetchCarParks fetches the car parks from a backend', () => {
@@ -9,6 +14,38 @@ describe('The CarPark fetch functions', () => {
       expect(fetchMock.called(/car-parks/)).toBe(true)
       expect(result).toBe(mockedCarParks)
     })
+  })
+})
+
+describe('the fleet merging function works', () => {
+  const mockedFleetsByKey: { [key: string]: Fleet } = (mockedFleets as Fleet[]).reduce((fleetMap, fleet) => ({
+    ...fleetMap,
+    [fleet.fleetId]: fleet
+  }), {})
+
+  it('merges fleet data', () => {
+    const fleetIds = [{
+      "fleetId": "cccccccc-0000-ffff-0000-000000000099"
+    }]
+
+    const expectedFleets = [{
+      "fleetId": "cccccccc-0000-ffff-0000-000000000099",
+      "name": "Mother Of All Fleets",
+      "numberOfVehicles": 5000
+    }]
+
+    expect(mergeFleetInformation(mockedFleetsByKey, fleetIds)).toEqual(expectedFleets)
+  })
+
+  it('returns empty fleets if none are selected', () => {
+    expect(mergeFleetInformation(mockedFleetsByKey, [])).toEqual([])
+  })
+
+  it('filters out non-existent fleets', () => {
+    const fleetIds = [{
+      "fleetId": "cccccccc-0000-ffff-0000-000000000099"
+    }]
+    expect(mergeFleetInformation({}, fleetIds)).toEqual([])
   })
 })
 

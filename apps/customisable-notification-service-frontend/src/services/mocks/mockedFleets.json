@@ -1,0 +1,12 @@
+[
+    {
+        "fleetId": "cccccccc-0000-ffff-0000-000000000099",
+        "name": "Mother Of All Fleets",
+        "numberOfVehicles": 5000
+    },
+    {
+        "fleetId": "cccccccc-0000-ffff-0000-000000000001",
+        "name": "My 1st Fleet",
+        "numberOfVehicles": 100
+    }
+]
