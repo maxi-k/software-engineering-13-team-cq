@@ -253,11 +253,16 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 jacocoTestCoverageVerification {
     violationRules {
         rule {
-            excludes = ['de.bmw.*']
+            excludes = ['**/bmw*.class']
             limit {
-                minimum = 0.7 // FIXME: We should get this up to at least 0.9 as soon as possible
+                minimum = 0.7
             }
         }
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: 'de/bmw/**')
+        })
     }
 }
 

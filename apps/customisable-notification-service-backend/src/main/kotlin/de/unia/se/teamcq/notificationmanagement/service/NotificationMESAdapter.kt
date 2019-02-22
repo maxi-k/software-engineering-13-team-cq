@@ -1,13 +1,8 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
-import de.bmw.authentication.*
-import de.bmw.authentication.auth.*
-import de.bmw.authentication.model.*
 import de.bmw.authentication.api.LoginApi
 
 import java.lang.Exception
-
-
 
 class NotificationMESAdapter : INotificationMESAdapter {
 
@@ -22,6 +17,5 @@ class NotificationMESAdapter : INotificationMESAdapter {
             System.err.println("Exception when calling LoginApi#login")
             e.printStackTrace()
         }
-
     }
 }
