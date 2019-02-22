@@ -8,28 +8,30 @@ import StepButton from '@material-ui/core/StepButton'
  * Props that are required if this Step is
  * embedded in a stepper.
  */
-export interface RuleCreationStepEmbeddedAttributes {
+export interface RuleModificationStepEmbeddedAttributes {
   titleKey: string,
   completed: boolean,
   disabled?: boolean,
   error?: boolean,
   optional?: boolean,
 }
-export type RuleCreationStepEmbeddedProps = RuleCreationStepEmbeddedAttributes & React.HTMLAttributes<HTMLDivElement>
+export type RuleModificationStepEmbeddedProps = RuleModificationStepEmbeddedAttributes
+                                              & React.HTMLAttributes<HTMLDivElement>
 
 /**
  * Props that are required if this Step is
  * not embedded in a stepper.
  * These are the props the component actually requires
  */
-export interface RuleCreationStepStandaloneAttributes
-  extends RuleCreationStepEmbeddedAttributes {
+export interface RuleModificationStepStandaloneAttributes
+  extends RuleModificationStepEmbeddedAttributes {
   active?: boolean,
   selectStep(event: React.SyntheticEvent<any, any>): void
 }
-export type RuleCreationStepStandaloneProps = RuleCreationStepStandaloneAttributes & React.HTMLAttributes<HTMLDivElement>
+export type RuleModificationStepStandaloneProps = RuleModificationStepStandaloneAttributes
+                                                & React.HTMLAttributes<HTMLDivElement>
 
-const RuleCreationStep: React.SFC<RuleCreationStepStandaloneProps> = ({
+const RuleModificationStep: React.SFC<RuleModificationStepStandaloneProps> = ({
   titleKey, error, selectStep, ...stepProps
 }) => (
     <Step {...stepProps} >
@@ -43,4 +45,4 @@ const RuleCreationStep: React.SFC<RuleCreationStepStandaloneProps> = ({
     </Step>
   )
 
-export default RuleCreationStep
+export default RuleModificationStep

@@ -1,5 +1,1028 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Complete Pages Rule Creation 1`] = `
+<div
+  className="sc-lhVmIH hDNxCc"
+>
+  <header
+    className="sc-dqBHgY diSgKh"
+  >
+    <h5
+      className="MuiTypography-root-1338 MuiTypography-h5-1354"
+    >
+      
+      Create Rule
+      
+    </h5>
+    <button
+      className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
+      onClick={[Function]}
+      primary="false"
+    >
+      <span>
+        Abort
+      </span>
+    </button>
+  </header>
+  <div
+    className="MuiPaper-root-1377 MuiPaper-elevation0-1379 MuiStepper-root-1373 MuiStepper-horizontal-1374"
+  >
+    <div
+      className="MuiStep-root-1404 MuiStep-horizontal-1405"
+    >
+      <button
+        className="MuiButtonBase-root-1413 MuiStepButton-root-1409 MuiStepButton-horizontal-1410"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1416 MuiStepLabel-horizontal-1417"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1424"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1432 MuiStepIcon-root-1427 MuiStepIcon-active-1429"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1428"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                1
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1426"
+          >
+            <span
+              className="MuiTypography-root-1338 MuiTypography-body2-1346 MuiStepLabel-label-1419 MuiStepLabel-active-1420"
+            >
+              General
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1441 MuiStepConnector-horizontal-1442 MuiStepConnector-disabled-1447"
+    >
+      <span
+        className="MuiStepConnector-line-1448 MuiStepConnector-lineHorizontal-1449"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1404 MuiStep-horizontal-1405"
+    >
+      <button
+        className="MuiButtonBase-root-1413 MuiButtonBase-disabled-1414 MuiStepButton-root-1409 MuiStepButton-horizontal-1410"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1416 MuiStepLabel-horizontal-1417 MuiStepLabel-disabled-1423"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1424"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1432 MuiStepIcon-root-1427"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1428"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                2
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1426"
+          >
+            <span
+              className="MuiTypography-root-1338 MuiTypography-body2-1346 MuiStepLabel-label-1419"
+            >
+              Fleets
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1441 MuiStepConnector-horizontal-1442 MuiStepConnector-disabled-1447"
+    >
+      <span
+        className="MuiStepConnector-line-1448 MuiStepConnector-lineHorizontal-1449"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1404 MuiStep-horizontal-1405"
+    >
+      <button
+        className="MuiButtonBase-root-1413 MuiButtonBase-disabled-1414 MuiStepButton-root-1409 MuiStepButton-horizontal-1410"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1416 MuiStepLabel-horizontal-1417 MuiStepLabel-disabled-1423"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1424"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1432 MuiStepIcon-root-1427"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1428"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                3
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1426"
+          >
+            <span
+              className="MuiTypography-root-1338 MuiTypography-body2-1346 MuiStepLabel-label-1419"
+            >
+              Condition
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1441 MuiStepConnector-horizontal-1442 MuiStepConnector-disabled-1447"
+    >
+      <span
+        className="MuiStepConnector-line-1448 MuiStepConnector-lineHorizontal-1449"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1404 MuiStep-horizontal-1405"
+    >
+      <button
+        className="MuiButtonBase-root-1413 MuiButtonBase-disabled-1414 MuiStepButton-root-1409 MuiStepButton-horizontal-1410"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1416 MuiStepLabel-horizontal-1417 MuiStepLabel-disabled-1423"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1424"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1432 MuiStepIcon-root-1427"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1428"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                4
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1426"
+          >
+            <span
+              className="MuiTypography-root-1338 MuiTypography-body2-1346 MuiStepLabel-label-1419"
+            >
+              Timing
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1441 MuiStepConnector-horizontal-1442 MuiStepConnector-disabled-1447"
+    >
+      <span
+        className="MuiStepConnector-line-1448 MuiStepConnector-lineHorizontal-1449"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1404 MuiStep-horizontal-1405"
+    >
+      <button
+        className="MuiButtonBase-root-1413 MuiButtonBase-disabled-1414 MuiStepButton-root-1409 MuiStepButton-horizontal-1410"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1416 MuiStepLabel-horizontal-1417 MuiStepLabel-disabled-1423"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1424"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1432 MuiStepIcon-root-1427"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1428"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                5
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1426"
+          >
+            <span
+              className="MuiTypography-root-1338 MuiTypography-body2-1346 MuiStepLabel-label-1419"
+            >
+              Preview
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    className="sc-bwCtUz cQLaTD"
+  >
+    <h6
+      className="MuiTypography-root-1338 MuiTypography-h6-1355"
+    >
+      Step
+       
+      1
+      : 
+      General
+    </h6>
+  </div>
+  <div>
+    <div
+      className="MuiFormControl-root-1451 MuiFormControl-marginNormal-1452 MuiFormControl-fullWidth-1454"
+    >
+      <label
+        className="MuiFormLabel-root-1462 MuiInputLabel-root-1455 MuiInputLabel-formControl-1456 MuiInputLabel-animated-1459 MuiInputLabel-filled-1460"
+        data-shrink={false}
+      >
+        Rule Name
+      </label>
+      <div
+        className="MuiInputBase-root-1482 MuiFilledInput-root-1469 MuiFilledInput-underline-1470 MuiInputBase-fullWidth-1491 MuiInputBase-formControl-1483"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input-1492 MuiFilledInput-input-1477"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="MuiFormControl-root-1451 MuiFormControl-marginNormal-1452 MuiFormControl-fullWidth-1454"
+    >
+      <label
+        className="MuiFormLabel-root-1462 MuiInputLabel-root-1455 MuiInputLabel-formControl-1456 MuiInputLabel-animated-1459 MuiInputLabel-filled-1460"
+        data-shrink={false}
+      >
+        Description
+      </label>
+      <div
+        className="MuiInputBase-root-1482 MuiFilledInput-root-1469 MuiFilledInput-underline-1470 MuiInputBase-fullWidth-1491 MuiInputBase-formControl-1483 MuiInputBase-multiline-1490 MuiFilledInput-multiline-1476"
+        onClick={[Function]}
+      >
+        <textarea
+          aria-invalid={false}
+          className="MuiInputBase-input-1492 MuiFilledInput-input-1477 MuiInputBase-inputMultiline-1494 MuiFilledInput-inputMultiline-1479"
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          rows={3}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-iQKALj ftUPYG"
+  >
+    <button
+      className="primary sc-jzJRlG cSDgQj"
+      icon={
+        <_default
+          fill="#fff"
+        />
+      }
+      onClick={[Function]}
+      primary="true"
+    >
+      <span>
+        Next
+      </span>
+      <svg
+        height="100%"
+        id="default"
+        style={
+          Object {
+            "fill": "#fff",
+            "height": "96px",
+            "marginTop": undefined,
+            "minWidth": "undefinedpx",
+            "width": "96px",
+          }
+        }
+        version="1.1"
+        viewBox="0 0 109 209"
+        width="100%"
+      >
+        <g
+          fill="none"
+          stroke="#fff"
+          strokeWidth={6}
+        >
+          <polyline
+            points="19,18 90,104.778 19,191.556 	"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Complete Pages Rule Detail 1`] = `
+<div
+  className="sc-uJMKN eVXOtU"
+  size="80"
+>
+  <div
+    className="MuiCircularProgress-root-1320 MuiCircularProgress-colorPrimary-1323 MuiCircularProgress-indeterminate-1322"
+    role="progressbar"
+    style={
+      Object {
+        "height": 80,
+        "width": 80,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-1325"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-1326 MuiCircularProgress-circleIndeterminate-1328"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Complete Pages Rule Editing 1`] = `
+<div
+  className="sc-gwVKww blCNeV"
+>
+  <div
+    className="sc-lhVmIH hDNxCc"
+  >
+    <header
+      className="sc-dqBHgY diSgKh"
+    >
+      <h5
+        className="MuiTypography-root-1508 MuiTypography-h5-1524"
+      >
+        
+        Create Rule
+        
+      </h5>
+      <button
+        className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
+        onClick={[Function]}
+        primary="false"
+      >
+        <span>
+          Abort
+        </span>
+      </button>
+    </header>
+    <div
+      className="MuiPaper-root-1547 MuiPaper-elevation0-1549 MuiStepper-root-1543 MuiStepper-horizontal-1544"
+    >
+      <div
+        className="MuiStep-root-1574 MuiStep-horizontal-1575"
+      >
+        <button
+          className="MuiButtonBase-root-1583 MuiStepButton-root-1579 MuiStepButton-horizontal-1580"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiStepLabel-root-1586 MuiStepLabel-horizontal-1587"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-1594"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-1602 MuiStepIcon-root-1597 MuiStepIcon-active-1599"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-1598"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  1
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-1596"
+            >
+              <span
+                className="MuiTypography-root-1508 MuiTypography-body2-1516 MuiStepLabel-label-1589 MuiStepLabel-active-1590"
+              >
+                General
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiStepConnector-root-1611 MuiStepConnector-horizontal-1612 MuiStepConnector-disabled-1617"
+      >
+        <span
+          className="MuiStepConnector-line-1618 MuiStepConnector-lineHorizontal-1619"
+        />
+      </div>
+      <div
+        className="MuiStep-root-1574 MuiStep-horizontal-1575"
+      >
+        <button
+          className="MuiButtonBase-root-1583 MuiButtonBase-disabled-1584 MuiStepButton-root-1579 MuiStepButton-horizontal-1580"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiStepLabel-root-1586 MuiStepLabel-horizontal-1587 MuiStepLabel-disabled-1593"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-1594"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-1602 MuiStepIcon-root-1597"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-1598"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  2
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-1596"
+            >
+              <span
+                className="MuiTypography-root-1508 MuiTypography-body2-1516 MuiStepLabel-label-1589"
+              >
+                Fleets
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiStepConnector-root-1611 MuiStepConnector-horizontal-1612 MuiStepConnector-disabled-1617"
+      >
+        <span
+          className="MuiStepConnector-line-1618 MuiStepConnector-lineHorizontal-1619"
+        />
+      </div>
+      <div
+        className="MuiStep-root-1574 MuiStep-horizontal-1575"
+      >
+        <button
+          className="MuiButtonBase-root-1583 MuiButtonBase-disabled-1584 MuiStepButton-root-1579 MuiStepButton-horizontal-1580"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiStepLabel-root-1586 MuiStepLabel-horizontal-1587 MuiStepLabel-disabled-1593"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-1594"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-1602 MuiStepIcon-root-1597"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-1598"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  3
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-1596"
+            >
+              <span
+                className="MuiTypography-root-1508 MuiTypography-body2-1516 MuiStepLabel-label-1589"
+              >
+                Condition
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiStepConnector-root-1611 MuiStepConnector-horizontal-1612 MuiStepConnector-disabled-1617"
+      >
+        <span
+          className="MuiStepConnector-line-1618 MuiStepConnector-lineHorizontal-1619"
+        />
+      </div>
+      <div
+        className="MuiStep-root-1574 MuiStep-horizontal-1575"
+      >
+        <button
+          className="MuiButtonBase-root-1583 MuiButtonBase-disabled-1584 MuiStepButton-root-1579 MuiStepButton-horizontal-1580"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiStepLabel-root-1586 MuiStepLabel-horizontal-1587 MuiStepLabel-disabled-1593"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-1594"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-1602 MuiStepIcon-root-1597"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-1598"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  4
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-1596"
+            >
+              <span
+                className="MuiTypography-root-1508 MuiTypography-body2-1516 MuiStepLabel-label-1589"
+              >
+                Timing
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiStepConnector-root-1611 MuiStepConnector-horizontal-1612 MuiStepConnector-disabled-1617"
+      >
+        <span
+          className="MuiStepConnector-line-1618 MuiStepConnector-lineHorizontal-1619"
+        />
+      </div>
+      <div
+        className="MuiStep-root-1574 MuiStep-horizontal-1575"
+      >
+        <button
+          className="MuiButtonBase-root-1583 MuiButtonBase-disabled-1584 MuiStepButton-root-1579 MuiStepButton-horizontal-1580"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <span
+            className="MuiStepLabel-root-1586 MuiStepLabel-horizontal-1587 MuiStepLabel-disabled-1593"
+          >
+            <span
+              className="MuiStepLabel-iconContainer-1594"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root-1602 MuiStepIcon-root-1597"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  className="MuiStepIcon-text-1598"
+                  textAnchor="middle"
+                  x="12"
+                  y="16"
+                >
+                  5
+                </text>
+              </svg>
+            </span>
+            <span
+              className="MuiStepLabel-labelContainer-1596"
+            >
+              <span
+                className="MuiTypography-root-1508 MuiTypography-body2-1516 MuiStepLabel-label-1589"
+              >
+                Preview
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="sc-bwCtUz cQLaTD"
+    >
+      <h6
+        className="MuiTypography-root-1508 MuiTypography-h6-1525"
+      >
+        Step
+         
+        1
+        : 
+        General
+      </h6>
+    </div>
+    <div>
+      <div
+        className="MuiFormControl-root-1621 MuiFormControl-marginNormal-1622 MuiFormControl-fullWidth-1624"
+      >
+        <label
+          className="MuiFormLabel-root-1632 MuiInputLabel-root-1625 MuiInputLabel-formControl-1626 MuiInputLabel-animated-1629 MuiInputLabel-filled-1630"
+          data-shrink={false}
+        >
+          Rule Name
+        </label>
+        <div
+          className="MuiInputBase-root-1652 MuiFilledInput-root-1639 MuiFilledInput-underline-1640 MuiInputBase-fullWidth-1661 MuiInputBase-formControl-1653"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            className="MuiInputBase-input-1662 MuiFilledInput-input-1647"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="MuiFormControl-root-1621 MuiFormControl-marginNormal-1622 MuiFormControl-fullWidth-1624"
+      >
+        <label
+          className="MuiFormLabel-root-1632 MuiInputLabel-root-1625 MuiInputLabel-formControl-1626 MuiInputLabel-animated-1629 MuiInputLabel-filled-1630"
+          data-shrink={false}
+        >
+          Description
+        </label>
+        <div
+          className="MuiInputBase-root-1652 MuiFilledInput-root-1639 MuiFilledInput-underline-1640 MuiInputBase-fullWidth-1661 MuiInputBase-formControl-1653 MuiInputBase-multiline-1660 MuiFilledInput-multiline-1646"
+          onClick={[Function]}
+        >
+          <textarea
+            aria-invalid={false}
+            className="MuiInputBase-input-1662 MuiFilledInput-input-1647 MuiInputBase-inputMultiline-1664 MuiFilledInput-inputMultiline-1649"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            rows={3}
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-iQKALj ftUPYG"
+    >
+      <button
+        className="primary sc-jzJRlG cSDgQj"
+        icon={
+          <_default
+            fill="#fff"
+          />
+        }
+        onClick={[Function]}
+        primary="true"
+      >
+        <span>
+          Next
+        </span>
+        <svg
+          height="100%"
+          id="default"
+          style={
+            Object {
+              "fill": "#fff",
+              "height": "96px",
+              "marginTop": undefined,
+              "minWidth": "undefinedpx",
+              "width": "96px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 109 209"
+          width="100%"
+        >
+          <g
+            fill="none"
+            stroke="#fff"
+            strokeWidth={6}
+          >
+            <polyline
+              points="19,18 90,104.778 19,191.556 	"
+            />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Complete Pages Rule Overview 1`] = `
+<div
+  className="sc-eTuwsz ewYpnI"
+>
+  <div
+    className="sc-hrWEMg jxqMiO"
+  >
+    <h5
+      className="MuiTypography-root-1249 MuiTypography-h5-1265"
+    >
+      Notification Rules
+    </h5>
+  </div>
+  <div
+    className="sc-uJMKN eVXOtU"
+    size="80"
+  >
+    <div
+      className="MuiCircularProgress-root-1311 MuiCircularProgress-colorPrimary-1314 MuiCircularProgress-indeterminate-1313"
+      role="progressbar"
+      style={
+        Object {
+          "height": 80,
+          "width": 80,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg-1316"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle-1317 MuiCircularProgress-circleIndeterminate-1319"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Fleetdata / App Provided App 1`] = `
 Array [
   <div
@@ -2441,7 +3464,6 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
     </div>
     <button
       className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
-      goToHome={true}
       onClick={[Function]}
       primary="false"
     >
@@ -2766,6 +3788,452 @@ exports[`Storyshots Rule Detail / General Components Recipient Tag 1`] = `
     >
       test@example.com
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
+<div
+  className="sc-lhVmIH hDNxCc"
+>
+  <header
+    className="sc-dqBHgY diSgKh"
+  >
+    <h5
+      className="MuiTypography-root-1127 MuiTypography-h5-1143"
+    >
+      
+      Create Rule
+      
+    </h5>
+    <button
+      className="sc-gGBfsJ iNTxbL sc-jzJRlG cSDgQj"
+      onClick={[Function]}
+      primary="false"
+    >
+      <span>
+        Abort
+      </span>
+    </button>
+  </header>
+  <div
+    className="MuiPaper-root-1166 MuiPaper-elevation0-1168 MuiStepper-root-1162 MuiStepper-horizontal-1163"
+  >
+    <div
+      className="MuiStep-root-1193 MuiStep-horizontal-1194"
+    >
+      <button
+        className="MuiButtonBase-root-1202 MuiStepButton-root-1198 MuiStepButton-horizontal-1199"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1205 MuiStepLabel-horizontal-1206"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1213"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1221 MuiStepIcon-root-1216 MuiStepIcon-active-1218"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1217"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                1
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1215"
+          >
+            <span
+              className="MuiTypography-root-1127 MuiTypography-body2-1135 MuiStepLabel-label-1208 MuiStepLabel-active-1209"
+            >
+              General
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1230 MuiStepConnector-horizontal-1231 MuiStepConnector-disabled-1236"
+    >
+      <span
+        className="MuiStepConnector-line-1237 MuiStepConnector-lineHorizontal-1238"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1193 MuiStep-horizontal-1194"
+    >
+      <button
+        className="MuiButtonBase-root-1202 MuiButtonBase-disabled-1203 MuiStepButton-root-1198 MuiStepButton-horizontal-1199"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1205 MuiStepLabel-horizontal-1206 MuiStepLabel-disabled-1212"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1213"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1221 MuiStepIcon-root-1216"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1217"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                2
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1215"
+          >
+            <span
+              className="MuiTypography-root-1127 MuiTypography-body2-1135 MuiStepLabel-label-1208"
+            >
+              Fleets
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1230 MuiStepConnector-horizontal-1231 MuiStepConnector-disabled-1236"
+    >
+      <span
+        className="MuiStepConnector-line-1237 MuiStepConnector-lineHorizontal-1238"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1193 MuiStep-horizontal-1194"
+    >
+      <button
+        className="MuiButtonBase-root-1202 MuiButtonBase-disabled-1203 MuiStepButton-root-1198 MuiStepButton-horizontal-1199"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1205 MuiStepLabel-horizontal-1206 MuiStepLabel-disabled-1212"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1213"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1221 MuiStepIcon-root-1216"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1217"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                3
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1215"
+          >
+            <span
+              className="MuiTypography-root-1127 MuiTypography-body2-1135 MuiStepLabel-label-1208"
+            >
+              Condition
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1230 MuiStepConnector-horizontal-1231 MuiStepConnector-disabled-1236"
+    >
+      <span
+        className="MuiStepConnector-line-1237 MuiStepConnector-lineHorizontal-1238"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1193 MuiStep-horizontal-1194"
+    >
+      <button
+        className="MuiButtonBase-root-1202 MuiButtonBase-disabled-1203 MuiStepButton-root-1198 MuiStepButton-horizontal-1199"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1205 MuiStepLabel-horizontal-1206 MuiStepLabel-disabled-1212"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1213"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1221 MuiStepIcon-root-1216"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1217"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                4
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1215"
+          >
+            <span
+              className="MuiTypography-root-1127 MuiTypography-body2-1135 MuiStepLabel-label-1208"
+            >
+              Timing
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiStepConnector-root-1230 MuiStepConnector-horizontal-1231 MuiStepConnector-disabled-1236"
+    >
+      <span
+        className="MuiStepConnector-line-1237 MuiStepConnector-lineHorizontal-1238"
+      />
+    </div>
+    <div
+      className="MuiStep-root-1193 MuiStep-horizontal-1194"
+    >
+      <button
+        className="MuiButtonBase-root-1202 MuiButtonBase-disabled-1203 MuiStepButton-root-1198 MuiStepButton-horizontal-1199"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
+      >
+        <span
+          className="MuiStepLabel-root-1205 MuiStepLabel-horizontal-1206 MuiStepLabel-disabled-1212"
+        >
+          <span
+            className="MuiStepLabel-iconContainer-1213"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-1221 MuiStepIcon-root-1216"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="12"
+              />
+              <text
+                className="MuiStepIcon-text-1217"
+                textAnchor="middle"
+                x="12"
+                y="16"
+              >
+                5
+              </text>
+            </svg>
+          </span>
+          <span
+            className="MuiStepLabel-labelContainer-1215"
+          >
+            <span
+              className="MuiTypography-root-1127 MuiTypography-body2-1135 MuiStepLabel-label-1208"
+            >
+              Preview
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    className="sc-bwCtUz cQLaTD"
+  >
+    <h6
+      className="MuiTypography-root-1127 MuiTypography-h6-1144"
+    >
+      Step
+       
+      1
+      : 
+      General
+    </h6>
+  </div>
+  <div
+    className="sc-uJMKN eVXOtU"
+    size="80"
+  >
+    <div
+      className="MuiCircularProgress-root-1118 MuiCircularProgress-colorPrimary-1121 MuiCircularProgress-indeterminate-1120"
+      role="progressbar"
+      style={
+        Object {
+          "height": 80,
+          "width": 80,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg-1123"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle-1124 MuiCircularProgress-circleIndeterminate-1126"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="sc-iQKALj ftUPYG"
+  >
+    <button
+      className="primary sc-jzJRlG cSDgQj"
+      icon={
+        <_default
+          fill="#fff"
+        />
+      }
+      onClick={[Function]}
+      primary="true"
+    >
+      <span>
+        Next
+      </span>
+      <svg
+        height="100%"
+        id="default"
+        style={
+          Object {
+            "fill": "#fff",
+            "height": "96px",
+            "marginTop": undefined,
+            "minWidth": "undefinedpx",
+            "width": "96px",
+          }
+        }
+        version="1.1"
+        viewBox="0 0 109 209"
+        width="100%"
+      >
+        <g
+          fill="none"
+          stroke="#fff"
+          strokeWidth={6}
+        >
+          <polyline
+            points="19,18 90,104.778 19,191.556 	"
+          />
+        </g>
+      </svg>
+    </button>
   </div>
 </div>
 `;

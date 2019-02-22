@@ -2,7 +2,7 @@ import { createSelector, Selector as StateSelector } from 'reselect'
 import { RootState } from './index'
 import { LanguageType, LanguageState } from './language'
 import { AuthState, AuthData } from './auth'
-import { RuleState, RuleOverviewState, RuleDetailState, RuleCreationState } from './rule'
+import { RuleState, RuleOverviewState, RuleDetailState, RuleModificationState } from './rule'
 import { CarParkState, CarParkListState } from './car-park'
 import { PredicateFieldState, PredicateFieldListState } from './predicate-field'
 
@@ -37,9 +37,13 @@ export const ruleDetailStateSelector: Selector<RuleDetailState> = createSelector
   [ruleStateSelector],
   ruleState => ruleState.ruleDetail
 )
-export const ruleCreationStateSelector: Selector<RuleCreationState> = createSelector(
+export const ruleCreationStateSelector: Selector<RuleModificationState> = createSelector(
   [ruleStateSelector],
   ruleState => ruleState.ruleCreation
+)
+export const ruleEditingStateSelector: Selector<RuleModificationState> = createSelector(
+  [ruleStateSelector],
+  ruleState => ruleState.ruleEditing
 )
 
 export const carParkStateSelector: Selector<CarParkState> = state => state.carPark

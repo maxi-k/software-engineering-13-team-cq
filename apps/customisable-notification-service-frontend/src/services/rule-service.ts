@@ -24,7 +24,7 @@ export const fetchRuleOverview = (accessToken: string) => (
     : authApiRequest(ruleOverviewUrl, accessToken)
 )
 
-const ruleDetailUrl = (ruleId: number) => `/notification-rule-management/notification-rule/${ruleId}`
+const ruleDetailUrl = (ruleId: number | string) => `/notification-rule-management/notification-rule/${ruleId}`
 export const fetchRuleDetail = (accessToken: string, ruleId: number) => (
   doMock
     ? (
@@ -49,11 +49,21 @@ export const deleteRule = (accessToken: string, ruleId: number) => (
 )
 
 const ruleCreationUrl = '/notification-rule-management/notification-rule'
-export const createNewRule = (accessToken: string, rule: object) => (
+export const createNewRule = (accessToken: string, rule: APIRule) => (
   doMock
     ? mockRequest(ruleDetailUrl(0), mockedRuleDetail(0))
     : authApiRequest(ruleCreationUrl, accessToken, {
       method: 'POST',
+      body: JSON.stringify(rule)
+    })
+)
+
+const ruleEditingUrl = (ruleId: number | string) => `/notification-rule-management/notification-rule/${ruleId}`
+export const editRule = (accessToken: string, rule: APIRule) => (
+  doMock
+    ? mockRequest(ruleDetailUrl(0), mockedRuleDetail(0))
+    : authApiRequest(ruleEditingUrl(rule.ruleId), accessToken, {
+      method: 'PUT',
       body: JSON.stringify(rule)
     })
 )

@@ -1,24 +1,24 @@
 import styled from 'styled-components'
 import { SFC, HTMLAttributes } from 'react'
-import { RuleCreationState } from '@/state/rule'
+import { RuleModificationState } from '@/state/rule'
 
-export interface CommonRuleCreationStateAttributes
-  extends Pick<RuleCreationState, 'inProgressRule'> {
+export interface CommonRuleModificationStateAttributes
+  extends Pick<RuleModificationState, 'inProgressRule'> {
 
 }
 
 export type FieldKey = string | number
 export type FieldUpdater = (name: FieldKey, callback: ((...event: any[]) => any)) => ((...value: any[]) => void)
-export interface CommonRuleCreationDispatchAttributes {
+export interface CommonRuleModificationDispatchAttributes {
   updateField: FieldUpdater
 }
 
-export type RuleCreationStepViewProps =
+export type RuleModificationStepViewProps =
   HTMLAttributes<HTMLDivElement>
-  & CommonRuleCreationStateAttributes
-  & CommonRuleCreationDispatchAttributes
+  & CommonRuleModificationStateAttributes
+  & CommonRuleModificationDispatchAttributes
 
-export type RuleCreationStepView = SFC<RuleCreationStepViewProps>
+export type RuleModificationStepView = SFC<RuleModificationStepViewProps>
 
 export type FieldUpdateCreator = (updater: FieldUpdater) => (name: FieldKey) => ((value: any) => void)
 export const createInputFieldUpdater: FieldUpdateCreator = updater => name => (
@@ -69,6 +69,6 @@ export const nestValueUpdater = (updater: FieldUpdater) => (outerName: FieldKey)
   )
 )
 
-export const StyledRuleCreationWrapper = styled.div`
+export const StyledRuleModificationWrapper = styled.div`
     padding: 0rem 5rem;
 `

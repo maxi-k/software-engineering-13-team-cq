@@ -34,3 +34,12 @@ export const extractFleets = (carParks: CarPark[]): { [key: string]: Fleet } => 
       $add: park.fleets.map((fleet) => ([fleet.fleetId, fleet]))
     })), {})
 )
+
+export const mergeFleetInformation = (
+  allFleets: { [key: string]: Fleet },
+  selectedFleets: Array<{ fleetId: string }>
+): Fleet[] => (
+    selectedFleets
+      .filter((fleetObj) => fleetObj.fleetId in allFleets)
+      .map((fleetObj) => allFleets[fleetObj.fleetId])
+  )

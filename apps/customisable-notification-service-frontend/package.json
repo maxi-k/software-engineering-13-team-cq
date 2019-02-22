@@ -34,8 +34,8 @@
     "test-coverage": "craco test --collectCoverage",
     "test-commit": "CI=true craco test --bail --ci --detectOpenHandles --collectCoverage",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "cross-env STORYBOOK_ACTIVE=true start-storybook -p 9009 -s public",
+    "build-storybook": "cross-env STORYBOOK_ACTIVE=true build-storybook -s public",
     "lint": "tslint --project . --config ./tslint.json"
   },
   "eslintConfig": {
