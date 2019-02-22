@@ -132,7 +132,7 @@ import io.swagger.codegen.config.CodegenConfigurator
 import io.swagger.codegen.DefaultGenerator
 
 def swaggerSourceFile = 'src/main/resources/MES_Swagger.json'
-def swaggerTargetFolder = 'build/generated/swagger'
+def swaggerTargetFolder = 'build/generated/source/swagger'
 
 task generateApi {
     inputs.file("$projectDir/$swaggerSourceFile")
