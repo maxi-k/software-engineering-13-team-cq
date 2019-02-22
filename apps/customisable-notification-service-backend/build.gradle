@@ -253,7 +253,6 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 jacocoTestCoverageVerification {
     violationRules {
         rule {
-            excludes = ['**/bmw*.class']
             limit {
                 minimum = 0.7
             }
