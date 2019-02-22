@@ -1,4 +1,8 @@
-import { isDevelopment, isTest } from './environment-service'
+import {
+  isDevelopment,
+  isTest,
+  isStorybook
+} from './environment-service'
 
 const apiUrl = isDevelopment
   ? ''
@@ -38,7 +42,7 @@ const authApiRequest = (path: string, authToken: string, options: ApiRequestOpti
   return apiRequest(path, optionsWithAuthHeaders)
 }
 
-const doMock = isTest
+const doMock = isTest || isStorybook
 const delayResponse = (min: number, max: number) => (
   new Promise(resolve => {
     setTimeout(resolve, Math.random() * (max - min) + min)
