@@ -28,9 +28,9 @@ export const mapObjectToArray = <ObjectType, ResultType>(
 export type ObjectKeyMapper<ObjectType, ValueType = ObjectType[keyof ObjectType]> =
   string
   | Array<((value: ValueType, object: ObjectType) => [string, any])
-            | ((value: ValueType) => [string, any])>
-  | ((value: ValueType) => [string, any])
-  | ((value: ValueType, object: ObjectType) => [string, any])
+    | ((value: ValueType) => [string, any])>
+  | ((value: ValueType) => [string, any | undefined])
+  | ((value: ValueType, object: ObjectType) => [string, any | undefined])
 
 const generateTransformation = <ObjectType, ValueType>(
   valueTransformation: ObjectKeyMapper<ObjectType, ValueType>,
@@ -40,7 +40,11 @@ const generateTransformation = <ObjectType, ValueType>(
   switch (typeof valueTransformation) {
     case 'function':
       const [transformedKey, transformedValue] = valueTransformation(objectValue, enclosingObject)
-      return { [transformedKey]: { $set: transformedValue } }
+      if (typeof transformedValue === 'undefined') {
+        return { $unset: [transformedKey] }
+      } else {
+        return { [transformedKey]: { $set: transformedValue } }
+      }
     case 'object':
       if (Array.isArray(valueTransformation)) {
         return valueTransformation.reduce((result, entry) => (

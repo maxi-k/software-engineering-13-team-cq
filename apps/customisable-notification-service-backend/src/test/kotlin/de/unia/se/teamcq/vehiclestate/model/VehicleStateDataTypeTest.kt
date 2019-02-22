@@ -1,6 +1,8 @@
 package de.unia.se.teamcq.vehiclestate.model
 
 import de.unia.se.teamcq.TestUtils
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeModel
+import de.unia.se.teamcq.TestUtils.testEqualAndHashCode
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
@@ -83,6 +85,14 @@ class VehicleStateDataTypeTest : StringSpec() {
             shouldThrow<IllegalArgumentException> {
                 vehicleStateDataTypeService.retrieveFieldValue("nonExistent")
             }
+        }
+
+        "Equals and HashCode should work" {
+
+            testEqualAndHashCode(
+                    ::getTestVehicleStateDataTypeModel,
+                    { it.dataTypeId = 1 }
+            )
         }
     }
 }

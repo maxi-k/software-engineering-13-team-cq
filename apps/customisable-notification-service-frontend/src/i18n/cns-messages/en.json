@@ -20,14 +20,20 @@
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleCreate.title": "Create Rule",
     "cns.page.ruleEdit.title": "Edit Rule",
+    "cns.page.ruleDelete.title": "Delete Rule",
 
     "cns.rule.label": "Notification Rule",
 
     "cns.rule.field.name.label": "Rule Name",
     "cns.rule.field.description.label": "Description",
-    "cns.rule.field.dataSources.label": "Data Sources",
+    "cns.rule.field.owner.label": "Rule Owner",
     "cns.rule.field.recipients.label": "Recipients",
+    "cns.rule.field.affectedFleets.label": "Affected Fleets",
+    "cns.rule.field.affectedFleets.value.all.label": "All Fleets",
+    "cns.rule.field.affectedFleets.value.vehicleCount.label": "{vehicleCount, plural, =0 {No Vehicles} one {{vehicleCount} Vehicles} other {{vehicleCount} Vehicles}} ",
     "cns.rule.field.applyToAllFleets.label": "Apply this rule to all fleets?",
+    "cns.rule.field.dataSources.label": "Data Sources",
+    "cns.rule.field.condition.label": "Condition",
 
 
     "cns.rule.creation.error.default": "There was an error displaying this component.",

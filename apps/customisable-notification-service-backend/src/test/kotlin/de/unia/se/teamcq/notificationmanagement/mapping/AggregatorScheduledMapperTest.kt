@@ -33,9 +33,7 @@ class AggregatorScheduledMapperTest : StringSpec() {
 
             val aggregatorScheduledModel = aggregatorScheduledMapper.entityToModel(aggregatorScheduledEntity)
 
-            val test = getTestAggregatorScheduledModel()
-
-            aggregatorScheduledModel shouldBe test
+            aggregatorScheduledModel shouldBe getTestAggregatorScheduledModel()
         }
 
         "Convert model to dto" {

@@ -5,7 +5,7 @@ import update from 'immutability-helper'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { NotificationRuleDetail } from '@/model/Rule'
 import { ensureResponseStatus } from '@/services/response-service'
-import { fetchRuleDetail, mergeMockedRuleData, APIRule } from '@/services/rule-service'
+import { fetchRuleDetail, convertFromAPIRule, APIRule } from '@/services/rule-service'
 import { FetchingData } from '@/model'
 
 import { waitForLogin } from '@/state/auth'
@@ -16,7 +16,7 @@ export enum RuleDetailActionType {
 
   RULE_DETAIL_FETCH = '@rule/detail/FETCH',
   RULE_DETAIL_FETCH_FAILURE = '@rule/detail/FETCH_FAILURE',
-  RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS'
+  RULE_DETAIL_FETCH_SUCCESS = '@rule/detail/FETCH_SUCCESS',
 }
 export type RuleDetailAction = Action<RuleDetailActionType>
 
@@ -78,7 +78,7 @@ function* fetchRuleDetailGenerator(action: ReturnType<typeof loadRuleDetail.requ
     const authData = yield call(waitForLogin)
     const response = yield call(fetchRuleDetail, authData.accessToken, action.payload)
     ensureResponseStatus(response);
-    const rules = yield response.json().then((result: APIRule) => mergeMockedRuleData(result)) as NotificationRuleDetail
+    const rules = yield response.json().then((result: APIRule) => convertFromAPIRule(result)) as NotificationRuleDetail
     yield put(loadRuleDetail.success(rules))
   } catch (error) {
     yield put(loadRuleDetail.failure(error))
