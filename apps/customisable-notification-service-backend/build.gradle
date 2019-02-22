@@ -17,7 +17,7 @@ buildscript {
         classpath "gradle.plugin.com.palantir:jacoco-coverage:0.4.0"
         classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
         classpath "net.ltgt.gradle:gradle-apt-plugin:0.19"
-        classpath 'io.swagger:swagger-codegen:2.4.1'
+        classpath 'org.openapitools:openapi-generator:3.0.0'
     }
 }
 
@@ -128,19 +128,19 @@ task resolveDependencies {
 }
 
 // Generate BMW MES API client
-import io.swagger.codegen.config.CodegenConfigurator
-import io.swagger.codegen.DefaultGenerator
+import org.openapitools.codegen.config.CodegenConfigurator
+import org.openapitools.codegen.DefaultGenerator
 
-def swaggerSourceFile = 'src/main/resources/MES_Swagger.json'
-def swaggerTargetFolder = 'build/generated/source/swagger'
+def openApiToolsMESSourceFile = 'src/main/resources/MES_Swagger.json'
+def openApiToolsMESTargetFolder = 'build/generated/source/openapitools/mes'
 
-task generateApi {
-    inputs.file("$projectDir/$swaggerSourceFile")
-    outputs.dir("$projectDir/$swaggerTargetFolder")
+task generateMESApi {
+    inputs.file("$projectDir/$openApiToolsMESSourceFile")
+    outputs.dir("$projectDir/$openApiToolsMESTargetFolder")
     doLast {
         def config = new CodegenConfigurator()
-        config.setInputSpec("$projectDir/$swaggerSourceFile")
-        config.setOutputDir("$projectDir/$swaggerTargetFolder")
+        config.setInputSpec("$projectDir/$openApiToolsMESSourceFile")
+        config.setOutputDir("$projectDir/$openApiToolsMESTargetFolder")
         config.setLang('java')
         config.setAdditionalProperties([
                 'apiPackage'  : 'de.bmw.mes.api',
@@ -158,7 +158,65 @@ task generateApi {
     }
 }
 
-compileJava.dependsOn generateApi
+compileJava.dependsOn generateMESApi
+
+def openApiToolsAuthenticationSourceFile = 'src/main/resources/login.yaml'
+def openApiToolsAuthenticationTargetFolder = 'build/generated/source/openapitools/authentication'
+
+task generateAuthenticationApi {
+    inputs.file("$projectDir/$openApiToolsAuthenticationSourceFile")
+    outputs.dir("$projectDir/$openApiToolsAuthenticationTargetFolder")
+    doLast {
+        def config = new CodegenConfigurator()
+        config.setInputSpec("$projectDir/$openApiToolsAuthenticationSourceFile")
+        config.setOutputDir("$projectDir/$openApiToolsAuthenticationTargetFolder")
+        config.setLang('java')
+        config.setAdditionalProperties([
+                'apiPackage'  : 'de.bmw.authentication.api',
+                'modelPackage': 'de.bmw.authentication.model',
+                'library'     : 'resttemplate'
+        ])
+        config.setSystemProperties([
+                'models'         : '',
+                'apis'           : '',
+                'apiDocs'        : 'false',
+                'modelDocs'      : 'false',
+                'supportingFiles': 'ApiClient.java,Authentication.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,CustomInstantDeserializer.java,RFC3339DateFormat.java,README.md'
+        ])
+        new DefaultGenerator().opts(config.toClientOptInput()).generate()
+    }
+}
+
+compileJava.dependsOn generateAuthenticationApi
+
+def openApiToolsVSSSourceFile = 'src/main/resources/vehicle.yaml'
+def openApiToolsVSSTargetFolder = 'build/generated/source/openapitools/vss'
+
+task generateVSSApi {
+    inputs.file("$projectDir/$openApiToolsVSSSourceFile")
+    outputs.dir("$projectDir/$openApiToolsVSSTargetFolder")
+    doLast {
+        def config = new CodegenConfigurator()
+        config.setInputSpec("$projectDir/$openApiToolsVSSSourceFile")
+        config.setOutputDir("$projectDir/$openApiToolsVSSTargetFolder")
+        config.setLang('java')
+        config.setAdditionalProperties([
+                'apiPackage'  : 'de.bmw.vss.api',
+                'modelPackage': 'de.bmw.vss.model',
+                'library'     : 'resttemplate'
+        ])
+        config.setSystemProperties([
+                'models'         : '',
+                'apis'           : '',
+                'apiDocs'        : 'false',
+                'modelDocs'      : 'false',
+                'supportingFiles': 'ApiClient.java,Authentication.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,CustomInstantDeserializer.java,RFC3339DateFormat.java,README.md'
+        ])
+        new DefaultGenerator().opts(config.toClientOptInput()).generate()
+    }
+}
+
+compileJava.dependsOn generateVSSApi
 
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
