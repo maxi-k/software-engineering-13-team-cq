@@ -1,28 +1,30 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
-import io.kotlintest.should
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.InjectMockKs
-import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.test.context.ContextConfiguration
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.util.ReflectionTestUtils
 
-@ContextConfiguration(classes = [TestConfiguration::class])
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class NotificationMESAdapterTest : StringSpec() {
 
-    @InjectMockKs
+    @Autowired
     private lateinit var notificationMESAdapter: NotificationMESAdapter
 
     init {
         MockKAnnotations.init(this)
 
-        "SendNotificationForScheduledRule should work" should {
+        "SendNotification should work" {
 
-            ReflectionTestUtils.setField(notificationMESAdapter, "authenticationUsername", "name")
-            ReflectionTestUtils.setField(notificationMESAdapter, "authenticationPassword", "pw")
+            ReflectionTestUtils.setField(notificationMESAdapter, "disableNotifications", false)
+            ReflectionTestUtils.setField(notificationMESAdapter, "authenticationUsername", "admin")
+            ReflectionTestUtils.setField(notificationMESAdapter, "authenticationPassword", "fd123!")
 
-            notificationMESAdapter.sendNotification()
+            shouldThrow<Exception> {
+                notificationMESAdapter.sendNotification()
+            }
         }
     }
 }
