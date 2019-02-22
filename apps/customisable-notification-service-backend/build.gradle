@@ -67,9 +67,9 @@ idea {
     module.generatedSourceDirs += file('build/generated/source/kapt')
     module.generatedSourceDirs += file('build/generated/source/apt')
     module.generatedSourceDirs += file('build/generated/source/kaptKotlin')
-    module.generatedSourceDirs += file('build/generated/source/openapitools/authentication/src')
-    module.generatedSourceDirs += file('build/generated/source/openapitools/mes/src')
-    module.generatedSourceDirs += file('build/generated/source/openapitools/vss/src')
+    module.generatedSourceDirs += file('build/generated/source/openapitools/authentication/src/main/java')
+    module.generatedSourceDirs += file('build/generated/source/openapitools/mes/src/main/java')
+    module.generatedSourceDirs += file('build/generated/source/openapitools/vss/src/main/java')
 }
 
 repositories {
