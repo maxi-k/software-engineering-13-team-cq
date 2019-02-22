@@ -17,7 +17,7 @@ buildscript {
         classpath "gradle.plugin.com.palantir:jacoco-coverage:0.4.0"
         classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
         classpath "net.ltgt.gradle:gradle-apt-plugin:0.19"
-        classpath 'org.openapitools:openapi-generator:3.0.0'
+        classpath "org.openapitools:openapi-generator-gradle-plugin:3.3.4"
     }
 }
 
@@ -136,89 +136,61 @@ task resolveDependencies {
     }
 }
 
-// Generate BMW MES API client
-import org.openapitools.codegen.config.CodegenConfigurator
-import org.openapitools.codegen.DefaultGenerator
-
 def openApiToolsMESSourceFile = 'src/main/resources/MES_Swagger.json'
-def openApiToolsMESTargetFolder = 'build/generated/source/openapitools/mes'
+def openApiToolsMESTargetFolder = '/generated/source/openapitools/mes'
 
-task generateMESApi {
-    inputs.file("$projectDir/$openApiToolsMESSourceFile")
-    outputs.dir("$projectDir/$openApiToolsMESTargetFolder")
-    doLast {
-        def config = new CodegenConfigurator()
-        config.setInputSpec("$projectDir/$openApiToolsMESSourceFile")
-        config.setOutputDir("$projectDir/$openApiToolsMESTargetFolder")
-        config.setLang('java')
-        config.setAdditionalProperties([
-                'apiPackage'  : 'de.bmw.mes.api',
-                'modelPackage': 'de.bmw.mes.model',
-                'library'     : 'resttemplate'
-        ])
-        config.setSystemProperties([
-                'models'         : '',
-                'apis'           : '',
-                'apiDocs'        : 'false',
-                'modelDocs'      : 'false',
-                'supportingFiles': 'ApiClient.java,Authentication.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,CustomInstantDeserializer.java,RFC3339DateFormat.java,README.md'
-        ])
-        new DefaultGenerator().opts(config.toClientOptInput()).generate()
-    }
+task generateMESApi(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "kotlin"
+    inputSpec = "$projectDir/$openApiToolsMESSourceFile".toString()
+    outputDir = "$buildDir/$openApiToolsMESTargetFolder".toString()
+    apiPackage = "de.bmw.mes.api"
+    invokerPackage = "de.bmw.mes.invoker"
+    modelPackage = "de.bmw.mes.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+    systemProperties = [
+            modelDocs: "true",
+            supportingFiles: "ApiClient.kt,Authentication.kt,HttpBasicAuth.kt,ApiKeyAuth.kt,OAuth.kt,CustomInstantDeserializer.kt,RFC3339DateFormat.java,README.md"
+    ]
 }
 
 def openApiToolsAuthenticationSourceFile = 'src/main/resources/login.yaml'
-def openApiToolsAuthenticationTargetFolder = 'build/generated/source/openapitools/authentication'
+def openApiToolsAuthenticationTargetFolder = '/generated/source/openapitools/authentication'
 
-task generateAuthenticationApi {
-    inputs.file("$projectDir/$openApiToolsAuthenticationSourceFile")
-    outputs.dir("$projectDir/$openApiToolsAuthenticationTargetFolder")
-    doLast {
-        def config = new CodegenConfigurator()
-        config.setInputSpec("$projectDir/$openApiToolsAuthenticationSourceFile")
-        config.setOutputDir("$projectDir/$openApiToolsAuthenticationTargetFolder")
-        config.setLang('java')
-        config.setAdditionalProperties([
-                'apiPackage'  : 'de.bmw.authentication.api',
-                'modelPackage': 'de.bmw.authentication.model',
-                'library'     : 'resttemplate'
-        ])
-        config.setSystemProperties([
-                'models'         : '',
-                'apis'           : '',
-                'apiDocs'        : 'false',
-                'modelDocs'      : 'false',
-                'supportingFiles': 'ApiClient.java,Authentication.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,CustomInstantDeserializer.java,RFC3339DateFormat.java,README.md'
-        ])
-        new DefaultGenerator().opts(config.toClientOptInput()).generate()
-    }
+task generateAuthenticationApi(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "kotlin"
+    inputSpec = "$projectDir/$openApiToolsAuthenticationSourceFile".toString()
+    outputDir = "$buildDir/$openApiToolsAuthenticationTargetFolder".toString()
+    apiPackage = "de.bmw.authentication.api"
+    invokerPackage = "de.bmw.authentication.invoker"
+    modelPackage = "de.bmw.authentication.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+    systemProperties = [
+            modelDocs: "true",
+            supportingFiles: "ApiClient.kt,Authentication.kt,HttpBasicAuth.kt,ApiKeyAuth.kt,OAuth.kt,CustomInstantDeserializer.kt,RFC3339DateFormat.java,README.md"
+    ]
 }
 
 def openApiToolsVSSSourceFile = 'src/main/resources/vehicle.yaml'
-def openApiToolsVSSTargetFolder = 'build/generated/source/openapitools/vss'
+def openApiToolsVSSTargetFolder = '/generated/source/openapitools/vss'
 
-task generateVSSApi {
-    inputs.file("$projectDir/$openApiToolsVSSSourceFile")
-    outputs.dir("$projectDir/$openApiToolsVSSTargetFolder")
-    doLast {
-        def config = new CodegenConfigurator()
-        config.setInputSpec("$projectDir/$openApiToolsVSSSourceFile")
-        config.setOutputDir("$projectDir/$openApiToolsVSSTargetFolder")
-        config.setLang('java')
-        config.setAdditionalProperties([
-                'apiPackage'  : 'de.bmw.vss.api',
-                'modelPackage': 'de.bmw.vss.model',
-                'library'     : 'resttemplate'
-        ])
-        config.setSystemProperties([
-                'models'         : '',
-                'apis'           : '',
-                'apiDocs'        : 'false',
-                'modelDocs'      : 'false',
-                'supportingFiles': 'ApiClient.java,Authentication.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,CustomInstantDeserializer.java,RFC3339DateFormat.java,README.md'
-        ])
-        new DefaultGenerator().opts(config.toClientOptInput()).generate()
-    }
+task generateVSSApi(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "kotlin"
+    inputSpec = "$projectDir/$openApiToolsVSSSourceFile".toString()
+    outputDir = "$buildDir/$openApiToolsVSSTargetFolder".toString()
+    apiPackage = "de.bmw.vss.api"
+    invokerPackage = "de.bmw.vss.invoker"
+    modelPackage = "de.bmw.vss.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+    systemProperties = [
+            modelDocs: "true",
+            supportingFiles: "ApiClient.kt,Authentication.kt,HttpBasicAuth.kt,ApiKeyAuth.kt,OAuth.kt,CustomInstantDeserializer.kt,RFC3339DateFormat.java,README.md"
+    ]
 }
 
 compileKotlin {
