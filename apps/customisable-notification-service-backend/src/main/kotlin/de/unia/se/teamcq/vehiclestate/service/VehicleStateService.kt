@@ -10,9 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import org.threeten.bp.OffsetDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import java.util.UUID
+import java.util.TimeZone
+
+
 
 @Component
 @Transactional
@@ -47,9 +52,10 @@ class VehicleStateService : IVehicleStateService {
         val dateTimeStringIso8601 = dateTimeFormatter.format(dateTime)
 
         try {
+            TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
             val sendMailResult = apiInstance.getAllVehicles(UUID.fromString("cccccccc-0000-cccc-0000-000000000099"),
                     listOf(UUID.fromString("cccccccc-0000-ffff-0000-000000000099")),
-                    dateTimeStringIso8601
+                    OffsetDateTime.now().minusYears(1)
             )
             logger.info("Sending E-Mail successful!", sendMailResult)
         } catch (exception: Exception) {

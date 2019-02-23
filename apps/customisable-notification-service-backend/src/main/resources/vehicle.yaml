@@ -35,6 +35,7 @@ paths:
           required: false
           schema:
             type: string
+            format: date-time
       operationId: getAllVehicles
       responses:
         '200':
