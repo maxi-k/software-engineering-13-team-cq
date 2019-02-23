@@ -139,7 +139,7 @@ task resolveDependencies {
     }
 }
 
-// Generate BMW MES API client
+// Generate BMW API clients
 import org.openapitools.codegen.config.CodegenConfigurator
 import org.openapitools.codegen.DefaultGenerator
 
@@ -230,6 +230,8 @@ compileKotlin {
     dependsOn generateVSSApi
 }
 
+// End generate BMW API clients
+
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
@@ -258,6 +260,7 @@ jacocoTestCoverageVerification {
             }
         }
     }
+    // Exclude OpenApi generated sources from test coverage calculation
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
             fileTree(dir: it, exclude: 'de/bmw/**')
