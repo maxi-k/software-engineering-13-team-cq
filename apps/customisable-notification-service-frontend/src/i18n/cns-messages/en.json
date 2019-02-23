@@ -24,6 +24,7 @@
 
     "cns.rule.label": "Notification Rule",
 
+    "cns.rule.field.value.unspecified.label": "Unspecified",
     "cns.rule.field.name.label": "Rule Name",
     "cns.rule.field.description.label": "Description",
     "cns.rule.field.owner.label": "Rule Owner",

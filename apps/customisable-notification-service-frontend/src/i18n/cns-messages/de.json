@@ -23,6 +23,7 @@
 
     "cns.rule.label": "Benachrichtigungsregel",
 
+    "cns.rule.field.value.unspecified.label": "Nicht Spezifiziert",
     "cns.rule.field.name.label": "Regelname",
     "cns.rule.field.description.label": "Beschreibung",
     "cns.rule.field.owner.label": "Besitzer der Regel",

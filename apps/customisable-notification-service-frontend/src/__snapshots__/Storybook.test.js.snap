@@ -423,49 +423,11 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </div>
     </div>
     <label
-      className="MuiFormControlLabel-root-1560"
+      className="MuiFormLabel-root-1523"
     >
-      <span
-        className="MuiSwitch-root-1564"
-      >
-        <span
-          className="MuiButtonBase-root-1474 MuiIconButton-root-1577 MuiSwitchBase-root-1573 MuiSwitch-switchBase-1567 MuiSwitch-colorSecondary-1570 MuiSwitchBase-checked-1574 MuiSwitch-checked-1568"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label-1582"
-          >
-            <span
-              className="MuiSwitch-icon-1565 MuiSwitch-iconChecked-1566"
-            />
-            <input
-              checked={true}
-              className="MuiSwitchBase-input-1576"
-              onChange={[Function]}
-              type="checkbox"
-              value="ownerAsAdditionalRecipient"
-            />
-          </span>
-        </span>
-        <span
-          className="MuiSwitch-bar-1572"
-        />
-      </span>
-      <span
-        className="MuiTypography-root-1399 MuiTypography-body2-1407 MuiFormControlLabel-label-1563"
-      >
-        Do you want to receive notifications from this rule?
-      </span>
+      <p>
+        Recipients
+      </p>
     </label>
     <div
       className="css-10nd86i"
@@ -569,6 +531,51 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         </div>
       </div>
     </div>
+    <label
+      className="MuiFormControlLabel-root-1560"
+    >
+      <span
+        className="MuiSwitch-root-1564"
+      >
+        <span
+          className="MuiButtonBase-root-1474 MuiIconButton-root-1577 MuiSwitchBase-root-1573 MuiSwitch-switchBase-1567 MuiSwitch-colorSecondary-1570 MuiSwitchBase-checked-1574 MuiSwitch-checked-1568"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label-1582"
+          >
+            <span
+              className="MuiSwitch-icon-1565 MuiSwitch-iconChecked-1566"
+            />
+            <input
+              checked={true}
+              className="MuiSwitchBase-input-1576"
+              onChange={[Function]}
+              type="checkbox"
+              value="ownerAsAdditionalRecipient"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiSwitch-bar-1572"
+        />
+      </span>
+      <span
+        className="MuiTypography-root-1399 MuiTypography-body2-1407 MuiFormControlLabel-label-1563"
+      >
+        Do you want to receive notifications from this rule?
+      </span>
+    </label>
   </div>
   <div
     className="sc-iQKALj ftUPYG"
@@ -1076,49 +1083,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </div>
       </div>
       <label
-        className="MuiFormControlLabel-root-1753"
+        className="MuiFormLabel-root-1716"
       >
-        <span
-          className="MuiSwitch-root-1757"
-        >
-          <span
-            className="MuiButtonBase-root-1667 MuiIconButton-root-1770 MuiSwitchBase-root-1766 MuiSwitch-switchBase-1760 MuiSwitch-colorSecondary-1763 MuiSwitchBase-checked-1767 MuiSwitch-checked-1761"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={null}
-          >
-            <span
-              className="MuiIconButton-label-1775"
-            >
-              <span
-                className="MuiSwitch-icon-1758 MuiSwitch-iconChecked-1759"
-              />
-              <input
-                checked={true}
-                className="MuiSwitchBase-input-1769"
-                onChange={[Function]}
-                type="checkbox"
-                value="ownerAsAdditionalRecipient"
-              />
-            </span>
-          </span>
-          <span
-            className="MuiSwitch-bar-1765"
-          />
-        </span>
-        <span
-          className="MuiTypography-root-1592 MuiTypography-body2-1600 MuiFormControlLabel-label-1756"
-        >
-          Do you want to receive notifications from this rule?
-        </span>
+        <p>
+          Recipients
+        </p>
       </label>
       <div
         className="css-10nd86i"
@@ -1222,6 +1191,51 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           </div>
         </div>
       </div>
+      <label
+        className="MuiFormControlLabel-root-1753"
+      >
+        <span
+          className="MuiSwitch-root-1757"
+        >
+          <span
+            className="MuiButtonBase-root-1667 MuiIconButton-root-1770 MuiSwitchBase-root-1766 MuiSwitch-switchBase-1760 MuiSwitch-colorSecondary-1763 MuiSwitchBase-checked-1767 MuiSwitch-checked-1761"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label-1775"
+            >
+              <span
+                className="MuiSwitch-icon-1758 MuiSwitch-iconChecked-1759"
+              />
+              <input
+                checked={true}
+                className="MuiSwitchBase-input-1769"
+                onChange={[Function]}
+                type="checkbox"
+                value="ownerAsAdditionalRecipient"
+              />
+            </span>
+          </span>
+          <span
+            className="MuiSwitch-bar-1765"
+          />
+        </span>
+        <span
+          className="MuiTypography-root-1592 MuiTypography-body2-1600 MuiFormControlLabel-label-1756"
+        >
+          Do you want to receive notifications from this rule?
+        </span>
+      </label>
     </div>
     <div
       className="sc-iQKALj ftUPYG"
@@ -2760,49 +2774,11 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
     </div>
   </div>
   <label
-    className="MuiFormControlLabel-root-910"
+    className="MuiFormLabel-root-873"
   >
-    <span
-      className="MuiSwitch-root-914"
-    >
-      <span
-        className="MuiButtonBase-root-933 MuiIconButton-root-927 MuiSwitchBase-root-923 MuiSwitch-switchBase-917 MuiSwitch-colorSecondary-920"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={null}
-      >
-        <span
-          className="MuiIconButton-label-932"
-        >
-          <span
-            className="MuiSwitch-icon-915"
-          />
-          <input
-            checked={false}
-            className="MuiSwitchBase-input-926"
-            onChange={[Function]}
-            type="checkbox"
-            value="ownerAsAdditionalRecipient"
-          />
-        </span>
-      </span>
-      <span
-        className="MuiSwitch-bar-922"
-      />
-    </span>
-    <span
-      className="MuiTypography-root-936 MuiTypography-body2-944 MuiFormControlLabel-label-913"
-    >
-      Do you want to receive notifications from this rule?
-    </span>
+    <p>
+      Recipients
+    </p>
   </label>
   <div
     className="css-10nd86i"
@@ -2906,6 +2882,51 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
       </div>
     </div>
   </div>
+  <label
+    className="MuiFormControlLabel-root-910"
+  >
+    <span
+      className="MuiSwitch-root-914"
+    >
+      <span
+        className="MuiButtonBase-root-933 MuiIconButton-root-927 MuiSwitchBase-root-923 MuiSwitch-switchBase-917 MuiSwitch-colorSecondary-920"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <span
+          className="MuiIconButton-label-932"
+        >
+          <span
+            className="MuiSwitch-icon-915"
+          />
+          <input
+            checked={false}
+            className="MuiSwitchBase-input-926"
+            onChange={[Function]}
+            type="checkbox"
+            value="ownerAsAdditionalRecipient"
+          />
+        </span>
+      </span>
+      <span
+        className="MuiSwitch-bar-922"
+      />
+    </span>
+    <span
+      className="MuiTypography-root-936 MuiTypography-body2-944 MuiFormControlLabel-label-913"
+    >
+      Do you want to receive notifications from this rule?
+    </span>
+  </label>
 </div>
 `;
 
@@ -3790,7 +3811,7 @@ exports[`Storyshots Rule Detail / Complete Fetching 1`] = `
 
 exports[`Storyshots Rule Detail / Complete Success 1`] = `
 <div
-  className="sc-esjQYD bVhgMq"
+  className="sc-ibxdXY iwRUWs"
 >
   <header
     className="sc-dqBHgY diSgKh"
@@ -3914,13 +3935,13 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
     </button>
   </div>
   <div
-    className="sc-ibxdXY fXpsiD"
+    className="sc-eXEjpC bkwrxj"
   />
   <div
-    className="sc-kIPQKe lhWmXO"
+    className="sc-esjQYD lbzpgk"
   >
     <div
-      className="sc-eXEjpC iBlZJx"
+      className="sc-kIPQKe bAawzK"
     >
       <div
         className="sc-dfVpRl cUhEmu"
@@ -3941,7 +3962,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         </div>
       </div>
       <div
-        className="sc-ibxdXY fXpsiD"
+        className="sc-eXEjpC bkwrxj"
       />
       <div
         className="sc-dfVpRl cUhEmu"
@@ -3962,7 +3983,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         </div>
       </div>
       <div
-        className="sc-ibxdXY fXpsiD"
+        className="sc-eXEjpC bkwrxj"
       />
       <div
         className="sc-dfVpRl cUhEmu"
@@ -3999,7 +4020,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         </div>
       </div>
       <div
-        className="sc-ibxdXY fXpsiD"
+        className="sc-eXEjpC bkwrxj"
       />
       <div
         className="sc-dfVpRl cUhEmu"
@@ -4030,7 +4051,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
       </div>
     </div>
     <div
-      className="sc-eXEjpC iBlZJx"
+      className="sc-kIPQKe bAawzK"
     >
       <div
         className="sc-dfVpRl cUhEmu"
@@ -4047,7 +4068,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         </div>
       </div>
       <div
-        className="sc-ibxdXY fXpsiD"
+        className="sc-eXEjpC bkwrxj"
       />
       <div
         className="sc-dfVpRl cUhEmu"

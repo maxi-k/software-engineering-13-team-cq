@@ -51,7 +51,6 @@ const reducer: Reducer<RuleEditingState> = (state = initialState, action) => {
     case RuleEditingActionType.RULE_EDIT_FETCH_INITIAL:
       return update(state, {
         $merge: {
-          ...initialModificationState,
           isFetching: true,
           hasFetchError: false
         }

@@ -9,6 +9,7 @@ import { FormattedMessage } from 'react-intl'
 
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormLabel from '@material-ui/core/FormLabel'
 import InputField from '@/modules/shared/components/InputField'
 
 import RecipientSelector from '../components/RecipientSelector'
@@ -47,6 +48,16 @@ const RuleModificationGeneral: RuleModificationStepView = (
         rows={3}
         value={inProgressRule.description || ""}
         onChange={createInputFieldUpdater(updateField)('description')} />
+      <FormLabel>
+        <p>
+          <FormattedMessage id="cns.rule.field.recipients.label" />
+        </p>
+      </FormLabel>
+      <RecipientSelector
+        value={convertRecipientsToOptions(inProgressRule.recipients || [])}
+        options={[]}
+        onChange={createRecipientFieldUpdater(updateField)('recipients')}
+      />
       <FormControlLabel
         control={
           <Switch
@@ -55,11 +66,6 @@ const RuleModificationGeneral: RuleModificationStepView = (
             value="ownerAsAdditionalRecipient" />
         }
         label={<FormattedMessage id="cns.rule.field.ownerAsAdditionalRecipient.label" />} />
-      <RecipientSelector
-        value={convertRecipientsToOptions(inProgressRule.recipients || [])}
-        options={[]}
-        onChange={createRecipientFieldUpdater(updateField)('recipients')}
-      />
     </div>
   )
 
