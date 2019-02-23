@@ -5,6 +5,7 @@ import {
   NotificationRuleDetail as DetailRule,
   NotificationRecipient as Recipient,
   NotificationRuleOwner as RuleOwner,
+  NotificationRecipient as RuleRecipient,
   NotificationRecipientType as RecipientType,
   RuleCondition,
   LogicalConnective,
@@ -68,6 +69,9 @@ export const editRule = (accessToken: string, rule: APIRule) => (
     })
 )
 
+type APIRecipient = { '@type': 'RecipientMailDto', mailAddress: string }
+  | { '@type': 'RecipientSmsDto', phoneNumber: string }
+
 export interface APIRule {
   ruleId: number
   name: string
@@ -82,7 +86,7 @@ export interface APIRule {
   }
   affectedFleets: object[]
   condition: APICondition
-  recipients: object[]
+  recipients: APIRecipient[]
   affectingAllApplicableFleets: boolean
   ownerAsAdditionalRecipient: boolean
   aggregator: object
@@ -138,6 +142,23 @@ const convertAPIAggregator = (apiAggregator: { [key: string]: any }): Aggregator
   }
 }
 
+export const transformFromAPIRuleRecipients = (oldRecipients: APIRecipient[]): RuleRecipient[] => (
+  oldRecipients.map((recipient) => {
+    switch (recipient['@type']) {
+      case 'RecipientMailDto':
+        return {
+          type: RecipientType.Email,
+          value: recipient.mailAddress
+        }
+      case 'RecipientSmsDto':
+        return {
+          type: RecipientType.PhoneNumber,
+          value: recipient.phoneNumber
+        }
+    }
+  })
+)
+
 export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject(rule, {
   affectedFleets: 'fleets',
   affectingAllApplicableFleets: 'applyToAllFleets',
@@ -145,7 +166,7 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
     ['aggregator', convertAPIAggregator(apiAggregator as object)] as [string, Aggregator]
   ),
   owner: 'owner',
-  recipients: 'recipients',
+  recipients: (recipients: any) => (['recipients', transformFromAPIRuleRecipients(recipients)] as [string, RuleRecipient[]]),
   ownerAsAdditionalRecipient: 'ownerAsAdditionalRecipient',
   condition: (condition: any) => (['condition', transformObject(condition, {
     '@type': (typeValue: any) => ['@type', undefined] as [string, undefined],
@@ -176,9 +197,31 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
     )
   }) as DetailRule
 
+export const transformToAPIRuleRecipients = (oldRecipients: RuleRecipient[]): APIRecipient[] => (
+  oldRecipients.map((recipient) => {
+    switch (recipient.type) {
+      case RecipientType.Email:
+        return {
+          '@type': 'RecipientMailDto' as 'RecipientMailDto',
+          mailAddress: recipient.value
+        }
+      case RecipientType.PhoneNumber:
+      default:
+        return {
+          '@type': 'RecipientSmsDto' as 'RecipientSmsDto',
+          phoneNumber: recipient.value
+        }
+    }
+  })
+)
+
 export const convertToAPIRule = (rule: DetailRule): APIRule => transformObject(rule, {
   fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
   applyToAllFleets: 'affectingAllApplicableFleets',
+  recipients: (oldRecipients: any) => ([
+    'recipients',
+    transformToAPIRuleRecipients(oldRecipients)
+  ] as [string, object[]]),
   condition: (oldCondition: any) => (['condition', transformObject(oldCondition, {
     logicalConnective: (connective: any) => (['logicalConnective', connective.toUpperCase()] as [string, string]),
     predicates: (predicates: any) => (['subConditions', transformObjects(Object.values(predicates), {

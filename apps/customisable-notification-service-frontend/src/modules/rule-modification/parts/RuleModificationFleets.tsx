@@ -13,6 +13,7 @@ import { carParkFleetsSelector } from '@/state/selectors'
 
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormLabel from '@material-ui/core/FormLabel'
 
 import FleetSelector from '../components/FleetSelector'
 
@@ -63,9 +64,16 @@ const RuleModificationFleets: RuleModificationStepView = (
         }
         label={<FormattedMessage id="cns.rule.field.applyToAllFleets.label" />} />
       {!inProgressRule.applyToAllFleets &&
-        <ConnectedRuleModificationFleetSelector
-          rule={inProgressRule}
-          updater={createMultiValueUpdater(updateField)('fleets')} />
+        <>
+          <FormLabel>
+            <p>
+              <FormattedMessage id="cns.rule.field.affectedFleets.label" />
+            </p>
+          </FormLabel>
+          <ConnectedRuleModificationFleetSelector
+            rule={inProgressRule}
+            updater={createMultiValueUpdater(updateField)('fleets')} />
+        </>
       }
     </div>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
-import Select from 'react-select'
+import Creatable from 'react-select/lib/Creatable';
+
 import { withTheme, WithTheme } from '@material-ui/core/styles'
 import { Props as SelectProps } from 'react-select/lib/Select'
 import { SelectComponents } from 'react-select/lib/components'
@@ -8,7 +9,7 @@ import { StylesConfig, mergeStyles } from 'react-select/lib/styles'
 import { SelectValue, SelectOnChangeType } from '@/model'
 import { defaultSelectStyles, defaultSelectStylesProp } from '@/utilities/style-util'
 
-export interface FleetSelectorAttributes {
+export interface RecipientSelectorAttributes {
   value: SelectValue,
   options: SelectValue[],
   placeholder?: string,
@@ -17,24 +18,24 @@ export interface FleetSelectorAttributes {
   onChange: SelectOnChangeType<SelectValue>,
   styles?(theme: WithTheme): StylesConfig,
 }
-export type FleetSelectorProps = FleetSelectorAttributes & Partial<SelectProps<SelectValue>>
 
-const FleetSelector: React.SFC<FleetSelectorProps> = ({
-  styles = defaultSelectStylesProp, theme, ...otherProps
-}) => {
+type RecipientSelectorProps = RecipientSelectorAttributes & Partial<SelectProps<SelectValue>>
+
+const RecipientSelector: React.SFC<RecipientSelectorProps> = (
+  { styles = defaultSelectStylesProp, theme, ...otherProps }
+) => {
   // mergeStyles actually has the wrong type signature in the package...
   // @ts-ignore
   const mergedStyles: StylesConfig = mergeStyles(defaultSelectStyles(theme), styles(theme))
-  return (<Select
+  return (<Creatable
     {...otherProps}
     styles={mergedStyles}
     closeMenuOnSelect={false}
     isMulti
-    isClearable
-  />
+    isClearable />
   )
 }
 
 // mergeStyles actually has the wrong type signature in the package...
 // @ts-ignore
-export default withTheme()(FleetSelector)
+export default withTheme()(RecipientSelector)

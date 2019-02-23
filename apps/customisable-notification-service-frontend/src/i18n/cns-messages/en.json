@@ -24,6 +24,7 @@
 
     "cns.rule.label": "Notification Rule",
 
+    "cns.rule.field.value.unspecified.label": "Unspecified",
     "cns.rule.field.name.label": "Rule Name",
     "cns.rule.field.description.label": "Description",
     "cns.rule.field.owner.label": "Rule Owner",
@@ -32,6 +33,7 @@
     "cns.rule.field.affectedFleets.value.all.label": "All Fleets",
     "cns.rule.field.affectedFleets.value.vehicleCount.label": "{vehicleCount, plural, =0 {No Vehicles} one {{vehicleCount} Vehicles} other {{vehicleCount} Vehicles}} ",
     "cns.rule.field.applyToAllFleets.label": "Apply this rule to all fleets?",
+    "cns.rule.field.ownerAsAdditionalRecipient.label": "Do you want to receive notifications from this rule?",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.condition.label": "Condition",
 
