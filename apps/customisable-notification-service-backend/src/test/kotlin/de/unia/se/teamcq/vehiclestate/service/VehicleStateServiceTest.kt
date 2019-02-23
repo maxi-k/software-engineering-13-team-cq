@@ -1,32 +1,30 @@
 package de.unia.se.teamcq.vehiclestate.service
 
-import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
+import de.unia.se.teamcq.security.service.IAuthenticationTokenService
 import io.kotlintest.should
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.InjectMockKs
-import io.mockk.impl.annotations.MockK
-import org.springframework.boot.test.context.TestConfiguration
-import org.springframework.test.context.ContextConfiguration
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.util.ReflectionTestUtils
 
-@ContextConfiguration(classes = [TestConfiguration::class])
+@SpringBootTest
 class VehicleStateServiceTest : StringSpec() {
 
-    @MockK
-    lateinit var vehicleStateRepository: IVehicleStateRepository
+    @Autowired
+    private lateinit var authenticationTokenService: IAuthenticationTokenService
 
-    @InjectMockKs
-    lateinit var vehicleStateService: VehicleStateService
+    @Autowired
+    private lateinit var vehicleStateService: VehicleStateService
 
     init {
         MockKAnnotations.init(this)
 
         "ImportNewVehicleData" should {
-            "Import new VehicleStates correctly" {
+            "Import new VehicleStates correctly when the API-Mock is running".config(enabled = false) {
 
-                ReflectionTestUtils.setField(vehicleStateService, "authenticationUsername", "admin")
-                ReflectionTestUtils.setField(vehicleStateService, "authenticationPassword", "fd123!")
+                ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
+                ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
 
                 vehicleStateService.importNewVehicleData()
             }
