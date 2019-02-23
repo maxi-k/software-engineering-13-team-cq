@@ -4,7 +4,7 @@ info:
   title: BMWFD Vehicle
   description: BMW FleetData Vehicle API
 servers:
-  - url: /api
+  - url: http://localhost:4040/api
 paths:
   /vehicles:
     get:

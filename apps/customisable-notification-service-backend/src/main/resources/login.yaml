@@ -4,7 +4,7 @@ info:
   title: BMWFD Login
   description: BMW Login API
 servers:
-  - url: https://localhost:4040/api
+  - url: http://localhost:4040/api
 paths:
   /login:
     post:

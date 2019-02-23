@@ -41,7 +41,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
 
             val apiInstance = EmailV1Api()
             val apiClient = ApiClient()
-            apiClient.setAccessToken(loginResult?.accessToken)
+            apiClient.addDefaultHeader("Authorization", "Bearer ${loginResult!!.accessToken}")
             apiInstance.apiClient = apiClient
 
             val requestFreeTextMessageEmail = RequestFreeTextMessageEmail()
