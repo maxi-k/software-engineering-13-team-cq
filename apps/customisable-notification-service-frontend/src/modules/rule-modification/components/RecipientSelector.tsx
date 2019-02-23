@@ -24,9 +24,7 @@ type RecipientSelectorProps = RecipientSelectorAttributes & Partial<SelectProps<
 const RecipientSelector: React.SFC<RecipientSelectorProps> = (
   { styles = defaultSelectStylesProp, theme, ...otherProps }
 ) => {
-  // mergeStyles actually has the wrong type signature...
-  // Guess how long it took to find that bug... 😩
-  // TODO: Create issue in type repo @types/react-select
+  // mergeStyles actually has the wrong type signature in the package...
   // @ts-ignore
   const mergedStyles: StylesConfig = mergeStyles(defaultSelectStyles(theme), styles(theme))
   return (<Creatable
@@ -38,5 +36,6 @@ const RecipientSelector: React.SFC<RecipientSelectorProps> = (
   )
 }
 
+// mergeStyles actually has the wrong type signature in the package...
 // @ts-ignore
 export default withTheme()(RecipientSelector)

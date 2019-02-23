@@ -22,9 +22,7 @@ export type FleetSelectorProps = FleetSelectorAttributes & Partial<SelectProps<S
 const FleetSelector: React.SFC<FleetSelectorProps> = ({
   styles = defaultSelectStylesProp, theme, ...otherProps
 }) => {
-  // mergeStyles actually has the wrong type signature...
-  // Guess how long it took to find that bug... 😩
-  // TODO: Create issue in type repo @types/react-select
+  // mergeStyles actually has the wrong type signature in the package...
   // @ts-ignore
   const mergedStyles: StylesConfig = mergeStyles(defaultSelectStyles(theme), styles(theme))
   return (<Select
@@ -37,5 +35,6 @@ const FleetSelector: React.SFC<FleetSelectorProps> = ({
   )
 }
 
+// mergeStyles actually has the wrong type signature in the package...
 // @ts-ignore
 export default withTheme()(FleetSelector)
