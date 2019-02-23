@@ -2,7 +2,6 @@ package de.unia.se.teamcq.vehiclestate.service
 
 import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
 import io.kotlintest.should
-import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.InjectMockKs

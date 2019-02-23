@@ -45,8 +45,8 @@ paths:
                 type: object
                 properties:
                   items:
-                    oneOf:
-                    - type: array
+                    type: array
+                    items:
                       $ref: '#/components/schemas/Vehicle'
             text/csv:
               schema:

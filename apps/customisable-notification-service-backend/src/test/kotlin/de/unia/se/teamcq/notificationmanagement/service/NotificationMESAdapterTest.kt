@@ -1,6 +1,5 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
-import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,9 +21,9 @@ class NotificationMESAdapterTest : StringSpec() {
             ReflectionTestUtils.setField(notificationMESAdapter, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(notificationMESAdapter, "authenticationPassword", "fd123!")
 
-            //shouldThrow<Exception> {
+            // shouldThrow<Exception> {
                 notificationMESAdapter.sendNotification()
-            //}
+            // }
         }
     }
 }
