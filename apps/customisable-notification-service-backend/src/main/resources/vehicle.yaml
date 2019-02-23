@@ -35,7 +35,6 @@ paths:
           required: false
           schema:
             type: string
-            format: date-time
       operationId: getAllVehicles
       responses:
         '200':
@@ -46,7 +45,9 @@ paths:
                 type: object
                 properties:
                   items:
-                    $ref: '#/components/schemas/Vehicle'
+                    oneOf:
+                    - type: array
+                      $ref: '#/components/schemas/Vehicle'
             text/csv:
               schema:
                 type: string

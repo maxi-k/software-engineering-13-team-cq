@@ -10,15 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import org.threeten.bp.Instant
-import org.threeten.bp.OffsetDateTime
-import java.lang.Exception
-import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatterBuilder
-import java.time.temporal.ChronoField
-import java.util.TimeZone
 import java.util.UUID
 
 @Component
@@ -47,14 +42,17 @@ class VehicleStateService : IVehicleStateService {
         val apiInstance = VehicleStatesApi()
         val apiClient = ApiClient()
         apiClient.addDefaultHeader("Authorization", "Bearer ${loginResult!!.accessToken}")
-        apiClient.dateFormat = dateFormat
         apiInstance.apiClient = apiClient
 
         val uuidForLogging = UUID.randomUUID().toString()
+        val dateTime = ZonedDateTime.now().minusYears(1)
+        val dateTimeStringIso8601 = dateTimeFormatter.format(dateTime)
 
         try {
             val sendMailResult = apiInstance.getAllVehicles(UUID.fromString("cccccccc-0000-cccc-0000-000000000099"),
-                    listOf(UUID.fromString("cccccccc-0000-ffff-0000-000000000099")), OffsetDateTime.now().minusDays(1))
+                    listOf(UUID.fromString("cccccccc-0000-ffff-0000-000000000099")),
+                    dateTimeStringIso8601
+            )
             logger.info("Sending E-Mail successful!", sendMailResult)
         } catch (exception: Exception) {
             logger.error("Exception when calling EmailV1Api#getEmailMessageTemplate", exception)
@@ -64,9 +62,6 @@ class VehicleStateService : IVehicleStateService {
     companion object {
         private val logger = LoggerFactory.getLogger(VehicleStateService::class.java)
 
-        private val dateFormat = DateTimeFormatterBuilder()
-                .append(DateTimeFormatter.ISO_OFFSET_DATE)
-                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-                .to
+        private val dateTimeFormatter = DateTimeFormatter.ISO_INSTANT
     }
 }
