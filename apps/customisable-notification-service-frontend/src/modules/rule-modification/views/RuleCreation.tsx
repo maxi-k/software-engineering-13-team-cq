@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
@@ -11,6 +12,14 @@ import {
 } from '@/state/rule'
 import { ruleCreationStateSelector } from '@/state/selectors'
 import RuleModification, { StateAttributes, DispatchAttributes } from './RuleModification'
+
+const RuleCreation: React.SFC<StateAttributes & DispatchAttributes> = (props) => (
+  <RuleModification
+    pageTitle="cns.page.ruleCreate.title"
+    pageTitleProps={{ titleValues: { ruleName: props.inProgressRule.name } }}
+    {...props}
+  />
+)
 
 const mapStateToProps: StateMapper<{}, StateAttributes> = (state, props) => ({
   ...ruleCreationStateSelector(state)
@@ -35,4 +44,4 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
 export default connect(
   mapStateToProps,
   mapDispatchToProps)
-  (RuleModification)
+  (RuleCreation)

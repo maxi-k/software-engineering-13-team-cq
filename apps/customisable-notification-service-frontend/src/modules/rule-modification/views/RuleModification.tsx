@@ -9,7 +9,7 @@ import NextIcon from '@fleetdata/shared/components/icons/chevron-right.icon'
 
 import ErrorMessage from '@/modules/shared/components/ErrorMessage'
 import LoadingIndicator from '@/modules/shared/components/LoadingIndicator'
-import ViewHeader from '@/modules/shared/components/ViewHeader'
+import ViewHeader, { ViewHeaderProps } from '@/modules/shared/components/ViewHeader'
 import AbortButton from '@/modules/shared/components/BackButton'
 
 import RuleModificationStepper from '../components/RuleModificationStepper'
@@ -21,6 +21,12 @@ import {
   RuleModificationStepView,
   RuleModificationStepViewProps
 } from '../modification-common'
+
+export interface ModificationViewAttributes {
+  pageTitle: string
+  pageTitleProps?: Partial<ViewHeaderProps>
+  nonLinearStepper?: boolean
+}
 
 export type StateAttributes = CommonRuleModificationStateAttributes & RuleModificationState
 
@@ -34,7 +40,8 @@ export interface DispatchAttributes
   abortModification(): void
 }
 
-export type RuleModificationProps = StateAttributes
+export type RuleModificationProps = ModificationViewAttributes
+  & StateAttributes
   & DispatchAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
@@ -103,16 +110,18 @@ const CurrentStepTitle: React.SFC<{ currentStep: number }> = ({ currentStep }) =
 const RuleModification: React.SFC<RuleModificationProps> = (
   { abortModification, selectStep, nextStep, previousStep,
     completeModification, inProgressRule, updateField,
-    completedSteps, currentStep,
+    completedSteps, currentStep, nonLinearStepper,
+    pageTitle, pageTitleProps,
     ...props }
 ) => (
     <StyledRuleModificationWrapper {...props}>
-      <ViewHeader title="cns.page.ruleCreate.title">
+      <ViewHeader {...pageTitleProps} title={pageTitle}>
         <AbortButton
           label="cns.navigation.abort.label"
           onClick={abortModification} />
       </ViewHeader>
       <RuleModificationStepper
+        nonLinear={nonLinearStepper || false}
         {...stepperProps(currentStep, selectStep, completedSteps)}
       />
       <CurrentStepTitle currentStep={currentStep} />

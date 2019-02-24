@@ -19,8 +19,12 @@
     "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleCreate.title": "Create Rule",
-    "cns.page.ruleEdit.title": "Edit Rule",
-    "cns.page.ruleDelete.title": "Delete Rule",
+    "cns.page.ruleEdit.title": "Edit Rule \"{ruleName}\"",
+    "cns.page.ruleDetail.title": "View Rule \"{ruleName}\"",
+    "cns.page.ruleDelete.title": "Delete Rule \"{ruleName}\"",
+
+    "cns.rule.action.edit.label": "edit",
+    "cns.rule.action.delete.label": "delete",
 
     "cns.rule.label": "Notification Rule",
 

@@ -671,7 +671,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         className="MuiTypography-root-1592 MuiTypography-h5-1608"
       >
         
-        Create Rule
+        Edit Rule ""
         
       </h5>
       <button
@@ -748,7 +748,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696 MuiStepConnector-disabled-1701"
+        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696"
       >
         <span
           className="MuiStepConnector-line-1702 MuiStepConnector-lineHorizontal-1703"
@@ -758,8 +758,8 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         className="MuiStep-root-1658 MuiStep-horizontal-1659"
       >
         <button
-          className="MuiButtonBase-root-1667 MuiButtonBase-disabled-1668 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
-          disabled={true}
+          className="MuiButtonBase-root-1667 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
+          disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -771,11 +771,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          tabIndex="-1"
+          tabIndex="0"
           type="button"
         >
           <span
-            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671 MuiStepLabel-disabled-1677"
+            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671"
           >
             <span
               className="MuiStepLabel-iconContainer-1678"
@@ -815,7 +815,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696 MuiStepConnector-disabled-1701"
+        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696"
       >
         <span
           className="MuiStepConnector-line-1702 MuiStepConnector-lineHorizontal-1703"
@@ -825,8 +825,8 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         className="MuiStep-root-1658 MuiStep-horizontal-1659"
       >
         <button
-          className="MuiButtonBase-root-1667 MuiButtonBase-disabled-1668 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
-          disabled={true}
+          className="MuiButtonBase-root-1667 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
+          disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -838,11 +838,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          tabIndex="-1"
+          tabIndex="0"
           type="button"
         >
           <span
-            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671 MuiStepLabel-disabled-1677"
+            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671"
           >
             <span
               className="MuiStepLabel-iconContainer-1678"
@@ -882,7 +882,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696 MuiStepConnector-disabled-1701"
+        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696"
       >
         <span
           className="MuiStepConnector-line-1702 MuiStepConnector-lineHorizontal-1703"
@@ -892,8 +892,8 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         className="MuiStep-root-1658 MuiStep-horizontal-1659"
       >
         <button
-          className="MuiButtonBase-root-1667 MuiButtonBase-disabled-1668 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
-          disabled={true}
+          className="MuiButtonBase-root-1667 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
+          disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -905,11 +905,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          tabIndex="-1"
+          tabIndex="0"
           type="button"
         >
           <span
-            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671 MuiStepLabel-disabled-1677"
+            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671"
           >
             <span
               className="MuiStepLabel-iconContainer-1678"
@@ -949,7 +949,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696 MuiStepConnector-disabled-1701"
+        className="MuiStepConnector-root-1695 MuiStepConnector-horizontal-1696"
       >
         <span
           className="MuiStepConnector-line-1702 MuiStepConnector-lineHorizontal-1703"
@@ -959,8 +959,8 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         className="MuiStep-root-1658 MuiStep-horizontal-1659"
       >
         <button
-          className="MuiButtonBase-root-1667 MuiButtonBase-disabled-1668 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
-          disabled={true}
+          className="MuiButtonBase-root-1667 MuiStepButton-root-1663 MuiStepButton-horizontal-1664"
+          disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -972,11 +972,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          tabIndex="-1"
+          tabIndex="0"
           type="button"
         >
           <span
-            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671 MuiStepLabel-disabled-1677"
+            className="MuiStepLabel-root-1670 MuiStepLabel-horizontal-1671"
           >
             <span
               className="MuiStepLabel-iconContainer-1678"
@@ -3825,8 +3825,8 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
       className="MuiTypography-root-1144 MuiTypography-h5-1160"
     >
       
-      Edit Rule
-       'Status Reports'
+      View Rule "Status Reports"
+      
     </h5>
   </header>
   <div
@@ -3845,7 +3845,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         onClick={[Function]}
       >
         <span>
-          Edit Rule
+          edit
         </span>
         <svg
           height="100%"
@@ -3883,7 +3883,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         onClick={[Function]}
       >
         <span>
-          Delete Rule
+          delete
         </span>
         <svg
           height="100%"
@@ -4265,7 +4265,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       className="MuiTypography-root-1188 MuiTypography-h5-1204"
     >
       
-      Create Rule
+      Edit Rule ""
       
     </h5>
     <button
@@ -4342,7 +4342,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292 MuiStepConnector-disabled-1297"
+      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292"
     >
       <span
         className="MuiStepConnector-line-1298 MuiStepConnector-lineHorizontal-1299"
@@ -4352,8 +4352,8 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       className="MuiStep-root-1254 MuiStep-horizontal-1255"
     >
       <button
-        className="MuiButtonBase-root-1263 MuiButtonBase-disabled-1264 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
-        disabled={true}
+        className="MuiButtonBase-root-1263 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
+        disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -4365,11 +4365,11 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267 MuiStepLabel-disabled-1273"
+          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267"
         >
           <span
             className="MuiStepLabel-iconContainer-1274"
@@ -4409,7 +4409,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292 MuiStepConnector-disabled-1297"
+      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292"
     >
       <span
         className="MuiStepConnector-line-1298 MuiStepConnector-lineHorizontal-1299"
@@ -4419,8 +4419,8 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       className="MuiStep-root-1254 MuiStep-horizontal-1255"
     >
       <button
-        className="MuiButtonBase-root-1263 MuiButtonBase-disabled-1264 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
-        disabled={true}
+        className="MuiButtonBase-root-1263 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
+        disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -4432,11 +4432,11 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267 MuiStepLabel-disabled-1273"
+          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267"
         >
           <span
             className="MuiStepLabel-iconContainer-1274"
@@ -4476,7 +4476,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292 MuiStepConnector-disabled-1297"
+      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292"
     >
       <span
         className="MuiStepConnector-line-1298 MuiStepConnector-lineHorizontal-1299"
@@ -4486,8 +4486,8 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       className="MuiStep-root-1254 MuiStep-horizontal-1255"
     >
       <button
-        className="MuiButtonBase-root-1263 MuiButtonBase-disabled-1264 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
-        disabled={true}
+        className="MuiButtonBase-root-1263 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
+        disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -4499,11 +4499,11 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267 MuiStepLabel-disabled-1273"
+          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267"
         >
           <span
             className="MuiStepLabel-iconContainer-1274"
@@ -4543,7 +4543,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292 MuiStepConnector-disabled-1297"
+      className="MuiStepConnector-root-1291 MuiStepConnector-horizontal-1292"
     >
       <span
         className="MuiStepConnector-line-1298 MuiStepConnector-lineHorizontal-1299"
@@ -4553,8 +4553,8 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       className="MuiStep-root-1254 MuiStep-horizontal-1255"
     >
       <button
-        className="MuiButtonBase-root-1263 MuiButtonBase-disabled-1264 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
-        disabled={true}
+        className="MuiButtonBase-root-1263 MuiStepButton-root-1259 MuiStepButton-horizontal-1260"
+        disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -4566,11 +4566,11 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
-        tabIndex="-1"
+        tabIndex="0"
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267 MuiStepLabel-disabled-1273"
+          className="MuiStepLabel-root-1266 MuiStepLabel-horizontal-1267"
         >
           <span
             className="MuiStepLabel-iconContainer-1274"

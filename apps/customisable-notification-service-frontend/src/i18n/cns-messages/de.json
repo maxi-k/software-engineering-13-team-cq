@@ -18,8 +18,12 @@
     "cns.message.fetch.error.serverError": "Es gab ein Problem während der Anfrage, bitte versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleCreate.title": "Regel erstellen",
-    "cns.page.ruleEdit.title": "Regel bearbeiten",
-    "cns.page.ruleDelete.title": "Regel löschen",
+    "cns.page.ruleEdit.title": "Regel \"{ruleName}\" bearbeiten",
+    "cns.page.ruleDetail.title": "Regel \"{ruleName}\" ansehen",
+    "cns.page.ruleDelete.title": "Regel \"{ruleName}\" löschen",
+
+    "cns.rule.action.edit.label": "bearbeiten",
+    "cns.rule.action.delete.label": "löschen",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
@@ -36,11 +40,11 @@
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
 
-    "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofortiges Verschicken",
+    "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
-    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Geplantes Verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Geplant Verschicken",
     "cns.rule.field.aggregator.strategy.value.scheduled.description": "Verschickt regelmäßig Nachrichten mit den gesamelten Daten der aufgetretenen Ereignisse.",
-    "cns.rule.field.aggregator.strategy.value.counting.label": "Gesammeltes Verschicken",
+    "cns.rule.field.aggregator.strategy.value.counting.label": "Gesammelt Verschicken",
     "cns.rule.field.aggregator.strategy.value.counting.description": "Sammelt eine gewisse Anzahl von Ereignissen bevor eine Nachricht gesendet wird.",
 
 

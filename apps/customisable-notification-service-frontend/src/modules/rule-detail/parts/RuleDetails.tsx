@@ -101,12 +101,14 @@ const RuleDetails: React.SFC<RuleDetailsProps> = ({ rule, fleets, ...otherProps 
       <FieldDescriptor
         label={"cns.rule.field.dataSources.label"}
         content={<>
-          {(rule.dataSources || []).map((dataSource) => (
-            <RuleIcon
-              key={dataSource}
-              type={dataSource}
-              label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
-          )}
+          {(rule.dataSources || [])
+            .filter((dataSource) => dataSource !== null && typeof dataSource !== 'undefined')
+            .map((dataSource) => (
+              <RuleIcon
+                key={dataSource}
+                type={dataSource}
+                label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
+            )}
         </>
         } />
     </StyledInfoBlock>

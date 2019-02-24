@@ -1,5 +1,5 @@
 import React from 'react'
-import Stepper from '@material-ui/core/Stepper'
+import Stepper, { StepperProps } from '@material-ui/core/Stepper'
 import RuleModificationStep, { RuleModificationStepEmbeddedProps } from './RuleModificationStep'
 
 export type SelectStepType = (stepIndex: number, event: React.SyntheticEvent<any, any>) => void
@@ -10,7 +10,8 @@ export interface RuleModificationStepperAttributes {
   selectStep: SelectStepType
 }
 export type RuleModificationStepperProps = RuleModificationStepperAttributes
-                                         & React.HTMLAttributes<HTMLDivElement>
+  & Partial<StepperProps>
+  & React.HTMLAttributes<HTMLDivElement>
 
 const stepSelector = (selectStep: SelectStepType, stepIndex: number) =>
   (event: React.SyntheticEvent<any, any>): void =>
