@@ -1,5 +1,13 @@
 package de.unia.se.teamcq
 
+import de.bmw.vss.model.Battery
+import de.bmw.vss.model.ConditionBasedService
+import de.bmw.vss.model.Contract
+import de.bmw.vss.model.Engine
+import de.bmw.vss.model.Fuel
+import de.bmw.vss.model.Mileage
+import de.bmw.vss.model.ServiceStatus
+import de.bmw.vss.model.Vehicle
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorCountingDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorDto
 import de.unia.se.teamcq.notificationmanagement.dto.AggregatorImmediateDto
@@ -83,6 +91,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import java.lang.IllegalArgumentException
 import java.util.Date
+import java.util.GregorianCalendar
+import java.util.UUID
+import javax.xml.bind.DatatypeConverter
 
 object TestUtils {
 
@@ -166,11 +177,11 @@ object TestUtils {
     }
 
     fun getTestVehicleStateDataTypeBatteryModel(): VehicleStateDataTypeBattery {
-        return VehicleStateDataTypeBattery(0.5, 0.7, "Healthy", 10)
+        return VehicleStateDataTypeBattery(0.5.toFloat().toDouble(), 0.7.toFloat().toDouble(), "OK", 10)
     }
 
     fun getTestVehicleStateDataTypeBatteryEntity(): VehicleStateDataTypeBatteryEntity {
-        return VehicleStateDataTypeBatteryEntity(0.5, 0.7, "Healthy", 10)
+        return VehicleStateDataTypeBatteryEntity(0.5.toFloat().toDouble(), 0.7.toFloat().toDouble(), "OK", 10)
     }
 
     fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
@@ -216,11 +227,11 @@ object TestUtils {
     }
 
     fun getTestVehicleStateDataTypeServiceModel(): VehicleStateDataTypeService {
-        return VehicleStateDataTypeService(Date(1547650098), "Fine", "Healthy", 15)
+        return VehicleStateDataTypeService(Date(1547650098), "OK", "OK", 15)
     }
 
     fun getTestVehicleStateDataTypeServiceEntity(): VehicleStateDataTypeServiceEntity {
-        return VehicleStateDataTypeServiceEntity(Date(1547650098), "Fine", "Healthy", 15)
+        return VehicleStateDataTypeServiceEntity(Date(1547650098), "OK", "OK", 15)
     }
 
     fun getTestVehicleStateModel(): VehicleState {
@@ -498,19 +509,19 @@ object TestUtils {
 
     fun getTestFleetReferenceModel(): FleetReference {
         return FleetReference(
-                fleetId = "UUID123"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099"
         )
     }
 
     fun getTestFleetReferenceEntity(): FleetReferenceEntity {
         return FleetReferenceEntity(
-                fleetId = "UUID123"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099"
         )
     }
 
     fun getTestFleetReferenceDto(): FleetReferenceDto {
         return FleetReferenceDto(
-                fleetId = "UUID123"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099"
         )
     }
 
@@ -529,7 +540,7 @@ object TestUtils {
     }
 
     fun getTestFleetReferenceDtoTwo(): FleetReferenceDto {
-        return getTestFleetReferenceDto().copy(fleetId = "UUID234")
+        return getTestFleetReferenceDto().copy(fleetId = "cccccccc-0000-ffff-0000-000000000098")
     }
 
     fun getTestFleetReferenceDtos(): List<FleetReferenceDto> {
@@ -586,5 +597,50 @@ object TestUtils {
         val httpHeader = HttpHeaders()
         httpHeader.add(jwtConfig.header, jwtConfig.prefix + accessToken)
         return httpHeader
+    }
+
+    fun getTestVSSVehicle(): Vehicle {
+        val vehicle = Vehicle()
+        vehicle.vin = "UUID456"
+        vehicle.fleet = UUID.fromString("cccccccc-0000-ffff-0000-000000000099")
+
+        val battery = Battery()
+        battery.levelPercentage = 0.5.toFloat()
+        battery.voltage = 0.7.toFloat()
+        battery.chargingStatus = "OK"
+        vehicle.battery = battery
+
+        val engine = Engine()
+        engine.power = 120
+        engine.capacity = 120
+        engine.fuelType = "Gas"
+        vehicle.engine = engine
+
+        val fuel = Fuel()
+        fuel.levelPercentage = 0.4
+        fuel.levelLiters = 50
+        fuel.remainingRange = 1000
+        vehicle.fuel = fuel
+
+        val contract = Contract() // FIXME
+        vehicle.contract = contract
+
+        val service = ServiceStatus()
+        val calendar = GregorianCalendar()
+        calendar.time = Date(1547650098)
+        service.dueDate = DatatypeConverter.printDateTime(calendar)
+        val conditionBasedService = ConditionBasedService()
+        conditionBasedService.status = ConditionBasedService.StatusEnum.OK
+        service.brakeFluid = conditionBasedService
+        service.status = ServiceStatus.StatusEnum.OK
+        vehicle.serviceStatus = service
+
+        val mileage = Mileage()
+        mileage.current = 10000
+        mileage.remaining = 5000
+        mileage.reachedPercentage = 1000
+        vehicle.mileage = mileage
+
+        return vehicle
     }
 }

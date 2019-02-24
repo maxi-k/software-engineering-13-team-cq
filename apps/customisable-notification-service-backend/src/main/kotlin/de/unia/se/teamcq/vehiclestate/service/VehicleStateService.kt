@@ -30,6 +30,7 @@ class VehicleStateService : IVehicleStateService {
         val (header, token) = authenticationTokenService.getAuthenticationHeader()
 
         val fetchedVehicles = fetchVehicles(header, token)
+
         logger.info("Importing VehicleState successful!", fetchedVehicles)
     }
 
