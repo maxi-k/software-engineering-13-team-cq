@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.vehiclestate.service
 
 import de.unia.se.teamcq.TestUtils.getTestFleetReferenceModel
-import de.unia.se.teamcq.security.service.IAuthenticationTokenService
+import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -13,7 +13,7 @@ import org.springframework.test.util.ReflectionTestUtils
 class VssAdapterTest : StringSpec() {
 
     @Autowired
-    private lateinit var authenticationTokenService: IAuthenticationTokenService
+    private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
 
     @Autowired
     private lateinit var vssAdapter: VssAdapter
@@ -23,8 +23,8 @@ class VssAdapterTest : StringSpec() {
 
         "Fetch states for FleetReferences should work".config(enabled = false) {
 
-            ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
-            ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
+            ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
+            ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")
 
             val fleetReferences = setOf(getTestFleetReferenceModel())
             val fetchedVehicles = vssAdapter.getNewVehicleStates(fleetReferences)

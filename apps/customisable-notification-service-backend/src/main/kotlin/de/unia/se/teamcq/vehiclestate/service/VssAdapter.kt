@@ -3,7 +3,7 @@ package de.unia.se.teamcq.vehiclestate.service
 import de.bmw.vss.ApiClient
 import de.bmw.vss.api.VehicleStatesApi
 import de.bmw.vss.model.Vehicle
-import de.unia.se.teamcq.security.service.IAuthenticationTokenService
+import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateAdapterMapper
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
@@ -20,7 +20,7 @@ import java.util.UUID
 class VssAdapter : IVssAdapter {
 
     @Autowired
-    private lateinit var authenticationTokenService: IAuthenticationTokenService
+    private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
 
     @Autowired
     private lateinit var vehicleStateAdapterMapper: IVehicleStateAdapterMapper
@@ -28,7 +28,7 @@ class VssAdapter : IVssAdapter {
     @Throws(RestClientException::class, NullPointerException::class)
     override fun getNewVehicleStates(fleetReferences: Set<FleetReference>): List<VehicleState> {
 
-        val (header, token) = authenticationTokenService.getAuthenticationHeader()
+        val (header, token) = authenticationTokenAdapter.getAuthenticationHeader()
 
         val fetchedVehicles = fetchVehicles(header, token, fleetReferences)
 
