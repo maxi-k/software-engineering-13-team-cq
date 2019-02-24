@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
+import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
@@ -84,5 +85,13 @@ class VehicleStateRepository : IVehicleStateRepository {
         return fleetReferenceEntityEntityRepository.findAll().map { fleetReference ->
             fleetReferenceMapper.entityToModel(fleetReference)
         }
+    }
+
+    override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun markVehicleStateAsProcessedByRule(notificationRule: NotificationRule, vehicleStates: List<VehicleState>) {
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }

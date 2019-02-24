@@ -34,11 +34,11 @@ class VehicleStateService : IVehicleStateService {
     }
 
     override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        return vehicleStateRepository.getUnprocessedVehicleStateForRule(notificationRule)
     }
 
     override fun markVehicleStateAsProcessedByRule(notificationRule: NotificationRule, vehicleStates: List<VehicleState>) {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        return vehicleStateRepository.markVehicleStateAsProcessedByRule(notificationRule, vehicleStates)
     }
 
     companion object {

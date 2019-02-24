@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
+import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.springframework.stereotype.Repository
@@ -18,4 +19,11 @@ interface IVehicleStateRepository {
     fun deleteVehicleState(vehicleStateId: Long)
 
     fun getAllFleetReferences(): List<FleetReference>
+
+    fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState>
+
+    fun markVehicleStateAsProcessedByRule(
+        notificationRule: NotificationRule,
+        vehicleStates: List<VehicleState>
+    )
 }
