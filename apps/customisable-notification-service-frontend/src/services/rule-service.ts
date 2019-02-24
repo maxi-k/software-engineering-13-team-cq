@@ -216,7 +216,10 @@ export const transformToAPIRuleRecipients = (oldRecipients: RuleRecipient[]): AP
 )
 
 export const convertToAPIRule = (rule: DetailRule): APIRule => transformObject(rule, {
-  fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
+  fleets: (oldFleets: any) => ([
+    'affectedFleets',
+    pickMap(oldFleets as Fleet[], 'fleetId', 'carParkId')
+  ] as [string, object[]]),
   applyToAllFleets: 'affectingAllApplicableFleets',
   recipients: (oldRecipients: any) => ([
     'recipients',

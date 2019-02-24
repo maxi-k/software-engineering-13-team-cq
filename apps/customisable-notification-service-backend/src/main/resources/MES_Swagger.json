@@ -1,0 +1,556 @@
+{
+  "swagger" : "2.0",
+  "host" : "localhost:4040",
+  "info" : {
+    "version" : "v1",
+    "title" : "E-Mail V1 API"
+  },
+  "basePath" : "/msgsvc",
+  "tags" : [ {
+    "name" : "EMail API"
+  }, {
+    "name" : "Email v1"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/email/v1" : {
+      "post" : {
+        "tags" : [ "Email v1" ],
+        "summary" : "sending free text email",
+        "description" : "",
+        "operationId" : "sendFreeTextEmailMessage",
+        "consumes" : [ "application/json;charset=utf-8" ],
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "name" : "X-Request-ID",
+          "in" : "header",
+          "description" : "transactionId for logging",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 36,
+          "minLength" : 36
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "message with target",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/RequestFreeTextMessageEmail"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "message could be send successfully",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatus"
+            }
+          },
+          "400" : {
+            "description" : "parameter validation failed",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ValidationError"
+              }
+            }
+          },
+          "404" : {
+            "description" : "no template could be found"
+          },
+          "503" : {
+            "description" : "message could not be send, because a backend error occurs",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatus"
+            }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      }
+    },
+    "/email/v1/{brand}/{country}/{language}/{template-id}" : {
+      "post" : {
+        "tags" : [ "Email v1" ],
+        "summary" : "sending email from template",
+        "description" : "",
+        "operationId" : "sendEmailMessageTemplate",
+        "consumes" : [ "application/json;charset=utf-8" ],
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "name" : "X-Request-ID",
+          "in" : "header",
+          "description" : "transactionId for logging",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 36,
+          "minLength" : 36
+        }, {
+          "name" : "brand",
+          "in" : "path",
+          "description" : "brand for using the correct template",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "BM", "MH", "BI", "RR", "MI", "ZI", "J29", "D1" ]
+        }, {
+          "name" : "country",
+          "in" : "path",
+          "description" : "country-code ISO 3166-1 alpha-2",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 2,
+          "minLength" : 2
+        }, {
+          "name" : "language",
+          "in" : "path",
+          "description" : "language-code ISO 639-1",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 2,
+          "minLength" : 2
+        }, {
+          "name" : "template-id",
+          "in" : "path",
+          "description" : "template-id for sending the message",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 200,
+          "minLength" : 1
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "target",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/RequestTemplateMessageEmail"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "message could be send successfully",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatusWithMessages"
+            }
+          },
+          "400" : {
+            "description" : "parameter validation failed",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ValidationError"
+              }
+            }
+          },
+          "404" : {
+            "description" : "no template could be found"
+          },
+          "503" : {
+            "description" : "message could not be send, because a backend error occurs",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatus"
+            }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      }
+    },
+    "/email/v1/{template-id}" : {
+      "get" : {
+        "tags" : [ "Email v1" ],
+        "summary" : "message template",
+        "description" : "",
+        "operationId" : "getEmailMessageTemplate",
+        "consumes" : [ "application/json;charset=utf-8" ],
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "name" : "template-id",
+          "in" : "path",
+          "description" : "template-id",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 200,
+          "minLength" : 1
+        }, {
+          "name" : "country",
+          "in" : "query",
+          "description" : "country (ISO country code)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "description" : "language (ISO language code)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "brand",
+          "in" : "query",
+          "description" : "brand, one of: BM, MH, BI,RR, MI, ZI, J29, D1",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "BM", "MH", "BI", "RR", "MI", "ZI", "J29", "D1" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "message template could be retrieved",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Template"
+              }
+            }
+          },
+          "400" : {
+            "description" : "parameter validation failed",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ValidationError"
+              }
+            }
+          },
+          "404" : {
+            "description" : "no template could be found"
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Email v1" ],
+        "summary" : "sending email from template depending on given user-id data",
+        "description" : "",
+        "operationId" : "sendEmailMessageTemplateToGivenUser",
+        "consumes" : [ "application/json;charset=utf-8" ],
+        "produces" : [ "application/json;charset=utf-8" ],
+        "parameters" : [ {
+          "name" : "X-Request-ID",
+          "in" : "header",
+          "description" : "transactionId for logging",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 36,
+          "minLength" : 36
+        }, {
+          "name" : "X-rgw-gcid",
+          "in" : "header",
+          "description" : "globalCustomerId",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 36,
+          "minLength" : 36
+        }, {
+          "name" : "X-rgw-tid",
+          "in" : "header",
+          "description" : "telematicId",
+          "required" : false,
+          "type" : "string",
+          "maxLength" : 20,
+          "minLength" : 1
+        }, {
+          "name" : "template-id",
+          "in" : "path",
+          "description" : "template-id for sending the message",
+          "required" : true,
+          "type" : "string",
+          "maxLength" : 200,
+          "minLength" : 1
+        }, {
+          "name" : "brand",
+          "in" : "query",
+          "description" : "brand, one of: BM, MH, BI,RR, MI, ZI, J29, D1",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "BM", "MH", "BI", "RR", "MI", "ZI", "J29", "D1" ]
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "target",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/RequestTemplateMessageEmailWithoutReceiver"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "message could be send successfully at least to one of the given channels",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatusWithMessages"
+            }
+          },
+          "400" : {
+            "description" : "parameter validation failed",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ValidationError"
+              }
+            }
+          },
+          "404" : {
+            "description" : "no template could be found"
+          },
+          "503" : {
+            "description" : "message could not be send, because a backend error occurs",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseStatus"
+            }
+          }
+        },
+        "security" : [ {
+          "basic" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basic" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "Attachement" : {
+      "type" : "object",
+      "required" : [ "content", "filename", "mimeType" ],
+      "properties" : {
+        "content" : {
+          "type" : "string",
+          "description" : "base64 encoded attachement content",
+          "minLength" : 0,
+          "maxLength" : 2000000
+        },
+        "mimeType" : {
+          "type" : "string",
+          "description" : "MIME content type. e.g. application/pdf",
+          "minLength" : 0,
+          "maxLength" : 100
+        },
+        "filename" : {
+          "type" : "string",
+          "description" : "filename, which will be displayed in mail client, filename is limited to 36 characters",
+          "minLength" : 0,
+          "maxLength" : 36
+        }
+      }
+    },
+    "Message" : {
+      "type" : "object",
+      "required" : [ "channel", "templateID" ],
+      "properties" : {
+        "templateID" : {
+          "type" : "string",
+          "description" : "template id"
+        },
+        "channel" : {
+          "type" : "string",
+          "description" : "channel name: VEHICLE, EMAIL, SMS, DEFAULT",
+          "enum" : [ "EMAIL", "SMS", "VEHICLE", "DEFAULT" ]
+        },
+        "subject" : {
+          "type" : "string",
+          "description" : "message subject"
+        },
+        "body" : {
+          "type" : "string",
+          "description" : "message body"
+        },
+        "sender" : {
+          "type" : "string",
+          "description" : "sender"
+        }
+      }
+    },
+    "Parameter" : {
+      "type" : "object",
+      "required" : [ "name", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "parameter name, like e.g. 'firstname', 'model'",
+          "minLength" : 0,
+          "maxLength" : 100
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "value for the parameter",
+          "minLength" : 0,
+          "maxLength" : 200
+        }
+      }
+    },
+    "RequestFreeTextMessageEmail" : {
+      "type" : "object",
+      "required" : [ "body", "receiver", "subject" ],
+      "properties" : {
+        "receiver" : {
+          "type" : "string",
+          "description" : "an email address must be set",
+          "minLength" : 0,
+          "maxLength" : 200,
+          "pattern" : "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"
+        },
+        "sender" : {
+          "type" : "string",
+          "description" : "an sender email can be set, if not available, default address will be used",
+          "minLength" : 0,
+          "maxLength" : 200
+        },
+        "subject" : {
+          "type" : "string",
+          "description" : "subject of the message",
+          "minLength" : 0,
+          "maxLength" : 200
+        },
+        "body" : {
+          "type" : "string",
+          "description" : "body of the message",
+          "minLength" : 0,
+          "maxLength" : 100000
+        },
+        "attachement" : {
+          "type" : "array",
+          "description" : "one optional attachement with content and filename",
+          "items" : {
+            "$ref" : "#/definitions/Attachement"
+          }
+        }
+      }
+    },
+    "RequestTemplateMessageEmail" : {
+      "type" : "object",
+      "required" : [ "receiver" ],
+      "properties" : {
+        "parameters" : {
+          "type" : "array",
+          "description" : "list of all variables and the values for replacing in the message",
+          "items" : {
+            "$ref" : "#/definitions/Parameter"
+          }
+        },
+        "attachement" : {
+          "type" : "array",
+          "description" : "one optional attachement with content and filename",
+          "items" : {
+            "$ref" : "#/definitions/Attachement"
+          }
+        },
+        "receiver" : {
+          "type" : "string",
+          "description" : "an email address must be set",
+          "minLength" : 0,
+          "maxLength" : 200,
+          "pattern" : "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"
+        }
+      }
+    },
+    "RequestTemplateMessageEmailWithoutReceiver" : {
+      "type" : "object",
+      "properties" : {
+        "parameters" : {
+          "type" : "array",
+          "description" : "list of all variables and the values for replacing in the message",
+          "items" : {
+            "$ref" : "#/definitions/Parameter"
+          }
+        },
+        "attachement" : {
+          "type" : "array",
+          "description" : "one optional attachement with content and filename",
+          "items" : {
+            "$ref" : "#/definitions/Attachement"
+          }
+        }
+      }
+    },
+    "ResponseStatus" : {
+      "type" : "object",
+      "required" : [ "status" ],
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "status of execution",
+          "enum" : [ "OK", "OK_SMS", "OK_EMAIL", "OK_NOTIFICATION_DEACTIVATED", "NO_BMWINFO_FOR_VIN_ERROR", "UNKNOWN_EMAIL", "INVALID_EMAIL_FORMAT", "UNKNOWN_MSISDN", "INVALID_MSISDN", "UNKNOWN_VEHICLE", "INVALID_LOCALE_FORMAT", "INVALID_COMMUNICATION_CHANNEL", "UNKNOWN_USER", "UNKNOWN_RECEIVERS_FOR_CHANNEL_BOTH", "INVALID_RECEIVERS_FOR_CHANNEL_BOTH", "POI_LIMIT_EXCEEDED", "UNKNOWN_ERROR" ]
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "optional human readable message"
+        }
+      }
+    },
+    "ResponseStatusWithMessages" : {
+      "type" : "object",
+      "required" : [ "status" ],
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "status of execution",
+          "enum" : [ "OK", "OK_SMS", "OK_EMAIL", "OK_NOTIFICATION_DEACTIVATED", "NO_BMWINFO_FOR_VIN_ERROR", "UNKNOWN_EMAIL", "INVALID_EMAIL_FORMAT", "UNKNOWN_MSISDN", "INVALID_MSISDN", "UNKNOWN_VEHICLE", "INVALID_LOCALE_FORMAT", "INVALID_COMMUNICATION_CHANNEL", "UNKNOWN_USER", "UNKNOWN_RECEIVERS_FOR_CHANNEL_BOTH", "INVALID_RECEIVERS_FOR_CHANNEL_BOTH", "POI_LIMIT_EXCEEDED", "UNKNOWN_ERROR" ]
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "optional human readable message"
+        },
+        "messages" : {
+          "type" : "array",
+          "description" : "list of all messages",
+          "items" : {
+            "$ref" : "#/definitions/Message"
+          }
+        }
+      }
+    },
+    "Template" : {
+      "type" : "object",
+      "properties" : {
+        "templateID" : {
+          "type" : "string",
+          "minLength" : 1,
+          "maxLength" : 128
+        },
+        "country" : {
+          "type" : "string",
+          "minLength" : 2,
+          "maxLength" : 2
+        },
+        "language" : {
+          "type" : "string",
+          "minLength" : 2,
+          "maxLength" : 2
+        },
+        "brand" : {
+          "type" : "string",
+          "enum" : [ "BM", "MH", "BI", "RR", "MI", "ZI", "J29", "D1" ]
+        },
+        "channel" : {
+          "type" : "string",
+          "enum" : [ "EMAIL", "SMS", "VEHICLE", "DEFAULT" ]
+        },
+        "subject" : {
+          "type" : "string",
+          "minLength" : 2,
+          "maxLength" : 255
+        },
+        "body" : {
+          "type" : "string"
+        },
+        "sender" : {
+          "type" : "string",
+          "minLength" : 2,
+          "maxLength" : 255
+        }
+      }
+    },
+    "ValidationError" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "description" : "message of validation error"
+        }
+      }
+    }
+  }
+}

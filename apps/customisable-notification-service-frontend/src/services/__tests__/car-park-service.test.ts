@@ -66,6 +66,7 @@ describe('the conversion function works', () => {
     const apiFleet = apiCarPark.fleets[0]
     const convertedFleet = convertedCarPark.fleets[0]
 
+    expect(convertedFleet.carParkId).toBe(convertedCarPark.carParkId)
     expect(convertedFleet.fleetId).toBe(apiFleet.id)
     expect(convertedFleet.name).toBe(apiFleet.name)
     expect(convertedFleet.numberOfVehicles).toBe(apiFleet.numVehicles)

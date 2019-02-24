@@ -35,7 +35,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
 
         val userEntity = userEntityRepository.getOne(username)
 
-        val notificationRuleEntities = userEntity.notificationRules.orEmpty()
+        val notificationRuleEntities = userEntity.notificationRules
 
         return notificationRuleEntities.map { notificationRuleEntity ->
             notificationRuleMapper.entityToModel(notificationRuleEntity)

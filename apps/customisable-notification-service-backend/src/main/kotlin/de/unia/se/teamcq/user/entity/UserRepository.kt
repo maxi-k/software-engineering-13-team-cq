@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
 
 @Repository
@@ -20,11 +22,20 @@ class UserRepository : IUserRepository {
     lateinit var userEntityRepository: IUserEntityRepository
 
     @Autowired
+    @PersistenceContext
+    private lateinit var entityManager: EntityManager
+
+    @Autowired
     lateinit var userMapper: IUserMapper
 
     override fun createOrSaveUser(user: User): User? {
 
-        val userEntityToSave = userMapper.modelToEntity(user)
+        // Use merge so that the persistence layer does not
+        // try to create existing entities this references,
+        // but instead uses the already existing ones.
+        val userEntityToSave = entityManager.merge(
+                userMapper.modelToEntity(user)
+        )
 
         // User doesn't have the ownedNotificationRules attribute, so we don't want to override it
         userEntityRepository.findById(user.name!!).orElse(null)

@@ -7,9 +7,4 @@ data class VehicleReference(
 
     var fleetReference: FleetReference? = null
 
-) {
-
-    fun fetchVehicleData() {
-        TODO()
-    }
-}
+)
