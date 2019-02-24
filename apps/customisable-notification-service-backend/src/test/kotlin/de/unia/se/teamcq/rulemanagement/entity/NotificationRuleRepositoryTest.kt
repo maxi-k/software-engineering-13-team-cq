@@ -6,10 +6,13 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
+import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateEntityRepository
 import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.matchers.withClue
 import io.kotlintest.should
@@ -26,6 +29,9 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
     @Autowired
     lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
+
+    @Autowired
+    private lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
     lateinit var userEntityRepository: IUserEntityRepository
@@ -217,11 +223,68 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             userEntityRepository.save(getTestUserEntity())
 
-            val savedUserEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
 
-            notificationRuleRepository.deleteNotificationRule(savedUserEntity.ruleId!!)
+            notificationRuleRepository.deleteNotificationRule(savedRuleEntity.ruleId!!)
 
-            notificationRuleEntityRepository.existsById(savedUserEntity.ruleId!!) shouldBe false
+            notificationRuleEntityRepository.existsById(savedRuleEntity.ruleId!!) shouldBe false
+        }
+
+        "GetVehicleStateMatchesForRule and AddVehicleStateMatchForRule should work" {
+
+            userEntityRepository.save(getTestUserEntity())
+
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
+            val savedVehicleStateModelWithCorrectId = getTestVehicleStateModel().copy(
+                    stateId = savedVehicleStateEntity.stateId
+            )
+
+            notificationRuleRepository.addVehicleStateMatchForRule(savedRuleEntity.ruleId!!,
+                    savedVehicleStateModelWithCorrectId
+            )
+            val vehicleStateMatches = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatch = vehicleStateMatches.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatch shouldBe true
+        }
+
+        "DeleteAllVehicleStateMatchesForRule should work" {
+
+            userEntityRepository.save(getTestUserEntity())
+
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
+            val savedVehicleStateModelWithCorrectId = getTestVehicleStateModel().copy(
+                    stateId = savedVehicleStateEntity.stateId
+            )
+
+            notificationRuleRepository.addVehicleStateMatchForRule(savedRuleEntity.ruleId!!,
+                    savedVehicleStateModelWithCorrectId
+            )
+            val vehicleStateMatches = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatch = vehicleStateMatches.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatch shouldBe true
+
+            notificationRuleRepository.deleteAllVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val vehicleStateMatchesAfter = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatchAfter = vehicleStateMatchesAfter.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatchAfter shouldBe false
         }
     }
 
