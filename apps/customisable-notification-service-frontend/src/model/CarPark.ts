@@ -1,5 +1,6 @@
 export interface Fleet {
   fleetId: string,
+  carParkId: string,
   name: string,
   numberOfVehicles: number
 }
