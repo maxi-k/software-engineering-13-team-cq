@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.vehiclestate.service
 
 import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
-import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -21,12 +20,10 @@ class VehicleStateService : IVehicleStateService {
     @Throws(RestClientException::class, NullPointerException::class)
     override fun importNewVehicleData() {
 
-        val newVehicleStates = vssAdapter.getNewVehicleStates(setOf(
-                FleetReference(
-                    "cccccccc-0000-ffff-0000-000000000099",
-                    "cccccccc-0000-cccc-0000-000000000099"
-                )
-        ))
+        val fleetReferences = vehicleStateRepository.getAllFleetReferences()
+
+        val newVehicleStates = vssAdapter.getNewVehicleStates(fleetReferences)
+
         newVehicleStates.forEach { vehicleState ->
             vehicleStateRepository.createVehicleState(vehicleState)
         }

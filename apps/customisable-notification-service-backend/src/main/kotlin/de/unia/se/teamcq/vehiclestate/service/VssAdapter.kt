@@ -26,7 +26,7 @@ class VssAdapter : IVssAdapter {
     private lateinit var vehicleStateAdapterMapper: IVehicleStateAdapterMapper
 
     @Throws(RestClientException::class, NullPointerException::class)
-    override fun getNewVehicleStates(fleetReferences: Set<FleetReference>): List<VehicleState> {
+    override fun getNewVehicleStates(fleetReferences: List<FleetReference>): List<VehicleState> {
 
         val (header, token) = authenticationTokenAdapter.getAuthenticationHeader()
 
@@ -40,7 +40,7 @@ class VssAdapter : IVssAdapter {
     private fun fetchVehicles(
         header: String,
         token: String,
-        fleetReferences: Set<FleetReference>
+        fleetReferences: List<FleetReference>
     ): List<Vehicle> {
 
         val apiInstance = VehicleStatesApi()

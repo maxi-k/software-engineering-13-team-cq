@@ -11,12 +11,12 @@ import org.springframework.test.util.ReflectionTestUtils
 class AuthenticationTokenAdapterTest : StringSpec() {
 
     @Autowired
-    private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
+    private lateinit var authenticationTokenAdapter: AuthenticationTokenAdapter
 
     init {
         MockKAnnotations.init(this)
 
-        "SendNotification should work when the API-Mock is running".config(enabled = false) {
+        "SendNotification should work when the API-Mock is running".config(enabled = true) {
 
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")

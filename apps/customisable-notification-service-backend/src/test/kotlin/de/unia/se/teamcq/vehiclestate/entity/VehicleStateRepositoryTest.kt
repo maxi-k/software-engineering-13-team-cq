@@ -1,5 +1,8 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
+import de.unia.se.teamcq.TestUtils.getTestFleetReferenceEntity
+import de.unia.se.teamcq.TestUtils.getTestFleetReferenceEntityTwo
+import de.unia.se.teamcq.TestUtils.getTestFleetReferenceModel
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
@@ -17,10 +20,13 @@ import org.springframework.transaction.annotation.Transactional
 class VehicleStateRepositoryTest : StringSpec() {
 
     @Autowired
-    lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
+    private lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
-    lateinit var vehicleStateRepository: VehicleStateRepository
+    private lateinit var fleetReferenceEntityRepository: IFleetReferenceEntityRepository
+
+    @Autowired
+    private lateinit var vehicleStateRepository: VehicleStateRepository
 
     init {
         MockKAnnotations.init(this)
@@ -85,6 +91,21 @@ class VehicleStateRepositoryTest : StringSpec() {
             vehicleStateRepository.deleteVehicleState(savedVehicleStateEntity.stateId!!)
 
             vehicleStateEntityRepository.existsById(savedVehicleStateEntity.stateId!!) shouldBe false
+        }
+
+        "GetAllFleetReferences should work" {
+
+            val fleetReferenceEntityA = getTestFleetReferenceEntity()
+            val fleetReferenceEntityB = getTestFleetReferenceEntityTwo()
+
+            fleetReferenceEntityRepository.save(fleetReferenceEntityA)
+            fleetReferenceEntityRepository.save(fleetReferenceEntityB)
+
+            val allVehicleStates = vehicleStateRepository.getAllFleetReferences()
+
+            allVehicleStates.size shouldBeGreaterThanOrEqual 2
+
+            allVehicleStates.shouldContain(getTestFleetReferenceModel())
         }
     }
 

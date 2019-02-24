@@ -24,7 +24,7 @@ class AuthenticationTokenAdapter : IAuthenticationTokenAdapter {
     override fun getAuthenticationHeader(): Pair<String, String> {
         val loginApi = LoginApi()
         val loginResult = loginApi.login(authenticationUsername, authenticationPassword)
-        logger.info("Login successful", loginResult.toString())
+        logger.info("Fetching Authentication Token from API-Mock successful", loginResult)
         return Pair(jwtConfig.header, "${jwtConfig.prefix}${loginResult!!.accessToken}")
     }
 

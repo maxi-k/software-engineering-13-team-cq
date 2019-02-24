@@ -1,6 +1,8 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
+import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
+import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
@@ -13,6 +15,9 @@ import javax.transaction.Transactional
 @Repository
 interface IVehicleStateEntityRepository : JpaRepository<VehicleStateEntity, Long>
 
+@Repository
+interface IFleetReferenceEntityRepository : JpaRepository<FleetReferenceEntity, Long>
+
 @Component
 @Transactional
 class VehicleStateRepository : IVehicleStateRepository {
@@ -21,11 +26,17 @@ class VehicleStateRepository : IVehicleStateRepository {
     private lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
+    private lateinit var fleetReferenceEntityEntityRepository: IFleetReferenceEntityRepository
+
+    @Autowired
     @PersistenceContext
     private lateinit var entityManager: EntityManager
 
     @Autowired
     private lateinit var vehicleStateMapper: IVehicleStateMapper
+
+    @Autowired
+    private lateinit var fleetReferenceMapper: IFleetReferenceMapper
 
     override fun getAllVehicleStates(): List<VehicleState> {
         return vehicleStateEntityRepository.findAll().map { vehicleStateEntity ->
@@ -67,5 +78,11 @@ class VehicleStateRepository : IVehicleStateRepository {
 
     override fun deleteVehicleState(vehicleStateId: Long) {
         vehicleStateEntityRepository.deleteById(vehicleStateId)
+    }
+
+    override fun getAllFleetReferences(): List<FleetReference> {
+        return fleetReferenceEntityEntityRepository.findAll().map { fleetReference ->
+            fleetReferenceMapper.entityToModel(fleetReference)
+        }
     }
 }

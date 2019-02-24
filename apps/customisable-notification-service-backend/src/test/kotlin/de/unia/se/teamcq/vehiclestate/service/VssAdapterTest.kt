@@ -21,12 +21,12 @@ class VssAdapterTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "Fetch states for FleetReferences should work".config(enabled = false) {
+        "Fetch states for FleetReferences should work".config(enabled = true) {
 
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")
 
-            val fleetReferences = setOf(getTestFleetReferenceModel())
+            val fleetReferences = listOf(getTestFleetReferenceModel())
             val fetchedVehicles = vssAdapter.getNewVehicleStates(fleetReferences)
 
             fetchedVehicles.size shouldBe 5000

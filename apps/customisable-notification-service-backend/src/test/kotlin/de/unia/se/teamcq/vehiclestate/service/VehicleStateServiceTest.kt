@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.vehiclestate.service
 
+import de.unia.se.teamcq.TestUtils.getTestFleetReferenceModel
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
 import io.kotlintest.specs.StringSpec
@@ -28,6 +29,7 @@ class VehicleStateServiceTest : StringSpec() {
 
         "ImportNewVehicleData should fetch and persist new VehicleStates" {
 
+            every { vehicleStateRepository.getAllFleetReferences() } returns listOf(getTestFleetReferenceModel())
             every { vssAdapter.getNewVehicleStates(any()) } returns listOf(getTestVehicleStateModel())
             every { vehicleStateRepository.createVehicleState(any()) } returns getTestVehicleStateModel()
 

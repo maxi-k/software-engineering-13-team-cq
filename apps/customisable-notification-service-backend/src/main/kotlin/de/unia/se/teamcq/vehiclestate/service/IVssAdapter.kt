@@ -18,5 +18,5 @@ interface IVssAdapter {
      * @return All new [VehicleState]s
      */
     @Throws(RestClientException::class, NullPointerException::class)
-    fun getNewVehicleStates(fleetReferences: Set<FleetReference>): List<VehicleState>
+    fun getNewVehicleStates(fleetReferences: List<FleetReference>): List<VehicleState>
 }
