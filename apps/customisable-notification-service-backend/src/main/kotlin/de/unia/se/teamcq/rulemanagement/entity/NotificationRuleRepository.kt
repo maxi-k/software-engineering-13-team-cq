@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import java.sql.Timestamp
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
@@ -58,6 +59,9 @@ class NotificationRuleRepository : INotificationRuleRepository {
                 notificationRuleMapper.modelToEntity(notificationRule)
         )
 
+        // Update last updated to be able to ignore older VehicleStates
+        notificationRuleEntityToSave.lastUpdate = Timestamp(System.currentTimeMillis())
+
         // Create notificationRuleEntity first so it already has an ID
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
         // Add NotificationRuleEntity to UserEntity because the mapping is bidirectional
@@ -74,6 +78,9 @@ class NotificationRuleRepository : INotificationRuleRepository {
         val notificationRuleEntityToSave = entityManager.merge(
                 notificationRuleMapper.modelToEntity(notificationRule)
         )
+
+        // Update last updated to be able to ignore older VehicleStates
+        notificationRuleEntityToSave.lastUpdate = Timestamp(System.currentTimeMillis())
 
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 

@@ -92,10 +92,11 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 setIdsOfRelatedRepositoryEntities(savedNotificationRule!!)
             }
 
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule, savedNotificationRule!!)
             savedNotificationRule shouldBe expectedNotificationRule
 
             withClue("rule fleet ordering should be persisted") {
-                savedNotificationRule!!.affectedFleets.forEachIndexed { index, fleetEntity ->
+                savedNotificationRule.affectedFleets.forEachIndexed { index, fleetEntity ->
                     fleetEntity shouldBe expectedNotificationRule.affectedFleets[index]
                 }
             }
@@ -128,10 +129,12 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 setIdsOfRelatedRepositoryEntities(savedNotificationRule2!!)
             }
 
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule1, savedNotificationRule1!!)
             savedNotificationRule1 shouldBe expectedNotificationRule1
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule2, savedNotificationRule2!!)
             savedNotificationRule2 shouldBe expectedNotificationRule2
 
-            savedNotificationRule1!!.affectedFleets[0] shouldBe savedNotificationRule2!!.affectedFleets[0]
+            savedNotificationRule1.affectedFleets[0] shouldBe savedNotificationRule2.affectedFleets[0]
         }
 
         "UpdateNotificationRule" should {
@@ -156,7 +159,10 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
                 val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
 
-                updatedNotificationRule.copy(owner = null) shouldBe newNotificationRuleWithNewUser.copy(owner = null)
+                val actualNotificationRule = updatedNotificationRule.copy(owner = null)
+                val expectedNotificationRule = newNotificationRuleWithNewUser.copy(owner = null)
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, actualNotificationRule)
+                expectedNotificationRule shouldBe actualNotificationRule
                 updatedNotificationRule.owner shouldBe oldUserModel
             }
 
@@ -179,6 +185,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                         // Ids of Subclasses of abstract classes may have changed
                         .apply { setIdsOfRelatedRepositoryEntities(updatedNotificationRule) }
 
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, updatedNotificationRule)
                 updatedNotificationRule shouldBe expectedNotificationRule
             }
 
@@ -201,6 +208,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                         // Ids of Subclasses of abstract classes may have changed
                         .apply { setIdsOfRelatedRepositoryEntities(updatedNotificationRule) }
 
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, updatedNotificationRule)
                 updatedNotificationRule shouldBe expectedNotificationRule
             }
         }
@@ -233,6 +241,15 @@ class NotificationRuleRepositoryTest : StringSpec() {
         }
 
         owner!!.userSettings!!.settingsId = savedNotificationRule.owner!!.userSettings!!.settingsId
+    }
+
+    private fun assertTimestampAndIgnoreItAfter(
+        olderRuleVersion: NotificationRule,
+        newerRuleVersion: NotificationRule
+    ) {
+        olderRuleVersion.lastUpdate!!.before(newerRuleVersion.lastUpdate!!) shouldBe true
+        olderRuleVersion.lastUpdate = null
+        newerRuleVersion.lastUpdate = null
     }
 }
 
