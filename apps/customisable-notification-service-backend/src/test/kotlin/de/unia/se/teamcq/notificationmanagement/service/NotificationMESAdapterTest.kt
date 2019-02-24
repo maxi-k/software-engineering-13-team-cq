@@ -25,7 +25,7 @@ class NotificationMESAdapterTest : StringSpec() {
             ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
 
-            notificationMESAdapter.sendNotification()
+            notificationMESAdapter.sendNotification("test@example.de", "Subject", "text", listOf())
         }
     }
 }

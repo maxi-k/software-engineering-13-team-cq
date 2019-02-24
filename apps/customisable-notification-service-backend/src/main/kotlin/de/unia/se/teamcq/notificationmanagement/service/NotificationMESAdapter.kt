@@ -2,6 +2,7 @@ package de.unia.se.teamcq.notificationmanagement.service
 
 import de.bmw.mes.ApiClient
 import de.bmw.mes.api.EmailV1Api
+import de.bmw.mes.model.Attachement
 import de.bmw.mes.model.RequestFreeTextMessageEmail
 import de.unia.se.teamcq.security.service.IAuthenticationTokenService
 import org.slf4j.LoggerFactory
@@ -21,7 +22,12 @@ class NotificationMESAdapter : INotificationMESAdapter {
     private lateinit var authenticationTokenService: IAuthenticationTokenService
 
     @Throws(RestClientException::class, NullPointerException::class)
-    override fun sendNotification() {
+    override fun sendNotification(
+        receiver: String,
+        subject: String,
+        body: String,
+        attachment: List<Attachement>
+    ) {
 
         if (disableNotifications == true) {
             logger.info("Sending notification")
@@ -35,11 +41,11 @@ class NotificationMESAdapter : INotificationMESAdapter {
             apiInstance.apiClient = apiClient
 
             val requestFreeTextMessageEmail = RequestFreeTextMessageEmail()
-            requestFreeTextMessageEmail.receiver = "test"
-            requestFreeTextMessageEmail.sender = "test"
-            requestFreeTextMessageEmail.subject = "test"
-            requestFreeTextMessageEmail.body = ""
-            requestFreeTextMessageEmail.attachement = listOf()
+            requestFreeTextMessageEmail.receiver = receiver
+            requestFreeTextMessageEmail.sender = "noreply@cns.bmw.de"
+            requestFreeTextMessageEmail.subject = subject
+            requestFreeTextMessageEmail.body = body
+            requestFreeTextMessageEmail.attachement = attachment
 
             val uuidForLogging = UUID.randomUUID().toString()
 
