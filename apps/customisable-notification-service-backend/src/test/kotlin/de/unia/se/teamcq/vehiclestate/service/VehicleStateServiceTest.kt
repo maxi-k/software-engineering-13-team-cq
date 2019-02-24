@@ -1,32 +1,40 @@
 package de.unia.se.teamcq.vehiclestate.service
 
-import de.unia.se.teamcq.security.service.IAuthenticationTokenService
-import io.kotlintest.should
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
+import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.util.ReflectionTestUtils
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.verify
+import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.test.context.ContextConfiguration
 
-@SpringBootTest
+@ContextConfiguration(classes = [(TestConfiguration::class)])
 class VehicleStateServiceTest : StringSpec() {
 
-    @Autowired
-    private lateinit var authenticationTokenService: IAuthenticationTokenService
+    @MockK
+    private lateinit var vssAdapter: IVssAdapter
 
-    @Autowired
+    @MockK
+    private lateinit var vehicleStateRepository: IVehicleStateRepository
+
+    @InjectMockKs
     private lateinit var vehicleStateService: VehicleStateService
 
     init {
         MockKAnnotations.init(this)
 
-        "ImportNewVehicleData" should {
-            "Import new VehicleStates correctly when the API-Mock is running".config(enabled = false) {
+        "ImportNewVehicleData should fetch and persist new VehicleStates" {
 
-                ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
-                ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
+            every { vssAdapter.getNewVehicleStates(any()) } returns listOf(getTestVehicleStateModel())
+            every { vehicleStateRepository.createVehicleState(any()) } returns getTestVehicleStateModel()
 
-                vehicleStateService.importNewVehicleData()
+            vehicleStateService.importNewVehicleData()
+
+            verify(exactly = 1) {
+                vehicleStateRepository.createVehicleState(any())
             }
         }
     }

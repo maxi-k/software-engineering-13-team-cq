@@ -7,7 +7,7 @@ import org.springframework.web.client.RestClientException
  * The service that handles fetching API-Tokens.
  */
 @Service
-interface IAuthenticationTokenService {
+interface IAuthenticationTokenAdapter {
 
     /**
      * Fetch a API-Token

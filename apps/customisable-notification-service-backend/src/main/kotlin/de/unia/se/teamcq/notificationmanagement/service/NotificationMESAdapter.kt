@@ -4,7 +4,7 @@ import de.bmw.mes.ApiClient
 import de.bmw.mes.api.EmailV1Api
 import de.bmw.mes.model.Attachement
 import de.bmw.mes.model.RequestFreeTextMessageEmail
-import de.unia.se.teamcq.security.service.IAuthenticationTokenService
+import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -19,7 +19,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
     private var disableNotifications: Boolean? = null
 
     @Autowired
-    private lateinit var authenticationTokenService: IAuthenticationTokenService
+    private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
 
     @Throws(RestClientException::class, NullPointerException::class)
     override fun sendNotification(
@@ -33,7 +33,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
             logger.info("Sending notification")
         } else {
 
-            val (header, token) = authenticationTokenService.getAuthenticationHeader()
+            val (header, token) = authenticationTokenAdapter.getAuthenticationHeader()
 
             val apiInstance = EmailV1Api()
             val apiClient = ApiClient()

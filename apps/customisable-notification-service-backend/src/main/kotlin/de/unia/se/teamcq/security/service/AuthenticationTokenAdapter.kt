@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClientException
 
 @Component
-class AuthenticationTokenService : IAuthenticationTokenService {
+class AuthenticationTokenAdapter : IAuthenticationTokenAdapter {
 
     @Value("\${de.unia.se.teamcq.bmw-authentication.username:name}")
     private lateinit var authenticationUsername: String
@@ -29,6 +29,6 @@ class AuthenticationTokenService : IAuthenticationTokenService {
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(AuthenticationTokenService::class.java)
+        private val logger = LoggerFactory.getLogger(AuthenticationTokenAdapter::class.java)
     }
 }

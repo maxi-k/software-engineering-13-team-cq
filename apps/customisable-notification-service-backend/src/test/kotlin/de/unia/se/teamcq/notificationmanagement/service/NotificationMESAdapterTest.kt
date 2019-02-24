@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
-import de.unia.se.teamcq.security.service.IAuthenticationTokenService
+import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,7 +11,7 @@ import org.springframework.test.util.ReflectionTestUtils
 class NotificationMESAdapterTest : StringSpec() {
 
     @Autowired
-    private lateinit var authenticationTokenService: IAuthenticationTokenService
+    private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
 
     @Autowired
     private lateinit var notificationMESAdapter: NotificationMESAdapter
@@ -22,8 +22,8 @@ class NotificationMESAdapterTest : StringSpec() {
         "SendNotification should work when a Mail API-Service is running".config(enabled = false) {
 
             ReflectionTestUtils.setField(notificationMESAdapter, "disableNotifications", false)
-            ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
-            ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
+            ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
+            ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")
 
             notificationMESAdapter.sendNotification("test@example.de", "Subject", "text", listOf())
         }
