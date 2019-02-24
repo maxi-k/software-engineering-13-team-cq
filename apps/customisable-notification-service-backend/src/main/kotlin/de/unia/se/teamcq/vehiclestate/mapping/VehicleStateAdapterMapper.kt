@@ -51,9 +51,9 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
 
     private fun getVehicleStateDataTypeMileage(vehicle: Vehicle): VehicleStateDataTypeMileage {
         return VehicleStateDataTypeMileage(
-                vehicle.mileage.current,
-                vehicle.mileage.remaining,
-                vehicle.mileage.reachedPercentage
+                vehicle.mileage?.current,
+                vehicle.mileage?.remaining,
+                vehicle.mileage?.reachedPercentage
         )
     }
 
@@ -67,18 +67,23 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
     }
 
     private fun getVehicleStateDataTypeService(vehicle: Vehicle): VehicleStateDataTypeService {
+
+        val dueDate = vehicle.serviceStatus?.dueDate?.let { dueDate ->
+            DatatypeConverter.parseDateTime(dueDate)
+        }?.time
+
         return VehicleStateDataTypeService(
-                DatatypeConverter.parseDateTime(vehicle.serviceStatus.dueDate).time,
-                vehicle.serviceStatus.brakeFluid.status.toString(),
-                vehicle.serviceStatus.status.toString()
+                dueDate,
+                vehicle.serviceStatus?.brakeFluid?.status?.toString(),
+                vehicle.serviceStatus?.status?.toString()
         )
     }
 
     private fun getVehicleStateDataTypeFuel(vehicle: Vehicle): VehicleStateDataTypeFuel {
         return VehicleStateDataTypeFuel(
-                vehicle.fuel.levelPercentage,
-                vehicle.fuel.levelLiters,
-                vehicle.fuel.remainingRange
+                vehicle.fuel?.levelPercentage,
+                vehicle.fuel?.levelLiters,
+                vehicle.fuel?.remainingRange
         )
     }
 
@@ -92,9 +97,9 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
 
     private fun getVehicleStateDataTypeBattery(vehicle: Vehicle): VehicleStateDataTypeBattery {
         return VehicleStateDataTypeBattery(
-                vehicle.battery.levelPercentage.toDouble(),
-                vehicle.battery.voltage.toDouble(),
-                vehicle.battery.chargingStatus
+                vehicle.battery?.levelPercentage?.toDouble(),
+                vehicle.battery?.voltage?.toDouble(),
+                vehicle.battery?.chargingStatus
         )
     }
 }

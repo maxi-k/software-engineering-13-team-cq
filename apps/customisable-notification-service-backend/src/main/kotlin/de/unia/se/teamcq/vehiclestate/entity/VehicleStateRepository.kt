@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
 
 @Repository
@@ -16,10 +18,14 @@ interface IVehicleStateEntityRepository : JpaRepository<VehicleStateEntity, Long
 class VehicleStateRepository : IVehicleStateRepository {
 
     @Autowired
-    lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
+    private lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
-    lateinit var vehicleStateMapper: IVehicleStateMapper
+    @PersistenceContext
+    private lateinit var entityManager: EntityManager
+
+    @Autowired
+    private lateinit var vehicleStateMapper: IVehicleStateMapper
 
     override fun getAllVehicleStates(): List<VehicleState> {
         return vehicleStateEntityRepository.findAll().map { vehicleStateEntity ->
@@ -34,7 +40,12 @@ class VehicleStateRepository : IVehicleStateRepository {
     }
 
     override fun createVehicleState(vehicleState: VehicleState): VehicleState? {
-        val vehicleStateEntityToSave = vehicleStateMapper.modelToEntity(vehicleState)
+        // Use merge so that the persistence layer does not
+        // try to create existing entities this references,
+        // but instead uses the already existing ones.
+        val vehicleStateEntityToSave = entityManager.merge(
+                vehicleStateMapper.modelToEntity(vehicleState)
+        )
 
         val savedVehicleStateEntity = vehicleStateEntityRepository.save(vehicleStateEntityToSave)
 
@@ -42,7 +53,12 @@ class VehicleStateRepository : IVehicleStateRepository {
     }
 
     override fun updateVehicleState(vehicleState: VehicleState): VehicleState? {
-        val vehicleStateEntityToSave = vehicleStateMapper.modelToEntity(vehicleState)
+        // Use merge so that the persistence layer does not
+        // try to create existing entities this references,
+        // but instead uses the already existing ones.
+        val vehicleStateEntityToSave = entityManager.merge(
+                vehicleStateMapper.modelToEntity(vehicleState)
+        )
 
         val savedVehicleStateEntity = vehicleStateEntityRepository.save(vehicleStateEntityToSave)
 

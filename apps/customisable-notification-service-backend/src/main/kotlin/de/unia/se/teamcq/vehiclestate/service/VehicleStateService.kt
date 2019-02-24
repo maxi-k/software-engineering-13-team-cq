@@ -5,6 +5,7 @@ import de.bmw.vss.api.VehicleStatesApi
 import de.bmw.vss.model.Vehicle
 import de.unia.se.teamcq.security.service.IAuthenticationTokenService
 import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
+import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateAdapterMapper
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -22,6 +23,9 @@ class VehicleStateService : IVehicleStateService {
     private lateinit var authenticationTokenService: IAuthenticationTokenService
 
     @Autowired
+    private lateinit var vehicleStateAdapterMapper: IVehicleStateAdapterMapper
+
+    @Autowired
     private lateinit var vehicleStateRepository: IVehicleStateRepository
 
     @Throws(RestClientException::class, NullPointerException::class)
@@ -31,7 +35,15 @@ class VehicleStateService : IVehicleStateService {
 
         val fetchedVehicles = fetchVehicles(header, token)
 
-        logger.info("Importing VehicleState successful!", fetchedVehicles)
+        val fetchedVehicleStates = fetchedVehicles.map { vehicle ->
+            vehicleStateAdapterMapper.dtoToModel(vehicle)
+        }
+
+        fetchedVehicleStates.forEach { vehicleState ->
+            vehicleStateRepository.updateVehicleState(vehicleState)
+        }
+
+        logger.info("Importing VehicleStates successful!", fetchedVehicleStates)
     }
 
     private fun fetchVehicles(header: String, token: String): List<Vehicle> {

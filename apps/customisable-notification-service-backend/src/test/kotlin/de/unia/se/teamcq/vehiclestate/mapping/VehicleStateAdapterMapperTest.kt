@@ -32,12 +32,16 @@ class VehicleStateAdapterMapperTest : StringSpec() {
                 }
             }
 
+            val actualDataTypesSize = vehicleStateModel.vehicleStateDataTypes.size
+            val expectedDataTypesSize = vehicleStateModelWithoutIDs.vehicleStateDataTypes.size
+
             // Comparing the container objects would work too, but would make debugging harder when
-            // adding new fields
+            // adding or changing fields
             vehicleStateModel.stateId shouldBe vehicleStateModelWithoutIDs.stateId
             vehicleStateModel.vehicleReference shouldBe vehicleStateModelWithoutIDs.vehicleReference
-            vehicleStateModel.vehicleStateDataTypes.size shouldBe
-                    vehicleStateModelWithoutIDs.vehicleStateDataTypes.size
+
+            actualDataTypesSize shouldBe expectedDataTypesSize
+
             dataTypeShouldBeEqual(vehicleStateModel, vehicleStateModelWithoutIDs, "Battery")
             dataTypeShouldBeEqual(vehicleStateModel, vehicleStateModelWithoutIDs, "Engine")
             dataTypeShouldBeEqual(vehicleStateModel, vehicleStateModelWithoutIDs, "Fuel")
@@ -52,10 +56,15 @@ class VehicleStateAdapterMapperTest : StringSpec() {
         vehicleStateModelWithoutIDs: VehicleState,
         dataTypeName: String
     ) {
-        vehicleStateModel.vehicleStateDataTypes.first { dataType ->
-            dataType.predicateFieldProviderName == dataTypeName
-        } shouldBe vehicleStateModelWithoutIDs.vehicleStateDataTypes.first { dataType ->
+
+        val actualDataType = vehicleStateModel.vehicleStateDataTypes.first { dataType ->
             dataType.predicateFieldProviderName == dataTypeName
         }
+
+        val expectedDataType = vehicleStateModelWithoutIDs.vehicleStateDataTypes.first { dataType ->
+            dataType.predicateFieldProviderName == dataTypeName
+        }
+
+        actualDataType shouldBe expectedDataType
     }
 }
