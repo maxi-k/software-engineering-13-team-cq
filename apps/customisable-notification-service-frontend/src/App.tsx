@@ -7,6 +7,7 @@ import {
   PageContainer,
   StyledTopPaddingContainer
 } from '@fleetdata/shared/styled-components/page.style';
+import { Footer } from '@/fleetdata/shared/components/footer'
 
 import StoreWrapper from '@/wrappers/StoreWrapper'
 import StyleWrapper from '@/wrappers/StyleWrapper'
@@ -50,12 +51,13 @@ class App extends React.Component<object, AppState> {
               <Header
                 language={this.state.language}
                 switchLanguage={this.switchLanguage} />
-              <ContentDiv>
+              <ContentDiv style={{ paddingBottom: '2rem' }} >
                 <StyledTopPaddingContainer />
                 <PageContainer>
                   <Pages />
                 </PageContainer>
               </ContentDiv>
+              <Footer />
             </MainDiv>
           </StoreWrapper>
         </IntlProvider>
