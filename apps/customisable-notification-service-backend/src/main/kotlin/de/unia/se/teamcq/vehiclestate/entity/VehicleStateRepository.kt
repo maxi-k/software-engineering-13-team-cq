@@ -1,5 +1,7 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
+import de.unia.se.teamcq.rulemanagement.entity.INotificationRuleEntityRepository
+import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
@@ -38,6 +40,12 @@ class VehicleStateRepository : IVehicleStateRepository {
 
     @Autowired
     private lateinit var fleetReferenceMapper: IFleetReferenceMapper
+
+    @Autowired
+    private lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
+
+    @Autowired
+    private lateinit var notificationRuleMapper: INotificationRuleMapper
 
     override fun getAllVehicleStates(): List<VehicleState> {
         return vehicleStateEntityRepository.findAll().map { vehicleStateEntity ->
@@ -88,10 +96,41 @@ class VehicleStateRepository : IVehicleStateRepository {
     }
 
     override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        val ruleId = notificationRule.ruleId
+        val lastUpdate = notificationRule.lastUpdate
+
+        val queryString = """SELECT states FROM VehicleStateEntity states
+            |WHERE states.created > :lastUpdate
+            |AND NOT EXISTS (SELECT processed FROM NotificationRuleEntity rules JOIN
+            | rules.processedVehicleStates processed
+            | WHERE rules.ruleId = :ruleId
+            | AND processed = states)
+        """.trimMargin()
+
+        val query = entityManager.createQuery(queryString, VehicleStateEntity::class.java)
+                .setParameter("lastUpdate", lastUpdate)
+                .setParameter("ruleId", ruleId)
+
+        val vehicleStateEntities = query.resultList
+        return vehicleStateEntities.map { vehicleStateEntity ->
+            vehicleStateMapper.entityToModel(vehicleStateEntity)
+        }
     }
 
-    override fun markVehicleStateAsProcessedByRule(notificationRule: NotificationRule, vehicleStates: List<VehicleState>) {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+    override fun markVehicleStateAsProcessedByRule(
+        notificationRule: NotificationRule,
+        vehicleStates: List<VehicleState>
+    ) {
+        val notificationRuleEntityToSave = entityManager.merge(
+                notificationRuleMapper.modelToEntity(notificationRule)
+        )
+        val vehicleStateEntities = vehicleStates.map { vehicleState ->
+            entityManager.merge(vehicleStateMapper.modelToEntity(vehicleState))
+        }.toSet()
+
+        notificationRuleEntityToSave.processedVehicleStates = notificationRuleEntityToSave
+                .processedVehicleStates?.plus(vehicleStateEntities) ?: vehicleStateEntities
+
+        notificationRuleEntityRepository.save(notificationRuleEntityToSave)
     }
 }
