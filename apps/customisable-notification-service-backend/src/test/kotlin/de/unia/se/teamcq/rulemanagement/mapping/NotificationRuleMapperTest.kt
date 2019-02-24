@@ -153,7 +153,9 @@ class NotificationRuleMapperTest : StringSpec() {
 
             val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
 
-            notificationRule shouldBe getTestNotificationRuleModel()
+            notificationRule shouldBe getTestNotificationRuleModel().apply {
+                lastUpdate = null
+            }
         }
     }
 }

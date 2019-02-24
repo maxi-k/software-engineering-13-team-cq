@@ -31,7 +31,7 @@ class UserEntity(
 ) : Serializable {
 
     fun addNotificationRuleEntity(notificationRuleEntity: NotificationRuleEntity): UserEntity {
-        this.notificationRules = this.notificationRules.orEmpty().plus(notificationRuleEntity)
+        this.notificationRules = this.notificationRules.plus(notificationRuleEntity)
         notificationRuleEntity.owner = this
         return this
     }

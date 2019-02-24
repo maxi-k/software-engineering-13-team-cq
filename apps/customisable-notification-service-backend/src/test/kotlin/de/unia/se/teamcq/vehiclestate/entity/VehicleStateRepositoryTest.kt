@@ -57,6 +57,7 @@ class VehicleStateRepositoryTest : StringSpec() {
             val expectedVehicleStateModel = getTestVehicleStateModel()
             expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(actualVehicleState!!)
 
+            actualVehicleState.created shouldBe expectedVehicleStateModel.created
             actualVehicleState shouldBe expectedVehicleStateModel
         }
 

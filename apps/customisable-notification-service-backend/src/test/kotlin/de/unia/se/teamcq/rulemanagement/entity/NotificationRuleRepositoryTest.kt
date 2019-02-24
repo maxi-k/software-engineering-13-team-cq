@@ -57,6 +57,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 owner!!.name = "test1"
                 setIdsOfRelatedRepositoryEntities(savedNotificationRuleEntity)
             }
+            notificationRulesForUser.first().lastUpdate shouldBe expectedNotificationRule.lastUpdate
             notificationRulesForUser.first() shouldBe expectedNotificationRule
         }
 
@@ -100,7 +101,6 @@ class NotificationRuleRepositoryTest : StringSpec() {
             }
         }
 
-        // TODO: Does *not* fail when incorrectly using EntityManager#merge in the resository save function yet
         "CreateNotificationRule should use existing fleets" {
 
             userEntityRepository.save(getTestUserEntity())
@@ -131,7 +131,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
             savedNotificationRule1 shouldBe expectedNotificationRule1
             savedNotificationRule2 shouldBe expectedNotificationRule2
 
-            // savedNotificationRule1.affectedFleets[0] shouldBe savedNotificationRule2.affectedFleets[0]
+            savedNotificationRule1!!.affectedFleets[0] shouldBe savedNotificationRule2!!.affectedFleets[0]
         }
 
         "UpdateNotificationRule" should {

@@ -5,6 +5,7 @@ import de.unia.se.teamcq.notificationmanagement.model.Recipient
 import de.unia.se.teamcq.ruleevaluation.model.RuleCondition
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
+import java.sql.Timestamp
 
 // Constructor with (null)-default values for everything necessary for MapStruct
 data class NotificationRule(
@@ -27,6 +28,8 @@ data class NotificationRule(
 
     var affectedFleets: List<FleetReference> = mutableListOf(),
 
-    var affectingAllApplicableFleets: Boolean? = null
+    var affectingAllApplicableFleets: Boolean? = null,
+
+    var lastUpdate: Timestamp? = null
 
 )
