@@ -22,10 +22,14 @@ export const convertFromAPICarPark = (apiCarPark: object): CarPark => transformO
   id: 'carParkId',
   numVehicles: 'numberOfVehicles',
   numUnassignedVehicles: 'numberOfUnassignedVehicles',
-  fleets: (apiFleets: any) => ['fleets', apiFleets.map((fleet: object) => transformObject(fleet, {
-    id: 'fleetId',
-    numVehicles: 'numberOfVehicles'
-  }))] as [string, Fleet[]]
+  fleets: (apiFleets: any, enclosingObject: any) => [
+    'fleets',
+    apiFleets.map((fleet: object) => transformObject(fleet, {
+      id: 'fleetId',
+      numVehicles: 'numberOfVehicles'
+    }, {
+        carParkId: enclosingObject.id
+      }))] as [string, Fleet[]]
 }) as CarPark
 
 export const extractFleets = (carParks: CarPark[]): { [key: string]: Fleet } => (

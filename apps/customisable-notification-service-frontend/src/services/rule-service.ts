@@ -167,7 +167,10 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
   }) as DetailRule
 
 export const convertToAPIRule = (rule: DetailRule): APIRule => transformObject(rule, {
-  fleets: (oldFleets: any) => (['affectedFleets', pickMap(oldFleets as Fleet[], 'fleetId')] as [string, object[]]),
+  fleets: (oldFleets: any) => ([
+    'affectedFleets',
+    pickMap(oldFleets as Fleet[], 'fleetId', 'carParkId')
+  ] as [string, object[]]),
   applyToAllFleets: 'affectingAllApplicableFleets',
   condition: (oldCondition: any) => (['condition', transformObject(oldCondition, {
     logicalConnective: (connective: any) => (['logicalConnective', connective.toUpperCase()] as [string, string]),
