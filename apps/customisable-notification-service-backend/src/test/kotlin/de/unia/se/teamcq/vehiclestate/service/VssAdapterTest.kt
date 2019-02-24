@@ -21,7 +21,7 @@ class VssAdapterTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "Fetch states for FleetReferences should work".config(enabled = true) {
+        "Fetch states for FleetReferences should work".config(enabled = false) {
 
             ReflectionTestUtils.setField(authenticationTokenService, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenService, "authenticationPassword", "fd123!")
