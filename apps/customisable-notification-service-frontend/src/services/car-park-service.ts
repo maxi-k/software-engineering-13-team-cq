@@ -28,8 +28,8 @@ export const convertFromAPICarPark = (apiCarPark: object): CarPark => transformO
       id: 'fleetId',
       numVehicles: 'numberOfVehicles'
     }, {
-        carParkId: enclosingObject.id
-      }))] as [string, Fleet[]]
+      carParkId: enclosingObject.id
+    }))] as [string, Fleet[]]
 }) as CarPark
 
 export const extractFleets = (carParks: CarPark[]): { [key: string]: Fleet } => (
