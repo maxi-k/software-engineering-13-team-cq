@@ -22,8 +22,8 @@ export enum LogicalConnective {
 }
 
 export enum AggregatorStrategy {
-  Counting,
   Immediate,
+  Counting,
   Scheduled
 }
 

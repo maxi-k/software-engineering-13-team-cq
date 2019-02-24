@@ -37,6 +37,13 @@
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.condition.label": "Condition",
 
+    "cns.rule.field.aggregator.strategy.value.immediate.label": "Send notifications immediately",
+    "cns.rule.field.aggregator.strategy.value.immediate.description": "Sends notifications immediately when a matching event occurs.",
+    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Send notifications regularly",
+    "cns.rule.field.aggregator.strategy.value.scheduled.description": "Sends regular notifications with the collected data from events that have occured in the meantime.",
+    "cns.rule.field.aggregator.strategy.value.counting.label": "Send notifications cumulatively",
+    "cns.rule.field.aggregator.strategy.value.counting.description": "Collects a specified amount of events before sending a notification with the data from events that have occured.",
+
 
     "cns.rule.modification.error.default": "There was an error displaying this component.",
     "cns.rule.modification.step.label": "Step",

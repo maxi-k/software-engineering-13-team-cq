@@ -36,6 +36,14 @@
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
 
+    "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofortiges Verschicken",
+    "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
+    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Geplantes Verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.description": "Verschickt regelmäßig Nachrichten mit den gesamelten Daten der aufgetretenen Ereignisse.",
+    "cns.rule.field.aggregator.strategy.value.counting.label": "Gesammeltes Verschicken",
+    "cns.rule.field.aggregator.strategy.value.counting.description": "Sammelt eine gewisse Anzahl von Ereignissen bevor eine Nachricht gesendet wird.",
+
+
     "cns.rule.modification.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
     "cns.rule.modification.step.label": "Schritt",
 

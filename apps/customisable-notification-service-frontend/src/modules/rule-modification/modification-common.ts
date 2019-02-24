@@ -51,6 +51,12 @@ export const createSingleValueUpdater: FieldUpdateCreator = updater => name => (
   ))
 )
 
+export const createDirectSingleValueUpdater: FieldUpdateCreator = updater => name => (
+  updater(name, <T>(selected: T) => (
+    { $set: selected }
+  ))
+)
+
 export const createMergingValueUpdater: FieldUpdateCreator = updater => name => (
   updater(name, <T extends { value: any }>(toAdd: Record<any, T>) => (
     { $merge: toAdd }
