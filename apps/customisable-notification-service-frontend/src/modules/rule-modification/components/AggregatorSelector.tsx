@@ -1,8 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
 import { applyLazy } from '@/utilities/function-util'
-import { Aggregator, AggregatorStrategy } from '@/model'
+import { AggregatorStrategy } from '@/model'
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -11,10 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import CheckBoxCheckedIcon from '@material-ui/icons/CheckBox'
 import CheckBoxIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 
-interface AggregatorComponentAttributes {
-  aggregator: Aggregator,
-  setAggregatorValue: (aggregatorValue: string) => void
-}
+import { AggregatorComponentAttributes } from '../aggregator-common'
+import CountingAggregator from './CountingAggregator'
 
 interface AggregatorSelectorAttributes
   extends AggregatorComponentAttributes {
@@ -28,8 +27,25 @@ const expandedIconStyle = {
   transform: 'rotate(180deg)'
 }
 
-const aggregatorComponentForStrategy = (strategy: AggregatorStrategy): React.ComponentType<AggregatorComponentAttributes> => {
-  return (props) => <div />
+const AggregatorDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const AggregatorComponentWrapper = styled.div`
+
+`
+
+const aggregatorComponentForStrategy = (
+  strategy: AggregatorStrategy
+): React.ComponentType<AggregatorComponentAttributes> => {
+  switch (strategy) {
+    case AggregatorStrategy.Counting:
+      return CountingAggregator
+    case AggregatorStrategy.Immediate:
+    default:
+      return (props) => <div />
+  }
 }
 
 const AggregatorSelector: React.SFC<AggregatorSelectorProps> = ({
@@ -53,10 +69,14 @@ const AggregatorSelector: React.SFC<AggregatorSelectorProps> = ({
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <Typography variant="subtitle2">
-                  <FormattedMessage id={`cns.rule.field.aggregator.strategy.value.${AggregatorStrategy[strategy].toLowerCase()}.description`} />
-                </Typography>
-                <Component aggregator={aggregator} setAggregatorValue={setAggregatorValue} />
+                <AggregatorDetailWrapper>
+                  <Typography variant="subtitle2" paragraph={true}>
+                    <FormattedMessage id={`cns.rule.field.aggregator.strategy.value.${AggregatorStrategy[strategy].toLowerCase()}.description`} />
+                  </Typography>
+                  <AggregatorComponentWrapper>
+                    <Component aggregator={aggregator} setAggregatorValue={setAggregatorValue} />
+                  </AggregatorComponentWrapper>
+                </AggregatorDetailWrapper>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           )

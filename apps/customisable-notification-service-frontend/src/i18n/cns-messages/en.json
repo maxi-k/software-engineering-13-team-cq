@@ -40,6 +40,7 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Do you want to receive notifications from this rule?",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.condition.label": "Condition",
+    "cns.rule.field.aggregator.counting.label": "Event Count",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Send notifications immediately",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Sends notifications immediately when a matching event occurs.",

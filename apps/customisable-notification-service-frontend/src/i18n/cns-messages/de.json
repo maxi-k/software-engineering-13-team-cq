@@ -39,6 +39,7 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Möchten Sie selbst Benachrichtigungen von dieser Regel erhalten?",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
+    "cns.rule.field.aggregator.counting.label": "Anzahl von Events",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
