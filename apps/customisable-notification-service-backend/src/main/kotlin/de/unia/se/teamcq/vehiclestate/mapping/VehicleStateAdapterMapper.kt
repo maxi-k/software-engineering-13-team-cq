@@ -21,7 +21,7 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
 
         val vehicleStateDataTypes = getVehicleStateDataTypes(vehicle)
 
-        val fleetReference = FleetReference(vehicle.fleet.toString())
+        val fleetReference = FleetReference(vehicle.fleet?.toString(), vehicle.carPark?.toString())
         val vehicleReference = VehicleReference(vehicle.vin, fleetReference)
 
         return VehicleState(

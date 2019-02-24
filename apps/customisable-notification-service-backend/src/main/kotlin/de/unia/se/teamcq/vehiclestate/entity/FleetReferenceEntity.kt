@@ -9,6 +9,8 @@ import javax.persistence.Id
 data class FleetReferenceEntity(
 
     @Id
-    var fleetId: String? = null
+    var fleetId: String? = null,
+
+    var carParkId: String? = null
 
 ) : Serializable

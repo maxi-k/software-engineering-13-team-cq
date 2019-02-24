@@ -509,19 +509,22 @@ object TestUtils {
 
     fun getTestFleetReferenceModel(): FleetReference {
         return FleetReference(
-                fleetId = "cccccccc-0000-ffff-0000-000000000099"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099",
+                carParkId = "cccccccc-0000-cccc-0000-000000000099"
         )
     }
 
     fun getTestFleetReferenceEntity(): FleetReferenceEntity {
         return FleetReferenceEntity(
-                fleetId = "cccccccc-0000-ffff-0000-000000000099"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099",
+                carParkId = "cccccccc-0000-cccc-0000-000000000099"
         )
     }
 
     fun getTestFleetReferenceDto(): FleetReferenceDto {
         return FleetReferenceDto(
-                fleetId = "cccccccc-0000-ffff-0000-000000000099"
+                fleetId = "cccccccc-0000-ffff-0000-000000000099",
+                carParkId = "cccccccc-0000-cccc-0000-000000000099"
         )
     }
 
@@ -603,6 +606,7 @@ object TestUtils {
         val vehicle = Vehicle()
         vehicle.vin = "UUID456"
         vehicle.fleet = UUID.fromString("cccccccc-0000-ffff-0000-000000000099")
+        vehicle.carPark = UUID.fromString("cccccccc-0000-cccc-0000-000000000099")
 
         val battery = Battery()
         battery.levelPercentage = 0.5.toFloat()

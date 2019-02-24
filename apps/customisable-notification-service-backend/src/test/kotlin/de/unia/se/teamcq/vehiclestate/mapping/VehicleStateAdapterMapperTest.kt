@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration
 class VehicleStateAdapterMapperTest : StringSpec() {
 
     @InjectMockKs
-    lateinit var vehicleStateMapper: VehicleStateAdapterMapper
+    private lateinit var vehicleStateMapper: VehicleStateAdapterMapper
 
     init {
         MockKAnnotations.init(this)
