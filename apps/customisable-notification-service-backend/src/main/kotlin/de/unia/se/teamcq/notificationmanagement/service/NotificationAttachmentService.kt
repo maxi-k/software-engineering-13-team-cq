@@ -8,7 +8,6 @@ import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.ByteArrayResource
-import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import java.io.BufferedWriter
 import java.io.ByteArrayOutputStream
@@ -26,7 +25,7 @@ class NotificationAttachmentService : INotificationAttachmentService {
     private lateinit var predicateFieldContainer: PredicateFieldContainer
 
     @Throws(IOException::class)
-    override fun getCsvAttachment(notificationData: NotificationData): Resource {
+    override fun getCsvAttachment(notificationData: NotificationData): ByteArrayResource {
 
         val dataTypesWithFields = getDataTypesWithFields()
         val csvColumnNames = getCsvColumnNames(dataTypesWithFields)

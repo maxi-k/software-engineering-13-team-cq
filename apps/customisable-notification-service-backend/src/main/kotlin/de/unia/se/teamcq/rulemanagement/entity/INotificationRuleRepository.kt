@@ -17,7 +17,7 @@ interface INotificationRuleRepository {
 
     fun deleteNotificationRule(ruleId: Long)
 
-    fun getVehicleStateMatchesForRule(ruleId: Long): List<VehicleState>
+    fun getVehicleStateMatchesForRule(ruleId: Long): Set<VehicleState>
 
     fun addVehicleStateMatchForRule(ruleId: Long, vehicleState: VehicleState)
 

@@ -97,15 +97,15 @@ class NotificationRuleRepository : INotificationRuleRepository {
         notificationRuleEntityRepository.deleteById(ruleId)
     }
 
-    override fun getVehicleStateMatchesForRule(ruleId: Long): List<VehicleState> {
+    override fun getVehicleStateMatchesForRule(ruleId: Long): Set<VehicleState> {
         val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
 
         return notificationRuleEntity?.let { existingNotificationRuleEntity ->
 
             existingNotificationRuleEntity.matchedVehicleStatesNotYetSent?.map { vehicleStateEntity ->
                 vehicleStateMapper.entityToModel(vehicleStateEntity)
-            }
-        } ?: listOf()
+            }?.toSet() ?: setOf()
+        } ?: setOf()
     }
 
     override fun addVehicleStateMatchForRule(ruleId: Long, vehicleState: VehicleState) {

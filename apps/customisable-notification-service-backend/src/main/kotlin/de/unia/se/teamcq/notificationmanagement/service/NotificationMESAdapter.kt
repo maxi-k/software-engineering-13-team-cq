@@ -8,7 +8,9 @@ import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.core.io.ByteArrayResource
 import org.springframework.stereotype.Component
+import org.springframework.util.FileCopyUtils
 import org.springframework.web.client.RestClientException
 import java.util.UUID
 
@@ -26,7 +28,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
         receiver: String,
         subject: String,
         body: String,
-        attachment: List<Attachement>
+        resource: ByteArrayResource
     ) {
 
         if (disableNotifications == true) {
@@ -45,7 +47,13 @@ class NotificationMESAdapter : INotificationMESAdapter {
             requestFreeTextMessageEmail.sender = "noreply@cns.bmw.de"
             requestFreeTextMessageEmail.subject = subject
             requestFreeTextMessageEmail.body = body
-            requestFreeTextMessageEmail.attachement = attachment
+
+            val attachment = Attachement()
+            attachment.content = FileCopyUtils.copyToString(resource.inputStream.bufferedReader())
+            attachment.filename = "vehicles.csv"
+            attachment.mimeType = "text/csv"
+
+            requestFreeTextMessageEmail.attachement = listOf(attachment)
 
             val uuidForLogging = UUID.randomUUID().toString()
 

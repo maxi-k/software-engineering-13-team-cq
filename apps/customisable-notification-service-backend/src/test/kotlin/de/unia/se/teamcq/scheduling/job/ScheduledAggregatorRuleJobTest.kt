@@ -49,12 +49,12 @@ class ScheduledAggregatorRuleJobTest : StringSpec() {
             every { jobDetail.key } returns JobKey("1", "notification-triggers")
             every { jobExecutionContext.mergedJobDataMap } returns jobDataMap
             every { notificationRuleService.getNotificationRule(any()) } returns notificationRule
-            every { notificationService.sendNotificationForScheduledRule(any()) } just Runs
+            every { notificationService.sendNotificationForRuleIfNecessary(any()) } just Runs
 
             invokeScheduledJobExecuteInternal(scheduledAggregatorRuleJob, jobExecutionContext)
 
             verify(exactly = 1) {
-                notificationService.sendNotificationForScheduledRule(any())
+                notificationService.sendNotificationForRuleIfNecessary(any())
             }
         }
     }

@@ -28,7 +28,7 @@ class ScheduledAggregatorRuleJob : QuartzJobBean() {
         val ruleId = jobDataMap.getLongValueFromString("ruleId")
 
         val notificationRule = notificationRuleService.getNotificationRule(ruleId)
-        notificationService.sendNotificationForScheduledRule(notificationRule!!)
+        notificationService.sendNotificationForRuleIfNecessary(notificationRule!!)
 
         logger.info("Finished sending notifications for scheduled notification rule job {}",
                 jobExecutionContext.jobDetail.key)
