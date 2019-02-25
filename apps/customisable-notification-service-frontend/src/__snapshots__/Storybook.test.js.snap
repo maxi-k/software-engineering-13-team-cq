@@ -5226,6 +5226,20 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
           </div>
         </div>
       </div>
+      <div
+        className="sc-iyvyFf eAjCtQ"
+      >
+        <span
+          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+        >
+          Timing
+        </span>
+        <div
+          className="sc-hwwEjo jpAQEA"
+        >
+          Send 20 notifications cumulatively
+        </div>
+      </div>
     </div>
   </div>
 </div>

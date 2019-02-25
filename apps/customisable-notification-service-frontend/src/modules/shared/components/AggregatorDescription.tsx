@@ -17,7 +17,7 @@ const AggregatorDescription: React.SFC<AggregatorDescriptionProps> = ({ aggregat
     case AggregatorStrategy.Counting:
       Component = (
         <FormattedMessage id="cns.rule.field.aggregator.strategy.value.counting.shortDescription"
-          values={{ counting: aggregator.value }} />
+          values={{ count: aggregator.value }} />
       )
       break;
     case AggregatorStrategy.Scheduled:
