@@ -47,8 +47,10 @@
     "cns.rule.field.aggregator.scheduled.field.time.label": "Time of day",
     "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Send notifications every month",
     "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Send notifications every day of the week",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryDayOfMonth.label": "Send notifications on all days of the month",
     "cns.rule.field.aggregator.scheduled.field.month.label": "Send notifications in these months",
     "cns.rule.field.aggregator.scheduled.field.weekday.label": "Send notifications on these weekdays",
+    "cns.rule.field.aggregator.scheduled.field.dayofmonth.label": "Send notifications on these days in the month",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Send notifications immediately",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Sends notifications immediately when a matching event occurs.",

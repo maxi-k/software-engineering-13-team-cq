@@ -62,11 +62,12 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
   }
 
   public render = () => {
-    const { minute, hour, month, /* dayOfMonth, */ dayOfWeek } = this.state.structuredCron
+    const { minute, hour, month, dayOfMonth, dayOfWeek } = this.state.structuredCron
     const selectStyle = defaultSelectStyles(this.props.theme)
 
     return (
       <div>
+        {/* Month Form Input */}
         <div>
           <FormControlLabel
             control={
@@ -99,11 +100,45 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
           )
           }
         </div>
+        {/* Day of Month Form Input */}
         <div>
           <FormControlLabel
             control={
               <Switch
-                checked={dayOfWeek === '*'}
+                checked={dayOfMonth === '*' || dayOfMonth === '?'}
+                onChange={this.updateSendEveryDayOfMonth}
+                value="sendRulesEveryWeekday" />
+            }
+            label={
+              <FormattedMessage id="cns.rule.field.aggregator.scheduled.field.sendEveryDayOfMonth.label" />
+            }
+          />
+          {(dayOfMonth !== '*' && dayOfMonth !== '?') && (
+            <>
+              <FormLabel>
+                <p>
+                  <FormattedMessage id="cns.rule.field.aggregator.scheduled.field.dayofmonth.label" />
+                </p>
+              </FormLabel>
+              <Select
+                value={typeof dayOfMonth === 'object'
+                  ? dayOfMonth.map(this.mapSelectDayOfMonthValue)
+                  : this.mapSelectDayOfMonthValue(dayOfMonth)}
+                options={this.getDayOfMonthSelectValues()}
+                onChange={this.updateDayOfMonth}
+                styles={selectStyle}
+                closeMenuOnSelect={false}
+                isMulti />
+            </>
+          )
+          }
+        </div>
+        {/* Day of Week Form Input */}
+        <div>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={dayOfWeek === '*' || dayOfWeek === '?'}
                 onChange={this.updateSendEveryWeekday}
                 value="sendRulesEveryWeekday" />
             }
@@ -111,7 +146,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
               <FormattedMessage id="cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label" />
             }
           />
-          {dayOfWeek !== '*' && (
+          {(dayOfWeek !== '*' && dayOfWeek !== '?') && (
             <>
               <FormLabel>
                 <p>
@@ -131,6 +166,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
           )
           }
         </div>
+        {/* Time Form Input */}
         <InputField
           label="cns.rule.field.aggregator.scheduled.field.time.label"
           type="time"
@@ -140,6 +176,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
           value={`${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`}
           onChange={this.updateTimeOfDay}
         />
+        {/* Human Readable Cron Preview */}
         <Typography variant="body1" paragraph={true} style={{ paddingTop: '1rem' }}>
           <FormattedMessage id="cns.rule.field.aggregator.scheduled.description.label" />
           <br />
@@ -184,7 +221,8 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
       : 1 // Default value: Monday
     const updatedCron: StructuredCron = {
       ...this.state.structuredCron,
-      dayOfWeek: newCronValue
+      dayOfWeek: newCronValue,
+      dayOfMonth: '?'
     }
     this.updateUpstreamCronExpression(updatedCron)
   }
@@ -198,7 +236,35 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
       )
     const updatedCron: StructuredCron = {
       ...this.state.structuredCron,
-      dayOfWeek: weekdays.join(',')
+      dayOfWeek: weekdays.join(','),
+      dayOfMonth: '?'
+    }
+    this.updateUpstreamCronExpression(updatedCron)
+  }
+
+  private updateSendEveryDayOfMonth = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newCronValue = event.target.checked
+      ? '*'
+      : 1 // Default value: Monday
+    const updatedCron: StructuredCron = {
+      ...this.state.structuredCron,
+      dayOfMonth: newCronValue,
+      dayOfWeek: '?'
+    }
+    this.updateUpstreamCronExpression(updatedCron)
+  }
+
+  private updateDayOfMonth: SelectOnChangeType<SelectFormattedValue> = (diff, action) => {
+    const daysOfMonth = typeof diff === 'undefined' || diff === null
+      ? ['*']
+      : (Array.isArray(diff)
+        ? diff.map((dayOfMonth) => dayOfMonth.value)
+        : diff.value
+      )
+    const updatedCron: StructuredCron = {
+      ...this.state.structuredCron,
+      dayOfMonth: daysOfMonth.join(','),
+      dayOfWeek: '?'
     }
     this.updateUpstreamCronExpression(updatedCron)
   }
@@ -236,6 +302,17 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
 
   private getWeekdaySelectValues = (): SelectFormattedValue[] => (
     [0, 1, 2, 3, 4, 5, 6].map(this.mapSelectWeekdayValue)
+  )
+
+  private mapSelectDayOfMonthValue = (dayOfMonth: number | string): SelectFormattedValue => ({
+    label: dayOfMonth,
+    value: dayOfMonth,
+    key: dayOfMonth
+  })
+
+  private getDayOfMonthSelectValues = (): SelectFormattedValue[] => (
+    Array.from(Array(30).keys())
+      .map((dayOfMonth) => this.mapSelectDayOfMonthValue(dayOfMonth + 1))
   )
 
   private getAggregatorCronExpression = (): string => {

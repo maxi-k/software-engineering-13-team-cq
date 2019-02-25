@@ -46,8 +46,10 @@
     "cns.rule.field.aggregator.scheduled.field.time.label": "Uhrzeit",
     "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Nachrichten jeden Monat verschicken",
     "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Nachrichten an jedem Wochentag verschicken",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryDayOfMonth.label": "Nachrichten an jedem Tag des Monats verschicken",
     "cns.rule.field.aggregator.scheduled.field.month.label": "Nachrichten in den folgenden Monaten verschicken",
     "cns.rule.field.aggregator.scheduled.field.weekday.label": "Nachrichten an den folgenden Wochentagen verschicken",
+    "cns.rule.field.aggregator.scheduled.field.dayofmonth.label": "Nachrichten an den folgenden Tagen im Monat verschicken",
     "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefinierter Zeitplan",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
