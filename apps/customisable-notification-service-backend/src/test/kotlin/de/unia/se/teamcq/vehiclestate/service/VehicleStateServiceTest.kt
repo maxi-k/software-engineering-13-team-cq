@@ -4,9 +4,12 @@ import de.unia.se.teamcq.TestUtils.getTestFleetReferenceModel
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
+import io.kotlintest.should
+import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
+import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -43,16 +46,41 @@ class VehicleStateServiceTest : StringSpec() {
             }
         }
 
-        "GetUnprocessedVehicleStateForRule should get VehicleStates" {
+        "GetUnprocessedVehicleStateForRule" should {
+            "Get VehicleStates" {
 
-            every { vehicleStateRepository.getUnprocessedVehicleStateForRule(any()) } returns
-                    listOf(getTestVehicleStateModel())
+                clearMocks(vehicleStateRepository)
+                every { vehicleStateRepository.getUnprocessedVehicleStateForRule(any()) } returns
+                        listOf(getTestVehicleStateModel())
 
-            val notificationRule = getTestNotificationRuleModel()
-            vehicleStateService.getUnprocessedVehicleStateForRule(notificationRule)
+                val notificationRule = getTestNotificationRuleModel()
+                val vehicleStatesToProcess = vehicleStateService
+                        .getUnprocessedVehicleStateForRule(notificationRule)
 
-            verify(exactly = 1) {
-                vehicleStateRepository.getUnprocessedVehicleStateForRule(any())
+                vehicleStatesToProcess.size shouldBe 1
+                verify(exactly = 1) {
+                    vehicleStateRepository.getUnprocessedVehicleStateForRule(any())
+                }
+            }
+
+            "Filter out VehicleStates of other fleets" {
+
+                clearMocks(vehicleStateRepository)
+                every { vehicleStateRepository.getUnprocessedVehicleStateForRule(any()) } returns
+                        listOf(getTestVehicleStateModel())
+
+                val notificationRule = getTestNotificationRuleModel().apply {
+                    affectedFleets = listOf()
+                }
+
+                val vehicleStatesToProcess = vehicleStateService
+                        .getUnprocessedVehicleStateForRule(notificationRule)
+
+                vehicleStatesToProcess.size shouldBe 0
+
+                verify(exactly = 1) {
+                    vehicleStateRepository.getUnprocessedVehicleStateForRule(any())
+                }
             }
         }
 

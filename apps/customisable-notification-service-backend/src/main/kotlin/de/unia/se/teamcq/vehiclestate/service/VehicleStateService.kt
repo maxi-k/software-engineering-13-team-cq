@@ -37,6 +37,9 @@ class VehicleStateService : IVehicleStateService {
 
     override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {
         return vehicleStateRepository.getUnprocessedVehicleStateForRule(notificationRule)
+                .filter { vehicleState -> notificationRule.affectedFleets.contains(
+                        vehicleState.vehicleReference?.fleetReference)
+                }
     }
 
     override fun markVehicleStateAsProcessedByRule(notificationRule: NotificationRule, vehicleStates: List<VehicleState>) {
