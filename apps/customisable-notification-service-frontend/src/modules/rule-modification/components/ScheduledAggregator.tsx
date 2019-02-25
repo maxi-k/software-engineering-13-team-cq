@@ -44,7 +44,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
   }
 
   private static getDefaultCronExpression = (): string => (
-    "0 10 * * 1"
+    "0 10 ? * 1"
   )
 
   public state = {

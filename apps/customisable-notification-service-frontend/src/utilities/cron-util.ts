@@ -1,4 +1,4 @@
-export type CronValue = number | '*' | number[]
+export type CronValue = number | '*' | '?' | number[]
 
 export interface StructuredCron {
   minute: CronValue
@@ -34,7 +34,7 @@ export const stringToCronValue = (expression: string): CronValue | undefined => 
       .map((numberString) => parseInt(numberString, 10))
       .filter((numberOrNaN) => !isNaN(numberOrNaN))
   }
-  if (expression === '*') {
+  if (expression === '*' || expression === '?') {
     return expression
   }
   const parsed = parseInt(expression, 10)
@@ -45,7 +45,7 @@ export const cronExpressionToStructuredCron = (expression: string, defaultExpres
   const cron = isValidCronExpression(expression) ? expression : defaultExpression
   const [minute, hour, dayOfMonth, month, dayOfWeek] = cron.split(' ')
     .map(stringToCronValue)
-    .map((cronValue) => typeof cronValue === 'undefined' ? '*' : cronValue)
+    .map((cronValue) => typeof cronValue === 'undefined' ? '?' : cronValue)
   return { minute, hour, dayOfMonth, month, dayOfWeek }
 }
 

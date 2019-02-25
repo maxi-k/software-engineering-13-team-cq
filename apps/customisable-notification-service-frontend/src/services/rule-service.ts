@@ -119,7 +119,7 @@ const convertAggregatorValueKey = (aggregator: Aggregator): object => {
     case AggregatorStrategy.Scheduled:
       // Append second and year to cron expression to
       // match the spring format
-      return { notificationCronTrigger: '0 ' + aggregator.value + ' ?' }
+      return { notificationCronTrigger: '0 ' + aggregator.value }
     case AggregatorStrategy.Immediate:
     default:
       return {}
@@ -133,7 +133,7 @@ const convertAPIAggregator = (apiAggregator: { [key: string]: any }): Aggregator
         strategy: AggregatorStrategy.Scheduled,
         // Delete second and year to cron expression to
         // convert from the spring format to the standard format
-        value: apiAggregator.notificationCronTrigger.substring(2, apiAggregator.notificationCronTrigger.length - 2)
+        value: apiAggregator.notificationCronTrigger.substring(2, apiAggregator.notificationCronTrigger.length)
       }
     case 'AggregatorCountingDto':
       return {
