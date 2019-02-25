@@ -43,10 +43,10 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val csvContent = FileCopyUtils.copyToString(csvResource.inputStream.bufferedReader())
 
-                val expectedCsvContext = """|state_id,vin,battery_charge,battery_charging_status,battery_remaining_charging_hours,battery_remaining_range,battery_voltage,engine_capacity,engine_charging_status,engine_power,engine_transmission_type,service_due_date,service_remaining_days,service_remaining_mileage,service_status
-                           |0,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
-                           |1,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
-                           |2,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
+                val expectedCsvContext = """state_id,vin,brand,series,model,note,battery_charge,battery_charging_status,battery_remaining_charging_hours,battery_remaining_range,battery_voltage,engine_capacity,engine_charging_status,engine_power,engine_transmission_type,service_due_date,service_remaining_days,service_remaining_mileage,service_status
+                           |0,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
+                           |1,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
+                           |2,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
                            |""".trimMargin()
 
                 val systemLineSeparator = System.getProperty("line.separator")
@@ -68,11 +68,11 @@ class NotificationAttachmentServiceTest : StringSpec() {
 
                 val csvContent = FileCopyUtils.copyToString(csvResource.inputStream.bufferedReader())
 
-                val expectedCsvContext = """|state_id,vin,battery_charge,battery_charging_status,battery_remaining_charging_hours,battery_remaining_range,battery_voltage,engine_capacity,engine_charging_status,engine_power,engine_transmission_type,service_due_date,service_remaining_days,service_remaining_mileage,service_status
-                           |0,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
-                           |1,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
-                           |2,UUID456,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,OK,20,15,10.12.208
-                           |3,2,,,,,,120,Gas,120,Some,,,,
+                val expectedCsvContext = """state_id,vin,brand,series,model,note,battery_charge,battery_charging_status,battery_remaining_charging_hours,battery_remaining_range,battery_voltage,engine_capacity,engine_charging_status,engine_power,engine_transmission_type,service_due_date,service_remaining_days,service_remaining_mileage,service_status
+                           |0,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
+                           |1,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
+                           |2,UUID456,BMW,Some Series,Some Model,Some note,0.5,OK,10,5,0.699999988079071,120,Gas,120,Some,1970-01-18T22:54:10.098+01:00,20,15,OK
+                           |3,2,,,,,,,,,,120,Gas,120,Some,,,,
                            |""".trimMargin()
 
                 val systemLineSeparator = System.getProperty("line.separator")

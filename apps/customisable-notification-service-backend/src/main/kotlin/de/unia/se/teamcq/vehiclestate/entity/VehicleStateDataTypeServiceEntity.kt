@@ -37,6 +37,4 @@ class VehicleStateDataTypeServiceEntity(
         result = 31 * result + (remainingMileage ?: 0)
         return result
     }
-
-
 }

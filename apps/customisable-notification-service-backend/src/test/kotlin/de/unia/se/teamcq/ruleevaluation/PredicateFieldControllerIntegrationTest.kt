@@ -55,8 +55,8 @@ class PredicateFieldControllerIntegrationTest : StringSpec() {
 
             val expectingAtLeastPredicateFieldProviders = listOf("Battery", "Contract", "Engine",
                     "Fuel", "Mileage", "Service")
-            val expectingAtLeastPossibleDataTypes = arrayOf("TEXT", "STRING_LIST", "WEEK", "INTEGER",
-                    "TEXT", "DECIMAL")
+            val expectingAtLeastPossibleDataTypes = arrayOf("PERCENTAGE_DECIMAL", "VOLTAGE", "TEXT", "HOUR", "LITER",
+                    "KILOMETRE", "DATE", "PERCENTAGE_INT", "DAY", "HORSEPOWER", "CAPACITY", "PERCENTAGE_DECIMAL")
             val expectingAtLeastPossibleEvaluationStrategies = arrayOf("EQUAL_TO", "NOT_EQUAL_TO", "GREATER_THAN",
                     "LESS_THAN", "GREATER_THAN_OR_EQUAL_TO", "LESS_THAN_OR_EQUAL_TO")
 

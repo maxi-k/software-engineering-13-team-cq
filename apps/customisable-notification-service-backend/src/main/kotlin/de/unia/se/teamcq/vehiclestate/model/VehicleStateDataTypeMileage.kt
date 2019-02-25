@@ -79,7 +79,6 @@ class VehicleStateDataTypeMileage(
         return result
     }
 
-
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Mileage"
         val PREDICATE_FIELDS = mapOf(

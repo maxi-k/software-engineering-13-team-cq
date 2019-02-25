@@ -5,7 +5,6 @@ import de.unia.se.teamcq.TestUtils.testEqualAndHashCode
 import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
-import java.util.Date
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class VehicleStateDataTypeServiceTest : StringSpec() {

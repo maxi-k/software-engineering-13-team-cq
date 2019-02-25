@@ -31,7 +31,7 @@ class VehicleStateDataTypeTest : StringSpec() {
 
         "VehicleStateDataTypeContract should contain relevant predicate fields" {
             val vehicleStateContract = TestUtils.getTestVehicleStateDataTypeContractModel()
-            vehicleStateContract.predicateFields["duePerWeek"] shouldNotBe null
+            vehicleStateContract.predicateFields["startDate"] shouldNotBe null
             vehicleStateContract.predicateFields["nonExistent"] shouldBe null
             vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
             vehicleStateContract.retrieveFieldValue("endDate") shouldBe vehicleStateContract.endDate
@@ -59,7 +59,7 @@ class VehicleStateDataTypeTest : StringSpec() {
 
         "VehicleStateDataTypeFuel should contain relevant predicate fields" {
             val vehicleStateFuel = TestUtils.getTestVehicleStateDataTypeFuelModel()
-            vehicleStateFuel.predicateFields["liters"] shouldNotBe null
+            vehicleStateFuel.predicateFields["levelLiters"] shouldNotBe null
             vehicleStateFuel.predicateFields["nonExistent"] shouldBe null
             vehicleStateFuel.retrieveFieldValue("levelLiters") shouldBe vehicleStateFuel.levelLiters
             vehicleStateFuel.retrieveFieldValue("levelPercentage") shouldBe vehicleStateFuel.levelPercentage

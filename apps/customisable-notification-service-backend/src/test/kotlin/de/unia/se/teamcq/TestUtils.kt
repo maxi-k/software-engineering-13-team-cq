@@ -1,7 +1,6 @@
 package de.unia.se.teamcq
 
 import de.bmw.vss.model.Battery
-import de.bmw.vss.model.ConditionBasedService
 import de.bmw.vss.model.Contract
 import de.bmw.vss.model.Engine
 import de.bmw.vss.model.Fuel
@@ -89,12 +88,10 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
-import java.lang.IllegalArgumentException
+import org.threeten.bp.DateTimeUtils
 import java.sql.Date
 import java.sql.Timestamp
-import java.util.GregorianCalendar
 import java.util.UUID
-import javax.xml.bind.DatatypeConverter
 
 object TestUtils {
 
@@ -190,10 +187,10 @@ object TestUtils {
     fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
         return VehicleStateDataTypeContract(
                 10,
-                Date(1547650098),
+                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
                 9,
                 11,
-                Date(1547650098),
+                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
                 5
         )
     }
@@ -201,10 +198,10 @@ object TestUtils {
     fun getTestVehicleStateDataTypeContractEntity(): VehicleStateDataTypeContractEntity {
         return VehicleStateDataTypeContractEntity(
                 10,
-                Date(1547650098),
+                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
                 9,
                 11,
-                Date(1547650098),
+                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
                 5
         )
     }
@@ -226,19 +223,19 @@ object TestUtils {
     }
 
     fun getTestVehicleStateDataTypeMileageModel(): VehicleStateDataTypeMileage {
-        return VehicleStateDataTypeMileage(10000, 5000, 1000, 14, 5, 9, "test")
+        return VehicleStateDataTypeMileage(10000, 5000, 1000, 14, 5, 9, "OK")
     }
 
     fun getTestVehicleStateDataTypeMileageEntity(): VehicleStateDataTypeMileageEntity {
-        return VehicleStateDataTypeMileageEntity(10000, 5000, 1000, 14, 5, 9, "test")
+        return VehicleStateDataTypeMileageEntity(10000, 5000, 1000, 14, 5, 9, "OK")
     }
 
     fun getTestVehicleStateDataTypeServiceModel(): VehicleStateDataTypeService {
-        return VehicleStateDataTypeService("10.12.208", "OK", 20, 15)
+        return VehicleStateDataTypeService("OK", "1970-01-18T22:54:10.098+01:00", 20, 15)
     }
 
     fun getTestVehicleStateDataTypeServiceEntity(): VehicleStateDataTypeServiceEntity {
-        return VehicleStateDataTypeServiceEntity("10.12.208", "OK", 20, 15)
+        return VehicleStateDataTypeServiceEntity("OK", "1970-01-18T22:54:10.098+01:00", 20, 15)
     }
 
     fun getTestVehicleStateModel(): VehicleState {
@@ -541,14 +538,22 @@ object TestUtils {
     fun getTestVehicleReferenceModel(): VehicleReference {
         return VehicleReference(
                 vin = "UUID456",
-                fleetReference = getTestFleetReferenceModel()
+                fleetReference = getTestFleetReferenceModel(),
+                brand = "BMW",
+                model = "Some Model",
+                series = "Some Series",
+                note = "Some note"
         )
     }
 
     fun getTestVehicleReferenceEntity(): VehicleReferenceEntity {
         return VehicleReferenceEntity(
                 vin = "UUID456",
-                fleetReference = getTestFleetReferenceEntity()
+                fleetReference = getTestFleetReferenceEntity(),
+                brand = "BMW",
+                model = "Some Model",
+                series = "Some Series",
+                note = "Some note"
         )
     }
 
@@ -617,42 +622,57 @@ object TestUtils {
         vehicle.vin = "UUID456"
         vehicle.fleet = UUID.fromString("cccccccc-0000-ffff-0000-000000000099")
         vehicle.carPark = UUID.fromString("cccccccc-0000-cccc-0000-000000000099")
+        vehicle.brand = "BMW"
+        vehicle.model = "Some Model"
+        vehicle.series = "Some Series"
+        vehicle.note = "Some note"
 
         val battery = Battery()
         battery.levelPercentage = 0.5.toFloat()
         battery.voltage = 0.7.toFloat()
         battery.chargingStatus = "OK"
+        battery.remainingChargingHours = 10
+        battery.remainingRange = 5
         vehicle.battery = battery
 
         val engine = Engine()
         engine.power = 120
         engine.capacity = 120
         engine.fuelType = "Gas"
+        engine.transmissionType = "Some"
         vehicle.engine = engine
 
         val fuel = Fuel()
         fuel.levelPercentage = 0.4
         fuel.levelLiters = 50
-        fuel.remainingRange = 1000
+        fuel.tankCapacity = 100.0
+        fuel.remainingRange = 13
         vehicle.fuel = fuel
 
-        val contract = Contract() // FIXME
+        val contract = Contract()
+        contract.endMileage = 10
+        contract.endDate = DateTimeUtils.toLocalDate(Date(1547650098))
+        contract.reachedRuntimePercentage = 9
+        contract.remainingDays = 11
+        contract.startDate = DateTimeUtils.toLocalDate(Date(1547650098))
+        contract.startMileage = 5
         vehicle.contract = contract
 
         val service = ServiceStatus()
-        val calendar = GregorianCalendar()
-        calendar.time = Date(1547650098)
-        service.dueDate = DatatypeConverter.printDateTime(calendar)
-        val conditionBasedService = ConditionBasedService()
-        conditionBasedService.status = ConditionBasedService.StatusEnum.OK
-        service.brakeFluid = conditionBasedService
+        service.dueDate = "1970-01-18T22:54:10.098+01:00"
         service.status = ServiceStatus.StatusEnum.OK
+        service.remainingDays = 20
+        service.remainingMileage = 15
         vehicle.serviceStatus = service
 
         val mileage = Mileage()
         mileage.current = 10000
         mileage.remaining = 5000
         mileage.reachedPercentage = 1000
+        mileage.averagePerWeek = 14
+        mileage.expectedExceedance = 5
+        mileage.forecastEndContract = 9
+        mileage.status = Mileage.StatusEnum.OK
         vehicle.mileage = mileage
 
         return vehicle

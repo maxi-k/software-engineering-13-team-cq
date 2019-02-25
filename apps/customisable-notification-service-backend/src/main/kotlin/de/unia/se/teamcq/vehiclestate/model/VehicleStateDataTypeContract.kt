@@ -75,7 +75,6 @@ class VehicleStateDataTypeContract(
         return result
     }
 
-
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Contract"
         val PREDICATE_FIELDS = mapOf(

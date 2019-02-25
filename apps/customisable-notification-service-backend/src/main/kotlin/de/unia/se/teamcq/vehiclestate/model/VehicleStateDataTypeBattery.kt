@@ -69,7 +69,6 @@ class VehicleStateDataTypeBattery(
         return result
     }
 
-
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Battery"
         val PREDICATE_FIELDS = mapOf(
