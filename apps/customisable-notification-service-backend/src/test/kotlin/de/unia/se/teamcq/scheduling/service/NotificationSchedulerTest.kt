@@ -12,10 +12,12 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.just
 import io.mockk.spyk
 import io.mockk.verify
+import org.quartz.JobKey
 import org.quartz.Scheduler
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.util.ReflectionTestUtils
+import java.util.Date
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class NotificationSchedulerTest : StringSpec() {
@@ -77,13 +79,14 @@ class NotificationSchedulerTest : StringSpec() {
         "ScheduleVehicleStateDataImport should schedule the Data Import" {
             clearMocks(scheduler, notificationScheduler)
 
-            every { scheduler.scheduleJob(any(), any(), any()) } just Runs
+            every { scheduler.scheduleJob(any(), any()) } returns Date()
+            every { scheduler.checkExists(any<JobKey>()) } returns false
             ReflectionTestUtils.setField(notificationScheduler, "dataImportCronString", "0 0/1 * * * ?")
 
             notificationScheduler.scheduleVehicleStateDataImport()
 
             verify(exactly = 1) {
-                scheduler.scheduleJob(any(), any(), any())
+                scheduler.scheduleJob(any(), any())
             }
         }
     }

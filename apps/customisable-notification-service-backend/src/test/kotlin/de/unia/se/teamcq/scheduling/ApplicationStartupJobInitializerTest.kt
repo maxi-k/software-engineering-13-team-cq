@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.scheduling
 
-import de.unia.se.teamcq.scheduling.service.NotificationScheduler
+import de.unia.se.teamcq.scheduling.service.INotificationScheduler
 import io.kotlintest.should
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -17,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration
 class ApplicationStartupJobInitializerTest : StringSpec() {
 
     @MockK
-    private lateinit var notificationScheduler: NotificationScheduler
+    private lateinit var notificationScheduler: INotificationScheduler
 
     @InjectMockKs
     private lateinit var applicationStartupJobInitializer: ApplicationStartupJobInitializer

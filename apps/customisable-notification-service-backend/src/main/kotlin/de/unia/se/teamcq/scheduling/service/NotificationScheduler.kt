@@ -63,7 +63,9 @@ class NotificationScheduler : INotificationScheduler {
             val jobDetail = buildDataImportJobDetail()
             val dataImportCronExpression = CronExpression(dataImportCronString)
             val trigger = buildJobTrigger(jobDetail, dataImportCronExpression)
-            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
+            if (!scheduler.checkExists(jobDetail.key)) {
+                scheduler.scheduleJob(jobDetail, trigger)
+            }
         } catch (schedulerException: SchedulerException) {
             logger.error("Error while scheduling the VehicleState Import", schedulerException)
         } catch (parseException: ParseException) {
