@@ -463,7 +463,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-8-input"
+                id="react-select-10-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1123,7 +1123,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   autoComplete="off"
                   autoCorrect="off"
                   disabled={false}
-                  id="react-select-9-input"
+                  id="react-select-11-input"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -3413,51 +3413,251 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                   className="sc-gxMtzJ hiRJxf"
                 >
                   <div>
-                    <label
-                      className="MuiFormControlLabel-root-1351"
-                    >
-                      <span
-                        className="MuiSwitch-root-1355"
+                    <div>
+                      <label
+                        className="MuiFormControlLabel-root-1351"
                       >
                         <span
-                          className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361 MuiSwitchBase-checked-1365 MuiSwitch-checked-1359"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onKeyUp={[Function]}
-                          onMouseDown={[Function]}
-                          onMouseLeave={[Function]}
-                          onMouseUp={[Function]}
-                          onTouchEnd={[Function]}
-                          onTouchMove={[Function]}
-                          onTouchStart={[Function]}
-                          tabIndex={null}
+                          className="MuiSwitch-root-1355"
                         >
                           <span
-                            className="MuiIconButton-label-1288"
+                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361 MuiSwitchBase-checked-1365 MuiSwitch-checked-1359"
+                            onBlur={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+                            tabIndex={null}
                           >
                             <span
-                              className="MuiSwitch-icon-1356 MuiSwitch-iconChecked-1357"
-                            />
-                            <input
-                              checked={true}
-                              className="MuiSwitchBase-input-1367"
-                              onChange={[Function]}
-                              type="checkbox"
-                              value="sendRulesEveryMonth"
-                            />
+                              className="MuiIconButton-label-1288"
+                            >
+                              <span
+                                className="MuiSwitch-icon-1356 MuiSwitch-iconChecked-1357"
+                              />
+                              <input
+                                checked={true}
+                                className="MuiSwitchBase-input-1367"
+                                onChange={[Function]}
+                                type="checkbox"
+                                value="sendRulesEveryMonth"
+                              />
+                            </span>
                           </span>
+                          <span
+                            className="MuiSwitch-bar-1363"
+                          />
                         </span>
                         <span
-                          className="MuiSwitch-bar-1363"
-                        />
-                      </span>
-                      <span
-                        className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                        >
+                          Send notifications every month
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <label
+                        className="MuiFormControlLabel-root-1351"
                       >
-                        Send notifications every month
-                      </span>
-                    </label>
+                        <span
+                          className="MuiSwitch-root-1355"
+                        >
+                          <span
+                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361"
+                            onBlur={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+                            tabIndex={null}
+                          >
+                            <span
+                              className="MuiIconButton-label-1288"
+                            >
+                              <span
+                                className="MuiSwitch-icon-1356"
+                              />
+                              <input
+                                checked={false}
+                                className="MuiSwitchBase-input-1367"
+                                onChange={[Function]}
+                                type="checkbox"
+                                value="sendRulesEveryWeekday"
+                              />
+                            </span>
+                          </span>
+                          <span
+                            className="MuiSwitch-bar-1363"
+                          />
+                        </span>
+                        <span
+                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                        >
+                          Send notifications every day of the week
+                        </span>
+                      </label>
+                      <label
+                        className="MuiFormLabel-root-1314"
+                      >
+                        <p>
+                          Send notifications on these weekdays
+                        </p>
+                      </label>
+                      <div
+                        className="css-10nd86i"
+                        onKeyDown={[Function]}
+                      >
+                        <div
+                          className="css-1ykgphr"
+                          onMouseDown={[Function]}
+                          onTouchEnd={[Function]}
+                        >
+                          <div
+                            className="css-1hwfws3"
+                          >
+                            <div
+                              className="css-xwjg1b"
+                            >
+                              <div
+                                className="css-rf4tka"
+                              >
+                                Monday
+                              </div>
+                              <div
+                                className="css-1alnv5e"
+                                onClick={[Function]}
+                                onMouseDown={[Function]}
+                                onTouchEnd={[Function]}
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  className="css-19bqh2r"
+                                  focusable="false"
+                                  height={14}
+                                  viewBox="0 0 20 20"
+                                  width={14}
+                                >
+                                  <path
+                                    d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div
+                              className="css-1arihux"
+                            >
+                              <div
+                                className=""
+                                style={
+                                  Object {
+                                    "display": "inline-block",
+                                  }
+                                }
+                              >
+                                <input
+                                  aria-autocomplete="list"
+                                  autoCapitalize="none"
+                                  autoComplete="off"
+                                  autoCorrect="off"
+                                  disabled={false}
+                                  id="react-select-9-input"
+                                  onBlur={[Function]}
+                                  onChange={[Function]}
+                                  onFocus={[Function]}
+                                  spellCheck="false"
+                                  style={
+                                    Object {
+                                      "background": 0,
+                                      "border": 0,
+                                      "boxSizing": "content-box",
+                                      "color": "inherit",
+                                      "fontSize": "inherit",
+                                      "opacity": 1,
+                                      "outline": 0,
+                                      "padding": 0,
+                                      "width": "1px",
+                                    }
+                                  }
+                                  tabIndex="0"
+                                  type="text"
+                                  value=""
+                                />
+                                <div
+                                  style={
+                                    Object {
+                                      "height": 0,
+                                      "left": 0,
+                                      "overflow": "scroll",
+                                      "position": "absolute",
+                                      "top": 0,
+                                      "visibility": "hidden",
+                                      "whiteSpace": "pre",
+                                    }
+                                  }
+                                >
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            className="css-1wy0on6"
+                          >
+                            <div
+                              aria-hidden="true"
+                              className="css-1ep9fjw"
+                              onMouseDown={[Function]}
+                              onTouchEnd={[Function]}
+                            >
+                              <svg
+                                aria-hidden="true"
+                                className="css-19bqh2r"
+                                focusable="false"
+                                height={20}
+                                viewBox="0 0 20 20"
+                                width={20}
+                              >
+                                <path
+                                  d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+                                />
+                              </svg>
+                            </div>
+                            <span
+                              className="css-d8oujb"
+                            />
+                            <div
+                              aria-hidden="true"
+                              className="css-1ep9fjw"
+                              onMouseDown={[Function]}
+                              onTouchEnd={[Function]}
+                            >
+                              <svg
+                                aria-hidden="true"
+                                className="css-19bqh2r"
+                                focusable="false"
+                                height={20}
+                                viewBox="0 0 20 20"
+                                width={20}
+                              >
+                                <path
+                                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div
                       className="MuiFormControl-root-1303 MuiFormControl-marginNormal-1304 MuiFormControl-fullWidth-1306"
                     >
@@ -3481,7 +3681,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                           required={false}
                           step={900}
                           type="time"
-                          value="0*:0*"
+                          value="10:00"
                         />
                       </div>
                     </div>
@@ -3549,56 +3749,256 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
   className="sc-bbmXgH dVcTmh"
 >
   <div>
-    <label
-      className="MuiFormControlLabel-root-1091"
-    >
-      <span
-        className="MuiSwitch-root-1095"
+    <div>
+      <label
+        className="MuiFormControlLabel-root-1091"
       >
         <span
-          className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101 MuiSwitchBase-checked-1105 MuiSwitch-checked-1099"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
+          className="MuiSwitch-root-1095"
         >
           <span
-            className="MuiIconButton-label-1113"
+            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101 MuiSwitchBase-checked-1105 MuiSwitch-checked-1099"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
           >
             <span
-              className="MuiSwitch-icon-1096 MuiSwitch-iconChecked-1097"
-            />
-            <input
-              checked={true}
-              className="MuiSwitchBase-input-1107"
-              onChange={[Function]}
-              type="checkbox"
-              value="sendRulesEveryMonth"
-            />
+              className="MuiIconButton-label-1113"
+            >
+              <span
+                className="MuiSwitch-icon-1096 MuiSwitch-iconChecked-1097"
+              />
+              <input
+                checked={true}
+                className="MuiSwitchBase-input-1107"
+                onChange={[Function]}
+                type="checkbox"
+                value="sendRulesEveryMonth"
+              />
+            </span>
           </span>
+          <span
+            className="MuiSwitch-bar-1103"
+          />
         </span>
         <span
-          className="MuiSwitch-bar-1103"
-        />
-      </span>
-      <span
-        className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+        >
+          Send notifications every month
+        </span>
+      </label>
+    </div>
+    <div>
+      <label
+        className="MuiFormControlLabel-root-1091"
       >
-        Send notifications every month
-      </span>
-    </label>
+        <span
+          className="MuiSwitch-root-1095"
+        >
+          <span
+            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label-1113"
+            >
+              <span
+                className="MuiSwitch-icon-1096"
+              />
+              <input
+                checked={false}
+                className="MuiSwitchBase-input-1107"
+                onChange={[Function]}
+                type="checkbox"
+                value="sendRulesEveryWeekday"
+              />
+            </span>
+          </span>
+          <span
+            className="MuiSwitch-bar-1103"
+          />
+        </span>
+        <span
+          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+        >
+          Send notifications every day of the week
+        </span>
+      </label>
+      <label
+        className="MuiFormLabel-root-1152"
+      >
+        <p>
+          Send notifications on these weekdays
+        </p>
+      </label>
+      <div
+        className="css-10nd86i"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="css-1ykgphr"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="css-1hwfws3"
+          >
+            <div
+              className="css-xwjg1b"
+            >
+              <div
+                className="css-rf4tka"
+              >
+                Monday
+              </div>
+              <div
+                className="css-1alnv5e"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="css-19bqh2r"
+                  focusable="false"
+                  height={14}
+                  viewBox="0 0 20 20"
+                  width={14}
+                >
+                  <path
+                    d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              className="css-1arihux"
+            >
+              <div
+                className=""
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="react-select-8-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="css-1wy0on6"
+          >
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+                />
+              </svg>
+            </div>
+            <span
+              className="css-d8oujb"
+            />
+            <div
+              aria-hidden="true"
+              className="css-1ep9fjw"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                aria-hidden="true"
+                className="css-19bqh2r"
+                focusable="false"
+                height={20}
+                viewBox="0 0 20 20"
+                width={20}
+              >
+                <path
+                  d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div
-      className="MuiFormControl-root-1152 MuiFormControl-marginNormal-1153 MuiFormControl-fullWidth-1155"
+      className="MuiFormControl-root-1159 MuiFormControl-marginNormal-1160 MuiFormControl-fullWidth-1162"
     >
       <label
-        className="MuiFormLabel-root-1163 MuiFormLabel-filled-1167 MuiInputLabel-root-1156 MuiInputLabel-formControl-1157 MuiInputLabel-animated-1160 MuiInputLabel-shrink-1159 MuiInputLabel-filled-1161"
+        className="MuiFormLabel-root-1152 MuiFormLabel-filled-1156 MuiInputLabel-root-1163 MuiInputLabel-formControl-1164 MuiInputLabel-animated-1167 MuiInputLabel-shrink-1166 MuiInputLabel-filled-1168"
         data-shrink={true}
       >
         Time of day
@@ -3617,7 +4017,7 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
           required={false}
           step={900}
           type="time"
-          value="0*:0*"
+          value="10:00"
         />
       </div>
     </div>

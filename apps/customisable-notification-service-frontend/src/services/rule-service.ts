@@ -117,7 +117,9 @@ const convertAggregatorValueKey = (aggregator: Aggregator): object => {
     case AggregatorStrategy.Counting:
       return { notificationCountThreshold: aggregator.value }
     case AggregatorStrategy.Scheduled:
-      return { notificationCronTrigger: aggregator.value }
+      // Append second and year to cron expression to
+      // match the spring format
+      return { notificationCronTrigger: '0 ' + aggregator.value + ' ?' }
     case AggregatorStrategy.Immediate:
     default:
       return {}
@@ -129,7 +131,9 @@ const convertAPIAggregator = (apiAggregator: { [key: string]: any }): Aggregator
     case 'AggregatorScheduledDto':
       return {
         strategy: AggregatorStrategy.Scheduled,
-        value: apiAggregator.notificationCronTrigger
+        // Delete second and year to cron expression to
+        // convert from the spring format to the standard format
+        value: apiAggregator.notificationCronTrigger.substring(2, apiAggregator.notificationCronTrigger.length - 2)
       }
     case 'AggregatorCountingDto':
       return {
