@@ -1,6 +1,6 @@
 import React from 'react'
 import cronstrue from 'cronstrue/dist/cronstrue-i18n';
-import { injectIntl, InjectedIntlProps } from 'react-intl'
+import { injectIntl, InjectedIntlProps, FormattedMessage } from 'react-intl'
 
 import {
   StructuredCron,
@@ -8,6 +8,9 @@ import {
   isValidCronExpression,
   structuredCronToCronExpression
 } from '@/utilities/cron-util'
+
+import Typography from '@material-ui/core/Typography';
+import InputField from '@/modules/shared/components/InputField'
 
 // import InputField from '@/modules/shared/components/InputField'
 
@@ -20,8 +23,17 @@ interface ScheduledAggregatorState {
 
 class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, ScheduledAggregatorState> {
 
+  public static getDerivedStateFromProps = (props: ScheduledAggregatorProps, state: ScheduledAggregatorState) => {
+    return {
+      structuredCron: cronExpressionToStructuredCron(
+        (props.aggregator.value || ScheduledAggregator.getDefaultCronExpression).toString(),
+        ScheduledAggregator.getDefaultCronExpression()
+      )
+    }
+  }
+
   private static getDefaultCronExpression = (): string => (
-    "0 * * * 1"
+    "0 10 * * 1"
   )
 
   public state = {
@@ -34,11 +46,44 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
   public render = () => {
     // const { aggregator, setAggregatorValue } = this.props
 
+    const { minute, hour /* month, dayOfMonth, dayOfWeek */ } = this.state.structuredCron
+
     return (
-      <div onClick={this.updateUpstreamCronExpression}>
-        {this.getHumanReadableCron()}
+      <div>
+        <InputField
+          label="cns.rule.field.aggregator.scheduled.field.time.label"
+          type="time"
+          inputProps={{
+            step: 900, // 15 minutes
+          }}
+          value={`${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`}
+          onChange={this.updateTimeOfDay}
+        />
+        <Typography variant="body1" paragraph={true} style={{ paddingTop: '1rem' }}>
+          <FormattedMessage id="cns.rule.field.aggregator.scheduled.description.label" />
+          <br />
+          <strong>
+            {this.getHumanReadableCron()}
+          </strong>
+        </Typography>
       </div>
     )
+  }
+
+  /* Update functions */
+
+  private updateTimeOfDay: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const [hour, minute] = event.target.value
+      .split(':')
+      .map((value: string) => parseInt(value, 10))
+      .map((numberOrNan: number) => isNaN(numberOrNan) ? 0 : numberOrNan)
+
+    const updatedCron: StructuredCron = {
+      ...this.state.structuredCron,
+      hour,
+      minute
+    }
+    this.updateUpstreamCronExpression(updatedCron)
   }
 
   /* Helper functions */
@@ -58,13 +103,15 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
   }
 
   private cronExpressionFromState = (): string => {
-    // TODO
     return structuredCronToCronExpression(this.state.structuredCron)
   }
 
-  private updateUpstreamCronExpression = () => {
+  private updateUpstreamCronExpression = (structuredCron?: StructuredCron) => {
     const { setAggregatorValue } = this.props
-    setAggregatorValue(this.cronExpressionFromState())
+    const cronExpression = typeof structuredCron === 'undefined' || structuredCron === null
+      ? this.cronExpressionFromState()
+      : structuredCronToCronExpression(structuredCron)
+    setAggregatorValue(cronExpression)
   }
 
 }
