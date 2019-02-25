@@ -44,6 +44,7 @@
     "cns.rule.field.aggregator.counting.label": "Event Count",
     "cns.rule.field.aggregator.scheduled.description.label": "This rule will send notifications at the following times:",
     "cns.rule.field.aggregator.scheduled.field.time.label": "Time of day",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Send notifications every month",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Send notifications immediately",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Sends notifications immediately when a matching event occurs.",
@@ -129,5 +130,7 @@
     "cns.condition.selector.equalTo": "equal to",
     "cns.condition.selector.unequalTo": "unequal to",
     "cns.condition.selector.below": "below",
-    "cns.condition.selector.above": "above"
+    "cns.condition.selector.above": "above",
+
+    "cns.constants.month.label": "{month, select, 1 {January} 2 {February} 3 {March} 4 {April} 5 {May} 6 {June} 7 {July} 8 {August} 9 {September} 10 {October} 11 {November} 12 {December} other {Unknown Month}}"
 }

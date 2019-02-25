@@ -2,8 +2,20 @@ import {
   cronExpressionToStructuredCron,
   structuredCronToCronExpression,
   StructuredCron,
-  stringToCronValue
+  stringToCronValue,
+  isValidCronExpression
 } from './cron-util'
+
+describe('isValidCronExpression works', () => {
+
+  it('returns true for invalid cron expressions', () => {
+    expect(isValidCronExpression('* * * * *')).toBe(true)
+  })
+  it('returns false for invalid cron expressions', () => {
+    expect(isValidCronExpression('* * *')).toBe(false)
+    expect(isValidCronExpression('invalid')).toBe(false)
+  })
+})
 
 describe('stringToCronValue works', () => {
   it('parses possible strings correctly', () => {
