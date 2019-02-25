@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.scheduling.job
 
 import de.unia.se.teamcq.notificationmanagement.service.IRuleStateProcessingService
-import org.quartz.DisallowConcurrentExecution
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
 import org.slf4j.LoggerFactory
@@ -10,7 +9,6 @@ import org.springframework.scheduling.quartz.QuartzJobBean
 import org.springframework.stereotype.Component
 
 @Component
-@DisallowConcurrentExecution
 class NotificationRuleJob : QuartzJobBean() {
 
     @Autowired
