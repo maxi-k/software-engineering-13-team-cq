@@ -21,7 +21,7 @@ interface AggregatorSelectorAttributes
   setAggregatorStrategy: (aggregatorStrategy: AggregatorStrategy) => void
 }
 
-type AggregatorSelectorProps = AggregatorSelectorAttributes
+export type AggregatorSelectorProps = AggregatorSelectorAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const expandedIconStyle = {

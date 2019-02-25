@@ -56,6 +56,20 @@ storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
   .add('Close Procedure', () => <ClosingButton onClick={action('Closed procedure')} />)
 
+import RecipientSelector, { RecipientSelectorProps } from '@/modules/rule-modification/components/RecipientSelector'
+
+const recipientSelectorProps: Partial<RecipientSelectorProps> = {
+  value: { label: 'Example', value: 'Example' },
+  onChange: action('Select Recipient'),
+  styles: (_) => ({
+    input: (base) => ({
+      ...base,
+      width: '500px'
+    })
+  })
+}
+
+import RuleModificationGeneral from '@/modules/rule-modification/parts/RuleModificationGeneral'
 /* ~~ Second-Step Components ~~ */
 import FleetSelector, { FleetSelectorProps } from '@/modules/rule-modification/components/FleetSelector'
 
@@ -66,7 +80,7 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
     { label: 'Audi', value: 'Audi' },
     { label: 'Mercedes', value: 'Mercedes' }
   ],
-  onChange: action('Select'),
+  onChange: action('Select Fleet'),
   styles: (_) => ({
     input: (base) => ({
       ...base,
@@ -75,7 +89,6 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
-import RuleModificationGeneral from '@/modules/rule-modification/parts/RuleModificationGeneral'
 const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
@@ -88,6 +101,7 @@ storiesOf('Rule Creation / First Step', module)
       }
     }} />)
   .add('Rule Recipient Tag', () => <RuleRecipientTag recipient={notificationRecipient} />)
+  .add('Recipient Selector', () => <RecipientSelector {...recipientSelectorProps} />)
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
@@ -143,3 +157,28 @@ storiesOf('Rule Creation / Third Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />)
   .add('Condition Selector', () => <ConditionSelector {...conditionSelectorProps} />)
+
+import { AggregatorStrategy } from '@/model'
+import AggregatorSelector, { AggregatorSelectorProps } from '@/modules/rule-modification/components/AggregatorSelector'
+import ScheduledAggregator from '@/modules/rule-modification/components/ScheduledAggregator'
+import CountingAggregator from '@/modules/rule-modification/components/CountingAggregator'
+import { AggregatorComponentAttributes } from '@/modules/rule-modification/aggregator-common';
+
+const aggregatorComponentProps: AggregatorComponentAttributes = {
+  aggregator: {
+    strategy: AggregatorStrategy.Immediate,
+    value: ''
+  },
+  setAggregatorValue: (value: any) => action('Setting AggregatorValue')
+}
+
+const aggregatorSelectorProps: AggregatorSelectorProps = {
+  ...aggregatorComponentProps,
+  setAggregatorStrategy: (strategy: any) => action('Setting AggregatorStrategy'),
+}
+
+storiesOf('Rule Creation / Fourth Step', module)
+  .addDecorator(SingleComponentWrapper)
+  .add('Counting Aggregator', () => <CountingAggregator {...aggregatorComponentProps} />)
+  .add('Scheduled Aggregator', () => <ScheduledAggregator {...aggregatorComponentProps} />)
+  .add('Aggregator Selector', () => <AggregatorSelector {...aggregatorSelectorProps} />)
