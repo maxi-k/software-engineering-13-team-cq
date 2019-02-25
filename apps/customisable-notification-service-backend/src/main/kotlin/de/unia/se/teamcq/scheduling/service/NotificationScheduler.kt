@@ -26,10 +26,10 @@ class NotificationScheduler : INotificationScheduler {
     @Autowired
     private lateinit var scheduler: Scheduler
 
-    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 2 * * * ?}")
+    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 * * ? * *}")
     private lateinit var dataImportCronString: String
 
-    @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 0/1 * * * ?}")
+    @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 */5 * ? * *}")
     private lateinit var dataProcessingCronString: String
 
     override fun updateNotificationRuleScheduleAsNecessary(notificationRule: NotificationRule?) {

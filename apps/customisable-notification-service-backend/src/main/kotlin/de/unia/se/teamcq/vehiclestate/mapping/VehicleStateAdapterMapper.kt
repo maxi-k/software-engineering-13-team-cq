@@ -12,16 +12,18 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import org.springframework.stereotype.Component
+import java.lang.NullPointerException
 import javax.xml.bind.DatatypeConverter
 
 @Component
 class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
 
+    @Throws(NullPointerException::class)
     override fun dtoToModel(vehicle: Vehicle): VehicleState {
 
         val vehicleStateDataTypes = getVehicleStateDataTypes(vehicle)
 
-        val fleetReference = FleetReference(vehicle.fleet?.toString(), vehicle.carPark?.toString())
+        val fleetReference = FleetReference(vehicle.fleet!!.toString(), vehicle.carPark!!.toString())
         val vehicleReference = VehicleReference(vehicle.vin, fleetReference)
 
         return VehicleState(

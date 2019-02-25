@@ -29,8 +29,9 @@ class VehicleStateService : IVehicleStateService {
         val newVehicleStates = vssAdapter.getNewVehicleStates(fleetReferences)
         vehicleStateRepository.createVehicleStates(newVehicleStates)
 
+        val countVehicleStates = newVehicleStates.size
         val time = (System.currentTimeMillis() - started) / 1000.0
-        logger.info("Finished importing new Vehicle States in {} s", time)
+        logger.info("Finished importing {} Vehicle States in {} s", countVehicleStates, time)
     }
 
     override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {

@@ -27,7 +27,12 @@ ALTER TABLE notification_rule_entity_processed_vehicle_states
   processed_vehicle_states_state_id) REFERENCES vehicle_state_entity;
 
 UPDATE fleet_reference_entity
-    SET car_park_id = 'cccccccc-0000-cccc-0000-000000000099';
+    SET car_park_id = 'cccccccc-0000-cccc-0000-000000000099'
+    WHERE fleet_id = 'cccccccc-0000-ffff-0000-000000000099';
+
+UPDATE fleet_reference_entity
+    SET car_park_id = 'cccccccc-0000-cccc-0000-000000000001'
+    WHERE fleet_id = 'cccccccc-0000-ffff-0000-000000000001';
 
 ALTER TABLE vehicle_state_entity
     ADD COLUMN created timestamp;

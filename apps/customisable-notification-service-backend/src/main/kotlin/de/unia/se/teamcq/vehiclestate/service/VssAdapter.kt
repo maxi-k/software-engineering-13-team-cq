@@ -7,25 +7,17 @@ import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateAdapterMapper
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
-import org.quartz.CronExpression
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestClientException
-import org.threeten.bp.Instant
 import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.ZoneOffset
-import java.util.Date
 import java.util.TimeZone
 import java.util.UUID
 
 @Component
 @Transactional
 class VssAdapter : IVssAdapter {
-
-    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 0/1 * * * ?}")
-    private lateinit var dataImportCronString: String
 
     @Autowired
     private lateinit var authenticationTokenAdapter: IAuthenticationTokenAdapter
@@ -57,30 +49,17 @@ class VssAdapter : IVssAdapter {
         apiInstance.apiClient = apiClient
 
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
-        val vehicleStatesSince = getLastJobExecution()
 
         return fleetReferences.flatMap { fleetReference ->
 
             val fetchedFleetsResult = apiInstance.getAllVehicles(UUID.fromString(fleetReference.carParkId),
                 listOf(UUID.fromString(fleetReference.fleetId)),
-                vehicleStatesSince
+                // FIXME: If used in prod: Replace this value which is currently set like this
+                // FIXME: to make testing easier with minus 1 day or time since last job execution
+                OffsetDateTime.now().minusYears(1)
             )
 
             fetchedFleetsResult.items
         }
-    }
-
-    private fun getLastJobExecution(): OffsetDateTime {
-
-        val dataProcessingCurrentExecutionInstant = CronExpression(dataImportCronString)
-                .getNextValidTimeAfter(Date())
-                .toInstant()
-
-        val threeTenInstant = Instant.ofEpochMilli(
-                dataProcessingCurrentExecutionInstant.toEpochMilli()
-        )
-
-        return OffsetDateTime.ofInstant(threeTenInstant, ZoneOffset.UTC)
-                .minusDays(1)
     }
 }
