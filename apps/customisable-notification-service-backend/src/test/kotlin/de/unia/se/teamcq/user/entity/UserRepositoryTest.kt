@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional
 class UserRepositoryTest : StringSpec() {
 
     @Autowired
-    lateinit var userEnityRepository: IUserEntityRepository
+    lateinit var userEntityRepository: IUserEntityRepository
 
     @Autowired
     lateinit var userRepository: UserRepository
@@ -35,7 +35,7 @@ class UserRepositoryTest : StringSpec() {
 
         "GetOrCreateUser should work" {
 
-            userEnityRepository.save(getTestUserEntity())
+            userEntityRepository.save(getTestUserEntity())
 
             val actualUser = userRepository.getOrCreateUser(getTestUserEntity().name!!)
 

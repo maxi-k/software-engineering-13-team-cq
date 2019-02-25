@@ -33,6 +33,20 @@ describe('The Rule fetch functions', () => {
 describe('the conversion functions work', () => {
   it('convertFromApiRule and convertToApiRule are dual', () => {
     const mockedRule = mockedRuleDetail(3)
-    expect(convertFromAPIRule(convertToAPIRule(mockedRule))).toEqual(mockedRule)
+    const convertedRule = convertToAPIRule(mockedRule)
+    expect(convertFromAPIRule(convertedRule)).toEqual(mockedRule)
   })
+
+  it('adds the car park id to the fleets field', () => {
+    const mockedRule = mockedRuleDetail(3)
+    mockedRule.fleets = [{
+      fleetId: '10',
+      carParkId: '50',
+      name: 'Fleet 1',
+      numberOfVehicles: 10
+    }]
+    const convertedRule = convertToAPIRule(mockedRule)
+    expect((convertedRule.affectedFleets[0] as any).carParkId).toBe(mockedRule.fleets[0].carParkId)
+  })
+
 })

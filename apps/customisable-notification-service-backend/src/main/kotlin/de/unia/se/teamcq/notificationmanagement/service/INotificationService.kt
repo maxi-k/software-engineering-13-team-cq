@@ -3,6 +3,7 @@ package de.unia.se.teamcq.notificationmanagement.service
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import org.springframework.stereotype.Service
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
+import de.unia.se.teamcq.notificationmanagement.model.Aggregator
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 
 /**
@@ -12,18 +13,11 @@ import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 interface INotificationService {
 
     /**
-     * Send scheduled Notifications
+     * Send Notifications for a [NotificationRule] according to its [Aggregator]
      *
      * @param notificationRule The [NotificationRule] with a [AggregatorScheduled]
      */
-    fun sendNotificationForScheduledRule(notificationRule: NotificationRule)
-
-    /**
-     * Send non-scheduled Notifications
-     *
-     * @param notificationRule The [NotificationRule] without a [AggregatorScheduled]
-     */
-    fun sendNotificationForNonScheduledRule(notificationRule: NotificationRule)
+    fun sendNotificationForRuleIfNecessary(notificationRule: NotificationRule)
 
     /**
      * Store data needed for future Notifications

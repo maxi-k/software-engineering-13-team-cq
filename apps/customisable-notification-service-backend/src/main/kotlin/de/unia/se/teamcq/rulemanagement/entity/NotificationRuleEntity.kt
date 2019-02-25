@@ -5,9 +5,11 @@ import de.unia.se.teamcq.notificationmanagement.entity.RecipientEntity
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionEntity
 import de.unia.se.teamcq.user.entity.UserEntity
 import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
+import de.unia.se.teamcq.vehiclestate.entity.VehicleStateEntity
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
 import java.io.Serializable
+import java.sql.Timestamp
 import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
@@ -46,7 +48,7 @@ data class NotificationRuleEntity(
     var aggregator: AggregatorEntity? = null,
 
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], targetEntity = RecipientEntity::class,
-            orphanRemoval = true)
+    orphanRemoval = true)
     // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
     @Fetch(value = FetchMode.SUBSELECT)
     var recipients: List<RecipientEntity>? = mutableListOf(),
@@ -60,6 +62,18 @@ data class NotificationRuleEntity(
     @OrderColumn
     var affectedFleets: List<FleetReferenceEntity>? = mutableListOf(),
 
-    var affectingAllApplicableFleets: Boolean? = null
+    @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH])
+    // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
+    @Fetch(value = FetchMode.SUBSELECT)
+    var processedVehicleStates: Set<VehicleStateEntity>? = mutableSetOf(),
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH])
+    // https://stackoverflow.com/questions/4334970/hibernate-cannot-simultaneously-fetch-multiple-bags
+    @Fetch(value = FetchMode.SUBSELECT)
+    var matchedVehicleStatesNotYetSent: Set<VehicleStateEntity>? = mutableSetOf(),
+
+    var affectingAllApplicableFleets: Boolean? = null,
+
+    var lastUpdate: Timestamp? = null
 
 ) : Serializable

@@ -1,8 +1,6 @@
 package de.unia.se.teamcq.scheduling.job
 
-import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
-import de.unia.se.teamcq.notificationmanagement.service.NotificationService
-import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
+import de.unia.se.teamcq.notificationmanagement.service.IRuleStateProcessingService
 import de.unia.se.teamcq.scheduling.job.JobTestUtils.invokeScheduledJobExecuteInternal
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -21,16 +19,13 @@ import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [TestConfiguration::class])
-class ScheduledAggregatorRuleJobTest : StringSpec() {
+class NotificationRuleJobTest : StringSpec() {
 
     @MockK
-    private lateinit var notificationService: NotificationService
-
-    @MockK
-    private lateinit var notificationRuleService: INotificationRuleService
+    private lateinit var ruleStateProcessingService: IRuleStateProcessingService
 
     @InjectMockKs
-    private lateinit var scheduledAggregatorRuleJob: ScheduledAggregatorRuleJob
+    private lateinit var notificationRuleJob: NotificationRuleJob
 
     init {
         MockKAnnotations.init(this)
@@ -43,18 +38,15 @@ class ScheduledAggregatorRuleJobTest : StringSpec() {
             val jobDataMap = JobDataMap()
             jobDataMap["ruleId"] = "2"
 
-            val notificationRule = getTestNotificationRuleModel()
-
             every { jobExecutionContext.jobDetail } returns jobDetail
             every { jobDetail.key } returns JobKey("1", "notification-triggers")
             every { jobExecutionContext.mergedJobDataMap } returns jobDataMap
-            every { notificationRuleService.getNotificationRule(any()) } returns notificationRule
-            every { notificationService.sendNotificationForScheduledRule(any()) } just Runs
+            every { ruleStateProcessingService.processNewVehicleStatesForRule(any()) } just Runs
 
-            invokeScheduledJobExecuteInternal(scheduledAggregatorRuleJob, jobExecutionContext)
+            invokeScheduledJobExecuteInternal(notificationRuleJob, jobExecutionContext)
 
             verify(exactly = 1) {
-                notificationService.sendNotificationForScheduledRule(any())
+                ruleStateProcessingService.processNewVehicleStatesForRule(any())
             }
         }
     }

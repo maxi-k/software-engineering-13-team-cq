@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull
 data class FleetReferenceDto(
 
     @get: NotNull
-    var fleetId: String? = null
+    var fleetId: String? = null,
+
+    var carParkId: String? = null
 
 ) : Serializable

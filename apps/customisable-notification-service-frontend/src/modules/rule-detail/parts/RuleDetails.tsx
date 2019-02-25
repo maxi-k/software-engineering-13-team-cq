@@ -11,6 +11,7 @@ import { NotificationRuleDetail, Fleet, AggregatorStrategy } from '@/model'
 
 import RuleIcon from '@/modules/shared/components/RuleIcon'
 import AggregatorDescription from '@/modules/shared/components/AggregatorDescription'
+
 import FieldDescriptor from '../components/FieldDescriptor'
 import PropertyTag from '../components/PropertyTag'
 import RuleRecipientTag from '../components/RuleRecipientTag'
@@ -112,10 +113,10 @@ const RuleDetails: React.SFC<RuleDetailsProps> = ({ rule, fleets, ...otherProps 
             )}
         </>
         } />
-
       <FieldDescriptor
         label={"cns.rule.field.aggregator.label"}
-        content={<AggregatorDescription aggregator={(rule.aggregator || { strategy: AggregatorStrategy.Immediate })} />
+        content={
+          <AggregatorDescription aggregator={(rule.aggregator || { strategy: AggregatorStrategy.Immediate })} />
         } />
     </StyledInfoBlock>
   </StyledRuleInformation>

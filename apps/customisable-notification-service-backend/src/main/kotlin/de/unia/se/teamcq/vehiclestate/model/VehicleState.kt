@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.vehiclestate.model
 
+import java.sql.Timestamp
 import javax.validation.constraints.NotNull
 
 // Constructor with (null)-default values for everything necessary for MapStruct
@@ -12,6 +13,7 @@ data class VehicleState(
     var vehicleReference: VehicleReference? = null,
 
     @get: NotNull
-    var vehicleStateDataTypes: Set<VehicleStateDataType> = mutableSetOf()
+    var vehicleStateDataTypes: Set<VehicleStateDataType> = mutableSetOf(),
 
+    var created: Timestamp? = null
 )

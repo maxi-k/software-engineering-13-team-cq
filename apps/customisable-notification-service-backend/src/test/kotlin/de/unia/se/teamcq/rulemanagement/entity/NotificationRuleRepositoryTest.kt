@@ -6,10 +6,13 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntityWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateEntity
+import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.ruleevaluation.entity.RuleConditionCompositeEntity
 import de.unia.se.teamcq.ruleevaluation.model.RuleConditionComposite
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
+import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateEntityRepository
 import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.matchers.withClue
 import io.kotlintest.should
@@ -26,6 +29,9 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
     @Autowired
     lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
+
+    @Autowired
+    private lateinit var vehicleStateEntityRepository: IVehicleStateEntityRepository
 
     @Autowired
     lateinit var userEntityRepository: IUserEntityRepository
@@ -57,6 +63,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 owner!!.name = "test1"
                 setIdsOfRelatedRepositoryEntities(savedNotificationRuleEntity)
             }
+            notificationRulesForUser.first().lastUpdate shouldBe expectedNotificationRule.lastUpdate
             notificationRulesForUser.first() shouldBe expectedNotificationRule
         }
 
@@ -91,16 +98,16 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 setIdsOfRelatedRepositoryEntities(savedNotificationRule!!)
             }
 
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule, savedNotificationRule!!)
             savedNotificationRule shouldBe expectedNotificationRule
 
             withClue("rule fleet ordering should be persisted") {
-                savedNotificationRule!!.affectedFleets.forEachIndexed { index, fleetEntity ->
+                savedNotificationRule.affectedFleets.forEachIndexed { index, fleetEntity ->
                     fleetEntity shouldBe expectedNotificationRule.affectedFleets[index]
                 }
             }
         }
 
-        // TODO: Does *not* fail when incorrectly using EntityManager#merge in the resository save function yet
         "CreateNotificationRule should use existing fleets" {
 
             userEntityRepository.save(getTestUserEntity())
@@ -128,10 +135,12 @@ class NotificationRuleRepositoryTest : StringSpec() {
                 setIdsOfRelatedRepositoryEntities(savedNotificationRule2!!)
             }
 
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule1, savedNotificationRule1!!)
             savedNotificationRule1 shouldBe expectedNotificationRule1
+            assertTimestampAndIgnoreItAfter(expectedNotificationRule2, savedNotificationRule2!!)
             savedNotificationRule2 shouldBe expectedNotificationRule2
 
-            // savedNotificationRule1.affectedFleets[0] shouldBe savedNotificationRule2.affectedFleets[0]
+            savedNotificationRule1.affectedFleets[0] shouldBe savedNotificationRule2.affectedFleets[0]
         }
 
         "UpdateNotificationRule" should {
@@ -156,7 +165,10 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
                 val updatedNotificationRule = notificationRuleRepository.updateNotificationRule(newNotificationRuleWithNewUser)!!
 
-                updatedNotificationRule.copy(owner = null) shouldBe newNotificationRuleWithNewUser.copy(owner = null)
+                val actualNotificationRule = updatedNotificationRule.copy(owner = null)
+                val expectedNotificationRule = newNotificationRuleWithNewUser.copy(owner = null)
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, actualNotificationRule)
+                expectedNotificationRule shouldBe actualNotificationRule
                 updatedNotificationRule.owner shouldBe oldUserModel
             }
 
@@ -179,6 +191,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                         // Ids of Subclasses of abstract classes may have changed
                         .apply { setIdsOfRelatedRepositoryEntities(updatedNotificationRule) }
 
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, updatedNotificationRule)
                 updatedNotificationRule shouldBe expectedNotificationRule
             }
 
@@ -201,6 +214,7 @@ class NotificationRuleRepositoryTest : StringSpec() {
                         // Ids of Subclasses of abstract classes may have changed
                         .apply { setIdsOfRelatedRepositoryEntities(updatedNotificationRule) }
 
+                assertTimestampAndIgnoreItAfter(expectedNotificationRule, updatedNotificationRule)
                 updatedNotificationRule shouldBe expectedNotificationRule
             }
         }
@@ -209,11 +223,68 @@ class NotificationRuleRepositoryTest : StringSpec() {
 
             userEntityRepository.save(getTestUserEntity())
 
-            val savedUserEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
 
-            notificationRuleRepository.deleteNotificationRule(savedUserEntity.ruleId!!)
+            notificationRuleRepository.deleteNotificationRule(savedRuleEntity.ruleId!!)
 
-            notificationRuleEntityRepository.existsById(savedUserEntity.ruleId!!) shouldBe false
+            notificationRuleEntityRepository.existsById(savedRuleEntity.ruleId!!) shouldBe false
+        }
+
+        "GetVehicleStateMatchesForRule and AddVehicleStateMatchForRule should work" {
+
+            userEntityRepository.save(getTestUserEntity())
+
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
+            val savedVehicleStateModelWithCorrectId = getTestVehicleStateModel().copy(
+                    stateId = savedVehicleStateEntity.stateId
+            )
+
+            notificationRuleRepository.addVehicleStateMatchForRule(savedRuleEntity.ruleId!!,
+                    savedVehicleStateModelWithCorrectId
+            )
+            val vehicleStateMatches = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatch = vehicleStateMatches.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatch shouldBe true
+        }
+
+        "DeleteAllVehicleStateMatchesForRule should work" {
+
+            userEntityRepository.save(getTestUserEntity())
+
+            val savedRuleEntity = notificationRuleEntityRepository.save(getTestNotificationRuleEntity())
+            val savedVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
+            val savedVehicleStateModelWithCorrectId = getTestVehicleStateModel().copy(
+                    stateId = savedVehicleStateEntity.stateId
+            )
+
+            notificationRuleRepository.addVehicleStateMatchForRule(savedRuleEntity.ruleId!!,
+                    savedVehicleStateModelWithCorrectId
+            )
+            val vehicleStateMatches = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatch = vehicleStateMatches.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatch shouldBe true
+
+            notificationRuleRepository.deleteAllVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val vehicleStateMatchesAfter = notificationRuleRepository
+                    .getVehicleStateMatchesForRule(savedRuleEntity.ruleId!!)
+
+            val foundSavedVehicleStateMatchAfter = vehicleStateMatchesAfter.any { vehicleState ->
+                vehicleState.stateId == savedVehicleStateEntity.stateId
+            }
+
+            foundSavedVehicleStateMatchAfter shouldBe false
         }
     }
 
@@ -233,6 +304,15 @@ class NotificationRuleRepositoryTest : StringSpec() {
         }
 
         owner!!.userSettings!!.settingsId = savedNotificationRule.owner!!.userSettings!!.settingsId
+    }
+
+    private fun assertTimestampAndIgnoreItAfter(
+        olderRuleVersion: NotificationRule,
+        newerRuleVersion: NotificationRule
+    ) {
+        olderRuleVersion.lastUpdate!!.before(newerRuleVersion.lastUpdate!!) shouldBe true
+        olderRuleVersion.lastUpdate = null
+        newerRuleVersion.lastUpdate = null
     }
 }
 

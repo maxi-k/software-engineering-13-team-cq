@@ -12,11 +12,13 @@ import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.mapping.IUserMapper
 import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
 import org.mapstruct.Mapper
+import org.mapstruct.ReportingPolicy
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Mapper(componentModel = "spring", uses = [IUserMapper::class, IRuleConditionMapper::class,
-    IAggregatorMapper::class, RecipientMapperHelper::class, IFleetReferenceMapper::class])
+    IAggregatorMapper::class, RecipientMapperHelper::class, IFleetReferenceMapper::class],
+        unmappedTargetPolicy = ReportingPolicy.IGNORE)
 interface INotificationRuleMapper {
 
     fun modelToEntity(notificationRule: NotificationRule): NotificationRuleEntity

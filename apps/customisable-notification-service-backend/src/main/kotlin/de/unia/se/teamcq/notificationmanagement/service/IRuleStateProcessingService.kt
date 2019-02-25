@@ -11,7 +11,9 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleState
 interface IRuleStateProcessingService {
 
     /**
-     * Process all new, unprocessed [VehicleState]s
+     * Process all new, unprocessed [VehicleState]s for a [NotificationRule]
+     *
+     * @param ruleId The ID of the [NotificationRule]
      */
-    fun processNewVehicleStates()
+    fun processNewVehicleStatesForRule(ruleId: Long)
 }

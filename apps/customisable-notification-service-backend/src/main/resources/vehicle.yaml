@@ -1,0 +1,422 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: BMWFD Vehicle
+  description: BMW FleetData Vehicle API
+servers:
+  - url: https://unia-se-teamcq-apimock-backend.herokuapp.com/api
+paths:
+  /vehicles:
+    get:
+      description: |
+        Returns all vehicles for a given car park or fleet(s). Only shows vehicles the user is allowed to see.
+      tags:
+        - vehicle-states
+      parameters:
+        - name: car_park
+          in: query
+          description: car_park
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: fleets
+          in: query
+          description: fleets
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: updated_since
+          in: query
+          description: car_park
+          required: false
+          schema:
+            type: string
+            format: date-time
+      operationId: getAllVehicles
+      responses:
+        '200':
+          description: vehicle response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vehicle'
+            text/csv:
+              schema:
+                type: string
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    post:
+      description: Adds a new vehicle or updates an existing vehicle. Only some properties of the vehicle may be updated
+        through this operation, most vehicle properties are fetched from svds and ccg.
+      tags:
+        - vehicle-states
+      operationId: createVehicle
+      requestBody:
+        description: Vehicle to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vehicle'
+      responses:
+        '200':
+          description: car park response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+  /vehicles/{vin}:
+    parameters:
+      - name: vin
+        in: path
+        description: Vehicle identification number
+        required: true
+        schema:
+          type: string
+    get:
+      description: Returns a vehicle based on a single VIN.
+      tags:
+        - vehicle-states
+      operationId: getVehicleByVIN
+      responses:
+        '200':
+          description: vehicle response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+    delete:
+      description: deletes a single vehicle based on the VIN supplied.
+      tags:
+        - vehicle-states
+      operationId: deleteVehicle
+      responses:
+        '200':
+          description: vehicle deleted
+        default:
+          $ref: 'error.yaml#/components/responses/Error'
+components:
+  schemas:
+    Contract:
+      properties:
+        startMileage:
+          type: integer
+          minimum: 0
+        startDate:
+          type: string
+          format: date
+        endMileage:
+          type: integer
+          minimum: 1
+        endDate:
+          type: string
+          format: date
+        remainingDays:
+          type: integer
+          format: int32
+        reachedRuntimePercentage:
+          type: integer
+          format: int32
+    Variant:
+      type: object
+      properties:
+        color:
+          type: string
+        doors:
+          type: integer
+        steering:
+          type: string
+        extraEquipment:
+          type: array
+          items:
+            type: object
+            properties:
+              saCode:
+                type: string
+              description:
+                type: string
+    Engine:
+      type: object
+      properties:
+        power:
+          type: integer
+        capacity:
+          type: integer
+        fuelType:
+          type: string
+        transmissionType:
+          type: string
+    Fuel:
+      type: object
+      properties:
+        levelPercentage:
+          type: number
+          format: double
+        levelLiters:
+          type: integer
+        tankCapacity:
+          type: number
+          format: double
+        remainingRange:
+          type: integer
+    Battery:
+      type: object
+      properties:
+        levelPercentage:
+          type: number
+          format: float
+        voltage:
+          type: number
+          format: float
+        chargingStatus:
+          type: string
+        remainingChargingHours:
+          type: integer
+        remainingRange:
+          type: integer
+    ConditionBasedService:
+      type: object
+      properties:
+        dueDate:
+          type: string
+        id:
+          type: string
+        remainingMileage:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+            - OK
+            - WARNING
+            - CRITICAL
+    CheckControlMessage:
+      type: object
+      properties:
+        id:
+          type: string
+        mileage:
+          type: integer
+          format: int32
+        localizedMessages:
+          type: object
+          properties:
+            en:
+              type: string
+            de:
+              type: string
+        firstSeen:
+          type: string
+          format: date-time
+        critical:
+          type: boolean
+    CheckControlMessages:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - OK
+            - WARNING
+            - CRITICAL
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckControlMessage'
+    ServiceStatus:
+      type: object
+      properties:
+        brakeFluid:
+          $ref: '#/components/schemas/ConditionBasedService'
+        dueDate:
+          type: string
+        engineOil:
+          $ref: '#/components/schemas/ConditionBasedService'
+        exhaustGasInspection:
+          $ref: '#/components/schemas/ConditionBasedService'
+        frontBrake:
+          $ref: '#/components/schemas/ConditionBasedService'
+        rearBrake:
+          $ref: '#/components/schemas/ConditionBasedService'
+        remainingDays:
+          type: integer
+          format: int32
+        remainingMileage:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+            - OK
+            - WARNING
+            - CRITICAL
+        statutoryVehicleInspection:
+          $ref: '#/components/schemas/ConditionBasedService'
+        vehicleCheck:
+          $ref: '#/components/schemas/ConditionBasedService'
+    Mileage:
+      type: object
+      properties:
+        current:
+          type: integer
+          format: int32
+        remaining:
+          type: integer
+          format: int32
+        reachedPercentage:
+          type: integer
+          format: int32
+          description: Percentage of current mileage reached in relation to contract start and contract end.
+        averagePerWeek:
+          type: integer
+          format: int32
+        expectedExceedance:
+          type: integer
+          format: int32
+        forecastEndContract:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+            - OK
+            - WARNING
+            - CRITICAL
+    Vehicle:
+      required:
+        - vin
+      properties:
+        vin:
+          type: string
+        carPark:
+          type: string
+          format: uuid
+        fleet:
+          type: string
+          format: uuid
+        image:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        series:
+          type: string
+        variant:
+          $ref: '#/components/schemas/Variant'
+        licensePlate:
+          type: string
+        note:
+          type: string
+        contract:
+          $ref: '#/components/schemas/Contract'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        fuel:
+          $ref: '#/components/schemas/Fuel'
+        battery:
+          $ref: '#/components/schemas/Battery'
+        mileage:
+          $ref: '#/components/schemas/Mileage'
+        serviceStatus:
+          $ref: '#/components/schemas/ServiceStatus'
+        checkControlMessages:
+          $ref: '#/components/schemas/CheckControlMessages'
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        fleetIn:
+          type: string
+          format: date-time
+        lastDataTransfer:
+          type: string
+          format: date-time
+        dataQuality:
+          type: string
+          enum:
+            - NO_DATA
+            - UP_TO_DATE
+            - ALMOST_UP_TO_DATE
+            - OUT_OF_DATE
+            - DATA_TRANSFER_ERROR
+        usersWithReadPermission:
+          type: array
+          description: 'Is only returned if called with ?expand=usersWithReadPermission'
+          items:
+            type: string
+    SyncStatus:
+      type: object
+      properties:
+        ccg:
+          $ref: '#/components/schemas/CCGStatus'
+        tsrm:
+          $ref: '#/components/schemas/TSRMStatus'
+        vin:
+          type: string
+      title: SyncStatus
+    CCGStatus:
+      type: object
+      properties:
+        error:
+          type: string
+        lastSuccess:
+          type: string
+          format: date-time
+        lastTry:
+          type: string
+          format: date-time
+        numTries:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+            - INACTIVE
+            - PENDING
+            - SUCCESS
+            - NO_DATA
+            - ERROR
+        lastCBSUpdate:
+          type: string
+          format: date-time
+        lastCCMUpdate:
+          type: string
+          format: date-time
+    TSRMStatus:
+      type: object
+      properties:
+        error:
+          type: string
+        lastTry:
+          type: string
+          format: date-time
+        numTries:
+          type: integer
+          format: int32
+        status:
+          type: string
+          enum:
+            - INACTIVE
+            - NOT_NEEDED
+            - INSERT_PENDING
+            - INSERT_SUCCESS
+            - INSERT_ERROR
+            - DELETE_PENDING
+            - DELETE_SUCCESS
+            - DELETE_ERROR

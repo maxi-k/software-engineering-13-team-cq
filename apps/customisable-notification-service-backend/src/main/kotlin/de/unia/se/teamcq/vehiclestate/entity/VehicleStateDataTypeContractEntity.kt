@@ -4,19 +4,16 @@ import java.io.Serializable
 import javax.persistence.Column
 import javax.persistence.ElementCollection
 import javax.persistence.Entity
-import javax.validation.constraints.NotNull
 
 @Entity
 class VehicleStateDataTypeContractEntity(
 
-    @get: NotNull
     var duePerWeek: Int? = null,
 
     @ElementCollection
     @Column(name = "vin")
     var vins: Set<String>? = mutableSetOf(),
 
-    @get: NotNull
     var calendarWeek: Int? = null,
 
     dataTypeId: Long? = null
