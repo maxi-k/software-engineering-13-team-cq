@@ -26,7 +26,7 @@ class NotificationScheduler : INotificationScheduler {
     @Autowired
     private lateinit var scheduler: Scheduler
 
-    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 0/1 * * * ?}")
+    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 2 * * * ?}")
     private lateinit var dataImportCronString: String
 
     @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 0/1 * * * ?}")
