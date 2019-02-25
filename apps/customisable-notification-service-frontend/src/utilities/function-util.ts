@@ -15,4 +15,6 @@ export const mapArguments = <I, N, O>(
   mapperFunction: ((newInput: N) => I)
 ): ((newInput: N) => O) => (
     (actualInput: N) => functionToApply(mapperFunction(actualInput))
-)
+  )
+
+export const identity = <T>(value: T): T => value

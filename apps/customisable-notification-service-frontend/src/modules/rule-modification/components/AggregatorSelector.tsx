@@ -14,6 +14,7 @@ import CheckBoxIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 
 import { AggregatorComponentAttributes } from '../aggregator-common'
 import CountingAggregator from './CountingAggregator'
+import ScheduledAggregator from './ScheduledAggregator'
 
 interface AggregatorSelectorAttributes
   extends AggregatorComponentAttributes {
@@ -42,6 +43,8 @@ const aggregatorComponentForStrategy = (
   switch (strategy) {
     case AggregatorStrategy.Counting:
       return CountingAggregator
+    case AggregatorStrategy.Scheduled:
+      return ScheduledAggregator
     case AggregatorStrategy.Immediate:
     default:
       return (props) => <div />
