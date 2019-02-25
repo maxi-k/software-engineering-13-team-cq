@@ -18,6 +18,14 @@ data class VehicleReferenceEntity(
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.PERSIST])
     @JoinColumn(name = "fk_fleet")
-    var fleetReference: FleetReferenceEntity? = null
+    var fleetReference: FleetReferenceEntity? = null,
+
+    var brand: String? = null,
+
+    var model: String? = null,
+
+    var series: String? = null,
+
+    var note: String? = null
 
 ) : Serializable

@@ -15,9 +15,9 @@ class VehicleStateDataTypeFuelEntityTest : StringSpec() {
             testEqualAndHashCode(
                     ::getTestVehicleStateDataTypeFuelEntity,
                     { it.dataTypeId = 3 },
-                    { it.level = 20.0 },
-                    { it.liters = 20 },
-                    { it.range = 20 }
+                    { it.levelPercentage = 20.0 },
+                    { it.levelLiters = 20 },
+                    { it.tankCapacity = 20.0 }
             )
         }
     }

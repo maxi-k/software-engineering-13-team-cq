@@ -13,7 +13,9 @@ class VehicleStateDataTypeEngine(
 
     var capacity: Int? = null,
 
-    var fuelType: String? = null,
+    var chargingStatus: String? = null,
+
+    var transmissionType: String? = null,
 
     dataTypeId: Long? = null
 
@@ -28,7 +30,8 @@ class VehicleStateDataTypeEngine(
         return when (fieldName) {
             "power" -> this.power
             "capacity" -> this.capacity
-            "fuelType" -> this.fuelType
+            "chargingStatus" -> this.chargingStatus
+            "transmissionType" -> this.transmissionType
             else -> super.retrieveFieldValue(fieldName)
         }
     }
@@ -41,7 +44,8 @@ class VehicleStateDataTypeEngine(
 
         if (power != other.power) return false
         if (capacity != other.capacity) return false
-        if (fuelType != other.fuelType) return false
+        if (chargingStatus != other.chargingStatus) return false
+        if (transmissionType != other.transmissionType) return false
         if (predicateFieldProviderName != other.predicateFieldProviderName) return false
         if (predicateFields != other.predicateFields) return false
 
@@ -53,7 +57,8 @@ class VehicleStateDataTypeEngine(
         var result = super.hashCode()
         result = 31 * result + (power ?: 0)
         result = 31 * result + (capacity ?: 0)
-        result = 31 * result + (fuelType?.hashCode() ?: 0)
+        result = 31 * result + (chargingStatus?.hashCode() ?: 0)
+        result = 31 * result + (transmissionType?.hashCode() ?: 0)
         result = 31 * result + predicateFieldProviderName.hashCode()
         result = 31 * result + predicateFields.hashCode()
         return result
@@ -62,9 +67,10 @@ class VehicleStateDataTypeEngine(
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Engine"
         val PREDICATE_FIELDS = mapOf(
-            "power" to PredicateField("power", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            "capacity" to PredicateField("capacity", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            "fuelType" to PredicateField("fuelType", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+            "power" to PredicateField("power", FieldDataType.HORSEPOWER, EvaluationStrategies.NUMERIC),
+            "capacity" to PredicateField("capacity", FieldDataType.CAPACITY, EvaluationStrategies.NUMERIC),
+            "chargingStatus" to PredicateField("chargingStatus", FieldDataType.TEXT, EvaluationStrategies.TEXT),
+            "transmissionType" to PredicateField("transmissionType", FieldDataType.TEXT, EvaluationStrategies.TEXT)
         )
     }
 }

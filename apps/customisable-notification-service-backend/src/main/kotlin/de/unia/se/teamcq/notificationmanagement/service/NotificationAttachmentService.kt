@@ -67,7 +67,8 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
         // TODO: Consider using fleetReference.fetchVehicleData to retrieve more information
         // TODO: than the one below, see #150
-        val vehicleStateFields = listOf(STATE_ID_FIELD_NAME, VIN_FIELD_NAME)
+        val vehicleStateFields = listOf(STATE_ID_FIELD_NAME, VIN_FIELD_NAME, BRAND_FIELD_NAME,
+                SERIES_FIELD_NAME, MODEL_FIELD_NAME, NOTE_FIELD_NAME)
 
         val vehicleStateDataTypeFieldNames = dataTypeNamesToFields.flatMap { (nameOfProviderWithField, fieldNames) ->
             fieldNames.map { fieldName ->
@@ -90,7 +91,11 @@ class NotificationAttachmentService : INotificationAttachmentService {
 
         val vehicleStateFieldValues = listOf(
                 vehicleState.stateId,
-                vehicleState.vehicleReference?.vin
+                vehicleState.vehicleReference?.vin,
+                vehicleState.vehicleReference?.brand,
+                vehicleState.vehicleReference?.series,
+                vehicleState.vehicleReference?.model,
+                vehicleState.vehicleReference?.note
         )
 
         val allVehicleStateDataTypes = vehicleState.vehicleStateDataTypes.map { dataType ->
@@ -123,6 +128,10 @@ class NotificationAttachmentService : INotificationAttachmentService {
     companion object {
         private const val STATE_ID_FIELD_NAME = "state_id"
         private const val VIN_FIELD_NAME = "vin"
+        private const val BRAND_FIELD_NAME = "brand"
+        private const val MODEL_FIELD_NAME = "model"
+        private const val SERIES_FIELD_NAME = "series"
+        private const val NOTE_FIELD_NAME = "note"
 
         // ISO 8601, see https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
         private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").apply {

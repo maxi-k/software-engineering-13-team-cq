@@ -13,7 +13,11 @@ class VehicleStateDataTypeBattery(
 
     var voltage: Double? = null,
 
-    var status: String? = null,
+    var chargingStatus: String? = null,
+
+    var remainingChargingHours: Int? = null,
+
+    var remainingRange: Int? = null,
 
     dataTypeId: Long? = null
 
@@ -28,7 +32,9 @@ class VehicleStateDataTypeBattery(
         return when (fieldName) {
             "charge" -> this.charge
             "voltage" -> this.voltage
-            "status" -> this.status
+            "chargingStatus" -> this.chargingStatus
+            "remainingChargingHours" -> this.remainingChargingHours
+            "remainingRange" -> this.remainingRange
             else -> super.retrieveFieldValue(fieldName)
         }
     }
@@ -41,7 +47,9 @@ class VehicleStateDataTypeBattery(
 
         if (charge != other.charge) return false
         if (voltage != other.voltage) return false
-        if (status != other.status) return false
+        if (chargingStatus != other.chargingStatus) return false
+        if (remainingChargingHours != other.remainingChargingHours) return false
+        if (remainingRange != other.remainingRange) return false
         if (predicateFieldProviderName != other.predicateFieldProviderName) return false
         if (predicateFields != other.predicateFields) return false
 
@@ -53,7 +61,9 @@ class VehicleStateDataTypeBattery(
         var result = super.hashCode()
         result = 31 * result + (charge?.hashCode() ?: 0)
         result = 31 * result + (voltage?.hashCode() ?: 0)
-        result = 31 * result + (status?.hashCode() ?: 0)
+        result = 31 * result + (chargingStatus?.hashCode() ?: 0)
+        result = 31 * result + (remainingChargingHours ?: 0)
+        result = 31 * result + (remainingRange ?: 0)
         result = 31 * result + predicateFieldProviderName.hashCode()
         result = 31 * result + predicateFields.hashCode()
         return result
@@ -62,9 +72,11 @@ class VehicleStateDataTypeBattery(
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Battery"
         val PREDICATE_FIELDS = mapOf(
-            "charge" to PredicateField("charge", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
-            "voltage" to PredicateField("voltage", FieldDataType.DECIMAL, EvaluationStrategies.NUMERIC),
-            "status" to PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
+            "charge" to PredicateField("charge", FieldDataType.PERCENTAGE_DECIMAL, EvaluationStrategies.NUMERIC),
+            "voltage" to PredicateField("voltage", FieldDataType.VOLTAGE, EvaluationStrategies.NUMERIC),
+            "chargingStatus" to PredicateField("chargingStatus", FieldDataType.TEXT, EvaluationStrategies.TEXT),
+            "remainingChargingHours" to PredicateField("remainingChargingHours", FieldDataType.HOUR, EvaluationStrategies.TEXT),
+            "remainingRange" to PredicateField("remainingRange", FieldDataType.KILOMETER, EvaluationStrategies.TEXT)
         )
     }
 }

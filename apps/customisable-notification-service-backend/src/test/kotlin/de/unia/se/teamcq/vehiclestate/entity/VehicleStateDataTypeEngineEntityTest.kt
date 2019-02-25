@@ -16,7 +16,7 @@ class VehicleStateDataTypeEngineEntityTest : StringSpec() {
                     ::getTestVehicleStateDataTypeEngineEntity,
                     { it.dataTypeId = 3 },
                     { it.capacity = 20 },
-                    { it.fuelType = "test" },
+                    { it.chargingStatus = "test" },
                     { it.power = 20 }
             )
         }

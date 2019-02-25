@@ -5,6 +5,14 @@ data class VehicleReference(
 
     var vin: String? = null,
 
-    var fleetReference: FleetReference? = null
+    var fleetReference: FleetReference? = null,
+
+    var brand: String? = null,
+
+    var model: String? = null,
+
+    var series: String? = null,
+
+    var note: String? = null
 
 )

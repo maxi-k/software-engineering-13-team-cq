@@ -5,7 +5,6 @@ import de.unia.se.teamcq.TestUtils.testEqualAndHashCode
 import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
-import java.util.Date
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class VehicleStateDataTypeServiceTest : StringSpec() {
@@ -16,9 +15,9 @@ class VehicleStateDataTypeServiceTest : StringSpec() {
             testEqualAndHashCode(
                     ::getTestVehicleStateDataTypeServiceModel,
                     { it.dataTypeId = 3 },
-                    { it.brakeFluid = "test" },
-                    { it.dueDate = Date(10) },
-                    { it.status = "test" }
+                    { it.status = "test" },
+                    { it.dueDate = "test" },
+                    { it.remainingMileage = 20 }
             )
         }
     }

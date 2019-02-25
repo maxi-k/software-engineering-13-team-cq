@@ -16,7 +16,7 @@ class AuthenticationTokenAdapterTest : StringSpec() {
     init {
         MockKAnnotations.init(this)
 
-        "SendNotification should work when the API-Mock is running".config(enabled = false) {
+        "GetAuthenticationHeader should work when the API-Mock is running".config(enabled = false) {
 
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")

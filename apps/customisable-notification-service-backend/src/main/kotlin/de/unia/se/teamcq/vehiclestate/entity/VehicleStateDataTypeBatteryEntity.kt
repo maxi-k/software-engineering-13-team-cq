@@ -8,7 +8,9 @@ class VehicleStateDataTypeBatteryEntity(
 
     var charge: Double? = null,
     var voltage: Double? = null,
-    var status: String? = null,
+    var chargingStatus: String? = null,
+    var remainingChargingHours: Int? = null,
+    var remainingRange: Int? = null,
     dataTypeId: Long? = null
 
 ) : VehicleStateDataTypeEntity(dataTypeId), Serializable {
@@ -21,7 +23,9 @@ class VehicleStateDataTypeBatteryEntity(
 
         if (charge != other.charge) return false
         if (voltage != other.voltage) return false
-        if (status != other.status) return false
+        if (chargingStatus != other.chargingStatus) return false
+        if (remainingChargingHours != other.remainingChargingHours) return false
+        if (remainingRange != other.remainingRange) return false
 
         return true
     }
@@ -31,7 +35,9 @@ class VehicleStateDataTypeBatteryEntity(
         var result = super.hashCode()
         result = 31 * result + (charge?.hashCode() ?: 0)
         result = 31 * result + (voltage?.hashCode() ?: 0)
-        result = 31 * result + (status?.hashCode() ?: 0)
+        result = 31 * result + (chargingStatus?.hashCode() ?: 0)
+        result = 31 * result + (remainingChargingHours ?: 0)
+        result = 31 * result + (remainingRange ?: 0)
         return result
     }
 }

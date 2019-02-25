@@ -20,8 +20,10 @@ class VehicleStateDataTypeTest : StringSpec() {
             vehicleStateBattery.predicateFields["charge"] shouldNotBe null
             vehicleStateBattery.predicateFields["nonExistent"] shouldBe null
             vehicleStateBattery.retrieveFieldValue("charge") shouldBe vehicleStateBattery.charge
-            vehicleStateBattery.retrieveFieldValue("status") shouldBe vehicleStateBattery.status
+            vehicleStateBattery.retrieveFieldValue("chargingStatus") shouldBe vehicleStateBattery.chargingStatus
+            vehicleStateBattery.retrieveFieldValue("remainingChargingHours") shouldBe vehicleStateBattery.remainingChargingHours
             vehicleStateBattery.retrieveFieldValue("voltage") shouldBe vehicleStateBattery.voltage
+            vehicleStateBattery.retrieveFieldValue("remainingRange") shouldBe vehicleStateBattery.remainingRange
             shouldThrow<IllegalArgumentException> {
                 vehicleStateBattery.retrieveFieldValue("nonExistent")
             }
@@ -29,11 +31,14 @@ class VehicleStateDataTypeTest : StringSpec() {
 
         "VehicleStateDataTypeContract should contain relevant predicate fields" {
             val vehicleStateContract = TestUtils.getTestVehicleStateDataTypeContractModel()
-            vehicleStateContract.predicateFields["duePerWeek"] shouldNotBe null
+            vehicleStateContract.predicateFields["startDate"] shouldNotBe null
             vehicleStateContract.predicateFields["nonExistent"] shouldBe null
-            vehicleStateContract.retrieveFieldValue("duePerWeek") shouldBe vehicleStateContract.duePerWeek
-            vehicleStateContract.retrieveFieldValue("calendarWeek") shouldBe vehicleStateContract.calendarWeek
-            vehicleStateContract.retrieveFieldValue("vins") shouldBe vehicleStateContract.vins
+            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
+            vehicleStateContract.retrieveFieldValue("endDate") shouldBe vehicleStateContract.endDate
+            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
+            vehicleStateContract.retrieveFieldValue("startMileage") shouldBe vehicleStateContract.startMileage
+            vehicleStateContract.retrieveFieldValue("reachedRuntimePercentage") shouldBe vehicleStateContract.reachedRuntimePercentage
+            vehicleStateContract.retrieveFieldValue("remainingDays") shouldBe vehicleStateContract.remainingDays
             shouldThrow<IllegalArgumentException> {
                 vehicleStateContract.retrieveFieldValue("nonExistent")
             }
@@ -44,8 +49,9 @@ class VehicleStateDataTypeTest : StringSpec() {
             vehicleStateEngine.predicateFields["power"] shouldNotBe null
             vehicleStateEngine.predicateFields["nonExistent"] shouldBe null
             vehicleStateEngine.retrieveFieldValue("power") shouldBe vehicleStateEngine.power
-            vehicleStateEngine.retrieveFieldValue("fuelType") shouldBe vehicleStateEngine.fuelType
             vehicleStateEngine.retrieveFieldValue("capacity") shouldBe vehicleStateEngine.capacity
+            vehicleStateEngine.retrieveFieldValue("chargingStatus") shouldBe vehicleStateEngine.chargingStatus
+            vehicleStateEngine.retrieveFieldValue("transmissionType") shouldBe vehicleStateEngine.transmissionType
             shouldThrow<IllegalArgumentException> {
                 vehicleStateEngine.retrieveFieldValue("nonExistent")
             }
@@ -53,11 +59,12 @@ class VehicleStateDataTypeTest : StringSpec() {
 
         "VehicleStateDataTypeFuel should contain relevant predicate fields" {
             val vehicleStateFuel = TestUtils.getTestVehicleStateDataTypeFuelModel()
-            vehicleStateFuel.predicateFields["liters"] shouldNotBe null
+            vehicleStateFuel.predicateFields["levelLiters"] shouldNotBe null
             vehicleStateFuel.predicateFields["nonExistent"] shouldBe null
-            vehicleStateFuel.retrieveFieldValue("liters") shouldBe vehicleStateFuel.liters
-            vehicleStateFuel.retrieveFieldValue("level") shouldBe vehicleStateFuel.level
-            vehicleStateFuel.retrieveFieldValue("range") shouldBe vehicleStateFuel.range
+            vehicleStateFuel.retrieveFieldValue("levelLiters") shouldBe vehicleStateFuel.levelLiters
+            vehicleStateFuel.retrieveFieldValue("levelPercentage") shouldBe vehicleStateFuel.levelPercentage
+            vehicleStateFuel.retrieveFieldValue("remainingRange") shouldBe vehicleStateFuel.remainingRange
+            vehicleStateFuel.retrieveFieldValue("tankCapacity") shouldBe vehicleStateFuel.tankCapacity
             shouldThrow<IllegalArgumentException> {
                 vehicleStateFuel.retrieveFieldValue("nonExistent")
             }
@@ -69,7 +76,11 @@ class VehicleStateDataTypeTest : StringSpec() {
             vehicleStateMileage.predicateFields["nonExistent"] shouldBe null
             vehicleStateMileage.retrieveFieldValue("current") shouldBe vehicleStateMileage.current
             vehicleStateMileage.retrieveFieldValue("remaining") shouldBe vehicleStateMileage.remaining
-            vehicleStateMileage.retrieveFieldValue("reached") shouldBe vehicleStateMileage.reached
+            vehicleStateMileage.retrieveFieldValue("averagePerWeek") shouldBe vehicleStateMileage.averagePerWeek
+            vehicleStateMileage.retrieveFieldValue("expectedExceedance") shouldBe vehicleStateMileage.expectedExceedance
+            vehicleStateMileage.retrieveFieldValue("forecastEndContract") shouldBe vehicleStateMileage.forecastEndContract
+            vehicleStateMileage.retrieveFieldValue("reachedPercentage") shouldBe vehicleStateMileage.reachedPercentage
+            vehicleStateMileage.retrieveFieldValue("status") shouldBe vehicleStateMileage.status
             shouldThrow<IllegalArgumentException> {
                 vehicleStateMileage.retrieveFieldValue("nonExistent")
             }
@@ -81,7 +92,8 @@ class VehicleStateDataTypeTest : StringSpec() {
             vehicleStateDataTypeService.predicateFields["nonExistent"] shouldBe null
             vehicleStateDataTypeService.retrieveFieldValue("dueDate") shouldBe vehicleStateDataTypeService.dueDate
             vehicleStateDataTypeService.retrieveFieldValue("status") shouldBe vehicleStateDataTypeService.status
-            vehicleStateDataTypeService.retrieveFieldValue("brakeFluid") shouldBe vehicleStateDataTypeService.brakeFluid
+            vehicleStateDataTypeService.retrieveFieldValue("remainingDays") shouldBe vehicleStateDataTypeService.remainingDays
+            vehicleStateDataTypeService.retrieveFieldValue("remainingMileage") shouldBe vehicleStateDataTypeService.remainingMileage
             shouldThrow<IllegalArgumentException> {
                 vehicleStateDataTypeService.retrieveFieldValue("nonExistent")
             }
