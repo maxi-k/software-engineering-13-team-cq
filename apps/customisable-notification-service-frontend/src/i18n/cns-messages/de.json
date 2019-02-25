@@ -18,8 +18,12 @@
     "cns.message.fetch.error.serverError": "Es gab ein Problem während der Anfrage, bitte versuchen Sie es später noch einmal.",
     "cns.page.ruleOverview.title": "Benachrichtigungsregeln",
     "cns.page.ruleCreate.title": "Regel erstellen",
-    "cns.page.ruleEdit.title": "Regel bearbeiten",
-    "cns.page.ruleDelete.title": "Regel löschen",
+    "cns.page.ruleEdit.title": "Regel \"{ruleName}\" bearbeiten",
+    "cns.page.ruleDetail.title": "Regel \"{ruleName}\" ansehen",
+    "cns.page.ruleDelete.title": "Regel \"{ruleName}\" löschen",
+
+    "cns.rule.action.edit.label": "bearbeiten",
+    "cns.rule.action.delete.label": "löschen",
 
     "cns.rule.label": "Benachrichtigungsregel",
 
@@ -35,6 +39,30 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Möchten Sie selbst Benachrichtigungen von dieser Regel erhalten?",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
+    "cns.rule.field.aggregator.label": "Timing",
+
+    "cns.rule.field.aggregator.counting.label": "Anzahl von Events",
+    "cns.rule.field.aggregator.scheduled.description.label": "Diese Regel verschickt Nachrichten zu folgenden Zeiten:",
+    "cns.rule.field.aggregator.scheduled.field.time.label": "Uhrzeit",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Nachrichten jeden Monat verschicken",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Nachrichten an jedem Wochentag verschicken",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryDayOfMonth.label": "Nachrichten an jedem Tag des Monats verschicken",
+    "cns.rule.field.aggregator.scheduled.field.month.label": "Nachrichten in den folgenden Monaten verschicken",
+    "cns.rule.field.aggregator.scheduled.field.weekday.label": "Nachrichten an den folgenden Wochentagen verschicken",
+    "cns.rule.field.aggregator.scheduled.field.dayofmonth.label": "Nachrichten an den folgenden Tagen im Monat verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefinierter Zeitplan",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
+    "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
+    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Geplant Verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.description": "Verschickt regelmäßig Nachrichten mit den gesamelten Daten der aufgetretenen Ereignisse.",
+    "cns.rule.field.aggregator.strategy.value.counting.label": "Gesammelt Verschicken",
+    "cns.rule.field.aggregator.strategy.value.counting.description": "Sammelt eine gewisse Anzahl von Ereignissen bevor eine Nachricht gesendet wird.",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.shortDescription": "Sofort Verschicken",
+    "cns.rule.field.aggregator.strategy.value.counting.shortDescription": "Gesammelt {count} Verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.shortDescription": "Geplant Verschicken",
+
 
     "cns.rule.modification.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
     "cns.rule.modification.step.label": "Schritt",
@@ -105,5 +133,8 @@
     "cns.condition.selector.equalTo": "gleich",
     "cns.condition.selector.unequalTo": "ungleich",
     "cns.condition.selector.below": "kleiner als",
-    "cns.condition.selector.above": "größer als"
+    "cns.condition.selector.above": "größer als",
+
+    "cns.constants.month.label": "{month, select, 1 {Januar} 2 {Februar} 3 {März} 4 {April} 5 {Mai} 6 {Juni} 7 {Juli} 8 {August} 9 {September} 10 {Oktober} 11 {November} 12 {Dezember} other {Unbekannter Monat}}",
+    "cns.constants.weekday.label": "{weekday, select, 0 {Sonntag} 1 {Montag} 2 {Dienstag} 3 {Mittwoch} 4 {Donnerstag} 5 {Freitag} 6 {Samstag} other {Unbekannter Wochentag}}"
 }

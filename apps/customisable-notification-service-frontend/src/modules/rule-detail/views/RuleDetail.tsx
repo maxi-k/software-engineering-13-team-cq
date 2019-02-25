@@ -64,19 +64,20 @@ const RuleDetail: React.SFC<RuleDetailProps> = ({
     <StyledRuleDetail {...props}>
       <ViewHeader
         style={{ padding: '1rem' }}
-        title="cns.page.ruleEdit.title"
-        titleSuffix={` '${rule.name}'`} />
+        title="cns.page.ruleDetail.title"
+        titleValues={{ ruleName: rule.name }}
+      />
       <FlexBar padded>
         <FlexButtonWrapper>
           <BMWButton
             icon={<EmbeddedIcon component={EditIcon} />}
             onClick={onClickEditRule} >
-            <FormattedMessage id="cns.page.ruleEdit.title" />
+            <FormattedMessage id="cns.rule.action.edit.label" />
           </BMWButton>
           <BMWButton
             icon={<EmbeddedIcon component={DeleteIcon} />}
             onClick={onClickDeleteRule} >
-            <FormattedMessage id="cns.page.ruleDelete.title" />
+            <FormattedMessage id="cns.rule.action.delete.label" />
           </BMWButton>
         </FlexButtonWrapper>
         <BackButton goToHome />

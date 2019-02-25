@@ -7,9 +7,11 @@ import { media } from '@/fleetdata/utils/media-query'
 import { mergeFleetInformation } from '@/services/car-park-service'
 import { StateMapper } from '@/state/connector'
 import { carParkFleetsSelector } from '@/state/selectors'
-import { NotificationRuleDetail, Fleet } from '@/model'
+import { NotificationRuleDetail, Fleet, AggregatorStrategy } from '@/model'
 
 import RuleIcon from '@/modules/shared/components/RuleIcon'
+import AggregatorDescription from '@/modules/shared/components/AggregatorDescription'
+
 import FieldDescriptor from '../components/FieldDescriptor'
 import PropertyTag from '../components/PropertyTag'
 import RuleRecipientTag from '../components/RuleRecipientTag'
@@ -101,13 +103,20 @@ const RuleDetails: React.SFC<RuleDetailsProps> = ({ rule, fleets, ...otherProps 
       <FieldDescriptor
         label={"cns.rule.field.dataSources.label"}
         content={<>
-          {(rule.dataSources || []).map((dataSource) => (
-            <RuleIcon
-              key={dataSource}
-              type={dataSource}
-              label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
-          )}
+          {(rule.dataSources || [])
+            .filter((dataSource) => dataSource !== null && typeof dataSource !== 'undefined')
+            .map((dataSource) => (
+              <RuleIcon
+                key={dataSource}
+                type={dataSource}
+                label={`cns.vehicle.status.${dataSource.toLowerCase()}.label`} />)
+            )}
         </>
+        } />
+      <FieldDescriptor
+        label={"cns.rule.field.aggregator.label"}
+        content={
+          <AggregatorDescription aggregator={(rule.aggregator || { strategy: AggregatorStrategy.Immediate })} />
         } />
     </StyledInfoBlock>
   </StyledRuleInformation>

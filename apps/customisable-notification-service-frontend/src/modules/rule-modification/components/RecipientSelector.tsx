@@ -19,7 +19,7 @@ export interface RecipientSelectorAttributes {
   styles?(theme: WithTheme): StylesConfig,
 }
 
-type RecipientSelectorProps = RecipientSelectorAttributes & Partial<SelectProps<SelectValue>>
+export type RecipientSelectorProps = RecipientSelectorAttributes & Partial<SelectProps<SelectValue>>
 
 const RecipientSelector: React.SFC<RecipientSelectorProps> = (
   { styles = defaultSelectStylesProp, theme, ...otherProps }

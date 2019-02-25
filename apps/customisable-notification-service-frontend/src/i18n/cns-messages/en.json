@@ -19,8 +19,12 @@
     "cns.message.fetch.error.serverError": "There was a problem while executing your request, please try again later.",
     "cns.page.ruleOverview.title": "Notification Rules",
     "cns.page.ruleCreate.title": "Create Rule",
-    "cns.page.ruleEdit.title": "Edit Rule",
-    "cns.page.ruleDelete.title": "Delete Rule",
+    "cns.page.ruleEdit.title": "Edit Rule \"{ruleName}\"",
+    "cns.page.ruleDetail.title": "View Rule \"{ruleName}\"",
+    "cns.page.ruleDelete.title": "Delete Rule \"{ruleName}\"",
+
+    "cns.rule.action.edit.label": "edit",
+    "cns.rule.action.delete.label": "delete",
 
     "cns.rule.label": "Notification Rule",
 
@@ -36,6 +40,30 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Do you want to receive notifications from this rule?",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.condition.label": "Condition",
+    "cns.rule.field.aggregator.label": "Timing",
+
+    "cns.rule.field.aggregator.counting.label": "Event Count",
+    "cns.rule.field.aggregator.scheduled.description.label": "This rule will send notifications at the following times:",
+    "cns.rule.field.aggregator.scheduled.field.time.label": "Time of day",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Send notifications every month",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Send notifications every day of the week",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryDayOfMonth.label": "Send notifications on all days of the month",
+    "cns.rule.field.aggregator.scheduled.field.month.label": "Send notifications in these months",
+    "cns.rule.field.aggregator.scheduled.field.weekday.label": "Send notifications on these weekdays",
+    "cns.rule.field.aggregator.scheduled.field.dayofmonth.label": "Send notifications on these days in the month",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.label": "Send notifications immediately",
+    "cns.rule.field.aggregator.strategy.value.immediate.description": "Sends notifications immediately when a matching event occurs.",
+    "cns.rule.field.aggregator.strategy.value.scheduled.label": "Send notifications regularly",
+    "cns.rule.field.aggregator.strategy.value.scheduled.description": "Sends regular notifications with the collected data from events that have occured in the meantime.",
+    "cns.rule.field.aggregator.strategy.value.counting.label": "Send notifications cumulatively",
+    "cns.rule.field.aggregator.strategy.value.counting.description": "Collects a specified amount of events before sending a notification with the data from events that have occured.",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.shortDescription": "Send immediately",
+    "cns.rule.field.aggregator.strategy.value.counting.shortDescription": "Send {count} notifications cumulatively",
+    "cns.rule.field.aggregator.strategy.value.scheduled.shortDescription": "Send regularly",
+
+    "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefined Schedule",
 
 
     "cns.rule.modification.error.default": "There was an error displaying this component.",
@@ -114,5 +142,8 @@
     "cns.condition.selector.equalTo": "equal to",
     "cns.condition.selector.unequalTo": "unequal to",
     "cns.condition.selector.below": "below",
-    "cns.condition.selector.above": "above"
+    "cns.condition.selector.above": "above",
+
+    "cns.constants.month.label": "{month, select, 1 {January} 2 {February} 3 {March} 4 {April} 5 {May} 6 {June} 7 {July} 8 {August} 9 {September} 10 {October} 11 {November} 12 {December} other {Unknown Month}}",
+    "cns.constants.weekday.label": "{weekday, select, 0 {Sunday} 1 {Monday} 2 {Tuesday} 3 {Wednesday} 4 {Thursday} 5 {Friday} 6 {Saturday} other {Unknown Weekday}}"
 }

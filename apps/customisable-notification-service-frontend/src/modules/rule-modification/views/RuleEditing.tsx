@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
@@ -11,6 +12,14 @@ import {
 } from '@/state/rule'
 import { ruleEditingStateSelector } from '@/state/selectors'
 import RuleModification, { StateAttributes, DispatchAttributes } from './RuleModification'
+
+const RuleEditing: React.SFC<StateAttributes & DispatchAttributes> = (props) => (
+  <RuleModification
+    pageTitle="cns.page.ruleEdit.title"
+    pageTitleProps={{ titleValues: { ruleName: props.inProgressRule.name } }}
+    nonLinearStepper={true}
+    {...props} />
+)
 
 const mapStateToProps: StateMapper<{}, StateAttributes> = (state, props) => ({
   ...ruleEditingStateSelector(state)
@@ -35,4 +44,4 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
 export default connect(
   mapStateToProps,
   mapDispatchToProps)
-  (RuleModification)
+  (RuleEditing)

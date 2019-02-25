@@ -1,11 +1,11 @@
+import { Theme } from '@material-ui/core/styles'
 
-import { WithTheme } from '@material-ui/core/styles'
-
-export const defaultSelectStylesProp = (_: WithTheme) => ({})
-export const defaultSelectStyles = (theme: WithTheme) => ({
+export const defaultSelectStylesProp = (_: Theme) => ({})
+export const defaultSelectStyles = (theme: Theme) => ({
   menu: (base: React.CSSProperties) => ({
     ...base,
     borderRadius: 0,
+    zIndex: 1000
   }),
   option: (base: React.CSSProperties, state: any) => ({
     ...base,
