@@ -22,15 +22,17 @@ class VehicleStateService : IVehicleStateService {
     @Throws(RestClientException::class, NullPointerException::class)
     override fun importNewVehicleData() {
 
+        logger.info("Started importing new Vehicle States")
+        val started = System.currentTimeMillis()
+
         val fleetReferences = vehicleStateRepository.getAllFleetReferences()
-
         val newVehicleStates = vssAdapter.getNewVehicleStates(fleetReferences)
-
         newVehicleStates.forEach { vehicleState ->
             vehicleStateRepository.createVehicleState(vehicleState)
         }
 
-        logger.info("Importing VehicleStates successful!", newVehicleStates)
+        val time = (System.currentTimeMillis() - started) / 1000.0
+        logger.info("Finished importing new Vehicle States in {} s", time)
     }
 
     override fun getUnprocessedVehicleStateForRule(notificationRule: NotificationRule): List<VehicleState> {
