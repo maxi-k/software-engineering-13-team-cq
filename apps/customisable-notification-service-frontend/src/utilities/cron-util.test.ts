@@ -39,7 +39,7 @@ describe('cronExpressionToStructuredCron and structuredCronToCronExpression work
       dayOfWeek: '*'
     }
     expect(cronExpressionToStructuredCron('* * ? * *', defaultCron)).toEqual(expectedValue)
-    expect(structuredCronToCronExpression(expectedValue)).toEqual('* * * * *')
+    expect(structuredCronToCronExpression(expectedValue)).toEqual('* * ? * *')
   })
 
   it('falls back to the default cron expression if the actual one is bad', () => {
