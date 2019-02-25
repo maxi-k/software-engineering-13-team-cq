@@ -311,7 +311,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
   })
 
   private getDayOfMonthSelectValues = (): SelectFormattedValue[] => (
-    Array.from(Array(30).keys())
+    Array.from(Array(31).keys())
       .map((dayOfMonth) => this.mapSelectDayOfMonthValue(dayOfMonth + 1))
   )
 
