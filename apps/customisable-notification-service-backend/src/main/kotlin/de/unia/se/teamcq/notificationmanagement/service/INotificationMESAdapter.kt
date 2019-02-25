@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.notificationmanagement.service
 
-import org.springframework.core.io.ByteArrayResource
+import org.springframework.core.io.Resource
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClientException
 
@@ -25,6 +25,6 @@ interface INotificationMESAdapter {
         receiver: String,
         subject: String,
         body: String,
-        resource: ByteArrayResource
+        resource: Resource
     )
 }
