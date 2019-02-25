@@ -3468,6 +3468,53 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                           className="MuiSwitch-root-1355"
                         >
                           <span
+                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361 MuiSwitchBase-checked-1365 MuiSwitch-checked-1359"
+                            onBlur={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            onMouseDown={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+                            tabIndex={null}
+                          >
+                            <span
+                              className="MuiIconButton-label-1288"
+                            >
+                              <span
+                                className="MuiSwitch-icon-1356 MuiSwitch-iconChecked-1357"
+                              />
+                              <input
+                                checked={true}
+                                className="MuiSwitchBase-input-1367"
+                                onChange={[Function]}
+                                type="checkbox"
+                                value="sendRulesEveryWeekday"
+                              />
+                            </span>
+                          </span>
+                          <span
+                            className="MuiSwitch-bar-1363"
+                          />
+                        </span>
+                        <span
+                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                        >
+                          Send notifications on all days of the month
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <label
+                        className="MuiFormControlLabel-root-1351"
+                      >
+                        <span
+                          className="MuiSwitch-root-1355"
+                        >
+                          <span
                             className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361"
                             onBlur={[Function]}
                             onFocus={[Function]}
@@ -3793,6 +3840,53 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
           className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
         >
           Send notifications every month
+        </span>
+      </label>
+    </div>
+    <div>
+      <label
+        className="MuiFormControlLabel-root-1091"
+      >
+        <span
+          className="MuiSwitch-root-1095"
+        >
+          <span
+            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101 MuiSwitchBase-checked-1105 MuiSwitch-checked-1099"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label-1113"
+            >
+              <span
+                className="MuiSwitch-icon-1096 MuiSwitch-iconChecked-1097"
+              />
+              <input
+                checked={true}
+                className="MuiSwitchBase-input-1107"
+                onChange={[Function]}
+                type="checkbox"
+                value="sendRulesEveryWeekday"
+              />
+            </span>
+          </span>
+          <span
+            className="MuiSwitch-bar-1103"
+          />
+        </span>
+        <span
+          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+        >
+          Send notifications on all days of the month
         </span>
       </label>
     </div>
