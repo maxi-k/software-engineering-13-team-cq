@@ -78,12 +78,12 @@ class VehicleStateDataTypeContract(
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Contract"
         val PREDICATE_FIELDS = mapOf(
-            "endMileage" to PredicateField("endMileage", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "endMileage" to PredicateField("endMileage", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
             "endDate" to PredicateField("endDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
             "reachedRuntimePercentage" to PredicateField("reachedRuntimePercentage", FieldDataType.PERCENTAGE_INT, EvaluationStrategies.NUMERIC),
             "remainingDays" to PredicateField("remainingDays", FieldDataType.DAY, EvaluationStrategies.NUMERIC),
             "startDate" to PredicateField("startDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
-            "startMileage" to PredicateField("startMileage", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC)
+            "startMileage" to PredicateField("startMileage", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC)
         )
     }
 }

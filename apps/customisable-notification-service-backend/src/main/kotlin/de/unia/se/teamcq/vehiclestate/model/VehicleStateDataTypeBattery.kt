@@ -76,7 +76,7 @@ class VehicleStateDataTypeBattery(
             "voltage" to PredicateField("voltage", FieldDataType.VOLTAGE, EvaluationStrategies.NUMERIC),
             "chargingStatus" to PredicateField("chargingStatus", FieldDataType.TEXT, EvaluationStrategies.TEXT),
             "remainingChargingHours" to PredicateField("remainingChargingHours", FieldDataType.HOUR, EvaluationStrategies.TEXT),
-            "remainingRange" to PredicateField("remainingRange", FieldDataType.KILOMETRE, EvaluationStrategies.TEXT)
+            "remainingRange" to PredicateField("remainingRange", FieldDataType.KILOMETER, EvaluationStrategies.TEXT)
         )
     }
 }

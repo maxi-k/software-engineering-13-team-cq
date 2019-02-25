@@ -89,6 +89,7 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import org.threeten.bp.DateTimeUtils
+import org.threeten.bp.LocalDate
 import java.sql.Date
 import java.sql.Timestamp
 import java.util.UUID
@@ -187,10 +188,10 @@ object TestUtils {
     fun getTestVehicleStateDataTypeContractModel(): VehicleStateDataTypeContract {
         return VehicleStateDataTypeContract(
                 10,
-                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
+                getSqlDateConvertableToThreetenLocalDate(1547650098),
                 9,
                 11,
-                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
+                getSqlDateConvertableToThreetenLocalDate(1547650098),
                 5
         )
     }
@@ -198,12 +199,16 @@ object TestUtils {
     fun getTestVehicleStateDataTypeContractEntity(): VehicleStateDataTypeContractEntity {
         return VehicleStateDataTypeContractEntity(
                 10,
-                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
+                getSqlDateConvertableToThreetenLocalDate(1547650098),
                 9,
                 11,
-                DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(1547650098))),
+                getSqlDateConvertableToThreetenLocalDate(1547650098),
                 5
         )
+    }
+
+    private fun getSqlDateConvertableToThreetenLocalDate(instant: Long): Date {
+        return DateTimeUtils.toSqlDate(DateTimeUtils.toLocalDate(Date(instant)))
     }
 
     fun getTestVehicleStateDataTypeEngineModel(): VehicleStateDataTypeEngine {
@@ -651,10 +656,10 @@ object TestUtils {
 
         val contract = Contract()
         contract.endMileage = 10
-        contract.endDate = DateTimeUtils.toLocalDate(Date(1547650098))
+        contract.endDate = getThreeTenLocalDate(1547650098)
         contract.reachedRuntimePercentage = 9
         contract.remainingDays = 11
-        contract.startDate = DateTimeUtils.toLocalDate(Date(1547650098))
+        contract.startDate = getThreeTenLocalDate(1547650098)
         contract.startMileage = 5
         vehicle.contract = contract
 
@@ -676,5 +681,9 @@ object TestUtils {
         vehicle.mileage = mileage
 
         return vehicle
+    }
+
+    private fun getThreeTenLocalDate(instant: Long): LocalDate {
+        return DateTimeUtils.toLocalDate(Date(instant))
     }
 }

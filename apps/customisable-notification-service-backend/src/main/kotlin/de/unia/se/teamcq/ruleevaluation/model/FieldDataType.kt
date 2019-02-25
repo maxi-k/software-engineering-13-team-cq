@@ -12,7 +12,7 @@ enum class FieldDataType {
     LITER {
         override fun convertToFieldType(value: String): Any = value.toInt()
     },
-    PER_WEEK {
+    KILOMETER_PER_WEEK {
         override fun convertToFieldType(value: String): Any = value.toInt()
     },
     HORSEPOWER {
@@ -39,7 +39,7 @@ enum class FieldDataType {
     VOLTAGE {
         override fun convertToFieldType(value: String): Any = value.toDouble()
     },
-    KILOMETRE {
+    KILOMETER {
         override fun convertToFieldType(value: String): Any = value.toInt()
     },
     DATE {

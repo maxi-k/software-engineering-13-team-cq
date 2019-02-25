@@ -70,7 +70,7 @@ class VehicleStateDataTypeService(
             "status" to PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT),
             "dueDate" to PredicateField("dueDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
             "remainingDays" to PredicateField("remainingDays", FieldDataType.DAY, EvaluationStrategies.NUMERIC),
-            "remainingMileage" to PredicateField("remainingMileage", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC)
+            "remainingMileage" to PredicateField("remainingMileage", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC)
         )
     }
 }

@@ -82,12 +82,12 @@ class VehicleStateDataTypeMileage(
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Mileage"
         val PREDICATE_FIELDS = mapOf(
-            "current" to PredicateField("current", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
-            "remaining" to PredicateField("remaining", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
-            "reached" to PredicateField("reached", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
-            "averagePerWeek" to PredicateField("averagePerWeek", FieldDataType.PER_WEEK, EvaluationStrategies.NUMERIC),
-            "expectedExceedance" to PredicateField("expectedExceedance", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
-            "forecastEndContract" to PredicateField("forecastEndContract", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "current" to PredicateField("current", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
+            "remaining" to PredicateField("remaining", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
+            "reached" to PredicateField("reached", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
+            "averagePerWeek" to PredicateField("averagePerWeek", FieldDataType.KILOMETER_PER_WEEK, EvaluationStrategies.NUMERIC),
+            "expectedExceedance" to PredicateField("expectedExceedance", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
+            "forecastEndContract" to PredicateField("forecastEndContract", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
             "status" to PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
         )
     }

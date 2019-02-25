@@ -70,7 +70,7 @@ class VehicleStateDataTypeFuel(
             "levelPercentage" to PredicateField("levelPercentage", FieldDataType.PERCENTAGE_DECIMAL, EvaluationStrategies.NUMERIC),
             "levelLiters" to PredicateField("levelLiters", FieldDataType.LITER, EvaluationStrategies.NUMERIC),
             "tankCapacity" to PredicateField("tankCapacity", FieldDataType.LITER, EvaluationStrategies.NUMERIC),
-            "remainingRange" to PredicateField("remainingRange", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC)
+            "remainingRange" to PredicateField("remainingRange", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC)
         )
     }
 }
