@@ -4,7 +4,7 @@ info:
   title: BMWFD Login
   description: BMW Login API
 servers:
-  - url: http://localhost:4040/api
+  - url: https://unia-se-teamcq-apimock-backend.herokuapp.com/api
 paths:
   /login:
     post:

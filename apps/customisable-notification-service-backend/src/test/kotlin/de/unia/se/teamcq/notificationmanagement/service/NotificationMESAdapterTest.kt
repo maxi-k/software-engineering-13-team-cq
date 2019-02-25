@@ -5,6 +5,7 @@ import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.core.io.ByteArrayResource
 import org.springframework.test.util.ReflectionTestUtils
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -25,7 +26,11 @@ class NotificationMESAdapterTest : StringSpec() {
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationUsername", "admin")
             ReflectionTestUtils.setField(authenticationTokenAdapter, "authenticationPassword", "fd123!")
 
-            notificationMESAdapter.sendNotification("test@example.de", "Subject", "text", listOf())
+            notificationMESAdapter.sendNotification(
+                    "test@example.de",
+                    "Subject",
+                    "text",
+                    ByteArrayResource(ByteArray(0)))
         }
     }
 }

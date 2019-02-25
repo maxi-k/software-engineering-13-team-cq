@@ -2,9 +2,8 @@ package de.unia.se.teamcq.scheduling.service
 
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.scheduling.job.ScheduledAggregatorRuleJob
+import de.unia.se.teamcq.scheduling.job.NotificationRuleJob
 import de.unia.se.teamcq.scheduling.job.VehicleStateDataImportJob
-import de.unia.se.teamcq.scheduling.job.VehicleStateDataProcessingJob
 import org.quartz.CronExpression
 import org.quartz.CronScheduleBuilder
 import org.quartz.JobBuilder
@@ -27,10 +26,10 @@ class NotificationScheduler : INotificationScheduler {
     @Autowired
     private lateinit var scheduler: Scheduler
 
-    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 0/1 * * * ?}")
+    @Value("\${de.unia.se.teamcq.scheduling.data-import-cron:0 * * ? * *}")
     private lateinit var dataImportCronString: String
 
-    @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 0/1 * * * ?}")
+    @Value("\${de.unia.se.teamcq.scheduling.data-processing-cron:0 */5 * ? * *}")
     private lateinit var dataProcessingCronString: String
 
     override fun updateNotificationRuleScheduleAsNecessary(notificationRule: NotificationRule?) {
@@ -40,13 +39,15 @@ class NotificationScheduler : INotificationScheduler {
                 deleteNotificationRuleSchedule(ruleToUpdateScheduleFor.ruleId!!)
 
                 val aggregator = ruleToUpdateScheduleFor.aggregator
-                if (aggregator is AggregatorScheduled) {
+                val jobDetail = buildRuleJobDetail(ruleId)
+                val trigger = if (aggregator is AggregatorScheduled) {
                     val notificationCronSchedule = aggregator.notificationCronTrigger
-
-                    val jobDetail = buildScheduledAggregatorRuleJobDetail(ruleId)
-                    val trigger = buildJobTrigger(jobDetail, notificationCronSchedule!!)
-                    scheduler.scheduleJob(jobDetail, trigger)
+                    buildJobTrigger(jobDetail, notificationCronSchedule!!)
+                } else {
+                    val dataProcessingCronExpression = CronExpression(dataProcessingCronString)
+                    buildJobTrigger(jobDetail, dataProcessingCronExpression)
                 }
+                scheduler.scheduleJob(jobDetail, trigger)
             } catch (schedulerException: SchedulerException) {
                 logger.error("Error while scheduling the NotificationRule {$notificationRule}", schedulerException)
             }
@@ -62,24 +63,13 @@ class NotificationScheduler : INotificationScheduler {
             val jobDetail = buildDataImportJobDetail()
             val dataImportCronExpression = CronExpression(dataImportCronString)
             val trigger = buildJobTrigger(jobDetail, dataImportCronExpression)
-            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
+            if (!scheduler.checkExists(jobDetail.key)) {
+                scheduler.scheduleJob(jobDetail, trigger)
+            }
         } catch (schedulerException: SchedulerException) {
             logger.error("Error while scheduling the VehicleState Import", schedulerException)
         } catch (parseException: ParseException) {
             logger.error("Error while parsing the VehicleState Import cron expression", parseException)
-        }
-    }
-
-    override fun scheduleVehicleStateDataProcessing() {
-        try {
-            val jobDetail = buildDataProcessingJobDetail()
-            val dataProcessingCronExpression = CronExpression(dataProcessingCronString)
-            val trigger = buildJobTrigger(jobDetail, dataProcessingCronExpression)
-            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
-        } catch (schedulerException: SchedulerException) {
-            logger.error("Error while scheduling the VehicleState Processing", schedulerException)
-        } catch (parseException: ParseException) {
-            logger.error("Error while parsing the VehicleState Processing cron expression", parseException)
         }
     }
 
@@ -91,14 +81,14 @@ class NotificationScheduler : INotificationScheduler {
             return JobKey(ruleId.toString(), "scheduled-rules")
         }
 
-        private fun buildScheduledAggregatorRuleJobDetail(ruleId: Long): JobDetail {
+        private fun buildRuleJobDetail(ruleId: Long): JobDetail {
             val jobDataMap = JobDataMap()
 
             jobDataMap["ruleId"] = ruleId.toString()
 
-            return JobBuilder.newJob(ScheduledAggregatorRuleJob::class.java)
+            return JobBuilder.newJob(NotificationRuleJob::class.java)
                     .withIdentity(getScheduledNotificationJobKey(ruleId))
-                    .withDescription("Send Notifications for a Rule with a scheduled Aggregator")
+                    .withDescription("Send Notifications for a Rule")
                     .usingJobData(jobDataMap)
                     .storeDurably()
                     .build()
@@ -108,14 +98,6 @@ class NotificationScheduler : INotificationScheduler {
             return JobBuilder.newJob(VehicleStateDataImportJob::class.java)
                     .withIdentity("data-import", "vehicle-state-jobs")
                     .withDescription("Import new VehicleState data")
-                    .storeDurably()
-                    .build()
-        }
-
-        private fun buildDataProcessingJobDetail(): JobDetail {
-            return JobBuilder.newJob(VehicleStateDataProcessingJob::class.java)
-                    .withIdentity("data-processing", "vehicle-state-jobs")
-                    .withDescription("Process unprocessed imported VehicleState data")
                     .storeDurably()
                     .build()
         }

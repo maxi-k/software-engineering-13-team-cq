@@ -1,6 +1,6 @@
 {
   "swagger" : "2.0",
-  "host" : "localhost:4040",
+  "host" : "unia-se-teamcq-apimock-backend.herokuapp.com",
   "info" : {
     "version" : "v1",
     "title" : "E-Mail V1 API"
@@ -11,7 +11,7 @@
   }, {
     "name" : "Email v1"
   } ],
-  "schemes" : [ "http" ],
+  "schemes" : [ "https" ],
   "paths" : {
     "/email/v1" : {
       "post" : {

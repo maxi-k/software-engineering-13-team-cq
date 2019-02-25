@@ -51,9 +51,13 @@ class VssAdapter : IVssAdapter {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
 
         return fleetReferences.flatMap { fleetReference ->
+
             val fetchedFleetsResult = apiInstance.getAllVehicles(UUID.fromString(fleetReference.carParkId),
                 listOf(UUID.fromString(fleetReference.fleetId)),
-                OffsetDateTime.now().minusYears(1))
+                // FIXME: If used in prod: Replace this value which is currently set like this
+                // FIXME: to make testing easier with minus 1 day or time since last job execution
+                OffsetDateTime.now().minusYears(1)
+            )
 
             fetchedFleetsResult.items
         }

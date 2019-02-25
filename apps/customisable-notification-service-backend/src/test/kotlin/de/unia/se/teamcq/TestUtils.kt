@@ -90,7 +90,8 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import java.lang.IllegalArgumentException
-import java.util.Date
+import java.sql.Date
+import java.sql.Timestamp
 import java.util.GregorianCalendar
 import java.util.UUID
 import javax.xml.bind.DatatypeConverter
@@ -115,7 +116,8 @@ object TestUtils {
                 recipients = getTestRecipientModels(),
                 ownerAsAdditionalRecipient = true,
                 affectedFleets = getTestFleetReferenceModels(),
-                affectingAllApplicableFleets = false
+                affectingAllApplicableFleets = false,
+                lastUpdate = Timestamp(1547650000)
         )
     }
 
@@ -145,7 +147,8 @@ object TestUtils {
                 recipients = getTestRecipientEntities(),
                 ownerAsAdditionalRecipient = true,
                 affectedFleets = getTestFleetReferenceEntities(),
-                affectingAllApplicableFleets = false
+                affectingAllApplicableFleets = false,
+                lastUpdate = Timestamp(1547650000)
         )
     }
 
@@ -238,7 +241,8 @@ object TestUtils {
         return VehicleState(
                 0,
                 getTestVehicleReferenceModel(),
-                getTestVehicleStateDataTypeModels()
+                getTestVehicleStateDataTypeModels(),
+                Timestamp(1547650098)
         )
     }
 
@@ -283,8 +287,10 @@ object TestUtils {
     fun getTestVehicleStateEntity(): VehicleStateEntity {
         return VehicleStateEntity(
                 0,
+
                 getTestVehicleReferenceEntity(),
-                getTestVehicleStateDataTypeEntities()
+                getTestVehicleStateDataTypeEntities(),
+                Timestamp(1547650098)
         )
     }
 

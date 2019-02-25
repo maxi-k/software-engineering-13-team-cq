@@ -3,10 +3,13 @@ package de.unia.se.teamcq.rulemanagement.entity
 import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
+import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
+import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import java.sql.Timestamp
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
@@ -19,17 +22,20 @@ interface INotificationRuleEntityRepository : JpaRepository<NotificationRuleEnti
 class NotificationRuleRepository : INotificationRuleRepository {
 
     @Autowired
-    lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
+    private lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
 
     @Autowired
-    lateinit var userEntityRepository: IUserEntityRepository
+    private lateinit var userEntityRepository: IUserEntityRepository
 
     @Autowired
-    lateinit var notificationRuleMapper: INotificationRuleMapper
+    private lateinit var notificationRuleMapper: INotificationRuleMapper
+
+    @Autowired
+    private lateinit var vehicleStateMapper: IVehicleStateMapper
 
     @Autowired
     @PersistenceContext
-    lateinit var entityManager: EntityManager
+    private lateinit var entityManager: EntityManager
 
     override fun getAllNotificationRulesForUser(username: String): List<NotificationRule> {
 
@@ -58,6 +64,9 @@ class NotificationRuleRepository : INotificationRuleRepository {
                 notificationRuleMapper.modelToEntity(notificationRule)
         )
 
+        // Update last updated to be able to ignore older VehicleStates
+        notificationRuleEntityToSave.lastUpdate = Timestamp(System.currentTimeMillis())
+
         // Create notificationRuleEntity first so it already has an ID
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
         // Add NotificationRuleEntity to UserEntity because the mapping is bidirectional
@@ -75,6 +84,9 @@ class NotificationRuleRepository : INotificationRuleRepository {
                 notificationRuleMapper.modelToEntity(notificationRule)
         )
 
+        // Update last updated to be able to ignore older VehicleStates
+        notificationRuleEntityToSave.lastUpdate = Timestamp(System.currentTimeMillis())
+
         val savedNotificationRuleEntity = notificationRuleEntityRepository.save(notificationRuleEntityToSave)
 
         return notificationRuleMapper.entityToModel(savedNotificationRuleEntity)
@@ -83,5 +95,42 @@ class NotificationRuleRepository : INotificationRuleRepository {
     override fun deleteNotificationRule(ruleId: Long) {
 
         notificationRuleEntityRepository.deleteById(ruleId)
+    }
+
+    override fun getVehicleStateMatchesForRule(ruleId: Long): Set<VehicleState> {
+        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
+
+        return notificationRuleEntity?.let { existingNotificationRuleEntity ->
+
+            existingNotificationRuleEntity.matchedVehicleStatesNotYetSent?.map { vehicleStateEntity ->
+                vehicleStateMapper.entityToModel(vehicleStateEntity)
+            }?.toSet() ?: setOf()
+        } ?: setOf()
+    }
+
+    override fun addVehicleStateMatchForRule(ruleId: Long, vehicleState: VehicleState) {
+        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
+        val vehicleStateEntities = entityManager.merge(
+                vehicleStateMapper.modelToEntity(vehicleState)
+        )
+
+        notificationRuleEntity?.let { existingNotificationRuleEntity ->
+
+            existingNotificationRuleEntity.matchedVehicleStatesNotYetSent = existingNotificationRuleEntity
+                    .matchedVehicleStatesNotYetSent?.plus(vehicleStateEntities)
+                    ?: mutableSetOf(vehicleStateEntities)
+
+            notificationRuleEntityRepository.save(existingNotificationRuleEntity)
+        }
+    }
+
+    override fun deleteAllVehicleStateMatchesForRule(ruleId: Long) {
+        val notificationRuleEntity = notificationRuleEntityRepository.findById(ruleId).orElse(null)
+
+        notificationRuleEntity?.let { existingNotificationRuleEntity ->
+
+            existingNotificationRuleEntity.matchedVehicleStatesNotYetSent = mutableSetOf()
+            notificationRuleEntityRepository.save(existingNotificationRuleEntity)
+        }
     }
 }

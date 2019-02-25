@@ -8,7 +8,9 @@ import de.unia.se.teamcq.security.service.IAuthenticationTokenAdapter
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
+import org.springframework.util.FileCopyUtils
 import org.springframework.web.client.RestClientException
 import java.util.UUID
 
@@ -26,7 +28,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
         receiver: String,
         subject: String,
         body: String,
-        attachment: List<Attachement>
+        resource: Resource
     ) {
 
         if (disableNotifications == true) {
@@ -42,10 +44,16 @@ class NotificationMESAdapter : INotificationMESAdapter {
 
             val requestFreeTextMessageEmail = RequestFreeTextMessageEmail()
             requestFreeTextMessageEmail.receiver = receiver
-            requestFreeTextMessageEmail.sender = "noreply@cns.bmw.de"
+            requestFreeTextMessageEmail.sender = SENDER
             requestFreeTextMessageEmail.subject = subject
             requestFreeTextMessageEmail.body = body
-            requestFreeTextMessageEmail.attachement = attachment
+
+            val attachment = Attachement()
+            attachment.content = FileCopyUtils.copyToString(resource.inputStream.bufferedReader())
+            attachment.filename = FILENAME
+            attachment.mimeType = MIME_TYPE
+
+            requestFreeTextMessageEmail.attachement = listOf(attachment)
 
             val uuidForLogging = UUID.randomUUID().toString()
 
@@ -56,5 +64,8 @@ class NotificationMESAdapter : INotificationMESAdapter {
 
     companion object {
         private val logger = LoggerFactory.getLogger(NotificationMESAdapter::class.java)
+        private const val SENDER = "noreply@cns.bmw.de"
+        private const val FILENAME = "vehicles.csv"
+        private const val MIME_TYPE = "text/csv"
     }
 }

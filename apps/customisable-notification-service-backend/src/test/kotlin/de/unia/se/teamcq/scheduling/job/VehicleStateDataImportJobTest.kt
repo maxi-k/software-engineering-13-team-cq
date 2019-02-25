@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.scheduling.job
 
 import de.unia.se.teamcq.scheduling.job.JobTestUtils.invokeScheduledJobExecuteInternal
-import de.unia.se.teamcq.vehiclestate.service.VehicleStateService
+import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
@@ -19,7 +19,7 @@ import org.springframework.test.context.ContextConfiguration
 class VehicleStateDataImportJobTest : StringSpec() {
 
     @MockK
-    private lateinit var vehicleStateService: VehicleStateService
+    private lateinit var vehicleStateService: IVehicleStateService
 
     @InjectMockKs
     private lateinit var vehicleStateDataImportJob: VehicleStateDataImportJob
