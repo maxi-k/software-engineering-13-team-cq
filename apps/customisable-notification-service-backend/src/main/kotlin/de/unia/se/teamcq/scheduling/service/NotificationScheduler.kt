@@ -39,13 +39,15 @@ class NotificationScheduler : INotificationScheduler {
                 deleteNotificationRuleSchedule(ruleToUpdateScheduleFor.ruleId!!)
 
                 val aggregator = ruleToUpdateScheduleFor.aggregator
-                if (aggregator is AggregatorScheduled) {
+                val jobDetail = buildRuleJobDetail(ruleId)
+                val trigger = if (aggregator is AggregatorScheduled) {
                     val notificationCronSchedule = aggregator.notificationCronTrigger
-
-                    val jobDetail = buildScheduledAggregatorRuleJobDetail(ruleId)
-                    val trigger = buildJobTrigger(jobDetail, notificationCronSchedule!!)
-                    scheduler.scheduleJob(jobDetail, trigger)
+                    buildJobTrigger(jobDetail, notificationCronSchedule!!)
+                } else {
+                    val dataProcessingCronExpression = CronExpression(dataProcessingCronString)
+                    buildJobTrigger(jobDetail, dataProcessingCronExpression)
                 }
+                scheduler.scheduleJob(jobDetail, trigger)
             } catch (schedulerException: SchedulerException) {
                 logger.error("Error while scheduling the NotificationRule {$notificationRule}", schedulerException)
             }
@@ -69,19 +71,6 @@ class NotificationScheduler : INotificationScheduler {
         }
     }
 
-    fun scheduleVehicleStateDataProcessing() {
-        try {
-            val jobDetail = buildDataProcessingJobDetail()
-            val dataProcessingCronExpression = CronExpression(dataProcessingCronString)
-            val trigger = buildJobTrigger(jobDetail, dataProcessingCronExpression)
-            scheduler.scheduleJob(jobDetail, mutableSetOf(trigger), true)
-        } catch (schedulerException: SchedulerException) {
-            logger.error("Error while scheduling the VehicleState Processing", schedulerException)
-        } catch (parseException: ParseException) {
-            logger.error("Error while parsing the VehicleState Processing cron expression", parseException)
-        }
-    }
-
     companion object {
 
         private val logger = LoggerFactory.getLogger(NotificationScheduler::class.java)
@@ -90,14 +79,14 @@ class NotificationScheduler : INotificationScheduler {
             return JobKey(ruleId.toString(), "scheduled-rules")
         }
 
-        private fun buildScheduledAggregatorRuleJobDetail(ruleId: Long): JobDetail {
+        private fun buildRuleJobDetail(ruleId: Long): JobDetail {
             val jobDataMap = JobDataMap()
 
             jobDataMap["ruleId"] = ruleId.toString()
 
             return JobBuilder.newJob(NotificationRuleJob::class.java)
                     .withIdentity(getScheduledNotificationJobKey(ruleId))
-                    .withDescription("Send Notifications for a Rule with a scheduled Aggregator")
+                    .withDescription("Send Notifications for a Rule")
                     .usingJobData(jobDataMap)
                     .storeDurably()
                     .build()
@@ -107,14 +96,6 @@ class NotificationScheduler : INotificationScheduler {
             return JobBuilder.newJob(VehicleStateDataImportJob::class.java)
                     .withIdentity("data-import", "vehicle-state-jobs")
                     .withDescription("Import new VehicleState data")
-                    .storeDurably()
-                    .build()
-        }
-
-        private fun buildDataProcessingJobDetail(): JobDetail {
-            return JobBuilder.newJob(NotificationRuleJob::class.java)
-                    .withIdentity("data-processing", "vehicle-state-jobs")
-                    .withDescription("Process unprocessed imported VehicleState data")
                     .storeDurably()
                     .build()
         }

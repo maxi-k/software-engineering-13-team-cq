@@ -34,15 +34,18 @@ class NotificationService : INotificationService {
                 notificationRule.ruleId!!
         )
         val notificationData = NotificationData(notificationRule, vehicleStateMatches)
+        val notificationCount = vehicleStateMatches.count()
 
         val aggregator = notificationRule.aggregator!!
         when (aggregator) {
             is AggregatorScheduled -> sendNotification(notificationData)
-            is AggregatorImmediate -> sendNotification(notificationData)
+            is AggregatorImmediate -> {
+                if (notificationCount > 0) {
+                    sendNotification(notificationData)
+                }
+            }
             is AggregatorCounting -> {
                 val countThreshold = aggregator.notificationCountThreshold!!
-                val notificationCount = vehicleStateMatches.count()
-
                 if (notificationCount >= countThreshold) {
                     sendNotification(notificationData)
                 }
