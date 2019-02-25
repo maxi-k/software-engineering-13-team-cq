@@ -43,6 +43,9 @@
     "cns.rule.field.aggregator.scheduled.description.label": "Diese Regel verschickt Nachrichten zu folgenden Zeiten:",
     "cns.rule.field.aggregator.scheduled.field.time.label": "Uhrzeit",
     "cns.rule.field.aggregator.scheduled.field.sendEveryMonth.label": "Nachrichten jeden Monat verschicken",
+    "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Nachrichten an jedem Wochentag verschicken",
+    "cns.rule.field.aggregator.scheduled.field.month.label": "Nachrichten in den folgenden Monaten verschicken",
+    "cns.rule.field.aggregator.scheduled.field.weekday.label": "Nachrichten an den folgenden Wochentagen verschicken",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
@@ -123,5 +126,6 @@
     "cns.condition.selector.below": "kleiner als",
     "cns.condition.selector.above": "größer als",
 
-    "cns.constants.month.label": "{month, select, 1 {Januar} 2 {Februar} 3 {März} 4 {April} 5 {Mai} 6 {Juni} 7 {Juli} 8 {August} 9 {September} 10 {Oktober} 11 {November} 12 {Dezember} other {Unbekannter Monat}}"
+    "cns.constants.month.label": "{month, select, 1 {Januar} 2 {Februar} 3 {März} 4 {April} 5 {Mai} 6 {Juni} 7 {Juli} 8 {August} 9 {September} 10 {Oktober} 11 {November} 12 {Dezember} other {Unbekannter Monat}}",
+    "cns.constants.weekday.label": "{weekday, select, 0 {Sonntag} 1 {Montag} 2 {Dienstag} 3 {Mittwoch} 4 {Donnerstag} 5 {Freitag} 6 {Samstag} other {Unbekannter Wochentag}}"
 }

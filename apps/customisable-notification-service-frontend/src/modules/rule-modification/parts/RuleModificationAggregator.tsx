@@ -15,7 +15,7 @@ const defaultAggregator: Aggregator = {
 
 const mapStrategyUpdater = (value: any) => ({
   strategy: value,
-  value: ''
+  value: undefined
 })
 
 const RuleModificationAggregator: RuleModificationStepView = (
