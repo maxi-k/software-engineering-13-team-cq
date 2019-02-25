@@ -15,6 +15,5 @@ class ApplicationStartupJobInitializer {
     @EventListener(ApplicationReadyEvent::class)
     fun initializeVehicleStateProcessingJobs() {
         notificationScheduler.scheduleVehicleStateDataImport()
-        notificationScheduler.scheduleVehicleStateDataProcessing()
     }
 }

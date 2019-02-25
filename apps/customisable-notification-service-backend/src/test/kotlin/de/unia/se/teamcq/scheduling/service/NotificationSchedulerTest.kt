@@ -33,11 +33,11 @@ class NotificationSchedulerTest : StringSpec() {
 
         "UpdateNotificationRuleScheduleAsNecessary" should {
 
-            "Not fail and do nothing if notificationRule is null" should {
+            "Not fail and do nothing if notificationRule is null" {
                 notificationScheduler.updateNotificationRuleScheduleAsNecessary(null)
             }
 
-            "Schedule NotificationRules and delete old entries" should {
+            "Schedule NotificationRules and delete old entries" {
 
                 every { scheduler.scheduleJob(any(), any()) } returns null
 

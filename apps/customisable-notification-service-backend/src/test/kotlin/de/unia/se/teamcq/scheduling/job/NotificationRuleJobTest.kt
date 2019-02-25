@@ -11,18 +11,21 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.verify
+import org.quartz.JobDataMap
+import org.quartz.JobDetail
 import org.quartz.JobExecutionContext
+import org.quartz.JobKey
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [TestConfiguration::class])
-class VehicleStateDataProcessingJobTest : StringSpec() {
+class NotificationRuleJobTest : StringSpec() {
 
     @MockK
     private lateinit var ruleStateProcessingService: IRuleStateProcessingService
 
     @InjectMockKs
-    private lateinit var vehicleStateDataProcessingJob: VehicleStateDataProcessingJob
+    private lateinit var notificationRuleJob: NotificationRuleJob
 
     init {
         MockKAnnotations.init(this)
@@ -30,13 +33,20 @@ class VehicleStateDataProcessingJobTest : StringSpec() {
         "ExecuteInternal should send Notifications" {
 
             val jobExecutionContext = mockk<JobExecutionContext>()
+            val jobDetail = mockk<JobDetail>()
 
-            every { ruleStateProcessingService.processNewVehicleStates() } just Runs
+            val jobDataMap = JobDataMap()
+            jobDataMap["ruleId"] = "2"
 
-            invokeScheduledJobExecuteInternal(vehicleStateDataProcessingJob, jobExecutionContext)
+            every { jobExecutionContext.jobDetail } returns jobDetail
+            every { jobDetail.key } returns JobKey("1", "notification-triggers")
+            every { jobExecutionContext.mergedJobDataMap } returns jobDataMap
+            every { ruleStateProcessingService.processNewVehicleStatesForRule(any()) } just Runs
+
+            invokeScheduledJobExecuteInternal(notificationRuleJob, jobExecutionContext)
 
             verify(exactly = 1) {
-                ruleStateProcessingService.processNewVehicleStates()
+                ruleStateProcessingService.processNewVehicleStatesForRule(any())
             }
         }
     }

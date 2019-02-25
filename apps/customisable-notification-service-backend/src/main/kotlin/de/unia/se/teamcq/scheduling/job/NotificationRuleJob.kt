@@ -11,21 +11,25 @@ import org.springframework.stereotype.Component
 
 @Component
 @DisallowConcurrentExecution
-class VehicleStateDataProcessingJob : QuartzJobBean() {
+class NotificationRuleJob : QuartzJobBean() {
 
     @Autowired
     private lateinit var ruleStateProcessingService: IRuleStateProcessingService
 
     @Throws(JobExecutionException::class)
     override fun executeInternal(jobExecutionContext: JobExecutionContext) {
-        logger.info("Starting to process new Vehicle States")
-        val started = System.currentTimeMillis()
-        ruleStateProcessingService.processNewVehicleStates()
-        val time = (System.currentTimeMillis() - started) / 1000
-        logger.info("Finished processing new Vehicle States in {} s", time)
+        logger.info("Sending notifications for scheduled notification rule job {}", jobExecutionContext.jobDetail.key)
+
+        val jobDataMap = jobExecutionContext.mergedJobDataMap
+        val ruleId = jobDataMap.getLongValueFromString("ruleId")
+
+        ruleStateProcessingService.processNewVehicleStatesForRule(ruleId)
+
+        logger.info("Finished processing notification rule job {}",
+                jobExecutionContext.jobDetail.key)
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(VehicleStateDataProcessingJob::class.java)
+        private val logger = LoggerFactory.getLogger(NotificationRuleJob::class.java)
     }
 }

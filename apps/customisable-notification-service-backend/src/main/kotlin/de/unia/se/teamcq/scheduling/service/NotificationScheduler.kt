@@ -2,9 +2,8 @@ package de.unia.se.teamcq.scheduling.service
 
 import de.unia.se.teamcq.notificationmanagement.model.AggregatorScheduled
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.scheduling.job.ScheduledAggregatorRuleJob
+import de.unia.se.teamcq.scheduling.job.NotificationRuleJob
 import de.unia.se.teamcq.scheduling.job.VehicleStateDataImportJob
-import de.unia.se.teamcq.scheduling.job.VehicleStateDataProcessingJob
 import org.quartz.CronExpression
 import org.quartz.CronScheduleBuilder
 import org.quartz.JobBuilder
@@ -70,7 +69,7 @@ class NotificationScheduler : INotificationScheduler {
         }
     }
 
-    override fun scheduleVehicleStateDataProcessing() {
+    fun scheduleVehicleStateDataProcessing() {
         try {
             val jobDetail = buildDataProcessingJobDetail()
             val dataProcessingCronExpression = CronExpression(dataProcessingCronString)
@@ -96,7 +95,7 @@ class NotificationScheduler : INotificationScheduler {
 
             jobDataMap["ruleId"] = ruleId.toString()
 
-            return JobBuilder.newJob(ScheduledAggregatorRuleJob::class.java)
+            return JobBuilder.newJob(NotificationRuleJob::class.java)
                     .withIdentity(getScheduledNotificationJobKey(ruleId))
                     .withDescription("Send Notifications for a Rule with a scheduled Aggregator")
                     .usingJobData(jobDataMap)
@@ -113,7 +112,7 @@ class NotificationScheduler : INotificationScheduler {
         }
 
         private fun buildDataProcessingJobDetail(): JobDetail {
-            return JobBuilder.newJob(VehicleStateDataProcessingJob::class.java)
+            return JobBuilder.newJob(NotificationRuleJob::class.java)
                     .withIdentity("data-processing", "vehicle-state-jobs")
                     .withDescription("Process unprocessed imported VehicleState data")
                     .storeDurably()

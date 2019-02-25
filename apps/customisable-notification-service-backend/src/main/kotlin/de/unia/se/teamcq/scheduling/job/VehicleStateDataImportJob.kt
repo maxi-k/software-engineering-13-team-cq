@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.scheduling.job
 
-import de.unia.se.teamcq.vehiclestate.service.VehicleStateService
+import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import org.quartz.DisallowConcurrentExecution
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component
 class VehicleStateDataImportJob : QuartzJobBean() {
 
     @Autowired
-    private lateinit var vehicleStateService: VehicleStateService
+    private lateinit var vehicleStateService: IVehicleStateService
 
     @Throws(JobExecutionException::class)
     override fun executeInternal(jobExecutionContext: JobExecutionContext) {

@@ -29,9 +29,4 @@ interface INotificationScheduler {
      * Schedule the VehicleState data import
      */
     fun scheduleVehicleStateDataImport()
-
-    /**
-     * Schedule the processing of all unprocessed imported VehicleState data
-     */
-    fun scheduleVehicleStateDataProcessing()
 }

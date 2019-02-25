@@ -27,14 +27,12 @@ class ApplicationStartupJobInitializerTest : StringSpec() {
 
         "InitializeVehicleStateProcessingJobs should initialize Data Import and Processing" should {
 
-            every { notificationScheduler.scheduleVehicleStateDataProcessing() } just Runs
             every { notificationScheduler.scheduleVehicleStateDataImport() } just Runs
 
             applicationStartupJobInitializer.initializeVehicleStateProcessingJobs()
 
             verify(exactly = 1) {
                 notificationScheduler.scheduleVehicleStateDataImport()
-                notificationScheduler.scheduleVehicleStateDataProcessing()
             }
         }
     }
