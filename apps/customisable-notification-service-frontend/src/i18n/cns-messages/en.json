@@ -40,6 +40,7 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Do you want to receive notifications from this rule?",
     "cns.rule.field.dataSources.label": "Data Sources",
     "cns.rule.field.condition.label": "Condition",
+    "cns.rule.field.aggregator.label": "Timing",
 
     "cns.rule.field.aggregator.counting.label": "Event Count",
     "cns.rule.field.aggregator.scheduled.description.label": "This rule will send notifications at the following times:",
@@ -55,6 +56,12 @@
     "cns.rule.field.aggregator.strategy.value.scheduled.description": "Sends regular notifications with the collected data from events that have occured in the meantime.",
     "cns.rule.field.aggregator.strategy.value.counting.label": "Send notifications cumulatively",
     "cns.rule.field.aggregator.strategy.value.counting.description": "Collects a specified amount of events before sending a notification with the data from events that have occured.",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.shortDescription": "Send immediately",
+    "cns.rule.field.aggregator.strategy.value.counting.shortDescription": "Send {count} notifications cumulatively",
+    "cns.rule.field.aggregator.strategy.value.scheduled.shortDescription": "Send regularly",
+
+    "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefined Schedule",
 
 
     "cns.rule.modification.error.default": "There was an error displaying this component.",

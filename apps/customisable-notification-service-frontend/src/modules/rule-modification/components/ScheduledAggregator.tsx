@@ -54,9 +54,16 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
     )
   }
 
-  public render = () => {
-    // const { aggregator, setAggregatorValue } = this.props
+  public componentDidMount = () => {
+    const { aggregator, setAggregatorValue } = this.props
+    if (typeof aggregator.value === 'undefined' ||
+      aggregator.value === null ||
+      !isValidCronExpression(aggregator.value.toString())) {
+      setAggregatorValue(ScheduledAggregator.getDefaultCronExpression())
+    }
+  }
 
+  public render = () => {
     const { minute, hour, month, /* dayOfMonth, */ dayOfWeek } = this.state.structuredCron
     const selectStyle = defaultSelectStyles(this.props.theme)
 

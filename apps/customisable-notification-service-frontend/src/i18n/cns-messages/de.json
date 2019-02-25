@@ -39,6 +39,8 @@
     "cns.rule.field.ownerAsAdditionalRecipient.label": "Möchten Sie selbst Benachrichtigungen von dieser Regel erhalten?",
     "cns.rule.field.dataSources.label": "Datenquellen",
     "cns.rule.field.condition.label": "Bedingung",
+    "cns.rule.field.aggregator.label": "Timing",
+
     "cns.rule.field.aggregator.counting.label": "Anzahl von Events",
     "cns.rule.field.aggregator.scheduled.description.label": "Diese Regel verschickt Nachrichten zu folgenden Zeiten:",
     "cns.rule.field.aggregator.scheduled.field.time.label": "Uhrzeit",
@@ -46,6 +48,7 @@
     "cns.rule.field.aggregator.scheduled.field.sendEveryWeekday.label": "Nachrichten an jedem Wochentag verschicken",
     "cns.rule.field.aggregator.scheduled.field.month.label": "Nachrichten in den folgenden Monaten verschicken",
     "cns.rule.field.aggregator.scheduled.field.weekday.label": "Nachrichten an den folgenden Wochentagen verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefinierter Zeitplan",
 
     "cns.rule.field.aggregator.strategy.value.immediate.label": "Sofort Verschicken",
     "cns.rule.field.aggregator.strategy.value.immediate.description": "Verschickt sofort eine Nachricht, wenn ein Ereignis auftritt.",
@@ -53,6 +56,10 @@
     "cns.rule.field.aggregator.strategy.value.scheduled.description": "Verschickt regelmäßig Nachrichten mit den gesamelten Daten der aufgetretenen Ereignisse.",
     "cns.rule.field.aggregator.strategy.value.counting.label": "Gesammelt Verschicken",
     "cns.rule.field.aggregator.strategy.value.counting.description": "Sammelt eine gewisse Anzahl von Ereignissen bevor eine Nachricht gesendet wird.",
+
+    "cns.rule.field.aggregator.strategy.value.immediate.shortDescription": "Sofort Verschicken",
+    "cns.rule.field.aggregator.strategy.value.counting.shortDescription": "Gesammelt {count} Verschicken",
+    "cns.rule.field.aggregator.strategy.value.scheduled.shortDescription": "Geplant Verschicken",
 
 
     "cns.rule.modification.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
