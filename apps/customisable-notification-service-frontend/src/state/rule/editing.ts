@@ -167,7 +167,6 @@ function* finishRuleEditingGenerator() {
     ensureResponseStatus(response);
     const rule = yield response.json() as NotificationRuleDetail
     yield put(finishRuleEditing.success(rule))
-    // yield put(push(`/rule/${rule.ruleId}`))
     yield put(push('/'))
   } catch (error) {
     yield put(finishRuleEditing.failure(error))

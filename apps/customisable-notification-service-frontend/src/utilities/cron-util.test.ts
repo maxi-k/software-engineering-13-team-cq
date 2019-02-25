@@ -9,7 +9,7 @@ import {
 describe('isValidCronExpression works', () => {
 
   it('returns true for invalid cron expressions', () => {
-    expect(isValidCronExpression('* * * * *')).toBe(true)
+    expect(isValidCronExpression('* * ? * *')).toBe(true)
   })
   it('returns false for invalid cron expressions', () => {
     expect(isValidCronExpression('* * *')).toBe(false)
@@ -29,16 +29,16 @@ describe('stringToCronValue works', () => {
 })
 
 describe('cronExpressionToStructuredCron and structuredCronToCronExpression work', () => {
-  const defaultCron = '* * * * *'
+  const defaultCron = '* * ? * *'
   it('parses standard wildcard cron expressions correctly', () => {
     const expectedValue: StructuredCron = {
       minute: '*',
       hour: '*',
-      dayOfMonth: '*',
+      dayOfMonth: '?',
       month: '*',
       dayOfWeek: '*'
     }
-    expect(cronExpressionToStructuredCron('* * * * *', defaultCron)).toEqual(expectedValue)
+    expect(cronExpressionToStructuredCron('* * ? * *', defaultCron)).toEqual(expectedValue)
     expect(structuredCronToCronExpression(expectedValue)).toEqual('* * * * *')
   })
 
@@ -46,12 +46,12 @@ describe('cronExpressionToStructuredCron and structuredCronToCronExpression work
     const expectedValue: StructuredCron = {
       minute: '*',
       hour: '*',
-      dayOfMonth: '*',
+      dayOfMonth: '?',
       month: '*',
       dayOfWeek: '*'
     }
     expect(cronExpressionToStructuredCron('not cron!', defaultCron)).toEqual(expectedValue)
-    expect(structuredCronToCronExpression(expectedValue)).toEqual('* * * * *')
+    expect(structuredCronToCronExpression(expectedValue)).toEqual('* * ? * *')
   })
 
   it('parses number cron expressions correctly', () => {

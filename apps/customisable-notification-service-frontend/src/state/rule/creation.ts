@@ -102,7 +102,6 @@ function* finishRuleCreationGenerator() {
     ensureResponseStatus(response);
     const rule = yield response.json() as NotificationRuleDetail
     yield put(finishRuleCreation.success(rule))
-    // yield put(push(`/rule/${rule.ruleId}`))
     yield put(push('/'))
   } catch (error) {
     yield put(finishRuleCreation.failure(error))

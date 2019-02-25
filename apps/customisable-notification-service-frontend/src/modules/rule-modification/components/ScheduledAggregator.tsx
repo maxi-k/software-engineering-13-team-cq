@@ -19,8 +19,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import Select from 'react-select'
 
-// import InputField from '@/modules/shared/components/InputField'
-
 import { AggregatorComponentAttributes } from '../aggregator-common'
 
 export type ScheduledAggregatorProps = AggregatorComponentAttributes
