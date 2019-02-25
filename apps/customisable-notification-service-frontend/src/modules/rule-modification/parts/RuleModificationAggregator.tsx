@@ -1,8 +1,10 @@
 import React from 'react'
+import { mapArguments } from '@/utilities/function-util'
 import {
   RuleModificationStepView,
   createDirectSingleValueUpdater,
-  nestValueUpdater
+  nestValueUpdater,
+  createMergingValueUpdater
 } from '../modification-common'
 import AggregatorSelector from '../components/AggregatorSelector'
 import { Aggregator, AggregatorStrategy } from '@/model';
@@ -10,6 +12,11 @@ import { Aggregator, AggregatorStrategy } from '@/model';
 const defaultAggregator: Aggregator = {
   strategy: AggregatorStrategy.Immediate
 }
+
+const mapStrategyUpdater = (value: any) => ({
+  strategy: value,
+  value: ''
+})
 
 const RuleModificationAggregator: RuleModificationStepView = (
   { inProgressRule, updateField }
@@ -19,7 +26,10 @@ const RuleModificationAggregator: RuleModificationStepView = (
     <div>
       <AggregatorSelector
         aggregator={inProgressRule.aggregator || defaultAggregator}
-        setAggregatorStrategy={createDirectSingleValueUpdater(aggregatorUpdater)('strategy')}
+        setAggregatorStrategy={mapArguments(
+          createMergingValueUpdater(updateField)('aggregator'),
+          mapStrategyUpdater
+        )}
         setAggregatorValue={createDirectSingleValueUpdater(aggregatorUpdater)('value')} />
     </div>
   )
