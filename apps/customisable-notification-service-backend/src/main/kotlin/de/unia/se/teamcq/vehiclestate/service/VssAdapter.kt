@@ -71,12 +71,13 @@ class VssAdapter : IVssAdapter {
     }
 
     private fun getLastJobExecution(): OffsetDateTime {
-        val dataProcessingLastExecutionInstant = CronExpression(dataImportCronString)
+
+        val dataProcessingCurrentExecutionInstant = CronExpression(dataImportCronString)
                 .getNextValidTimeAfter(Date())
                 .toInstant()
 
         val threeTenInstant = Instant.ofEpochMilli(
-                dataProcessingLastExecutionInstant.toEpochMilli()
+                dataProcessingCurrentExecutionInstant.toEpochMilli()
         )
 
         return OffsetDateTime.ofInstant(threeTenInstant, ZoneOffset.UTC)
