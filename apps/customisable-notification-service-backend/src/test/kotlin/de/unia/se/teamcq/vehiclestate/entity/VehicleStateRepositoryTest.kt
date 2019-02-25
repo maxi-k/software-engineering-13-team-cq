@@ -74,28 +74,17 @@ class VehicleStateRepositoryTest : StringSpec() {
             actualVehicleState shouldBe expectedVehicleStateModel
         }
 
-        "CreateVehicleState should work" {
+        "CreateVehicleStates should work" {
 
-            val savedVehicleState = vehicleStateRepository.createVehicleState(getTestVehicleStateModel())
+            val savedVehicleStates = vehicleStateRepository.createVehicleStates(
+                    listOf(getTestVehicleStateModel())
+            )
+            val savedVehicleState = savedVehicleStates.first()
 
             val expectedVehicleStateModel = getTestVehicleStateModel()
-            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(savedVehicleState!!)
+            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(savedVehicleState)
 
             savedVehicleState shouldBe expectedVehicleStateModel
-        }
-
-        "UpdateVehicleState should work" {
-
-            val oldVehicleStateEntity = vehicleStateEntityRepository.save(getTestVehicleStateEntity())
-
-            val newVehicleState = getTestVehicleStateModel().copy(stateId = oldVehicleStateEntity.stateId)
-
-            val updatedVehicleState = vehicleStateRepository.updateVehicleState(newVehicleState)!!
-
-            val expectedVehicleStateModel = getTestVehicleStateModel()
-            expectedVehicleStateModel.setIdsOfRelatedRepositoryEntities(updatedVehicleState)
-
-            updatedVehicleState shouldBe expectedVehicleStateModel
         }
 
         "DeleteVehicleState should work" {

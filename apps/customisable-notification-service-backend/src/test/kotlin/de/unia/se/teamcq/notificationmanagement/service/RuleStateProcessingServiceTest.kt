@@ -4,7 +4,7 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestVehicleStateModel
 import de.unia.se.teamcq.ruleevaluation.service.IEvaluationService
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
-import de.unia.se.teamcq.vehiclestate.service.VehicleStateService
+import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.Runs
@@ -29,7 +29,7 @@ class RuleStateProcessingServiceTest : StringSpec() {
     private lateinit var notificationService: INotificationService
 
     @MockK
-    private lateinit var vehicleStateService: VehicleStateService
+    private lateinit var vehicleStateService: IVehicleStateService
 
     @InjectMockKs
     private lateinit var ruleStateProcessingService: RuleStateProcessingService

@@ -3,7 +3,7 @@ package de.unia.se.teamcq.notificationmanagement.service
 import de.unia.se.teamcq.notificationmanagement.model.NotificationData
 import de.unia.se.teamcq.ruleevaluation.service.IEvaluationService
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
-import de.unia.se.teamcq.vehiclestate.service.VehicleStateService
+import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -20,7 +20,7 @@ class RuleStateProcessingService : IRuleStateProcessingService {
     private lateinit var notificationService: INotificationService
 
     @Autowired
-    private lateinit var vehicleStateService: VehicleStateService
+    private lateinit var vehicleStateService: IVehicleStateService
 
     override fun processNewVehicleStatesForRule(ruleId: Long) {
 

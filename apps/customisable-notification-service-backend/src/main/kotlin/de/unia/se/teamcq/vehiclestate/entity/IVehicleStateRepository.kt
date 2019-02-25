@@ -12,9 +12,7 @@ interface IVehicleStateRepository {
 
     fun getVehicleState(vehicleStateId: Long): VehicleState?
 
-    fun createVehicleState(vehicleState: VehicleState): VehicleState?
-
-    fun updateVehicleState(vehicleState: VehicleState): VehicleState?
+    fun createVehicleStates(vehicleStates: List<VehicleState>): List<VehicleState>
 
     fun deleteVehicleState(vehicleStateId: Long)
 

@@ -37,12 +37,13 @@ class VehicleStateServiceTest : StringSpec() {
 
             every { vehicleStateRepository.getAllFleetReferences() } returns listOf(getTestFleetReferenceModel())
             every { vssAdapter.getNewVehicleStates(any()) } returns listOf(getTestVehicleStateModel())
-            every { vehicleStateRepository.createVehicleState(any()) } returns getTestVehicleStateModel()
+            every { vehicleStateRepository.createVehicleStates(any()) } returns
+                    listOf(getTestVehicleStateModel())
 
             vehicleStateService.importNewVehicleData()
 
             verify(exactly = 1) {
-                vehicleStateRepository.createVehicleState(any())
+                vehicleStateRepository.createVehicleStates(any())
             }
         }
 

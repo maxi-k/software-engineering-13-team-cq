@@ -27,9 +27,7 @@ class VehicleStateService : IVehicleStateService {
 
         val fleetReferences = vehicleStateRepository.getAllFleetReferences()
         val newVehicleStates = vssAdapter.getNewVehicleStates(fleetReferences)
-        newVehicleStates.forEach { vehicleState ->
-            vehicleStateRepository.createVehicleState(vehicleState)
-        }
+        vehicleStateRepository.createVehicleStates(newVehicleStates)
 
         val time = (System.currentTimeMillis() - started) / 1000.0
         logger.info("Finished importing new Vehicle States in {} s", time)
