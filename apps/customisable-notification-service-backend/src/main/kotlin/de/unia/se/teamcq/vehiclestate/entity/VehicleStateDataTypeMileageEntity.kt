@@ -8,7 +8,11 @@ class VehicleStateDataTypeMileageEntity(
 
     var current: Int? = null,
     var remaining: Int? = null,
-    var reached: Int? = null,
+    var reachedPercentage: Int? = null,
+    var averagePerWeek: Int? = null,
+    var expectedExceedance: Int? = null,
+    var forecastEndContract: Int? = null,
+    var status: String? = null,
     dataTypeId: Long? = null
 
 ) : VehicleStateDataTypeEntity(dataTypeId), Serializable {
@@ -21,7 +25,11 @@ class VehicleStateDataTypeMileageEntity(
 
         if (current != other.current) return false
         if (remaining != other.remaining) return false
-        if (reached != other.reached) return false
+        if (reachedPercentage != other.reachedPercentage) return false
+        if (averagePerWeek != other.averagePerWeek) return false
+        if (expectedExceedance != other.expectedExceedance) return false
+        if (forecastEndContract != other.forecastEndContract) return false
+        if (status != other.status) return false
 
         return true
     }
@@ -31,7 +39,11 @@ class VehicleStateDataTypeMileageEntity(
         var result = super.hashCode()
         result = 31 * result + (current ?: 0)
         result = 31 * result + (remaining ?: 0)
-        result = 31 * result + (reached ?: 0)
+        result = 31 * result + (reachedPercentage ?: 0)
+        result = 31 * result + (averagePerWeek ?: 0)
+        result = 31 * result + (expectedExceedance ?: 0)
+        result = 31 * result + (forecastEndContract ?: 0)
+        result = 31 * result + (status?.hashCode() ?: 0)
         return result
     }
 }

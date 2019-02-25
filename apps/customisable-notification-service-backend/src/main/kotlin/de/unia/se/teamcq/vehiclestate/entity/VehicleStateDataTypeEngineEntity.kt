@@ -8,7 +8,8 @@ class VehicleStateDataTypeEngineEntity(
 
     var power: Int? = null,
     var capacity: Int? = null,
-    var fuelType: String? = null,
+    var chargingStatus: String? = null,
+    var transmissionType: String? = null,
     dataTypeId: Long? = null
 
 ) : VehicleStateDataTypeEntity(dataTypeId), Serializable {
@@ -21,7 +22,8 @@ class VehicleStateDataTypeEngineEntity(
 
         if (power != other.power) return false
         if (capacity != other.capacity) return false
-        if (fuelType != other.fuelType) return false
+        if (chargingStatus != other.chargingStatus) return false
+        if (transmissionType != other.transmissionType) return false
 
         return true
     }
@@ -31,7 +33,8 @@ class VehicleStateDataTypeEngineEntity(
         var result = super.hashCode()
         result = 31 * result + (power ?: 0)
         result = 31 * result + (capacity ?: 0)
-        result = 31 * result + (fuelType?.hashCode() ?: 0)
+        result = 31 * result + (chargingStatus?.hashCode() ?: 0)
+        result = 31 * result + (transmissionType?.hashCode() ?: 0)
         return result
     }
 }

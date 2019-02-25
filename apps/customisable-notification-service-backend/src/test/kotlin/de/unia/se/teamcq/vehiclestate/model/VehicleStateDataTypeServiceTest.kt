@@ -16,9 +16,9 @@ class VehicleStateDataTypeServiceTest : StringSpec() {
             testEqualAndHashCode(
                     ::getTestVehicleStateDataTypeServiceModel,
                     { it.dataTypeId = 3 },
-                    { it.brakeFluid = "test" },
-                    { it.dueDate = Date(10) },
-                    { it.status = "test" }
+                    { it.status = "test" },
+                    { it.dueDate = "test" },
+                    { it.remainingMileage = 20 }
             )
         }
     }

@@ -1,7 +1,6 @@
 package de.unia.se.teamcq.ruleevaluation.service
 
 import de.unia.se.teamcq.TestUtils
-import de.unia.se.teamcq.TestUtils.getTestVehicleStateDataTypeContractModel
 import de.unia.se.teamcq.ruleevaluation.model.ComparisonType
 import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
@@ -50,7 +49,10 @@ class EvaluationPredicateServiceTest : StringSpec() {
                 ) shouldBe false
             }
 
-            "Evaluate RulePredicates for Iterable values correctly" {
+            // TODO: This is how Iterable-Datatypes can be handled using our Evaluatiom mechanism.
+            // TODO: This example can be removed if it won't be needed and/or
+            // TODO: a Iterable-Datatype got added
+            /* "Evaluate RulePredicates for Iterable values correctly" {
                 val contractVehicleStateDataType = getTestVehicleStateDataTypeContractModel()
                 val stringListPredicate = TestUtils.getTestRuleConditionPredicateModel().apply {
                     comparisonType = ComparisonType.CONTAINED_IN
@@ -73,7 +75,7 @@ class EvaluationPredicateServiceTest : StringSpec() {
                         contractVehicleStateDataType,
                         vinPredicateField
                 ) shouldBe false
-            }
+            } */
 
             "Throws exceptions when comparing using the wrong comparison type" {
                 val nonApplicablePredicate = TestUtils.getTestRuleConditionPredicateModel().apply {

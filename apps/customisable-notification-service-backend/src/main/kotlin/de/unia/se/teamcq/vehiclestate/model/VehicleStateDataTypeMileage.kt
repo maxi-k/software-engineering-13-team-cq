@@ -13,7 +13,15 @@ class VehicleStateDataTypeMileage(
 
     var remaining: Int? = null,
 
-    var reached: Int? = null,
+    var reachedPercentage: Int? = null,
+
+    var averagePerWeek: Int? = null,
+
+    var expectedExceedance: Int? = null,
+
+    var forecastEndContract: Int? = null,
+
+    var status: String? = null,
 
     dataTypeId: Long? = null
 
@@ -28,7 +36,11 @@ class VehicleStateDataTypeMileage(
         return when (fieldName) {
             "current" -> this.current
             "remaining" -> this.remaining
-            "reached" -> this.reached
+            "reachedPercentage" -> this.reachedPercentage
+            "averagePerWeek" -> this.averagePerWeek
+            "expectedExceedance" -> this.expectedExceedance
+            "forecastEndContract" -> this.forecastEndContract
+            "status" -> this.status
             else -> super.retrieveFieldValue(fieldName)
         }
     }
@@ -41,7 +53,11 @@ class VehicleStateDataTypeMileage(
 
         if (current != other.current) return false
         if (remaining != other.remaining) return false
-        if (reached != other.reached) return false
+        if (reachedPercentage != other.reachedPercentage) return false
+        if (averagePerWeek != other.averagePerWeek) return false
+        if (expectedExceedance != other.expectedExceedance) return false
+        if (forecastEndContract != other.forecastEndContract) return false
+        if (status != other.status) return false
         if (predicateFieldProviderName != other.predicateFieldProviderName) return false
         if (predicateFields != other.predicateFields) return false
 
@@ -53,18 +69,27 @@ class VehicleStateDataTypeMileage(
         var result = super.hashCode()
         result = 31 * result + (current ?: 0)
         result = 31 * result + (remaining ?: 0)
-        result = 31 * result + (reached ?: 0)
+        result = 31 * result + (reachedPercentage ?: 0)
+        result = 31 * result + (averagePerWeek ?: 0)
+        result = 31 * result + (expectedExceedance ?: 0)
+        result = 31 * result + (forecastEndContract ?: 0)
+        result = 31 * result + (status?.hashCode() ?: 0)
         result = 31 * result + predicateFieldProviderName.hashCode()
         result = 31 * result + predicateFields.hashCode()
         return result
     }
 
+
     companion object {
         const val PREDICATE_FIELD_PROVIDER_NAME = "Mileage"
         val PREDICATE_FIELDS = mapOf(
-            "current" to PredicateField("current", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            "remaining" to PredicateField("remaining", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC),
-            "reached" to PredicateField("reached", FieldDataType.INTEGER, EvaluationStrategies.NUMERIC)
+            "current" to PredicateField("current", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "remaining" to PredicateField("remaining", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "reached" to PredicateField("reached", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "averagePerWeek" to PredicateField("averagePerWeek", FieldDataType.PER_WEEK, EvaluationStrategies.NUMERIC),
+            "expectedExceedance" to PredicateField("expectedExceedance", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "forecastEndContract" to PredicateField("forecastEndContract", FieldDataType.KILOMETRE, EvaluationStrategies.NUMERIC),
+            "status" to PredicateField("status", FieldDataType.TEXT, EvaluationStrategies.TEXT)
         )
     }
 }

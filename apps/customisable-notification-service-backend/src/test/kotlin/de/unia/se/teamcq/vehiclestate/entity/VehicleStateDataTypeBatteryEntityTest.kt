@@ -16,7 +16,8 @@ class VehicleStateDataTypeBatteryEntityTest : StringSpec() {
                     ::getTestVehicleStateDataTypeBatteryEntity,
                     { it.dataTypeId = 3 },
                     { it.charge = 20.0 },
-                    { it.status = "test" },
+                    { it.chargingStatus = "test" },
+                    { it.remainingRange = 2 },
                     { it.voltage = 20.0 }
             )
         }

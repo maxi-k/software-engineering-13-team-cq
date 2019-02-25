@@ -12,8 +12,8 @@ import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeFuel
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeMileage
 import de.unia.se.teamcq.vehiclestate.model.VehicleStateDataTypeService
 import org.springframework.stereotype.Component
+import org.threeten.bp.DateTimeUtils
 import java.lang.NullPointerException
-import javax.xml.bind.DatatypeConverter
 
 @Component
 class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
@@ -38,7 +38,7 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
         val engine = getVehicleStateDataTypeEngine(vehicle)
         val fuel = getVehicleStateDataTypeFuel(vehicle)
         val service = getVehicleStateDataTypeService(vehicle)
-        val contract = getVehicleStateDataTypeContract()
+        val contract = getVehicleStateDataTypeContract(vehicle)
         val mileage = getVehicleStateDataTypeMileage(vehicle)
 
         return setOf(
@@ -55,29 +55,32 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
         return VehicleStateDataTypeMileage(
                 vehicle.mileage?.current,
                 vehicle.mileage?.remaining,
-                vehicle.mileage?.reachedPercentage
+                vehicle.mileage?.reachedPercentage,
+                vehicle.mileage?.averagePerWeek,
+                vehicle.mileage?.expectedExceedance,
+                vehicle.mileage?.forecastEndContract,
+                vehicle.mileage?.status?.toString()
         )
     }
 
-    private fun getVehicleStateDataTypeContract(): VehicleStateDataTypeContract {
-        // FIXME: Make contract more similar to VSS-Version
+    private fun getVehicleStateDataTypeContract(vehicle: Vehicle): VehicleStateDataTypeContract {
         return VehicleStateDataTypeContract(
-                10,
-                setOf("1002A", "1008B"),
-                9
+                vehicle.contract?.endMileage,
+                vehicle.contract?.endDate?.let { date -> DateTimeUtils.toSqlDate(date) },
+                vehicle.contract?.reachedRuntimePercentage,
+                vehicle.contract?.remainingDays,
+                vehicle.contract?.startDate?.let { date -> DateTimeUtils.toSqlDate(date) },
+                vehicle.contract?.startMileage
         )
     }
 
     private fun getVehicleStateDataTypeService(vehicle: Vehicle): VehicleStateDataTypeService {
 
-        val dueDate = vehicle.serviceStatus?.dueDate?.let { dueDate ->
-            DatatypeConverter.parseDateTime(dueDate)
-        }?.time
-
         return VehicleStateDataTypeService(
-                dueDate,
-                vehicle.serviceStatus?.brakeFluid?.status?.toString(),
-                vehicle.serviceStatus?.status?.toString()
+                vehicle.serviceStatus?.status?.toString(),
+                vehicle.serviceStatus?.dueDate,
+                vehicle.serviceStatus?.remainingDays,
+                vehicle.serviceStatus?.remainingMileage
         )
     }
 
@@ -85,6 +88,7 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
         return VehicleStateDataTypeFuel(
                 vehicle.fuel?.levelPercentage,
                 vehicle.fuel?.levelLiters,
+                vehicle.fuel?.tankCapacity,
                 vehicle.fuel?.remainingRange
         )
     }
@@ -93,7 +97,8 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
         return VehicleStateDataTypeEngine(
                 vehicle.engine?.power,
                 vehicle.engine?.capacity,
-                vehicle.engine?.fuelType
+                vehicle.engine?.fuelType,
+                vehicle.engine?.transmissionType
         )
     }
 
@@ -101,7 +106,9 @@ class VehicleStateAdapterMapper : IVehicleStateAdapterMapper {
         return VehicleStateDataTypeBattery(
                 vehicle.battery?.levelPercentage?.toDouble(),
                 vehicle.battery?.voltage?.toDouble(),
-                vehicle.battery?.chargingStatus
+                vehicle.battery?.chargingStatus,
+                vehicle.battery?.remainingChargingHours,
+                vehicle.battery?.remainingRange
         )
     }
 }

@@ -16,8 +16,11 @@ class VehicleStateDataTypeMileageTest : StringSpec() {
                     ::getTestVehicleStateDataTypeMileageModel,
                     { it.dataTypeId = 3 },
                     { it.current = 20 },
-                    { it.reached = 20 },
-                    { it.remaining = 20 }
+                    { it.averagePerWeek = 20 },
+                    { it.remaining = 20 },
+                    { it.expectedExceedance = 20 },
+                    { it.forecastEndContract = 20 },
+                    { it.status = "test" }
             )
         }
     }
