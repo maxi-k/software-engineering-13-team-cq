@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.user.controller
 
 import de.unia.se.teamcq.user.dto.UserDto
-import de.unia.se.teamcq.user.mapping.IUserMapper
+import de.unia.se.teamcq.user.mapping.AbstractUserMapper
 import de.unia.se.teamcq.user.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -18,7 +18,7 @@ import javax.validation.Valid
 class UserController {
 
     @Autowired
-    lateinit var userMapper: IUserMapper
+    lateinit var userMapper: AbstractUserMapper
 
     @Autowired
     lateinit var userService: IUserService

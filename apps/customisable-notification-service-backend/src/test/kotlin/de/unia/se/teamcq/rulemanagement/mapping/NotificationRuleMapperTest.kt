@@ -23,7 +23,7 @@ import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
-import de.unia.se.teamcq.user.mapping.IUserMapper
+import de.unia.se.teamcq.user.mapping.AbstractUserMapper
 import de.unia.se.teamcq.vehiclestate.mapping.AbstractFleetReferenceMapper
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -47,7 +47,7 @@ class NotificationRuleMapperTest : StringSpec() {
     lateinit var mockIAggregatorMapper: IAggregatorMapper
 
     @MockK
-    lateinit var mockIUserMapper: IUserMapper
+    lateinit var mockAbstractUserMapper: AbstractUserMapper
 
     @MockK
     lateinit var mockRecipientMapperHelper: RecipientMapperHelper
@@ -64,7 +64,7 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.modelToEntity(any()) } returns getTestAggregatorEntity()
 
-            every { mockIUserMapper.modelToEntity(any()) } returns getTestUserEntity()
+            every { mockAbstractUserMapper.modelToEntity(any()) } returns getTestUserEntity()
 
             every { mockRecipientMapperHelper.modelToEntity(any()) } returns getTestRecipientEntities()
 
@@ -89,7 +89,7 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.entityToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
+            every { mockAbstractUserMapper.entityToModel(any()) } returns getTestUserModel()
 
             every { mockRecipientMapperHelper.entityToModel(any()) } returns getTestRecipientModels()
 
@@ -114,7 +114,7 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.modelToDto(any()) } returns getTestAggregatorDto()
 
-            every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
+            every { mockAbstractUserMapper.modelToDto(any()) } returns getTestUserDto()
 
             every { mockRecipientMapperHelper.modelToDto(any()) } returns getTestRecipientDtos()
 
@@ -139,7 +139,7 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockIUserMapper.dtoToModel(any()) } returns getTestUserModel()
+            every { mockAbstractUserMapper.dtoToModel(any()) } returns getTestUserModel()
 
             every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
 
