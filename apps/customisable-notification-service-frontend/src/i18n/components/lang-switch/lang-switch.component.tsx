@@ -13,16 +13,18 @@ export class LangSwitch extends React.Component<IProps, object> {
 
   public render() {
     return (
-      <div>
+      <div data-test-id="language-switcher">
         <StyledSwitchBtn
           onClick={this.updateLocale.bind(this, 'en')}
           className={this.props.locale === 'en' ? 'active' : ''}
+          data-test-id="language-switcher-en"
         >
           EN
         </StyledSwitchBtn>
         <StyledSwitchBtn
           onClick={this.updateLocale.bind(null, 'de')}
           className={this.props.locale === 'de' ? 'active' : ''}
+          data-test-id="language-switcher-de"
         >
           DE
         </StyledSwitchBtn>

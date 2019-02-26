@@ -1367,15 +1367,19 @@ Array [
           <div
             className="sc-frDJqD fufUhH"
           >
-            <div>
+            <div
+              data-test-id="language-switcher"
+            >
               <button
                 className="active sc-eNQAEJ kUjIoI"
+                data-test-id="language-switcher-en"
                 onClick={[Function]}
               >
                 EN
               </button>
               <button
                 className="sc-eNQAEJ kUjIoI"
+                data-test-id="language-switcher-de"
                 onClick={[Function]}
               >
                 DE
@@ -6855,9 +6859,11 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
 >
   <div
     className="sc-ktHwxA bEXIEy sc-fYxtnH lfOqeU"
+    data-test-name="add-rule-tile"
   >
     <div
       className="MuiPaper-root-483 MuiPaper-elevation0-485 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      data-test-name="add-rule-tile"
       onClick={[Function]}
     >
       <div
@@ -7066,9 +7072,11 @@ exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
 >
   <div
     className="sc-ktHwxA bEXIEy sc-fYxtnH kOdfwa"
+    data-test-name="add-rule-tile"
   >
     <div
       className="MuiPaper-root-376 MuiPaper-elevation0-378 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
+      data-test-name="add-rule-tile"
       onClick={[Function]}
     >
       <div
