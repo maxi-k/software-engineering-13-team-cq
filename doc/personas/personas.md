@@ -2,19 +2,21 @@
 
 ## Flottenadministratorin: Anna
 
-<img src="images/anna.jpg" width="500">
+![](images/anna.jpg)
 
-| Name        | Anna
+| []() | 
 | ------------------| ------------
-| Alter             | 32          
-| Geschlecht        | W           
-| Familienstand     | Verheirtatet
-| Kinder            | 2           
-| Beruf             | IT-Managerin
-| Hobbies           | Marathon    
-| Interessen        | Fitness     
-| Computeraffinität | Mittel      
-| Computerkenntnisse| Hoch        
+| **Name**        | Anna
+| **Alter**             | 32          
+| **Geschlecht**        | Weiblich    
+| **Familienstand**     | Verheirtatet
+| **Kinder**            | 2           
+| **Beruf**             | IT-Managerin
+| **Hobbies**           | Marathon    
+| **Interessen**        | Fitness     
+| **Computeraffinität** | Mittel      
+| **Computerkenntnisse**| Hoch 
+| []() | 
 
 * Vita:
 Anna ist eine gelernte Fachinformatikerin. Nach ihrer Ausbildung konnte sie die Position einer Flottenadministratorin antreten. Als Flottenadministratorin leitet sie alle Flottenmanager ihres Standorts.
@@ -29,19 +31,21 @@ Anna erhofft sich eine aggregierte Darstellung relevanter Informationen. Da sie 
 
 ## Flottenmanagerin: Marlene
 
-<img src="images/marlene.jpg" width="500">
+![](images/marlene.jpg)
 
-| Name        | Marlene
+| []() | 
 | ------------------| ------------------------------
-| Alter             | 42                            
-| Geschlecht        | W                             
-| Familienstand     | Geschieden                    
-| Kinder            | 4                             
-| Beruf             | Assistenz der Geschäftsführung
-| Hobbies           | Yoga                          
-| Interessen        | Veganismus                    
-| Computeraffinität | Hoch                          
-| Computerkenntnisse| Gering                        
+| **Name**        | Marlene
+| **Alter**             | 42                            
+| **Geschlecht**        | Weiblich                      
+| **Familienstand**     | Geschieden                    
+| **Kinder**            | 4                             
+| **Beruf**             | Assistenz der Geschäftsführung
+| **Hobbies**           | Yoga                          
+| **Interessen**        | Veganismus                    
+| **Computeraffinität** | Hoch                          
+| **Computerkenntnisse**| Gering     
+| []() | 
 
 * Vita: 
 Marlene hat BWL studiert und danach ein Softwareprojekt geleitet. Mit ihren Erfahrungen managed sie eine Flotte in der lokalen Zweigstelle ihres Unternehmens. Dabei achtet Marlene auf eine gesunde Balance zwischen Freizeit und Beruf.
@@ -56,19 +60,21 @@ Das FleetData-System soll Marlene über dringende Vorfälle und anstehende Termi
 
 ## Externer Empänger: Bob
 
-<img src="images/bob.jpg" width="500">
+![](images/bob.jpg)
 
-| Name        | Bob
+| []() | 
 | ------------------| ------------
-| Alter             | 55          
-| Geschlecht        | M           
-| Familienstand     | Ledig       
-| Kinder            | 0           
-| Beruf             | Buchhalter  
-| Hobbies           | Stammtische 
-| Interessen        | Fußball     
-| Computeraffinität | Mittel      
-| Computerkenntnisse| Mittel      
+| **Name**        | Bob
+| **Alter**             | 55          
+| **Geschlecht**        | Männlich    
+| **Familienstand**     | Ledig       
+| **Kinder**            | 0           
+| **Beruf**             | Buchhalter  
+| **Hobbies**           | Stammtische 
+| **Interessen**        | Fußball     
+| **Computeraffinität** | Mittel      
+| **Computerkenntnisse**| Mittel      
+| []() | 
 
 * Vita: 
 Bob ist ein gelernter Kaufmann und arbeitet seit einigen Jahrzehnten als Buchhalter. 
