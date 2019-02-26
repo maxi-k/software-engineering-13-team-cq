@@ -25,7 +25,9 @@ import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.user.mapping.AbstractUserMapper
 import de.unia.se.teamcq.vehiclestate.mapping.AbstractFleetReferenceMapper
+import io.kotlintest.should
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -53,7 +55,7 @@ class NotificationRuleMapperTest : StringSpec() {
     lateinit var mockRecipientMapperHelper: RecipientMapperHelper
 
     @InjectMockKs
-    lateinit var notificationRuleMapper: INotificationRuleMapperImpl
+    lateinit var notificationRuleMapper: AbstractNotificationRuleMapperImpl
 
     init {
         MockKAnnotations.init(this)
@@ -131,30 +133,118 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleDto shouldBe getTestNotificationRuleDto()
         }
 
-        "Convert dto to model" {
+        "Convert dto to model" should {
 
-            every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
+            "Work for legal arguments" {
 
-            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
+                every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
 
-            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
+                every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockAbstractUserMapper.dtoToModel(any()) } returns getTestUserModel()
+                every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
+                every { mockAbstractUserMapper.dtoToModel(any()) } returns getTestUserModel()
 
-            every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
-                    getTestFleetReferenceModel()
+                every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
 
-            every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
-                    getTestFleetReferenceModelTwo()
+                every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
+                        getTestFleetReferenceModel()
 
-            val notificationRuleDto = getTestNotificationRuleDto()
+                every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
+                        getTestFleetReferenceModelTwo()
 
-            val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
+                val notificationRuleDto = getTestNotificationRuleDto()
 
-            notificationRule shouldBe getTestNotificationRuleModel().apply {
-                lastUpdate = null
+                val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
+
+                notificationRule shouldBe getTestNotificationRuleModel().apply {
+                    lastUpdate = null
+                }
+            }
+
+            "Throw an Exception if affectingAllApplicableFleets is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.affectingAllApplicableFleets = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if ownerAsAdditionalRecipient is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.ownerAsAdditionalRecipient = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if description is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.description = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if aggregator is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.aggregator = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if condition is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.aggregator = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if name is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.name = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if no potential recipient exists" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.ownerAsAdditionalRecipient = false
+                        this.recipients = listOf()
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
             }
         }
     }

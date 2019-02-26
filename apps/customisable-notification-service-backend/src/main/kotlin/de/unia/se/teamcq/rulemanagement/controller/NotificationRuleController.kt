@@ -1,7 +1,7 @@
 package de.unia.se.teamcq.rulemanagement.controller
 
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
-import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.AbstractNotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import de.unia.se.teamcq.user.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,7 +25,7 @@ class NotificationRuleController {
     lateinit var notificationRuleService: INotificationRuleService
 
     @Autowired
-    lateinit var notificationRuleMapper: INotificationRuleMapper
+    lateinit var notificationRuleMapper: AbstractNotificationRuleMapper
 
     @Autowired
     lateinit var userService: IUserService
