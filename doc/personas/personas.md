@@ -4,7 +4,7 @@
 
 ![](images/anna.jpg)
 
-| Eigenschaft       | Wert     
+| Eigenschaft       | Ausprägung     
 | ------------------| ------------
 | **Name**        | Anna
 | **Alter**             | 32          
@@ -32,7 +32,7 @@ Anna erhofft sich eine aggregierte Darstellung relevanter Informationen. Da sie 
 
 ![](images/marlene.jpg)
 
-|                   
+| Eigenschaft       | Ausprägung          
 | ------------------| ------------------------------
 | **Name**        | Marlene
 | **Alter**             | 42                            
@@ -60,7 +60,7 @@ Das FleetData-System soll Marlene über dringende Vorfälle und anstehende Termi
 
 ![](images/bob.jpg)
 
-|                   
+| Eigenschaft       | Ausprägung                  
 | ------------------| ------------
 | **Name**        | Bob
 | **Alter**             | 55          
