@@ -62,6 +62,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       <FormattedMessage id={beforeText} />
       <SelectWrapper>
         <Select
+          data-test-id="rule-modification-condition-field-selector"
           value={dataTypeValue ? translateSelectValue(dataTypeValue) : null}
           onChange={onChangeDataType}
           options={dataTypeOptions.map(({ label, options }) => ({
@@ -78,6 +79,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       </SelectWrapper>
       <StyledSeparator />
       <StyledTextInput
+        data-test-id="rule-modification-condition-field-comparison-constant"
         value={comparisonConstant}
         onChange={onChangeComparisonConstant}
         type="text" />

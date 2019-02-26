@@ -10,7 +10,7 @@ import org.mapstruct.ReportingPolicy
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 abstract class AbstractUserMapper {
 
-    @BeforeMapping
+    // @BeforeMapping
     @Throws(IllegalArgumentException::class)
     fun checkLegalArguments(userDto: UserDto) {
 

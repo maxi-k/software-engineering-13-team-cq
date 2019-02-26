@@ -66,7 +66,10 @@ const AggregatorSelector: React.SFC<AggregatorSelectorProps> = ({
               onChange={applyLazy(setAggregatorStrategy, strategy)}>
               <ExpansionPanelSummary expandIcon={doExpand
                 ? <CheckBoxCheckedIcon color="primary" style={expandedIconStyle} />
-                : <CheckBoxIcon />}>
+                : <CheckBoxIcon />}
+
+                data-test-id={`rule-modification-aggregator-strategy-selector-${AggregatorStrategy[strategy].toLowerCase()}`}
+              >
                 <Typography variant="overline">
                   <FormattedMessage id={`cns.rule.field.aggregator.strategy.value.${AggregatorStrategy[strategy].toLowerCase()}.label`} />
                 </Typography>

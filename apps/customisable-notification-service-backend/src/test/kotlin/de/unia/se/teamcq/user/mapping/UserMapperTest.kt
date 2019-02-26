@@ -51,6 +51,7 @@ class UserMapperTest : StringSpec() {
 
                 val userDto = getTestUserDto()
 
+                userMapper.checkLegalArguments(userDto)
                 val userModel = userMapper.dtoToModel(userDto)
 
                 userModel shouldBe getTestUserModel()
@@ -60,9 +61,11 @@ class UserMapperTest : StringSpec() {
 
                 shouldThrow<IllegalArgumentException> {
 
+
                     val userDto = getTestUserDto().apply {
                         this.userSettings = null
                     }
+                    userMapper.checkLegalArguments(userDto)
 
                     userMapper.dtoToModel(userDto)
                 }
@@ -75,6 +78,7 @@ class UserMapperTest : StringSpec() {
                     val userDto = getTestUserDto().apply {
                         this.userSettings!!.locale = null
                     }
+                    userMapper.checkLegalArguments(userDto)
 
                     userMapper.dtoToModel(userDto)
                 }
@@ -87,6 +91,7 @@ class UserMapperTest : StringSpec() {
                     val userDto = getTestUserDto().apply {
                         this.userSettings!!.userNotificationType = null
                     }
+                    userMapper.checkLegalArguments(userDto)
 
                     userMapper.dtoToModel(userDto)
                 }

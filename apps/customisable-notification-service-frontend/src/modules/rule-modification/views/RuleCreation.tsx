@@ -16,6 +16,7 @@ import RuleModification, { StateAttributes, DispatchAttributes } from './RuleMod
 
 const RuleCreation: React.SFC<StateAttributes & DispatchAttributes> = (props) => (
   <RuleModification
+    data-test-id="rule-creation-view"
     pageTitle="cns.page.ruleCreate.title"
     pageTitleProps={{ titleValues: { ruleName: props.inProgressRule.name } }}
     {...props}

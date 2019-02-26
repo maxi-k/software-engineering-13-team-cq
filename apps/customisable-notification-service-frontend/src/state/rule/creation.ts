@@ -8,7 +8,7 @@ import {
   RuleModificationState as RuleCreationState,
   initialModificationState
 } from './common'
-import { NotificationRuleDetail } from '@/model/Rule'
+import { NotificationRuleDetail, VehicleDataType, PredicateFieldType } from '@/model'
 import { ruleCreationStateSelector } from '@/state/selectors'
 import { convertToAPIRule, createNewRule } from '@/services/rule-service'
 import { ensureResponseStatus } from '@/services/response-service'
@@ -29,7 +29,27 @@ export enum RuleCreationActionType {
 }
 export type RuleCreationAction = Action<RuleCreationActionType>
 
-const initialState = { ...initialModificationState }
+const initialState = update(initialModificationState, {
+  inProgressRule: {
+    condition: {
+      predicates: {
+        $merge: {
+          'initial-rule-condition': {
+            appliedField: {
+              vehicleDataType: VehicleDataType.Battery,
+              predicateField: {
+                fieldName: 'charge',
+                dataType: PredicateFieldType.PERCENTAGE_DECIMAL,
+                possibleEvaluationStrategies: []
+              }
+            },
+            comparisonType: 'GREATER_THAN_OR_EQUAL_TO'
+          }
+        }
+      }
+    }
+  }
+})
 
 const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
   switch (action.type) {

@@ -3,6 +3,7 @@
 exports[`Storyshots Complete Pages Rule Creation 1`] = `
 <div
   className="sc-lhVmIH hDNxCc"
+  data-test-id="rule-creation-view"
 >
   <header
     className="sc-dfVpRl bYKLEu"
@@ -372,6 +373,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
   <div>
     <div
       className="MuiFormControl-root-1956 MuiFormControl-marginNormal-1957 MuiFormControl-fullWidth-1959"
+      data-test-id="rule-modification-field-name"
     >
       <label
         className="MuiFormLabel-root-1967 MuiInputLabel-root-1960 MuiInputLabel-formControl-1961 MuiInputLabel-animated-1964 MuiInputLabel-filled-1965"
@@ -398,6 +400,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
     </div>
     <div
       className="MuiFormControl-root-1956 MuiFormControl-marginNormal-1957 MuiFormControl-fullWidth-1959"
+      data-test-id="rule-modification-field-description"
     >
       <label
         className="MuiFormLabel-root-1967 MuiInputLabel-root-1960 MuiInputLabel-formControl-1961 MuiInputLabel-animated-1964 MuiInputLabel-filled-1965"
@@ -533,6 +536,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
     </div>
     <label
       className="MuiFormControlLabel-root-2004"
+      data-test-id="rule-modification-field-ownerAsAdditionalRecipient"
     >
       <span
         className="MuiSwitch-root-2008"
@@ -582,6 +586,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
   >
     <button
       className="primary sc-jzJRlG cSDgQj"
+      data-test-id="rule-modification-action-next"
       icon={
         <_default
           fill="#fff"
@@ -1032,6 +1037,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
     <div>
       <div
         className="MuiFormControl-root-2149 MuiFormControl-marginNormal-2150 MuiFormControl-fullWidth-2152"
+        data-test-id="rule-modification-field-name"
       >
         <label
           className="MuiFormLabel-root-2160 MuiInputLabel-root-2153 MuiInputLabel-formControl-2154 MuiInputLabel-animated-2157 MuiInputLabel-filled-2158"
@@ -1058,6 +1064,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
       </div>
       <div
         className="MuiFormControl-root-2149 MuiFormControl-marginNormal-2150 MuiFormControl-fullWidth-2152"
+        data-test-id="rule-modification-field-description"
       >
         <label
           className="MuiFormLabel-root-2160 MuiInputLabel-root-2153 MuiInputLabel-formControl-2154 MuiInputLabel-animated-2157 MuiInputLabel-filled-2158"
@@ -1193,6 +1200,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
       </div>
       <label
         className="MuiFormControlLabel-root-2197"
+        data-test-id="rule-modification-field-ownerAsAdditionalRecipient"
       >
         <span
           className="MuiSwitch-root-2201"
@@ -1242,6 +1250,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
     >
       <button
         className="primary sc-jzJRlG cSDgQj"
+        data-test-id="rule-modification-action-next"
         icon={
           <_default
             fill="#fff"
@@ -2874,6 +2883,7 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
 <div>
   <div
     className="MuiFormControl-root-954 MuiFormControl-marginNormal-955 MuiFormControl-fullWidth-957"
+    data-test-id="rule-modification-field-name"
   >
     <label
       className="MuiFormLabel-root-965 MuiInputLabel-root-958 MuiInputLabel-formControl-959 MuiInputLabel-animated-962 MuiInputLabel-filled-963"
@@ -2900,6 +2910,7 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
   </div>
   <div
     className="MuiFormControl-root-954 MuiFormControl-marginNormal-955 MuiFormControl-fullWidth-957"
+    data-test-id="rule-modification-field-description"
   >
     <label
       className="MuiFormLabel-root-965 MuiInputLabel-root-958 MuiInputLabel-formControl-959 MuiInputLabel-animated-962 MuiInputLabel-filled-963"
@@ -3035,6 +3046,7 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
   </div>
   <label
     className="MuiFormControlLabel-root-1002"
+    data-test-id="rule-modification-field-ownerAsAdditionalRecipient"
   >
     <span
       className="MuiSwitch-root-1006"
@@ -3092,6 +3104,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       <div
         aria-expanded={true}
         className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331 MuiExpansionPanelSummary-expanded-1332"
+        data-test-id="rule-modification-aggregator-strategy-selector-immediate"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3199,6 +3212,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       <div
         aria-expanded={false}
         className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331"
+        data-test-id="rule-modification-aggregator-strategy-selector-counting"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3327,6 +3341,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       <div
         aria-expanded={false}
         className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331"
+        data-test-id="rule-modification-aggregator-strategy-selector-scheduled"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3711,6 +3726,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                     </div>
                     <div
                       className="MuiFormControl-root-1395 MuiFormControl-marginNormal-1396 MuiFormControl-fullWidth-1398"
+                      data-test-id="rule-modification-aggregator-strategy-scheduled-time"
                     >
                       <label
                         className="MuiFormLabel-root-1406 MuiFormLabel-filled-1410 MuiInputLabel-root-1399 MuiInputLabel-formControl-1400 MuiInputLabel-animated-1403 MuiInputLabel-shrink-1402 MuiInputLabel-filled-1404"
@@ -3746,7 +3762,9 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                     >
                       This rule will send notifications at the following times:
                       <br />
-                      <strong>
+                      <strong
+                        data-test-id="rule-modification-aggregator-strategy-cron-string"
+                      >
                         At 10:00 AM, only on Monday
                       </strong>
                     </p>
@@ -4094,6 +4112,7 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
     </div>
     <div
       className="MuiFormControl-root-1251 MuiFormControl-marginNormal-1252 MuiFormControl-fullWidth-1254"
+      data-test-id="rule-modification-aggregator-strategy-scheduled-time"
     >
       <label
         className="MuiFormLabel-root-1244 MuiFormLabel-filled-1248 MuiInputLabel-root-1255 MuiInputLabel-formControl-1256 MuiInputLabel-animated-1259 MuiInputLabel-shrink-1258 MuiInputLabel-filled-1260"
@@ -4129,7 +4148,9 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
     >
       This rule will send notifications at the following times:
       <br />
-      <strong>
+      <strong
+        data-test-id="rule-modification-aggregator-strategy-cron-string"
+      >
         At 10:00 AM, only on Monday
       </strong>
     </p>
@@ -5748,6 +5769,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     />
     <input
       className="sc-jtRfpW gqsRWl"
+      data-test-id="rule-modification-condition-field-comparison-constant"
       onChange={[Function]}
       type="text"
       value="comparison constant"
@@ -6080,6 +6102,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
   />
   <div
     className="sc-eXEjpC jbaQak"
+    data-test-id="rule-details-view"
   >
     <div
       className="sc-ibxdXY hUANbx"
@@ -6778,6 +6801,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
   >
     <button
       className="primary sc-jzJRlG cSDgQj"
+      data-test-id="rule-modification-action-next"
       icon={
         <_default
           fill="#fff"
@@ -6859,11 +6883,11 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
 >
   <div
     className="sc-ktHwxA bEXIEy sc-fYxtnH lfOqeU"
-    data-test-name="add-rule-tile"
+    data-test-id="add-rule-option"
   >
     <div
       className="MuiPaper-root-483 MuiPaper-elevation0-485 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
-      data-test-name="add-rule-tile"
+      data-test-id="add-rule-option"
       onClick={[Function]}
     >
       <div
@@ -7072,11 +7096,11 @@ exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
 >
   <div
     className="sc-ktHwxA bEXIEy sc-fYxtnH kOdfwa"
-    data-test-name="add-rule-tile"
+    data-test-id="add-rule-option"
   >
     <div
       className="MuiPaper-root-376 MuiPaper-elevation0-378 sc-ktHwxA bEXIEy sc-hqyNC dOAmVs"
-      data-test-name="add-rule-tile"
+      data-test-id="add-rule-option"
       onClick={[Function]}
     >
       <div

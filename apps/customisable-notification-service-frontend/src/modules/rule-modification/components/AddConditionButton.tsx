@@ -8,7 +8,9 @@ interface AddConditionButtonAttributes {
 export type AddConditionButtonProps = AddConditionButtonAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const AddConditionButton: React.SFC<AddConditionButtonProps> = ({ onClick }) => (
-  <div onClick={onClick} style={{ cursor: 'pointer', width: '50px' }}>
+  <div
+    data-test-id="rule-modification-action-add-condition"
+    onClick={onClick} style={{ cursor: 'pointer', width: '50px' }} >
     <PlusIcon />
   </div>
 )

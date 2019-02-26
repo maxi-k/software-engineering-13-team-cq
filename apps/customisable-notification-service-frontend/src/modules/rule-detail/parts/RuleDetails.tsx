@@ -50,7 +50,9 @@ export const StyledFieldSeparator = styled.div`
 `
 
 const RuleDetails: React.SFC<RuleDetailsProps> = ({ rule, fleets, ...otherProps }) => (
-  <StyledRuleInformation {...otherProps} >
+  <StyledRuleInformation
+    data-test-id="rule-details-view"
+    {...otherProps} >
     <StyledInfoBlock>
       <FieldDescriptor
         label={"cns.rule.field.name.label"}

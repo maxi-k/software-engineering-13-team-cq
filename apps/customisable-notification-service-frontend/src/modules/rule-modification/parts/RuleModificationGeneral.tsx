@@ -39,10 +39,12 @@ const RuleModificationGeneral: RuleModificationStepView = (
 ) => (
     <div>
       <InputField
+        data-test-id="rule-modification-field-name"
         label="cns.rule.field.name.label"
         value={inProgressRule.name || ""}
         onChange={createInputFieldUpdater(updateField)('name')} />
       <InputField
+        data-test-id="rule-modification-field-description"
         label="cns.rule.field.description.label"
         multiline
         rows={3}
@@ -54,11 +56,13 @@ const RuleModificationGeneral: RuleModificationStepView = (
         </p>
       </FormLabel>
       <RecipientSelector
+        data-test-id="rule-modification-field-recipients"
         value={convertRecipientsToOptions(inProgressRule.recipients || [])}
         options={[]}
         onChange={createRecipientFieldUpdater(updateField)('recipients')}
       />
       <FormControlLabel
+        data-test-id="rule-modification-field-ownerAsAdditionalRecipient"
         control={
           <Switch
             checked={inProgressRule.ownerAsAdditionalRecipient}
