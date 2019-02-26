@@ -107,8 +107,12 @@ class NotificationAttachmentService : INotificationAttachmentService {
             val matchingDataType = allVehicleStateDataTypes[nameOfProviderWithField]
 
             val fieldValues = fieldNames.map { predicateFieldInDataType ->
-                val fieldValue = matchingDataType?.retrieveFieldValue(predicateFieldInDataType)
-                applyDateFormatIfDate(fieldValue)
+                try {
+                    val fieldValue = matchingDataType?.retrieveFieldValue(predicateFieldInDataType)
+                    applyDateFormatIfDate(fieldValue)
+                } catch (illegalArgumentException: IllegalArgumentException) {
+                    null
+                }
             }
 
             fieldValues
