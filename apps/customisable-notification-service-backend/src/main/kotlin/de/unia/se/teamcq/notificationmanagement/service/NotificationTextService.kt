@@ -50,7 +50,7 @@ class NotificationTextService : INotificationTextService {
             val vin = vehicleState.vehicleReference?.vin
 
             "$brand - $series - $model: $vin"
-        }.toSet()
+        }.sorted()
 
         context.setVariable("vehicles", listOf(allVehicleReferences))
         return context
