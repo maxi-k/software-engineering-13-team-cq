@@ -88,11 +88,13 @@ describe('the index page', () => {
         const completeButton = await awaitElement(byTestId('rule-modification-action-complete'))
         completeButton.click()
 
+        await new Promise(resolve => {setTimeout(resolve, 1000)})
+
         /* We are back on the overview page with the newRuleTile button */
         const newRuleTile = await awaitElement(byTestId('add-rule-option'))
         pageSource = await browser.getPageSource()
 
         /* There is some representation of the rule name on the overview page */
         expect(browser.getPageSource()).toContain(uniqueRuleName)
-    }, waitUntilTime * 10)
+    }, waitUntilTime * 20)
 })
