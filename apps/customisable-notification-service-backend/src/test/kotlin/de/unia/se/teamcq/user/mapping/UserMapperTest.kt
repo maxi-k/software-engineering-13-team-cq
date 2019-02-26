@@ -61,7 +61,6 @@ class UserMapperTest : StringSpec() {
 
                 shouldThrow<IllegalArgumentException> {
 
-
                     val userDto = getTestUserDto().apply {
                         this.userSettings = null
                     }

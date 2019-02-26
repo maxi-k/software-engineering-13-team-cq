@@ -3,7 +3,6 @@ package de.unia.se.teamcq.user.mapping
 import de.unia.se.teamcq.user.dto.UserDto
 import de.unia.se.teamcq.user.entity.UserEntity
 import de.unia.se.teamcq.user.model.User
-import org.mapstruct.BeforeMapping
 import org.mapstruct.Mapper
 import org.mapstruct.ReportingPolicy
 
