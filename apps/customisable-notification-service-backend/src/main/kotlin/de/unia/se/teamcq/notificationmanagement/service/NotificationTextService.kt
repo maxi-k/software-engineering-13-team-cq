@@ -23,7 +23,7 @@ class NotificationTextService : INotificationTextService {
         val context = Context(locale)
 
         context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
-        context.setVariable("subscriptionDate", Date())
+        context.setVariable("rule", notificationData.notificationRule.name)
         context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
 
         return templateEngine.process(HTML_MAIL_TEMPLATE, context)
@@ -39,7 +39,18 @@ class NotificationTextService : INotificationTextService {
 
         context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
         context.setVariable("subscriptionDate", Date())
-        context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
+
+        val allVehicleReferences = notificationData.matchedVehicleStates.map { vehicleState ->
+
+            val brand = vehicleState.vehicleReference?.brand
+            val series = vehicleState.vehicleReference?.series
+            val model = vehicleState.vehicleReference?.model
+            val vin = vehicleState.vehicleReference?.vin
+
+            "$brand - $series - $model: $vin"
+        }.toSet()
+
+        context.setVariable("vehicles", listOf(allVehicleReferences))
 
         return templateEngine.process(TEXT_SMS_TEMPLATE, context)
     }
