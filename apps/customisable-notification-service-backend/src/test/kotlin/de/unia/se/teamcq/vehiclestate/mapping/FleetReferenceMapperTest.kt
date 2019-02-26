@@ -77,6 +77,18 @@ class FleetReferenceMapperTest : StringSpec() {
                 }
             }
 
+            "Throw an Exception if the fleetId is not a valid UUID" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val fleetReferenceDto = getTestFleetReferenceDto().apply {
+                        fleetId = "NotAUUID123"
+                    }
+
+                    fleetReferenceMapper.dtoToModel(fleetReferenceDto)
+                }
+            }
+
             "Throw an Exception if the carParkId is null or blank" {
 
                 shouldThrow<IllegalArgumentException> {
@@ -92,6 +104,18 @@ class FleetReferenceMapperTest : StringSpec() {
 
                     val fleetReferenceDto = getTestFleetReferenceDto().apply {
                         carParkId = ""
+                    }
+
+                    fleetReferenceMapper.dtoToModel(fleetReferenceDto)
+                }
+            }
+
+            "Throw an Exception if the carParkId is not a valid UUID" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val fleetReferenceDto = getTestFleetReferenceDto().apply {
+                        carParkId = "NotAUUID123"
                     }
 
                     fleetReferenceMapper.dtoToModel(fleetReferenceDto)

@@ -13,6 +13,7 @@ import SelectWrapper from '@/modules/shared/components/TextSelectWrapper'
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
+  unit: React.ReactNode
 
   dataTypeOptions: Array<SelectGroupedOptions<SelectValue>>
   dataTypeValue: SelectValue | null
@@ -36,6 +37,7 @@ const StyledSeparator = styled.div`
 const StyledTextInput = styled.input`
   width: 200px;
   height: 35px;
+  margin-right: 1rem;
 `
 
 const StyledRemovalButton = styled(IconButton)`
@@ -50,11 +52,11 @@ const RemovalButton: React.SFC<React.HTMLAttributes<HTMLButtonElement>> = ({ onC
 )
 
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
-  { beforeText, afterText,
+  { beforeText, afterText, unit,
     dataTypeOptions, dataTypeValue,
     comparisonTypeOptions, comparisonTypeValue, comparisonConstant,
     onChangeDataType, onChangeComparisonType, onChangeComparisonConstant,
-    onClickRemove
+    onClickRemove,
   }
 ) => {
   return (
@@ -62,6 +64,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       <FormattedMessage id={beforeText} />
       <SelectWrapper>
         <Select
+          data-test-id="rule-modification-condition-field-selector"
           value={dataTypeValue ? translateSelectValue(dataTypeValue) : null}
           onChange={onChangeDataType}
           options={dataTypeOptions.map(({ label, options }) => ({
@@ -78,10 +81,11 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
       </SelectWrapper>
       <StyledSeparator />
       <StyledTextInput
+        data-test-id="rule-modification-condition-field-comparison-constant"
         value={comparisonConstant}
         onChange={onChangeComparisonConstant}
         type="text" />
-      %.
+      {unit}
       <RemovalButton onClick={onClickRemove} />
     </div>
   )

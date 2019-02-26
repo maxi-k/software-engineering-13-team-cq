@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { injectIntl, InjectedIntlProps } from 'react-intl'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import {
@@ -16,22 +17,23 @@ import RuleModification, { StateAttributes, DispatchAttributes } from './RuleMod
 
 const RuleCreation: React.SFC<StateAttributes & DispatchAttributes> = (props) => (
   <RuleModification
+    data-test-id="rule-creation-view"
     pageTitle="cns.page.ruleCreate.title"
     pageTitleProps={{ titleValues: { ruleName: props.inProgressRule.name } }}
     {...props}
   />
 )
 
-const mapStateToProps: StateMapper<{}, StateAttributes> = (state, props) => ({
+const mapStateToProps: StateMapper<InjectedIntlProps, StateAttributes> = (state, props) => ({
   ...ruleCreationStateSelector(state)
 })
 
-const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<InjectedIntlProps, DispatchAttributes> = (dispatch, props) => ({
   abortModification: () => (
     // TODO: This is a simple javascript dialog for now
     // implement as a modal that shows over the screen
     // See Issue #153
-    confirm("Really abort rule creation?") && dispatch(createRuleAbort())
+    confirm(props.intl.formatMessage({ id: "cns.message.create.abort.confirm" })) && dispatch(createRuleAbort())
   ),
   selectStep: (step: number) => dispatch(createRuleSelectStep(step)),
   previousStep: () => dispatch(createRulePreviousStep()),
@@ -56,7 +58,9 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
   )
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps)
-  (RuleCreation)
+export default injectIntl(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps)
+    (RuleCreation)
+)

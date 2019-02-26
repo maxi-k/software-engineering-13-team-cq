@@ -32,7 +32,7 @@ class NotificationMESAdapter : INotificationMESAdapter {
     ) {
 
         if (disableNotifications == true) {
-            logger.info("Sending notification")
+            logger.info("Sending notification to $receiver")
         } else {
 
             val (header, token) = authenticationTokenAdapter.getAuthenticationHeader()

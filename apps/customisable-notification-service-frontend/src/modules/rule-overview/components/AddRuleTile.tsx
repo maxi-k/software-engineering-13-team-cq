@@ -9,7 +9,9 @@ const StyledAddRuleTile = styled(BaseTile)`
 `
 
 const AddRuleTile: React.SFC<RuleTileProps> = (props) => (
-  <StyledAddRuleTile {...props}>
+  <StyledAddRuleTile
+    data-test-id="add-rule-option"
+    {...props}>
     <AddIcon />
   </StyledAddRuleTile>
 )

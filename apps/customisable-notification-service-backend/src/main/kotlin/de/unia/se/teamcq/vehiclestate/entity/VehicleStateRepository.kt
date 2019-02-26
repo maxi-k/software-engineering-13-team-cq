@@ -67,11 +67,9 @@ class VehicleStateRepository : IVehicleStateRepository {
             entityManager.merge(vehicleStateMapper.modelToEntity(vehicleState))
         }
 
-        vehicleStateEntitiesToSave.map { vehicleStateEntityToSave ->
-            vehicleStateEntityRepository.save(vehicleStateEntityToSave)
-        }
+        val savedVehicleStateEntities = vehicleStateEntityRepository.saveAll(vehicleStateEntitiesToSave)
 
-        return vehicleStateEntitiesToSave.mapNotNull { savedVehicleStateEntity ->
+        return savedVehicleStateEntities.mapNotNull { savedVehicleStateEntity ->
             vehicleStateMapper.entityToModel(savedVehicleStateEntity)
         }
     }
@@ -112,16 +110,14 @@ class VehicleStateRepository : IVehicleStateRepository {
         notificationRule: NotificationRule,
         vehicleStates: List<VehicleState>
     ) {
-        val notificationRuleEntityToSave = entityManager.merge(
-                notificationRuleMapper.modelToEntity(notificationRule)
-        )
+        val notificationRuleEntity = notificationRuleEntityRepository.getOne(notificationRule.ruleId!!)
         val vehicleStateEntities = vehicleStates.map { vehicleState ->
             entityManager.merge(vehicleStateMapper.modelToEntity(vehicleState))
         }.toSet()
 
-        notificationRuleEntityToSave.processedVehicleStates = notificationRuleEntityToSave
+        notificationRuleEntity.processedVehicleStates = notificationRuleEntity
                 .processedVehicleStates?.plus(vehicleStateEntities) ?: vehicleStateEntities
 
-        notificationRuleEntityRepository.save(notificationRuleEntityToSave)
+        notificationRuleEntityRepository.save(notificationRuleEntity)
     }
 }

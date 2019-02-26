@@ -172,6 +172,7 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
         </div>
         {/* Time Form Input */}
         <InputField
+          data-test-id="rule-modification-aggregator-strategy-scheduled-time"
           label="cns.rule.field.aggregator.scheduled.field.time.label"
           type="time"
           inputProps={{
@@ -184,7 +185,8 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
         <Typography variant="body1" paragraph={true} style={{ paddingTop: '1rem' }}>
           <FormattedMessage id="cns.rule.field.aggregator.scheduled.description.label" />
           <br />
-          <strong>
+          <strong
+            data-test-id="rule-modification-aggregator-strategy-cron-string">
             {this.getHumanReadableCron()}
           </strong>
         </Typography>

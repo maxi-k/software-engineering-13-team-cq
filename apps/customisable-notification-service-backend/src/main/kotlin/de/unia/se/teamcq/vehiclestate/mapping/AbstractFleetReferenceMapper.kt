@@ -5,6 +5,7 @@ import de.unia.se.teamcq.vehiclestate.entity.FleetReferenceEntity
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import org.mapstruct.BeforeMapping
 import org.mapstruct.Mapper
+import java.util.UUID
 
 @Mapper(componentModel = "spring")
 abstract class AbstractFleetReferenceMapper {
@@ -16,11 +17,25 @@ abstract class AbstractFleetReferenceMapper {
         if (fleetReferenceDto.carParkId.isNullOrBlank()) {
             throw IllegalArgumentException("Attribute carParkId of FleetReferenceDto" +
                     " is required but was null or blank!")
+        } else {
+            try {
+                UUID.fromString(fleetReferenceDto.carParkId)
+            } catch (illegalArgumentException: IllegalArgumentException) {
+                throw IllegalArgumentException("Attribute carParkId of FleetReferenceDto" +
+                        " must be a valid UUID but was ${fleetReferenceDto.carParkId}!")
+            }
         }
 
         if (fleetReferenceDto.fleetId.isNullOrBlank()) {
             throw IllegalArgumentException("Attribute fleetId of FleetReferenceDto" +
                     " is required but was null or blank!")
+        } else {
+            try {
+                UUID.fromString(fleetReferenceDto.fleetId)
+            } catch (illegalArgumentException: IllegalArgumentException) {
+                throw IllegalArgumentException("Attribute fleetId of FleetReferenceDto" +
+                        " must be a valid UUID but was ${fleetReferenceDto.fleetId}!")
+            }
         }
     }
 

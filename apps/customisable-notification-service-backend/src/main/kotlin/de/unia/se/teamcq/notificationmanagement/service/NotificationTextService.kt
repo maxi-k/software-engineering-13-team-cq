@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import java.util.Date
+import java.util.Locale
 import javax.annotation.Resource
 
 @Component
@@ -20,11 +21,7 @@ class NotificationTextService : INotificationTextService {
 
         val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
-        val context = Context(locale)
-
-        context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
-        context.setVariable("subscriptionDate", Date())
-        context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
+        val context = getContext(locale, notificationData)
 
         return templateEngine.process(HTML_MAIL_TEMPLATE, context)
     }
@@ -35,13 +32,28 @@ class NotificationTextService : INotificationTextService {
 
         val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
-        val context = Context(locale)
-
-        context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
-        context.setVariable("subscriptionDate", Date())
-        context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
+        val context = getContext(locale, notificationData)
 
         return templateEngine.process(TEXT_SMS_TEMPLATE, context)
+    }
+
+    private fun getContext(locale: Locale, notificationData: NotificationData): Context {
+        val context = Context(locale)
+
+        context.setVariable("subscriptionDate", Date())
+
+        val allVehicleReferences = notificationData.matchedVehicleStates.map { vehicleState ->
+
+            val brand = vehicleState.vehicleReference?.brand
+            val series = vehicleState.vehicleReference?.series
+            val model = vehicleState.vehicleReference?.model
+            val vin = vehicleState.vehicleReference?.vin
+
+            "$brand - $series - $model: $vin"
+        }.sorted()
+
+        context.setVariable("vehicles", listOf(allVehicleReferences))
+        return context
     }
 
     companion object {
