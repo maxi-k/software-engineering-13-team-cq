@@ -45,34 +45,34 @@ Template (nach Übungsblatt):
 #### Use-Case: Regeln für Nachrichten: Create, Update
 | Name                 | Inhalt
 |----------------------|------------------|
-| Name                 | Regeln für Nachrichten: Create/Update
-| Trigger              | Der Manager möchte eine neue Regel anlegen oder eine Bestehende bearbeiten
-| Primärer Akteur      | Flottenmanager
-| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht eine Detailansicht der Regel</li><li>Der Manager bearbeitet Informationen wie den Name der Regel und/oder die Bediungung der Regel.</li><li>Der Manager speichert den neuen Stand der Regel, sobald ein zulässiger Zustand erreicht wurde.</li><li>Der Manager verlässt das System.</li></ol>
-| Alternative Abläufe  | <ul><li>(4.a) Der Manager legt eine neue Regel an.</li></ul>
-| Vorbedingung         | Der Flottenmanager ist authentifiziert
-| Nachbedingung        | Der Regel wurden die vom User ausgewählte Aggregationsstrategie, Regel-Bedingungen, Event-Quellen und ggf. erstellt und zugewiesen.
+| Name                 | Regeln für Nachrichten: Create/Update |
+| Trigger              | Der Manager möchte eine neue Regel anlegen oder eine Bestehende bearbeiten |
+| Primärer Akteur      | Flottenmanager |
+| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht eine Detailansicht der Regel</li><li>Der Manager bearbeitet Informationen wie den Name der Regel und/oder die Bediungung der Regel.</li><li>Der Manager speichert den neuen Stand der Regel, sobald ein zulässiger Zustand erreicht wurde.</li><li>Der Manager verlässt das System.</li></ol> |
+| Alternative Abläufe  | <ul><li>(4.a) Der Manager legt eine neue Regel an.</li></ul> |
+| Vorbedingung         | Der Flottenmanager ist authentifiziert |
+| Nachbedingung        | Der Regel wurden die vom User ausgewählte Aggregationsstrategie, Regel-Bedingungen, Event-Quellen und ggf. erstellt und zugewiesen. |
 
 #### Use-Case: Regeln für Nachrichten: Read
 | Name                 | Inhalt
 |----------------------|------------------|
-| Name                 | Regeln für Nachrichten: Read
-| Trigger              | Der Manager möchte eine bestimme Regel ansehen
-| Primärer Akteur      | Flottenmanager
-| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht die Detailinformationen ein</li><li>Der Manager verlässt das System</li></ol>
-| Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert
-| Nachbedingung        | Die Regel wurde nicht verändert.
+| Name                 | Regeln für Nachrichten: Read |
+| Trigger              | Der Manager möchte eine bestimme Regel ansehen |
+| Primärer Akteur      | Flottenmanager |
+| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System </li><li> Der Manager wählt eine der angezeigten Regeln aus</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager sieht die Detailinformationen ein</li><li>Der Manager verlässt das System</li></ol> |
+| Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert |
+| Nachbedingung        | Die Regel wurde nicht verändert. |
 
 #### Use-Case: Regeln für Nachrichten: Delete
 | Name                 | Inhalt
 |----------------------|------------------|
-| Name                 | Regeln für Nachrichten: Delete
-| Trigger              | Der Manager möchte eine bestimme Regel löschen
-| Primärer Akteur      | Flottenmanager
-| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System.</li><li> Der Manager wählt eine der angezeigten Regeln aus.</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager löscht die ausgewählte Regel.</li><li>Das System fragt nach, ob die Regel wirklich gelöscht werden soll.</li><li>Der Manager bestätigt den Löschungsvorgang</li><li>Der Manager verlässt das System.</li></ol>
-| Alternative Abläufe  | <ul><li>(4-5a) Der Manager entscheidet sich gegen das Löschen der Regel.</li></ul>
-| Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert
-| Nachbedingung        | <ul><li>Die Regel wurde gelöscht und ist im System nicht mehr aktiv.</li> Die zugeordnete Aggregationsstrategie, Regel-Bedingung und Event-Quelle wurden gelöscht.</li></ul>
+| Name                 | Regeln für Nachrichten: Delete |
+| Trigger              | Der Manager möchte eine bestimme Regel löschen |
+| Primärer Akteur      | Flottenmanager |
+| Haupterfolgszenario  | <ol><li>Der Manager öffnet die Regelübersicht im System.</li><li> Der Manager wählt eine der angezeigten Regeln aus.</li><li>Das System zeigt die Detailinformationen der ausgewählten Regel an.</li><li>Der Manager löscht die ausgewählte Regel.</li><li>Das System fragt nach, ob die Regel wirklich gelöscht werden soll.</li><li>Der Manager bestätigt den Löschungsvorgang</li><li>Der Manager verlässt das System.</li></ol> |
+| Alternative Abläufe  | <ul><li>(4-5a) Der Manager entscheidet sich gegen das Löschen der Regel.</li></ul> |
+| Vorbedingung         | Es existiert mindestens eine Regel im System, der Flottenmanager ist authentifiziert |
+| Nachbedingung        | <ul><li>Die Regel wurde gelöscht und ist im System nicht mehr aktiv.</li> Die zugeordnete Aggregationsstrategie, Regel-Bedingung und Event-Quelle wurden gelöscht.</li></ul> |
 
 #### Use-Case: Versand aggregierter Nachrichten
 | Name | Inhalt |
