@@ -10,6 +10,7 @@ import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 import java.lang.IllegalArgumentException
+import java.time.ZoneOffset
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class VehicleStateDataTypeTest : StringSpec() {
@@ -33,9 +34,8 @@ class VehicleStateDataTypeTest : StringSpec() {
             val vehicleStateContract = TestUtils.getTestVehicleStateDataTypeContractModel()
             vehicleStateContract.predicateFields["startDate"] shouldNotBe null
             vehicleStateContract.predicateFields["nonExistent"] shouldBe null
-            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
-            vehicleStateContract.retrieveFieldValue("endDate") shouldBe vehicleStateContract.endDate
-            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
+            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate?.toLocalDate()?.atStartOfDay(ZoneOffset.UTC)?.toInstant()
+            vehicleStateContract.retrieveFieldValue("endDate") shouldBe vehicleStateContract.endDate?.toLocalDate()?.atStartOfDay(ZoneOffset.UTC)?.toInstant()
             vehicleStateContract.retrieveFieldValue("startMileage") shouldBe vehicleStateContract.startMileage
             vehicleStateContract.retrieveFieldValue("reachedRuntimePercentage") shouldBe vehicleStateContract.reachedRuntimePercentage
             vehicleStateContract.retrieveFieldValue("remainingDays") shouldBe vehicleStateContract.remainingDays
