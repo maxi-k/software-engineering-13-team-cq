@@ -5,7 +5,9 @@
 
 [Important Integration Tests](#important-integration-tests)
 * [NotificationRuleController](#notificationrulecontroller)
-* [ProcessingPipelineIntegrationTest](#processingPipelineIntegrationTest)
+* [ProcessingPipelineIntegrationTest](#processingpipelineintegrationtest)
+
+[State](#state)
 
 This is a short guide to the development using the backend stack we
 decided for. As we already show our backend architecture in the rest of
@@ -26,5 +28,9 @@ To guarantee that the necessary code got generated, use the following two comman
 This test demonstrates how to use our central API.
 
 ## ProcessingPipelineIntegrationTest
-This test shows how our data processing pipeline works. As it depends on the API-Mock, it is
+This test shows how our data processing pipeline works and that it works. As it depends on the API-Mock, it is
 disabled by default.
+
+# State
+As our application uses [Quartz](http://www.quartz-scheduler.org) for scheduling, it does 
+not need to rely on it's state.
