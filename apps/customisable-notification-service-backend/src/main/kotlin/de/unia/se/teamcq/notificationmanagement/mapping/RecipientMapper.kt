@@ -19,7 +19,7 @@ class RecipientMapper : IRecipientMapper {
     lateinit var recipientMailMapper: AbstractRecipientMailMapper
 
     @Autowired
-    lateinit var recipientSmsMapper: IRecipientSmsMapper
+    lateinit var recipientSmsMapper: AbstractRecipientSmsMapper
 
     override fun modelToEntity(recipient: Recipient): RecipientEntity {
         return when (recipient) {
