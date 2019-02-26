@@ -92,6 +92,8 @@ import org.threeten.bp.DateTimeUtils
 import org.threeten.bp.LocalDate
 import java.sql.Date
 import java.sql.Timestamp
+import java.time.Instant
+import java.time.ZoneOffset
 import java.util.UUID
 
 object TestUtils {
@@ -272,6 +274,10 @@ object TestUtils {
                 getTestVehicleStateDataTypeMileageEntity(),
                 getTestVehicleStateDataTypeServiceEntity()
         )
+    }
+
+    fun convertVehicleStateDataTypeDateToInstant(date: Date?): Instant? {
+        return date?.toLocalDate()?.atStartOfDay(ZoneOffset.UTC)?.toInstant()
     }
 
     inline fun <reified VehicleStateDatum : VehicleStateDataType> VehicleState.updateVehicleStateDataTypeField(
