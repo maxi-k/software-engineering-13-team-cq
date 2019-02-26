@@ -166,6 +166,7 @@ const RuleModification: React.SFC<RuleModificationProps> = (
       <StyledActionArea>
         {currentStep !== 0 &&
           <Button primary="false"
+            data-test-id="rule-modification-action-previous"
             onClick={previousStep}>
             <FormattedMessage id="cns.rule.modification.action.step.previous" />
           </Button>
@@ -173,12 +174,14 @@ const RuleModification: React.SFC<RuleModificationProps> = (
         {currentStep === stepComponents.length - 1
           ?
           <Button primary="true"
+            data-test-id="rule-modification-action-complete"
             icon={<NextIcon fill="#fff" />}
             onClick={applyLazy(completeModification, validatorForStep(currentStep, inProgressRule))}>
             <FormattedMessage id="cns.rule.modification.action.complete" />
           </Button>
           :
           <Button primary="true"
+            data-test-id="rule-modification-action-next"
             icon={<NextIcon fill="#fff" />}
             onClick={applyLazy(nextStep, validatorForStep(currentStep, inProgressRule))}>
             <FormattedMessage id="cns.rule.modification.action.step.next" />

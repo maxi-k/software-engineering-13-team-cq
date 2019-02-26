@@ -293,6 +293,7 @@ export const ruleFieldValidator = new FieldValidator<DetailRule>({
   ),
   condition: (({ condition }) =>
     FieldValidator.validateExists(condition) && typeof condition !== 'undefined' &&
+    Object.values(condition.predicates).length > 0 &&
     FieldValidator.validateEvery(Object.values(condition.predicates), (predicate: RuleConditionPredicate<any>) => (
       FieldValidator.validateExists(predicate.comparisonConstant) &&
       FieldValidator.validateExists(predicate.appliedField) &&
