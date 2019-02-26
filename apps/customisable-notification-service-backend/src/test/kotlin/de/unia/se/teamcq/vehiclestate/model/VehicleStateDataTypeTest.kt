@@ -33,9 +33,8 @@ class VehicleStateDataTypeTest : StringSpec() {
             val vehicleStateContract = TestUtils.getTestVehicleStateDataTypeContractModel()
             vehicleStateContract.predicateFields["startDate"] shouldNotBe null
             vehicleStateContract.predicateFields["nonExistent"] shouldBe null
-            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
-            vehicleStateContract.retrieveFieldValue("endDate") shouldBe vehicleStateContract.endDate
-            vehicleStateContract.retrieveFieldValue("startDate") shouldBe vehicleStateContract.startDate
+            vehicleStateContract.retrieveFieldValue("startDate") shouldBe TestUtils.convertVehicleStateDataTypeDateToInstant(vehicleStateContract.startDate)
+            vehicleStateContract.retrieveFieldValue("endDate") shouldBe TestUtils.convertVehicleStateDataTypeDateToInstant(vehicleStateContract.endDate)
             vehicleStateContract.retrieveFieldValue("startMileage") shouldBe vehicleStateContract.startMileage
             vehicleStateContract.retrieveFieldValue("reachedRuntimePercentage") shouldBe vehicleStateContract.reachedRuntimePercentage
             vehicleStateContract.retrieveFieldValue("remainingDays") shouldBe vehicleStateContract.remainingDays

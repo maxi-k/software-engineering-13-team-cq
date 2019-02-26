@@ -1,6 +1,7 @@
 import React from 'react'
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
+import { injectIntl, InjectedIntlProps } from 'react-intl'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import { ruleDetailStateSelector } from '@/state/selectors'
@@ -51,7 +52,7 @@ class RuleDetailPage extends React.PureComponent<RuleDetailPageProps> {
   }
 }
 
-const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = (state, props) => {
+const mapStateToProps: StateMapper<RuleDetailPageAttributes & InjectedIntlProps, StateAttributes> = (state, props) => {
   const { rules, isFetching, hasFetchError } = ruleDetailStateSelector(state)
   return ({
     rule: rules[parseInt(props.parameters.ruleId, 10)],
@@ -60,14 +61,19 @@ const mapStateToProps: StateMapper<RuleDetailPageAttributes, StateAttributes> = 
   })
 }
 
-const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttributes> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes & InjectedIntlProps, DispatchAttributes> = (dispatch, props) => ({
   fetchRule: () => {
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },
   editRule: () => dispatch(push(interpolatePagePath('ruleEdit', props.parameters.ruleId))),
   deleteRule: (rule: NotificationRuleDetail) => (
-    confirm("Really delete rule?") && dispatch(deleteRemoteRule.request(parseInt(props.parameters.ruleId, 10)))
+    confirm(props.intl.formatMessage({ id: "cns.message.delete.confirm" })) && dispatch(deleteRemoteRule.request(parseInt(props.parameters.ruleId, 10)))
   )
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailPage)
+export default injectIntl(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps)
+    (RuleDetailPage)
+)
