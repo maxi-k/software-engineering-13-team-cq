@@ -40,7 +40,7 @@
     "test": "craco test --testPathIgnorePatterns selenium",
     "test-coverage": "craco test --collectCoverage --testPathIgnorePatterns selenium",
     "test-integration": "craco test --collectCoverage",
-    "test-commit": "CI=true craco test --bail --ci --detectOpenHandles --collectCoverage"
+    "test-commit": "CI=true craco test --bail --ci --detectOpenHandles --collectCoverage --testPathIgnorePatterns selenium"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -98,7 +98,7 @@
         "branches": 35,
         "functions": 50,
         "lines": 50,
-        "statements": -600
+        "statements": -650
       }
     }
   },
