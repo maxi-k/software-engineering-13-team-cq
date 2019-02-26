@@ -2,9 +2,11 @@
 
 #### Table of Contents
 [Architecture](#architecture)
+
 [Tests](#running-tests)
 * [Types of Tests](#types-of-tests)
 * [Running Tests](#running-tests)
+
 [Conventions](#conventions)
 * [General Conventions](#general-conventions)
 * [Typescript, React and Props](#typescript-react-and-props)
@@ -17,6 +19,24 @@ For more general stuff focused on tooling and external guides and
 references, please read [The Frontend README](../../apps/customisable-notification-service-frontend/README.md).
 
 # Architecture
+The architecture of the frontend is defined mainly by the usage of `react` and `redux`.
+While `react` promotes a component-based architecture, `redux` is used for state-management and leads to a decoupled and functional programming style.
+Besides this, there are some more project-specific things to be noted:
+
+* *View Modules*: The frontend is divided into different view modules defined by the domain, 
+  like `rule-modification`, `rule-detial`, `rule-overview`.
+* *Ducks*: Loosely following the [Redux Duck Pattern](https://github.com/erikras/ducks-modular-redux), 
+  there are `ducks` for each view module, as well as some more for behind-the-scenes things, 
+  like authentication and fetching internal state data from the backend.
+* *State*: The `duck`s are spread under the folder `state/`, and combined into a single redux state
+  reducer under `state/index.ts`. The asynchronous fetching logic using es2015 [Generator Functions](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/function*)
+  is also defined in the `ducks`s, and combined with [Redux Saga](https://redux-saga.js.org/) in the same file.
+* *Services*: Most logic is either contained in the state management in the `duck`s under `state/`, 
+  or in the various services under `services/`.
+* *BMWs Modules*: The `fleetdata` modules are located under `fleetdata/`
+* *I18n*: Internationalisation Files are located under *i18n/*. 
+  This includes language switching logic and components from BMW, 
+  as well as the internationalisation JSON Files.
 
 # Tests
 
