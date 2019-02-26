@@ -4,7 +4,7 @@
 
 ![](images/anna.jpg)
 
-|                   |             
+| Eigenschaft       | Ausprägung     
 | ------------------| ------------
 | **Name**        | Anna
 | **Alter**             | 32          
@@ -16,7 +16,6 @@
 | **Interessen**        | Fitness     
 | **Computeraffinität** | Mittel      
 | **Computerkenntnisse**| Hoch 
-| []() | 
 
 * **Vita**:
 Anna ist eine gelernte Fachinformatikerin. Nach ihrer Ausbildung konnte sie die Position einer Flottenadministratorin antreten. Als Flottenadministratorin leitet sie alle Flottenmanager ihres Standorts.
@@ -33,7 +32,7 @@ Anna erhofft sich eine aggregierte Darstellung relevanter Informationen. Da sie 
 
 ![](images/marlene.jpg)
 
-|  | 
+| Eigenschaft       | Ausprägung          
 | ------------------| ------------------------------
 | **Name**        | Marlene
 | **Alter**             | 42                            
@@ -45,7 +44,6 @@ Anna erhofft sich eine aggregierte Darstellung relevanter Informationen. Da sie 
 | **Interessen**        | Veganismus                    
 | **Computeraffinität** | Hoch                          
 | **Computerkenntnisse**| Gering     
-| []() | 
 
 * **Vita**: 
 Marlene hat BWL studiert und danach ein Softwareprojekt geleitet. Mit ihren Erfahrungen managed sie eine Flotte in der lokalen Zweigstelle ihres Unternehmens. Dabei achtet Marlene auf eine gesunde Balance zwischen Freizeit und Beruf.
@@ -62,7 +60,7 @@ Das FleetData-System soll Marlene über dringende Vorfälle und anstehende Termi
 
 ![](images/bob.jpg)
 
-|  | 
+| Eigenschaft       | Ausprägung                  
 | ------------------| ------------
 | **Name**        | Bob
 | **Alter**             | 55          
@@ -74,7 +72,6 @@ Das FleetData-System soll Marlene über dringende Vorfälle und anstehende Termi
 | **Interessen**        | Fußball     
 | **Computeraffinität** | Mittel      
 | **Computerkenntnisse**| Mittel      
-| []() | 
 
 * **Vita**: 
 Bob ist ein gelernter Kaufmann und arbeitet seit einigen Jahrzehnten als Buchhalter. 
