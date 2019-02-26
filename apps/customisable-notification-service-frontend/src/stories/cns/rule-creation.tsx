@@ -90,9 +90,8 @@ const recipientSelectorProps: Partial<RecipientSelectorProps> = {
   })
 }
 
+import { initialModificationState } from '@/state/rule/common'
 import RuleModificationGeneral from '@/modules/rule-modification/parts/RuleModificationGeneral'
-/* ~~ Second-Step Components ~~ */
-import FleetSelector, { FleetSelectorProps } from '@/modules/rule-modification/components/FleetSelector'
 
 const fleetSelectorProps: Partial<FleetSelectorProps> = {
   value: { label: 'BMW', value: 'BMW' },
@@ -110,28 +109,35 @@ const fleetSelectorProps: Partial<FleetSelectorProps> = {
   })
 }
 
+const inProgressRule = initialModificationState.inProgressRule
+
 const updateFieldAction = (name: string | number) => action(`Update field ${name}`)
 storiesOf('Rule Creation / First Step', module)
   .addDecorator(StoryWrapper)
   .add('Screen', () => <RuleModificationGeneral
     updateField={updateFieldAction}
-    inProgressRule={{
-      condition: {
-        logicalConnective: LogicalConnective.Any,
-        predicates: {}
-      }
-    }} />)
+    inProgressRule={inProgressRule} />)
   .add('Rule Recipient Tag', () => <RuleRecipientTag recipient={notificationRecipient} />)
   .add('Recipient Selector', () => <RecipientSelector {...recipientSelectorProps} />)
+
+/* ~~ Second-Step Components ~~ */
+import RuleModificationFleets from '@/modules/rule-modification/parts/RuleModificationFleets'
+import FleetSelector, { FleetSelectorProps } from '@/modules/rule-modification/components/FleetSelector'
 
 storiesOf('Rule Creation / Second Step', module)
   .addDecorator(SingleComponentWrapper)
   .add('Fleet Selector', () => <FleetSelector {...fleetSelectorProps} />)
 
+storiesOf('Rule Creation / Second Step', module)
+  .addDecorator(StoryWrapper)
+  .add('Screen', () => <RuleModificationFleets
+    updateField={updateFieldAction}
+    inProgressRule={inProgressRule}
+  />)
 /* ~~ Third-Step Components ~~ */
+import RuleModificationCondition from '@/modules/rule-modification/parts/RuleModificationCondition'
 import PredicateCounter, { PredicateCounterProps } from '@/modules/rule-modification/components/PredicateCounter'
 import ConditionSelector, { ConditionSelectorProps } from '@/modules/rule-modification/components/ConditionSelector'
-import { LogicalConnective } from '@/model';
 
 const predicateCounterProps: PredicateCounterProps = {
   value: { label: "all", value: "all" },
@@ -180,7 +186,16 @@ storiesOf('Rule Creation / Third Step', module)
   .add('Predicate Counter', () => <PredicateCounter {...predicateCounterProps} />)
   .add('Condition Selector', () => <ConditionSelector {...conditionSelectorProps} />)
 
+storiesOf('Rule Creation / Third Step', module)
+  .addDecorator(StoryWrapper)
+  .add('Screen', () => <RuleModificationCondition
+    updateField={updateFieldAction}
+    inProgressRule={inProgressRule}
+  />)
+
+/* ~~ Fourth-Step Components ~~ */
 import { AggregatorStrategy } from '@/model'
+import RuleModificationAggregator from '@/modules/rule-modification/parts/RuleModificationAggregator'
 import AggregatorSelector, { AggregatorSelectorProps } from '@/modules/rule-modification/components/AggregatorSelector'
 import ScheduledAggregator from '@/modules/rule-modification/components/ScheduledAggregator'
 import CountingAggregator from '@/modules/rule-modification/components/CountingAggregator'
@@ -204,3 +219,10 @@ storiesOf('Rule Creation / Fourth Step', module)
   .add('Counting Aggregator', () => <CountingAggregator {...aggregatorComponentProps} />)
   .add('Scheduled Aggregator', () => <ScheduledAggregator {...aggregatorComponentProps} />)
   .add('Aggregator Selector', () => <AggregatorSelector {...aggregatorSelectorProps} />)
+
+storiesOf('Rule Creation / Fourth Step', module)
+  .addDecorator(StoryWrapper)
+  .add('Screen', () => <RuleModificationAggregator
+    updateField={updateFieldAction}
+    inProgressRule={inProgressRule}
+  />)
