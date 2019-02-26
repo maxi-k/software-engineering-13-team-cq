@@ -63,6 +63,17 @@
     "cns.rule.field.aggregator.strategy.value.counting.shortDescription": "Gesammelt {count} Verschicken",
     "cns.rule.field.aggregator.strategy.value.scheduled.shortDescription": "Geplant Verschicken",
 
+    "cns.rule.validation.field.ruleId.message": "Regel ID darf nicht leer sein",
+    "cns.rule.validation.field.name.message": "Bitte spezifizieren Sie einen Regelnamen",
+    "cns.rule.validation.field.description.message": "Bitte spezifizieren Sie eine Regelbeschreibung",
+    "cns.rule.validation.field.owner.message": "Der Regelbesitzer existiert nicht",
+    "cns.rule.validation.field.ownerAsAdditionalRecipient.message": "Bitte spezifizieren Sie, ob der Regelbesitzer Nachrichten erhalten soll",
+    "cns.rule.validation.field.recipients.message": "Bitte spezifizieren Sie mindestens einen Nachrichtenempfänger",
+    "cns.rule.validation.field.applyToAllFleets.message": "Bitte spezifizieren Sie, ob die Regel auf alle Flotten angewandt werden soll",
+    "cns.rule.validation.field.fleets.message": "Bitte spezifizieren Sie mindestens eine Flotte, auf welche die Regel angewendet wird",
+    "cns.rule.validation.field.condition.message": "Die Übergebene Bedingung ist ungültig",
+    "cns.rule.validation.field.aggregator.message": "Das Übergebene Timing ist ungültig",
+
 
     "cns.rule.modification.error.default": "Es gab einen Fehler beim Anzeigen dieser Komponente.",
     "cns.rule.modification.step.label": "Schritt",

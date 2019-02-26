@@ -2,11 +2,14 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { NotificationRecipient, NotificationRecipientType } from '@/model/Rule'
+import { NotificationRecipient, NotificationRecipientType, NotificationRuleDetail } from '@/model/Rule'
+import { ruleFieldValidator } from '@/services/rule-service'
 import StoryWrapper from '../StoryWrapper'
 import SingleComponentWrapper from '../SingleComponentWrapper'
 
 /* ~~ General Components ~~ */
+import ErrorMessage from '@/modules/shared/components/ErrorMessage'
+import { FormattedMessage } from 'react-intl'
 import ClosingButton from '@/modules/shared/components/ClosingButton'
 import RuleRecipientTag from '@/modules/rule-detail/components/RuleRecipientTag'
 import RuleModificationStep, { RuleModificationStepEmbeddedProps, RuleModificationStepStandaloneProps }
@@ -47,10 +50,28 @@ const notificationRecipient: NotificationRecipient = {
   value: ""
 }
 
+const invalidRule: Partial<NotificationRuleDetail> = {
+  ruleId: undefined, name: undefined, description: undefined, aggregator: undefined,
+  recipients: undefined, owner: undefined, ownerAsAdditionalRecipient: undefined,
+  fleets: undefined, applyToAllFleets: undefined, condition: undefined
+}
+
 storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)
   .add('Single Step', () => <RuleModificationStep {...creationStepStandaloneProps} />)
   .add('Stepper', () => <RuleModificationStepper {...creationStepperProps} style={{ width: '90%' }} />)
+  .add('Validator Messages', () => (
+    <>
+      {Object.values(ruleFieldValidator.validateAllFields(invalidRule)).map((validationMessage) => (
+        <div style={{ display: 'block', padding: '1rem' }}>
+          <ErrorMessage message={
+            <FormattedMessage id={validationMessage} />
+          } />
+        </div>
+      ))
+      }
+    </>
+  ))
 
 storiesOf('Rule Creation / General Components', module)
   .addDecorator(SingleComponentWrapper)

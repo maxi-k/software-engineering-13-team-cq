@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
+import { getRuleDataSources } from '@/services/rule-service'
 import { FetchingAttributes, NotificationRuleDetail } from '@/model'
 
 import Typography from '@material-ui/core/Typography'
@@ -104,7 +105,7 @@ const RuleDetailGeneral: React.SFC<RuleDetailGeneralProps> = ({
           <FieldDescriptor
             label={"cns.rule.field.dataSources.label"}
             content={<>
-              {ruleDetail.dataSources.map((dataSource) => (
+              {getRuleDataSources(ruleDetail).map((dataSource) => (
                 <RuleIcon
                   key={dataSource}
                   type={dataSource}

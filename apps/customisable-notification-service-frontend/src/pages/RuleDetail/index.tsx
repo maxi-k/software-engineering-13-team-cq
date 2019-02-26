@@ -65,10 +65,9 @@ const mapDispatchToProps: DispatchMapper<RuleDetailPageAttributes, DispatchAttri
     dispatch(loadRuleDetail.request(parseInt(props.parameters.ruleId, 10)))
   },
   editRule: () => dispatch(push(interpolatePagePath('ruleEdit', props.parameters.ruleId))),
-  deleteRule: (rule: NotificationRuleDetail) => {
-    dispatch(deleteRemoteRule.request(parseInt(props.parameters.ruleId, 10)))
-    dispatch(push('/'))
-  }
+  deleteRule: (rule: NotificationRuleDetail) => (
+    confirm("Really delete rule?") && dispatch(deleteRemoteRule.request(parseInt(props.parameters.ruleId, 10)))
+  )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RuleDetailPage)

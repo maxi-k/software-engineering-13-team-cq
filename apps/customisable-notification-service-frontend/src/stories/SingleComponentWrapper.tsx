@@ -10,6 +10,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-direction: column;
 `
 
 const SingleComponentWrapper = (story: RenderFunction) => (

@@ -94,3 +94,49 @@ export const transformObjects = <ObjectType>(
       object, transformations, initializationObject
     ))
   )
+
+export class FieldValidator<ObjectType extends object> {
+
+  public static validateNonEmptyString = (value: any) => (
+    typeof value === 'string' && value !== null && value.length !== 0 && value.trim() !== ''
+  )
+
+  public static validateExists = (value: any) => (
+    typeof value !== 'undefined' && value !== null
+  )
+
+  public static validateIsArray = (value: any) => (
+    FieldValidator.validateExists(value) && Array.isArray(value)
+  )
+
+  public static validateEvery = <T>(value: any, validator: ((entry: T) => boolean)) => (
+    FieldValidator.validateExists(value) && Array.isArray(value) && value.every(validator)
+  )
+
+  public static validateEmailAddress = (value: any) => {
+    const mailTestExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    return FieldValidator.validateNonEmptyString(value)
+      && mailTestExpression.test(value.toString().toLowerCase());
+  }
+
+  constructor(
+    public readonly validationMap: Record<keyof ObjectType, ((object: Partial<ObjectType>) => boolean)>,
+    public readonly validationTranslator: (object: Partial<ObjectType>, fieldName: keyof ObjectType) => string
+  ) { }
+
+  public validateFields = (object: Partial<ObjectType>, fields: Array<keyof ObjectType>): { [key: string]: string } => {
+    return fields.reduce((errorMap, fieldName) => {
+      const isValid = this.validationMap[fieldName](object)
+      if (isValid) {
+        return errorMap
+      } else {
+        return { ...errorMap, [fieldName]: this.validationTranslator(object, fieldName) }
+      }
+    }, {})
+  }
+
+  public validateAllFields = (value: Partial<ObjectType>): { [key: string]: string } => {
+    return this.validateFields(value, Object.keys(value) as Array<keyof ObjectType>)
+  }
+}

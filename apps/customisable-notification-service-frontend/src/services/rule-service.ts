@@ -1,4 +1,5 @@
 import { authApiRequest, mockRequest, doMock } from '@/services/api-service'
+import { constantly } from '@/utilities/function-util'
 import { capitalizeString } from '@/utilities/string-util'
 import {
   NotificationRuleOverview as OverviewRule,
@@ -16,7 +17,8 @@ import {
   RuleConditionPredicate,
   VehicleDataField
 } from '@/model'
-import { transformObject, transformObjects, pickMap } from '@/utilities/collection-util';
+import { transformObject, transformObjects, pickMap, FieldValidator } from '@/utilities/collection-util';
+import { isValidCronExpression } from '@/utilities/cron-util';
 
 const ruleOverviewUrl = '/notification-rule-management/notification-rule'
 export const fetchRuleOverview = (accessToken: string) => (
@@ -195,11 +197,7 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
         }), {}) as { [key: string]: RuleConditionPredicate<any> }]
   })
   ] as [string, RuleCondition])
-}, {
-    dataSources: rule.condition.subConditions.map((subCondition) =>
-      subCondition.providerName
-    )
-  }) as DetailRule
+}) as DetailRule
 
 export const transformToAPIRuleRecipients = (oldRecipients: RuleRecipient[]): APIRecipient[] => (
   oldRecipients.map((recipient) => {
@@ -276,29 +274,74 @@ export const ruleOwnerAsRecipient = (ruleOwner: RuleOwner): Recipient => (
     }
 )
 
+export const ruleFieldValidator = new FieldValidator<DetailRule>({
+  ruleId: constantly(true),
+  name: ((rule) => FieldValidator.validateNonEmptyString(rule.name)),
+  description: ((rule) => FieldValidator.validateNonEmptyString(rule.description)),
+  owner: ((rule) => FieldValidator.validateExists(rule.owner)),
+  recipients: ((rule) => FieldValidator.validateEvery(rule.recipients, (recipient: RuleRecipient) => (
+    (recipient.type === RecipientType.Email && FieldValidator.validateEmailAddress(recipient.value)) ||
+    (recipient.type !== RecipientType.Email)
+  )) && (FieldValidator.validateExists(rule.ownerAsAdditionalRecipient) ||
+    (Array.isArray(rule.recipients) && rule.recipients.length > 0))
+  ),
+  ownerAsAdditionalRecipient: ((rule) => FieldValidator.validateExists(rule.ownerAsAdditionalRecipient)),
+  applyToAllFleets: ((rule) => FieldValidator.validateExists(rule.applyToAllFleets)),
+  fleets: ((rule) => FieldValidator.validateIsArray(rule.fleets) &&
+    (FieldValidator.validateExists(rule.applyToAllFleets) ||
+      (Array.isArray(rule.fleets) && rule.fleets.length > 0))
+  ),
+  condition: (({ condition }) =>
+    FieldValidator.validateExists(condition) && typeof condition !== 'undefined' &&
+    FieldValidator.validateEvery(condition.predicates, (predicate: RuleConditionPredicate<any>) => (
+      FieldValidator.validateExists(predicate.comparisonConstant) &&
+      FieldValidator.validateExists(predicate.appliedField) &&
+      FieldValidator.validateExists(predicate.comparisonType)
+    ))),
+  aggregator: (({ aggregator }) => typeof aggregator !== 'undefined' && aggregator !== null && (
+    (aggregator.strategy === AggregatorStrategy.Counting &&
+      (typeof aggregator.value === 'number')) ||
+    (aggregator.strategy === AggregatorStrategy.Scheduled &&
+      typeof aggregator.value !== 'undefined' &&
+      isValidCronExpression(aggregator.value.toString()))
+  ))
+},
+  (rule: Partial<DetailRule>, fieldName: keyof DetailRule) => `cns.rule.validation.field.${fieldName}.message`
+)
+
+export const getRuleDataSources = (rule: Partial<OverviewRule>): VehicleDataType[] => {
+  if (typeof rule.condition === 'undefined' || typeof rule.condition.predicates === 'undefined'
+    || rule.condition === null || rule.condition.predicates === null) {
+    return []
+  }
+  return Array.from(Object.values(rule.condition.predicates)
+    .reduce((dataTypes: Set<VehicleDataType>,
+      predicate: RuleConditionPredicate<any>) => (
+        dataTypes.add(predicate.appliedField.vehicleDataType)
+      ), new Set())
+  )
+}
+
 /* BEGIN: Mocks */
 
 const mockedRule: OverviewRule = {
   ruleId: 0,
   name: 'Status Reports',
   description: 'Rule Description for an examplary Notification Rule',
-  aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
-  dataSources: [
-    VehicleDataType.Engine,
-    VehicleDataType.Battery
-  ]
+  condition: {
+    logicalConnective: LogicalConnective.All,
+    predicates: {}
+  },
+  aggregator: {
+    strategy: AggregatorStrategy.Counting,
+    value: 20
+  }
 }
 
 const mockedRule2: OverviewRule = {
   ...mockedRule,
   ruleId: 1,
-  name: 'Engine and Fuel Alerts',
-  aggregatorDescription: 'Sent Immediately',
-  dataSources: [
-    VehicleDataType.Fuel,
-    VehicleDataType.Engine,
-    VehicleDataType.Service
-  ]
+  name: 'Engine and Fuel Alerts'
 }
 
 export const mockedRuleOverview: OverviewRule[] = [mockedRule, mockedRule2]
@@ -316,13 +359,5 @@ export const mockedRuleDetail = (ruleId: number): DetailRule => ({
     }
   },
   ownerAsAdditionalRecipient: true,
-  recipients: [{ type: RecipientType.PhoneNumber, value: '+49 1234567890' }],
-  condition: {
-    logicalConnective: LogicalConnective.All,
-    predicates: {}
-  },
-  aggregator: {
-    strategy: AggregatorStrategy.Counting,
-    value: 20
-  }
+  recipients: [{ type: RecipientType.PhoneNumber, value: '+49 1234567890' }]
 })
