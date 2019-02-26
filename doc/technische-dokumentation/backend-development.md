@@ -3,9 +3,9 @@
 #### Table of Contents
 [Building the Backend](#building-the-backend)
 
-[Important Integration Tests](#conventions)
-* [General Conventions](#general-conventions)
-* [Typescript, React and Props](#typescript-react-and-props)
+[Important Integration Tests](#important-integration-tests)
+* [NotificationRuleController](#notificationrulecontroller)
+* [ProcessingPipelineIntegrationTest](#processingPipelineIntegrationTest)
 
 This is a short guide to the development using the backend stack we
 decided for. As we already show our backend architecture in the rest of
