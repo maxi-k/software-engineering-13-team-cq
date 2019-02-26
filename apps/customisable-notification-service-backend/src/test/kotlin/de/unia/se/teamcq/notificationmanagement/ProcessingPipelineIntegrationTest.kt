@@ -53,10 +53,10 @@ class ProcessingPipelineIntegrationTest : StringSpec() {
     private lateinit var notificationMESAdapter: INotificationMESAdapter
 
     @Autowired
-    lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
+    private lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
 
     @Autowired
-    lateinit var notificationRuleRepository: INotificationRuleRepository
+    private lateinit var notificationRuleRepository: INotificationRuleRepository
 
     init {
         MockKAnnotations.init(this)

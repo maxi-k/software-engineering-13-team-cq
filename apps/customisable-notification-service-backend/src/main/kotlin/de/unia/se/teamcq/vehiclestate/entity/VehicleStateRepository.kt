@@ -89,7 +89,7 @@ class VehicleStateRepository : IVehicleStateRepository {
         val lastUpdate = notificationRule.lastUpdate
 
         val queryString = """SELECT states FROM VehicleStateEntity states
-            |WHERE states.created >= :lastUpdate
+            |WHERE states.created > :lastUpdate
             |AND NOT EXISTS (SELECT processed FROM NotificationRuleEntity rules JOIN
             | rules.processedVehicleStates processed
             | WHERE rules.ruleId = :ruleId
