@@ -41,16 +41,23 @@ terminal). The following things will happen:
 * docker will download any dependencies required for running the
   containers. This might take some time when the command is first
   executed.
-* docker will start a container running an instance of a
-  PostgreSQL database server, which accepts connections on the port
-  `5432`. There exist default credentials `postgres:example`, for now.
-* docker will start a container running an instance of the database
-  administration tool adminer, which can be accessed in the browser
-  under http://localhost:8080.
+* docker will start a container for every folder in `apps/`, and
+  connect them as defined by `docker-compose.yml`
+* The applications should now run and be usable under ports `3000`,
+  `8080` and `4040`, for the cns-frontend, cns-backend and mocks, respectively
+
+## Helper Scripts
+There are three helper scripts for dedicated frontend, backend and
+fullstack development under `scripts/`. They start every container as
+described above, except for the one that runs the part of the
+application you want to work on. For example, if you want to develop
+frontend and backend, thus starting them externally in your favorite
+IDE, execute `scripts/fullstack-dev`. This will start all required
+mocks and the database.
 
 ## Delete the Database
 The docker store defines the name of the volume where the data of the
-database container is stored as `sample_db`. If there was some
+database container is stored as `db_1`. If there was some
 breaking change to the database schema during development that can't
 be fixed with a migration with a reasonable amount of effort, you can
 delete the data stored in the docker volume. A description of how to

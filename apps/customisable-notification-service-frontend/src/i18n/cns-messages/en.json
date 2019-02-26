@@ -139,6 +139,7 @@
     "cns.predicate.field.mileage.averagePerWeek.label": "Average per Week",
     "cns.predicate.field.mileage.expectedExceedance.label": "Expected Exceedance",
     "cns.predicate.field.mileage.forecastEndContract.label": "Forecast End Contract",
+    "cns.predicate.field.mileage.status.label": "Status",
 
     "cns.predicate.field.service.status.label": "Service Status",
     "cns.predicate.field.service.dueDate.label": "Due Date",

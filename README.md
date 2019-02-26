@@ -3,12 +3,16 @@
 [![Build Status](https://travis-ci.com/maxi-k/se-master-sem1-st.svg?token=vJCFyC8fzGGkCLryVRQA&branch=master)](https://travis-ci.com/maxi-k/se-master-sem1-st)
 
 ## Contents
-
 - `apps/`: contains all deployables; contains all services of the FleetData application as well as services for testing, monitoring and local development
 - `env/`: environement configuration files for local/test/int/prod deployments
 - `scripts/`: usefull scripts for common tasks
 - `docker-compose.yaml`: use this compose configuration to start the application locally
 - `Passwords.kdbx`: [KeePass](keepass.info) encrypted Password-Database containing all relevant passwords
+
+## Technical Documentation
+- [Backend](./doc/technische-dokumentation/backend-development.md)
+- [Frontend](./doc/technische-dokumentation/frontend-development.md)
+- [Docker (Local)](./doc/technische-dokumentation/docker-development.md)
 
 ## Local Development
 
@@ -27,7 +31,6 @@ docker-compose down -v
 ```
 
 ## Services
-
 Each service is documented in its own README.
 
 ## The CNS App
@@ -49,17 +52,22 @@ Heroku has to spin them up first.
 | Technologies | Selection     |
 | ----------- | -------- |
 Language (Backend) | Kotlin
-Language (Frontend) | React
 Web Framework | Spring Boot
 Build Tool | Gradle
 ORM | Hibernate
 Database Migration | Flyway
-Unit Testing | https://github.com/kotlintest/kotlintest,  (Potentiell auch: http://joel-costigliola.github.io/assertj/)
+Job Scheduling | Quartz
+API Client Generation | OpenAPITools
+DTO & Entity Mapping | MapStruct
+Unit Testing | https://github.com/kotlintest/kotlintest
 Mocking | https://mockk.io/
 IDE | IntelliJ IDEA
 UI Prototyping | Figma |
 Issue Tracking | Github
 Code Style / Linter | https://github.com/shyiko/ktlint
+Language (Frontend) | Typescript & React
+Frontend State | Redux
+Frontend Testing | Jest, Snapshots & Selenium 
 
 ## Contributing
 - Create issues for everything
@@ -76,10 +84,6 @@ Code Style / Linter | https://github.com/shyiko/ktlint
 
 ## Resources
 * [Spring Boot + Kotlin Microservice](https://kotlinlang.org/docs/tutorials/spring-boot-restful.html)
-
-## How to run the application
-
-- [ ] TODO: Write up docker guide
 
 ### How to run the backend
 In `apps/customisable-notification-service-backend`

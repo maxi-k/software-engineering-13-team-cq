@@ -84,7 +84,7 @@ class VehicleStateDataTypeMileage(
         val PREDICATE_FIELDS = mapOf(
             "current" to PredicateField("current", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
             "remaining" to PredicateField("remaining", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
-            "reached" to PredicateField("reached", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
+            "reachedPercentage" to PredicateField("reachedPercentage", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
             "averagePerWeek" to PredicateField("averagePerWeek", FieldDataType.KILOMETER_PER_WEEK, EvaluationStrategies.NUMERIC),
             "expectedExceedance" to PredicateField("expectedExceedance", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
             "forecastEndContract" to PredicateField("forecastEndContract", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC),
