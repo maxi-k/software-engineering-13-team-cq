@@ -21,7 +21,7 @@ const StyledRuleIcon = styled("div") <{ label?: string }>`
 `
 
 const RuleIcon: React.SFC<RuleIconProps> = ({ type, size = 20, ...props }) => {
-  const source = "/assets/img/" + type + ".png";
+  const source = "/assets/img/" + type.toLowerCase() + ".png";
   return (
     <StyledRuleIcon {...props}>
       {<img style={{ width: `${size}px`, height: `${size}px` }} src={source} />}
