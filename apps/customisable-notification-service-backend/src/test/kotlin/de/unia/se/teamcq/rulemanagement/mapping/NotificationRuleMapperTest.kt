@@ -24,7 +24,7 @@ import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
 import de.unia.se.teamcq.user.mapping.IUserMapper
-import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
+import de.unia.se.teamcq.vehiclestate.mapping.AbstractFleetReferenceMapper
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
@@ -41,7 +41,7 @@ class NotificationRuleMapperTest : StringSpec() {
     lateinit var mockIRuleConditionMapper: IRuleConditionMapper
 
     @MockK
-    lateinit var mockIFleetReferenceMapper: IFleetReferenceMapper
+    lateinit var mockAbstractFleetReferenceMapper: AbstractFleetReferenceMapper
 
     @MockK
     lateinit var mockIAggregatorMapper: IAggregatorMapper
@@ -68,10 +68,10 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockRecipientMapperHelper.modelToEntity(any()) } returns getTestRecipientEntities()
 
-            every { mockIFleetReferenceMapper.modelToEntity(getTestFleetReferenceModel()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToEntity(getTestFleetReferenceModel()) } returns
                     getTestFleetReferenceEntity()
 
-            every { mockIFleetReferenceMapper.modelToEntity(getTestFleetReferenceModelTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToEntity(getTestFleetReferenceModelTwo()) } returns
                     getTestFleetReferenceEntityTwo()
 
             val notificationRule = getTestNotificationRuleModel()
@@ -93,10 +93,10 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockRecipientMapperHelper.entityToModel(any()) } returns getTestRecipientModels()
 
-            every { mockIFleetReferenceMapper.entityToModel(getTestFleetReferenceEntity()) } returns
+            every { mockAbstractFleetReferenceMapper.entityToModel(getTestFleetReferenceEntity()) } returns
                     getTestFleetReferenceModel()
 
-            every { mockIFleetReferenceMapper.entityToModel(getTestFleetReferenceEntityTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.entityToModel(getTestFleetReferenceEntityTwo()) } returns
                     getTestFleetReferenceModelTwo()
 
             val notificationRuleEntity = getTestNotificationRuleEntity()
@@ -118,10 +118,10 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockRecipientMapperHelper.modelToDto(any()) } returns getTestRecipientDtos()
 
-            every { mockIFleetReferenceMapper.modelToDto(getTestFleetReferenceModel()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToDto(getTestFleetReferenceModel()) } returns
                     getTestFleetReferenceDto()
 
-            every { mockIFleetReferenceMapper.modelToDto(getTestFleetReferenceModelTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToDto(getTestFleetReferenceModelTwo()) } returns
                     getTestFleetReferenceDtoTwo()
 
             val notificationRule = getTestNotificationRuleModel()
@@ -143,10 +143,10 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
 
-            every { mockIFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
+            every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
                     getTestFleetReferenceModel()
 
-            every { mockIFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
                     getTestFleetReferenceModelTwo()
 
             val notificationRuleDto = getTestNotificationRuleDto()

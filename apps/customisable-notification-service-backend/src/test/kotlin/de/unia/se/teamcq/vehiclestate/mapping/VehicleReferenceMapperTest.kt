@@ -17,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration
 class VehicleReferenceMapperTest : StringSpec() {
 
     @MockK
-    lateinit var mockIFleetReferenceMapper: IFleetReferenceMapper
+    lateinit var mockAbstractFleetReferenceMapper: AbstractFleetReferenceMapper
 
     @InjectMockKs
     lateinit var vehicleReferenceMapper: IVehicleReferenceMapperImpl
@@ -27,7 +27,7 @@ class VehicleReferenceMapperTest : StringSpec() {
 
         "Convert model to entity" {
 
-            every { mockIFleetReferenceMapper.modelToEntity(any()) } returns getTestFleetReferenceEntity()
+            every { mockAbstractFleetReferenceMapper.modelToEntity(any()) } returns getTestFleetReferenceEntity()
 
             val vehicleReferenceModel = getTestVehicleReferenceModel()
 
@@ -38,7 +38,7 @@ class VehicleReferenceMapperTest : StringSpec() {
 
         "Convert entity to model" {
 
-            every { mockIFleetReferenceMapper.entityToModel(any()) } returns getTestFleetReferenceModel()
+            every { mockAbstractFleetReferenceMapper.entityToModel(any()) } returns getTestFleetReferenceModel()
 
             val fleetReferenceEntity = getTestVehicleReferenceEntity()
 
