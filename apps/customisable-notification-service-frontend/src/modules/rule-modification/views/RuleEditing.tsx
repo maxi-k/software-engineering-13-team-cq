@@ -35,7 +35,14 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
   ),
   selectStep: (step: number) => dispatch(editRuleSelectStep(step)),
   previousStep: () => dispatch(editRulePreviousStep()),
-  completeModification: () => dispatch(finishRuleEditing.request()),
+  completeModification: (validationCallback: () => { [key: string]: string }) => {
+    const errors = validationCallback()
+    const errorMessages = Object.values(errors)
+    dispatch(editRuleSetErrors(errors))
+    if (errorMessages.length <= 0) {
+      dispatch(finishRuleEditing.request())
+    }
+  },
   nextStep: (validationCallback: () => { [key: string]: string }) => {
     const errors = validationCallback()
     const errorMessages = Object.values(errors)

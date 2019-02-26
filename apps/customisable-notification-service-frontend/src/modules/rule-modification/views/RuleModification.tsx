@@ -37,7 +37,7 @@ type SelectStepType = (step: number) => void
 export interface DispatchAttributes
   extends CommonRuleModificationDispatchAttributes {
   selectStep: SelectStepType
-  completeModification(): void
+  completeModification(validationCallback: () => { [key: string]: string }): void
   nextStep(validationCallback: () => { [key: string]: string }): void
   previousStep(): void
   abortModification(): void
@@ -54,7 +54,8 @@ const stepValidatedFields: Array<Array<keyof NotificationRuleDetail>> = [
   ['fleets', 'applyToAllFleets'],
   ['condition'],
   ['aggregator'],
-  []
+  ['name', 'description', 'recipients', 'ownerAsAdditionalRecipient', 'fleets',
+    'applyToAllFleets', 'condition', 'aggregator']
 ]
 
 const stepComponents: Array<React.LazyExoticComponent<RuleModificationStepView>> = [
@@ -173,7 +174,7 @@ const RuleModification: React.SFC<RuleModificationProps> = (
           ?
           <Button primary="true"
             icon={<NextIcon fill="#fff" />}
-            onClick={completeModification}>
+            onClick={applyLazy(completeModification, validatorForStep(currentStep, inProgressRule))}>
             <FormattedMessage id="cns.rule.modification.action.complete" />
           </Button>
           :
