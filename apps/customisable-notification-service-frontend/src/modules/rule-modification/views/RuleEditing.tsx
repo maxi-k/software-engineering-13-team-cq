@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { injectIntl, InjectedIntlProps } from 'react-intl'
 
 import { StateMapper, DispatchMapper } from '@/state/connector'
 import {
@@ -22,16 +23,13 @@ const RuleEditing: React.SFC<StateAttributes & DispatchAttributes> = (props) => 
     {...props} />
 )
 
-const mapStateToProps: StateMapper<{}, StateAttributes> = (state, props) => ({
+const mapStateToProps: StateMapper<InjectedIntlProps, StateAttributes> = (state, props) => ({
   ...ruleEditingStateSelector(state)
 })
 
-const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, props) => ({
+const mapDispatchToProps: DispatchMapper<InjectedIntlProps, DispatchAttributes> = (dispatch, props) => ({
   abortModification: () => (
-    // TODO: This is a simple javascript dialog for now
-    // implement as a modal that shows over the screen
-    // See Issue #153
-    confirm("Really abort rule editing?") && dispatch(editRuleAbort())
+    confirm(props.intl.formatMessage({ id: "cns.message.edit.abort.confirm" })) && dispatch(editRuleAbort())
   ),
   selectStep: (step: number) => dispatch(editRuleSelectStep(step)),
   previousStep: () => dispatch(editRulePreviousStep()),
@@ -56,7 +54,9 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
   )
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps)
-  (RuleEditing)
+export default injectIntl(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps)
+    (RuleEditing)
+)

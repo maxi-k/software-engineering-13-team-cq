@@ -8,6 +8,10 @@
     "cns.page.ruleDetailCondition.title": "Bedingungen",
     "cns.page.ruleDetailCondition.question": "Unter welchen Bedingungen sollen Benachrichtigungen ausgelöst werden?",
 
+    "cns.message.edit.abort.confirm": "Wollen Sie die Bearbeitung dieser Regel wirklich abbrechen?",
+    "cns.message.create.abort.confirm": "Wollen Sie die Erstellung dieser Regel wirklich abbrechen?",
+    "cns.message.delete.confirm": "Wollen Sie diese Regel wirklich löschen?",
+
     "cns.navigation.back.label": "Zurück",
     "cns.navigation.abort.label": "Abbrechen",
 

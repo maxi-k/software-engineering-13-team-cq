@@ -11,6 +11,10 @@
     "cns.navigation.back.label": "Back",
     "cns.navigation.abort.label": "Abort",
 
+    "cns.message.edit.abort.confirm": "Do you really want to abort this edit?",
+    "cns.message.create.abort.confirm": "Do you really want to abort the creation of this rule?",
+    "cns.message.delete.confirm": "Do you really want to delete this rule?",
+
     "cns.message.fetch.error.default": "There was a problem loading this data from the server. Please try again later.",
 
     "cns.message.fetch.error.notFound": "The requested resource could not be found.",
