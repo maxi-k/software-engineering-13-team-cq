@@ -2,12 +2,9 @@
  * @jest-environment jest-environment-webdriver
  */
 const { createRandomKey } = require('@/services/identifier-service')
-
-// Code after
+// Code loosely after:
 // https://medium.com/@mathieux51/jest-selenium-webdriver-e25604969c6
 // https://blog.evantahler.com/testing-javascript-applications-with-selenium-async-await-and-jest-7580ed074f2b
-
-// require('geckodriver')
 const url = 'http://localhost:3000'
 const waitUntilTime = 1000 * 30
 
