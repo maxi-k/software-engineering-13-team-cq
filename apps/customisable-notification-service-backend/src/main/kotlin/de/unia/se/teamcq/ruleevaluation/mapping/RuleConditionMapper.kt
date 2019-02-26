@@ -37,12 +37,15 @@ class RuleConditionMapper : IRuleConditionMapper {
         }
     }
 
+    @Throws(IllegalArgumentException::class)
     override fun dtoToModel(ruleConditionDto: RuleConditionDto): RuleCondition {
         return if (ruleConditionDto is RuleConditionPredicateDto) {
             ruleConditionPredicateMapper.dtoToModel(ruleConditionDto)
         } else {
 
             val ruleConditionCompositeDto = ruleConditionDto as RuleConditionCompositeDto
+
+            checkLegalArguments(ruleConditionCompositeDto)
 
             val ruleCondition = RuleConditionComposite()
             ruleCondition.conditionId = ruleConditionCompositeDto.conditionId
@@ -52,6 +55,22 @@ class RuleConditionMapper : IRuleConditionMapper {
             }
 
             ruleCondition
+        }
+    }
+
+    @Throws(IllegalArgumentException::class)
+    private fun checkLegalArguments(ruleConditionCompositeDto: RuleConditionCompositeDto) {
+        if (ruleConditionCompositeDto.logicalConnective == null) {
+            throw IllegalArgumentException(
+                    "Attribute logicalConnective of RuleConditionCompositeDto" +
+                            " is required, but was null!"
+            )
+        }
+        if (ruleConditionCompositeDto.subConditions.isNullOrEmpty()) {
+            throw IllegalArgumentException(
+                    "Attribute subConditions of RuleConditionCompositeDto" +
+                            " is required, but was null or empty!"
+            )
         }
     }
 
