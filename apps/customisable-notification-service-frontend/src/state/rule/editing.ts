@@ -32,6 +32,7 @@ export enum RuleEditingActionType {
   RULE_EDIT_SUCCESS = '@rule/EDIT_SUCCESS',
   RULE_EDIT_ERROR = '@rule/EDIT_ERROR',
   RULE_EDIT_UPDATE_FIELD = '@rule/EDIT_UPDATE_FIELD',
+  RULE_EDIT_SET_ERRORS = '@rule/EDIT_SET_ERRORS',
 
   RULE_EDIT_SELECT_STEP = '@rule/EDIT_SELECT_STEP',
   RULE_EDIT_NEXT_STEP = '@rule/EDIT_NEXT_STEP',
@@ -82,7 +83,8 @@ const reducer: Reducer<RuleEditingState> = (state = initialState, action) => {
       return update(state, (ruleEditing: RuleEditingState) => ({
         ...ruleEditing,
         completedSteps: new Set([...Array.from(ruleEditing.completedSteps), ruleEditing.currentStep]),
-        currentStep: ruleEditing.currentStep + 1
+        currentStep: ruleEditing.currentStep + 1,
+        ruleErrors: {}
       })
       )
 
@@ -100,6 +102,10 @@ const reducer: Reducer<RuleEditingState> = (state = initialState, action) => {
         }
       }
       return update(state, updateMap);
+    case RuleEditingActionType.RULE_EDIT_SET_ERRORS:
+      return update(state, {
+        ruleErrors: { $set: action.payload }
+      })
     case RuleEditingActionType.RULE_EDIT_ERROR:
       return state
     case RuleEditingActionType.RULE_EDIT_SUCCESS:
@@ -126,6 +132,10 @@ export const editRuleUpdateField = createAction(RuleEditingActionType.RULE_EDIT_
     value: NotificationRuleDetail[FieldName]) => (
       resolve({ fieldName, value })
     )
+))
+
+export const editRuleSetErrors = createAction(RuleEditingActionType.RULE_EDIT_SET_ERRORS, resolve => (
+  (errors: { [key: string]: string }) => resolve(errors)
 ))
 
 export const loadEditingRuleInitial = createAsyncAction(

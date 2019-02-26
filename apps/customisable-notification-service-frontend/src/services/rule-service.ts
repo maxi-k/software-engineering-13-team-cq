@@ -282,25 +282,26 @@ export const ruleFieldValidator = new FieldValidator<DetailRule>({
   recipients: ((rule) => FieldValidator.validateEvery(rule.recipients, (recipient: RuleRecipient) => (
     (recipient.type === RecipientType.Email && FieldValidator.validateEmailAddress(recipient.value)) ||
     (recipient.type !== RecipientType.Email)
-  )) && (FieldValidator.validateExists(rule.ownerAsAdditionalRecipient) ||
+  )) && (FieldValidator.validateEquals(rule.ownerAsAdditionalRecipient, true) ||
     (Array.isArray(rule.recipients) && rule.recipients.length > 0))
   ),
   ownerAsAdditionalRecipient: ((rule) => FieldValidator.validateExists(rule.ownerAsAdditionalRecipient)),
   applyToAllFleets: ((rule) => FieldValidator.validateExists(rule.applyToAllFleets)),
   fleets: ((rule) => FieldValidator.validateIsArray(rule.fleets) &&
-    (FieldValidator.validateExists(rule.applyToAllFleets) ||
+    (FieldValidator.validateEquals(rule.applyToAllFleets, true) ||
       (Array.isArray(rule.fleets) && rule.fleets.length > 0))
   ),
   condition: (({ condition }) =>
     FieldValidator.validateExists(condition) && typeof condition !== 'undefined' &&
-    FieldValidator.validateEvery(condition.predicates, (predicate: RuleConditionPredicate<any>) => (
+    FieldValidator.validateEvery(Object.values(condition.predicates), (predicate: RuleConditionPredicate<any>) => (
       FieldValidator.validateExists(predicate.comparisonConstant) &&
       FieldValidator.validateExists(predicate.appliedField) &&
       FieldValidator.validateExists(predicate.comparisonType)
     ))),
   aggregator: (({ aggregator }) => typeof aggregator !== 'undefined' && aggregator !== null && (
+    (aggregator.strategy === AggregatorStrategy.Immediate) ||
     (aggregator.strategy === AggregatorStrategy.Counting &&
-      (typeof aggregator.value === 'number')) ||
+      (typeof aggregator.value === 'number' || !isNaN(parseInt(aggregator.value || '', 10)))) ||
     (aggregator.strategy === AggregatorStrategy.Scheduled &&
       typeof aggregator.value !== 'undefined' &&
       isValidCronExpression(aggregator.value.toString()))

@@ -21,6 +21,7 @@ export enum RuleCreationActionType {
   RULE_CREATE_SUCCESS = '@rule/CREATE_SUCCESS',
   RULE_CREATE_ERROR = '@rule/CREATE_ERROR',
   RULE_CREATE_UPDATE_FIELD = '@rule/CREATE_UPDATE_FIELD',
+  RULE_CREATE_SET_ERRORS = '@rule/CREATE_SET_ERRORS',
 
   RULE_CREATE_SELECT_STEP = '@rule/CREATE_SELECT_STEP',
   RULE_CREATE_NEXT_STEP = '@rule/CREATE_NEXT_STEP',
@@ -60,6 +61,10 @@ const reducer: Reducer<RuleCreationState> = (state = initialState, action) => {
         }
       }
       return update(state, updateMap);
+    case RuleCreationActionType.RULE_CREATE_SET_ERRORS:
+      return update(state, {
+        ruleErrors: { $set: action.payload }
+      })
     case RuleCreationActionType.RULE_CREATE_ERROR:
     case RuleCreationActionType.RULE_CREATE_SUCCESS:
       // do nothing for now
@@ -81,6 +86,10 @@ export const createRuleUpdateField = createAction(RuleCreationActionType.RULE_CR
     value: NotificationRuleDetail[FieldName]) => (
       resolve({ fieldName, value })
     )
+))
+
+export const createRuleSetErrors = createAction(RuleCreationActionType.RULE_CREATE_SET_ERRORS, resolve => (
+  (errors: { [key: string]: string }) => resolve(errors)
 ))
 
 export const finishRuleCreation = createAsyncAction(

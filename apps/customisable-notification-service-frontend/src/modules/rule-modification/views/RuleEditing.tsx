@@ -9,6 +9,7 @@ import {
   finishRuleEditing,
   editRuleNextStep,
   editRuleUpdateField,
+  editRuleSetErrors
 } from '@/state/rule'
 import { ruleEditingStateSelector } from '@/state/selectors'
 import RuleModification, { StateAttributes, DispatchAttributes } from './RuleModification'
@@ -35,7 +36,14 @@ const mapDispatchToProps: DispatchMapper<{}, DispatchAttributes> = (dispatch, pr
   selectStep: (step: number) => dispatch(editRuleSelectStep(step)),
   previousStep: () => dispatch(editRulePreviousStep()),
   completeModification: () => dispatch(finishRuleEditing.request()),
-  nextStep: () => dispatch(editRuleNextStep()),
+  nextStep: (validationCallback: () => { [key: string]: string }) => {
+    const errors = validationCallback()
+    const errorMessages = Object.values(errors)
+    dispatch(editRuleSetErrors(errors))
+    if (errorMessages.length <= 0) {
+      dispatch(editRuleNextStep())
+    }
+  },
   updateField: (name, callback) => (...values) => (
     dispatch(editRuleUpdateField(name, callback(...values)))
   )

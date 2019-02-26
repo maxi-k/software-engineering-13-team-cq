@@ -105,6 +105,10 @@ export class FieldValidator<ObjectType extends object> {
     typeof value !== 'undefined' && value !== null
   )
 
+  public static validateEquals = (value1: any, value2: any) => (
+    value1 === value2
+  )
+
   public static validateIsArray = (value: any) => (
     FieldValidator.validateExists(value) && Array.isArray(value)
   )
