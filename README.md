@@ -59,7 +59,7 @@ Database Migration | Flyway
 Job Scheduling | Quartz
 API Client Generation | OpenAPITools
 DTO & Entity Mapping | MapStruct
-Unit Testing | https://github.com/kotlintest/kotlintest,  (Potentiell auch: http://joel-costigliola.github.io/assertj/)
+Unit Testing | https://github.com/kotlintest/kotlintest
 Mocking | https://mockk.io/
 IDE | IntelliJ IDEA
 UI Prototyping | Figma |
