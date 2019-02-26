@@ -3,7 +3,14 @@ import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
 import { mapObjectToArray } from '@/utilities/collection-util'
-import { RuleCondition, RuleConditionPredicate, VehicleDataField } from '@/model'
+import {
+  RuleCondition,
+  RuleConditionPredicate,
+  VehicleDataField
+} from '@/model'
+
+import { InlinePropertyTag as PropertyTag } from './PropertyTag'
+import PredicateFieldUnit from '@/modules/shared/parts/PredicateFieldUnit'
 
 interface RuleConditionDetailAttributes {
   condition: RuleCondition
@@ -12,14 +19,11 @@ interface RuleConditionDetailAttributes {
 type RuleConditionDetailProps = RuleConditionDetailAttributes & React.HTMLAttributes<HTMLDivElement>
 
 const StyledRuleConditionDetail = styled.div`
-
+    padding-bottom: 0.8em;
 `
 
-const InlineVariable = styled.span`
-  font-weight: bold;
-  font-style: italic;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
+const InlineVariable = styled(PropertyTag)`
+  margin: 0.65em 0.4em -0.65em 0.4em;
 `
 
 const PredicateWrapper = styled.div`
@@ -60,6 +64,8 @@ const RuleConditionDetail: React.SFC<RuleConditionDetailProps> = ({ condition, .
             <InlineVariable>
               {predicate.comparisonConstant}
             </InlineVariable>
+            {' '}(<PredicateFieldUnit fieldName={predicate.appliedField.predicateField.fieldName}
+              providerName={predicate.appliedField.vehicleDataType} />)
           </StyledPredicate>
         ))
       }

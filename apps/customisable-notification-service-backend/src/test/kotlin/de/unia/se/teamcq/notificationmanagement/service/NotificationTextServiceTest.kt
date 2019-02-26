@@ -25,7 +25,11 @@ class NotificationTextServiceTest : StringSpec() {
                 }
                 val htmlText = notificationTextService.getHtmlMailTextForNotification(notificationData)
 
-                htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
+                val vehicleVin = notificationData.matchedVehicleStates.map { vehicleState ->
+                    vehicleState.vehicleReference!!.vin!!
+                }.sorted().first()
+
+                htmlText.shouldContain(vehicleVin)
                 htmlText.shouldContain("Hello")
             }
 
@@ -36,8 +40,12 @@ class NotificationTextServiceTest : StringSpec() {
                 }
                 val htmlText = notificationTextService.getHtmlMailTextForNotification(notificationData)
 
-                htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
-                htmlText.shouldContain("Hallo")
+                val vehicleVin = notificationData.matchedVehicleStates.map { vehicleState ->
+                    vehicleState.vehicleReference!!.vin!!
+                }.sorted().first()
+
+                htmlText.shouldContain(vehicleVin)
+                htmlText.shouldContain("Hi")
             }
         }
 
@@ -48,10 +56,14 @@ class NotificationTextServiceTest : StringSpec() {
                 val notificationData = getTestNotificationDataModel().apply {
                     notificationRule.owner!!.userSettings!!.locale = UserLocale.EN
                 }
-                val htmlText = notificationTextService.getSmsTextForNotification(notificationData)
+                val smsText = notificationTextService.getSmsTextForNotification(notificationData)
 
-                htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
-                htmlText.shouldContain("Hello")
+                val vehicleVin = notificationData.matchedVehicleStates.map { vehicleState ->
+                    vehicleState.vehicleReference!!.vin!!
+                }.sorted().first()
+
+                smsText.shouldContain(vehicleVin)
+                smsText.shouldContain("Hello")
             }
 
             "Generate SMS Notification text using Locale.DE" {
@@ -59,10 +71,14 @@ class NotificationTextServiceTest : StringSpec() {
                 val notificationData = getTestNotificationDataModel().apply {
                     notificationRule.owner!!.userSettings!!.locale = UserLocale.DE
                 }
-                val htmlText = notificationTextService.getSmsTextForNotification(notificationData)
+                val smsText = notificationTextService.getSmsTextForNotification(notificationData)
 
-                htmlText.shouldContain(notificationData.notificationRule.owner!!.name!!)
-                htmlText.shouldContain("Hallo")
+                val vehicleVin = notificationData.matchedVehicleStates.map { vehicleState ->
+                    vehicleState.vehicleReference!!.vin!!
+                }.sorted().first()
+
+                smsText.shouldContain(vehicleVin)
+                smsText.shouldContain("Hi")
             }
         }
     }

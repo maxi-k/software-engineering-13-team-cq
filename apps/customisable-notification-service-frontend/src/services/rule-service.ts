@@ -190,7 +190,7 @@ export const convertFromAPIRule = (rule: APIRule): DetailRule => transformObject
             appliedField: {
               vehicleDataType: predicate.providerName,
               predicateField: {
-                fieldName: predicate.fieldName,
+                fieldName: predicate.fieldName
               }
             }
           } as RuleConditionPredicate<any>

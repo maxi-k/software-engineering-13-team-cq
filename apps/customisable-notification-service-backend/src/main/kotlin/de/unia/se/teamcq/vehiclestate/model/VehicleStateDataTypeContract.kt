@@ -5,6 +5,8 @@ import de.unia.se.teamcq.ruleevaluation.model.FieldDataType
 import de.unia.se.teamcq.ruleevaluation.model.PredicateField
 import org.springframework.stereotype.Component
 import java.sql.Date
+import java.time.Instant
+import java.time.ZoneOffset
 
 @Component
 // Constructor with (null)-default values for everything necessary for MapStruct
@@ -34,10 +36,10 @@ class VehicleStateDataTypeContract(
     override fun retrieveFieldValue(fieldName: String): Any? {
         return when (fieldName) {
             "endMileage" -> this.endMileage
-            "endDate" -> this.endDate
+            "endDate" -> convertDateToInstant(this.endDate)
             "reachedRuntimePercentage" -> this.reachedRuntimePercentage
             "remainingDays" -> this.remainingDays
-            "startDate" -> this.startDate
+            "startDate" -> convertDateToInstant(this.startDate)
             "startMileage" -> this.startMileage
             else -> super.retrieveFieldValue(fieldName)
         }
@@ -85,5 +87,9 @@ class VehicleStateDataTypeContract(
             "startDate" to PredicateField("startDate", FieldDataType.DATE, EvaluationStrategies.NUMERIC),
             "startMileage" to PredicateField("startMileage", FieldDataType.KILOMETER, EvaluationStrategies.NUMERIC)
         )
+
+        fun convertDateToInstant(date: Date?): Instant? {
+            return date?.toLocalDate()?.atStartOfDay(ZoneOffset.UTC)?.toInstant()
+        }
     }
 }
