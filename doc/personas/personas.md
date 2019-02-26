@@ -4,7 +4,7 @@
 
 ![](images/anna.jpg)
 
-| []() | 
+| | 
 | ------------------| ------------
 | **Name**        | Anna
 | **Alter**             | 32          
@@ -33,7 +33,7 @@ Anna erhofft sich eine aggregierte Darstellung relevanter Informationen. Da sie 
 
 ![](images/marlene.jpg)
 
-| []() | 
+|  | 
 | ------------------| ------------------------------
 | **Name**        | Marlene
 | **Alter**             | 42                            
@@ -62,7 +62,7 @@ Das FleetData-System soll Marlene über dringende Vorfälle und anstehende Termi
 
 ![](images/bob.jpg)
 
-| []() | 
+|  | 
 | ------------------| ------------
 | **Name**        | Bob
 | **Alter**             | 55          
