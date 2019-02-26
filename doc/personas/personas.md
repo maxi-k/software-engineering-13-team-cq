@@ -16,7 +16,6 @@
 | **Interessen**        | Fitness     
 | **Computeraffinität** | Mittel      
 | **Computerkenntnisse**| Hoch 
-| []() | 
 
 * **Vita**:
 Anna ist eine gelernte Fachinformatikerin. Nach ihrer Ausbildung konnte sie die Position einer Flottenadministratorin antreten. Als Flottenadministratorin leitet sie alle Flottenmanager ihres Standorts.
