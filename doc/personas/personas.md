@@ -4,7 +4,7 @@
 
 ![](images/anna.jpg)
 
-|           
+| Eigenschaft       | Wert     
 | ------------------| ------------
 | **Name**        | Anna
 | **Alter**             | 32          
