@@ -1,6 +1,8 @@
 # Frontend Development
 
 #### Table of Contents
+[Running the Frontend](#running-the-frontend)
+
 [Architecture](#architecture)
 
 [Tests](#running-tests)
@@ -17,6 +19,46 @@ explanations as to why we made certain decisions.
 
 For more general stuff focused on tooling and external guides and
 references, please read [The Frontend README](../../apps/customisable-notification-service-frontend/README.md).
+
+# Running the Frontend
+Once you have started the backend and the required mocks as described in [The Docker Guide](./docker-development.md) 
+(TL;DR: run `scripts/frontend-dev`), and installed the required packages using `yarn install`, start the frontend using one of the following commands:
+- `yarn start`: Start the frontend development server with hot reloading
+- `yarn storybook`: Start the storybook used for viewing single components and snapshot testing
+- `yarn build`: Build the frontend into a production-ready format, output to `build/`
+- `yarn build-storybook`: Build the storybook into a production-ready format, output to `build/`
+
+
+# Tests
+The frontend test coverage is not as good as the backend coverage, but still covers about 70% of the LOC at the time of this writing. The cns frontend uses [Jest](https://jestjs.io/) as the main testing framework, as well a variety of other testing tools.
+
+There is also a linter, which checks coding style and catches simple coding errors.
+
+## Types of Tests
+There are three types of tests in the frontend:
+- *Unit Tests*: Unit tests for single functions and logic. 
+  These are mainly used to test the services.
+- *Snapshot Tests*: Snapshot Tests done using [Storybook](https://storybook.js.org/), 
+  used to render static views of different components with different configurations of 
+  passed props.
+- *Selenium Tests*: There are two selenium tests, one of which simply tests that the page is loadable in the browser.
+  The other one goes through a full notification-rule creation process, and checks whether the rule was really created 
+  and is getting displayed afterwards. Thus, it can be seen as a full-fledged integration test for frontend and backend.
+  You can see a video of it [here](../integration-tests/selenium-rule-creation.mov).
+
+## Running Tests
+Looking in `package.json`, there are a lot of commands for running the available tests:
+- *lint*: This runs the aforementioned linter
+- *test*: This runs snapshot- and unit tests in an interactive mode
+- *test-coverage*: This runs snapshot- and unit tests in an interactive mode, 
+  generating test coverage reports in the process. If the test-coverage is not high enough
+  (threshold defined in `package.json`), this will fail.
+- *test-integration*: This does the same as *test-coverage*, but runs the selenium tests as well. 
+  It requires the backend and the various mocks to be running, and will open a chrome window to click though the frontend.
+- *test-commit*: This does the same as *test-coverage* but runs in CI mode. 
+  It is added as a pre-push hook and thus ensures that all tests pass,
+  and the coverage is high enough, before being able to push.
+
 
 # Architecture
 The architecture of the frontend is defined mainly by the usage of `react` and `redux`.
@@ -38,11 +80,6 @@ Besides this, there are some more project-specific things to be noted:
   This includes language switching logic and components from BMW, 
   as well as the internationalisation JSON Files.
 
-# Tests
-
-## Types of Tests
-
-## Running Tests
 
 # Conventions
 
