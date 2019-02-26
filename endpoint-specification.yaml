@@ -6,8 +6,7 @@ info:
   license:
     name: UNLICENSED
 servers:
-  - url: endpoint-specification.yaml
-#  - url: https://st-calculator-frontend.herokuapp.com
+  - url: https://unia-se-teamcq-apimock-backend.herokuapp.com/
 paths:
   '/notification-rule-management/notification-rule':
     get:
