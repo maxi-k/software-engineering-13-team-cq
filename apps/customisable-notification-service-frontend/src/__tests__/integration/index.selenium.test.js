@@ -8,7 +8,7 @@
 
 // require('geckodriver')
 const url = 'http://localhost:3000'
-const waitUntilTime = 3000
+const waitUntilTime = 1000 * 60
 
 async function awaitElement(byExpression) {
     const foundElement = await browser.wait(until.elementLocated(byExpression), waitUntilTime)
