@@ -1,13 +1,11 @@
-[( #{greeting(${name})} )]
+[( #{greeting} )]
 
-[# th:if="${name.length() gt 10}"]Wow! You've got a long name (more than 10 chars)![/]
+[( #{cause(${rule})} )]
 
-You have been successfully subscribed to the Fake newsletter on [( ${#dates.format(subscriptionDate)} )].
-
-Your hobbies are:
-[# th:each="hobby : ${hobbies}"]
- - [( ${hobby} )]
+[( #{header} )]
+[# th:each="vehicle : ${vehicles}"]
+ - [( ${vehicle} )]
 [/]
 
-Regards,
-    The Thymeleaf Team
+[( #{closing} )]
+    CNS-Team
