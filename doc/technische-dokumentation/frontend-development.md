@@ -1,11 +1,30 @@
 # Frontend Development
 
+#### Table of Contents
+[Architecture](#architecture)
+[Tests](#running-tests)
+* [Types of Tests](#types-of-tests)
+* [Running Tests](#running-tests)
+[Conventions](#conventions)
+* [General Conventions](#general-conventions)
+* [Typescript, React and Props](#typescript-react-and-props)
+
 This is a short guide to the development using the frontend stack we
 decided for, with focus on the used patterns and code, and short
 explanations as to why we made certain decisions.
 
 For more general stuff focused on tooling and external guides and
-references, please read [The Frontend README](../../frontend/README.md).
+references, please read [The Frontend README](../../apps/customisable-notification-service-frontend/README.md).
+
+# Architecture
+
+# Tests
+
+## Types of Tests
+
+## Running Tests
+
+# Conventions
 
 ## General Conventions
 
