@@ -79,24 +79,75 @@ class AbstractRuleConditionPredicateMapperTest : StringSpec() {
             ruleConditionPredicateModel.comparisonValue shouldBe expectedRuleConditionPredicateModel.comparisonValue
         }
 
-        "Throw an Exception if the fieldName or providerName fields are null" {
-            val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
-                providerName = null
-                fieldName = null
+        "Throw an Exception if the fieldName field is null or blank" {
+            shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    fieldName = null
+                }
+
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
             }
 
             shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    fieldName = ""
+                }
+
                 ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
             }
         }
 
-        "Throw an Exception if the fieldName or providerName fields are blank" {
-            val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
-                providerName = ""
-                fieldName = ""
+        "Throw an Exception if the providerName field is null or blank" {
+
+            shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    providerName = null
+                }
+
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
             }
 
             shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    providerName = ""
+                }
+
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
+            }
+        }
+
+        "Throw an Exception if the comparisonValue is null or blank" {
+
+            shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    comparisonValue = null
+                }
+
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
+            }
+
+            shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    comparisonValue = ""
+                }
+
+                ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
+            }
+        }
+
+        "Throw an Exception if the comparisonType field is null" {
+            shouldThrow<IllegalArgumentException> {
+
+                val ruleConditionPredicateDto = getTestRuleConditionPredicateDto().apply {
+                    comparisonType = null
+                }
+
                 ruleConditionPredicateMapper.dtoToModel(ruleConditionPredicateDto)
             }
         }

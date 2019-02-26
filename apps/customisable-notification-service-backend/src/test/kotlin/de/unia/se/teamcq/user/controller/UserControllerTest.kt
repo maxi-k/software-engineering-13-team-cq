@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.user.dto.UserDto
-import de.unia.se.teamcq.user.mapping.IUserMapper
+import de.unia.se.teamcq.user.mapping.AbstractUserMapper
 import de.unia.se.teamcq.user.service.IUserService
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -30,7 +30,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 class UserControllerTest : StringSpec() {
 
     @MockK
-    private lateinit var mockUserMapper: IUserMapper
+    private lateinit var mockUserMapper: AbstractUserMapper
 
     @MockK
     private lateinit var userService: IUserService

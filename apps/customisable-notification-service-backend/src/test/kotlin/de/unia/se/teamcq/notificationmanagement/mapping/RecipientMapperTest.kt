@@ -21,7 +21,7 @@ class RecipientMapperTest : StringSpec() {
     lateinit var recipientMailMapper: AbstractRecipientMailMapper
 
     @MockK(relaxed = true)
-    lateinit var recipientSmsMapper: IRecipientSmsMapper
+    lateinit var recipientSmsMapper: AbstractRecipientSmsMapper
 
     @InjectMockKs
     lateinit var recipientMapper: RecipientMapper

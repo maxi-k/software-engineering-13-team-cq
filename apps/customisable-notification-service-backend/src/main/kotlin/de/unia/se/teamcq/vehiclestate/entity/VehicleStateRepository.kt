@@ -1,9 +1,9 @@
 package de.unia.se.teamcq.vehiclestate.entity
 
 import de.unia.se.teamcq.rulemanagement.entity.INotificationRuleEntityRepository
-import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.AbstractNotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
-import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
+import de.unia.se.teamcq.vehiclestate.mapping.AbstractFleetReferenceMapper
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
 import de.unia.se.teamcq.vehiclestate.model.FleetReference
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
@@ -39,13 +39,13 @@ class VehicleStateRepository : IVehicleStateRepository {
     private lateinit var vehicleStateMapper: IVehicleStateMapper
 
     @Autowired
-    private lateinit var fleetReferenceMapper: IFleetReferenceMapper
+    private lateinit var fleetReferenceMapper: AbstractFleetReferenceMapper
 
     @Autowired
     private lateinit var notificationRuleEntityRepository: INotificationRuleEntityRepository
 
     @Autowired
-    private lateinit var notificationRuleMapper: INotificationRuleMapper
+    private lateinit var notificationRuleMapper: AbstractNotificationRuleMapper
 
     override fun getAllVehicleStates(): List<VehicleState> {
         return vehicleStateEntityRepository.findAll().map { vehicleStateEntity ->

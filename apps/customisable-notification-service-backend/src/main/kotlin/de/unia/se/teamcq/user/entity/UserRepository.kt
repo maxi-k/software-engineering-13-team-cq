@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.user.entity
 
-import de.unia.se.teamcq.user.mapping.IUserMapper
+import de.unia.se.teamcq.user.mapping.AbstractUserMapper
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.model.UserSettings
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +26,7 @@ class UserRepository : IUserRepository {
     private lateinit var entityManager: EntityManager
 
     @Autowired
-    lateinit var userMapper: IUserMapper
+    lateinit var userMapper: AbstractUserMapper
 
     override fun createOrSaveUser(user: User): User? {
 

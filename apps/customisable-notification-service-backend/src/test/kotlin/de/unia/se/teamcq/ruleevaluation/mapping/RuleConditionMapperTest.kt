@@ -1,5 +1,6 @@
 package de.unia.se.teamcq.ruleevaluation.mapping
 
+import de.unia.se.teamcq.TestUtils.getTestRuleConditionCompositeDto
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionDto
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionDtoWithGreaterDepth
 import de.unia.se.teamcq.TestUtils.getTestRuleConditionEntity
@@ -16,6 +17,7 @@ import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -103,6 +105,28 @@ class RuleConditionMapperTest : StringSpec() {
                 val subConditionModel = ruleConditionCompositeModel.subConditions[0] as RuleConditionComposite
 
                 subConditionModel.subConditions shouldContain mockedRuleConditionPredicateModel
+            }
+
+            "Throw exception without logicalConnective" {
+
+                val ruleConditionCompositeDto = getTestRuleConditionCompositeDto().apply {
+                    logicalConnective = null
+                }
+
+                shouldThrow<IllegalArgumentException> {
+                    ruleConditionMapper.dtoToModel(ruleConditionCompositeDto)
+                }
+            }
+
+            "Throw exception without subConditions" {
+
+                val ruleConditionCompositeDto = getTestRuleConditionCompositeDto().apply {
+                    subConditions = listOf()
+                }
+
+                shouldThrow<IllegalArgumentException> {
+                    ruleConditionMapper.dtoToModel(ruleConditionCompositeDto)
+                }
             }
         }
 

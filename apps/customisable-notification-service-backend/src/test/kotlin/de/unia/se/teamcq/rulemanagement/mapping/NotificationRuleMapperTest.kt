@@ -23,9 +23,11 @@ import de.unia.se.teamcq.TestUtils.getTestUserEntity
 import de.unia.se.teamcq.TestUtils.getTestUserModel
 import de.unia.se.teamcq.notificationmanagement.mapping.IAggregatorMapper
 import de.unia.se.teamcq.ruleevaluation.mapping.IRuleConditionMapper
-import de.unia.se.teamcq.user.mapping.IUserMapper
-import de.unia.se.teamcq.vehiclestate.mapping.IFleetReferenceMapper
+import de.unia.se.teamcq.user.mapping.AbstractUserMapper
+import de.unia.se.teamcq.vehiclestate.mapping.AbstractFleetReferenceMapper
+import io.kotlintest.should
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -41,19 +43,19 @@ class NotificationRuleMapperTest : StringSpec() {
     lateinit var mockIRuleConditionMapper: IRuleConditionMapper
 
     @MockK
-    lateinit var mockIFleetReferenceMapper: IFleetReferenceMapper
+    lateinit var mockAbstractFleetReferenceMapper: AbstractFleetReferenceMapper
 
     @MockK
     lateinit var mockIAggregatorMapper: IAggregatorMapper
 
     @MockK
-    lateinit var mockIUserMapper: IUserMapper
+    lateinit var mockAbstractUserMapper: AbstractUserMapper
 
     @MockK
     lateinit var mockRecipientMapperHelper: RecipientMapperHelper
 
     @InjectMockKs
-    lateinit var notificationRuleMapper: INotificationRuleMapperImpl
+    lateinit var notificationRuleMapper: AbstractNotificationRuleMapperImpl
 
     init {
         MockKAnnotations.init(this)
@@ -64,14 +66,14 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.modelToEntity(any()) } returns getTestAggregatorEntity()
 
-            every { mockIUserMapper.modelToEntity(any()) } returns getTestUserEntity()
+            every { mockAbstractUserMapper.modelToEntity(any()) } returns getTestUserEntity()
 
             every { mockRecipientMapperHelper.modelToEntity(any()) } returns getTestRecipientEntities()
 
-            every { mockIFleetReferenceMapper.modelToEntity(getTestFleetReferenceModel()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToEntity(getTestFleetReferenceModel()) } returns
                     getTestFleetReferenceEntity()
 
-            every { mockIFleetReferenceMapper.modelToEntity(getTestFleetReferenceModelTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToEntity(getTestFleetReferenceModelTwo()) } returns
                     getTestFleetReferenceEntityTwo()
 
             val notificationRule = getTestNotificationRuleModel()
@@ -89,14 +91,14 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.entityToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockIUserMapper.entityToModel(any()) } returns getTestUserModel()
+            every { mockAbstractUserMapper.entityToModel(any()) } returns getTestUserModel()
 
             every { mockRecipientMapperHelper.entityToModel(any()) } returns getTestRecipientModels()
 
-            every { mockIFleetReferenceMapper.entityToModel(getTestFleetReferenceEntity()) } returns
+            every { mockAbstractFleetReferenceMapper.entityToModel(getTestFleetReferenceEntity()) } returns
                     getTestFleetReferenceModel()
 
-            every { mockIFleetReferenceMapper.entityToModel(getTestFleetReferenceEntityTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.entityToModel(getTestFleetReferenceEntityTwo()) } returns
                     getTestFleetReferenceModelTwo()
 
             val notificationRuleEntity = getTestNotificationRuleEntity()
@@ -114,14 +116,14 @@ class NotificationRuleMapperTest : StringSpec() {
 
             every { mockIAggregatorMapper.modelToDto(any()) } returns getTestAggregatorDto()
 
-            every { mockIUserMapper.modelToDto(any()) } returns getTestUserDto()
+            every { mockAbstractUserMapper.modelToDto(any()) } returns getTestUserDto()
 
             every { mockRecipientMapperHelper.modelToDto(any()) } returns getTestRecipientDtos()
 
-            every { mockIFleetReferenceMapper.modelToDto(getTestFleetReferenceModel()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToDto(getTestFleetReferenceModel()) } returns
                     getTestFleetReferenceDto()
 
-            every { mockIFleetReferenceMapper.modelToDto(getTestFleetReferenceModelTwo()) } returns
+            every { mockAbstractFleetReferenceMapper.modelToDto(getTestFleetReferenceModelTwo()) } returns
                     getTestFleetReferenceDtoTwo()
 
             val notificationRule = getTestNotificationRuleModel()
@@ -131,30 +133,118 @@ class NotificationRuleMapperTest : StringSpec() {
             notificationRuleDto shouldBe getTestNotificationRuleDto()
         }
 
-        "Convert dto to model" {
+        "Convert dto to model" should {
 
-            every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
+            "Work for legal arguments" {
 
-            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
+                every { mockIRuleConditionMapper.dtoToModel(any()) } returns getTestRuleConditionModel()
 
-            every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
+                every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockIUserMapper.dtoToModel(any()) } returns getTestUserModel()
+                every { mockIAggregatorMapper.dtoToModel(any()) } returns getTestAggregatorModel()
 
-            every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
+                every { mockAbstractUserMapper.dtoToModel(any()) } returns getTestUserModel()
 
-            every { mockIFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
-                    getTestFleetReferenceModel()
+                every { mockRecipientMapperHelper.dtoToModel(any()) } returns getTestRecipientModels()
 
-            every { mockIFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
-                    getTestFleetReferenceModelTwo()
+                every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDto()) } returns
+                        getTestFleetReferenceModel()
 
-            val notificationRuleDto = getTestNotificationRuleDto()
+                every { mockAbstractFleetReferenceMapper.dtoToModel(getTestFleetReferenceDtoTwo()) } returns
+                        getTestFleetReferenceModelTwo()
 
-            val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
+                val notificationRuleDto = getTestNotificationRuleDto()
 
-            notificationRule shouldBe getTestNotificationRuleModel().apply {
-                lastUpdate = null
+                val notificationRule = notificationRuleMapper.dtoToModel(notificationRuleDto)
+
+                notificationRule shouldBe getTestNotificationRuleModel().apply {
+                    lastUpdate = null
+                }
+            }
+
+            "Throw an Exception if affectingAllApplicableFleets is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.affectingAllApplicableFleets = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if ownerAsAdditionalRecipient is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.ownerAsAdditionalRecipient = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if description is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.description = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if aggregator is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.aggregator = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if condition is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.aggregator = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if name is null" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.name = null
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
+            }
+
+            "Throw an Exception if no potential recipient exists" {
+
+                shouldThrow<IllegalArgumentException> {
+
+                    val notificationRuleDto = getTestNotificationRuleDto().apply {
+                        this.ownerAsAdditionalRecipient = false
+                        this.recipients = listOf()
+                    }
+
+                    notificationRuleMapper.dtoToModel(notificationRuleDto)
+                }
             }
         }
     }

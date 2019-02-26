@@ -25,6 +25,20 @@ abstract class AbstractRuleConditionPredicateMapper {
                             " is required, but was null or a blank string!"
             )
         }
+
+        if (ruleConditionPredicateDto.comparisonType == null) {
+            throw IllegalArgumentException(
+                    "Attribute comparisonType of RuleConditionPredicateDto" +
+                            " is required, but was null!"
+            )
+        }
+
+        if (ruleConditionPredicateDto.comparisonValue.isNullOrBlank()) {
+            throw IllegalArgumentException(
+                    "Attribute comparisonType of RuleConditionPredicateDto" +
+                            " is required, but was null or a blank string!"
+            )
+        }
     }
 
     abstract fun modelToDto(ruleConditionPredicate: RuleConditionPredicate):

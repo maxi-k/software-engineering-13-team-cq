@@ -6,7 +6,7 @@ import de.unia.se.teamcq.TestUtils.getTestNotificationRuleDto
 import de.unia.se.teamcq.TestUtils.getTestNotificationRuleModel
 import de.unia.se.teamcq.TestUtils.getTestUserDto
 import de.unia.se.teamcq.rulemanagement.dto.NotificationRuleDto
-import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.AbstractNotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import de.unia.se.teamcq.user.model.User
 import de.unia.se.teamcq.user.service.IUserService
@@ -39,7 +39,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 class NotificationRuleControllerTest : StringSpec() {
 
     @MockK
-    private lateinit var mockNotificationRuleMapper: INotificationRuleMapper
+    private lateinit var mockNotificationRuleMapper: AbstractNotificationRuleMapper
 
     @MockK
     private lateinit var notificationRuleService: INotificationRuleService

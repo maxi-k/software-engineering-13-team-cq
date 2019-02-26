@@ -1,6 +1,6 @@
 package de.unia.se.teamcq.rulemanagement.entity
 
-import de.unia.se.teamcq.rulemanagement.mapping.INotificationRuleMapper
+import de.unia.se.teamcq.rulemanagement.mapping.AbstractNotificationRuleMapper
 import de.unia.se.teamcq.rulemanagement.model.NotificationRule
 import de.unia.se.teamcq.user.entity.IUserEntityRepository
 import de.unia.se.teamcq.vehiclestate.mapping.IVehicleStateMapper
@@ -28,7 +28,7 @@ class NotificationRuleRepository : INotificationRuleRepository {
     private lateinit var userEntityRepository: IUserEntityRepository
 
     @Autowired
-    private lateinit var notificationRuleMapper: INotificationRuleMapper
+    private lateinit var notificationRuleMapper: AbstractNotificationRuleMapper
 
     @Autowired
     private lateinit var vehicleStateMapper: IVehicleStateMapper
