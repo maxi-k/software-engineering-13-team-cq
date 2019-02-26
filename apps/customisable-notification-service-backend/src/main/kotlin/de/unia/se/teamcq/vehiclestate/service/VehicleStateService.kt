@@ -5,6 +5,7 @@ import de.unia.se.teamcq.vehiclestate.entity.IVehicleStateRepository
 import de.unia.se.teamcq.vehiclestate.model.VehicleState
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestClientException
@@ -12,6 +13,9 @@ import org.springframework.web.client.RestClientException
 @Component
 @Transactional
 class VehicleStateService : IVehicleStateService {
+
+    @Value("\${de.unia.se.teamcq.disable-evaluation-pipeline:false}")
+    private var disableEvaluationPipeline: Boolean? = null
 
     @Autowired
     private lateinit var vssAdapter: IVssAdapter
@@ -21,6 +25,10 @@ class VehicleStateService : IVehicleStateService {
 
     @Throws(RestClientException::class, NullPointerException::class)
     override fun importNewVehicleData() {
+
+        if (disableEvaluationPipeline == true) {
+            return
+        }
 
         logger.info("Started importing new Vehicle States")
         val started = System.currentTimeMillis()

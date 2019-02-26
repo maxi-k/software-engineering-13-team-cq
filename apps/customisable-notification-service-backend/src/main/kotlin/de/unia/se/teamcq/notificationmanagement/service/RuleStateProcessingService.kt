@@ -5,10 +5,14 @@ import de.unia.se.teamcq.ruleevaluation.service.IEvaluationService
 import de.unia.se.teamcq.rulemanagement.service.INotificationRuleService
 import de.unia.se.teamcq.vehiclestate.service.IVehicleStateService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
 class RuleStateProcessingService : IRuleStateProcessingService {
+
+    @Value("\${de.unia.se.teamcq.disable-evaluation-pipeline:false}")
+    private var disableEvaluationPipeline: Boolean? = null
 
     @Autowired
     private lateinit var notificationRuleService: INotificationRuleService
@@ -23,6 +27,10 @@ class RuleStateProcessingService : IRuleStateProcessingService {
     private lateinit var vehicleStateService: IVehicleStateService
 
     override fun processNewVehicleStatesForRule(ruleId: Long) {
+
+        if (disableEvaluationPipeline == true) {
+            return
+        }
 
         val notificationRule = notificationRuleService.getNotificationRule(ruleId)
         val vehicleStatesToProcess = vehicleStateService.getUnprocessedVehicleStateForRule(notificationRule!!)
