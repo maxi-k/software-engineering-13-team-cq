@@ -1,6 +1,6 @@
 import { DeepPartial } from 'ts-essentials'
 import { Fleet } from './CarPark'
-import { VehicleDataField, VehicleDataType } from './Vehicle'
+import { VehicleDataField } from './Vehicle'
 
 export enum ComparisonType {
   Above = 'above',
@@ -60,11 +60,11 @@ export interface NotificationRuleOwner {
 }
 
 export interface NotificationRuleOverview {
-  ruleId: number,
-  name: string,
-  description: string,
-  dataSources: VehicleDataType[],
-  aggregatorDescription: string
+  ruleId: number
+  name: string
+  description: string
+  aggregator: Aggregator
+  condition: RuleCondition
 }
 
 export interface NotificationRuleDetail
@@ -74,8 +74,6 @@ export interface NotificationRuleDetail
   ownerAsAdditionalRecipient: boolean
   applyToAllFleets: boolean
   fleets: Fleet[]
-  condition: RuleCondition
-  aggregator: Aggregator
 }
 
 export type NotificationRuleInProgress

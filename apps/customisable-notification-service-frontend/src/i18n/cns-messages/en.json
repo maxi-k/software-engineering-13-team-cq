@@ -65,6 +65,16 @@
 
     "cns.rule.field.aggregator.strategy.value.scheduled.value.undefined.label": "Undefined Schedule",
 
+    "cns.rule.validation.field.ruleId.message": "Rule Id name cannot be empty",
+    "cns.rule.validation.field.name.message": "Rule name cannot be empty",
+    "cns.rule.validation.field.description.message": "Rule description cannot be empty",
+    "cns.rule.validation.field.owner.message": "Rule owner needs to exist",
+    "cns.rule.validation.field.ownerAsAdditionalRecipient.message": "Please specify whether the rule owner is a recipient",
+    "cns.rule.validation.field.recipients.message": "Please specify at least one recipient to send notifications to",
+    "cns.rule.validation.field.applyToAllFleets.message": "Please specify whether to apply this rule to all recipients",
+    "cns.rule.validation.field.fleets.message": "Please specify at least one fleet to apply this rule to",
+    "cns.rule.validation.field.condition.message": "The provided rule condition is invalid",
+    "cns.rule.validation.field.aggregator.message": "The provided rule aggregator is invalid",
 
     "cns.rule.modification.error.default": "There was an error displaying this component.",
     "cns.rule.modification.step.label": "Step",

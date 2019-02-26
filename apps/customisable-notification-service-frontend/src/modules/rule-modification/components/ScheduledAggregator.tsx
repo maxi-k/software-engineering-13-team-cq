@@ -20,6 +20,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Select from 'react-select'
 
 import { AggregatorComponentAttributes } from '../aggregator-common'
+import { AggregatorStrategy } from '@/model';
 
 export type ScheduledAggregatorProps = AggregatorComponentAttributes
   & InjectedIntlProps
@@ -52,8 +53,11 @@ class ScheduledAggregator extends React.Component<ScheduledAggregatorProps, Sche
     )
   }
 
-  public componentDidMount = () => {
+  public componentDidUpdate = () => {
     const { aggregator, setAggregatorValue } = this.props
+    if (aggregator.strategy !== AggregatorStrategy.Scheduled) {
+      return
+    }
     if (typeof aggregator.value === 'undefined' ||
       aggregator.value === null ||
       !isValidCronExpression(aggregator.value.toString())) {

@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 import { RuleModificationState } from '@/state/rule'
+import { NotificationRuleDetail } from '@/model/Rule'
+import { applyLazy } from '@/utilities/function-util'
 
 import Typography from '@material-ui/core/Typography'
 import { BMWButton as Button } from '@fleetdata/shared/components/button'
@@ -21,6 +23,7 @@ import {
   RuleModificationStepView,
   RuleModificationStepViewProps
 } from '../modification-common'
+import { ruleFieldValidator } from '@/services/rule-service';
 
 export interface ModificationViewAttributes {
   pageTitle: string
@@ -33,10 +36,10 @@ export type StateAttributes = CommonRuleModificationStateAttributes & RuleModifi
 type SelectStepType = (step: number) => void
 export interface DispatchAttributes
   extends CommonRuleModificationDispatchAttributes {
-  selectStep: SelectStepType,
-  completeModification(): void,
-  nextStep(): void,
-  previousStep(): void,
+  selectStep: SelectStepType
+  completeModification(validationCallback: () => { [key: string]: string }): void
+  nextStep(validationCallback: () => { [key: string]: string }): void
+  previousStep(): void
   abortModification(): void
 }
 
@@ -46,6 +49,14 @@ export type RuleModificationProps = ModificationViewAttributes
   & React.HTMLAttributes<HTMLDivElement>
 
 const stepTitleKeys = ["general", "fleets", "condition", "timing", "summary"]
+const stepValidatedFields: Array<Array<keyof NotificationRuleDetail>> = [
+  ['name', 'description', 'recipients', 'ownerAsAdditionalRecipient'],
+  ['fleets', 'applyToAllFleets'],
+  ['condition'],
+  ['aggregator'],
+  ['name', 'description', 'recipients', 'ownerAsAdditionalRecipient', 'fleets',
+    'applyToAllFleets', 'condition', 'aggregator']
+]
 
 const stepComponents: Array<React.LazyExoticComponent<RuleModificationStepView>> = [
   lazy(() => import('../parts/RuleModificationGeneral')),
@@ -54,6 +65,15 @@ const stepComponents: Array<React.LazyExoticComponent<RuleModificationStepView>>
   lazy(() => import('../parts/RuleModificationAggregator')),
   lazy(() => import('../parts/RuleModificationSummary'))
 ]
+
+const validatorForStep = (step: number, inProgressRule: Partial<NotificationRuleDetail>): (() => { [key: string]: string }) => (
+  (step < 0 || step >= stepValidatedFields.length)
+    ? () => ({})
+    : () => ruleFieldValidator.validateFields(
+      inProgressRule,
+      stepValidatedFields[step]
+    )
+)
 
 const stepperProps = (activeStep: number, selectStep: SelectStepType, completedSteps: Set<number>) => ({
   activeStep,
@@ -111,7 +131,7 @@ const RuleModification: React.SFC<RuleModificationProps> = (
   { abortModification, selectStep, nextStep, previousStep,
     completeModification, inProgressRule, updateField,
     completedSteps, currentStep, nonLinearStepper,
-    pageTitle, pageTitleProps,
+    pageTitle, pageTitleProps, ruleErrors,
     ...props }
 ) => (
     <StyledRuleModificationWrapper {...props}>
@@ -125,6 +145,18 @@ const RuleModification: React.SFC<RuleModificationProps> = (
         {...stepperProps(currentStep, selectStep, completedSteps)}
       />
       <CurrentStepTitle currentStep={currentStep} />
+      {Object.values(ruleErrors).length > 0 &&
+        <ErrorMessage
+          style={{ marginBottom: '0.5rem' }}
+          message={
+            Object.values(ruleErrors).map((errorString) => (
+              <React.Fragment key={errorString}>
+                <FormattedMessage id={errorString} />.
+                <br />
+              </React.Fragment>
+            ))
+          } />
+      }
       <CurrentStepView
         currentStep={currentStep}
         stepProps={{
@@ -142,13 +174,13 @@ const RuleModification: React.SFC<RuleModificationProps> = (
           ?
           <Button primary="true"
             icon={<NextIcon fill="#fff" />}
-            onClick={completeModification}>
+            onClick={applyLazy(completeModification, validatorForStep(currentStep, inProgressRule))}>
             <FormattedMessage id="cns.rule.modification.action.complete" />
           </Button>
           :
           <Button primary="true"
             icon={<NextIcon fill="#fff" />}
-            onClick={nextStep}>
+            onClick={applyLazy(nextStep, validatorForStep(currentStep, inProgressRule))}>
             <FormattedMessage id="cns.rule.modification.action.step.next" />
           </Button>
         }

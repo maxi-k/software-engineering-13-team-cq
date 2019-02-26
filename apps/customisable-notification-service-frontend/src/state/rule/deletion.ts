@@ -3,6 +3,7 @@ import { createAsyncAction } from 'typesafe-actions'
 import update from 'immutability-helper'
 
 import { call, put, takeEvery } from 'redux-saga/effects'
+import { push } from 'connected-react-router'
 import { deleteRule } from '@/services/rule-service'
 import { ensureResponseStatus } from '@/services/response-service'
 import { FetchingData } from '@/model'
@@ -70,7 +71,7 @@ function* deleteRemoteRuleGenerator(action: ReturnType<typeof deleteRemoteRule.r
     ensureResponseStatus(response);
     // There is no response body from the DELETE endpoint
     yield put(deleteRemoteRule.success(action.payload))
-    yield
+    yield put(push('/'))
   } catch (error) {
     yield put(deleteRemoteRule.failure(error))
   }

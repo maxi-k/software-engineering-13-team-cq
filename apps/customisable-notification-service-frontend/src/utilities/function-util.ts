@@ -18,3 +18,4 @@ export const mapArguments = <I, N, O>(
   )
 
 export const identity = <T>(value: T): T => value
+export const constantly = <T>(value: T): (() => T) => () => value

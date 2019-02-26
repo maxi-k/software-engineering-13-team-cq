@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 
 import { media } from '@/fleetdata/utils/media-query'
 import { mergeFleetInformation } from '@/services/car-park-service'
+import { getRuleDataSources } from '@/services/rule-service'
 import { StateMapper } from '@/state/connector'
 import { carParkFleetsSelector } from '@/state/selectors'
 import { NotificationRuleDetail, Fleet, AggregatorStrategy } from '@/model'
@@ -103,7 +104,7 @@ const RuleDetails: React.SFC<RuleDetailsProps> = ({ rule, fleets, ...otherProps 
       <FieldDescriptor
         label={"cns.rule.field.dataSources.label"}
         content={<>
-          {(rule.dataSources || [])
+          {getRuleDataSources(rule)
             .filter((dataSource) => dataSource !== null && typeof dataSource !== 'undefined')
             .map((dataSource) => (
               <RuleIcon

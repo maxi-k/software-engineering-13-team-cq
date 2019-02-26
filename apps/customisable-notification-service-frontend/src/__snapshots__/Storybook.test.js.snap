@@ -8,7 +8,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
     className="sc-dfVpRl bYKLEu"
   >
     <h5
-      className="MuiTypography-root-1751 MuiTypography-h5-1767"
+      className="MuiTypography-root-1843 MuiTypography-h5-1859"
     >
       
       Create Rule
@@ -25,13 +25,13 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
     </button>
   </header>
   <div
-    className="MuiPaper-root-1790 MuiPaper-elevation0-1792 MuiStepper-root-1786 MuiStepper-horizontal-1787"
+    className="MuiPaper-root-1882 MuiPaper-elevation0-1884 MuiStepper-root-1878 MuiStepper-horizontal-1879"
   >
     <div
-      className="MuiStep-root-1817 MuiStep-horizontal-1818"
+      className="MuiStep-root-1909 MuiStep-horizontal-1910"
     >
       <button
-        className="MuiButtonBase-root-1826 MuiStepButton-root-1822 MuiStepButton-horizontal-1823"
+        className="MuiButtonBase-root-1918 MuiStepButton-root-1914 MuiStepButton-horizontal-1915"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -48,14 +48,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1829 MuiStepLabel-horizontal-1830"
+          className="MuiStepLabel-root-1921 MuiStepLabel-horizontal-1922"
         >
           <span
-            className="MuiStepLabel-iconContainer-1837"
+            className="MuiStepLabel-iconContainer-1929"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1845 MuiStepIcon-root-1840 MuiStepIcon-active-1842"
+              className="MuiSvgIcon-root-1937 MuiStepIcon-root-1932 MuiStepIcon-active-1934"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1841"
+                className="MuiStepIcon-text-1933"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -76,10 +76,10 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1839"
+            className="MuiStepLabel-labelContainer-1931"
           >
             <span
-              className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiStepLabel-label-1832 MuiStepLabel-active-1833"
+              className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiStepLabel-label-1924 MuiStepLabel-active-1925"
             >
               General
             </span>
@@ -88,17 +88,17 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1854 MuiStepConnector-horizontal-1855 MuiStepConnector-disabled-1860"
+      className="MuiStepConnector-root-1946 MuiStepConnector-horizontal-1947 MuiStepConnector-disabled-1952"
     >
       <span
-        className="MuiStepConnector-line-1861 MuiStepConnector-lineHorizontal-1862"
+        className="MuiStepConnector-line-1953 MuiStepConnector-lineHorizontal-1954"
       />
     </div>
     <div
-      className="MuiStep-root-1817 MuiStep-horizontal-1818"
+      className="MuiStep-root-1909 MuiStep-horizontal-1910"
     >
       <button
-        className="MuiButtonBase-root-1826 MuiButtonBase-disabled-1827 MuiStepButton-root-1822 MuiStepButton-horizontal-1823"
+        className="MuiButtonBase-root-1918 MuiButtonBase-disabled-1919 MuiStepButton-root-1914 MuiStepButton-horizontal-1915"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -115,14 +115,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1829 MuiStepLabel-horizontal-1830 MuiStepLabel-disabled-1836"
+          className="MuiStepLabel-root-1921 MuiStepLabel-horizontal-1922 MuiStepLabel-disabled-1928"
         >
           <span
-            className="MuiStepLabel-iconContainer-1837"
+            className="MuiStepLabel-iconContainer-1929"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1845 MuiStepIcon-root-1840"
+              className="MuiSvgIcon-root-1937 MuiStepIcon-root-1932"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -133,7 +133,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1841"
+                className="MuiStepIcon-text-1933"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -143,10 +143,10 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1839"
+            className="MuiStepLabel-labelContainer-1931"
           >
             <span
-              className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiStepLabel-label-1832"
+              className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiStepLabel-label-1924"
             >
               Fleets
             </span>
@@ -155,17 +155,17 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1854 MuiStepConnector-horizontal-1855 MuiStepConnector-disabled-1860"
+      className="MuiStepConnector-root-1946 MuiStepConnector-horizontal-1947 MuiStepConnector-disabled-1952"
     >
       <span
-        className="MuiStepConnector-line-1861 MuiStepConnector-lineHorizontal-1862"
+        className="MuiStepConnector-line-1953 MuiStepConnector-lineHorizontal-1954"
       />
     </div>
     <div
-      className="MuiStep-root-1817 MuiStep-horizontal-1818"
+      className="MuiStep-root-1909 MuiStep-horizontal-1910"
     >
       <button
-        className="MuiButtonBase-root-1826 MuiButtonBase-disabled-1827 MuiStepButton-root-1822 MuiStepButton-horizontal-1823"
+        className="MuiButtonBase-root-1918 MuiButtonBase-disabled-1919 MuiStepButton-root-1914 MuiStepButton-horizontal-1915"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -182,14 +182,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1829 MuiStepLabel-horizontal-1830 MuiStepLabel-disabled-1836"
+          className="MuiStepLabel-root-1921 MuiStepLabel-horizontal-1922 MuiStepLabel-disabled-1928"
         >
           <span
-            className="MuiStepLabel-iconContainer-1837"
+            className="MuiStepLabel-iconContainer-1929"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1845 MuiStepIcon-root-1840"
+              className="MuiSvgIcon-root-1937 MuiStepIcon-root-1932"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -200,7 +200,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1841"
+                className="MuiStepIcon-text-1933"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -210,10 +210,10 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1839"
+            className="MuiStepLabel-labelContainer-1931"
           >
             <span
-              className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiStepLabel-label-1832"
+              className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiStepLabel-label-1924"
             >
               Condition
             </span>
@@ -222,17 +222,17 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1854 MuiStepConnector-horizontal-1855 MuiStepConnector-disabled-1860"
+      className="MuiStepConnector-root-1946 MuiStepConnector-horizontal-1947 MuiStepConnector-disabled-1952"
     >
       <span
-        className="MuiStepConnector-line-1861 MuiStepConnector-lineHorizontal-1862"
+        className="MuiStepConnector-line-1953 MuiStepConnector-lineHorizontal-1954"
       />
     </div>
     <div
-      className="MuiStep-root-1817 MuiStep-horizontal-1818"
+      className="MuiStep-root-1909 MuiStep-horizontal-1910"
     >
       <button
-        className="MuiButtonBase-root-1826 MuiButtonBase-disabled-1827 MuiStepButton-root-1822 MuiStepButton-horizontal-1823"
+        className="MuiButtonBase-root-1918 MuiButtonBase-disabled-1919 MuiStepButton-root-1914 MuiStepButton-horizontal-1915"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -249,14 +249,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1829 MuiStepLabel-horizontal-1830 MuiStepLabel-disabled-1836"
+          className="MuiStepLabel-root-1921 MuiStepLabel-horizontal-1922 MuiStepLabel-disabled-1928"
         >
           <span
-            className="MuiStepLabel-iconContainer-1837"
+            className="MuiStepLabel-iconContainer-1929"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1845 MuiStepIcon-root-1840"
+              className="MuiSvgIcon-root-1937 MuiStepIcon-root-1932"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -267,7 +267,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1841"
+                className="MuiStepIcon-text-1933"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -277,10 +277,10 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1839"
+            className="MuiStepLabel-labelContainer-1931"
           >
             <span
-              className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiStepLabel-label-1832"
+              className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiStepLabel-label-1924"
             >
               Timing
             </span>
@@ -289,17 +289,17 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1854 MuiStepConnector-horizontal-1855 MuiStepConnector-disabled-1860"
+      className="MuiStepConnector-root-1946 MuiStepConnector-horizontal-1947 MuiStepConnector-disabled-1952"
     >
       <span
-        className="MuiStepConnector-line-1861 MuiStepConnector-lineHorizontal-1862"
+        className="MuiStepConnector-line-1953 MuiStepConnector-lineHorizontal-1954"
       />
     </div>
     <div
-      className="MuiStep-root-1817 MuiStep-horizontal-1818"
+      className="MuiStep-root-1909 MuiStep-horizontal-1910"
     >
       <button
-        className="MuiButtonBase-root-1826 MuiButtonBase-disabled-1827 MuiStepButton-root-1822 MuiStepButton-horizontal-1823"
+        className="MuiButtonBase-root-1918 MuiButtonBase-disabled-1919 MuiStepButton-root-1914 MuiStepButton-horizontal-1915"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -316,14 +316,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1829 MuiStepLabel-horizontal-1830 MuiStepLabel-disabled-1836"
+          className="MuiStepLabel-root-1921 MuiStepLabel-horizontal-1922 MuiStepLabel-disabled-1928"
         >
           <span
-            className="MuiStepLabel-iconContainer-1837"
+            className="MuiStepLabel-iconContainer-1929"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1845 MuiStepIcon-root-1840"
+              className="MuiSvgIcon-root-1937 MuiStepIcon-root-1932"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -334,7 +334,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1841"
+                className="MuiStepIcon-text-1933"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -344,10 +344,10 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1839"
+            className="MuiStepLabel-labelContainer-1931"
           >
             <span
-              className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiStepLabel-label-1832"
+              className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiStepLabel-label-1924"
             >
               Preview
             </span>
@@ -360,7 +360,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
     className="sc-eTuwsz igikOh"
   >
     <h6
-      className="MuiTypography-root-1751 MuiTypography-h6-1768"
+      className="MuiTypography-root-1843 MuiTypography-h6-1860"
     >
       Step
        
@@ -371,21 +371,21 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
   </div>
   <div>
     <div
-      className="MuiFormControl-root-1864 MuiFormControl-marginNormal-1865 MuiFormControl-fullWidth-1867"
+      className="MuiFormControl-root-1956 MuiFormControl-marginNormal-1957 MuiFormControl-fullWidth-1959"
     >
       <label
-        className="MuiFormLabel-root-1875 MuiInputLabel-root-1868 MuiInputLabel-formControl-1869 MuiInputLabel-animated-1872 MuiInputLabel-filled-1873"
+        className="MuiFormLabel-root-1967 MuiInputLabel-root-1960 MuiInputLabel-formControl-1961 MuiInputLabel-animated-1964 MuiInputLabel-filled-1965"
         data-shrink={false}
       >
         Rule Name
       </label>
       <div
-        className="MuiInputBase-root-1895 MuiFilledInput-root-1882 MuiFilledInput-underline-1883 MuiInputBase-fullWidth-1904 MuiInputBase-formControl-1896"
+        className="MuiInputBase-root-1987 MuiFilledInput-root-1974 MuiFilledInput-underline-1975 MuiInputBase-fullWidth-1996 MuiInputBase-formControl-1988"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
-          className="MuiInputBase-input-1905 MuiFilledInput-input-1890"
+          className="MuiInputBase-input-1997 MuiFilledInput-input-1982"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -397,21 +397,21 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1864 MuiFormControl-marginNormal-1865 MuiFormControl-fullWidth-1867"
+      className="MuiFormControl-root-1956 MuiFormControl-marginNormal-1957 MuiFormControl-fullWidth-1959"
     >
       <label
-        className="MuiFormLabel-root-1875 MuiInputLabel-root-1868 MuiInputLabel-formControl-1869 MuiInputLabel-animated-1872 MuiInputLabel-filled-1873"
+        className="MuiFormLabel-root-1967 MuiInputLabel-root-1960 MuiInputLabel-formControl-1961 MuiInputLabel-animated-1964 MuiInputLabel-filled-1965"
         data-shrink={false}
       >
         Description
       </label>
       <div
-        className="MuiInputBase-root-1895 MuiFilledInput-root-1882 MuiFilledInput-underline-1883 MuiInputBase-fullWidth-1904 MuiInputBase-formControl-1896 MuiInputBase-multiline-1903 MuiFilledInput-multiline-1889"
+        className="MuiInputBase-root-1987 MuiFilledInput-root-1974 MuiFilledInput-underline-1975 MuiInputBase-fullWidth-1996 MuiInputBase-formControl-1988 MuiInputBase-multiline-1995 MuiFilledInput-multiline-1981"
         onClick={[Function]}
       >
         <textarea
           aria-invalid={false}
-          className="MuiInputBase-input-1905 MuiFilledInput-input-1890 MuiInputBase-inputMultiline-1907 MuiFilledInput-inputMultiline-1892"
+          className="MuiInputBase-input-1997 MuiFilledInput-input-1982 MuiInputBase-inputMultiline-1999 MuiFilledInput-inputMultiline-1984"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -423,7 +423,7 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </div>
     </div>
     <label
-      className="MuiFormLabel-root-1875"
+      className="MuiFormLabel-root-1967"
     >
       <p>
         Recipients
@@ -532,13 +532,13 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
       </div>
     </div>
     <label
-      className="MuiFormControlLabel-root-1912"
+      className="MuiFormControlLabel-root-2004"
     >
       <span
-        className="MuiSwitch-root-1916"
+        className="MuiSwitch-root-2008"
       >
         <span
-          className="MuiButtonBase-root-1826 MuiIconButton-root-1929 MuiSwitchBase-root-1925 MuiSwitch-switchBase-1919 MuiSwitch-colorSecondary-1922 MuiSwitchBase-checked-1926 MuiSwitch-checked-1920"
+          className="MuiButtonBase-root-1918 MuiIconButton-root-2021 MuiSwitchBase-root-2017 MuiSwitch-switchBase-2011 MuiSwitch-colorSecondary-2014 MuiSwitchBase-checked-2018 MuiSwitch-checked-2012"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -552,14 +552,14 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-1934"
+            className="MuiIconButton-label-2026"
           >
             <span
-              className="MuiSwitch-icon-1917 MuiSwitch-iconChecked-1918"
+              className="MuiSwitch-icon-2009 MuiSwitch-iconChecked-2010"
             />
             <input
               checked={true}
-              className="MuiSwitchBase-input-1928"
+              className="MuiSwitchBase-input-2020"
               onChange={[Function]}
               type="checkbox"
               value="ownerAsAdditionalRecipient"
@@ -567,11 +567,11 @@ exports[`Storyshots Complete Pages Rule Creation 1`] = `
           </span>
         </span>
         <span
-          className="MuiSwitch-bar-1924"
+          className="MuiSwitch-bar-2016"
         />
       </span>
       <span
-        className="MuiTypography-root-1751 MuiTypography-body2-1759 MuiFormControlLabel-label-1915"
+        className="MuiTypography-root-1843 MuiTypography-body2-1851 MuiFormControlLabel-label-2007"
       >
         Do you want to receive notifications from this rule?
       </span>
@@ -630,7 +630,7 @@ exports[`Storyshots Complete Pages Rule Detail 1`] = `
   size="80"
 >
   <div
-    className="MuiCircularProgress-root-1733 MuiCircularProgress-colorPrimary-1736 MuiCircularProgress-indeterminate-1735"
+    className="MuiCircularProgress-root-1825 MuiCircularProgress-colorPrimary-1828 MuiCircularProgress-indeterminate-1827"
     role="progressbar"
     style={
       Object {
@@ -640,11 +640,11 @@ exports[`Storyshots Complete Pages Rule Detail 1`] = `
     }
   >
     <svg
-      className="MuiCircularProgress-svg-1738"
+      className="MuiCircularProgress-svg-1830"
       viewBox="22 22 44 44"
     >
       <circle
-        className="MuiCircularProgress-circle-1739 MuiCircularProgress-circleIndeterminate-1741"
+        className="MuiCircularProgress-circle-1831 MuiCircularProgress-circleIndeterminate-1833"
         cx={44}
         cy={44}
         fill="none"
@@ -668,7 +668,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
       className="sc-dfVpRl bYKLEu"
     >
       <h5
-        className="MuiTypography-root-1944 MuiTypography-h5-1960"
+        className="MuiTypography-root-2036 MuiTypography-h5-2052"
       >
         
         Edit Rule ""
@@ -685,13 +685,13 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
       </button>
     </header>
     <div
-      className="MuiPaper-root-1983 MuiPaper-elevation0-1985 MuiStepper-root-1979 MuiStepper-horizontal-1980"
+      className="MuiPaper-root-2075 MuiPaper-elevation0-2077 MuiStepper-root-2071 MuiStepper-horizontal-2072"
     >
       <div
-        className="MuiStep-root-2010 MuiStep-horizontal-2011"
+        className="MuiStep-root-2102 MuiStep-horizontal-2103"
       >
         <button
-          className="MuiButtonBase-root-2019 MuiStepButton-root-2015 MuiStepButton-horizontal-2016"
+          className="MuiButtonBase-root-2111 MuiStepButton-root-2107 MuiStepButton-horizontal-2108"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -708,14 +708,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           type="button"
         >
           <span
-            className="MuiStepLabel-root-2022 MuiStepLabel-horizontal-2023"
+            className="MuiStepLabel-root-2114 MuiStepLabel-horizontal-2115"
           >
             <span
-              className="MuiStepLabel-iconContainer-2030"
+              className="MuiStepLabel-iconContainer-2122"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-2038 MuiStepIcon-root-2033 MuiStepIcon-active-2035"
+                className="MuiSvgIcon-root-2130 MuiStepIcon-root-2125 MuiStepIcon-active-2127"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -726,7 +726,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-2034"
+                  className="MuiStepIcon-text-2126"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -736,10 +736,10 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-2032"
+              className="MuiStepLabel-labelContainer-2124"
             >
               <span
-                className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiStepLabel-label-2025 MuiStepLabel-active-2026"
+                className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiStepLabel-label-2117 MuiStepLabel-active-2118"
               >
                 General
               </span>
@@ -748,17 +748,17 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-2047 MuiStepConnector-horizontal-2048"
+        className="MuiStepConnector-root-2139 MuiStepConnector-horizontal-2140"
       >
         <span
-          className="MuiStepConnector-line-2054 MuiStepConnector-lineHorizontal-2055"
+          className="MuiStepConnector-line-2146 MuiStepConnector-lineHorizontal-2147"
         />
       </div>
       <div
-        className="MuiStep-root-2010 MuiStep-horizontal-2011"
+        className="MuiStep-root-2102 MuiStep-horizontal-2103"
       >
         <button
-          className="MuiButtonBase-root-2019 MuiStepButton-root-2015 MuiStepButton-horizontal-2016"
+          className="MuiButtonBase-root-2111 MuiStepButton-root-2107 MuiStepButton-horizontal-2108"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -775,14 +775,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           type="button"
         >
           <span
-            className="MuiStepLabel-root-2022 MuiStepLabel-horizontal-2023"
+            className="MuiStepLabel-root-2114 MuiStepLabel-horizontal-2115"
           >
             <span
-              className="MuiStepLabel-iconContainer-2030"
+              className="MuiStepLabel-iconContainer-2122"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-2038 MuiStepIcon-root-2033"
+                className="MuiSvgIcon-root-2130 MuiStepIcon-root-2125"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -793,7 +793,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-2034"
+                  className="MuiStepIcon-text-2126"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -803,10 +803,10 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-2032"
+              className="MuiStepLabel-labelContainer-2124"
             >
               <span
-                className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiStepLabel-label-2025"
+                className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiStepLabel-label-2117"
               >
                 Fleets
               </span>
@@ -815,17 +815,17 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-2047 MuiStepConnector-horizontal-2048"
+        className="MuiStepConnector-root-2139 MuiStepConnector-horizontal-2140"
       >
         <span
-          className="MuiStepConnector-line-2054 MuiStepConnector-lineHorizontal-2055"
+          className="MuiStepConnector-line-2146 MuiStepConnector-lineHorizontal-2147"
         />
       </div>
       <div
-        className="MuiStep-root-2010 MuiStep-horizontal-2011"
+        className="MuiStep-root-2102 MuiStep-horizontal-2103"
       >
         <button
-          className="MuiButtonBase-root-2019 MuiStepButton-root-2015 MuiStepButton-horizontal-2016"
+          className="MuiButtonBase-root-2111 MuiStepButton-root-2107 MuiStepButton-horizontal-2108"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -842,14 +842,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           type="button"
         >
           <span
-            className="MuiStepLabel-root-2022 MuiStepLabel-horizontal-2023"
+            className="MuiStepLabel-root-2114 MuiStepLabel-horizontal-2115"
           >
             <span
-              className="MuiStepLabel-iconContainer-2030"
+              className="MuiStepLabel-iconContainer-2122"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-2038 MuiStepIcon-root-2033"
+                className="MuiSvgIcon-root-2130 MuiStepIcon-root-2125"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -860,7 +860,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-2034"
+                  className="MuiStepIcon-text-2126"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -870,10 +870,10 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-2032"
+              className="MuiStepLabel-labelContainer-2124"
             >
               <span
-                className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiStepLabel-label-2025"
+                className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiStepLabel-label-2117"
               >
                 Condition
               </span>
@@ -882,17 +882,17 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-2047 MuiStepConnector-horizontal-2048"
+        className="MuiStepConnector-root-2139 MuiStepConnector-horizontal-2140"
       >
         <span
-          className="MuiStepConnector-line-2054 MuiStepConnector-lineHorizontal-2055"
+          className="MuiStepConnector-line-2146 MuiStepConnector-lineHorizontal-2147"
         />
       </div>
       <div
-        className="MuiStep-root-2010 MuiStep-horizontal-2011"
+        className="MuiStep-root-2102 MuiStep-horizontal-2103"
       >
         <button
-          className="MuiButtonBase-root-2019 MuiStepButton-root-2015 MuiStepButton-horizontal-2016"
+          className="MuiButtonBase-root-2111 MuiStepButton-root-2107 MuiStepButton-horizontal-2108"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -909,14 +909,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           type="button"
         >
           <span
-            className="MuiStepLabel-root-2022 MuiStepLabel-horizontal-2023"
+            className="MuiStepLabel-root-2114 MuiStepLabel-horizontal-2115"
           >
             <span
-              className="MuiStepLabel-iconContainer-2030"
+              className="MuiStepLabel-iconContainer-2122"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-2038 MuiStepIcon-root-2033"
+                className="MuiSvgIcon-root-2130 MuiStepIcon-root-2125"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -927,7 +927,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-2034"
+                  className="MuiStepIcon-text-2126"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -937,10 +937,10 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-2032"
+              className="MuiStepLabel-labelContainer-2124"
             >
               <span
-                className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiStepLabel-label-2025"
+                className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiStepLabel-label-2117"
               >
                 Timing
               </span>
@@ -949,17 +949,17 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </button>
       </div>
       <div
-        className="MuiStepConnector-root-2047 MuiStepConnector-horizontal-2048"
+        className="MuiStepConnector-root-2139 MuiStepConnector-horizontal-2140"
       >
         <span
-          className="MuiStepConnector-line-2054 MuiStepConnector-lineHorizontal-2055"
+          className="MuiStepConnector-line-2146 MuiStepConnector-lineHorizontal-2147"
         />
       </div>
       <div
-        className="MuiStep-root-2010 MuiStep-horizontal-2011"
+        className="MuiStep-root-2102 MuiStep-horizontal-2103"
       >
         <button
-          className="MuiButtonBase-root-2019 MuiStepButton-root-2015 MuiStepButton-horizontal-2016"
+          className="MuiButtonBase-root-2111 MuiStepButton-root-2107 MuiStepButton-horizontal-2108"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -976,14 +976,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
           type="button"
         >
           <span
-            className="MuiStepLabel-root-2022 MuiStepLabel-horizontal-2023"
+            className="MuiStepLabel-root-2114 MuiStepLabel-horizontal-2115"
           >
             <span
-              className="MuiStepLabel-iconContainer-2030"
+              className="MuiStepLabel-iconContainer-2122"
             >
               <svg
                 aria-hidden="true"
-                className="MuiSvgIcon-root-2038 MuiStepIcon-root-2033"
+                className="MuiSvgIcon-root-2130 MuiStepIcon-root-2125"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -994,7 +994,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
                   r="12"
                 />
                 <text
-                  className="MuiStepIcon-text-2034"
+                  className="MuiStepIcon-text-2126"
                   textAnchor="middle"
                   x="12"
                   y="16"
@@ -1004,10 +1004,10 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
               </svg>
             </span>
             <span
-              className="MuiStepLabel-labelContainer-2032"
+              className="MuiStepLabel-labelContainer-2124"
             >
               <span
-                className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiStepLabel-label-2025"
+                className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiStepLabel-label-2117"
               >
                 Preview
               </span>
@@ -1020,7 +1020,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
       className="sc-eTuwsz igikOh"
     >
       <h6
-        className="MuiTypography-root-1944 MuiTypography-h6-1961"
+        className="MuiTypography-root-2036 MuiTypography-h6-2053"
       >
         Step
          
@@ -1031,21 +1031,21 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
     </div>
     <div>
       <div
-        className="MuiFormControl-root-2057 MuiFormControl-marginNormal-2058 MuiFormControl-fullWidth-2060"
+        className="MuiFormControl-root-2149 MuiFormControl-marginNormal-2150 MuiFormControl-fullWidth-2152"
       >
         <label
-          className="MuiFormLabel-root-2068 MuiInputLabel-root-2061 MuiInputLabel-formControl-2062 MuiInputLabel-animated-2065 MuiInputLabel-filled-2066"
+          className="MuiFormLabel-root-2160 MuiInputLabel-root-2153 MuiInputLabel-formControl-2154 MuiInputLabel-animated-2157 MuiInputLabel-filled-2158"
           data-shrink={false}
         >
           Rule Name
         </label>
         <div
-          className="MuiInputBase-root-2088 MuiFilledInput-root-2075 MuiFilledInput-underline-2076 MuiInputBase-fullWidth-2097 MuiInputBase-formControl-2089"
+          className="MuiInputBase-root-2180 MuiFilledInput-root-2167 MuiFilledInput-underline-2168 MuiInputBase-fullWidth-2189 MuiInputBase-formControl-2181"
           onClick={[Function]}
         >
           <input
             aria-invalid={false}
-            className="MuiInputBase-input-2098 MuiFilledInput-input-2083"
+            className="MuiInputBase-input-2190 MuiFilledInput-input-2175"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -1057,21 +1057,21 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </div>
       </div>
       <div
-        className="MuiFormControl-root-2057 MuiFormControl-marginNormal-2058 MuiFormControl-fullWidth-2060"
+        className="MuiFormControl-root-2149 MuiFormControl-marginNormal-2150 MuiFormControl-fullWidth-2152"
       >
         <label
-          className="MuiFormLabel-root-2068 MuiInputLabel-root-2061 MuiInputLabel-formControl-2062 MuiInputLabel-animated-2065 MuiInputLabel-filled-2066"
+          className="MuiFormLabel-root-2160 MuiInputLabel-root-2153 MuiInputLabel-formControl-2154 MuiInputLabel-animated-2157 MuiInputLabel-filled-2158"
           data-shrink={false}
         >
           Description
         </label>
         <div
-          className="MuiInputBase-root-2088 MuiFilledInput-root-2075 MuiFilledInput-underline-2076 MuiInputBase-fullWidth-2097 MuiInputBase-formControl-2089 MuiInputBase-multiline-2096 MuiFilledInput-multiline-2082"
+          className="MuiInputBase-root-2180 MuiFilledInput-root-2167 MuiFilledInput-underline-2168 MuiInputBase-fullWidth-2189 MuiInputBase-formControl-2181 MuiInputBase-multiline-2188 MuiFilledInput-multiline-2174"
           onClick={[Function]}
         >
           <textarea
             aria-invalid={false}
-            className="MuiInputBase-input-2098 MuiFilledInput-input-2083 MuiInputBase-inputMultiline-2100 MuiFilledInput-inputMultiline-2085"
+            className="MuiInputBase-input-2190 MuiFilledInput-input-2175 MuiInputBase-inputMultiline-2192 MuiFilledInput-inputMultiline-2177"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -1083,7 +1083,7 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </div>
       </div>
       <label
-        className="MuiFormLabel-root-2068"
+        className="MuiFormLabel-root-2160"
       >
         <p>
           Recipients
@@ -1192,13 +1192,13 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
         </div>
       </div>
       <label
-        className="MuiFormControlLabel-root-2105"
+        className="MuiFormControlLabel-root-2197"
       >
         <span
-          className="MuiSwitch-root-2109"
+          className="MuiSwitch-root-2201"
         >
           <span
-            className="MuiButtonBase-root-2019 MuiIconButton-root-2122 MuiSwitchBase-root-2118 MuiSwitch-switchBase-2112 MuiSwitch-colorSecondary-2115 MuiSwitchBase-checked-2119 MuiSwitch-checked-2113"
+            className="MuiButtonBase-root-2111 MuiIconButton-root-2214 MuiSwitchBase-root-2210 MuiSwitch-switchBase-2204 MuiSwitch-colorSecondary-2207 MuiSwitchBase-checked-2211 MuiSwitch-checked-2205"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1212,14 +1212,14 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-2127"
+              className="MuiIconButton-label-2219"
             >
               <span
-                className="MuiSwitch-icon-2110 MuiSwitch-iconChecked-2111"
+                className="MuiSwitch-icon-2202 MuiSwitch-iconChecked-2203"
               />
               <input
                 checked={true}
-                className="MuiSwitchBase-input-2121"
+                className="MuiSwitchBase-input-2213"
                 onChange={[Function]}
                 type="checkbox"
                 value="ownerAsAdditionalRecipient"
@@ -1227,11 +1227,11 @@ exports[`Storyshots Complete Pages Rule Editing 1`] = `
             </span>
           </span>
           <span
-            className="MuiSwitch-bar-2117"
+            className="MuiSwitch-bar-2209"
           />
         </span>
         <span
-          className="MuiTypography-root-1944 MuiTypography-body2-1952 MuiFormControlLabel-label-2108"
+          className="MuiTypography-root-2036 MuiTypography-body2-2044 MuiFormControlLabel-label-2200"
         >
           Do you want to receive notifications from this rule?
         </span>
@@ -1293,7 +1293,7 @@ exports[`Storyshots Complete Pages Rule Overview 1`] = `
     className="sc-gwVKww kjFIXW"
   >
     <h5
-      className="MuiTypography-root-1662 MuiTypography-h5-1678"
+      className="MuiTypography-root-1754 MuiTypography-h5-1770"
     >
       Notification Rules
     </h5>
@@ -1303,7 +1303,7 @@ exports[`Storyshots Complete Pages Rule Overview 1`] = `
     size="80"
   >
     <div
-      className="MuiCircularProgress-root-1724 MuiCircularProgress-colorPrimary-1727 MuiCircularProgress-indeterminate-1726"
+      className="MuiCircularProgress-root-1816 MuiCircularProgress-colorPrimary-1819 MuiCircularProgress-indeterminate-1818"
       role="progressbar"
       style={
         Object {
@@ -1313,11 +1313,11 @@ exports[`Storyshots Complete Pages Rule Overview 1`] = `
       }
     >
       <svg
-        className="MuiCircularProgress-svg-1729"
+        className="MuiCircularProgress-svg-1821"
         viewBox="22 22 44 44"
       >
         <circle
-          className="MuiCircularProgress-circle-1730 MuiCircularProgress-circleIndeterminate-1732"
+          className="MuiCircularProgress-circle-1822 MuiCircularProgress-circleIndeterminate-1824"
           cx={44}
           cy={44}
           fill="none"
@@ -1765,7 +1765,7 @@ Array [
 
 exports[`Storyshots Fleetdata / Components Left Icon Button 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <button
     className="primary sc-jzJRlG cSDgQj"
@@ -1813,7 +1813,7 @@ exports[`Storyshots Fleetdata / Components Left Icon Button 1`] = `
 
 exports[`Storyshots Fleetdata / Components Primary Button 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <button
     className="primary sc-jzJRlG cSDgQj"
@@ -1829,7 +1829,7 @@ exports[`Storyshots Fleetdata / Components Primary Button 1`] = `
 
 exports[`Storyshots Fleetdata / Components Right Icon Button 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <button
     className="primary sc-jzJRlG cSDgQj"
@@ -1853,7 +1853,7 @@ exports[`Storyshots Fleetdata / Components Right Icon Button 1`] = `
 
 exports[`Storyshots Fleetdata / Components Secondary Button 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <button
     className="sc-jzJRlG cSDgQj"
@@ -2869,21 +2869,21 @@ exports[`Storyshots Rule Creation / First Step Rule Recipient Tag 1`] = `
 exports[`Storyshots Rule Creation / First Step Screen 1`] = `
 <div>
   <div
-    className="MuiFormControl-root-862 MuiFormControl-marginNormal-863 MuiFormControl-fullWidth-865"
+    className="MuiFormControl-root-954 MuiFormControl-marginNormal-955 MuiFormControl-fullWidth-957"
   >
     <label
-      className="MuiFormLabel-root-873 MuiInputLabel-root-866 MuiInputLabel-formControl-867 MuiInputLabel-animated-870 MuiInputLabel-filled-871"
+      className="MuiFormLabel-root-965 MuiInputLabel-root-958 MuiInputLabel-formControl-959 MuiInputLabel-animated-962 MuiInputLabel-filled-963"
       data-shrink={false}
     >
       Rule Name
     </label>
     <div
-      className="MuiInputBase-root-893 MuiFilledInput-root-880 MuiFilledInput-underline-881 MuiInputBase-fullWidth-902 MuiInputBase-formControl-894"
+      className="MuiInputBase-root-985 MuiFilledInput-root-972 MuiFilledInput-underline-973 MuiInputBase-fullWidth-994 MuiInputBase-formControl-986"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
-        className="MuiInputBase-input-903 MuiFilledInput-input-888"
+        className="MuiInputBase-input-995 MuiFilledInput-input-980"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -2895,21 +2895,21 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
     </div>
   </div>
   <div
-    className="MuiFormControl-root-862 MuiFormControl-marginNormal-863 MuiFormControl-fullWidth-865"
+    className="MuiFormControl-root-954 MuiFormControl-marginNormal-955 MuiFormControl-fullWidth-957"
   >
     <label
-      className="MuiFormLabel-root-873 MuiInputLabel-root-866 MuiInputLabel-formControl-867 MuiInputLabel-animated-870 MuiInputLabel-filled-871"
+      className="MuiFormLabel-root-965 MuiInputLabel-root-958 MuiInputLabel-formControl-959 MuiInputLabel-animated-962 MuiInputLabel-filled-963"
       data-shrink={false}
     >
       Description
     </label>
     <div
-      className="MuiInputBase-root-893 MuiFilledInput-root-880 MuiFilledInput-underline-881 MuiInputBase-fullWidth-902 MuiInputBase-formControl-894 MuiInputBase-multiline-901 MuiFilledInput-multiline-887"
+      className="MuiInputBase-root-985 MuiFilledInput-root-972 MuiFilledInput-underline-973 MuiInputBase-fullWidth-994 MuiInputBase-formControl-986 MuiInputBase-multiline-993 MuiFilledInput-multiline-979"
       onClick={[Function]}
     >
       <textarea
         aria-invalid={false}
-        className="MuiInputBase-input-903 MuiFilledInput-input-888 MuiInputBase-inputMultiline-905 MuiFilledInput-inputMultiline-890"
+        className="MuiInputBase-input-995 MuiFilledInput-input-980 MuiInputBase-inputMultiline-997 MuiFilledInput-inputMultiline-982"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -2921,7 +2921,7 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
     </div>
   </div>
   <label
-    className="MuiFormLabel-root-873"
+    className="MuiFormLabel-root-965"
   >
     <p>
       Recipients
@@ -3030,13 +3030,13 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
     </div>
   </div>
   <label
-    className="MuiFormControlLabel-root-910"
+    className="MuiFormControlLabel-root-1002"
   >
     <span
-      className="MuiSwitch-root-914"
+      className="MuiSwitch-root-1006"
     >
       <span
-        className="MuiButtonBase-root-933 MuiIconButton-root-927 MuiSwitchBase-root-923 MuiSwitch-switchBase-917 MuiSwitch-colorSecondary-920"
+        className="MuiButtonBase-root-1025 MuiIconButton-root-1019 MuiSwitchBase-root-1015 MuiSwitch-switchBase-1009 MuiSwitch-colorSecondary-1012"
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -3050,14 +3050,14 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
         tabIndex={null}
       >
         <span
-          className="MuiIconButton-label-932"
+          className="MuiIconButton-label-1024"
         >
           <span
-            className="MuiSwitch-icon-915"
+            className="MuiSwitch-icon-1007"
           />
           <input
             checked={false}
-            className="MuiSwitchBase-input-926"
+            className="MuiSwitchBase-input-1018"
             onChange={[Function]}
             type="checkbox"
             value="ownerAsAdditionalRecipient"
@@ -3065,11 +3065,11 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
         </span>
       </span>
       <span
-        className="MuiSwitch-bar-922"
+        className="MuiSwitch-bar-1014"
       />
     </span>
     <span
-      className="MuiTypography-root-936 MuiTypography-body2-944 MuiFormControlLabel-label-913"
+      className="MuiTypography-root-1028 MuiTypography-body2-1036 MuiFormControlLabel-label-1005"
     >
       Do you want to receive notifications from this rule?
     </span>
@@ -3079,15 +3079,15 @@ exports[`Storyshots Rule Creation / First Step Screen 1`] = `
 
 exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div>
     <div
-      className="MuiPaper-root-1212 MuiPaper-elevation1-1215 MuiExpansionPanel-root-1209 MuiExpansionPanel-expanded-1210"
+      className="MuiPaper-root-1304 MuiPaper-elevation1-1307 MuiExpansionPanel-root-1301 MuiExpansionPanel-expanded-1302"
     >
       <div
         aria-expanded={true}
-        className="MuiButtonBase-root-1245 MuiExpansionPanelSummary-root-1239 MuiExpansionPanelSummary-expanded-1240"
+        className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331 MuiExpansionPanelSummary-expanded-1332"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3103,17 +3103,17 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         tabIndex="0"
       >
         <div
-          className="MuiExpansionPanelSummary-content-1243 MuiExpansionPanelSummary-expanded-1240"
+          className="MuiExpansionPanelSummary-content-1335 MuiExpansionPanelSummary-expanded-1332"
         >
           <span
-            className="MuiTypography-root-1248 MuiTypography-overline-1268"
+            className="MuiTypography-root-1340 MuiTypography-overline-1360"
           >
             Send notifications immediately
           </span>
         </div>
         <div
           aria-hidden="true"
-          className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiExpansionPanelSummary-expandIcon-1244 MuiExpansionPanelSummary-expanded-1240"
+          className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiExpansionPanelSummary-expandIcon-1336 MuiExpansionPanelSummary-expanded-1332"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -3128,11 +3128,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
           tabIndex={-1}
         >
           <span
-            className="MuiIconButton-label-1288"
+            className="MuiIconButton-label-1380"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1289 MuiSvgIcon-colorPrimary-1290"
+              className="MuiSvgIcon-root-1381 MuiSvgIcon-colorPrimary-1382"
               focusable="false"
               role="presentation"
               style={
@@ -3154,7 +3154,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         </div>
       </div>
       <div
-        className="MuiCollapse-container-1298 MuiCollapse-entered-1299"
+        className="MuiCollapse-container-1390 MuiCollapse-entered-1391"
         style={
           Object {
             "minHeight": "0px",
@@ -3162,19 +3162,19 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         }
       >
         <div
-          className="MuiCollapse-wrapper-1300"
+          className="MuiCollapse-wrapper-1392"
         >
           <div
-            className="MuiCollapse-wrapperInner-1301"
+            className="MuiCollapse-wrapperInner-1393"
           >
             <div
-              className="MuiExpansionPanelDetails-root-1302"
+              className="MuiExpansionPanelDetails-root-1394"
             >
               <div
                 className="sc-dqBHgY cxhXAi"
               >
                 <p
-                  className="MuiTypography-root-1248 MuiTypography-subtitle2-1267 MuiTypography-paragraph-1276"
+                  className="MuiTypography-root-1340 MuiTypography-subtitle2-1359 MuiTypography-paragraph-1368"
                 >
                   Sends notifications immediately when a matching event occurs.
                 </p>
@@ -3190,11 +3190,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       </div>
     </div>
     <div
-      className="MuiPaper-root-1212 MuiPaper-elevation1-1215 MuiExpansionPanel-root-1209"
+      className="MuiPaper-root-1304 MuiPaper-elevation1-1307 MuiExpansionPanel-root-1301"
     >
       <div
         aria-expanded={false}
-        className="MuiButtonBase-root-1245 MuiExpansionPanelSummary-root-1239"
+        className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3210,17 +3210,17 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         tabIndex="0"
       >
         <div
-          className="MuiExpansionPanelSummary-content-1243"
+          className="MuiExpansionPanelSummary-content-1335"
         >
           <span
-            className="MuiTypography-root-1248 MuiTypography-overline-1268"
+            className="MuiTypography-root-1340 MuiTypography-overline-1360"
           >
             Send notifications cumulatively
           </span>
         </div>
         <div
           aria-hidden="true"
-          className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiExpansionPanelSummary-expandIcon-1244"
+          className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiExpansionPanelSummary-expandIcon-1336"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -3235,11 +3235,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
           tabIndex={-1}
         >
           <span
-            className="MuiIconButton-label-1288"
+            className="MuiIconButton-label-1380"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1289"
+              className="MuiSvgIcon-root-1381"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -3257,7 +3257,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       </div>
       <div
         aria-hidden="true"
-        className="MuiCollapse-container-1298"
+        className="MuiCollapse-container-1390"
         style={
           Object {
             "minHeight": "0px",
@@ -3265,19 +3265,19 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         }
       >
         <div
-          className="MuiCollapse-wrapper-1300"
+          className="MuiCollapse-wrapper-1392"
         >
           <div
-            className="MuiCollapse-wrapperInner-1301"
+            className="MuiCollapse-wrapperInner-1393"
           >
             <div
-              className="MuiExpansionPanelDetails-root-1302"
+              className="MuiExpansionPanelDetails-root-1394"
             >
               <div
                 className="sc-dqBHgY cxhXAi"
               >
                 <p
-                  className="MuiTypography-root-1248 MuiTypography-subtitle2-1267 MuiTypography-paragraph-1276"
+                  className="MuiTypography-root-1340 MuiTypography-subtitle2-1359 MuiTypography-paragraph-1368"
                 >
                   Collects a specified amount of events before sending a notification with the data from events that have occured.
                 </p>
@@ -3285,21 +3285,21 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                   className="sc-gxMtzJ hiRJxf"
                 >
                   <div
-                    className="MuiFormControl-root-1303 MuiFormControl-marginNormal-1304 MuiFormControl-fullWidth-1306"
+                    className="MuiFormControl-root-1395 MuiFormControl-marginNormal-1396 MuiFormControl-fullWidth-1398"
                   >
                     <label
-                      className="MuiFormLabel-root-1314 MuiInputLabel-root-1307 MuiInputLabel-formControl-1308 MuiInputLabel-animated-1311 MuiInputLabel-filled-1312"
+                      className="MuiFormLabel-root-1406 MuiInputLabel-root-1399 MuiInputLabel-formControl-1400 MuiInputLabel-animated-1403 MuiInputLabel-filled-1404"
                       data-shrink={false}
                     >
                       Event Count
                     </label>
                     <div
-                      className="MuiInputBase-root-1334 MuiFilledInput-root-1321 MuiFilledInput-underline-1322 MuiInputBase-fullWidth-1343 MuiInputBase-formControl-1335"
+                      className="MuiInputBase-root-1426 MuiFilledInput-root-1413 MuiFilledInput-underline-1414 MuiInputBase-fullWidth-1435 MuiInputBase-formControl-1427"
                       onClick={[Function]}
                     >
                       <input
                         aria-invalid={false}
-                        className="MuiInputBase-input-1344 MuiFilledInput-input-1329"
+                        className="MuiInputBase-input-1436 MuiFilledInput-input-1421"
                         disabled={false}
                         onBlur={[Function]}
                         onChange={[Function]}
@@ -3318,11 +3318,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       </div>
     </div>
     <div
-      className="MuiPaper-root-1212 MuiPaper-elevation1-1215 MuiExpansionPanel-root-1209"
+      className="MuiPaper-root-1304 MuiPaper-elevation1-1307 MuiExpansionPanel-root-1301"
     >
       <div
         aria-expanded={false}
-        className="MuiButtonBase-root-1245 MuiExpansionPanelSummary-root-1239"
+        className="MuiButtonBase-root-1337 MuiExpansionPanelSummary-root-1331"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -3338,17 +3338,17 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         tabIndex="0"
       >
         <div
-          className="MuiExpansionPanelSummary-content-1243"
+          className="MuiExpansionPanelSummary-content-1335"
         >
           <span
-            className="MuiTypography-root-1248 MuiTypography-overline-1268"
+            className="MuiTypography-root-1340 MuiTypography-overline-1360"
           >
             Send notifications regularly
           </span>
         </div>
         <div
           aria-hidden="true"
-          className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiExpansionPanelSummary-expandIcon-1244"
+          className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiExpansionPanelSummary-expandIcon-1336"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -3363,11 +3363,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
           tabIndex={-1}
         >
           <span
-            className="MuiIconButton-label-1288"
+            className="MuiIconButton-label-1380"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1289"
+              className="MuiSvgIcon-root-1381"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -3385,7 +3385,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
       </div>
       <div
         aria-hidden="true"
-        className="MuiCollapse-container-1298"
+        className="MuiCollapse-container-1390"
         style={
           Object {
             "minHeight": "0px",
@@ -3393,19 +3393,19 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
         }
       >
         <div
-          className="MuiCollapse-wrapper-1300"
+          className="MuiCollapse-wrapper-1392"
         >
           <div
-            className="MuiCollapse-wrapperInner-1301"
+            className="MuiCollapse-wrapperInner-1393"
           >
             <div
-              className="MuiExpansionPanelDetails-root-1302"
+              className="MuiExpansionPanelDetails-root-1394"
             >
               <div
                 className="sc-dqBHgY cxhXAi"
               >
                 <p
-                  className="MuiTypography-root-1248 MuiTypography-subtitle2-1267 MuiTypography-paragraph-1276"
+                  className="MuiTypography-root-1340 MuiTypography-subtitle2-1359 MuiTypography-paragraph-1368"
                 >
                   Sends regular notifications with the collected data from events that have occured in the meantime.
                 </p>
@@ -3415,13 +3415,13 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                   <div>
                     <div>
                       <label
-                        className="MuiFormControlLabel-root-1351"
+                        className="MuiFormControlLabel-root-1443"
                       >
                         <span
-                          className="MuiSwitch-root-1355"
+                          className="MuiSwitch-root-1447"
                         >
                           <span
-                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361 MuiSwitchBase-checked-1365 MuiSwitch-checked-1359"
+                            className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiSwitchBase-root-1456 MuiSwitch-switchBase-1450 MuiSwitch-colorSecondary-1453 MuiSwitchBase-checked-1457 MuiSwitch-checked-1451"
                             onBlur={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
@@ -3435,14 +3435,14 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             tabIndex={null}
                           >
                             <span
-                              className="MuiIconButton-label-1288"
+                              className="MuiIconButton-label-1380"
                             >
                               <span
-                                className="MuiSwitch-icon-1356 MuiSwitch-iconChecked-1357"
+                                className="MuiSwitch-icon-1448 MuiSwitch-iconChecked-1449"
                               />
                               <input
                                 checked={true}
-                                className="MuiSwitchBase-input-1367"
+                                className="MuiSwitchBase-input-1459"
                                 onChange={[Function]}
                                 type="checkbox"
                                 value="sendRulesEveryMonth"
@@ -3450,11 +3450,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             </span>
                           </span>
                           <span
-                            className="MuiSwitch-bar-1363"
+                            className="MuiSwitch-bar-1455"
                           />
                         </span>
                         <span
-                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                          className="MuiTypography-root-1340 MuiTypography-body2-1348 MuiFormControlLabel-label-1446"
                         >
                           Send notifications every month
                         </span>
@@ -3462,13 +3462,13 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                     </div>
                     <div>
                       <label
-                        className="MuiFormControlLabel-root-1351"
+                        className="MuiFormControlLabel-root-1443"
                       >
                         <span
-                          className="MuiSwitch-root-1355"
+                          className="MuiSwitch-root-1447"
                         >
                           <span
-                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361 MuiSwitchBase-checked-1365 MuiSwitch-checked-1359"
+                            className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiSwitchBase-root-1456 MuiSwitch-switchBase-1450 MuiSwitch-colorSecondary-1453 MuiSwitchBase-checked-1457 MuiSwitch-checked-1451"
                             onBlur={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
@@ -3482,14 +3482,14 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             tabIndex={null}
                           >
                             <span
-                              className="MuiIconButton-label-1288"
+                              className="MuiIconButton-label-1380"
                             >
                               <span
-                                className="MuiSwitch-icon-1356 MuiSwitch-iconChecked-1357"
+                                className="MuiSwitch-icon-1448 MuiSwitch-iconChecked-1449"
                               />
                               <input
                                 checked={true}
-                                className="MuiSwitchBase-input-1367"
+                                className="MuiSwitchBase-input-1459"
                                 onChange={[Function]}
                                 type="checkbox"
                                 value="sendRulesEveryWeekday"
@@ -3497,11 +3497,11 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             </span>
                           </span>
                           <span
-                            className="MuiSwitch-bar-1363"
+                            className="MuiSwitch-bar-1455"
                           />
                         </span>
                         <span
-                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                          className="MuiTypography-root-1340 MuiTypography-body2-1348 MuiFormControlLabel-label-1446"
                         >
                           Send notifications on all days of the month
                         </span>
@@ -3509,13 +3509,13 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                     </div>
                     <div>
                       <label
-                        className="MuiFormControlLabel-root-1351"
+                        className="MuiFormControlLabel-root-1443"
                       >
                         <span
-                          className="MuiSwitch-root-1355"
+                          className="MuiSwitch-root-1447"
                         >
                           <span
-                            className="MuiButtonBase-root-1245 MuiIconButton-root-1283 MuiSwitchBase-root-1364 MuiSwitch-switchBase-1358 MuiSwitch-colorSecondary-1361"
+                            className="MuiButtonBase-root-1337 MuiIconButton-root-1375 MuiSwitchBase-root-1456 MuiSwitch-switchBase-1450 MuiSwitch-colorSecondary-1453"
                             onBlur={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
@@ -3529,14 +3529,14 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             tabIndex={null}
                           >
                             <span
-                              className="MuiIconButton-label-1288"
+                              className="MuiIconButton-label-1380"
                             >
                               <span
-                                className="MuiSwitch-icon-1356"
+                                className="MuiSwitch-icon-1448"
                               />
                               <input
                                 checked={false}
-                                className="MuiSwitchBase-input-1367"
+                                className="MuiSwitchBase-input-1459"
                                 onChange={[Function]}
                                 type="checkbox"
                                 value="sendRulesEveryWeekday"
@@ -3544,17 +3544,17 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                             </span>
                           </span>
                           <span
-                            className="MuiSwitch-bar-1363"
+                            className="MuiSwitch-bar-1455"
                           />
                         </span>
                         <span
-                          className="MuiTypography-root-1248 MuiTypography-body2-1256 MuiFormControlLabel-label-1354"
+                          className="MuiTypography-root-1340 MuiTypography-body2-1348 MuiFormControlLabel-label-1446"
                         >
                           Send notifications every day of the week
                         </span>
                       </label>
                       <label
-                        className="MuiFormLabel-root-1314"
+                        className="MuiFormLabel-root-1406"
                       >
                         <p>
                           Send notifications on these weekdays
@@ -3706,21 +3706,21 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                       </div>
                     </div>
                     <div
-                      className="MuiFormControl-root-1303 MuiFormControl-marginNormal-1304 MuiFormControl-fullWidth-1306"
+                      className="MuiFormControl-root-1395 MuiFormControl-marginNormal-1396 MuiFormControl-fullWidth-1398"
                     >
                       <label
-                        className="MuiFormLabel-root-1314 MuiFormLabel-filled-1318 MuiInputLabel-root-1307 MuiInputLabel-formControl-1308 MuiInputLabel-animated-1311 MuiInputLabel-shrink-1310 MuiInputLabel-filled-1312"
+                        className="MuiFormLabel-root-1406 MuiFormLabel-filled-1410 MuiInputLabel-root-1399 MuiInputLabel-formControl-1400 MuiInputLabel-animated-1403 MuiInputLabel-shrink-1402 MuiInputLabel-filled-1404"
                         data-shrink={true}
                       >
                         Time of day
                       </label>
                       <div
-                        className="MuiInputBase-root-1334 MuiFilledInput-root-1321 MuiFilledInput-underline-1322 MuiInputBase-fullWidth-1343 MuiInputBase-formControl-1335"
+                        className="MuiInputBase-root-1426 MuiFilledInput-root-1413 MuiFilledInput-underline-1414 MuiInputBase-fullWidth-1435 MuiInputBase-formControl-1427"
                         onClick={[Function]}
                       >
                         <input
                           aria-invalid={false}
-                          className="MuiInputBase-input-1344 MuiFilledInput-input-1329 MuiInputBase-inputType-1347"
+                          className="MuiInputBase-input-1436 MuiFilledInput-input-1421 MuiInputBase-inputType-1439"
                           disabled={false}
                           onBlur={[Function]}
                           onChange={[Function]}
@@ -3733,7 +3733,7 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
                       </div>
                     </div>
                     <p
-                      className="MuiTypography-root-1248 MuiTypography-body1-1257 MuiTypography-paragraph-1276"
+                      className="MuiTypography-root-1340 MuiTypography-body1-1349 MuiTypography-paragraph-1368"
                       style={
                         Object {
                           "paddingTop": "1rem",
@@ -3760,24 +3760,24 @@ exports[`Storyshots Rule Creation / Fourth Step Aggregator Selector 1`] = `
 
 exports[`Storyshots Rule Creation / Fourth Step Counting Aggregator 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
-    className="MuiFormControl-root-1034 MuiFormControl-marginNormal-1035 MuiFormControl-fullWidth-1037"
+    className="MuiFormControl-root-1126 MuiFormControl-marginNormal-1127 MuiFormControl-fullWidth-1129"
   >
     <label
-      className="MuiFormLabel-root-1045 MuiInputLabel-root-1038 MuiInputLabel-formControl-1039 MuiInputLabel-animated-1042 MuiInputLabel-filled-1043"
+      className="MuiFormLabel-root-1137 MuiInputLabel-root-1130 MuiInputLabel-formControl-1131 MuiInputLabel-animated-1134 MuiInputLabel-filled-1135"
       data-shrink={false}
     >
       Event Count
     </label>
     <div
-      className="MuiInputBase-root-1065 MuiFilledInput-root-1052 MuiFilledInput-underline-1053 MuiInputBase-fullWidth-1074 MuiInputBase-formControl-1066"
+      className="MuiInputBase-root-1157 MuiFilledInput-root-1144 MuiFilledInput-underline-1145 MuiInputBase-fullWidth-1166 MuiInputBase-formControl-1158"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
-        className="MuiInputBase-input-1075 MuiFilledInput-input-1060"
+        className="MuiInputBase-input-1167 MuiFilledInput-input-1152"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -3793,18 +3793,18 @@ exports[`Storyshots Rule Creation / Fourth Step Counting Aggregator 1`] = `
 
 exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div>
     <div>
       <label
-        className="MuiFormControlLabel-root-1091"
+        className="MuiFormControlLabel-root-1183"
       >
         <span
-          className="MuiSwitch-root-1095"
+          className="MuiSwitch-root-1187"
         >
           <span
-            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101 MuiSwitchBase-checked-1105 MuiSwitch-checked-1099"
+            className="MuiButtonBase-root-1206 MuiIconButton-root-1200 MuiSwitchBase-root-1196 MuiSwitch-switchBase-1190 MuiSwitch-colorSecondary-1193 MuiSwitchBase-checked-1197 MuiSwitch-checked-1191"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3818,14 +3818,14 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-1113"
+              className="MuiIconButton-label-1205"
             >
               <span
-                className="MuiSwitch-icon-1096 MuiSwitch-iconChecked-1097"
+                className="MuiSwitch-icon-1188 MuiSwitch-iconChecked-1189"
               />
               <input
                 checked={true}
-                className="MuiSwitchBase-input-1107"
+                className="MuiSwitchBase-input-1199"
                 onChange={[Function]}
                 type="checkbox"
                 value="sendRulesEveryMonth"
@@ -3833,11 +3833,11 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             </span>
           </span>
           <span
-            className="MuiSwitch-bar-1103"
+            className="MuiSwitch-bar-1195"
           />
         </span>
         <span
-          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+          className="MuiTypography-root-1209 MuiTypography-body2-1217 MuiFormControlLabel-label-1186"
         >
           Send notifications every month
         </span>
@@ -3845,13 +3845,13 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
     </div>
     <div>
       <label
-        className="MuiFormControlLabel-root-1091"
+        className="MuiFormControlLabel-root-1183"
       >
         <span
-          className="MuiSwitch-root-1095"
+          className="MuiSwitch-root-1187"
         >
           <span
-            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101 MuiSwitchBase-checked-1105 MuiSwitch-checked-1099"
+            className="MuiButtonBase-root-1206 MuiIconButton-root-1200 MuiSwitchBase-root-1196 MuiSwitch-switchBase-1190 MuiSwitch-colorSecondary-1193 MuiSwitchBase-checked-1197 MuiSwitch-checked-1191"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3865,14 +3865,14 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-1113"
+              className="MuiIconButton-label-1205"
             >
               <span
-                className="MuiSwitch-icon-1096 MuiSwitch-iconChecked-1097"
+                className="MuiSwitch-icon-1188 MuiSwitch-iconChecked-1189"
               />
               <input
                 checked={true}
-                className="MuiSwitchBase-input-1107"
+                className="MuiSwitchBase-input-1199"
                 onChange={[Function]}
                 type="checkbox"
                 value="sendRulesEveryWeekday"
@@ -3880,11 +3880,11 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             </span>
           </span>
           <span
-            className="MuiSwitch-bar-1103"
+            className="MuiSwitch-bar-1195"
           />
         </span>
         <span
-          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+          className="MuiTypography-root-1209 MuiTypography-body2-1217 MuiFormControlLabel-label-1186"
         >
           Send notifications on all days of the month
         </span>
@@ -3892,13 +3892,13 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
     </div>
     <div>
       <label
-        className="MuiFormControlLabel-root-1091"
+        className="MuiFormControlLabel-root-1183"
       >
         <span
-          className="MuiSwitch-root-1095"
+          className="MuiSwitch-root-1187"
         >
           <span
-            className="MuiButtonBase-root-1114 MuiIconButton-root-1108 MuiSwitchBase-root-1104 MuiSwitch-switchBase-1098 MuiSwitch-colorSecondary-1101"
+            className="MuiButtonBase-root-1206 MuiIconButton-root-1200 MuiSwitchBase-root-1196 MuiSwitch-switchBase-1190 MuiSwitch-colorSecondary-1193"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3912,14 +3912,14 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             tabIndex={null}
           >
             <span
-              className="MuiIconButton-label-1113"
+              className="MuiIconButton-label-1205"
             >
               <span
-                className="MuiSwitch-icon-1096"
+                className="MuiSwitch-icon-1188"
               />
               <input
                 checked={false}
-                className="MuiSwitchBase-input-1107"
+                className="MuiSwitchBase-input-1199"
                 onChange={[Function]}
                 type="checkbox"
                 value="sendRulesEveryWeekday"
@@ -3927,17 +3927,17 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
             </span>
           </span>
           <span
-            className="MuiSwitch-bar-1103"
+            className="MuiSwitch-bar-1195"
           />
         </span>
         <span
-          className="MuiTypography-root-1117 MuiTypography-body2-1125 MuiFormControlLabel-label-1094"
+          className="MuiTypography-root-1209 MuiTypography-body2-1217 MuiFormControlLabel-label-1186"
         >
           Send notifications every day of the week
         </span>
       </label>
       <label
-        className="MuiFormLabel-root-1152"
+        className="MuiFormLabel-root-1244"
       >
         <p>
           Send notifications on these weekdays
@@ -4089,21 +4089,21 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1159 MuiFormControl-marginNormal-1160 MuiFormControl-fullWidth-1162"
+      className="MuiFormControl-root-1251 MuiFormControl-marginNormal-1252 MuiFormControl-fullWidth-1254"
     >
       <label
-        className="MuiFormLabel-root-1152 MuiFormLabel-filled-1156 MuiInputLabel-root-1163 MuiInputLabel-formControl-1164 MuiInputLabel-animated-1167 MuiInputLabel-shrink-1166 MuiInputLabel-filled-1168"
+        className="MuiFormLabel-root-1244 MuiFormLabel-filled-1248 MuiInputLabel-root-1255 MuiInputLabel-formControl-1256 MuiInputLabel-animated-1259 MuiInputLabel-shrink-1258 MuiInputLabel-filled-1260"
         data-shrink={true}
       >
         Time of day
       </label>
       <div
-        className="MuiInputBase-root-1183 MuiFilledInput-root-1170 MuiFilledInput-underline-1171 MuiInputBase-fullWidth-1192 MuiInputBase-formControl-1184"
+        className="MuiInputBase-root-1275 MuiFilledInput-root-1262 MuiFilledInput-underline-1263 MuiInputBase-fullWidth-1284 MuiInputBase-formControl-1276"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
-          className="MuiInputBase-input-1193 MuiFilledInput-input-1178 MuiInputBase-inputType-1196"
+          className="MuiInputBase-input-1285 MuiFilledInput-input-1270 MuiInputBase-inputType-1288"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -4116,7 +4116,7 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
       </div>
     </div>
     <p
-      className="MuiTypography-root-1117 MuiTypography-body1-1126 MuiTypography-paragraph-1145"
+      className="MuiTypography-root-1209 MuiTypography-body1-1218 MuiTypography-paragraph-1237"
       style={
         Object {
           "paddingTop": "1rem",
@@ -4135,10 +4135,10 @@ exports[`Storyshots Rule Creation / Fourth Step Scheduled Aggregator 1`] = `
 
 exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <button
-    className="MuiButtonBase-root-850 MuiIconButton-root-844"
+    className="MuiButtonBase-root-942 MuiIconButton-root-936"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -4155,7 +4155,7 @@ exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
     type="button"
   >
     <span
-      className="MuiIconButton-label-849"
+      className="MuiIconButton-label-941"
     >
       <svg
         height="100%"
@@ -4185,7 +4185,7 @@ exports[`Storyshots Rule Creation / General Components Close Procedure 1`] = `
 
 exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="MuiStep-root-655"
@@ -4227,7 +4227,7 @@ exports[`Storyshots Rule Creation / General Components Single Step 1`] = `
 
 exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="MuiPaper-root-726 MuiPaper-elevation0-728 MuiStepper-root-722 MuiStepper-horizontal-723"
@@ -4435,9 +4435,943 @@ exports[`Storyshots Rule Creation / General Components Stepper 1`] = `
 </div>
 `;
 
+exports[`Storyshots Rule Creation / General Components Validator Messages 1`] = `
+<div
+  className="sc-bbmXgH guERJJ"
+>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Rule name cannot be empty
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Rule description cannot be empty
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          The provided rule aggregator is invalid
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Please specify at least one recipient to send notifications to
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Rule owner needs to exist
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Please specify whether the rule owner is a recipient
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Please specify at least one fleet to apply this rule to
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          Please specify whether to apply this rule to all recipients
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "padding": "1rem",
+      }
+    }
+  >
+    <div
+      aria-describedby="client-snackbar"
+      className="MuiTypography-root-874 MuiTypography-body2-882 MuiPaper-root-847 MuiPaper-elevation6-855 MuiSnackbarContent-root-844"
+      role="alertdialog"
+      style={
+        Object {
+          "backgroundColor": "#d32f2f",
+        }
+      }
+    >
+      <div
+        className="MuiSnackbarContent-message-845"
+      >
+        <span
+          id="client-snackbar"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-909"
+            focusable="false"
+            role="presentation"
+            style={
+              Object {
+                "fontSize": 20,
+                "marginRight": 8,
+                "opacity": 0.9,
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+          The provided rule condition is invalid
+        </span>
+      </div>
+      <div
+        className="MuiSnackbarContent-action-846"
+      >
+        <button
+          aria-label="Close"
+          className="MuiButtonBase-root-924 MuiIconButton-root-918 MuiIconButton-colorInherit-919"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-923"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-909"
+              focusable="false"
+              role="presentation"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="css-10nd86i"
@@ -4588,7 +5522,7 @@ exports[`Storyshots Rule Creation / Second Step Fleet Selector 1`] = `
 
 exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div>
     The
@@ -4816,7 +5750,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
     />
     %.
     <button
-      className="MuiButtonBase-root-1022 MuiIconButton-root-1016 sc-kTUwUJ daVkDE"
+      className="MuiButtonBase-root-1114 MuiIconButton-root-1108 sc-kTUwUJ daVkDE"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -4833,7 +5767,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-1021"
+        className="MuiIconButton-label-1113"
       >
         <svg
           height="100%"
@@ -4864,7 +5798,7 @@ exports[`Storyshots Rule Creation / Third Step Condition Selector 1`] = `
 
 exports[`Storyshots Rule Creation / Third Step Predicate Counter 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div>
     If
@@ -4985,7 +5919,7 @@ exports[`Storyshots Rule Detail / Complete Fetching 1`] = `
   size="80"
 >
   <div
-    className="MuiCircularProgress-root-1386 MuiCircularProgress-colorPrimary-1389 MuiCircularProgress-indeterminate-1388"
+    className="MuiCircularProgress-root-1478 MuiCircularProgress-colorPrimary-1481 MuiCircularProgress-indeterminate-1480"
     role="progressbar"
     style={
       Object {
@@ -4995,11 +5929,11 @@ exports[`Storyshots Rule Detail / Complete Fetching 1`] = `
     }
   >
     <svg
-      className="MuiCircularProgress-svg-1391"
+      className="MuiCircularProgress-svg-1483"
       viewBox="22 22 44 44"
     >
       <circle
-        className="MuiCircularProgress-circle-1392 MuiCircularProgress-circleIndeterminate-1394"
+        className="MuiCircularProgress-circle-1484 MuiCircularProgress-circleIndeterminate-1486"
         cx={44}
         cy={44}
         fill="none"
@@ -5025,7 +5959,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
     }
   >
     <h5
-      className="MuiTypography-root-1496 MuiTypography-h5-1512"
+      className="MuiTypography-root-1588 MuiTypography-h5-1604"
     >
       
       View Rule "Status Reports"
@@ -5150,7 +6084,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Rule Name
         </span>
@@ -5158,7 +6092,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
           className="sc-hwwEjo jpAQEA"
         >
           <p
-            className="MuiTypography-root-1496 MuiTypography-body1-1505"
+            className="MuiTypography-root-1588 MuiTypography-body1-1597"
           >
             Status Reports
           </p>
@@ -5171,7 +6105,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Description
         </span>
@@ -5179,7 +6113,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
           className="sc-hwwEjo jpAQEA"
         >
           <p
-            className="MuiTypography-root-1496 MuiTypography-body1-1505"
+            className="MuiTypography-root-1588 MuiTypography-body1-1597"
           >
             Rule Description for an examplary Notification Rule
           </p>
@@ -5192,7 +6126,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Recipients
         </span>
@@ -5229,7 +6163,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Condition
         </span>
@@ -5260,7 +6194,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Affected Fleets
         </span>
@@ -5277,54 +6211,19 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Data Sources
         </span>
         <div
           className="sc-hwwEjo jpAQEA"
-        >
-          <div
-            className="sc-jnlKLf gKQdBx"
-            label="cns.vehicle.status.engine.label"
-          >
-            <img
-              src="/assets/img/engine.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-            <span>
-              engine
-            </span>
-          </div>
-          <div
-            className="sc-jnlKLf gKQdBx"
-            label="cns.vehicle.status.battery.label"
-          >
-            <img
-              src="/assets/img/battery.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-            <span>
-              battery
-            </span>
-          </div>
-        </div>
+        />
       </div>
       <div
         className="sc-iyvyFf eAjCtQ"
       >
         <span
-          className="MuiTypography-root-1496 MuiTypography-overline-1516"
+          className="MuiTypography-root-1588 MuiTypography-overline-1608"
         >
           Timing
         </span>
@@ -5342,7 +6241,7 @@ exports[`Storyshots Rule Detail / Complete Success 1`] = `
 exports[`Storyshots Rule Detail / Complete With Error 1`] = `
 <div
   aria-describedby="client-snackbar"
-  className="MuiTypography-root-1434 MuiTypography-body2-1442 MuiPaper-root-1407 MuiPaper-elevation6-1415 MuiSnackbarContent-root-1404"
+  className="MuiTypography-root-1526 MuiTypography-body2-1534 MuiPaper-root-1499 MuiPaper-elevation6-1507 MuiSnackbarContent-root-1496"
   role="alertdialog"
   style={
     Object {
@@ -5351,7 +6250,7 @@ exports[`Storyshots Rule Detail / Complete With Error 1`] = `
   }
 >
   <div
-    className="MuiSnackbarContent-message-1405"
+    className="MuiSnackbarContent-message-1497"
   >
     <span
       id="client-snackbar"
@@ -5364,7 +6263,7 @@ exports[`Storyshots Rule Detail / Complete With Error 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root-1469"
+        className="MuiSvgIcon-root-1561"
         focusable="false"
         role="presentation"
         style={
@@ -5388,11 +6287,11 @@ exports[`Storyshots Rule Detail / Complete With Error 1`] = `
     </span>
   </div>
   <div
-    className="MuiSnackbarContent-action-1406"
+    className="MuiSnackbarContent-action-1498"
   >
     <button
       aria-label="Close"
-      className="MuiButtonBase-root-1484 MuiIconButton-root-1478 MuiIconButton-colorInherit-1479"
+      className="MuiButtonBase-root-1576 MuiIconButton-root-1570 MuiIconButton-colorInherit-1571"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -5408,11 +6307,11 @@ exports[`Storyshots Rule Detail / Complete With Error 1`] = `
       type="button"
     >
       <span
-        className="MuiIconButton-label-1483"
+        className="MuiIconButton-label-1575"
       >
         <svg
           aria-hidden="true"
-          className="MuiSvgIcon-root-1469"
+          className="MuiSvgIcon-root-1561"
           focusable="false"
           role="presentation"
           style={
@@ -5438,7 +6337,7 @@ exports[`Storyshots Rule Detail / Complete With Error 1`] = `
 
 exports[`Storyshots Rule Detail / General Components Property Tag 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="sc-iELTvK fpMbRF"
@@ -5450,7 +6349,7 @@ exports[`Storyshots Rule Detail / General Components Property Tag 1`] = `
 
 exports[`Storyshots Rule Detail / General Components Recipient Tag 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="sc-btzYZH kYSOjP sc-iELTvK fpMbRF"
@@ -5479,7 +6378,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
     className="sc-dfVpRl bYKLEu"
   >
     <h5
-      className="MuiTypography-root-1540 MuiTypography-h5-1556"
+      className="MuiTypography-root-1632 MuiTypography-h5-1648"
     >
       
       Edit Rule ""
@@ -5496,13 +6395,13 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
     </button>
   </header>
   <div
-    className="MuiPaper-root-1579 MuiPaper-elevation0-1581 MuiStepper-root-1575 MuiStepper-horizontal-1576"
+    className="MuiPaper-root-1671 MuiPaper-elevation0-1673 MuiStepper-root-1667 MuiStepper-horizontal-1668"
   >
     <div
-      className="MuiStep-root-1606 MuiStep-horizontal-1607"
+      className="MuiStep-root-1698 MuiStep-horizontal-1699"
     >
       <button
-        className="MuiButtonBase-root-1615 MuiStepButton-root-1611 MuiStepButton-horizontal-1612"
+        className="MuiButtonBase-root-1707 MuiStepButton-root-1703 MuiStepButton-horizontal-1704"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -5519,14 +6418,14 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1618 MuiStepLabel-horizontal-1619"
+          className="MuiStepLabel-root-1710 MuiStepLabel-horizontal-1711"
         >
           <span
-            className="MuiStepLabel-iconContainer-1626"
+            className="MuiStepLabel-iconContainer-1718"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1634 MuiStepIcon-root-1629 MuiStepIcon-active-1631"
+              className="MuiSvgIcon-root-1726 MuiStepIcon-root-1721 MuiStepIcon-active-1723"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -5537,7 +6436,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1630"
+                className="MuiStepIcon-text-1722"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -5547,10 +6446,10 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1628"
+            className="MuiStepLabel-labelContainer-1720"
           >
             <span
-              className="MuiTypography-root-1540 MuiTypography-body2-1548 MuiStepLabel-label-1621 MuiStepLabel-active-1622"
+              className="MuiTypography-root-1632 MuiTypography-body2-1640 MuiStepLabel-label-1713 MuiStepLabel-active-1714"
             >
               General
             </span>
@@ -5559,17 +6458,17 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1643 MuiStepConnector-horizontal-1644"
+      className="MuiStepConnector-root-1735 MuiStepConnector-horizontal-1736"
     >
       <span
-        className="MuiStepConnector-line-1650 MuiStepConnector-lineHorizontal-1651"
+        className="MuiStepConnector-line-1742 MuiStepConnector-lineHorizontal-1743"
       />
     </div>
     <div
-      className="MuiStep-root-1606 MuiStep-horizontal-1607"
+      className="MuiStep-root-1698 MuiStep-horizontal-1699"
     >
       <button
-        className="MuiButtonBase-root-1615 MuiStepButton-root-1611 MuiStepButton-horizontal-1612"
+        className="MuiButtonBase-root-1707 MuiStepButton-root-1703 MuiStepButton-horizontal-1704"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -5586,14 +6485,14 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1618 MuiStepLabel-horizontal-1619"
+          className="MuiStepLabel-root-1710 MuiStepLabel-horizontal-1711"
         >
           <span
-            className="MuiStepLabel-iconContainer-1626"
+            className="MuiStepLabel-iconContainer-1718"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1634 MuiStepIcon-root-1629"
+              className="MuiSvgIcon-root-1726 MuiStepIcon-root-1721"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -5604,7 +6503,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1630"
+                className="MuiStepIcon-text-1722"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -5614,10 +6513,10 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1628"
+            className="MuiStepLabel-labelContainer-1720"
           >
             <span
-              className="MuiTypography-root-1540 MuiTypography-body2-1548 MuiStepLabel-label-1621"
+              className="MuiTypography-root-1632 MuiTypography-body2-1640 MuiStepLabel-label-1713"
             >
               Fleets
             </span>
@@ -5626,17 +6525,17 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1643 MuiStepConnector-horizontal-1644"
+      className="MuiStepConnector-root-1735 MuiStepConnector-horizontal-1736"
     >
       <span
-        className="MuiStepConnector-line-1650 MuiStepConnector-lineHorizontal-1651"
+        className="MuiStepConnector-line-1742 MuiStepConnector-lineHorizontal-1743"
       />
     </div>
     <div
-      className="MuiStep-root-1606 MuiStep-horizontal-1607"
+      className="MuiStep-root-1698 MuiStep-horizontal-1699"
     >
       <button
-        className="MuiButtonBase-root-1615 MuiStepButton-root-1611 MuiStepButton-horizontal-1612"
+        className="MuiButtonBase-root-1707 MuiStepButton-root-1703 MuiStepButton-horizontal-1704"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -5653,14 +6552,14 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1618 MuiStepLabel-horizontal-1619"
+          className="MuiStepLabel-root-1710 MuiStepLabel-horizontal-1711"
         >
           <span
-            className="MuiStepLabel-iconContainer-1626"
+            className="MuiStepLabel-iconContainer-1718"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1634 MuiStepIcon-root-1629"
+              className="MuiSvgIcon-root-1726 MuiStepIcon-root-1721"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -5671,7 +6570,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1630"
+                className="MuiStepIcon-text-1722"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -5681,10 +6580,10 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1628"
+            className="MuiStepLabel-labelContainer-1720"
           >
             <span
-              className="MuiTypography-root-1540 MuiTypography-body2-1548 MuiStepLabel-label-1621"
+              className="MuiTypography-root-1632 MuiTypography-body2-1640 MuiStepLabel-label-1713"
             >
               Condition
             </span>
@@ -5693,17 +6592,17 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1643 MuiStepConnector-horizontal-1644"
+      className="MuiStepConnector-root-1735 MuiStepConnector-horizontal-1736"
     >
       <span
-        className="MuiStepConnector-line-1650 MuiStepConnector-lineHorizontal-1651"
+        className="MuiStepConnector-line-1742 MuiStepConnector-lineHorizontal-1743"
       />
     </div>
     <div
-      className="MuiStep-root-1606 MuiStep-horizontal-1607"
+      className="MuiStep-root-1698 MuiStep-horizontal-1699"
     >
       <button
-        className="MuiButtonBase-root-1615 MuiStepButton-root-1611 MuiStepButton-horizontal-1612"
+        className="MuiButtonBase-root-1707 MuiStepButton-root-1703 MuiStepButton-horizontal-1704"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -5720,14 +6619,14 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1618 MuiStepLabel-horizontal-1619"
+          className="MuiStepLabel-root-1710 MuiStepLabel-horizontal-1711"
         >
           <span
-            className="MuiStepLabel-iconContainer-1626"
+            className="MuiStepLabel-iconContainer-1718"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1634 MuiStepIcon-root-1629"
+              className="MuiSvgIcon-root-1726 MuiStepIcon-root-1721"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -5738,7 +6637,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1630"
+                className="MuiStepIcon-text-1722"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -5748,10 +6647,10 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1628"
+            className="MuiStepLabel-labelContainer-1720"
           >
             <span
-              className="MuiTypography-root-1540 MuiTypography-body2-1548 MuiStepLabel-label-1621"
+              className="MuiTypography-root-1632 MuiTypography-body2-1640 MuiStepLabel-label-1713"
             >
               Timing
             </span>
@@ -5760,17 +6659,17 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       </button>
     </div>
     <div
-      className="MuiStepConnector-root-1643 MuiStepConnector-horizontal-1644"
+      className="MuiStepConnector-root-1735 MuiStepConnector-horizontal-1736"
     >
       <span
-        className="MuiStepConnector-line-1650 MuiStepConnector-lineHorizontal-1651"
+        className="MuiStepConnector-line-1742 MuiStepConnector-lineHorizontal-1743"
       />
     </div>
     <div
-      className="MuiStep-root-1606 MuiStep-horizontal-1607"
+      className="MuiStep-root-1698 MuiStep-horizontal-1699"
     >
       <button
-        className="MuiButtonBase-root-1615 MuiStepButton-root-1611 MuiStepButton-horizontal-1612"
+        className="MuiButtonBase-root-1707 MuiStepButton-root-1703 MuiStepButton-horizontal-1704"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -5787,14 +6686,14 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
         type="button"
       >
         <span
-          className="MuiStepLabel-root-1618 MuiStepLabel-horizontal-1619"
+          className="MuiStepLabel-root-1710 MuiStepLabel-horizontal-1711"
         >
           <span
-            className="MuiStepLabel-iconContainer-1626"
+            className="MuiStepLabel-iconContainer-1718"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-1634 MuiStepIcon-root-1629"
+              className="MuiSvgIcon-root-1726 MuiStepIcon-root-1721"
               focusable="false"
               role="presentation"
               viewBox="0 0 24 24"
@@ -5805,7 +6704,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
                 r="12"
               />
               <text
-                className="MuiStepIcon-text-1630"
+                className="MuiStepIcon-text-1722"
                 textAnchor="middle"
                 x="12"
                 y="16"
@@ -5815,10 +6714,10 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
             </svg>
           </span>
           <span
-            className="MuiStepLabel-labelContainer-1628"
+            className="MuiStepLabel-labelContainer-1720"
           >
             <span
-              className="MuiTypography-root-1540 MuiTypography-body2-1548 MuiStepLabel-label-1621"
+              className="MuiTypography-root-1632 MuiTypography-body2-1640 MuiStepLabel-label-1713"
             >
               Preview
             </span>
@@ -5831,7 +6730,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
     className="sc-eTuwsz igikOh"
   >
     <h6
-      className="MuiTypography-root-1540 MuiTypography-h6-1557"
+      className="MuiTypography-root-1632 MuiTypography-h6-1649"
     >
       Step
        
@@ -5845,7 +6744,7 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
     size="80"
   >
     <div
-      className="MuiCircularProgress-root-1531 MuiCircularProgress-colorPrimary-1534 MuiCircularProgress-indeterminate-1533"
+      className="MuiCircularProgress-root-1623 MuiCircularProgress-colorPrimary-1626 MuiCircularProgress-indeterminate-1625"
       role="progressbar"
       style={
         Object {
@@ -5855,11 +6754,11 @@ exports[`Storyshots Rule Editing / Complete Edit existing Rule 1`] = `
       }
     >
       <svg
-        className="MuiCircularProgress-svg-1536"
+        className="MuiCircularProgress-svg-1628"
         viewBox="22 22 44 44"
       >
         <circle
-          className="MuiCircularProgress-circle-1537 MuiCircularProgress-circleIndeterminate-1539"
+          className="MuiCircularProgress-circle-1629 MuiCircularProgress-circleIndeterminate-1631"
           cx={44}
           cy={44}
           fill="none"
@@ -6015,37 +6914,11 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           <h6
             className="MuiTypography-root-510 MuiTypography-subtitle1-528"
           >
-            Sent every Tuesday, 9:00 AM
+            Send notifications immediately
           </h6>
           <hr
             className="sc-kafWEX bhYbBP"
           />
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/engine.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/battery.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -6074,37 +6947,11 @@ exports[`Storyshots Rule Overview / Complete Successful 1`] = `
           <h6
             className="MuiTypography-root-510 MuiTypography-subtitle1-528"
           >
-            Sent every Tuesday, 9:00 AM
+            Send notifications immediately
           </h6>
           <hr
             className="sc-kafWEX bhYbBP"
           />
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/engine.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/battery.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
         </div>
       </div>
     </div>
@@ -6215,7 +7062,7 @@ exports[`Storyshots Rule Overview / Complete With Error 1`] = `
 
 exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="sc-ktHwxA bEXIEy sc-fYxtnH kOdfwa"
@@ -6259,7 +7106,7 @@ exports[`Storyshots Rule Overview / Tiles Add Rule Tile 1`] = `
 
 exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
 <div
-  className="sc-bbmXgH dVcTmh"
+  className="sc-bbmXgH guERJJ"
 >
   <div
     className="sc-cIShpX cVdoGZ sc-fYxtnH kOdfwa"
@@ -6284,37 +7131,11 @@ exports[`Storyshots Rule Overview / Tiles Rule Tile 1`] = `
           <h6
             className="MuiTypography-root-439 MuiTypography-subtitle1-457"
           >
-            Sent every Tuesday, 9:00 AM
+            Send notifications immediately
           </h6>
           <hr
             className="sc-kafWEX bhYbBP"
           />
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/engine.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="sc-jnlKLf lembQM"
-          >
-            <img
-              src="/assets/img/battery.png"
-              style={
-                Object {
-                  "height": "20px",
-                  "width": "20px",
-                }
-              }
-            />
-          </div>
         </div>
       </div>
     </div>

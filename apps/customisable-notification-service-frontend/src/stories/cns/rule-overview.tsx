@@ -8,18 +8,20 @@ import SingleComponentWrapper from '../SingleComponentWrapper'
 import AddRuleTile from '@/modules/rule-overview/components/AddRuleTile'
 import RuleTile, { RuleTileProps } from '@/modules/rule-overview/components/RuleTile'
 import RuleOverview, { RuleOverviewProps } from '@/modules/rule-overview/views/RuleOverview'
-import { VehicleDataType } from '@/model'
+import { AggregatorStrategy, LogicalConnective } from '@/model'
 
 const ruleTileProps: RuleTileProps = {
   rule: {
     ruleId: 1,
     name: 'Rule Name',
     description: 'Rule Description for an examplary Rule',
-    aggregatorDescription: 'Sent every Tuesday, 9:00 AM',
-    dataSources: [
-      VehicleDataType.Engine,
-      VehicleDataType.Battery
-    ]
+    aggregator: {
+      strategy: AggregatorStrategy.Immediate
+    },
+    condition: {
+      logicalConnective: LogicalConnective.All,
+      predicates: {}
+    }
   }
 }
 

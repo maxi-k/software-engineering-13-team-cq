@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import { NotificationRuleOverview, VehicleDataType } from '@/model'
 import RuleTileBase, { RuleTileProps as TileBaseProps } from './RuleTileBase'
 import RuleIcon from '@/modules/shared/components/RuleIcon'
+import AggregatorDescription from '@/modules/shared/components/AggregatorDescription'
+import { getRuleDataSources } from '@/services/rule-service';
 
 export interface RuleTileProps
   extends TileBaseProps {
@@ -37,9 +39,11 @@ const RuleTile: React.SFC<RuleTileProps & React.HTMLProps<any>> = ({ rule, ...pr
   <StyledRuleTile {...props}>
     <Typography variant="h6">{rule.name}</Typography>
     <RuleTileSeparator />
-    <Typography variant="subtitle1">{rule.aggregatorDescription}</Typography>
+    <Typography variant="subtitle1">
+      <AggregatorDescription aggregator={rule.aggregator} labelOnly />
+    </Typography>
     <RuleTileSeparator />
-    <RuleTileIcons dataSources={rule.dataSources} />
+    <RuleTileIcons dataSources={getRuleDataSources(rule)} />
   </StyledRuleTile>
 )
 
