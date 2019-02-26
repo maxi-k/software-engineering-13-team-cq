@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 import java.util.Date
+import java.util.Locale
 import javax.annotation.Resource
 
 @Component
@@ -20,11 +21,7 @@ class NotificationTextService : INotificationTextService {
 
         val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
-        val context = Context(locale)
-
-        context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
-        context.setVariable("rule", notificationData.notificationRule.name)
-        context.setVariable("hobbies", listOf("Cinema", "Sports", "Music"))
+        val context = getContext(locale, notificationData)
 
         return templateEngine.process(HTML_MAIL_TEMPLATE, context)
     }
@@ -35,9 +32,14 @@ class NotificationTextService : INotificationTextService {
 
         val locale = notificationData.notificationRule.owner!!.userSettings!!.locale!!.localeFormat
 
+        val context = getContext(locale, notificationData)
+
+        return templateEngine.process(TEXT_SMS_TEMPLATE, context)
+    }
+
+    private fun getContext(locale: Locale, notificationData: NotificationData): Context {
         val context = Context(locale)
 
-        context.setVariable("name", notificationData.notificationRule.owner!!.name!!)
         context.setVariable("subscriptionDate", Date())
 
         val allVehicleReferences = notificationData.matchedVehicleStates.map { vehicleState ->
@@ -51,8 +53,7 @@ class NotificationTextService : INotificationTextService {
         }.toSet()
 
         context.setVariable("vehicles", listOf(allVehicleReferences))
-
-        return templateEngine.process(TEXT_SMS_TEMPLATE, context)
+        return context
     }
 
     companion object {
