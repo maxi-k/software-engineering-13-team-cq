@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledPropertyTag = styled.div`
+const styling = `
     display: inline-block;
     background-color: #CECECE;
     padding: 0.5rem;
@@ -8,5 +8,8 @@ const StyledPropertyTag = styled.div`
     border-radius: 2px;
     overflow: hidden;
 `
+
+const StyledPropertyTag = styled.div`${styling}`
+export const InlinePropertyTag = styled.span`${styling}`
 
 export default StyledPropertyTag

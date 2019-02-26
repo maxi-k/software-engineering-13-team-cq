@@ -148,6 +148,7 @@ const predicateCounterProps: PredicateCounterProps = {
 const conditionSelectorProps: ConditionSelectorProps = {
   beforeText: "cns.condition.selector.beforetext",
   afterText: "cns.condition.selector.aftertext",
+  unit: "text unit",
   onChangeDataType: action('change data type'),
   onChangeComparisonConstant: action('change comparison constant'),
   comparisonConstant: 'comparison constant',

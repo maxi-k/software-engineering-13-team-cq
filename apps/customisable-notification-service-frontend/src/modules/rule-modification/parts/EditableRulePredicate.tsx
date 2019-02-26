@@ -14,9 +14,11 @@ import {
   SelectFormattedValue,
   SelectOnChangeType
 } from '@/model'
-
-import ConditionSelector from '../components/ConditionSelector'
 import { mapObjectToArray } from '@/utilities/collection-util';
+import { capitalizeString } from '@/utilities/string-util'
+
+import PredicateFieldUnit from '@/modules/shared/parts/PredicateFieldUnit'
+import ConditionSelector from '../components/ConditionSelector'
 
 export interface EditableRulePredicateAttributes {
   predicate: Partial<RuleConditionPredicate<any>>
@@ -105,14 +107,13 @@ const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
   const applicableVehicleType =
     typeof predicate.appliedField === 'undefined' || predicate.appliedField === null
       ? null
-      : predicateFields[predicate.appliedField.vehicleDataType]
+      : predicateFields[capitalizeString(predicate.appliedField.vehicleDataType) as keyof typeof predicateFields]
   const comparisonTypes =
     typeof predicate.appliedField === 'undefined' || predicate.appliedField === null ||
       typeof applicableVehicleType === 'undefined' || applicableVehicleType === null
       ? new Set()
       : findPossibleComparisonTypes(predicate.appliedField.predicateField.fieldName,
         applicableVehicleType.predicateFields)
-
   const comparisonTypeOptions = Array.from(comparisonTypes).map(createComparisonTypeSelectValue)
   const comparisonTypeSelectValue =
     typeof predicate.comparisonType === 'undefined' || predicate.comparisonType === null
@@ -134,6 +135,14 @@ const EditableRulePredicate: React.SFC<EditableRulePredicateProps> = ({
       onClickRemove={removeRule}
       beforeText="cns.condition.selector.beforetext"
       afterText="cns.condition.selector.aftertext"
+      unit={(predicate.appliedField &&
+        predicate.appliedField.vehicleDataType &&
+        predicate.appliedField.predicateField &&
+        predicate.appliedField.predicateField.fieldName)
+        ? <PredicateFieldUnit providerName={predicate.appliedField.vehicleDataType}
+          fieldName={predicate.appliedField.predicateField.fieldName} />
+        : <></>
+      }
     />
   )
 }

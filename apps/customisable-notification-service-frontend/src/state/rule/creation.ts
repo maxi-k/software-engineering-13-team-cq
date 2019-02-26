@@ -29,7 +29,7 @@ export enum RuleCreationActionType {
 }
 export type RuleCreationAction = Action<RuleCreationActionType>
 
-const initialState = update(initialModificationState, {
+const initialState = update({ ...initialModificationState }, {
   inProgressRule: {
     condition: {
       predicates: {
@@ -40,7 +40,14 @@ const initialState = update(initialModificationState, {
               predicateField: {
                 fieldName: 'charge',
                 dataType: PredicateFieldType.PERCENTAGE_DECIMAL,
-                possibleEvaluationStrategies: []
+                possibleEvaluationStrategies: [
+                  'EQUAL_TO',
+                  'NOT_EQUAL_TO',
+                  'GREATER_THAN',
+                  'LESS_THAN',
+                  'GREATER_THAN_OR_EQUAL_TO',
+                  'LESS_THAN_OR_EQUAL_TO'
+                ]
               }
             },
             comparisonType: 'GREATER_THAN_OR_EQUAL_TO'

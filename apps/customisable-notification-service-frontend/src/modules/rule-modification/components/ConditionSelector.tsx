@@ -13,6 +13,7 @@ import SelectWrapper from '@/modules/shared/components/TextSelectWrapper'
 export interface ConditionSelectorProps {
   beforeText: string
   afterText: string
+  unit: React.ReactNode
 
   dataTypeOptions: Array<SelectGroupedOptions<SelectValue>>
   dataTypeValue: SelectValue | null
@@ -36,6 +37,7 @@ const StyledSeparator = styled.div`
 const StyledTextInput = styled.input`
   width: 200px;
   height: 35px;
+  margin-right: 1rem;
 `
 
 const StyledRemovalButton = styled(IconButton)`
@@ -50,11 +52,11 @@ const RemovalButton: React.SFC<React.HTMLAttributes<HTMLButtonElement>> = ({ onC
 )
 
 const ConditionSelector: React.SFC<ConditionSelectorProps> = (
-  { beforeText, afterText,
+  { beforeText, afterText, unit,
     dataTypeOptions, dataTypeValue,
     comparisonTypeOptions, comparisonTypeValue, comparisonConstant,
     onChangeDataType, onChangeComparisonType, onChangeComparisonConstant,
-    onClickRemove
+    onClickRemove,
   }
 ) => {
   return (
@@ -83,7 +85,7 @@ const ConditionSelector: React.SFC<ConditionSelectorProps> = (
         value={comparisonConstant}
         onChange={onChangeComparisonConstant}
         type="text" />
-      %.
+      {unit}
       <RemovalButton onClick={onClickRemove} />
     </div>
   )
