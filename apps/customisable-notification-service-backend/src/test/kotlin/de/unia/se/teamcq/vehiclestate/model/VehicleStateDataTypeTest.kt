@@ -10,7 +10,6 @@ import io.kotlintest.specs.StringSpec
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.test.context.ContextConfiguration
 import java.lang.IllegalArgumentException
-import java.time.ZoneOffset
 
 @ContextConfiguration(classes = [TestConfiguration::class])
 class VehicleStateDataTypeTest : StringSpec() {
