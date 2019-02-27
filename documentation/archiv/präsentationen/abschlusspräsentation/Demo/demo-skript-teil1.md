@@ -1,37 +1,29 @@
-FIONA: Machen Sie sich selbst ein Bild. Das ist Maxi. 
+FIONA: Machen Sie sich selbst ein Bild. Das ist Maxi.
 
 *MAXI winkt.*
 
-FIONA: Maxi ist Flottenmanager bei Sixt. In dieser Position kümmert er sich um die Verträge aller LKWs aus München. Um die Vertragsinformationen im Überblick zu haben, benutzt Maxi das System „Alte Flotten 1.0“. 
-Maxi hat in letzter Zeit sehr viel zu tun. Hastig betritt er daher seinen Arbeitsplatz. 
+FIONA: MAXI ist Flottenmanager bei Sixt. In dieser Position kümmert er sich um die Verträge aller Fahrzeuge aus München. Um die Vertragsinformationen im Überblick zu haben, benutzt Maxi das System "Alte Flotten 1.0". Maxi hat zur Zeit sehr viel zu tun. Seine Kunden senden ihm viele E-Mails mit Arbeitsaufträgen. Hastig betritt er seinen Arbeitsplatz.
 
 *MAXI betritt seinen Arbeitsplatz. Er schaut auf die Uhr. Maxi setzt sich eilig an seinen Laptop und beginnt zu tippen.*
 
-FIONA: Maxi beginnt zu arbeiten, als ihm plötzlich etwas einfällt…
+FIONA: Plötzlich fällt Maxi etwas ein...
 
-MAXI: Oje. Ich habe ganz vergessen, mich um die Flotten zu kümmern. Dabei manage ich doch alle LKWs aus München. Bestimmt laufen für manche LKWs schon bald die Verträge aus. Jetzt aber schnell.
+MAXI: Oje. Ich habe ganz vergessen, mich um die Flotten zu kümmern. Bei den vielen E-Mails von meinen Kunden geht das immer unter. Letzte Woche habe ich deswegen schon großen Ärger von meinem Chef bekommen. Jetzt aber schnell.
 
-*MAXI tippt.*
+FIONA: Um seine Aufgabe zu erfüllen, meldet sich Maxi in dem System „Alte Flotten 1.0“ an. „Alte Flotten 1.0“ präsentiert ihm eine Tabelle mit Fahrzeugdaten.
 
-FIONA: Um seine Aufgabe zu erfüllen, meldet sich Maxi in dem System „Alte Flotten 1.0“ an. „Alte Flotten 1.0“ präsentiert ihm viele Fahrzeugdaten.
+*Im Hintergrund erscheint die Tabelle aus dem FleetData-System.*
 
-*Im Hintergrund erscheint ein wüst aussehender Datensatz.*
+MAXI: Jetzt die Daten filtern. 
 
-FIONA: Maxi interessiert sich nur für Vertragsinformationen zu LKWs aus München. Diese Daten versucht er nun, aus der Informationsflut zu filtern.
+* MAXI filtert. *
 
-MAXI: Puh, so viele Fakten. Und ich brauche davon nur so wenige…
+MAXI: Informationen zu Verträgen von Fahrzeugen gibt es echt wenige. 
 
-*MAXI hält sein Handy an sein Ohr und redet leise.*
+FIONA: Maxi würde sich eine E-Mail-Nachricht wünschen, wenn er sich um einen Vertrag aus seiner Flotte kümmern soll. Außerdem würde er in dieser E-Mail nur von den Daten benachrichtigt werden, die für seine Arbeit relevant sind.
 
-FIONA: Maxi greift zum Telefon. Er bittet seinen technischen Assistenten, die vielen Informationen für ihn auszudrucken. 
+*STEFAN betritt das Büro und stellt sich neben Maxi.*
 
-*STEFAN betritt mit einem großen Stapel Papier das Büro und legt es neben Maxi. 
-MAXI nimmt das erste Blatt. Er markiert Textstellen mit einem Marker.
-Im Hintergrund erscheint der Datensatz mit wenigen Markierungen.*
-
-MAXI (wütend): Mich interessieren doch gar keine PKWs aus Hamburg. Dass der LKW von Manfred in 3 Monaten zum TÜV muss, erfahre ich stündlich. Das würde doch auch alle zwei Wochen reichen. Und Informationen über den Tacho-Stand sind doch eher was für andere Abteilungen.
-„Alte Flotten 1.0“ wird seinem Namen wirklich gerecht. 
-
-STEFAN: Da kenne ich eine Lösung. Das anpassbare Benachrichtigungssystem. Entwickelt von Team CQ.
+STEFAN: Hast du schon gehört? Team CQ hat einen konfigurierbaren Nachrichtenservice entwickelt. 
 
 MAXI (aufgeregt): Team CQ? Das sind doch die, die für Qualität stehen. Erzähl! 
